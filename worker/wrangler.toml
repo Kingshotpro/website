@@ -1,0 +1,11 @@
+name = "kingshotpro-api"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+# After deploying, add this CNAME in Namecheap:
+#   api  →  kingshotpro-api.<your-cf-subdomain>.workers.dev
+# Then enable the custom domain below in your Cloudflare dashboard.
+
+[[routes]]
+pattern = "api.kingshotpro.com/*"
+zone_name = "kingshotpro.com"

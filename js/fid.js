@@ -6,7 +6,11 @@
  * stores in sessionStorage, triggers advisory display.
  */
 
-const FID_API = 'https://kingshot-giftcode.centurygame.com/api/player';
+// All API calls go through the Cloudflare Worker proxy at api.kingshotpro.com.
+// Direct centurygame.com calls are intentionally avoided — proxy keeps user IPs
+// away from Century Games' origin and centralises any future signing logic.
+// See worker/worker.js + worker/wrangler.toml for deployment.
+const FID_API    = 'https://api.kingshotpro.com/player';
 const PROFILE_KEY = 'ksp_profile';
 
 // ─────────────────────────────────────────
@@ -46,20 +50,23 @@ function classifyProfile(raw) {
   const payAmt       = Number(raw.pay_amt)  || 0; // lifetime spend in cents
   const dollars      = payAmt / 100;
 
-  // Spending tier
+  // Spending tier — display labels from NAMING_RESEARCH_FINDINGS.md
+  // IMPORTANT: if a furnace-based fallback label system is ever added,
+  // do NOT use "Veteran" for any furnace band — it collides with the mid-tier label here.
+  // Use "Campaigner" for furnace 15–21 in any fallback system.
   let spendingTier, spendingLabel;
   if (dollars === 0) {
     spendingTier  = 'f2p';
-    spendingLabel = 'Free-to-Play';
+    spendingLabel = 'Free Commander';
   } else if (dollars < 100) {
     spendingTier  = 'low';
-    spendingLabel = 'Low Spender';
+    spendingLabel = 'Tactician';
   } else if (dollars < 500) {
     spendingTier  = 'mid';
-    spendingLabel = 'Mid Spender';
+    spendingLabel = 'Veteran';
   } else {
     spendingTier  = 'whale';
-    spendingLabel = 'Whale';
+    spendingLabel = 'Warlord';
   }
 
   // Game stage
@@ -256,7 +263,7 @@ function handleManualSubmit(e) {
   const nickname      = (document.getElementById('manual-name')?.value || 'Player').trim();
 
   // Build a synthetic profile
-  const spendingLabels = { f2p: 'Free-to-Play', low: 'Low Spender', mid: 'Mid Spender', whale: 'Whale' };
+  const spendingLabels = { f2p: 'Free Commander', low: 'Tactician', mid: 'Veteran', whale: 'Warlord' };
   let gameStage, stageLabel;
   if (furnaceLevel < 15)       { gameStage = 'early'; stageLabel = 'Early Game'; }
   else if (furnaceLevel <= 21) { gameStage = 'mid';   stageLabel = 'Mid Game'; }
