@@ -1,14 +1,15 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Viking Vengeance — KingshotPro</title><link rel="stylesheet" href="../css/style.css"></head><body>
+<title>Viking Vengeance Calculator — KingshotPro</title><meta name="description" content="Viking Vengeance event calculator with all 11 difficulty levels, wave guide, and troop recommendations for Kingshot."><link rel="stylesheet" href="../css/style.css"></head><body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
 <div class="page"><div class="container">
-<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#9876;&#65039; Viking Vengeance Tracker</h1><p>Track your Viking event progress and troop losses.</p></div>
-<div class="calc-layout"><div class="calc-inputs"><h2>Event Progress</h2>
-<div class="form-group"><label for="vk-waves">Waves completed</label><input type="number" id="vk-waves" placeholder="0" min="0"></div>
-<div class="form-group"><label for="vk-troops">Troops per wave</label><input type="number" id="vk-troops" placeholder="e.g. 100000" min="0"></div>
-<div class="form-group"><label for="vk-loss">Est. loss rate (%)</label><input type="number" id="vk-loss" value="10" min="0" max="100"></div>
-<button class="btn btn-primary btn-full" id="vk-calc-btn">Calculate</button></div>
-<div class="calc-results"><h2>Event Summary</h2><div id="vk-results"><p class="result-placeholder">Enter progress and click Calculate.</p></div></div></div>
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#9876;&#65039; Viking Vengeance Calculator</h1><p>All 11 difficulty levels with wave guide and troop recommendations.</p></div>
+<div class="calc-layout">
+<div class="calc-inputs"><h2>Parameters</h2>
+<div class="form-group"><label for="vv-level">Difficulty level</label><select id="vv-level"></select></div>
+<div class="form-group"><label for="vv-troops">Your total troops (optional)</label><input type="number" id="vv-troops" placeholder="e.g. 200000" min="0">
+<p style="font-size:11px;color:var(--text-dim);margin-top:4px;">Enter your total deployable troops to check if you can clear this difficulty.</p></div>
+<button class="btn btn-primary btn-full" id="vv-calc-btn">Analyze</button></div>
+<div class="calc-results"><h2>Wave Analysis</h2><div id="vv-results"><p class="result-placeholder">Select difficulty and click Analyze.</p></div></div></div>
 <div class="ad-slot" data-slot="calc-result-below"></div>
 </div></div>
 <footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>

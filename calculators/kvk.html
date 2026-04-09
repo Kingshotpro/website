@@ -1,15 +1,13 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KvK Score Calculator — KingshotPro</title><link rel="stylesheet" href="../css/style.css"></head><body>
+<title>KvK Score Calculator — KingshotPro</title><meta name="description" content="Calculate your KvK Kingdom of Power preparation points across all 5 days in Kingshot."><link rel="stylesheet" href="../css/style.css"></head><body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
 <div class="page"><div class="container">
-<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#127942; KvK Score Tracker</h1><p>Track your Kingdom vs Kingdom contributions.</p></div>
-<div class="calc-layout"><div class="calc-inputs"><h2>Your KvK Stats</h2>
-<div class="form-group"><label for="kvk-kills">Troops killed</label><input type="number" id="kvk-kills" placeholder="0" min="0"></div>
-<div class="form-group"><label for="kvk-trained">Troops trained</label><input type="number" id="kvk-trained" placeholder="0" min="0"></div>
-<div class="form-group"><label for="kvk-gathered">Resources gathered</label><input type="number" id="kvk-gathered" placeholder="0" min="0"></div>
-<div class="form-group"><label for="kvk-power">Power gained</label><input type="number" id="kvk-power" placeholder="0" min="0"></div>
-<button class="btn btn-primary btn-full" id="kvk-calc-btn">Calculate</button></div>
-<div class="calc-results"><h2>Contribution Summary</h2><div id="kvk-results"><p class="result-placeholder">Enter your stats and click Calculate.</p></div></div></div>
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#127942; KvK Score Calculator</h1><p>Calculate your Kingdom of Power preparation points across all 5 days.</p></div>
+<div class="tab-row" id="kvk-tabs"></div>
+<div class="calc-layout">
+<div class="calc-inputs"><h2>Activities</h2><div id="kvk-inputs"></div>
+<button class="btn btn-primary btn-full mt-16" id="kvk-calc-btn">Calculate Points</button></div>
+<div class="calc-results"><h2>Score</h2><div id="kvk-results"><p class="result-placeholder">Select a day, enter quantities, and click Calculate.</p></div></div></div>
 <div class="ad-slot" data-slot="calc-result-below"></div>
 </div></div>
 <footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
