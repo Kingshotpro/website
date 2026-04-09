@@ -59,45 +59,109 @@
     return loc.indexOf(item.key + '.html') !== -1;
   }
 
+  // ── Accordion state ────────────────────────
+  var STORAGE_KEY = 'ksp_sb_collapsed';
+
+  function getCollapsed() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch(e) { return []; }
+  }
+  function saveCollapsed(arr) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); } catch(e) {}
+  }
+
   // ── Build sidebar HTML ────────────────────
   function sidebarHTML() {
+    var collapsed = getCollapsed();
     var h = '<nav class="sb-scroll" role="navigation" aria-label="Main">';
+
+    // Group items by category
+    var sections = [];
+    var currentSection = null;
     for (var i = 0; i < NAV.length; i++) {
       var it = NAV[i];
       if (it.cat) {
-        h += '<div class="sb-cat">' + it.cat + '</div>';
+        currentSection = { cat: it.cat, items: [] };
+        sections.push(currentSection);
+      } else if (currentSection) {
+        currentSection.items.push(it);
+      } else {
+        // Items before first category (Home)
+        sections.push({ single: it });
+      }
+    }
+
+    for (var s = 0; s < sections.length; s++) {
+      var sec = sections[s];
+
+      // Single item (Home — no accordion)
+      if (sec.single) {
+        h += renderItem(sec.single);
         continue;
       }
-      var active = isActive(it) ? ' active' : '';
-      var dis    = !it.href ? ' disabled' : '';
-      var bHTML  = '';
-      if (it.badges) {
-        for (var b = 0; b < it.badges.length; b++) {
-          var t = it.badges[b];
-          bHTML += '<span class="sb-badge ' + t.toLowerCase() + '">' + t + '</span>';
-        }
+
+      // Check if this section has the active page
+      var hasActive = false;
+      for (var j = 0; j < sec.items.length; j++) {
+        if (isActive(sec.items[j])) { hasActive = true; break; }
       }
-      if (!it.href) bHTML += '<span class="sb-badge soon">Soon</span>';
-      var tag = it.href ? 'a' : 'span';
-      var hr  = it.href ? ' href="' + it.href + '"' : '';
-      h += '<' + tag + hr + ' class="sb-item' + active + dis + '">';
-      h += '<span class="sb-icon">' + it.icon + '</span>';
-      h += '<span class="sb-text">' + it.label + '</span>';
-      h += bHTML;
-      h += '</' + tag + '>';
+
+      var catId = sec.cat.toLowerCase().replace(/\s+/g, '-');
+      var isCollapsed = !hasActive && collapsed.indexOf(catId) !== -1;
+      var chevron = isCollapsed ? '\u25B8' : '\u25BE';
+      var catCls = isCollapsed ? ' collapsed' : '';
+
+      h += '<div class="sb-cat' + catCls + '" data-section="' + catId + '">';
+      h += '<span class="sb-cat-label">' + sec.cat + '</span>';
+      h += '<span class="sb-chevron">' + chevron + '</span>';
+      h += '</div>';
+      h += '<div class="sb-group' + (isCollapsed ? ' collapsed' : '') + '" data-group="' + catId + '">';
+      for (var k = 0; k < sec.items.length; k++) {
+        h += renderItem(sec.items[k]);
+      }
+      h += '</div>';
     }
-    // Ecosystem
+
+    // Ecosystem (also accordion)
+    var ecoId = 'ecosystem';
+    var ecoCollapsed = collapsed.indexOf(ecoId) !== -1;
     h += '<div class="sb-eco">';
-    h += '<div class="sb-cat">ECOSYSTEM</div>';
+    h += '<div class="sb-cat' + (ecoCollapsed ? ' collapsed' : '') + '" data-section="' + ecoId + '">';
+    h += '<span class="sb-cat-label">ECOSYSTEM</span>';
+    h += '<span class="sb-chevron">' + (ecoCollapsed ? '\u25B8' : '\u25BE') + '</span>';
+    h += '</div>';
+    h += '<div class="sb-group' + (ecoCollapsed ? ' collapsed' : '') + '" data-group="' + ecoId + '">';
     h += '<a href="https://kingshotdata.com" target="_blank" rel="noopener" class="sb-item ext">';
     h += '<span class="sb-icon">\u{1F4D6}</span><span class="sb-text">Game Wiki</span><span class="sb-arrow">\u2197</span></a>';
     h += '<a href="https://kingshotguides.com" target="_blank" rel="noopener" class="sb-item ext">';
     h += '<span class="sb-icon">\u{1F4DD}</span><span class="sb-text">Guides</span><span class="sb-arrow">\u2197</span></a>';
-    h += '</div>';
+    h += '</div></div>';
+
     // Ad slot: sidebar bottom
     h += '<div class="ad-slot sb-ad" data-slot="sidebar-bottom"></div>';
     h += '</nav>';
     return h;
+  }
+
+  function renderItem(it) {
+    var active = isActive(it) ? ' active' : '';
+    var dis    = !it.href ? ' disabled' : '';
+    var bHTML  = '';
+    if (it.badges) {
+      for (var b = 0; b < it.badges.length; b++) {
+        var t = it.badges[b];
+        bHTML += '<span class="sb-badge ' + t.toLowerCase() + '">' + t + '</span>';
+      }
+    }
+    if (!it.href) bHTML += '<span class="sb-badge soon">Soon</span>';
+    var tag = it.href ? 'a' : 'span';
+    var hr  = it.href ? ' href="' + it.href + '"' : '';
+    var r = '<' + tag + hr + ' class="sb-item' + active + dis + '">';
+    r += '<span class="sb-icon">' + it.icon + '</span>';
+    r += '<span class="sb-text">' + it.label + '</span>';
+    r += bHTML;
+    r += '</' + tag + '>';
+    return r;
   }
 
   // ── Build topbar HTML ─────────────────────
@@ -154,11 +218,37 @@
     document.getElementById('sb-toggle').addEventListener('click', toggle);
     ov.addEventListener('click', toggle);
 
+    // Close sidebar on link click (mobile)
     sb.addEventListener('click', function (e) {
       if (window.innerWidth <= 768 && e.target.closest('a.sb-item')) {
         sb.classList.remove('open');
         ov.classList.remove('open');
       }
+    });
+
+    // Accordion toggle on category headers
+    sb.addEventListener('click', function (e) {
+      var cat = e.target.closest('.sb-cat');
+      if (!cat) return;
+      var sectionId = cat.getAttribute('data-section');
+      if (!sectionId) return;
+      var group = sb.querySelector('[data-group="' + sectionId + '"]');
+      if (!group) return;
+
+      var isNowCollapsed = !group.classList.contains('collapsed');
+      group.classList.toggle('collapsed');
+      cat.classList.toggle('collapsed');
+
+      // Update chevron
+      var chev = cat.querySelector('.sb-chevron');
+      if (chev) chev.textContent = isNowCollapsed ? '\u25B8' : '\u25BE';
+
+      // Persist state
+      var arr = getCollapsed();
+      var idx = arr.indexOf(sectionId);
+      if (isNowCollapsed && idx === -1) arr.push(sectionId);
+      else if (!isNowCollapsed && idx !== -1) arr.splice(idx, 1);
+      saveCollapsed(arr);
     });
   }
 
