@@ -48,6 +48,16 @@
     { icon: '\u{1F5FA}\uFE0F', label: 'Rally Planner', href: B + 'calculators/rally-planner.html', key: 'rally-planner' },
     { icon: '\u{1F5FA}\uFE0F', label: 'Map Planner',   href: B + 'calculators/map-planner.html',   key: 'map-planner' },
     { icon: '\u{1F48A}', label: 'Healing Cost',     href: B + 'calculators/healing.html',         key: 'healing' },
+    { cat: 'ALLIANCE' },
+    { icon: '\u{1F3D8}\uFE0F', label: 'Hive Layout',   href: B + 'calculators/hive-layout.html',   key: 'hive-layout', badges: ['New'] },
+    { icon: '\u2694\uFE0F', label: 'War Planner',       href: B + 'calculators/war-planner.html',   key: 'war-planner', badges: ['New'] },
+    { icon: '\u{1F4CB}', label: 'Alliance Roster',      href: B + 'calculators/roster.html',        key: 'roster',      badges: ['New'] },
+    { cat: 'UTILITY' },
+    { icon: '\u23F1\uFE0F', label: 'Speedup Calc',     href: B + 'calculators/speedups.html',      key: 'speedups',    badges: ['New'] },
+    { icon: '\u{1F4CA}', label: 'Resource Planner',     href: B + 'calculators/resources.html',     key: 'resources',   badges: ['New'] },
+    { icon: '\u{1F4AA}', label: 'Power Calculator',     href: B + 'calculators/power.html',         key: 'power',       badges: ['New'] },
+    { icon: '\u2705',   label: 'Daily Checklist',       href: B + 'calculators/daily.html',         key: 'daily',       badges: ['New'] },
+    { icon: '\u{1F4C5}', label: 'Event Timer',          href: B + 'calculators/events.html',        key: 'events',      badges: ['New'] },
   ];
 
   // ── Active page ───────────────────────────

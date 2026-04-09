@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&#128202; Resource Planner — KingshotPro</title><meta name="description" content="See when you can afford an upgrade based on current resources and production."><link rel="stylesheet" href="../css/style.css"></head><body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#128202; Resource Planner</h1><p>See when you can afford an upgrade based on current resources and production.</p></div>
+<div class="calc-layout"><div class="calc-inputs"><h2>Current Resources</h2>
+<div class="form-group"><label>Food</label><div style="display:flex;gap:8px;"><input type="number" id="res-cur-food" placeholder="Current" min="0"><input type="number" id="res-rate-food" placeholder="Per hour" min="0"></div></div>
+<div class="form-group"><label>Wood</label><div style="display:flex;gap:8px;"><input type="number" id="res-cur-wood" placeholder="Current" min="0"><input type="number" id="res-rate-wood" placeholder="Per hour" min="0"></div></div>
+<div class="form-group"><label>Stone</label><div style="display:flex;gap:8px;"><input type="number" id="res-cur-stone" placeholder="Current" min="0"><input type="number" id="res-rate-stone" placeholder="Per hour" min="0"></div></div>
+<div class="form-group"><label>Iron</label><div style="display:flex;gap:8px;"><input type="number" id="res-cur-iron" placeholder="Current" min="0"><input type="number" id="res-rate-iron" placeholder="Per hour" min="0"></div></div>
+<div class="form-group"><label>Gold</label><div style="display:flex;gap:8px;"><input type="number" id="res-cur-gold" placeholder="Current" min="0"><input type="number" id="res-rate-gold" placeholder="Per hour" min="0"></div></div>
+<h2 class="mt-16">Target Cost</h2>
+<div class="form-group"><label>Food needed</label><input type="number" id="res-target-food" placeholder="0" min="0"></div>
+<div class="form-group"><label>Wood needed</label><input type="number" id="res-target-wood" placeholder="0" min="0"></div>
+<div class="form-group"><label>Stone needed</label><input type="number" id="res-target-stone" placeholder="0" min="0"></div>
+<div class="form-group"><label>Iron needed</label><input type="number" id="res-target-iron" placeholder="0" min="0"></div>
+<div class="form-group"><label>Gold needed</label><input type="number" id="res-target-gold" placeholder="0" min="0"></div>
+<button class="btn btn-primary btn-full" id="res-calc-btn">Calculate</button></div>
+<div class="calc-results"><h2>Time to Afford</h2><div id="res-results"><p class="result-placeholder">Enter resources and target cost.</p></div></div></div>
+<div class="ad-slot" data-slot="calc-result-below"></div>
+</div></div>
+<footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
+<script src="../js/layout.js"></script><script src="../js/fid.js"></script><script src="../js/advisory.js"></script><script src="../js/calc-resources.js"></script><script src="../js/steward.js"></script>
+</body></html>

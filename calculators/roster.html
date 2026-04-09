@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&#128203; Alliance Roster — KingshotPro</title><meta name="description" content="Track alliance members. Sort, filter, export to CSV."><link rel="stylesheet" href="../css/style.css"></head><body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#128203; Alliance Roster</h1><p>Track alliance members. Sort, filter, export to CSV.</p></div>
+<div class="calc-layout"><div class="calc-inputs"><h2>Add Member</h2>
+<div class="form-group"><label>Name</label><input type="text" id="ros-name" placeholder="Player name"></div>
+<div class="form-group"><label>Power</label><input type="number" id="ros-power" placeholder="e.g. 5000000" min="0"></div>
+<div class="form-group"><label>Furnace level</label><input type="number" id="ros-furnace" placeholder="e.g. 25" min="0" max="35"></div>
+<div class="form-group"><label>Troops</label><input type="number" id="ros-troops" placeholder="e.g. 800000" min="0"></div>
+<div class="form-group"><label>Status</label><select id="ros-status"><option value="active">Active</option><option value="semi">Semi-active</option><option value="inactive">Inactive</option></select></div>
+<button class="btn btn-primary btn-full" id="ros-add-btn">Add Member</button></div>
+<div class="calc-results"><h2>Roster</h2><div id="ros-results"><p class="result-placeholder">Add members to start tracking.</p></div></div></div>
+<div class="ad-slot" data-slot="calc-result-below"></div>
+</div></div>
+<footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
+<script src="../js/layout.js"></script><script src="../js/fid.js"></script><script src="../js/advisory.js"></script><script src="../js/calc-roster.js"></script><script src="../js/steward.js"></script>
+</body></html>

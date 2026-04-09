@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&#9876;&#65039; Alliance War Planner — KingshotPro</title><meta name="description" content="Coordinate rallies, assign members, plan siege timing."><link rel="stylesheet" href="../css/style.css"></head><body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#9876;&#65039; Alliance War Planner</h1><p>Coordinate rallies, assign members, plan siege timing.</p></div>
+<div class="calc-layout"><div class="calc-inputs"><h2>Setup</h2>
+<div class="form-group"><label>Number of rallies</label><input type="number" id="war-rallies" value="2" min="1" max="10"></div>
+<div class="form-group"><label>Members (one per line, leaders first)</label><textarea id="war-members" rows="8" style="width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:10px;border-radius:var(--radius);font-family:var(--font);font-size:14px;" placeholder="Leader1&#10;Leader2&#10;Member3&#10;Member4&#10;..."></textarea></div>
+<div class="form-group"><label>Targets (one per line)</label><textarea id="war-targets" rows="4" style="width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:10px;border-radius:var(--radius);font-family:var(--font);font-size:14px;" placeholder="Enemy R5 (K734)&#10;Flag position&#10;..."></textarea></div>
+<button class="btn btn-primary btn-full" id="war-calc-btn">Generate Plan</button></div>
+<div class="calc-results"><h2>War Plan</h2><div id="war-results"><p class="result-placeholder">Enter members and targets, then generate.</p></div></div></div>
+<div class="ad-slot" data-slot="calc-result-below"></div>
+</div></div>
+<footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
+<script src="../js/layout.js"></script><script src="../js/fid.js"></script><script src="../js/advisory.js"></script><script src="../js/calc-war.js"></script><script src="../js/steward.js"></script>
+</body></html>
