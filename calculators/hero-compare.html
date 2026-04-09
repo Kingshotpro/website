@@ -1,43 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hero Comparison — KingshotPro</title>
-  <meta name="description" content="Side-by-side hero stat comparison at any star level.">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Comparison — KingshotPro</title><link rel="stylesheet" href="../css/style.css"></head><body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
 <div class="page"><div class="container">
-  <div class="page-header">
-    <a class="back-link" href="../index.html">&larr; Home</a>
-    <h1>📈 Hero Comparison</h1>
-    <p>Side-by-side hero stat comparison at any star level.</p>
-  </div>
-  <div class="calc-layout">
-    <div class="calc-inputs">
-      <h2>Parameters</h2>
-      <div class="alert alert-info" style="font-size:13px;">
-        This calculator is being built. Game data is being collected and verified from community sources.
-        <br><br>
-        <strong>Help us build faster:</strong> Submit verified in-game data at
-        <a href="https://github.com/Kingshotpro/website/issues" target="_blank" rel="noopener">GitHub Issues</a>.
-      </div>
-    </div>
-    <div class="calc-results">
-      <h2>Results</h2>
-      <p class="result-placeholder">Launching soon with verified game data.</p>
-    </div>
-  </div>
-  <div class="ad-slot" data-slot="calc-result-below"></div>
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#128200; Hero Comparison</h1><p>Compare two heroes side by side.</p></div>
+<div class="calc-layout"><div class="calc-inputs"><h2>Hero Stats</h2>
+<div class="form-group"><label for="hc-hero1">Hero 1 name</label><input type="text" id="hc-hero1" placeholder="e.g. Ragnar"></div>
+<div class="form-group"><label for="hc-health-1">Health</label><input type="number" id="hc-health-1" placeholder="0"></div>
+<div class="form-group"><label for="hc-lethality-1">Lethality</label><input type="number" id="hc-lethality-1" placeholder="0"></div>
+<div class="form-group"><label for="hc-defense-1">Defense</label><input type="number" id="hc-defense-1" placeholder="0"></div>
+<div class="form-group"><label for="hc-march-speed-1">March Speed</label><input type="number" id="hc-march-speed-1" placeholder="0"></div>
+<hr class="divider">
+<div class="form-group"><label for="hc-hero2">Hero 2 name</label><input type="text" id="hc-hero2" placeholder="e.g. Athena"></div>
+<div class="form-group"><label for="hc-health-2">Health</label><input type="number" id="hc-health-2" placeholder="0"></div>
+<div class="form-group"><label for="hc-lethality-2">Lethality</label><input type="number" id="hc-lethality-2" placeholder="0"></div>
+<div class="form-group"><label for="hc-defense-2">Defense</label><input type="number" id="hc-defense-2" placeholder="0"></div>
+<div class="form-group"><label for="hc-march-speed-2">March Speed</label><input type="number" id="hc-march-speed-2" placeholder="0"></div>
+<button class="btn btn-primary btn-full" id="hc-calc-btn">Compare</button></div>
+<div class="calc-results"><h2>Comparison</h2><div id="hc-results"><p class="result-placeholder">Enter hero stats and click Compare.</p></div></div></div>
+<div class="ad-slot" data-slot="calc-result-below"></div>
 </div></div>
-<footer class="footer"><div class="footer-inner">
-  <div><div class="footer-brand">KingshotPro</div>
-  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
-</div></footer>
-<script src="../js/layout.js"></script>
-<script src="../js/fid.js"></script>
-<script src="../js/advisory.js"></script>
-<script src="../js/steward.js"></script>
+<footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
+<script src="../js/layout.js"></script><script src="../js/fid.js"></script><script src="../js/advisory.js"></script><script src="../js/calc-hero-compare.js"></script><script src="../js/steward.js"></script>
 </body></html>

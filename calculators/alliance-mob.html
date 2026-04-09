@@ -1,43 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alliance Mobilization — KingshotPro</title>
-  <meta name="description" content="Rally and garrison coordination planner.">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alliance Mobilization — KingshotPro</title><link rel="stylesheet" href="../css/style.css"></head><body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
 <div class="page"><div class="container">
-  <div class="page-header">
-    <a class="back-link" href="../index.html">&larr; Home</a>
-    <h1>🤝 Alliance Mobilization</h1>
-    <p>Rally and garrison coordination planner.</p>
-  </div>
-  <div class="calc-layout">
-    <div class="calc-inputs">
-      <h2>Parameters</h2>
-      <div class="alert alert-info" style="font-size:13px;">
-        This calculator is being built. Game data is being collected and verified from community sources.
-        <br><br>
-        <strong>Help us build faster:</strong> Submit verified in-game data at
-        <a href="https://github.com/Kingshotpro/website/issues" target="_blank" rel="noopener">GitHub Issues</a>.
-      </div>
-    </div>
-    <div class="calc-results">
-      <h2>Results</h2>
-      <p class="result-placeholder">Launching soon with verified game data.</p>
-    </div>
-  </div>
-  <div class="ad-slot" data-slot="calc-result-below"></div>
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#129309; Alliance Mobilization</h1><p>Plan rally and garrison coordination for your alliance.</p></div>
+<div class="calc-layout"><div class="calc-inputs"><h2>Parameters</h2>
+<div class="form-group"><label for="am-members">Available members</label><input type="number" id="am-members" placeholder="e.g. 30" min="1"></div>
+<div class="form-group"><label for="am-rallies">Simultaneous rallies</label><input type="number" id="am-rallies" value="2" min="1" max="10"></div>
+<div class="form-group"><label for="am-troops">Avg troops per member</label><input type="number" id="am-troops" placeholder="e.g. 200000" min="0"></div>
+<button class="btn btn-primary btn-full" id="am-calc-btn">Plan</button></div>
+<div class="calc-results"><h2>Mobilization Plan</h2><div id="am-results"><p class="result-placeholder">Enter alliance info and click Plan.</p></div></div></div>
+<div class="ad-slot" data-slot="calc-result-below"></div>
 </div></div>
-<footer class="footer"><div class="footer-inner">
-  <div><div class="footer-brand">KingshotPro</div>
-  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
-</div></footer>
-<script src="../js/layout.js"></script>
-<script src="../js/fid.js"></script>
-<script src="../js/advisory.js"></script>
-<script src="../js/steward.js"></script>
+<footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
+<script src="../js/layout.js"></script><script src="../js/fid.js"></script><script src="../js/advisory.js"></script><script src="../js/calc-alliance-mob.js"></script><script src="../js/steward.js"></script>
 </body></html>

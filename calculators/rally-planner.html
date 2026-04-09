@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rally Planner — KingshotPro</title>
-  <meta name="description" content="Rally coordination and timing tool.">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rally Planner — KingshotPro</title><link rel="stylesheet" href="../css/style.css"></head><body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
 <div class="page"><div class="container">
-  <div class="page-header">
-    <a class="back-link" href="../index.html">&larr; Home</a>
-    <h1>🗺️ Rally Planner</h1>
-    <p>Rally coordination and timing tool.</p>
-  </div>
-  <div class="calc-layout">
-    <div class="calc-inputs">
-      <h2>Parameters</h2>
-      <div class="alert alert-info" style="font-size:13px;">
-        This calculator is being built. Game data is being collected and verified from community sources.
-        <br><br>
-        <strong>Help us build faster:</strong> Submit verified in-game data at
-        <a href="https://github.com/Kingshotpro/website/issues" target="_blank" rel="noopener">GitHub Issues</a>.
-      </div>
-    </div>
-    <div class="calc-results">
-      <h2>Results</h2>
-      <p class="result-placeholder">Launching soon with verified game data.</p>
-    </div>
-  </div>
-  <div class="ad-slot" data-slot="calc-result-below"></div>
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#128506;&#65039; Rally Planner</h1><p>Coordinate rally timing and troop deployment.</p></div>
+<div class="calc-layout"><div class="calc-inputs"><h2>Rally Setup</h2>
+<div class="form-group"><label for="rp-timer">Rally timer (seconds)</label><input type="number" id="rp-timer" value="300" min="30" max="3600"></div>
+<div class="form-group"><label for="rp-march">March time to target (seconds)</label><input type="number" id="rp-march" placeholder="e.g. 120" min="0"></div>
+<div class="form-group"><label for="rp-joiners">Number of joiners</label><input type="number" id="rp-joiners" placeholder="e.g. 5" min="1" max="50"></div>
+<div class="form-group"><label for="rp-troops">Troops per joiner</label><input type="number" id="rp-troops" placeholder="e.g. 150000" min="0"></div>
+<button class="btn btn-primary btn-full" id="rp-calc-btn">Plan Rally</button></div>
+<div class="calc-results"><h2>Rally Plan</h2><div id="rp-results"><p class="result-placeholder">Set up rally and click Plan.</p></div></div></div>
+<div class="ad-slot" data-slot="calc-result-below"></div>
 </div></div>
-<footer class="footer"><div class="footer-inner">
-  <div><div class="footer-brand">KingshotPro</div>
-  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
-</div></footer>
-<script src="../js/layout.js"></script>
-<script src="../js/fid.js"></script>
-<script src="../js/advisory.js"></script>
-<script src="../js/steward.js"></script>
+<footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
+<script src="../js/layout.js"></script><script src="../js/fid.js"></script><script src="../js/advisory.js"></script><script src="../js/calc-rally.js"></script><script src="../js/steward.js"></script>
 </body></html>

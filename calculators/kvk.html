@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KvK Score — KingshotPro</title>
-  <meta name="description" content="Kingdom vs Kingdom scoring calculator.">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KvK Score Calculator — KingshotPro</title><link rel="stylesheet" href="../css/style.css"></head><body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
 <div class="page"><div class="container">
-  <div class="page-header">
-    <a class="back-link" href="../index.html">&larr; Home</a>
-    <h1>🏆 KvK Score</h1>
-    <p>Kingdom vs Kingdom scoring calculator.</p>
-  </div>
-  <div class="calc-layout">
-    <div class="calc-inputs">
-      <h2>Parameters</h2>
-      <div class="alert alert-info" style="font-size:13px;">
-        This calculator is being built. Game data is being collected and verified from community sources.
-        <br><br>
-        <strong>Help us build faster:</strong> Submit verified in-game data at
-        <a href="https://github.com/Kingshotpro/website/issues" target="_blank" rel="noopener">GitHub Issues</a>.
-      </div>
-    </div>
-    <div class="calc-results">
-      <h2>Results</h2>
-      <p class="result-placeholder">Launching soon with verified game data.</p>
-    </div>
-  </div>
-  <div class="ad-slot" data-slot="calc-result-below"></div>
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#127942; KvK Score Tracker</h1><p>Track your Kingdom vs Kingdom contributions.</p></div>
+<div class="calc-layout"><div class="calc-inputs"><h2>Your KvK Stats</h2>
+<div class="form-group"><label for="kvk-kills">Troops killed</label><input type="number" id="kvk-kills" placeholder="0" min="0"></div>
+<div class="form-group"><label for="kvk-trained">Troops trained</label><input type="number" id="kvk-trained" placeholder="0" min="0"></div>
+<div class="form-group"><label for="kvk-gathered">Resources gathered</label><input type="number" id="kvk-gathered" placeholder="0" min="0"></div>
+<div class="form-group"><label for="kvk-power">Power gained</label><input type="number" id="kvk-power" placeholder="0" min="0"></div>
+<button class="btn btn-primary btn-full" id="kvk-calc-btn">Calculate</button></div>
+<div class="calc-results"><h2>Contribution Summary</h2><div id="kvk-results"><p class="result-placeholder">Enter your stats and click Calculate.</p></div></div></div>
+<div class="ad-slot" data-slot="calc-result-below"></div>
 </div></div>
-<footer class="footer"><div class="footer-inner">
-  <div><div class="footer-brand">KingshotPro</div>
-  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
-</div></footer>
-<script src="../js/layout.js"></script>
-<script src="../js/fid.js"></script>
-<script src="../js/advisory.js"></script>
-<script src="../js/steward.js"></script>
+<footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
+<script src="../js/layout.js"></script><script src="../js/fid.js"></script><script src="../js/advisory.js"></script><script src="../js/calc-kvk.js"></script><script src="../js/steward.js"></script>
 </body></html>
