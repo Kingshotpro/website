@@ -10,7 +10,7 @@
 // Direct centurygame.com calls are intentionally avoided — proxy keeps user IPs
 // away from Century Games' origin and centralises any future signing logic.
 // See worker/worker.js + worker/wrangler.toml for deployment.
-const FID_API    = 'https://api.kingshotpro.com/player';
+const FID_API    = 'https://kingshotpro-api.kingshotpro.workers.dev/player';
 const PROFILE_KEY = 'ksp_profile';
 
 // ─────────────────────────────────────────
