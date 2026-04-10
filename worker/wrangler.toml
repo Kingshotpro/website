@@ -2,9 +2,18 @@ name = "kingshotpro-api"
 main = "worker.js"
 compatibility_date = "2024-09-23"
 
-# Deploys to: kingshotpro-api.<subdomain>.workers.dev
-# To add custom domain later: add kingshotpro.com as a zone in CF,
-# then uncomment the routes below.
+# KV Namespace — create with: wrangler kv namespace create KV
+# Then paste the id below
+[[kv_namespaces]]
+binding = "KV"
+id = "PASTE_KV_NAMESPACE_ID_HERE"
+
+# Secrets (set with: wrangler secret put RESEND_KEY, etc.)
+# RESEND_KEY — Resend API key for magic link emails
+# ANTHROPIC_KEY — Anthropic API key for Claude
+# SYSTEM_PROMPT — Base system prompt for advisor
+
+# Custom domain (uncomment after adding zone in CF)
 # [[routes]]
 # pattern = "api.kingshotpro.com/*"
 # zone_name = "kingshotpro.com"
