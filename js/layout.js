@@ -19,6 +19,7 @@
   // href = null → "Coming Soon"
   var NAV = [
     { icon: '\u{1F3E0}', label: 'Home',             href: B + 'index.html',                     key: 'home' },
+    { icon: '\u{1F451}', label: 'Pro Plans',          href: B + 'pricing.html',                   key: 'pricing',    badges: ['New'] },
     { cat: 'COMMUNITY' },
     { icon: '\u{1F381}', label: 'Gift Codes',       href: B + 'codes.html',                     key: 'codes',      badges: ['Popular'] },
     { icon: '\u{1F511}', label: 'Auto-Redeem',      href: B + 'auto-redeem.html',               key: 'auto-redeem', badges: ['Pro'] },
