@@ -118,6 +118,24 @@
     speechBubble.id = 'orb-speech';
     orbWrap.appendChild(speechBubble);
 
+    // Mute/unmute toggle
+    var muteBtn = document.createElement('button');
+    muteBtn.className = 'orb-mute';
+    muteBtn.innerHTML = '\u{1F50A}';
+    muteBtn.setAttribute('aria-label', 'Toggle sound');
+    var muted = false;
+    try { muted = localStorage.getItem('ksp_muted') === '1'; } catch (e) {}
+    if (muted) muteBtn.innerHTML = '\u{1F507}';
+    muteBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      muted = !muted;
+      muteBtn.innerHTML = muted ? '\u{1F507}' : '\u{1F50A}';
+      try { localStorage.setItem('ksp_muted', muted ? '1' : '0'); } catch (e) {}
+      window._kspMuted = muted;
+    });
+    window._kspMuted = muted;
+    orbWrap.appendChild(muteBtn);
+
     orbCircle.addEventListener('click', function () {
       if (!engaged) expand();
     });
@@ -212,12 +230,20 @@
     try { entered = sessionStorage.getItem('ksp_orb_entered') === '1'; } catch (e) {}
 
     if (entered || isMobile) {
-      // Returning visit — go directly to rest position
+      // Returning visit — go directly to rest, greet by name
       orbWrap.classList.add('orb-at-rest');
       orbWrap.style.opacity = '1';
       setTimeout(function () {
-        showSpeech('I see you, Governor...');
-        setTimeout(hideSpeech, 4000);
+        var greeting = 'I see you, Governor...';
+        var profile = getProfile();
+        var advState = getAdvisorState();
+        if (profile && profile.nickname && advState && advState.name) {
+          greeting = profile.nickname + '. ' + advState.name + ' is here.';
+        } else if (profile && profile.nickname) {
+          greeting = 'Welcome back, ' + profile.nickname + '.';
+        }
+        showSpeech(greeting + '<br><span class="orb-tap-hint">\u25B6 Tap</span>');
+        setTimeout(hideSpeech, 5000);
       }, 1000);
       return;
     }
@@ -348,6 +374,8 @@
   var videoSpeaking = false; // true when greeting video is playing with audio
 
   function playVoice(clipName) {
+    // Don't play if muted
+    if (window._kspMuted) return;
     // Don't overlap with greeting video audio
     if (videoSpeaking) return;
 

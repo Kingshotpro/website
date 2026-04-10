@@ -64,6 +64,27 @@
   animation: orbGlow 3s ease-in-out infinite alternate;
   transition: width 500ms ease, height 500ms ease, box-shadow 300ms ease;
 }
+/* Mute toggle */
+.orb-mute {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: background 0.2s;
+  padding: 0;
+}
+.orb-mute:hover { background: var(--surface-2); }
+
 /* Holographic spinning border — lemonslice style */
 .orb-circle::before {
   content: '';

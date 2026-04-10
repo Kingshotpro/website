@@ -20,6 +20,7 @@
   var NAV = [
     { icon: '\u{1F3E0}', label: 'Home',             href: B + 'index.html',                     key: 'home' },
     { icon: '\u{1F451}', label: 'Pro Plans',          href: B + 'pricing.html',                   key: 'pricing',    badges: ['New'] },
+    { icon: '\u2764\uFE0F', label: 'Support Advisor',   href: B + 'support.html',                   key: 'support' },
     { cat: 'COMMUNITY' },
     { icon: '\u{1F381}', label: 'Gift Codes',       href: B + 'codes.html',                     key: 'codes',      badges: ['Popular'] },
     { icon: '\u{1F511}', label: 'Auto-Redeem',      href: B + 'auto-redeem.html',               key: 'auto-redeem', badges: ['Pro'] },
@@ -71,6 +72,8 @@
     { icon: '\u{1F9B8}', label: 'Hero Guide',            href: B + 'guides/hero-guide.html',          key: 'hero-guide',  badges: ['New'] },
     { icon: '\u{1F525}', label: 'Furnace Guide',          href: B + 'guides/furnace.html',              key: 'furnace',     badges: ['New'] },
     { icon: '\u{1F91D}', label: 'Alliance Guide',        href: B + 'guides/alliance.html',             key: 'alliance-guide', badges: ['New'] },
+    { icon: '\u{1F310}', label: 'Server Age Guide',      href: B + 'guides/server-age.html',           key: 'server-age',  badges: ['New'] },
+    { icon: '\u{1F4B0}', label: 'Pack Value Guide',     href: B + 'guides/pack-value.html',           key: 'pack-value',  badges: ['New'] },
     { icon: '\u{1F4DA}', label: 'Glossary',              href: B + 'guides/glossary.html',            key: 'glossary' },
   ];
 

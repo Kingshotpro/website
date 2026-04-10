@@ -51,7 +51,7 @@
       .then(data => {
         document.querySelector('.typing-dots').remove();
         if (data.error === 'energy_depleted') {
-          window.AdvisorOrb.addAdvisorMsg('Your advisor needs rest. Upgrade to Pro for unlimited counsel.');
+          window.AdvisorOrb.addAdvisorMsg('Your advisor needs rest. <a href="pricing.html" style="color:var(--gold);font-weight:700;">Upgrade to Pro</a> for unlimited counsel.');
           chatField.disabled = true;
           sendButton.disabled = true;
         } else if (data.response) {
@@ -68,7 +68,7 @@
     // Function to update the energy bar
     function updateEnergyBar(energyRemaining) {
       if (energyRemaining <= 0) {
-        energyBar.innerHTML = 'Your advisor needs rest. Upgrade to Pro for unlimited counsel.';
+        energyBar.innerHTML = 'Your advisor needs rest. <a href="pricing.html" style="color:var(--gold);font-weight:700;">Upgrade to Pro</a> for unlimited counsel.';
         chatField.disabled = true;
         sendButton.disabled = true;
       } else {
