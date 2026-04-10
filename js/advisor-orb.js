@@ -288,6 +288,7 @@
     // First open: play greeting with audio. User clicked, so autoplay policy is satisfied.
     if (!greetingPlayed && vid) {
       greetingPlayed = true;
+      videoSpeaking = true; // Block TTS immediately — before any async
 
       vid.src = getGreetingVideo();
       vid.muted = false;
@@ -297,10 +298,7 @@
       function playGreeting() {
         var playPromise = vid.play();
         if (playPromise !== undefined) {
-          playPromise.then(function () {
-            // Video playing with audio — block TTS clips
-            if (!vid.muted) videoSpeaking = true;
-          }).catch(function () {
+          playPromise.catch(function () {
             // Browser blocked audio — fall back to muted video + TTS clips
             vid.muted = true;
             videoSpeaking = false;
