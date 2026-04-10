@@ -237,12 +237,57 @@ Prototype in place (D-ID trial, 8 credits remaining). Need to decide production 
 
 ---
 
+## TRACK 14 — FREE USER DATA PERSISTENCE
+
+localStorage is primary (zero friction). Optional email backup offered at emotional moments.
+
+- [ ] 14.1 "Protect your progress" prompt at Level 5 or after 7 visits
+  - [ ] Advisor says: "[Name] has reached Level 5. Want to protect your progress?"
+  - [ ] Email input field appears in chatbox
+  - [ ] No friction — skippable, purely optional
+- [ ] 14.2 Server-side storage (Cloudflare Worker KV)
+  - [ ] /advisor/save endpoint: receives email + avatar state JSON
+  - [ ] /advisor/restore endpoint: receives email, returns avatar state
+  - [ ] FID + email mapping stored in KV
+- [ ] 14.3 "Restore progress" option
+  - [ ] On new device/cleared cache: "Have you been here before? Enter your email."
+  - [ ] Pulls avatar state from server, writes to localStorage
+- [ ] 14.4 Pro users: email required for Stripe, auto-persisted. No extra step.
+
+---
+
+## TRACK 15 — ORIGINAL CONTENT (required for AdSense approval)
+
+Google requires original, valuable text content — not just tools. Strategy guides bring organic search traffic + feed the advisor's knowledge base + satisfy AdSense.
+
+- [ ] 15.1 Create `guides/` directory with strategy guide pages
+- [ ] 15.2 Guide: "Kingshot Beginner Guide: Your First 30 Days"
+  - [ ] What to build first, research priorities, gem spending, event participation
+  - [ ] 800-1500 words, original, structured with headings
+- [ ] 15.3 Guide: "F2P Survival Guide: How to Compete Without Spending"
+  - [ ] Resource management, event optimization, hero priorities for free players
+- [ ] 15.4 Guide: "Kingshot Furnace Guide: When to Upgrade and When to Wait"
+  - [ ] Furnace upgrade decision framework by game stage
+- [ ] 15.5 Guide: "Understanding Server Age: What Happens at 90, 180, and 360 Days"
+  - [ ] Server lifecycle patterns, when to migrate, kingdom power dynamics
+- [ ] 15.6 Glossary page: "Kingshot Terms Explained"
+  - [ ] FID, T4 troops, furnace, KvK, alliance mobilization, bear hunt, etc.
+  - [ ] Good for SEO (long-tail keyword capture)
+- [ ] 15.7 Add guides to sidebar navigation under new "GUIDES" category
+- [ ] 15.8 Link guides from advisor responses (advisor suggests relevant guide)
+- [ ] 15.9 Apply for Google AdSense once 3+ guides are live
+
+**Content rule: verify all game-specific claims against kingshotdata.com. General strategy advice (e.g. "research before combat in early game") is fine. Specific numbers must be sourced.**
+
+---
+
 ## CONTENT / HOUSEKEEPING
 
+- [x] Remove test files (test-audio.html) — done
+- [x] Clean up unused avatar test images — done
+- [x] Remove netlify.toml — done
 - [ ] Update GLINT_BUILD_SPEC.md or archive it (references Netlify, wrong repo)
 - [ ] Monitor gift codes for new codes / remove expired
-- [ ] Remove test files (test-audio.html if still present)
-- [ ] Clean up unused avatar test images (leofric_test.png, ragnar_test.png, theodora_test.png)
 - [ ] Delete old steward.js (replaced by advisor-orb.js, still in repo)
 
 ---
@@ -264,21 +309,23 @@ Prototype in place (D-ID trial, 8 credits remaining). Need to decide production 
 ## OPEN DECISIONS (need Architect)
 
 1. **AI pricing tiers** — research spec ready, needs 9x3x3 assignment
-2. **Auth method** — magic link email proposed, not approved
+2. **Auth method** — magic link for Pro approved concept; free users get optional email backup at Level 5
 3. **Herald voice lines** — personality kept, capabilities constrained, needs rewrite
 4. **Animated avatar service** — D-ID trial tested, watermark issue, evaluate alternatives or stay CSS+TTS
-5. **D-ID idle video** — current one has lip movement (generated with speech). Need a proper silent idle or stick with CSS breathing on static image.
+5. **Idle state** — resolved: CSS breathing on static image (no lip movement). D-ID idle video removed.
 
 ---
 
 ## BUILD SEQUENCE (recommended)
 
 ```
-Next:     Track 2  → Track 10 → Track 9 → Track 4  (avatar visible + growing)
-Then:     Track 3  → Track 7  (observation engine + voice upgrade)
-Then:     Track 5  → Track 6  (mini-games)
+NOW:      Track 15 (original content for AdSense) → Track 2 (avatar panel in sidebar)
+Next:     Track 9 → Track 4 (XP multipliers + level-up visuals)
+Then:     Track 7 (advisory voice upgrade)
+Then:     Track 5 → Track 6 (mini-games)
+Then:     Track 14 (free user email backup)
 Blocked:  Track 11 (AI integration — needs pricing research)
-Parallel: Track 12 (Herald redesign), Track 13 (avatar service eval), Infrastructure, Data gaps
+Parallel: Track 12, Track 13, Infrastructure, Data gaps
 ```
 
 ---
