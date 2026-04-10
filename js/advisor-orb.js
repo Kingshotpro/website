@@ -84,30 +84,12 @@
     orbParallax = document.createElement('div');
     orbParallax.className = 'orb-parallax';
 
-    // The portrait — video if available, image fallback
-    var orbVideo = document.createElement('video');
-    orbVideo.className = 'orb-vid';
-    orbVideo.src = getIdleVideo();
-    orbVideo.muted = true;
-    orbVideo.loop = true;
-    orbVideo.autoplay = true;
-    orbVideo.playsInline = true;
-    orbVideo.setAttribute('playsinline', '');
-    orbVideo.poster = src;
-
-    // Fallback image if video fails
+    // Static image with CSS breathing + firelight (always alive, no lip movement)
     orbImg = document.createElement('img');
     orbImg.className = 'orb-img';
     orbImg.src = src;
     orbImg.alt = name;
-    orbImg.style.display = 'none';
 
-    orbVideo.addEventListener('error', function () {
-      orbVideo.style.display = 'none';
-      orbImg.style.display = 'block';
-    });
-
-    orbParallax.appendChild(orbVideo);
     orbParallax.appendChild(orbImg);
     orbCircle.appendChild(orbParallax);
     orbWrap.appendChild(orbCircle);
@@ -372,11 +354,16 @@
 
   // ── Video helpers ─────────────────────────
   function switchToIdle(vid) {
-    vid.src = getIdleVideo();
-    vid.muted = true;
-    vid.loop = true;
-    vid.load();
-    vid.play().catch(function () {});
+    // Hide video, show static image with CSS breathing/firelight instead
+    // The idle video has lip movement from TTS — looks like she's talking to nobody
+    vid.pause();
+    vid.style.display = 'none';
+    // Show the fallback image in the panel portrait
+    var panelPortrait = document.getElementById('orb-panel-portrait');
+    if (panelPortrait) {
+      var img = panelPortrait.querySelector('.orb-img');
+      if (img) img.style.display = 'block';
+    }
   }
 
   function showTapToHear(vid) {
@@ -499,10 +486,7 @@
       'Enter it above and I\'ll pull up everything about your account.'
     );
     playVoice('help_find_id');
-    showQuickReplies([
-      { label: 'Got it, let me enter it now', action: focusInput },
-      { label: 'I don\'t play yet', action: showNewPlayer }
-    ]);
+    showPlayerIdInput();
   }
 
   function showCapabilities() {
@@ -554,16 +538,50 @@
   }
 
   function focusInput() {
-    addAdvisorMsg('Enter your Player ID in the box above. I\'ll do the rest.');
+    addAdvisorMsg('Enter your Player ID below. I\'ll do the rest.');
     playVoice('got_it');
-    setTimeout(function () {
-      minimize();
-      var inp = document.getElementById('fid-input');
-      if (inp) {
-        inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(function () { inp.focus(); }, 400);
+    showPlayerIdInput();
+  }
+
+  function showPlayerIdInput() {
+    panelInput.innerHTML = '';
+    var wrap = document.createElement('div');
+    wrap.className = 'orb-fid-input';
+    wrap.innerHTML =
+      '<input type="text" id="orb-fid-field" inputmode="numeric" ' +
+      'placeholder="Your Player ID (e.g. 7291048)" maxlength="12" ' +
+      'pattern="\\d{5,12}" autocomplete="off">' +
+      '<button id="orb-fid-go" class="orb-reply-btn" style="background:var(--gold);color:var(--bg);font-weight:700;text-align:center;">Look up</button>';
+    panelInput.appendChild(wrap);
+
+    var field = document.getElementById('orb-fid-field');
+    var btn = document.getElementById('orb-fid-go');
+
+    setTimeout(function () { field.focus(); }, 100);
+
+    function doLookup() {
+      var val = field.value.trim();
+      if (!val || !/^\d{5,12}$/.test(val)) {
+        addAdvisorMsg('That doesn\'t look right. Your Player ID is 5\u201312 digits \u2014 numbers only.');
+        return;
       }
-    }, 2000);
+      addUserMsg(val);
+      panelInput.innerHTML = '';
+      addAdvisorMsg('Looking up your kingdom...');
+
+      // Fill the main page FID input and submit
+      var mainInput = document.getElementById('fid-input');
+      if (mainInput) {
+        mainInput.value = val;
+        var form = document.getElementById('fid-form');
+        if (form) form.dispatchEvent(new Event('submit', { cancelable: true }));
+      }
+    }
+
+    btn.addEventListener('click', doLookup);
+    field.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); doLookup(); }
+    });
   }
 
   // ── Update identity ───────────────────────

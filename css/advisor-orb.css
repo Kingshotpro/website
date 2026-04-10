@@ -403,6 +403,31 @@
   background: var(--surface);
 }
 
+/* In-chat Player ID input */
+.orb-fid-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.orb-fid-input input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.orb-fid-input input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.orb-fid-input input::placeholder {
+  color: var(--text-muted);
+}
+
 /* ── Mobile ──────────────────────────────── */
 @media (max-width: 640px) {
   .orb-wrap.orb-at-rest {
