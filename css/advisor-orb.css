@@ -10,15 +10,25 @@
   transition: opacity 800ms ease;
 }
 
-/* Center position (entry sequence start) */
+/* Center position (entry sequence — floating, alive, demanding attention) */
 .orb-wrap.orb-at-center {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: orbFloat 3s ease-in-out infinite;
 }
 .orb-wrap.orb-at-center .orb-circle {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
+}
+
+/* Floating / bobbing at center — organic, not mechanical */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0) translateX(0); }
+  20%      { transform: translate(-50%, -50%) translateY(-10px) translateX(4px); }
+  40%      { transform: translate(-50%, -50%) translateY(-4px) translateX(-5px); }
+  60%      { transform: translate(-50%, -50%) translateY(-12px) translateX(3px); }
+  80%      { transform: translate(-50%, -50%) translateY(-3px) translateX(-2px); }
 }
 
 /* Resting position (right side, vertical center) */
@@ -136,7 +146,7 @@
 }
 .orb-speech.visible {
   opacity: 1;
-  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
 }
 /* Arrow pointing right toward orb */
 .orb-speech::after {
@@ -147,6 +157,40 @@
   margin-top: -6px;
   border: 6px solid transparent;
   border-left-color: var(--surface-2);
+}
+
+/* Center-stage speech bubble — below the orb, bigger, attention-grabbing */
+.orb-wrap.orb-at-center .orb-speech {
+  right: auto;
+  left: 50%;
+  top: calc(100% + 16px);
+  transform: translateX(-50%);
+  white-space: normal;
+  text-align: center;
+  max-width: 280px;
+  font-size: 16px;
+  padding: 14px 20px;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  animation: speechPulse 2s ease-in-out infinite;
+}
+.orb-wrap.orb-at-center .orb-speech.visible {
+  transform: translateX(-50%);
+}
+.orb-wrap.orb-at-center .orb-speech::after {
+  right: auto;
+  left: 50%;
+  top: -10px;
+  bottom: auto;
+  margin-left: -6px;
+  margin-top: 0;
+  border: 6px solid transparent;
+  border-bottom-color: var(--gold);
+  border-left-color: transparent;
+}
+@keyframes speechPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(240, 192, 64, 0.2); }
+  50%      { box-shadow: 0 0 20px rgba(240, 192, 64, 0.5); }
 }
 
 /* ── Backdrop ────────────────────────────── */

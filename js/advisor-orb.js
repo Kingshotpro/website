@@ -212,10 +212,9 @@
     try { entered = sessionStorage.getItem('ksp_orb_entered') === '1'; } catch (e) {}
 
     if (entered || isMobile) {
-      // Skip entrance — go directly to rest
+      // Returning visit — go directly to rest position
       orbWrap.classList.add('orb-at-rest');
       orbWrap.style.opacity = '1';
-      // Show a subtle speech bubble after a beat
       setTimeout(function () {
         showSpeech('I see you, Governor...');
         setTimeout(hideSpeech, 4000);
@@ -223,31 +222,47 @@
       return;
     }
 
-    // Full entrance choreography
+    // ── Full entrance choreography ──
+    // She arrives. She floats. She beckons. She settles.
+
     orbWrap.classList.add('orb-at-center');
 
-    // 1. Fade in
+    // 1. Fade in while floating at center
     requestAnimationFrame(function () {
       orbWrap.style.opacity = '1';
     });
 
-    // 2. Speech bubble after glow builds
+    // 2. Speech bubble appears — period-appropriate invitation to click
     setTimeout(function () {
-      showSpeech("I'm alive and here for you, Governor.");
-    }, 800);
+      showSpeech('I have counsel for you, Governor.');
+    }, 1000);
 
-    // 3. Glide to rest
+    // 3. Clickable at center — clicking speech bubble OR orb opens council immediately
+    var centerClicked = false;
+    function onCenterClick() {
+      if (centerClicked) return;
+      centerClicked = true;
+      glideToRest();
+      setTimeout(expand, 900);
+    }
+    speechBubble.addEventListener('click', onCenterClick);
+
+    // 4. If not clicked, auto-glide to rest after floating for 5 seconds
     setTimeout(function () {
+      if (!centerClicked) glideToRest();
+    }, 5500);
+
+    function glideToRest() {
       hideSpeech();
       orbWrap.classList.remove('orb-at-center');
       orbWrap.classList.add('orb-at-rest', 'orb-gliding');
       try { sessionStorage.setItem('ksp_orb_entered', '1'); } catch (e) {}
 
-      // Remove glide transition class after animation
       setTimeout(function () {
         orbWrap.classList.remove('orb-gliding');
+        speechBubble.removeEventListener('click', onCenterClick);
       }, 900);
-    }, 3200);
+    }
   }
 
   // ── Speech bubble ─────────────────────────
