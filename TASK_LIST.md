@@ -25,6 +25,11 @@ Status key: [ ] not started · [~] in progress · [x] done · [!] blocked · [�
 - [x] D-ID animated greeting video + OpenAI TTS voice on all scripted responses
 - [x] Council chamber panel: chat, quick replies, in-chat Player ID input
 - [x] Meta tags, FID tooltip, git remote fix, .gitignore, infrastructure cleanup
+- [x] Phase 1: Worker expansion — auth (magic link), AI chat endpoint, energy enforcement, KV state
+- [x] Phase 2: AI chatbox — text input, typing indicator, energy bar, Worker integration
+- [x] Phase 3: CTA engine — context-triggered, escalating, cooldown, tier upgrade prompts
+- [x] AI pricing research: 9x3x3 complete, 4-tier structure defined
+- [x] Player-facing PDF presentation (4 pages, both advisor portraits)
 
 ---
 
