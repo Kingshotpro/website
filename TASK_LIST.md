@@ -8,19 +8,23 @@ Status key: [ ] not started · [~] in progress · [x] done · [!] blocked · [�
 
 ## COMPLETED
 
-- [x] Track 0 — Data layer: localStorage migration, advisor.js core (XP, observations, tags, greetings, events)
-- [x] Track 1 — Avatar selection screen: 3 free archetypes, 2 locked Pro, random name from 46-name pool
-- [x] Track 8 — Naming: spend tiers (Free Commander/Tactician/Veteran/Warlord), advisor names, Player ID rename
-- [x] Living orb: center entrance with float/bounce, speech bubble "Tap to begin," glide to rest
-- [x] D-ID animated greeting video (lip sync, 7.3s) + OpenAI TTS voice on all scripted responses
-- [x] Council chamber panel: large portrait, chat messages, quick reply buttons
-- [x] Player ID input inside chatbox (no need to close panel to enter ID)
-- [x] CSS portrait life: breathing, firelight flicker, mouse parallax
-- [x] advisor-names.js: 46 names with gender-based default avatar fallback
-- [x] advisor-select.js: archetype selection overlay with name reveal
-- [x] FID tooltip: ? button explaining what Player ID is and where to find it
-- [x] Meta tags: lead with AI advisor, not calculator count
-- [x] Git remote fixed: origin → Kingshotpro/website (was wrong repo)
+- [x] Track 0 — Data layer: localStorage migration, advisor.js core
+- [x] Track 1 — Avatar selection screen: 3 free archetypes, 2 locked Pro, random names
+- [x] Track 2 — Avatar sidebar panel: portrait, name, level badge, XP progress bar
+- [x] Track 3 — Observation engine: calc usage tracking, behavioral tags, 54 insight dialogues
+- [x] Track 4 — Level-up system: gold banner notification, visual progression
+- [x] Track 5 — War Table mini-game: 20 battle scenarios, daily play, XP rewards
+- [x] Track 6 — Vault Trial mini-game: 35 questions, 6 categories, daily quiz, XP rewards
+- [x] Track 7 — Advisory voice: archetype-prefixed output, observation insights
+- [x] Track 8 — Naming: spend tiers, advisor names, Player ID rename
+- [x] Track 9 — XP multipliers: furnace bonus, whale bonus, server age bonus
+- [x] Track 10 — Calculator hooks: every calc grants XP + records observations
+- [x] Track 12 — Herald redesign: voice lines constrained to available data
+- [x] Track 15 — Strategy guides: beginner, F2P, glossary for AdSense
+- [x] Living orb: center float, speech bubble, glide to rest, breathing/firelight/parallax
+- [x] D-ID animated greeting video + OpenAI TTS voice on all scripted responses
+- [x] Council chamber panel: chat, quick replies, in-chat Player ID input
+- [x] Meta tags, FID tooltip, git remote fix, .gitignore, infrastructure cleanup
 
 ---
 
@@ -217,12 +221,10 @@ Makes the advisor notice things about the player.
 
 ---
 
-## TRACK 12 — HERALD ARCHETYPE REDESIGN
+## TRACK 12 — HERALD ARCHETYPE REDESIGN ✅
 
-Herald personality (competitive, urgent) is valid. Capabilities were overpromised — can't reference live kingdom data (needs hardware).
-
-- [ ] 12.1 Define what Herald CAN reference (own FID data, observation history, general meta, server age patterns)
-- [ ] 12.2 Rewrite voice lines: "where you SHOULD be" not "where others ARE"
+- [x] 12.1 Herald insight lines in advisor-hooks.js: competitive framing using available data only
+- [x] 12.2 Herald greeting lines in advisor.js: rewritten, no live kingdom references
 
 ---
 
@@ -316,16 +318,15 @@ Google requires original, valuable text content — not just tools. Strategy gui
 
 ---
 
-## BUILD SEQUENCE (recommended)
+## BUILD SEQUENCE
 
 ```
-NOW:      Track 15 (original content for AdSense) → Track 2 (avatar panel in sidebar)
-Next:     Track 9 → Track 4 (XP multipliers + level-up visuals)
-Then:     Track 7 (advisory voice upgrade)
-Then:     Track 5 → Track 6 (mini-games)
-Then:     Track 14 (free user email backup)
-Blocked:  Track 11 (AI integration — needs pricing research)
-Parallel: Track 12, Track 13, Infrastructure, Data gaps
+DONE:     Tracks 0-10, 12, 15 — 13 of 15 tracks complete
+NEXT:     Track 14 (free user email backup — needs CF Worker)
+          Track 13 (animated avatar service decision)
+          Data gaps (hero XP 16-80 needs scraping, EST markers in calcs)
+          AdSense application (content is ready)
+BLOCKED:  Track 11 (AI integration — needs pricing research 9x3x3)
 ```
 
 ---

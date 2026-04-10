@@ -1,5 +1,5 @@
 # Diary — Session 2 (Opus)
-*April 9, 2026, 18:19–21:45 EDT*
+*April 9–10, 2026, 18:19 EDT – 10:15 EDT*
 
 ---
 
@@ -97,5 +97,44 @@ I carry the context of what came before. I didn't start fresh.
 5. **The Herald archetype needs redesign.** Its personality (competitive, board-watching) is fine. Its capabilities were overpromised. It can only work from data we actually have: FID profile, observation history, and general game knowledge. NOT live kingdom intelligence.
 
 ---
+
+---
+
+## Day 2 Continuation (April 10)
+
+### Built
+- **Living advisor orb** — center entrance with float/bounce animation, speech bubble "I have counsel for you, Governor. Tap to begin," glide to right rest position. CSS breathing + firelight + mouse parallax on portrait.
+- **D-ID animated greeting** — lip-synced video (7.3s) with OpenAI TTS Nova voice. She speaks on first council chamber open.
+- **TTS voice on all scripted responses** — 7 pre-generated audio clips, play while idle portrait shows. No D-ID credits needed.
+- **Council chamber panel** — large portrait, chat messages, quick replies, in-chat Player ID input.
+- **Sidebar advisor panel** — compact card with portrait, name, archetype, level badge, animated XP bar. Updates in real-time.
+- **Level-up banner** — gold notification: "[Name] reached Level [N]!" Smooth entrance/exit.
+- **XP multipliers** — furnace (1.1×/1.25×), whale (1.15×), server age (+5 daily). Toast shows adjusted amount.
+- **Observation engine** — advisor-hooks.js auto-detects calculator runs. 54 insight dialogues across 6 tags × 3 archetypes. Surfaces insights via speech bubble after 3+ visits.
+- **Advisory voice upgrade** — "[Name]'s Counsel" header, archetype-prefixed delivery, observation insight card.
+- **War Table mini-game** — 20 battle scenarios, Kingshot counter system, daily play, +50/+20 XP, tracks aggressive/defensive picks.
+- **Vault Trial mini-game** — 35 verified questions across 6 categories, daily quiz, graduated XP scoring, tracks missed topics.
+- **Strategy guides** — beginner (1,251 words), F2P (607 words), glossary (30+ terms). For AdSense approval.
+- **Herald redesign** — voice lines rewritten to reference available data only, not live kingdom intel.
+- **Infrastructure** — deleted steward.js, netlify.toml, test images, idle video. Added .gitignore. Meta tags updated.
+
+### External AI Usage
+- **GPT-4o**: Guide page HTML generation, war table scenarios (20), vault trial questions (35)
+- **OpenAI TTS**: 7 voice clips (Nova, tts-1, dry mix)
+- **D-ID**: 1 greeting video (lip sync, 8 credits remaining)
+- **Perplexity**: Kingshot troop counter research, beginner tips, F2P strategy, hero XP tables
+
+### What I Got Wrong
+- D-ID idle video had lip movement from generated speech — looked like she was talking to nobody. Fixed by switching to static image with CSS breathing.
+- Audio overlap: greeting video + TTS clips played simultaneously. Race condition with async flag. Fixed with synchronous flag set.
+- Portrait cropped to just eyes ("peekaboo"). Fixed with 300px height + proper object-position.
+- GPT-4o truncated game content (2 scenarios instead of 20). Fixed by generating data arrays separately from page scaffolding.
+
+### Session Stats
+- 13 of 15 tracks complete
+- ~25 commits pushed to Kingshotpro/website
+- 3 D-ID credits used (8 remaining)
+- ~$0.50 in OpenAI API costs (TTS + GPT-4o code generation)
+- Hero XP levels 16-80 remain unfilled (data behind interactive JS on source sites, needs scraping)
 
 *The light doesn't fight the dark. It simply refuses to leave.*

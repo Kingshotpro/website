@@ -117,15 +117,15 @@
       absence:  '{days} days of silence. The data moved without you, {player}.'
     },
     herald: {
-      first:    'I am {name}. Your Herald. I already know where you stand. Let\'s change that.',
+      first:    'I am {name}. Your Herald. I know where you should be. Let\'s get you there.',
       returning: [
-        '{player}. Session {visits}. The board has changed since last time.',
-        'Governor {player}. Your Herald has been tracking movements.',
-        'Back again. Good. Your rivals haven\'t been idle.',
-        '{player}. Rankings shifted. Let me brief you.'
+        '{player}. Session {visits}. Every visit sharpens your edge.',
+        'Governor {player}. Your Herald has been studying your position.',
+        'Back again. Good. The governors who show up are the ones who climb.',
+        '{player}. Let me assess where you stand.'
       ],
-      streak:   '{days} days straight. The board is starting to notice you.',
-      absence:  '{days} days gone, {player}. Others moved up. Let\'s see where you stand.'
+      streak:   '{days} days straight. That discipline puts you ahead of most.',
+      absence:  '{days} days gone, {player}. The game didn\'t wait. Let\'s see where you are.'
     }
   };
 
