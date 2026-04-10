@@ -28,6 +28,16 @@ Status key: [ ] not started · [~] in progress · [x] done · [!] blocked · [�
 - [x] Phase 1: Worker expansion — auth (magic link), AI chat endpoint, energy enforcement, KV state
 - [x] Phase 2: AI chatbox — text input, typing indicator, energy bar, Worker integration
 - [x] Phase 3: CTA engine — context-triggered, escalating, cooldown, tier upgrade prompts
+- [x] Phase 4: Premium content endpoints (chronicle, illustration, voice, portrait)
+- [x] Phase 5: Persistent memory (7-day Pro, permanent Elite, backfill on upgrade)
+- [x] Phase 6: Pricing page with 4 tiers + Stripe LIVE payment links
+- [x] Worker DEPLOYED: kingshotpro-api.kingshotpro.workers.dev (OpenAI routing, KV, secrets)
+- [x] Kingshot knowledge base authored + deployed as system prompt
+- [x] Alliance page system (create, view, public URLs)
+- [x] KvK strategy guide + Hero guide (5 guides + glossary total)
+- [x] Stripe LIVE: Pro $9.99, War Council $29.99, Elite $99.99 with annual discounts
+- [x] AdSense applied (snippet on all pages)
+- [x] GLINT_BUILD_SPEC archived
 - [x] AI pricing research: 9x3x3 complete, 4-tier structure defined
 - [x] Player-facing PDF presentation (4 pages, both advisor portraits)
 
