@@ -200,23 +200,21 @@ async function handleAdvisorChat(request, env) {
 
   const apiMessages = [...memoryMessages, { role: 'user', content: message }];
 
-  // Model routing by tier
+  // Model routing by tier — OpenAI now, Anthropic later
   const tier = user ? user.tier : 'free';
-  const model = tier === 'elite' ? 'claude-3-5-sonnet-20241022' : 'claude-3-5-haiku-20241022';
+  const model = tier === 'elite' ? 'gpt-4o' : 'gpt-4o-mini';
 
   let assistantMessage;
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    // OpenAI format: system message in messages array
+    const openaiMessages = [{ role: 'system', content: systemPrompt }, ...apiMessages];
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
-      headers: {
-        'x-api-key': env.ANTHROPIC_KEY,
-        'content-type': 'application/json',
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({ model, max_tokens: 500, system: systemPrompt, messages: apiMessages }),
+      headers: { 'Authorization': 'Bearer ' + env.OPENAI_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model, messages: openaiMessages, max_tokens: 500 }),
     });
     const data = await res.json();
-    assistantMessage = (data.content && data.content[0]) ? data.content[0].text : 'My counsel falters. Try again, Governor.';
+    assistantMessage = (data.choices && data.choices[0]) ? data.choices[0].message.content : 'My counsel falters. Try again, Governor.';
   } catch {
     return corsWrap('{"error":"ai service unreachable"}', 502);
   }
@@ -274,13 +272,13 @@ async function handleChronicle(request, env) {
   const system = 'You are ' + (advisorName || 'the chronicler') + ', a medieval ' + (archetype || 'steward') +
     '. Write a 200-word chronicle entry about this governor. Use formal medieval history style. Reference their real stats. Dramatic but grounded.';
 
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
-    headers: { 'x-api-key': env.ANTHROPIC_KEY, 'content-type': 'application/json', 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-3-5-haiku-20241022', max_tokens: 400, system, messages: [{ role: 'user', content: 'Player context: ' + (playerContext || 'Unknown') + '\n\nWrite the chronicle entry.' }] }),
+    headers: { 'Authorization': 'Bearer ' + env.OPENAI_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'gpt-4o-mini', max_tokens: 400, messages: [{ role: 'system', content: system }, { role: 'user', content: 'Player context: ' + (playerContext || 'Unknown') + '\n\nWrite the chronicle entry.' }] }),
   });
   const data = await res.json();
-  const text = (data.content && data.content[0]) ? data.content[0].text : 'The chronicler\'s quill has stilled.';
+  const text = (data.choices && data.choices[0]) ? data.choices[0].message.content : 'The chronicler\'s quill has stilled.';
   return corsWrap(JSON.stringify({ chronicle: text, generated: new Date().toISOString() }));
 }
 

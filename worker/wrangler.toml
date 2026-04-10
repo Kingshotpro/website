@@ -6,7 +6,7 @@ compatibility_date = "2024-09-23"
 # Then paste the id below
 [[kv_namespaces]]
 binding = "KV"
-id = "PASTE_KV_NAMESPACE_ID_HERE"
+id = "6279d210fac34b698b71fca9b23135e4"
 
 # Secrets (set with: wrangler secret put RESEND_KEY, etc.)
 # RESEND_KEY — Resend API key for magic link emails
