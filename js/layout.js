@@ -11,7 +11,7 @@
 
   // ── Path prefix (pages in /calculators/ or /guides/ need ../) ──
   var loc = window.location.pathname;
-  var inSub = /\/calculators\/|\/guides\/|\/games\//.test(loc);
+  var inSub = /\/calculators\/|\/guides\/|\/games\/|\/alliance\//.test(loc);
   var B = inSub ? '../' : '';
 
   // ── Navigation items ──────────────────────
@@ -62,9 +62,13 @@
     { cat: 'GAMES' },
     { icon: '\u2694\uFE0F', label: 'War Table',          href: B + 'games/war-table.html',           key: 'war-table',   badges: ['New', 'Daily'] },
     { icon: '\u{1F3F0}', label: 'Vault Trial',           href: B + 'games/vault-trial.html',         key: 'vault-trial', badges: ['New', 'Daily'] },
+    { cat: 'ALLIANCE' },
+    { icon: '\u{1F6E1}\uFE0F', label: 'Alliance Pages',  href: B + 'alliance/index.html',            key: 'alliance',    badges: ['New'] },
     { cat: 'GUIDES' },
     { icon: '\u{1F4D6}', label: 'Beginner Guide',       href: B + 'guides/beginner.html',           key: 'beginner',    badges: ['New'] },
     { icon: '\u{1F4B0}', label: 'F2P Guide',             href: B + 'guides/f2p.html',                key: 'f2p',         badges: ['New'] },
+    { icon: '\u2694\uFE0F', label: 'KvK Guide',          href: B + 'guides/kvk.html',                key: 'kvk',         badges: ['New'] },
+    { icon: '\u{1F9B8}', label: 'Hero Guide',            href: B + 'guides/hero-guide.html',          key: 'hero-guide',  badges: ['New'] },
     { icon: '\u{1F4DA}', label: 'Glossary',              href: B + 'guides/glossary.html',            key: 'glossary' },
   ];
 

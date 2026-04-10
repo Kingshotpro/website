@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alliance Management | KingshotPro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/advisor-orb.css">
+    <script src="../js/layout.js" defer></script>
+    <script src="../js/advisor-names.js" defer></script>
+    <script src="../js/advisor.js" defer></script>
+    <script src="../js/advisor-orb.js" defer></script>
+    <script src="../js/advisor-hooks.js" defer></script>
+    <script src="../js/advisor-chat.js" defer></script>
+    <script src="../js/advisor-cta.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <style>
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border);
+            background-color: var(--surface);
+            color: var(--text);
+        }
+        .form-group button {
+            background-color: var(--gold);
+            color: var(--surface);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .alliance-list {
+            margin-top: 30px;
+        }
+        .alliance-item {
+            padding: 10px;
+            border: 1px solid var(--border);
+            background-color: var(--surface-2);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="brand">KingshotPro</a>
+    </nav>
+    <div class="container">
+        <h1>Create or View Your Alliance</h1>
+        <form id="allianceForm">
+            <div class="form-group">
+                <label for="allianceName">Alliance Name</label>
+                <input type="text" id="allianceName" required>
+            </div>
+            <div class="form-group">
+                <label for="kingdomNumber">Kingdom Number</label>
+                <input type="number" id="kingdomNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="aboutText">About (max 500 characters)</label>
+                <textarea id="aboutText" maxlength="500" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="recruitmentStatus">Recruitment Status</label>
+                <select id="recruitmentStatus" required>
+                    <option value="open">Open</option>
+                    <option value="closed">Closed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="allianceTag">Alliance Tag</label>
+                <input type="text" id="allianceTag" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Create Alliance Page</button>
+            </div>
+        </form>
+        <div class="alliance-list">
+            <h2>Existing Alliances</h2>
+            <div id="allianceList"></div>
+        </div>
+    </div>
+    <footer>
+        <a href="/privacy">Privacy</a> | <a href="/about">About</a> | <a href="/terms">Terms</a>
+    </footer>
+    <script>
+        document.getElementById('allianceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('allianceName').value;
+            const kingdom = document.getElementById('kingdomNumber').value;
+            const about = document.getElementById('aboutText').value;
+            const status = document.getElementById('recruitmentStatus').value;
+            const tag = document.getElementById('allianceTag').value;
+
+            const allianceData = {
+                name,
+                kingdom,
+                about,
+                status,
+                tag
+            };
+
+            localStorage.setItem(`ksp_alliance_${tag}`, JSON.stringify(allianceData));
+            alert('Alliance page created! Shareable URL: ' + window.location.origin + '/alliance/page.html?tag=' + tag);
+            loadAlliances();
+        });
+
+        function loadAlliances() {
+            const allianceList = document.getElementById('allianceList');
+            allianceList.innerHTML = '';
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('ksp_alliance_')) {
+                    const alliance = JSON.parse(localStorage.getItem(key));
+                    const div = document.createElement('div');
+                    div.className = 'alliance-item';
+                    div.innerHTML = `<strong>${alliance.name}</strong> (Kingdom ${alliance.kingdom}) - <a href="page.html?tag=${alliance.tag}">View Page</a>`;
+                    allianceList.appendChild(div);
+                }
+            }
+        }
+
+        loadAlliances();
+    </script>
+</body>
+</html>

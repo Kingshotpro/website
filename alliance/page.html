@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alliance Profile | KingshotPro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/advisor-orb.css">
+    <script src="../js/layout.js" defer></script>
+    <script src="../js/advisor-names.js" defer></script>
+    <script src="../js/advisor.js" defer></script>
+    <script src="../js/advisor-orb.js" defer></script>
+    <script src="../js/advisor-hooks.js" defer></script>
+    <script src="../js/advisor-chat.js" defer></script>
+    <script src="../js/advisor-cta.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <style>
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .alliance-header {
+            font-size: 2em;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .recruitment-status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+        .status-open {
+            background-color: green;
+        }
+        .status-closed {
+            background-color: red;
+        }
+        .coming-soon {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="brand">KingshotPro</a>
+    </nav>
+    <div class="container">
+        <div id="allianceProfile">
+            <!-- Alliance details will be populated here -->
+        </div>
+        <div class="coming-soon">
+            <h3>Authored Guides</h3>
+            <p>Coming Soon</p>
+            <h3>Member Roster</h3>
+            <p>Coming Soon</p>
+            <h3>War Analysis</h3>
+            <p>Coming Soon</p>
+        </div>
+        <p><a href="index.html">Create your own alliance page on KingshotPro</a></p>
+    </div>
+    <footer>
+        <a href="/privacy">Privacy</a> | <a href="/about">About</a> | <a href="/terms">Terms</a>
+    </footer>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const tag = urlParams.get('tag');
+        const allianceData = JSON.parse(localStorage.getItem(`ksp_alliance_${tag}`));
+
+        if (allianceData) {
+            const allianceProfile = document.getElementById('allianceProfile');
+            allianceProfile.innerHTML = `
+                <div class="alliance-header">${allianceData.name}</div>
+                <p>Kingdom Number: ${allianceData.kingdom}</p>
+                <p>${allianceData.about}</p>
+                <span class="recruitment-status ${allianceData.status === 'open' ? 'status-open' : 'status-closed'}">
+                    ${allianceData.status.charAt(0).toUpperCase() + allianceData.status.slice(1)}
+                </span>
+                <p>Written by ${allianceData.name} on Kingdom ${allianceData.kingdom}</p>
+            `;
+        } else {
+            alert('Alliance not found!');
+        }
+    </script>
+</body>
+</html>
