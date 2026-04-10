@@ -195,7 +195,7 @@
       }
     } catch (e) { /* private mode */ }
     if (!profileBit) {
-      profileBit = '<a href="' + B + 'index.html#fid-form" class="btn btn-sm btn-outline tb-fid">Enter FID</a>';
+      profileBit = '<a href="' + B + 'index.html#fid-form" class="btn btn-sm btn-outline tb-fid">Enter Player ID</a>';
     }
     return '<button class="tb-menu" id="sb-toggle" aria-label="Toggle navigation">' +
       '<span></span><span></span><span></span></button>' +

@@ -239,7 +239,7 @@ async function handleFidSubmit(e) {
   const fid   = (input?.value || '').trim();
 
   if (!fid || !/^\d{5,12}$/.test(fid)) {
-    showFidError('Please enter a valid FID (numbers only, 5–12 digits).');
+    showFidError('Please enter a valid Player ID (numbers only, 5–12 digits).');
     return;
   }
 
@@ -284,9 +284,9 @@ async function handleFidSubmit(e) {
       );
       showManualEntry();
     } else if (err.message.includes('404') || err.message.includes('not found')) {
-      showFidError('FID not found. Double-check your player ID in-game (Settings → Player Info).');
+      showFidError('Player ID not found. Double-check your ID in-game: avatar → Settings → Player Info.');
     } else {
-      showFidError('Lookup failed. Please check your FID and try again.');
+      showFidError('Lookup failed. Please check your Player ID and try again.');
     }
   } finally {
     setSubmitState(btn, false);

@@ -31,12 +31,12 @@
     <div class="card mb-24" style="border-color:var(--gold);max-width:540px;">
       <div class="card-title">Redeem a code</div>
       <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">
-        Enter your FID and a gift code to redeem it directly — no need to open the game.
+        Enter your Player ID and a gift code to redeem it directly — no need to open the game.
       </p>
       <form id="redeem-form" autocomplete="off">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
           <div class="form-group" style="margin:0;">
-            <label for="redeem-fid">Your FID</label>
+            <label for="redeem-fid">Your Player ID</label>
             <input type="text" id="redeem-fid" inputmode="numeric" placeholder="e.g. 7291048" maxlength="12">
           </div>
           <div class="form-group" style="margin:0;">
@@ -164,7 +164,7 @@ document.getElementById('redeem-form').addEventListener('submit', async (e) => {
   const resultEl = document.getElementById('redeem-result');
 
   if (!fid || !/^\d{5,12}$/.test(fid)) {
-    showResult('error', 'Enter a valid FID (5–12 digits).');
+    showResult('error', 'Enter a valid Player ID (5–12 digits).');
     return;
   }
   if (!code || code.length < 4) {
