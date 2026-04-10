@@ -153,6 +153,10 @@
 
     // Ad slot: sidebar bottom
     h += '<div class="ad-slot sb-ad" data-slot="sidebar-bottom"></div>';
+
+    // Avatar panel — shows advisor name, level, XP bar
+    h += '<div class="sb-advisor" id="sb-advisor"></div>';
+
     h += '</nav>';
     return h;
   }
@@ -268,6 +272,84 @@
       else if (!isNowCollapsed && idx !== -1) arr.splice(idx, 1);
       saveCollapsed(arr);
     });
+
+    // ── Populate advisor panel ───────────────
+    populateAdvisorPanel();
+    // Update panel when XP changes
+    if (window.Advisor) {
+      window.Advisor.on('xp', populateAdvisorPanel);
+      window.Advisor.on('levelup', function (data) {
+        populateAdvisorPanel();
+        showLevelUpBanner(data);
+      });
+    }
+  }
+
+  function populateAdvisorPanel() {
+    var el = document.getElementById('sb-advisor');
+    if (!el) return;
+    if (!window.Advisor) { el.innerHTML = ''; return; }
+
+    var state = window.Advisor.getState();
+    if (!state) {
+      // No advisor yet — show teaser
+      el.innerHTML =
+        '<div class="sb-adv-teaser">' +
+          '<span class="sb-adv-teaser-icon">\u{1F451}</span>' +
+          '<span>Enter your Player ID to meet your advisor</span>' +
+        '</div>';
+      return;
+    }
+
+    var level = window.Advisor.getLevel();
+    var xp = state.xp;
+    var nextXP = window.Advisor.getNextLevelXP();
+    var prevXP = window.Advisor.LEVEL_THRESHOLDS[level - 1] || 0;
+    var progress = nextXP ? ((xp - prevXP) / (nextXP - prevXP)) * 100 : 100;
+    if (progress > 100) progress = 100;
+
+    var arch = window.Advisor.getArchetype();
+    var archTitle = arch ? arch.title : '';
+    var imgSrc = window.Advisor.getAvatarImage ? window.Advisor.getAvatarImage() : '';
+
+    el.innerHTML =
+      '<div class="sb-adv-card">' +
+        '<div class="sb-adv-top">' +
+          (imgSrc ? '<img class="sb-adv-img" src="' + imgSrc + '" alt="">' : '') +
+          '<div class="sb-adv-info">' +
+            '<div class="sb-adv-name">' + esc(state.name) + '</div>' +
+            '<div class="sb-adv-arch">' + esc(archTitle) + '</div>' +
+          '</div>' +
+          '<div class="sb-adv-level">' + level + '</div>' +
+        '</div>' +
+        '<div class="sb-adv-xp-wrap">' +
+          '<div class="sb-adv-xp-bar"><div class="sb-adv-xp-fill" style="width:' + progress.toFixed(1) + '%"></div></div>' +
+          '<div class="sb-adv-xp-label">' + xp + (nextXP ? ' / ' + nextXP : ' XP') + ' XP</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // ── Level-up banner ───────────────────────
+  function showLevelUpBanner(data) {
+    var state = window.Advisor ? window.Advisor.getState() : null;
+    var name = state ? state.name : 'Your Advisor';
+
+    var banner = document.createElement('div');
+    banner.className = 'levelup-banner';
+    banner.innerHTML =
+      '<span class="levelup-icon">\u2B50</span> ' +
+      '<strong>' + esc(name) + '</strong> reached <strong>Level ' + data.to + '</strong>!';
+    document.body.appendChild(banner);
+
+    requestAnimationFrame(function () { banner.classList.add('visible'); });
+    setTimeout(function () {
+      banner.classList.remove('visible');
+      setTimeout(function () { banner.remove(); }, 500);
+    }, 4000);
   }
 
   if (document.readyState === 'loading') {

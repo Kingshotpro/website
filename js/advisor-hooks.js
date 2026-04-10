@@ -44,24 +44,29 @@
         if (xpGranted[calcName]) return;
         xpGranted[calcName] = true;
 
-        // Grant XP
-        Advisor.grantXP('calculator_run', 5);
-
         // Record observation
         Advisor.observe('calc_usage', calcName, 1);
 
-        // Save
-        Advisor.save();
+        // Listen for actual XP amount (after multiplier)
+        var toastShown = false;
+        Advisor.on('xp', function onXP(data) {
+          if (!toastShown && data.action === 'calculator_run') {
+            toastShown = true;
+            showXPToast('+' + data.amount + ' XP');
+            // One-shot — remove after firing
+            Advisor.off('xp', onXP);
+          }
+        });
 
-        // Visual feedback: brief gold flash on the orb if visible
+        // Grant XP (multiplier applied inside)
+        Advisor.grantXP('calculator_run', 5);
+
+        // Visual feedback: brief gold flash on the orb
         var orb = document.querySelector('.orb-circle');
         if (orb) {
           orb.style.boxShadow = '0 0 30px 8px rgba(240, 192, 64, 0.8)';
           setTimeout(function () { orb.style.boxShadow = ''; }, 800);
         }
-
-        // Show XP toast
-        showXPToast('+5 XP');
       });
     });
   }

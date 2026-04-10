@@ -264,20 +264,52 @@ function renderAdvisory(profile) {
 
   const advice = getAdvice(profile);
 
+  // Get advisor identity if available
+  let advisorIntro = '';
+  let advisorName = '';
+  if (window.Advisor) {
+    const state = window.Advisor.getState();
+    if (state && state.name) {
+      advisorName = state.name;
+      const arch = window.Advisor.ARCHETYPES[state.archetype];
+      const title = arch ? arch.title : '';
+      advisorIntro = `<span class="advice-advisor">${advisorName}, ${title}:</span> `;
+    }
+  }
+
   if (header) {
     header.innerHTML = `
-      <h2>Your Top Priorities</h2>
-      <p>${advice.headline}</p>
+      <h2>${advisorName ? advisorName + '\'s Counsel' : 'Your Top Priorities'}</h2>
+      <p>${advisorIntro}${advice.headline}</p>
     `;
   }
 
-  grid.innerHTML = advice.tips.map((tip, i) => `
+  let cardsHTML = advice.tips.map((tip, i) => `
     <div class="advice-card">
       <div class="advice-rank">Priority ${i + 1}</div>
       <div class="advice-title">${tip.title}</div>
       <div class="advice-body">${tip.body}</div>
     </div>
   `).join('');
+
+  // Add observation insight if enough data
+  if (window.Advisor) {
+    const tags = window.Advisor.getTags();
+    if (tags.length > 0) {
+      const state = window.Advisor.getState();
+      const visits = state ? (state.observations.visit_pattern || {}).total || 0 : 0;
+      if (visits >= 3) {
+        cardsHTML += `
+          <div class="advice-card advice-insight">
+            <div class="advice-rank">${advisorName || 'Advisor'} Observes</div>
+            <div class="advice-body">Based on your activity patterns, I have additional counsel. Open the advisor panel for details.</div>
+          </div>
+        `;
+      }
+    }
+  }
+
+  grid.innerHTML = cardsHTML;
 
   section.classList.add('visible');
   section.scrollIntoView({ behavior: 'smooth', block: 'start' });

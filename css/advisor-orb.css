@@ -417,6 +417,142 @@
   background: var(--surface);
 }
 
+/* ── Advisory Voice ───────────────────────── */
+.advice-advisor {
+  color: var(--gold);
+  font-weight: 600;
+  font-style: italic;
+}
+.advice-insight {
+  border-left: 3px solid var(--gold);
+  background: rgba(240, 192, 64, 0.05);
+}
+
+/* ── Sidebar Advisor Panel ────────────────── */
+.sb-advisor {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.sb-adv-teaser {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 8px;
+}
+.sb-adv-teaser-icon { font-size: 18px; }
+
+.sb-adv-card {
+  background: var(--surface-2);
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+}
+
+.sb-adv-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.sb-adv-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.sb-adv-info { flex: 1; min-width: 0; }
+
+.sb-adv-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sb-adv-arch {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.sb-adv-level {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sb-adv-xp-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sb-adv-xp-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.sb-adv-xp-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 3px;
+  transition: width 600ms ease;
+}
+
+.sb-adv-xp-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  min-width: 55px;
+  text-align: right;
+}
+
+/* ── Level-Up Banner ─────────────────────── */
+.levelup-banner {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  z-index: 700;
+  background: linear-gradient(135deg, #1a1608, #2d2410);
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 15px;
+  box-shadow: 0 4px 24px rgba(240, 192, 64, 0.3);
+  opacity: 0;
+  transition: opacity 400ms ease, transform 400ms ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.levelup-banner.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.levelup-icon { font-size: 18px; }
+
 /* XP Toast notification */
 .xp-toast {
   position: fixed;

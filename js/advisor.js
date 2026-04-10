@@ -233,23 +233,48 @@
       } catch (e) { console.error('Advisor save failed:', e); }
     },
 
-    /** Grant XP for an action. Handles level-up detection. */
+    /** Get XP multiplier from player profile data. */
+    getMultiplier: function () {
+      var mult = 1.0;
+      try {
+        var profile = null;
+        if (_fid) {
+          var raw = localStorage.getItem('ksp_profile_' + _fid);
+          if (raw) profile = JSON.parse(raw);
+        }
+        if (!profile) return mult;
+
+        // Furnace bonus
+        if (profile.furnaceLevel >= 22) mult = 1.25;
+        else if (profile.furnaceLevel >= 15) mult = 1.1;
+
+        // Whale bonus (stacks)
+        if (profile.spendingTier === 'whale') mult *= 1.15;
+      } catch (e) {}
+      return mult;
+    },
+
+    /** Grant XP for an action. Applies profile multiplier. Handles level-up detection. */
     grantXP: function (action, amount) {
       if (!_state) return;
 
+      // Apply multiplier from game data
+      var mult = this.getMultiplier();
+      var adjusted = Math.round(amount * mult);
+
       var prevLevel = calcLevel(_state.xp);
-      _state.xp += amount;
+      _state.xp += adjusted;
       var newLevel = calcLevel(_state.xp);
       _state.level = newLevel;
 
       // Log entry (keep last N)
-      _state.xp_log.push({ action: action, xp: amount, ts: Date.now() });
+      _state.xp_log.push({ action: action, xp: adjusted, ts: Date.now() });
       if (_state.xp_log.length > MAX_LOG_ENTRIES) {
         _state.xp_log = _state.xp_log.slice(-MAX_LOG_ENTRIES);
       }
 
       this.save();
-      emit('xp', { action: action, amount: amount, total: _state.xp, level: newLevel });
+      emit('xp', { action: action, amount: adjusted, total: _state.xp, level: newLevel });
 
       if (newLevel > prevLevel) {
         emit('levelup', { from: prevLevel, to: newLevel, xp: _state.xp });
@@ -310,7 +335,14 @@
       vp.last_visit = Date.now();
       _state.last_visit = Date.now();
 
-      this.grantXP('daily_visit', 10);
+      // Base daily XP + server age bonus
+      var dailyXP = 10;
+      try {
+        var profile = _fid ? JSON.parse(localStorage.getItem('ksp_profile_' + _fid) || '{}') : {};
+        if (profile.serverAge === 'mature') dailyXP += 5; // 180+ day server bonus
+      } catch (e) {}
+
+      this.grantXP('daily_visit', dailyXP);
     },
 
     /** Get current level. */
