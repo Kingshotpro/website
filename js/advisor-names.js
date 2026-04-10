@@ -47,7 +47,7 @@ var ADVISOR_NAMES = [
   { id: 'beatrice',     name: 'Beatrice',     gender: 'f', img: null },
   { id: 'melisande',    name: 'Melisande',    gender: 'f', img: null },
   { id: 'theodora',     name: 'Theodora',     gender: 'f', img: null },
-  { id: 'ysabel',       name: 'Ysabel',       gender: 'f', img: null },
+  { id: 'ysabel',       name: 'Ysabel',       gender: 'f', img: 'female_default.png', video: 'advisor_idle_loop.mp4' },
   { id: 'sigrid',       name: 'Sigrid',       gender: 'f', img: null },
   { id: 'rowena',       name: 'Rowena',       gender: 'f', img: null },
   { id: 'isolde',       name: 'Isolde',       gender: 'f', img: null },
