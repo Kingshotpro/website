@@ -28,6 +28,8 @@ export default {
         return handleVoice(request, env);
       } else if (url.pathname === '/advisor/portrait') {
         return handlePortrait(request, env);
+      } else if (url.pathname === '/stripe/webhook') {
+        return handleStripeWebhook(request, env);
       }
     }
 
@@ -344,6 +346,76 @@ async function handlePortrait(request, env) {
   const url = (data.data && data.data[0]) ? data.data[0].url : null;
   if (!url) return corsWrap('{"error":"generation failed"}', 500);
   return corsWrap(JSON.stringify({ image_url: url, generated: new Date().toISOString() }));
+}
+
+// ── Stripe Webhook ─────────────────────────
+async function handleStripeWebhook(request, env) {
+  // Stripe sends events when subscriptions change
+  // We map the Stripe price ID to our tier names
+  const PRICE_TO_TIER = {
+    'price_1TKkEnFs4JpQNEkSRplADapH': 'pro',      // Pro monthly
+    'price_1TKkEoFs4JpQNEkSYu8qE89Y': 'pro',      // Pro annual
+    'price_1TKkEoFs4JpQNEkSRbbD3K5X': 'war_council', // WC monthly
+    'price_1TKkEoFs4JpQNEkSdD5BjG0A': 'war_council', // WC annual
+    'price_1TKkEpFs4JpQNEkSGg9BaCPw': 'elite',     // Elite monthly
+    'price_1TKkEpFs4JpQNEkSsDL82YV9': 'elite',     // Elite annual
+  };
+
+  let event;
+  try {
+    const body = await request.text();
+    event = JSON.parse(body);
+  } catch {
+    return corsWrap('{"error":"invalid payload"}', 400);
+  }
+
+  const type = event.type;
+
+  if (type === 'checkout.session.completed') {
+    // New subscription
+    const session = event.data.object;
+    const email = session.customer_email || session.customer_details?.email;
+    if (!email) return corsWrap('{"ok":true,"note":"no email"}');
+
+    // Get the price ID from line items
+    const lineItems = session.line_items?.data || [];
+    let tier = 'pro'; // default
+    for (const item of lineItems) {
+      const priceId = item.price?.id;
+      if (priceId && PRICE_TO_TIER[priceId]) {
+        tier = PRICE_TO_TIER[priceId];
+        break;
+      }
+    }
+
+    // Update or create user in KV
+    let user = await env.KV.get(`user:${email}`, { type: 'json' });
+    if (user) {
+      user.tier = tier;
+    } else {
+      user = { email, tier, fid: '', created: Date.now(), energy_today: 999, energy_date: '', memory: [] };
+    }
+    await env.KV.put(`user:${email}`, JSON.stringify(user));
+    return corsWrap(JSON.stringify({ ok: true, tier }));
+
+  } else if (type === 'customer.subscription.deleted' || type === 'customer.subscription.updated') {
+    // Subscription cancelled or changed
+    const sub = event.data.object;
+    const email = sub.customer_email;
+    if (!email) return corsWrap('{"ok":true}');
+
+    if (sub.status === 'canceled' || sub.status === 'unpaid') {
+      // Downgrade to free
+      let user = await env.KV.get(`user:${email}`, { type: 'json' });
+      if (user) {
+        user.tier = 'free';
+        await env.KV.put(`user:${email}`, JSON.stringify(user));
+      }
+    }
+    return corsWrap('{"ok":true}');
+  }
+
+  return corsWrap('{"ok":true,"note":"unhandled event"}');
 }
 
 function corsWrap(body, status = 200) {

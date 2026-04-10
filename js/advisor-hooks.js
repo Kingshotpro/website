@@ -94,6 +94,16 @@
     }, 2000);
   }
 
+  // ── Guide links by topic ────────────────
+  var GUIDE_LINKS = {
+    combat_prioritizer: { url: 'guides/kvk.html', text: 'KvK Guide' },
+    builder: { url: 'guides/furnace.html', text: 'Furnace Guide' },
+    optimizer: { url: 'guides/hero-guide.html', text: 'Hero Guide' },
+    neglects_gear: { url: 'guides/hero-guide.html', text: 'Hero Guide' },
+    daily_player: { url: 'guides/beginner.html', text: 'Beginner Guide' },
+    aggressive_tactician: { url: 'guides/kvk.html', text: 'KvK Guide' },
+  };
+
   // ── Observation-based advisor comments ────
   // After enough data, the advisor speaks through the orb speech bubble
   function checkForInsight() {
@@ -115,13 +125,24 @@
     var insight = pickInsight(tags, archetype);
     if (!insight) return;
 
+    // Append guide link if relevant
+    var guideLink = '';
+    for (var t = 0; t < tags.length; t++) {
+      if (GUIDE_LINKS[tags[t]]) {
+        var g = GUIDE_LINKS[tags[t]];
+        var base = /\/calculators\/|\/guides\/|\/games\/|\/alliance\//.test(location.pathname) ? '../' : '';
+        guideLink = ' <a href="' + base + g.url + '" style="color:var(--gold);font-weight:600;">Read the ' + g.text + ' \u2192</a>';
+        break;
+      }
+    }
+
     // Show via speech bubble after a delay
     setTimeout(function () {
       if (window.AdvisorOrb && !window.AdvisorOrb.isEngaged()) {
-        window.AdvisorOrb.showSpeechBubble(insight);
+        window.AdvisorOrb.showSpeechBubble(insight + guideLink);
         setTimeout(function () {
           window.AdvisorOrb.hideSpeechBubble();
-        }, 8000);
+        }, 10000);
       }
       try { sessionStorage.setItem('ksp_insight_shown', '1'); } catch (e) {}
     }, 5000);
