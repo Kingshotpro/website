@@ -323,6 +323,30 @@
     panel.classList.remove('visible');
     backdrop.classList.remove('visible');
     orbWrap.classList.remove('orb-hidden');
+    stopVoice();
+  }
+
+  // ── Audio playback ───────────────────────
+  var currentAudio = null;
+
+  function playVoice(clipName) {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
+    var src = getBase() + 'avatars/audio/' + clipName + '.mp3';
+    currentAudio = new Audio(src);
+    currentAudio.volume = 1.0;
+    currentAudio.play().catch(function () {
+      // Audio blocked — user hasn't interacted yet. Silent fallback.
+    });
+  }
+
+  function stopVoice() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
   }
 
   // ── Video helpers ─────────────────────────
@@ -432,14 +456,16 @@
       'an advisor who learns your kingdom, tracks your progress, and gives you ' +
       'strategy built around <em>your</em> account. Not generic guides. <em>Yours.</em>'
     );
+    playVoice('welcome1');
     setTimeout(function () {
       addAdvisorMsg('Let\'s start. What brings you here?');
+      playVoice('welcome2');
       showQuickReplies([
         { label: '\u{1F50D} Help me find my Player ID', action: helpFindId },
         { label: '\u2694\uFE0F What can you do for me?', action: showCapabilities },
         { label: '\u{1F331} I\'m new to Kingshot', action: showNewPlayer }
       ]);
-    }, 700);
+    }, 9000);
   }
 
   function helpFindId() {
@@ -451,6 +477,7 @@
       '4. The number next to <strong>"FID"</strong> \u2014 usually 7\u201310 digits<br><br>' +
       'Enter it above and I\'ll pull up everything about your account.'
     );
+    playVoice('help_find_id');
     showQuickReplies([
       { label: 'Got it, let me enter it now', action: focusInput },
       { label: 'I don\'t play yet', action: showNewPlayer }
@@ -464,6 +491,7 @@
       '\u{1F9E0} <strong>Personalized advice</strong> \u2014 strategy built for your exact situation<br>' +
       '\u{1F3AE} <strong>Your advisor grows</strong> \u2014 level up, earn XP, I get smarter'
     );
+    playVoice('capabilities');
     showQuickReplies([
       { label: 'Let me enter my Player ID', action: focusInput },
       { label: 'Show me the calculators', action: function () { location.href = 'calculators/building.html'; } }
@@ -476,6 +504,7 @@
       'build a kingdom, train armies, compete across servers.<br><br>' +
       'When you\'re ready, come back with your Player ID. The calculators and gift codes work for everyone.'
     );
+    playVoice('new_player');
     showQuickReplies([
       { label: '\u{1F381} Show me gift codes', action: function () {
         var sub = /\/calculators\//.test(location.pathname);
@@ -504,12 +533,16 @@
   }
 
   function focusInput() {
-    minimize();
-    var inp = document.getElementById('fid-input');
-    if (inp) {
-      inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(function () { inp.focus(); }, 400);
-    }
+    addAdvisorMsg('Enter your Player ID in the box above. I\'ll do the rest.');
+    playVoice('got_it');
+    setTimeout(function () {
+      minimize();
+      var inp = document.getElementById('fid-input');
+      if (inp) {
+        inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(function () { inp.focus(); }, 400);
+      }
+    }, 2000);
   }
 
   // ── Update identity ───────────────────────
