@@ -484,11 +484,9 @@
     );
     playVoice('welcome1');
     setTimeout(function () {
-      addAdvisorMsg('Let\'s start. What brings you here?');
-      playVoice('welcome2');
+      addAdvisorMsg('Tell me who you are, Governor.');
       showQuickReplies([
-        { label: '\u{1F50D} Help me find my Player ID', action: helpFindId },
-        { label: '\u2694\uFE0F What can you do for me?', action: showCapabilities },
+        { label: '\u2694\uFE0F I play Kingshot \u2014 let me enter my Player ID', action: showPlayerIdInput },
         { label: '\u{1F331} I\'m new to Kingshot', action: showNewPlayer }
       ]);
     }, 9000);
@@ -562,6 +560,7 @@
   }
 
   function showPlayerIdInput() {
+    addAdvisorMsg('Enter your Player ID below. You\'ll find it in-game: avatar \u2192 Settings \u2192 Player Info. The number next to FID.');
     panelInput.innerHTML = '';
     var wrap = document.createElement('div');
     wrap.className = 'orb-fid-input';
