@@ -1,0 +1,439 @@
+/**
+ * advisor-orb.js — Living advisor orb + council chamber
+ * KingshotPro | Phase 1
+ *
+ * The advisor appears as a breathing, glowing portrait circle.
+ * Entry: materializes at center, speaks, glides to resting position.
+ * Click: expands into full council chamber panel.
+ * Portrait feels alive: breathing zoom, firelight flicker, mouse parallax.
+ *
+ * Replaces steward.js entirely.
+ */
+(function () {
+  'use strict';
+
+  // ── DOM refs ──────────────────────────────
+  var orbWrap, orbCircle, orbImg, orbParallax;
+  var speechBubble;
+  var panel, panelImg, panelName, panelChat, panelInput, panelMinBtn;
+  var backdrop;
+  var engaged = false;
+  var isMobile = window.innerWidth <= 640;
+
+  // ── Helpers ───────────────────────────────
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function getProfile() {
+    try {
+      var fid = localStorage.getItem('ksp_last_fid');
+      if (fid) { var s = localStorage.getItem('ksp_profile_' + fid); if (s) return JSON.parse(s); }
+      var r = sessionStorage.getItem('ksp_profile');
+      return r ? JSON.parse(r) : null;
+    } catch (e) { return null; }
+  }
+
+  function getAvatarSrc() {
+    if (window.Advisor && window.Advisor.getAvatarImage) {
+      var s = window.Advisor.getAvatarImage(); if (s) return s;
+    }
+    var sub = /\/calculators\/|\/games\//.test(location.pathname);
+    return (sub ? '../' : '') + 'avatars/female_default.png';
+  }
+
+  function getAdvisorName() {
+    var st = window.Advisor && window.Advisor.getState ? window.Advisor.getState() : null;
+    return st && st.name ? st.name : 'Your Advisor';
+  }
+
+  function getArchetypeTitle() {
+    var st = window.Advisor && window.Advisor.getState ? window.Advisor.getState() : null;
+    if (st && window.Advisor.ARCHETYPES) {
+      var a = window.Advisor.ARCHETYPES[st.archetype];
+      if (a) return a.title;
+    }
+    return '';
+  }
+
+  // ── Build DOM ─────────────────────────────
+  function build() {
+    var src = getAvatarSrc();
+    var name = getAdvisorName();
+    var title = getArchetypeTitle();
+
+    // — Orb wrapper (holds circle + speech bubble, not clipped) —
+    orbWrap = document.createElement('div');
+    orbWrap.className = 'orb-wrap';
+    orbWrap.id = 'orb-wrap';
+
+    // The circle
+    orbCircle = document.createElement('div');
+    orbCircle.className = 'orb-circle';
+
+    // Parallax layer (moves with mouse)
+    orbParallax = document.createElement('div');
+    orbParallax.className = 'orb-parallax';
+
+    // The image (breathes + firelight)
+    orbImg = document.createElement('img');
+    orbImg.className = 'orb-img';
+    orbImg.src = src;
+    orbImg.alt = name;
+
+    orbParallax.appendChild(orbImg);
+    orbCircle.appendChild(orbParallax);
+    orbWrap.appendChild(orbCircle);
+
+    // Speech bubble (outside circle, not clipped)
+    speechBubble = document.createElement('div');
+    speechBubble.className = 'orb-speech';
+    speechBubble.id = 'orb-speech';
+    orbWrap.appendChild(speechBubble);
+
+    orbCircle.addEventListener('click', function () {
+      if (!engaged) expand();
+    });
+
+    document.body.appendChild(orbWrap);
+
+    // — Backdrop —
+    backdrop = document.createElement('div');
+    backdrop.className = 'orb-backdrop';
+    backdrop.addEventListener('click', minimize);
+    document.body.appendChild(backdrop);
+
+    // — Council chamber panel —
+    panel = document.createElement('div');
+    panel.className = 'orb-panel';
+    panel.id = 'orb-panel';
+
+    // Panel portrait
+    var panelHdr = document.createElement('div');
+    panelHdr.className = 'orb-panel-portrait';
+    panelImg = document.createElement('img');
+    panelImg.className = 'orb-img'; // reuse breathing + firelight
+    panelImg.src = src;
+    panelHdr.appendChild(panelImg);
+
+    // Minimize button
+    panelMinBtn = document.createElement('button');
+    panelMinBtn.className = 'orb-panel-min';
+    panelMinBtn.innerHTML = '&minus;';
+    panelMinBtn.setAttribute('aria-label', 'Minimize');
+    panelMinBtn.addEventListener('click', minimize);
+    panelHdr.appendChild(panelMinBtn);
+
+    panel.appendChild(panelHdr);
+
+    // Name + title
+    panelName = document.createElement('div');
+    panelName.className = 'orb-panel-name';
+    panelName.innerHTML = '<strong>' + esc(name) + '</strong>' + (title ? ' <span>' + esc(title) + '</span>' : '');
+    panel.appendChild(panelName);
+
+    // Chat area
+    panelChat = document.createElement('div');
+    panelChat.className = 'orb-panel-chat';
+    panel.appendChild(panelChat);
+
+    // Input area (quick replies go here)
+    panelInput = document.createElement('div');
+    panelInput.className = 'orb-panel-input';
+    panel.appendChild(panelInput);
+
+    document.body.appendChild(panel);
+
+    // — Mouse parallax (desktop only) —
+    if (!isMobile) {
+      var px = 0, py = 0, tx = 0, ty = 0;
+      document.addEventListener('mousemove', function (e) {
+        tx = (window.innerWidth / 2 - e.clientX) / (window.innerWidth / 2) * 4;
+        ty = (window.innerHeight / 2 - e.clientY) / (window.innerHeight / 2) * 3;
+      });
+      (function tick() {
+        px += (tx - px) * 0.08;
+        py += (ty - py) * 0.08;
+        if (orbParallax) orbParallax.style.transform = 'translate(' + px.toFixed(2) + 'px,' + py.toFixed(2) + 'px)';
+        requestAnimationFrame(tick);
+      })();
+    }
+  }
+
+  // ── Entry sequence ────────────────────────
+  function runEntry() {
+    var entered = false;
+    try { entered = sessionStorage.getItem('ksp_orb_entered') === '1'; } catch (e) {}
+
+    if (entered || isMobile) {
+      // Skip entrance — go directly to rest
+      orbWrap.classList.add('orb-at-rest');
+      orbWrap.style.opacity = '1';
+      // Show a subtle speech bubble after a beat
+      setTimeout(function () {
+        showSpeech('I see you, Governor...');
+        setTimeout(hideSpeech, 4000);
+      }, 1000);
+      return;
+    }
+
+    // Full entrance choreography
+    orbWrap.classList.add('orb-at-center');
+
+    // 1. Fade in
+    requestAnimationFrame(function () {
+      orbWrap.style.opacity = '1';
+    });
+
+    // 2. Speech bubble after glow builds
+    setTimeout(function () {
+      showSpeech("I'm alive and here for you, Governor.");
+    }, 800);
+
+    // 3. Glide to rest
+    setTimeout(function () {
+      hideSpeech();
+      orbWrap.classList.remove('orb-at-center');
+      orbWrap.classList.add('orb-at-rest', 'orb-gliding');
+      try { sessionStorage.setItem('ksp_orb_entered', '1'); } catch (e) {}
+
+      // Remove glide transition class after animation
+      setTimeout(function () {
+        orbWrap.classList.remove('orb-gliding');
+      }, 900);
+    }, 3200);
+  }
+
+  // ── Speech bubble ─────────────────────────
+  function showSpeech(text) {
+    speechBubble.innerHTML = text;
+    speechBubble.classList.add('visible');
+  }
+
+  function hideSpeech() {
+    speechBubble.classList.remove('visible');
+  }
+
+  // ── Expand / Minimize ─────────────────────
+  function expand() {
+    engaged = true;
+    orbWrap.classList.add('orb-hidden');
+    backdrop.classList.add('visible');
+    panel.classList.add('visible');
+    hideSpeech();
+
+    // If chat is empty, greet
+    if (panelChat.children.length === 0) {
+      greet();
+    }
+    panelChat.scrollTop = panelChat.scrollHeight;
+  }
+
+  function minimize() {
+    engaged = false;
+    panel.classList.remove('visible');
+    backdrop.classList.remove('visible');
+    orbWrap.classList.remove('orb-hidden');
+  }
+
+  // ── Messages ──────────────────────────────
+  function addAdvisorMsg(html) {
+    var msg = document.createElement('div');
+    msg.className = 'orb-msg orb-msg-adv';
+    msg.innerHTML = '<div class="orb-msg-bub">' + html + '</div>';
+    panelChat.appendChild(msg);
+    panelChat.scrollTop = panelChat.scrollHeight;
+  }
+
+  function addUserMsg(text) {
+    var msg = document.createElement('div');
+    msg.className = 'orb-msg orb-msg-usr';
+    msg.innerHTML = '<div class="orb-msg-bub">' + esc(text) + '</div>';
+    panelChat.appendChild(msg);
+    panelChat.scrollTop = panelChat.scrollHeight;
+  }
+
+  function showQuickReplies(replies) {
+    panelInput.innerHTML = '';
+    var wrap = document.createElement('div');
+    wrap.className = 'orb-replies';
+    for (var i = 0; i < replies.length; i++) {
+      (function (r) {
+        var btn = document.createElement('button');
+        btn.className = 'orb-reply-btn';
+        btn.textContent = r.label;
+        btn.addEventListener('click', function () {
+          addUserMsg(r.label);
+          panelInput.innerHTML = '';
+          if (r.action) r.action();
+        });
+        wrap.appendChild(btn);
+      })(replies[i]);
+    }
+    panelInput.appendChild(wrap);
+  }
+
+  // ── Greet ─────────────────────────────────
+  function greet() {
+    panelChat.innerHTML = '';
+    panelInput.innerHTML = '';
+    var profile = getProfile();
+    var advState = window.Advisor && window.Advisor.getState ? window.Advisor.getState() : null;
+
+    if (profile && profile.furnaceLevel > 0 && advState) {
+      var greeting = window.Advisor.getGreeting ? window.Advisor.getGreeting(profile.nickname) : '';
+      addAdvisorMsg(greeting || ('Welcome back, <strong>' + esc(profile.nickname) + '</strong>.'));
+
+      var advice = window.KSP && window.KSP.getAdvice ? window.KSP.getAdvice(profile) : null;
+      if (advice) {
+        setTimeout(function () {
+          addAdvisorMsg('<em>' + esc(advice.headline) + '</em>');
+          var h = '';
+          for (var i = 0; i < advice.tips.length; i++) {
+            h += '<div class="orb-tip"><strong>' + esc(advice.tips[i].title) + '</strong><br>' +
+              '<span>' + esc(advice.tips[i].body) + '</span></div>';
+          }
+          addAdvisorMsg(h);
+        }, 400);
+      }
+
+      showQuickReplies([
+        { label: 'What should I focus on today?', action: function () { showFocus(profile); } },
+        { label: 'Tell me about my kingdom', action: function () { showKingdom(profile); } },
+        { label: 'Open calculators', action: function () { location.href = 'calculators/building.html'; } }
+      ]);
+    } else {
+      greetNew();
+    }
+  }
+
+  function greetNew() {
+    addAdvisorMsg(
+      'Governor. You\'ve found something the other tools don\'t have \u2014 ' +
+      'an advisor who learns your kingdom, tracks your progress, and gives you ' +
+      'strategy built around <em>your</em> account. Not generic guides. <em>Yours.</em>'
+    );
+    setTimeout(function () {
+      addAdvisorMsg('Let\'s start. What brings you here?');
+      showQuickReplies([
+        { label: '\u{1F50D} Help me find my Player ID', action: helpFindId },
+        { label: '\u2694\uFE0F What can you do for me?', action: showCapabilities },
+        { label: '\u{1F331} I\'m new to Kingshot', action: showNewPlayer }
+      ]);
+    }, 700);
+  }
+
+  function helpFindId() {
+    addAdvisorMsg(
+      '<strong>How to find your Player ID:</strong><br><br>' +
+      '1. Open Kingshot<br>' +
+      '2. Tap your <strong>avatar</strong> (top-left)<br>' +
+      '3. <strong>Settings \u2192 Player Info</strong><br>' +
+      '4. The number next to <strong>"FID"</strong> \u2014 usually 7\u201310 digits<br><br>' +
+      'Enter it above and I\'ll pull up everything about your account.'
+    );
+    showQuickReplies([
+      { label: 'Got it, let me enter it now', action: focusInput },
+      { label: 'I don\'t play yet', action: showNewPlayer }
+    ]);
+  }
+
+  function showCapabilities() {
+    addAdvisorMsg(
+      '\u{1F451} <strong>Know your account</strong> \u2014 furnace, spending, server age, pulled instantly<br>' +
+      '\u{1F4CA} <strong>36 calculators</strong> \u2014 all pre-filled with your data<br>' +
+      '\u{1F9E0} <strong>Personalized advice</strong> \u2014 strategy built for your exact situation<br>' +
+      '\u{1F3AE} <strong>Your advisor grows</strong> \u2014 level up, earn XP, I get smarter'
+    );
+    showQuickReplies([
+      { label: 'Let me enter my Player ID', action: focusInput },
+      { label: 'Show me the calculators', action: function () { location.href = 'calculators/building.html'; } }
+    ]);
+  }
+
+  function showNewPlayer() {
+    addAdvisorMsg(
+      'Welcome to the realm. Kingshot is a medieval strategy game \u2014 ' +
+      'build a kingdom, train armies, compete across servers.<br><br>' +
+      'When you\'re ready, come back with your Player ID. The calculators and gift codes work for everyone.'
+    );
+    showQuickReplies([
+      { label: '\u{1F381} Show me gift codes', action: function () {
+        var sub = /\/calculators\//.test(location.pathname);
+        location.href = (sub ? '../' : '') + 'codes.html';
+      }},
+      { label: '\u{1F4CA} Open calculators', action: function () { location.href = 'calculators/building.html'; } }
+    ]);
+  }
+
+  function showFocus(profile) {
+    var advice = window.KSP && window.KSP.getAdvice ? window.KSP.getAdvice(profile) : null;
+    if (advice && advice.tips && advice.tips[0]) {
+      addAdvisorMsg('Today\'s priority: <strong>' + esc(advice.tips[0].title) + '</strong><br><br>' + esc(advice.tips[0].body));
+    } else {
+      addAdvisorMsg('Keep building. Consistency wins in this game.');
+    }
+  }
+
+  function showKingdom(profile) {
+    addAdvisorMsg(
+      '<strong>' + esc(profile.nickname) + '</strong> \u2014 ' + esc(profile.spendingLabel) + ' Governor<br>' +
+      'Kingdom ' + (profile.kid || '?') + ' \u2014 ' + esc(profile.serverAgeLabel || '') + '<br>' +
+      'Furnace Level ' + (profile.furnaceLevel || '?') + ' \u2014 ' + esc(profile.stageLabel || '') +
+      (profile.dollars > 0 ? '<br>Lifetime investment: $' + profile.dollars.toFixed(0) : '')
+    );
+  }
+
+  function focusInput() {
+    minimize();
+    var inp = document.getElementById('fid-input');
+    if (inp) {
+      inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(function () { inp.focus(); }, 400);
+    }
+  }
+
+  // ── Update identity ───────────────────────
+  function updateIdentity(name, title, src) {
+    if (orbImg) orbImg.src = src;
+    if (panelImg) panelImg.src = src;
+    if (panelName) panelName.innerHTML = '<strong>' + esc(name) + '</strong>' + (title ? ' <span>' + esc(title) + '</span>' : '');
+  }
+
+  // ── Init ──────────────────────────────────
+  function init() {
+    build();
+    runEntry();
+
+    // Listen for profile changes
+    var last = sessionStorage.getItem('ksp_profile');
+    setInterval(function () {
+      var cur = sessionStorage.getItem('ksp_profile');
+      if (cur !== last) {
+        last = cur;
+        var st = window.Advisor && window.Advisor.getState ? window.Advisor.getState() : null;
+        if (st) updateIdentity(st.name, (window.Advisor.ARCHETYPES[st.archetype] || {}).title || '', getAvatarSrc());
+        if (engaged) greet();
+      }
+    }, 1000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // ── Public API ────────────────────────────
+  window.AdvisorOrb = {
+    expand: expand,
+    minimize: minimize,
+    addAdvisorMsg: addAdvisorMsg,
+    addUserMsg: addUserMsg,
+    showQuickReplies: showQuickReplies,
+    showSpeechBubble: showSpeech,
+    hideSpeechBubble: hideSpeech,
+    updateIdentity: updateIdentity,
+    isEngaged: function () { return engaged; }
+  };
+})();
