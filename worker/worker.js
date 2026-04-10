@@ -20,6 +20,14 @@ export default {
         return handleAuthVerify(request, env);
       } else if (url.pathname === '/advisor/chat') {
         return handleAdvisorChat(request, env);
+      } else if (url.pathname === '/advisor/chronicle') {
+        return handleChronicle(request, env);
+      } else if (url.pathname === '/advisor/illustration') {
+        return handleIllustration(request, env);
+      } else if (url.pathname === '/advisor/voice') {
+        return handleVoice(request, env);
+      } else if (url.pathname === '/advisor/portrait') {
+        return handlePortrait(request, env);
       }
     }
 
@@ -170,10 +178,21 @@ async function handleAdvisorChat(request, env) {
     '\n\nYou are ' + (advisorName || 'the advisor') + ', archetype: ' + (archetype || 'steward') +
     '. Stay in character. Be concise and strategic.';
 
-  // Retrieve conversation memory
+  // Retrieve conversation memory (tier-aware)
+  // Pro: last 7 days. Elite: full history. Free/anonymous: last 10.
+  // ALL conversations are always STORED — the tier controls what gets LOADED as context.
   let memoryMessages = [];
   if (user && user.memory) {
-    memoryMessages = user.memory.slice(-10);
+    if (user.tier === 'elite') {
+      // Elite: load full relevant history (last 30 exchanges for context window)
+      memoryMessages = user.memory.slice(-30);
+    } else if (user.tier === 'pro' || user.tier === 'war_council') {
+      // Pro/WC: last 7 days of messages
+      const sevenDaysAgo = Date.now() - 7 * 86400000;
+      memoryMessages = user.memory.filter(function(m) { return !m.ts || m.ts > sevenDaysAgo; }).slice(-20);
+    } else {
+      memoryMessages = user.memory.slice(-10);
+    }
   } else {
     const fidMem = await env.KV.get(`memory:${fid}`, { type: 'json' });
     if (fidMem) memoryMessages = fidMem.slice(-10);
@@ -203,7 +222,8 @@ async function handleAdvisorChat(request, env) {
   }
 
   // Store memory + decrement energy
-  const newEntry = [{ role: 'user', content: message }, { role: 'assistant', content: assistantMessage }];
+  const now = Date.now();
+  const newEntry = [{ role: 'user', content: message, ts: now }, { role: 'assistant', content: assistantMessage, ts: now }];
   if (user) {
     user.memory = [...(user.memory || []), ...newEntry].slice(-100);
     if (user.tier === 'free') user.energy_today--;
@@ -236,6 +256,96 @@ async function getUser(request, env) {
 
   const userData = await env.KV.get(`user:${sessionData.email}`, { type: 'json' });
   return userData || null;
+}
+
+// ── Tier check helper ──────────────────────
+const TIER_RANK = { free: 0, pro: 1, war_council: 2, elite: 3 };
+function tierAtLeast(user, required) {
+  if (!user) return false;
+  return (TIER_RANK[user.tier] || 0) >= (TIER_RANK[required] || 0);
+}
+
+// ── Premium: Chronicle (Pro+) ──────────────
+async function handleChronicle(request, env) {
+  const user = await getUser(request, env);
+  if (!tierAtLeast(user, 'pro')) return corsWrap('{"error":"tier_required","required":"pro"}', 403);
+
+  const { playerContext, advisorName, archetype } = await request.json();
+  const system = 'You are ' + (advisorName || 'the chronicler') + ', a medieval ' + (archetype || 'steward') +
+    '. Write a 200-word chronicle entry about this governor. Use formal medieval history style. Reference their real stats. Dramatic but grounded.';
+
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'x-api-key': env.ANTHROPIC_KEY, 'content-type': 'application/json', 'anthropic-version': '2023-06-01' },
+    body: JSON.stringify({ model: 'claude-3-5-haiku-20241022', max_tokens: 400, system, messages: [{ role: 'user', content: 'Player context: ' + (playerContext || 'Unknown') + '\n\nWrite the chronicle entry.' }] }),
+  });
+  const data = await res.json();
+  const text = (data.content && data.content[0]) ? data.content[0].text : 'The chronicler\'s quill has stilled.';
+  return corsWrap(JSON.stringify({ chronicle: text, generated: new Date().toISOString() }));
+}
+
+// ── Premium: Battle Illustration (Pro+) ────
+async function handleIllustration(request, env) {
+  const user = await getUser(request, env);
+  if (!tierAtLeast(user, 'pro')) return corsWrap('{"error":"tier_required","required":"pro"}', 403);
+
+  const { description } = await request.json();
+  const prompt = 'Medieval oil painting battle scene: ' + (description || 'a kingdom siege at dawn') +
+    '. Dark moody lighting, gold accents, painterly style, dramatic composition, game art quality.';
+
+  const res = await fetch('https://api.openai.com/v1/images/generations', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + env.OPENAI_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'dall-e-3', prompt, n: 1, size: '1024x1024', quality: 'hd' }),
+  });
+  const data = await res.json();
+  const url = (data.data && data.data[0]) ? data.data[0].url : null;
+  if (!url) return corsWrap('{"error":"generation failed"}', 500);
+  return corsWrap(JSON.stringify({ image_url: url, generated: new Date().toISOString() }));
+}
+
+// ── Premium: Voice Message (Elite) ─────────
+async function handleVoice(request, env) {
+  const user = await getUser(request, env);
+  if (!tierAtLeast(user, 'elite')) return corsWrap('{"error":"tier_required","required":"elite"}', 403);
+
+  const { text } = await request.json();
+  const res = await fetch('https://api.openai.com/v1/audio/speech', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + env.OPENAI_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'tts-1', voice: 'nova', input: text || 'Governor.', speed: 0.92 }),
+  });
+  const audio = await res.arrayBuffer();
+  return new Response(audio, {
+    status: 200,
+    headers: {
+      'Content-Type': 'audio/mpeg',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'true',
+      'Cache-Control': 'no-store',
+    },
+  });
+}
+
+// ── Premium: Custom Portrait (Elite) ───────
+async function handlePortrait(request, env) {
+  const user = await getUser(request, env);
+  if (!tierAtLeast(user, 'elite')) return corsWrap('{"error":"tier_required","required":"elite"}', 403);
+
+  const { description } = await request.json();
+  const prompt = 'Medieval fantasy character portrait, head and shoulders, ' +
+    (description || 'a wise royal advisor') +
+    '. Dark moody background, gold rim lighting, painterly digital art, game character portrait, high detail face, dramatic chiaroscuro.';
+
+  const res = await fetch('https://api.openai.com/v1/images/generations', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + env.OPENAI_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'dall-e-3', prompt, n: 1, size: '1024x1024', quality: 'hd' }),
+  });
+  const data = await res.json();
+  const url = (data.data && data.data[0]) ? data.data[0].url : null;
+  if (!url) return corsWrap('{"error":"generation failed"}', 500);
+  return corsWrap(JSON.stringify({ image_url: url, generated: new Date().toISOString() }));
 }
 
 function corsWrap(body, status = 200) {
