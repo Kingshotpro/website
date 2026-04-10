@@ -84,12 +84,30 @@
     orbParallax = document.createElement('div');
     orbParallax.className = 'orb-parallax';
 
-    // Static image with CSS breathing + firelight (always alive, no lip movement)
+    // Looping video for alive orb (Midjourney ping-pong, no lip sync)
+    var orbVid = document.createElement('video');
+    orbVid.className = 'orb-vid';
+    orbVid.src = getBase() + 'avatars/advisor_idle_loop.mp4';
+    orbVid.muted = true;
+    orbVid.loop = true;
+    orbVid.autoplay = true;
+    orbVid.playsInline = true;
+    orbVid.setAttribute('playsinline', '');
+    orbVid.poster = src;
+
+    // Fallback static image if video fails
     orbImg = document.createElement('img');
     orbImg.className = 'orb-img';
     orbImg.src = src;
     orbImg.alt = name;
+    orbImg.style.display = 'none';
 
+    orbVid.addEventListener('error', function () {
+      orbVid.style.display = 'none';
+      orbImg.style.display = 'block';
+    });
+
+    orbParallax.appendChild(orbVid);
     orbParallax.appendChild(orbImg);
     orbCircle.appendChild(orbParallax);
     orbWrap.appendChild(orbCircle);
