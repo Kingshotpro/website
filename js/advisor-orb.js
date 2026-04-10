@@ -214,9 +214,9 @@
       orbWrap.style.opacity = '1';
     });
 
-    // 2. Speech bubble appears — period-appropriate invitation to click
+    // 2. Speech bubble appears — invitation to click
     setTimeout(function () {
-      showSpeech('I have counsel for you, Governor.');
+      showSpeech('I have counsel for you, Governor.<br><span class="orb-tap-hint">\u25B6 Tap to begin</span>');
     }, 1000);
 
     // 3. Clickable at center — clicking speech bubble OR orb opens council immediately
