@@ -35,21 +35,31 @@
       <div class="hero-eyebrow">Free · No login required</div>
       <h1>The tool that knows<br><span>your Kingshot account</span></h1>
       <p class="hero-sub">
-        Enter your FID and get instant personalized advice, resource calculators,
+        Enter your Player ID and get instant personalized advice, resource calculators,
         and server intelligence — built around you, not generic guides.
       </p>
 
       <!-- FID FORM -->
       <form class="fid-form" id="fid-form" autocomplete="off">
+        <label class="fid-label" for="fid-input">
+          Your Player ID
+          <button type="button" class="fid-help-btn" id="fid-help-btn" aria-label="What is a Player ID?">?</button>
+        </label>
+        <div class="fid-help-tooltip hidden" id="fid-help-tooltip">
+          <strong>How to find your Player ID:</strong><br>
+          In Kingshot, tap your avatar (top-left) &rarr; Settings &rarr; Player Info.<br>
+          Your ID is the number next to "FID" — usually 7-10 digits.<br>
+          <em>Example: 7291048</em>
+        </div>
         <div class="fid-input-row">
           <input
             type="text"
             id="fid-input"
             inputmode="numeric"
-            placeholder="Enter your FID (e.g. 7291048)"
+            placeholder="Enter your Player ID (e.g. 7291048)"
             maxlength="12"
             pattern="\d{5,12}"
-            aria-label="Player FID"
+            aria-label="Player ID"
             required
           >
           <button type="submit" class="btn btn-primary" id="fid-btn">Look up</button>
@@ -271,9 +281,81 @@
   </div>
 </footer>
 
+<!-- ─── ADVISOR SELECTION OVERLAY ───── -->
+<div class="adv-select-overlay" id="adv-select-overlay">
+  <div class="adv-select-inner">
+    <h2 class="adv-select-title" id="adv-select-title">Governor. Every ruler needs a trusted voice. Choose yours.</h2>
+
+    <div class="adv-select-grid">
+      <!-- Steward -->
+      <button class="adv-card" data-archetype="steward">
+        <div class="adv-card-img">
+          <img src="avatars/male_default.png" alt="The Steward" loading="lazy">
+        </div>
+        <div class="adv-card-body">
+          <h3>The Steward</h3>
+          <p class="adv-card-spec">Resources & efficiency</p>
+          <p class="adv-card-voice">"Your eastern towers draw twice the lumber they need. Allow me."</p>
+        </div>
+      </button>
+
+      <!-- Sage -->
+      <button class="adv-card" data-archetype="sage">
+        <div class="adv-card-img">
+          <img src="avatars/female_default.png" alt="The Sage" loading="lazy">
+        </div>
+        <div class="adv-card-body">
+          <h3>The Sage</h3>
+          <p class="adv-card-spec">Strategy & long-term planning</p>
+          <p class="adv-card-voice">"You asked the wrong question. Here is the right one."</p>
+        </div>
+      </button>
+
+      <!-- Herald -->
+      <button class="adv-card" data-archetype="herald">
+        <div class="adv-card-img">
+          <img src="avatars/male_default.png" alt="The Herald" loading="lazy">
+        </div>
+        <div class="adv-card-body">
+          <h3>The Herald</h3>
+          <p class="adv-card-spec">Rankings & competitive standing</p>
+          <p class="adv-card-voice">"Your name isn't on the board yet. Let's fix that."</p>
+        </div>
+      </button>
+    </div>
+
+    <!-- Locked Pro archetypes -->
+    <div class="adv-select-pro">
+      <div class="adv-card adv-card-locked">
+        <div class="adv-card-img locked-img"></div>
+        <div class="adv-card-body">
+          <h3>The Conqueror <span class="sb-badge pro">Pro</span></h3>
+          <p class="adv-card-spec">Dominance & conquest</p>
+        </div>
+      </div>
+      <div class="adv-card adv-card-locked">
+        <div class="adv-card-img locked-img"></div>
+        <div class="adv-card-body">
+          <h3>The Oracle <span class="sb-badge pro">Pro</span></h3>
+          <p class="adv-card-spec">Foresight & prediction</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Name reveal (hidden until selection) -->
+    <div class="adv-reveal" id="adv-reveal">
+      <div class="adv-reveal-img" id="adv-reveal-img"></div>
+      <p class="adv-reveal-text" id="adv-reveal-text"></p>
+    </div>
+  </div>
+</div>
+
 <script src="js/layout.js"></script>
 <script src="js/fid.js"></script>
 <script src="js/advisory.js"></script>
+<script src="js/advisor-names.js"></script>
+<script src="js/advisor.js"></script>
+<script src="js/advisor-select.js"></script>
 <script src="js/steward.js"></script>
 </body>
 </html>

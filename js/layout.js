@@ -178,7 +178,11 @@
   function topbarHTML() {
     var profileBit = '';
     try {
-      var raw = sessionStorage.getItem('ksp_profile');
+      var raw = null;
+      // Try localStorage first (persistent), then sessionStorage (fallback)
+      var lastFid = localStorage.getItem('ksp_last_fid');
+      if (lastFid) raw = localStorage.getItem('ksp_profile_' + lastFid);
+      if (!raw) raw = sessionStorage.getItem('ksp_profile');
       if (raw) {
         var p = JSON.parse(raw);
         var ch = (p.nickname || '?').charAt(0).toUpperCase();

@@ -3,15 +3,16 @@
  * KingshotPro | Phase 1
  *
  * Calls the Century Games player API, derives player profile,
- * stores in sessionStorage, triggers advisory display.
+ * stores in localStorage (keyed by FID) with sessionStorage fallback.
  */
 
 // All API calls go through the Cloudflare Worker proxy at api.kingshotpro.com.
 // Direct centurygame.com calls are intentionally avoided — proxy keeps user IPs
 // away from Century Games' origin and centralises any future signing logic.
 // See worker/worker.js + worker/wrangler.toml for deployment.
-const FID_API    = 'https://kingshotpro-api.kingshotpro.workers.dev/player';
-const PROFILE_KEY = 'ksp_profile';
+const FID_API        = 'https://kingshotpro-api.kingshotpro.workers.dev/player';
+const PROFILE_KEY    = 'ksp_profile';       // sessionStorage fallback key
+const LAST_FID_KEY   = 'ksp_last_fid';      // localStorage — last looked-up FID
 
 // ─────────────────────────────────────────
 // API CALL
@@ -111,20 +112,52 @@ function classifyProfile(raw) {
 }
 
 // ─────────────────────────────────────────
-// SESSION STORAGE
+// PROFILE STORAGE (localStorage primary, sessionStorage fallback)
 // ─────────────────────────────────────────
 
 function saveProfile(profile) {
+  var json = JSON.stringify(profile);
+  var fid  = profile.fid || 'unknown';
+
+  // Primary: localStorage keyed by FID (persists across sessions)
   try {
-    sessionStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
-  } catch (e) { /* private mode — ignore */ }
+    localStorage.setItem('ksp_profile_' + fid, json);
+    localStorage.setItem(LAST_FID_KEY, fid);
+  } catch (e) { /* private mode or quota — fall through */ }
+
+  // Fallback: sessionStorage with generic key (backward compat)
+  try {
+    sessionStorage.setItem(PROFILE_KEY, json);
+  } catch (e) { /* ignore */ }
 }
 
 function loadProfile() {
+  // 1. Try localStorage with last known FID
   try {
-    const raw = sessionStorage.getItem(PROFILE_KEY);
+    var lastFid = localStorage.getItem(LAST_FID_KEY);
+    if (lastFid) {
+      var stored = localStorage.getItem('ksp_profile_' + lastFid);
+      if (stored) return JSON.parse(stored);
+    }
+  } catch (e) { /* fall through */ }
+
+  // 2. Fallback: sessionStorage (backward compat / private browsing)
+  try {
+    var raw = sessionStorage.getItem(PROFILE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch (e) { return null; }
+}
+
+function loadProfileByFid(fid) {
+  try {
+    var stored = localStorage.getItem('ksp_profile_' + fid);
+    return stored ? JSON.parse(stored) : null;
+  } catch (e) { return null; }
+}
+
+function getLastFid() {
+  try { return localStorage.getItem(LAST_FID_KEY) || ''; }
+  catch (e) { return ''; }
 }
 
 function clearProfile() {
@@ -133,7 +166,9 @@ function clearProfile() {
 
 // Export for other pages
 window.KSP = window.KSP || {};
-window.KSP.loadProfile = loadProfile;
+window.KSP.loadProfile    = loadProfile;
+window.KSP.loadProfileByFid = loadProfileByFid;
+window.KSP.getLastFid     = getLastFid;
 
 // ─────────────────────────────────────────
 // PROFILE CARD RENDERER
@@ -215,6 +250,19 @@ async function handleFidSubmit(e) {
     const profile = classifyProfile({ ...raw, fid });
     saveProfile(profile);
     renderProfileCard(profile);
+
+    // Advisor system: load or trigger selection
+    if (window.Advisor) {
+      const hasAdvisor = window.Advisor.load(fid);
+      if (hasAdvisor) {
+        // Returning player — process visit + grant lookup XP
+        window.Advisor.processDailyVisit();
+        window.Advisor.grantXP('fid_lookup', 25);
+      } else if (window.KSP?.showAdvisorSelection) {
+        // New player — show archetype selection overlay
+        window.KSP.showAdvisorSelection(profile);
+      }
+    }
 
     // Trigger advisory display
     if (window.KSP?.renderAdvisory) {
@@ -311,7 +359,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const manualForm = document.getElementById('manual-form');
   if (manualForm) manualForm.addEventListener('submit', handleManualSubmit);
 
-  // Restore profile if page was reloaded
+  // Wire FID help tooltip
+  const helpBtn = document.getElementById('fid-help-btn');
+  const helpTip = document.getElementById('fid-help-tooltip');
+  if (helpBtn && helpTip) {
+    helpBtn.addEventListener('click', function () {
+      helpTip.classList.toggle('hidden');
+    });
+  }
+
+  // Auto-fill FID input for returning players
+  const lastFid = getLastFid();
+  const input   = document.getElementById('fid-input');
+  if (lastFid && input && !input.value) {
+    input.value = lastFid;
+  }
+
+  // Restore profile from localStorage (persists across sessions now)
   const saved = loadProfile();
   if (saved) {
     renderProfileCard(saved);

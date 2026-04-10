@@ -25,7 +25,13 @@
   }
 
   function getProfile() {
+    // Try localStorage first (persistent), then sessionStorage (fallback)
     try {
+      var lastFid = localStorage.getItem('ksp_last_fid');
+      if (lastFid) {
+        var stored = localStorage.getItem('ksp_profile_' + lastFid);
+        if (stored) return JSON.parse(stored);
+      }
       var raw = sessionStorage.getItem(PROFILE_KEY);
       return raw ? JSON.parse(raw) : null;
     } catch (e) { return null; }
@@ -205,7 +211,7 @@
     buildWidget();
 
     // Re-greet if profile is saved after page load (FID form submit)
-    // The original fid.js saves to sessionStorage; we poll for changes
+    // fid.js writes to both localStorage and sessionStorage; poll sessionStorage for changes
     var lastProfile = sessionStorage.getItem(PROFILE_KEY);
     setInterval(function () {
       var current = sessionStorage.getItem(PROFILE_KEY);
