@@ -48,8 +48,8 @@
   function getIdleVideo() { return getBase() + 'avatars/advisor_idle.mp4'; }
   function getGreetingVideo() { return getBase() + 'avatars/advisor_greeting.mp4'; }
 
+  // Greeting plays once per page load — NOT cached across sessions
   var greetingPlayed = false;
-  try { greetingPlayed = sessionStorage.getItem('ksp_greeting_played') === '1'; } catch (e) {}
 
   function getAdvisorName() {
     var st = window.Advisor && window.Advisor.getState ? window.Advisor.getState() : null;
@@ -270,34 +270,43 @@
 
     var vid = document.getElementById('orb-panel-vid');
 
-    // First open: play the greeting video with sound
+    // First open: play greeting with audio. User clicked, so autoplay policy is satisfied.
     if (!greetingPlayed && vid) {
+      greetingPlayed = true;
+
       vid.src = getGreetingVideo();
       vid.muted = false;
       vid.loop = false;
+      vid.load();
 
-      // Wait for video to load before playing
-      vid.addEventListener('canplay', function onReady() {
-        vid.removeEventListener('canplay', onReady);
-        vid.play().catch(function () {
-          // Browser blocked unmuted autoplay — try muted
-          vid.muted = true;
-          vid.play().catch(function () {});
+      function playGreeting() {
+        var playPromise = vid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function () {
+            // Browser still blocked audio — show tap-to-hear overlay
+            vid.muted = true;
+            vid.play().catch(function () {});
+            showTapToHear(vid);
+          });
+        }
+      }
+
+      // Play when ready
+      if (vid.readyState >= 3) {
+        playGreeting();
+      } else {
+        vid.addEventListener('canplay', function onReady() {
+          vid.removeEventListener('canplay', onReady);
+          playGreeting();
         });
-      });
-      vid.load(); // force load of new source
+      }
 
+      // When greeting ends, switch to idle loop
       vid.addEventListener('ended', function onEnd() {
         vid.removeEventListener('ended', onEnd);
-        vid.src = getIdleVideo();
-        vid.muted = true;
-        vid.loop = true;
-        vid.load();
-        vid.play().catch(function () {});
+        switchToIdle(vid);
       });
 
-      greetingPlayed = true;
-      try { sessionStorage.setItem('ksp_greeting_played', '1'); } catch (e) {}
     } else if (vid) {
       vid.play().catch(function () {});
     }
@@ -314,6 +323,36 @@
     panel.classList.remove('visible');
     backdrop.classList.remove('visible');
     orbWrap.classList.remove('orb-hidden');
+  }
+
+  // ── Video helpers ─────────────────────────
+  function switchToIdle(vid) {
+    vid.src = getIdleVideo();
+    vid.muted = true;
+    vid.loop = true;
+    vid.load();
+    vid.play().catch(function () {});
+  }
+
+  function showTapToHear(vid) {
+    var portrait = document.getElementById('orb-panel-portrait');
+    if (!portrait) return;
+    var tap = document.createElement('div');
+    tap.className = 'orb-tap-audio';
+    tap.innerHTML = '\u{1F50A} Tap to hear her speak';
+    portrait.appendChild(tap);
+    tap.addEventListener('click', function () {
+      tap.remove();
+      vid.currentTime = 0;
+      vid.muted = false;
+      vid.loop = false;
+      vid.play().catch(function () {});
+      // Re-attach ended handler
+      vid.addEventListener('ended', function onEnd() {
+        vid.removeEventListener('ended', onEnd);
+        switchToIdle(vid);
+      });
+    });
   }
 
   // ── Messages ──────────────────────────────

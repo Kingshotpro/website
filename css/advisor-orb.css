@@ -215,6 +215,30 @@
   display: block;
 }
 
+/* Tap to hear audio overlay */
+.orb-tap-audio {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+  z-index: 3;
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--gold);
+  animation: orbMsgIn 400ms ease both;
+  white-space: nowrap;
+}
+.orb-tap-audio:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
 /* Minimize button */
 .orb-panel-min {
   position: absolute;
