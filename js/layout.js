@@ -347,12 +347,15 @@
   function showLevelUpBanner(data) {
     var state = window.Advisor ? window.Advisor.getState() : null;
     var name = state ? state.name : 'Your Advisor';
+    var arch = state ? state.archetype : 'steward';
+    var msg = window.getLevelUpMessage ? window.getLevelUpMessage(arch, data.to) : '';
 
     var banner = document.createElement('div');
     banner.className = 'levelup-banner';
     banner.innerHTML =
       '<span class="levelup-icon">\u2B50</span> ' +
-      '<strong>' + esc(name) + '</strong> reached <strong>Level ' + data.to + '</strong>!';
+      '<strong>' + esc(name) + '</strong> reached <strong>Level ' + data.to + '</strong>!' +
+      (msg ? '<br><span style="font-size:13px;opacity:0.8;font-style:italic;">' + esc(msg) + '</span>' : '');
     document.body.appendChild(banner);
 
     requestAnimationFrame(function () { banner.classList.add('visible'); });

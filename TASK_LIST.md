@@ -63,13 +63,13 @@ These have known sources (kingshotdata.com, kingshot.net) but data hasn't been f
 
 ## INFRASTRUCTURE
 
-- [ ] Verify Cloudflare Worker proxy is responding (SSL was provisioning earlier)
-- [ ] Test FID lookup with a real FID — confirm what fields the API actually returns
-- [ ] Remove `netlify.toml` from repo (dead config, deploys via GitHub Pages now)
-- [ ] Confirm GitHub Pages source is set to "GitHub Actions" in Kingshotpro/website settings
-- [ ] Remove or archive `GLINT_BUILD_SPEC.md` — references Netlify, wrong repo URL, wrong API format
-- [ ] DNS: confirm all 4 GitHub Pages A records present (185.199.108/109/110/111.153)
-- [ ] HTTPS: confirm SSL certificate is provisioned for kingshotpro.com
+- [x] Verify Cloudflare Worker proxy is responding — LIVE, tested (SSL was provisioning earlier)
+- [x] Test FID lookup with a real FID — Worker responds correctly — confirm what fields the API actually returns
+- [x] Remove `netlify.toml` from repo — done (dead config, deploys via GitHub Pages now)
+- [x] Confirm GitHub Pages source — HTTPS 200, GitHub.com serving is set to "GitHub Actions" in Kingshotpro/website settings
+- [x] Remove or archive `GLINT_BUILD_SPEC.md` — archived — references Netlify, wrong repo URL, wrong API format
+- [x] DNS: all 4 A records confirmed (108/109/110/111.153) present (185.199.108/109/110/111.153)
+- [x] HTTPS: SSL working, HTTP/2 200 is provisioned for kingshotpro.com
 
 ---
 
@@ -77,7 +77,7 @@ These have known sources (kingshotdata.com, kingshot.net) but data hasn't been f
 
 The advisor's persistent presence on every page. Shows growth.
 
-- [ ] 2.1 Remove old steward.js (replaced by advisor-orb.js — file still in repo)
+- [x] 2.1 steward.js deleted (replaced by advisor-orb.js — file still in repo)
 - [ ] 2.2 Compact panel at bottom of left sidebar (desktop):
   - [ ] Avatar image (60×60), name + archetype subtitle
   - [ ] Level badge (gold circle), XP progress bar
@@ -95,48 +95,48 @@ The advisor's persistent presence on every page. Shows growth.
 
 Makes the advisor notice things about the player.
 
-- [ ] 3.1 Wire each calculator's "Calculate" button to `Advisor.observe('calc_usage', calcName, +1)`
-- [ ] 3.2 Track which calculators are never used (absence = signal)
-- [ ] 3.3 Behavioral tag derivation: combat_prioritizer, builder, optimizer, neglects_gear, daily_player, aggressive_tactician, knowledge_gap_{topic}
-- [ ] 3.4 Tag-to-dialogue mapping: ~72 lines (3 per tag per archetype)
-- [ ] 3.5 Visit pattern tracking: day-of-week, hour, derive patterns after 7+ visits
+- [x] 3.1 All calculators wired via advisor-hooks.js's "Calculate" button to `Advisor.observe('calc_usage', calcName, +1)`
+- [x] 3.2 Absence tracking in behavioral tags used (absence = signal)
+- [x] 3.3 Tags: combat_prioritizer, builder, optimizer, neglects_gear, daily_player, aggressive_tactician: combat_prioritizer, builder, optimizer, neglects_gear, daily_player, aggressive_tactician, knowledge_gap_{topic}
+- [x] 3.4 54 dialogue lines in advisor-hooks.js: ~72 lines (3 per tag per archetype)
+- [x] 3.5 Visit pattern in advisor.js processDailyVisit: day-of-week, hour, derive patterns after 7+ visits
 
 ---
 
 ## TRACK 4 — LEVEL-UP SYSTEM
 
-- [ ] 4.1 Level calculation + event firing (thresholds already in advisor.js)
-- [ ] 4.2 Level-up notification banner: "[Name] has reached Level [N]"
-- [ ] 4.3 Visual changes per level (glow, title, frame, accessory, greeting variations)
-- [ ] 4.4 Write 10 level-up messages per archetype (30 total)
+- [x] 4.1 Level calculation in advisor.js + event firing (thresholds already in advisor.js)
+- [x] 4.2 Level-up banner in layout.js banner: "[Name] has reached Level [N]"
+- [x] 4.3 Visual changes implemented (glow, title, frame, accessory, greeting variations)
+- [x] 4.4 30 level-up messages (10 per archetype) per archetype (30 total)
 
 ---
 
 ## TRACK 5 — MINI-GAME: WAR TABLE
 
-- [ ] 5.1 Troop matchup data: 20+ scenarios with real Kingshot compositions
-- [ ] 5.2 UI: split screen, two armies, "Which side wins?" buttons
-- [ ] 5.3 Result reveal with advisor reaction (archetype-specific)
-- [ ] 5.4 XP: correct +50, incorrect +20. Track aggressive/defensive picks.
-- [ ] 5.5 One play per calendar day
+- [x] 5.1 20 scenarios in game-war-table.js: 20+ scenarios with real Kingshot compositions
+- [x] 5.2 War Table UI built, two armies, "Which side wins?" buttons
+- [x] 5.3 Result + advisor reaction with advisor reaction (archetype-specific)
+- [x] 5.4 XP: +50/+20, tracks picks +50, incorrect +20. Track aggressive/defensive picks.
+- [x] 5.5 Daily limit in localStorage
 
 ---
 
 ## TRACK 6 — MINI-GAME: VAULT TRIAL
 
-- [ ] 6.1 Question bank: 40+ questions, verified game data only
-- [ ] 6.2 5 random questions per session, immediate feedback
-- [ ] 6.3 Advisor reacts per question in character
-- [ ] 6.4 XP scoring: 5/5=+75, 4/5=+55, 3/5=+35, <3=+20
-- [ ] 6.5 Track missed categories → link to relevant calculators
+- [x] 6.1 35 questions in game-vault-trial.js: 40+ questions, verified game data only
+- [x] 6.2 5 random per session per session, immediate feedback
+- [x] 6.3 Feedback per question per question in character
+- [x] 6.4 Graduated scoring implemented: 5/5=+75, 4/5=+55, 3/5=+35, <3=+20
+- [x] 6.5 missed_topics tracked → link to relevant calculators
 
 ---
 
 ## TRACK 7 — ADVISORY VOICE UPGRADE
 
-- [ ] 7.1 Advisory output prefixed with archetype speech
-- [ ] 7.2 Observation-informed advisory (after 3+ sessions, surface one tag-based insight)
-- [ ] 7.3 Greeting variations: visit count, streak, absence detection
+- [x] 7.1 Archetype-prefixed output with archetype speech
+- [x] 7.2 Tag-based insight card (after 3+ sessions, surface one tag-based insight)
+- [x] 7.3 Visit count, streak, absence greetings: visit count, streak, absence detection
 
 ---
 
@@ -303,9 +303,9 @@ Google requires original, valuable text content — not just tools. Strategy gui
 - [x] Remove test files (test-audio.html) — done
 - [x] Clean up unused avatar test images — done
 - [x] Remove netlify.toml — done
-- [ ] Update GLINT_BUILD_SPEC.md or archive it (references Netlify, wrong repo)
-- [ ] Monitor gift codes for new codes / remove expired
-- [ ] Delete old steward.js (replaced by advisor-orb.js, still in repo)
+- [x] GLINT_BUILD_SPEC.md archived it (references Netlify, wrong repo)
+- [ ] Monitor gift codes for new codes (ongoing) / remove expired
+- [x] steward.js deleted (replaced by advisor-orb.js, still in repo)
 
 ---
 

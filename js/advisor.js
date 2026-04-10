@@ -453,3 +453,47 @@
   // ── Export ────────────────────────────────
   window.Advisor = Advisor;
 })();
+var LEVELUP_MESSAGES = {
+  steward: [
+    "Your diligence has been rewarded, as you ascend to new heights of stewardship.",
+    "With each record you keep, your precision sharpens like a well-honed quill.",
+    "Devotion to duty has strengthened the kingdom's very foundations.",
+    "As you serve with loyalty, the kingdom's ledgers reflect your growth.",
+    "Your practical wisdom has woven a stronger fabric for the realm.",
+    "Each calculated step fortifies the kingdom's core.",
+    "Your steadfast service is the bedrock upon which prosperity is built.",
+    "In your precise stewardship, the kingdom finds its balance.",
+    "With unwavering dedication, you have become the kingdom's cornerstone.",
+    "A master steward now stands, your journey a testament to unwavering devotion."
+  ],
+  sage: [
+    "Your journey through the annals of time unveils deeper wisdom.",
+    "The patterns of the past reveal their secrets to your patient gaze.",
+    "As you ascend, the tapestry of knowledge unfurls before you.",
+    "The echoes of ancient wisdom guide your analytical mind.",
+    "With each level, the mysteries of the cosmos become clearer.",
+    "Time bends to your will as your understanding deepens.",
+    "In the dance of knowledge, you find your rhythm.",
+    "Your insights illuminate paths unseen by lesser minds.",
+    "The wisdom you wield shapes the very fabric of reality.",
+    "A sage of great renown, your journey has become legend."
+  ],
+  herald: [
+    "Your climb is swift, leaving a trail of triumph in your wake.",
+    "With each victory, your standing grows ever more formidable.",
+    "The board trembles under the weight of your relentless pursuit.",
+    "Your mark upon the realm is undeniable and bold.",
+    "In the race to glory, you lead with unmatched fervor.",
+    "Every challenge conquered is a testament to your prowess.",
+    "Your competitive spirit blazes a path through the ranks.",
+    "With urgency and might, you carve your name into history.",
+    "Your ascent is a testament to your unyielding determination.",
+    "A herald of unrivaled stature, your journey is a saga of conquest."
+  ]
+};
+// Get level-up message for the current archetype + level
+window.getLevelUpMessage = function (archetype, level) {
+  var bank = LEVELUP_MESSAGES[archetype] || LEVELUP_MESSAGES.steward;
+  var idx = Math.min(level - 1, bank.length - 1);
+  return bank[idx] || bank[bank.length - 1];
+};
