@@ -417,6 +417,29 @@
   background: var(--surface);
 }
 
+/* XP Toast notification */
+.xp-toast {
+  position: fixed;
+  top: 70px;
+  right: 30px;
+  z-index: 600;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(240, 192, 64, 0.4);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms ease, transform 300ms ease;
+  pointer-events: none;
+}
+.xp-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* In-chat Player ID input */
 .orb-fid-input {
   display: flex;
