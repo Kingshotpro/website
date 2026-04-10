@@ -576,6 +576,73 @@
   transform: translateY(0);
 }
 
+/* ── AI Chat Input Row ────────────────────── */
+.orb-chat-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.orb-chat-input-row input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+}
+.orb-chat-input-row input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.orb-chat-input-row input::placeholder { color: var(--text-muted); }
+.orb-chat-send-btn {
+  padding: 10px 16px;
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.orb-chat-send-btn:hover { opacity: 0.9; }
+
+/* Energy bar */
+.orb-energy-wrap {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.orb-energy-track {
+  height: 4px;
+  background: var(--bg);
+  border-radius: 2px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+.orb-energy-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 400ms ease;
+}
+
+/* Typing dots */
+.typing-dots {
+  display: inline-block;
+  animation: typingPulse 1.2s ease-in-out infinite;
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+@keyframes typingPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
 /* In-chat Player ID input */
 .orb-fid-input {
   display: flex;
