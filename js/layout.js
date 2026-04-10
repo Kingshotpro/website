@@ -69,6 +69,8 @@
     { icon: '\u{1F4B0}', label: 'F2P Guide',             href: B + 'guides/f2p.html',                key: 'f2p',         badges: ['New'] },
     { icon: '\u2694\uFE0F', label: 'KvK Guide',          href: B + 'guides/kvk.html',                key: 'kvk',         badges: ['New'] },
     { icon: '\u{1F9B8}', label: 'Hero Guide',            href: B + 'guides/hero-guide.html',          key: 'hero-guide',  badges: ['New'] },
+    { icon: '\u{1F525}', label: 'Furnace Guide',          href: B + 'guides/furnace.html',              key: 'furnace',     badges: ['New'] },
+    { icon: '\u{1F91D}', label: 'Alliance Guide',        href: B + 'guides/alliance.html',             key: 'alliance-guide', badges: ['New'] },
     { icon: '\u{1F4DA}', label: 'Glossary',              href: B + 'guides/glossary.html',            key: 'glossary' },
   ];
 

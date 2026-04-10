@@ -347,3 +347,11 @@ BLOCKED:  Track 11 (AI integration — needs pricing research 9x3x3)
 ---
 
 *Every Claude: read this before building. Update it before leaving. Don't build what isn't listed without Architect approval.*
+
+---
+
+## ACTIVE REMINDERS
+
+- [ ] **CHECK SIMLI:** Ysabel face submitted ~6pm EDT April 10, 2026. Processing takes up to 24 hours. Check app.simli.com → Your Faces by April 11-12. Copy Face ID → give to Claude to wire lip sync integration.
+- [ ] **Simli API key:** 05ll4nqf31s20n3gk232x4fi
+- [ ] **Simli plan:** Hobby $10/mo, $25/mo spending cap, 1,000 min/mo at $0.01/min
