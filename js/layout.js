@@ -11,7 +11,7 @@
 
   // ── Path prefix (pages in /calculators/ or /guides/ need ../) ──
   var loc = window.location.pathname;
-  var inSub = /\/calculators\/|\/guides\//.test(loc);
+  var inSub = /\/calculators\/|\/guides\/|\/games\//.test(loc);
   var B = inSub ? '../' : '';
 
   // ── Navigation items ──────────────────────
@@ -58,6 +58,9 @@
     { icon: '\u{1F4AA}', label: 'Power Calculator',     href: B + 'calculators/power.html',         key: 'power',       badges: ['New'] },
     { icon: '\u2705',   label: 'Daily Checklist',       href: B + 'calculators/daily.html',         key: 'daily',       badges: ['New'] },
     { icon: '\u{1F4C5}', label: 'Event Timer',          href: B + 'calculators/events.html',        key: 'events',      badges: ['New'] },
+    { cat: 'GAMES' },
+    { icon: '\u2694\uFE0F', label: 'War Table',          href: B + 'games/war-table.html',           key: 'war-table',   badges: ['New', 'Daily'] },
+    { icon: '\u{1F3F0}', label: 'Vault Trial',           href: B + 'games/vault-trial.html',         key: 'vault-trial', badges: ['New', 'Daily'] },
     { cat: 'GUIDES' },
     { icon: '\u{1F4D6}', label: 'Beginner Guide',       href: B + 'guides/beginner.html',           key: 'beginner',    badges: ['New'] },
     { icon: '\u{1F4B0}', label: 'F2P Guide',             href: B + 'guides/f2p.html',                key: 'f2p',         badges: ['New'] },

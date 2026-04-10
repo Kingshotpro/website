@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vault Trial — KingshotPro</title>
+  <meta name="description" content="Test your Kingshot knowledge. Five questions. How well do you know your game? Daily quiz with XP rewards.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/advisor-orb.css">
+  <style>
+    .vt-question { max-width: 600px; margin: 0 auto; }
+    .vt-progress { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .vt-text { color: var(--text); font-size: 18px; margin-bottom: 20px; line-height: 1.5; }
+    .vt-options { display: flex; flex-direction: column; gap: 10px; }
+    .vt-opt { padding: 14px 18px; text-align: left; font-size: 14px; width: 100%; transition: border-color 0.2s, background 0.2s; }
+    .vt-opt:hover:not(:disabled) { border-color: var(--gold); background: var(--surface-2); }
+    .vt-opt:disabled { cursor: default; opacity: 0.8; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container" style="max-width:800px;">
+  <h1 style="color:var(--gold);text-align:center;margin-bottom:8px;">The Vault Trial</h1>
+  <p class="text-muted" style="text-align:center;margin-bottom:32px;">Five questions stand between you and knowledge. How well do you know your kingdom?</p>
+  <div id="vt-game"></div>
+</div></div>
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+</div></footer>
+<script src="../js/layout.js"></script>
+<script src="../js/advisor-names.js"></script>
+<script src="../js/advisor.js"></script>
+<script src="../js/advisor-orb.js"></script>
+<script src="../js/advisor-hooks.js"></script>
+<script src="../js/game-vault-trial.js"></script>
+</body>
+</html>
