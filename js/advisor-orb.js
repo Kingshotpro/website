@@ -275,18 +275,27 @@
       vid.src = getGreetingVideo();
       vid.muted = false;
       vid.loop = false;
-      vid.play().catch(function () {
-        // Autoplay with audio blocked — try muted
-        vid.muted = true;
-        vid.play().catch(function () {});
+
+      // Wait for video to load before playing
+      vid.addEventListener('canplay', function onReady() {
+        vid.removeEventListener('canplay', onReady);
+        vid.play().catch(function () {
+          // Browser blocked unmuted autoplay — try muted
+          vid.muted = true;
+          vid.play().catch(function () {});
+        });
       });
+      vid.load(); // force load of new source
+
       vid.addEventListener('ended', function onEnd() {
         vid.removeEventListener('ended', onEnd);
         vid.src = getIdleVideo();
         vid.muted = true;
         vid.loop = true;
+        vid.load();
         vid.play().catch(function () {});
       });
+
       greetingPlayed = true;
       try { sessionStorage.setItem('ksp_greeting_played', '1'); } catch (e) {}
     } else if (vid) {
