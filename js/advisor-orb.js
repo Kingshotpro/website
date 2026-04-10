@@ -34,13 +34,22 @@
     } catch (e) { return null; }
   }
 
+  function getBase() {
+    return /\/calculators\/|\/games\//.test(location.pathname) ? '../' : '';
+  }
+
   function getAvatarSrc() {
     if (window.Advisor && window.Advisor.getAvatarImage) {
       var s = window.Advisor.getAvatarImage(); if (s) return s;
     }
-    var sub = /\/calculators\/|\/games\//.test(location.pathname);
-    return (sub ? '../' : '') + 'avatars/female_default.png';
+    return getBase() + 'avatars/female_default.png';
   }
+
+  function getIdleVideo() { return getBase() + 'avatars/advisor_idle.mp4'; }
+  function getGreetingVideo() { return getBase() + 'avatars/advisor_greeting.mp4'; }
+
+  var greetingPlayed = false;
+  try { greetingPlayed = sessionStorage.getItem('ksp_greeting_played') === '1'; } catch (e) {}
 
   function getAdvisorName() {
     var st = window.Advisor && window.Advisor.getState ? window.Advisor.getState() : null;
@@ -75,12 +84,30 @@
     orbParallax = document.createElement('div');
     orbParallax.className = 'orb-parallax';
 
-    // The image (breathes + firelight)
+    // The portrait — video if available, image fallback
+    var orbVideo = document.createElement('video');
+    orbVideo.className = 'orb-vid';
+    orbVideo.src = getIdleVideo();
+    orbVideo.muted = true;
+    orbVideo.loop = true;
+    orbVideo.autoplay = true;
+    orbVideo.playsInline = true;
+    orbVideo.setAttribute('playsinline', '');
+    orbVideo.poster = src;
+
+    // Fallback image if video fails
     orbImg = document.createElement('img');
     orbImg.className = 'orb-img';
     orbImg.src = src;
     orbImg.alt = name;
+    orbImg.style.display = 'none';
 
+    orbVideo.addEventListener('error', function () {
+      orbVideo.style.display = 'none';
+      orbImg.style.display = 'block';
+    });
+
+    orbParallax.appendChild(orbVideo);
     orbParallax.appendChild(orbImg);
     orbCircle.appendChild(orbParallax);
     orbWrap.appendChild(orbCircle);
@@ -108,13 +135,32 @@
     panel.className = 'orb-panel';
     panel.id = 'orb-panel';
 
-    // Panel portrait
+    // Panel portrait — video with greeting on first open, idle loop after
     var panelHdr = document.createElement('div');
     panelHdr.className = 'orb-panel-portrait';
+    panelHdr.id = 'orb-panel-portrait';
+
+    var panelVid = document.createElement('video');
+    panelVid.id = 'orb-panel-vid';
+    panelVid.playsInline = true;
+    panelVid.setAttribute('playsinline', '');
+    panelVid.poster = src;
+    panelVid.src = getIdleVideo();
+    panelVid.muted = true;
+    panelVid.loop = true;
+    panelHdr.appendChild(panelVid);
+
+    // Fallback image
     panelImg = document.createElement('img');
-    panelImg.className = 'orb-img'; // reuse breathing + firelight
+    panelImg.className = 'orb-img';
     panelImg.src = src;
+    panelImg.style.display = 'none';
     panelHdr.appendChild(panelImg);
+
+    panelVid.addEventListener('error', function () {
+      panelVid.style.display = 'none';
+      panelImg.style.display = 'block';
+    });
 
     // Minimize button
     panelMinBtn = document.createElement('button');
@@ -221,6 +267,31 @@
     backdrop.classList.add('visible');
     panel.classList.add('visible');
     hideSpeech();
+
+    var vid = document.getElementById('orb-panel-vid');
+
+    // First open: play the greeting video with sound
+    if (!greetingPlayed && vid) {
+      vid.src = getGreetingVideo();
+      vid.muted = false;
+      vid.loop = false;
+      vid.play().catch(function () {
+        // Autoplay with audio blocked — try muted
+        vid.muted = true;
+        vid.play().catch(function () {});
+      });
+      vid.addEventListener('ended', function onEnd() {
+        vid.removeEventListener('ended', onEnd);
+        vid.src = getIdleVideo();
+        vid.muted = true;
+        vid.loop = true;
+        vid.play().catch(function () {});
+      });
+      greetingPlayed = true;
+      try { sessionStorage.setItem('ksp_greeting_played', '1'); } catch (e) {}
+    } else if (vid) {
+      vid.play().catch(function () {});
+    }
 
     // If chat is empty, greet
     if (panelChat.children.length === 0) {

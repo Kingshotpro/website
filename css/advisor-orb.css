@@ -24,14 +24,14 @@
 /* Resting position (right side, vertical center) */
 .orb-wrap.orb-at-rest {
   top: 45%;
-  right: 30px;
-  left: auto;
+  left: calc(100% - 130px);
+  right: auto;
   transform: translateY(-50%);
 }
 
 /* Glide transition from center to rest */
 .orb-wrap.orb-gliding {
-  transition: top 800ms ease-out, right 800ms ease-out, left 800ms ease-out, transform 800ms ease-out, opacity 800ms ease;
+  transition: top 800ms ease-out, left 800ms ease-out, transform 800ms ease-out, opacity 800ms ease;
 }
 
 /* Hidden when panel is open */
@@ -76,12 +76,25 @@
   width: 110%;
   height: 110%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 30%;
   position: absolute;
   top: -5%;
   left: -5%;
   animation: orbBreathe 4s ease-in-out infinite alternate, orbFirelight 6s ease-in-out infinite;
   will-change: transform, filter;
+}
+
+/* Video portrait in the orb circle */
+.orb-vid {
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  object-position: center 30%;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 /* Breathing — the person inhales/exhales */
@@ -177,21 +190,29 @@
   transform: translateY(-50%) scale(1);
 }
 
-/* Panel portrait */
+/* Panel portrait — she must be SEEN. Face, expression, posture. */
 .orb-panel-portrait {
   width: 100%;
-  height: 180px;
+  height: 300px;
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
   border-bottom: 1px solid var(--border);
+  background: var(--bg);
 }
 .orb-panel-portrait .orb-img {
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  object-position: center 15%;
+  object-position: center 25%;
+}
+.orb-panel-portrait video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
 }
 
 /* Minimize button */
@@ -362,5 +383,5 @@
   }
   .orb-panel.visible { transform: translateY(0); }
 
-  .orb-panel-portrait { height: 140px; }
+  .orb-panel-portrait { height: 240px; }
 }
