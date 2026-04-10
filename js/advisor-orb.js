@@ -297,11 +297,14 @@
       function playGreeting() {
         var playPromise = vid.play();
         if (playPromise !== undefined) {
-          playPromise.catch(function () {
-            // Browser still blocked audio — show tap-to-hear overlay
+          playPromise.then(function () {
+            // Video playing with audio — block TTS clips
+            if (!vid.muted) videoSpeaking = true;
+          }).catch(function () {
+            // Browser blocked audio — fall back to muted video + TTS clips
             vid.muted = true;
+            videoSpeaking = false;
             vid.play().catch(function () {});
-            showTapToHear(vid);
           });
         }
       }
@@ -316,9 +319,10 @@
         });
       }
 
-      // When greeting ends, switch to idle loop
+      // When greeting ends, switch to idle loop and re-enable TTS
       vid.addEventListener('ended', function onEnd() {
         vid.removeEventListener('ended', onEnd);
+        videoSpeaking = false;
         switchToIdle(vid);
       });
 
@@ -343,8 +347,12 @@
 
   // ── Audio playback ───────────────────────
   var currentAudio = null;
+  var videoSpeaking = false; // true when greeting video is playing with audio
 
   function playVoice(clipName) {
+    // Don't overlap with greeting video audio
+    if (videoSpeaking) return;
+
     if (currentAudio) {
       currentAudio.pause();
       currentAudio = null;
