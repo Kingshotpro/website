@@ -1,0 +1,544 @@
+{
+  "kingdom": 1908,
+  "timestamp": "2026-04-06T11:05:14.442444",
+  "alliances": [
+    {
+      "rank": 1,
+      "id_hex": "0x3a",
+      "power": 0,
+      "anomaly_value": 4193059840,
+      "name": "VIP",
+      "tag": "VIP"
+    },
+    {
+      "rank": 2,
+      "id_hex": "0x23",
+      "power": 0,
+      "anomaly_value": 3534356735,
+      "name": "DarkNation",
+      "tag": "DKN"
+    },
+    {
+      "rank": 3,
+      "id_hex": "0x32",
+      "power": 0,
+      "anomaly_value": 1459683252,
+      "name": "Darkness",
+      "tag": "DRK"
+    },
+    {
+      "rank": 4,
+      "id_hex": "0x51",
+      "power": 0,
+      "anomaly_value": 1803502379,
+      "name": "SOS",
+      "tag": "xSOS"
+    },
+    {
+      "rank": 5,
+      "id_hex": "0x29",
+      "power": 0,
+      "anomaly_value": 4283323908,
+      "name": "Seraphins",
+      "tag": "xSPH"
+    },
+    {
+      "rank": 6,
+      "id_hex": "0x54",
+      "power": 0,
+      "anomaly_value": 3846273284,
+      "name": "Thebignga",
+      "tag": "xKkk"
+    },
+    {
+      "rank": 7,
+      "id_hex": "0x42",
+      "power": 0,
+      "anomaly_value": 3355616516,
+      "name": "USAAAAA",
+      "tag": "???"
+    },
+    {
+      "rank": 8,
+      "id_hex": "0xcb",
+      "power": 0,
+      "anomaly_value": 3179807744,
+      "name": "AZTECAS",
+      "tag": "xAZT"
+    },
+    {
+      "rank": 9,
+      "id_hex": "0x6a",
+      "power": 0,
+      "anomaly_value": 2899247359,
+      "name": "SQUADRONOFSHADOW",
+      "tag": "SOS"
+    },
+    {
+      "rank": 10,
+      "id_hex": "0x50",
+      "power": 0,
+      "anomaly_value": 3355508494
+    },
+    {
+      "rank": 11,
+      "id_hex": "0x58",
+      "power": 0,
+      "anomaly_value": 1971314973,
+      "name": "KINGS",
+      "tag": "KGS"
+    },
+    {
+      "rank": 12,
+      "id_hex": "0x27",
+      "power": 0,
+      "anomaly_value": 1973504260,
+      "name": "ENERGY",
+      "tag": "NRG"
+    },
+    {
+      "rank": 13,
+      "id_hex": "0x2a",
+      "power": 0,
+      "anomaly_value": 1841259524,
+      "name": "UDCP",
+      "tag": "xYDG"
+    },
+    {
+      "rank": 14,
+      "id_hex": "0x64",
+      "power": 0,
+      "anomaly_value": 1515379204,
+      "name": "ONEPIECE",
+      "tag": "ONE"
+    },
+    {
+      "rank": 15,
+      "id_hex": "0xc5",
+      "power": 0,
+      "anomaly_value": 3402957824,
+      "name": "ONLYBRASILFANS",
+      "tag": "BRA"
+    },
+    {
+      "rank": 16,
+      "id_hex": "0x9e",
+      "power": 0,
+      "anomaly_value": 419495892
+    },
+    {
+      "rank": 17,
+      "id_hex": "0x22",
+      "power": 0,
+      "anomaly_value": 1065325257,
+      "name": "TOP",
+      "tag": "xTOP"
+    },
+    {
+      "rank": 18,
+      "id_hex": "0x2c",
+      "power": 0,
+      "anomaly_value": 974839812
+    },
+    {
+      "rank": 19,
+      "id_hex": "0x5a",
+      "power": 0,
+      "anomaly_value": 911175172
+    },
+    {
+      "rank": 20,
+      "id_hex": "0xce",
+      "power": 0,
+      "anomaly_value": 835495684
+    },
+    {
+      "rank": 21,
+      "id_hex": "0xd9",
+      "power": 0,
+      "anomaly_value": 800098564,
+      "name": "FranceSansPitier",
+      "tag": "k"
+    },
+    {
+      "rank": 22,
+      "id_hex": "0xc2",
+      "power": 0,
+      "anomaly_value": 2306868224
+    },
+    {
+      "rank": 23,
+      "id_hex": "0x7a",
+      "power": 0,
+      "anomaly_value": 634388735
+    },
+    {
+      "rank": 24,
+      "id_hex": "0x36",
+      "power": 0,
+      "anomaly_value": 3858825210
+    },
+    {
+      "rank": 25,
+      "id_hex": "0xeb",
+      "power": 0,
+      "anomaly_value": 696193418
+    },
+    {
+      "rank": 26,
+      "id_hex": "0x71",
+      "power": 0,
+      "anomaly_value": 681373956
+    },
+    {
+      "rank": 27,
+      "id_hex": "0x4b",
+      "power": 0,
+      "anomaly_value": 669297412
+    },
+    {
+      "rank": 28,
+      "id_hex": "0x28",
+      "power": 0,
+      "anomaly_value": 621273092
+    },
+    {
+      "rank": 29,
+      "id_hex": "0xd3",
+      "power": 0,
+      "anomaly_value": 3838116864
+    },
+    {
+      "rank": 30,
+      "id_hex": "0xf3",
+      "power": 0,
+      "anomaly_value": 3474587903
+    },
+    {
+      "rank": 31,
+      "id_hex": "0x25",
+      "power": 0,
+      "anomaly_value": 570490661
+    },
+    {
+      "rank": 32,
+      "id_hex": "0xcd",
+      "power": 0,
+      "anomaly_value": 521573636
+    },
+    {
+      "rank": 33,
+      "id_hex": "0x55",
+      "power": 0,
+      "anomaly_value": 403670788,
+      "name": "TheSickeners",
+      "tag": "TZk"
+    },
+    {
+      "rank": 34,
+      "id_hex": "0x21",
+      "power": 0,
+      "anomaly_value": 398509316,
+      "name": "ATLANTIS",
+      "tag": "ATL"
+    },
+    {
+      "rank": 35,
+      "id_hex": "0x4f",
+      "power": 0,
+      "anomaly_value": 395795204
+    },
+    {
+      "rank": 36,
+      "id_hex": "0xcf",
+      "power": 0,
+      "anomaly_value": 2516255744
+    },
+    {
+      "rank": 37,
+      "id_hex": "0xbd",
+      "power": 0,
+      "anomaly_value": 1070858495
+    },
+    {
+      "rank": 38,
+      "id_hex": "0x26",
+      "power": 0,
+      "anomaly_value": 231024900
+    },
+    {
+      "rank": 39,
+      "id_hex": "0xaa",
+      "power": 0,
+      "anomaly_value": 218893316,
+      "name": "Blessed",
+      "tag": "DZr"
+    },
+    {
+      "rank": 40,
+      "id_hex": "0xd2",
+      "power": 0,
+      "anomaly_value": 218626564
+    },
+    {
+      "rank": 41,
+      "id_hex": "0xb4",
+      "power": 0,
+      "anomaly_value": 217938692
+    },
+    {
+      "rank": 42,
+      "id_hex": "0xec",
+      "power": 0,
+      "anomaly_value": 1225196544
+    },
+    {
+      "rank": 43,
+      "id_hex": "0xe8",
+      "power": 0,
+      "anomaly_value": 1174470555,
+      "name": "Vip",
+      "tag": "Frz1"
+    },
+    {
+      "rank": 44,
+      "id_hex": "0xb6",
+      "power": 0,
+      "anomaly_value": 176142254
+    },
+    {
+      "rank": 45,
+      "id_hex": "0x78",
+      "power": 0,
+      "anomaly_value": 129031940
+    },
+    {
+      "rank": 46,
+      "id_hex": "0x3d",
+      "power": 0,
+      "anomaly_value": 97416708
+    },
+    {
+      "rank": 47,
+      "id_hex": "0x3e",
+      "power": 0,
+      "anomaly_value": 52509188,
+      "name": "NkKKINGdeICGiTQEDpLEHussienLd",
+      "tag": ""
+    },
+    {
+      "rank": 48,
+      "id_hex": "0x6d",
+      "power": 0,
+      "anomaly_value": 4255697156
+    },
+    {
+      "rank": 49,
+      "id_hex": "0xdb",
+      "power": 0,
+      "anomaly_value": 4245294327
+    },
+    {
+      "rank": 50,
+      "id_hex": "0x5d",
+      "power": 0,
+      "anomaly_value": 4194171796
+    },
+    {
+      "rank": 51,
+      "id_hex": "0xdf",
+      "power": 0,
+      "anomaly_value": 4152203314
+    },
+    {
+      "rank": 52,
+      "id_hex": "0x80",
+      "power": 0,
+      "anomaly_value": 4137984004
+    },
+    {
+      "rank": 53,
+      "id_hex": "0x90",
+      "power": 0,
+      "anomaly_value": 4120239876
+    },
+    {
+      "rank": 54,
+      "id_hex": "0xd5",
+      "power": 0,
+      "anomaly_value": 4099540996
+    },
+    {
+      "rank": 55,
+      "id_hex": "0x7d",
+      "power": 0,
+      "anomaly_value": 4035909636
+    },
+    {
+      "rank": 56,
+      "id_hex": "0x5f",
+      "power": 0,
+      "anomaly_value": 4033748983,
+      "name": "LFA",
+      "tag": "LFA"
+    },
+    {
+      "rank": 57,
+      "id_hex": "0xdc",
+      "power": 0,
+      "anomaly_value": 3981769613
+    },
+    {
+      "rank": 58,
+      "id_hex": "0x9b",
+      "power": 0,
+      "anomaly_value": 3900526681
+    },
+    {
+      "rank": 59,
+      "id_hex": "0x94",
+      "power": 0,
+      "anomaly_value": 3893795076
+    },
+    {
+      "rank": 60,
+      "id_hex": "0x7c",
+      "power": 0,
+      "anomaly_value": 3791054852
+    },
+    {
+      "rank": 61,
+      "id_hex": "0x35",
+      "power": 0,
+      "anomaly_value": 3771406084,
+      "name": "Thunder",
+      "tag": "DtS"
+    },
+    {
+      "rank": 62,
+      "id_hex": "0xed",
+      "power": 0,
+      "anomaly_value": 3712546564,
+      "name": "EconomaReinbo",
+      "tag": "ECR"
+    },
+    {
+      "rank": 63,
+      "id_hex": "0x69",
+      "power": 0,
+      "anomaly_value": 3662021111
+    },
+    {
+      "rank": 64,
+      "id_hex": "0x56",
+      "power": 0,
+      "anomaly_value": 3649764314,
+      "name": "AllForOne",
+      "tag": "mzE"
+    },
+    {
+      "rank": 65,
+      "id_hex": "0x76",
+      "power": 0,
+      "anomaly_value": 3632077649
+    },
+    {
+      "rank": 66,
+      "id_hex": "0x59",
+      "power": 0,
+      "anomaly_value": 3621342980
+    },
+    {
+      "rank": 67,
+      "id_hex": "0xf2",
+      "power": 0,
+      "anomaly_value": 3573190404,
+      "name": "bFm",
+      "tag": "SDF"
+    },
+    {
+      "rank": 68,
+      "id_hex": "0x79",
+      "power": 0,
+      "anomaly_value": 3473867012
+    },
+    {
+      "rank": 69,
+      "id_hex": "0xc3",
+      "power": 0,
+      "anomaly_value": 3452650756
+    },
+    {
+      "rank": 70,
+      "id_hex": "0x4c",
+      "power": 0,
+      "anomaly_value": 3319921412
+    },
+    {
+      "rank": 71,
+      "id_hex": "0x4a",
+      "power": 0,
+      "anomaly_value": 3284542455
+    },
+    {
+      "rank": 72,
+      "id_hex": "0xca",
+      "power": 0,
+      "anomaly_value": 3278896117
+    },
+    {
+      "rank": 73,
+      "id_hex": "0xc6",
+      "power": 0,
+      "anomaly_value": 3222425348,
+      "name": "Njm",
+      "tag": "nJcm"
+    },
+    {
+      "rank": 74,
+      "id_hex": "0xb7",
+      "power": 0,
+      "anomaly_value": 3186877956
+    },
+    {
+      "rank": 75,
+      "id_hex": "0xae",
+      "power": 0,
+      "anomaly_value": 3117733892
+    },
+    {
+      "rank": 76,
+      "id_hex": "0x61",
+      "power": 0,
+      "anomaly_value": 3072396804
+    },
+    {
+      "rank": 77,
+      "id_hex": "0x40",
+      "power": 0,
+      "anomaly_value": 2457336613
+    },
+    {
+      "rank": 78,
+      "id_hex": "0x6e",
+      "power": 0,
+      "anomaly_value": 2179579396
+    },
+    {
+      "rank": 79,
+      "id_hex": "0x86",
+      "power": 0,
+      "anomaly_value": 2095168516
+    },
+    {
+      "rank": 80,
+      "id_hex": "0xf4",
+      "power": 0,
+      "anomaly_value": 2023357322,
+      "name": "imi",
+      "tag": "Q"
+    }
+  ],
+  "players": [],
+  "chat": []
+}
