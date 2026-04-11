@@ -30,7 +30,20 @@ export default {
         return handlePortrait(request, env);
       } else if (url.pathname === '/stripe/webhook') {
         return handleStripeWebhook(request, env);
+      } else if (url.pathname === '/verify/request') {
+        return handleVerifyRequest(request, env);
+      } else if (url.pathname === '/verify/confirm') {
+        return handleVerifyConfirm(request, env);
+      } else if (url.pathname === '/verify/admin') {
+        return handleVerifyAdmin(request, env);
+      } else if (url.pathname === '/verify/mark-sent') {
+        return handleVerifyMarkSent(request, env);
       }
+    }
+
+    // Admin dashboard GET
+    if (request.method === 'GET' && url.pathname === '/verify/admin') {
+      return handleVerifyAdminPage(request, env, url);
     }
 
     const upstream = ROUTES[url.pathname];
@@ -256,6 +269,150 @@ async function getUser(request, env) {
 
   const userData = await env.KV.get(`user:${sessionData.email}`, { type: 'json' });
   return userData || null;
+}
+
+// ── Verification System ────────────────────
+async function handleVerifyRequest(request, env) {
+  let fid, kingdom, email;
+  try {
+    const body = await request.json();
+    fid = body.fid;
+    kingdom = body.kingdom;
+    email = body.email;
+  } catch { return corsWrap('{"error":"bad request"}', 400); }
+
+  if (!fid || !kingdom || !email) return corsWrap('{"error":"fid, kingdom, and email required"}', 400);
+
+  // Check if already verified
+  const existing = await env.KV.get(`verified:${fid}`, { type: 'json' });
+  if (existing) return corsWrap('{"error":"already_verified"}', 400);
+
+  // Generate 6-digit code
+  const code = String(Math.floor(100000 + Math.random() * 900000));
+  const req = {
+    fid, kingdom, email, code,
+    status: 'pending', // pending → code_sent → verified → expired
+    created: Date.now(),
+    expires: Date.now() + 48 * 3600 * 1000, // 48 hours
+  };
+
+  await env.KV.put(`verify:${fid}`, JSON.stringify(req), { expirationTtl: 172800 });
+
+  // Add to pending queue (list of FIDs with pending verification)
+  let queue = await env.KV.get('verify_queue', { type: 'json' }) || [];
+  if (!queue.includes(fid)) { queue.push(fid); }
+  await env.KV.put('verify_queue', JSON.stringify(queue));
+
+  // Email notification to admin
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + env.RESEND_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: 'no-reply@kingshotpro.com',
+        to: 'greenboxhydro@gmail.com',
+        subject: 'KingshotPro: Verification Request — FID ' + fid,
+        html: '<h2>New Verification Request</h2>' +
+          '<p><strong>FID:</strong> ' + fid + '</p>' +
+          '<p><strong>Kingdom:</strong> ' + kingdom + '</p>' +
+          '<p><strong>Email:</strong> ' + email + '</p>' +
+          '<p><strong>Code to send in-game:</strong> <span style="font-size:24px;font-weight:bold;color:#f0c040;">' + code + '</span></p>' +
+          '<p>Log into Kingdom ' + kingdom + ', find this player, send them in-game mail with the code above.</p>' +
+          '<p><a href="https://kingshotpro-api.kingshotpro.workers.dev/verify/admin?key=' + (env.ADMIN_KEY || 'admin') + '">View Admin Dashboard</a></p>',
+      }),
+    });
+  } catch { /* email failed but request still saved */ }
+
+  return corsWrap(JSON.stringify({ ok: true, message: 'Verification request submitted. Check your in-game mail within 48 hours.' }));
+}
+
+async function handleVerifyConfirm(request, env) {
+  let fid, code;
+  try {
+    const body = await request.json();
+    fid = body.fid;
+    code = body.code;
+  } catch { return corsWrap('{"error":"bad request"}', 400); }
+
+  const req = await env.KV.get(`verify:${fid}`, { type: 'json' });
+  if (!req) return corsWrap('{"error":"no pending verification for this FID"}', 404);
+  if (req.status === 'verified') return corsWrap('{"error":"already verified"}', 400);
+  if (Date.now() > req.expires) return corsWrap('{"error":"verification expired, please request again"}', 410);
+  if (req.code !== String(code)) return corsWrap('{"error":"incorrect code"}', 403);
+
+  // Verified!
+  req.status = 'verified';
+  req.verified_at = Date.now();
+  await env.KV.put(`verify:${fid}`, JSON.stringify(req));
+  await env.KV.put(`verified:${fid}`, JSON.stringify({ email: req.email, verified_at: req.verified_at }));
+
+  // Remove from queue
+  let queue = await env.KV.get('verify_queue', { type: 'json' }) || [];
+  queue = queue.filter(function (f) { return f !== fid; });
+  await env.KV.put('verify_queue', JSON.stringify(queue));
+
+  return corsWrap(JSON.stringify({ ok: true, message: 'Account verified! Your advisor now knows you are who you say you are.' }));
+}
+
+async function handleVerifyMarkSent(request, env) {
+  let fid, adminKey;
+  try {
+    const body = await request.json();
+    fid = body.fid;
+    adminKey = body.adminKey;
+  } catch { return corsWrap('{"error":"bad request"}', 400); }
+
+  if (adminKey !== (env.ADMIN_KEY || 'admin')) return corsWrap('{"error":"unauthorized"}', 401);
+
+  const req = await env.KV.get(`verify:${fid}`, { type: 'json' });
+  if (!req) return corsWrap('{"error":"not found"}', 404);
+
+  req.status = 'code_sent';
+  req.sent_at = Date.now();
+  await env.KV.put(`verify:${fid}`, JSON.stringify(req));
+
+  return corsWrap(JSON.stringify({ ok: true }));
+}
+
+async function handleVerifyAdminPage(request, env, url) {
+  const key = url.searchParams.get('key');
+  if (key !== (env.ADMIN_KEY || 'admin')) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+
+  const queue = await env.KV.get('verify_queue', { type: 'json' }) || [];
+  let rows = '';
+
+  for (const fid of queue) {
+    const req = await env.KV.get(`verify:${fid}`, { type: 'json' });
+    if (!req) continue;
+    const age = Math.round((Date.now() - req.created) / 3600000);
+    rows += '<tr>' +
+      '<td>' + fid + '</td>' +
+      '<td>' + req.kingdom + '</td>' +
+      '<td>' + req.email + '</td>' +
+      '<td style="font-size:20px;font-weight:bold;color:#f0c040;">' + req.code + '</td>' +
+      '<td>' + req.status + '</td>' +
+      '<td>' + age + 'h ago</td>' +
+      '<td>' + (req.status === 'pending' ?
+        '<button onclick="markSent(\'' + fid + '\')">Mark Sent</button>' :
+        req.status === 'code_sent' ? 'Waiting for player...' : 'Done') +
+      '</td></tr>';
+  }
+
+  const html = '<!DOCTYPE html><html><head><title>Verification Admin</title>' +
+    '<style>body{background:#0d0d0f;color:#e8e6e3;font-family:sans-serif;padding:20px;}' +
+    'table{width:100%;border-collapse:collapse;}th,td{padding:8px 12px;border:1px solid #2a2d3e;text-align:left;}' +
+    'th{background:#16181f;color:#f0c040;}button{background:#f0c040;color:#0d0d0f;border:none;padding:6px 12px;cursor:pointer;font-weight:bold;border-radius:4px;}</style></head><body>' +
+    '<h1 style="color:#f0c040;">Verification Queue</h1>' +
+    '<p>' + queue.length + ' pending</p>' +
+    '<table><tr><th>FID</th><th>Kingdom</th><th>Email</th><th>Code</th><th>Status</th><th>Age</th><th>Action</th></tr>' +
+    rows + '</table>' +
+    '<script>function markSent(fid){fetch("/verify/mark-sent",{method:"POST",headers:{"Content-Type":"application/json"},' +
+    'body:JSON.stringify({fid:fid,adminKey:"' + (env.ADMIN_KEY || 'admin') + '"})}).then(function(){location.reload();});}</script>' +
+    '</body></html>';
+
+  return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html' } });
 }
 
 // ── Tier check helper ──────────────────────

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Your Account — KingshotPro</title>
+  <meta name="description" content="Verify your Kingshot account ownership to unlock premium features.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .verify-card { max-width: 500px; margin: 0 auto; }
+    .verify-step { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .verify-step h3 { color: var(--gold); margin: 0 0 12px; }
+    .verify-step p { color: var(--text-muted); font-size: 13px; line-height: 1.6; margin: 0 0 16px; }
+    .verify-input { width: 100%; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; font-family: inherit; margin-bottom: 10px; box-sizing: border-box; }
+    .verify-input:focus { outline: none; border-color: var(--gold); }
+    .verify-btn { width: 100%; padding: 12px; background: var(--gold); color: var(--bg); border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; }
+    .verify-btn:hover { opacity: 0.9; }
+    .verify-btn:disabled { opacity: 0.5; cursor: default; }
+    .verify-status { margin-top: 12px; padding: 10px; border-radius: 8px; font-size: 13px; display: none; }
+    .verify-status.success { display: block; background: rgba(74,222,128,0.1); border: 1px solid #4ade80; color: #4ade80; }
+    .verify-status.error { display: block; background: rgba(248,113,113,0.1); border: 1px solid #f87171; color: #f87171; }
+    .verify-status.info { display: block; background: rgba(240,192,64,0.1); border: 1px solid var(--gold); color: var(--gold); }
+    .verify-how { color: var(--text-muted); font-size: 12px; line-height: 1.6; margin-top: 24px; }
+    .verify-how strong { color: var(--text); }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+
+  <div class="verify-card">
+    <h1 style="color:var(--gold);text-align:center;margin-bottom:8px;">Verify Your Account</h1>
+    <p style="color:var(--text-muted);text-align:center;margin-bottom:32px;">Prove you own your Kingshot account. Unlocks full advisor features and ties your subscription to your player.</p>
+
+    <!-- Step 1: Request Verification -->
+    <div class="verify-step" id="step-request">
+      <h3>Step 1: Request Verification</h3>
+      <p>Enter your Player ID, kingdom number, and email. We will send a verification code to you <strong>in-game via mail</strong> within 24 hours.</p>
+      <input type="text" class="verify-input" id="v-fid" inputmode="numeric" placeholder="Your Player ID (e.g. 7291048)" maxlength="12">
+      <input type="number" class="verify-input" id="v-kingdom" placeholder="Your Kingdom number (e.g. 734)" min="1" max="9999">
+      <input type="email" class="verify-input" id="v-email" placeholder="Your email address">
+      <button class="verify-btn" id="v-request-btn" onclick="requestVerify()">Request Verification</button>
+      <div class="verify-status" id="v-request-status"></div>
+    </div>
+
+    <!-- Step 2: Enter Code -->
+    <div class="verify-step" id="step-confirm">
+      <h3>Step 2: Enter Your Code</h3>
+      <p>Check your <strong>in-game mail</strong>. Enter the 6-digit code you received.</p>
+      <input type="text" class="verify-input" id="v-code" inputmode="numeric" placeholder="6-digit code" maxlength="6">
+      <input type="text" class="verify-input" id="v-confirm-fid" inputmode="numeric" placeholder="Your Player ID (same as above)" maxlength="12">
+      <button class="verify-btn" id="v-confirm-btn" onclick="confirmVerify()">Verify</button>
+      <div class="verify-status" id="v-confirm-status"></div>
+    </div>
+
+    <div class="verify-how">
+      <strong>How it works:</strong><br>
+      1. You submit your Player ID and kingdom.<br>
+      2. A real person from our team finds you in-game and sends you a mail with a code.<br>
+      3. You come back here and enter that code.<br>
+      4. Your account is verified — your advisor knows you are who you say you are.<br><br>
+      <strong>Who can verify:</strong> Pro, War Council, and Elite subscribers. Verification is included in your subscription.<br>
+      <strong>How long:</strong> Codes are sent within 24 hours. The code expires after 48 hours.
+    </div>
+  </div>
+
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script>
+var API = 'https://kingshotpro-api.kingshotpro.workers.dev';
+
+function showStatus(id, msg, type) {
+  var el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = 'verify-status ' + type;
+}
+
+function requestVerify() {
+  var fid = document.getElementById('v-fid').value.trim();
+  var kingdom = document.getElementById('v-kingdom').value.trim();
+  var email = document.getElementById('v-email').value.trim();
+
+  if (!fid || !kingdom || !email) {
+    showStatus('v-request-status', 'All fields are required.', 'error');
+    return;
+  }
+
+  var btn = document.getElementById('v-request-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  fetch(API + '/verify/request', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ fid: fid, kingdom: kingdom, email: email })
+  })
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    if (data.ok) {
+      showStatus('v-request-status', data.message, 'success');
+    } else {
+      showStatus('v-request-status', data.error || 'Something went wrong.', 'error');
+    }
+    btn.disabled = false;
+    btn.textContent = 'Request Verification';
+  })
+  .catch(function () {
+    showStatus('v-request-status', 'Network error. Try again.', 'error');
+    btn.disabled = false;
+    btn.textContent = 'Request Verification';
+  });
+}
+
+function confirmVerify() {
+  var code = document.getElementById('v-code').value.trim();
+  var fid = document.getElementById('v-confirm-fid').value.trim();
+
+  if (!code || !fid) {
+    showStatus('v-confirm-status', 'Enter your Player ID and the code.', 'error');
+    return;
+  }
+
+  var btn = document.getElementById('v-confirm-btn');
+  btn.disabled = true;
+  btn.textContent = 'Verifying...';
+
+  fetch(API + '/verify/confirm', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ fid: fid, code: code })
+  })
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    if (data.ok) {
+      showStatus('v-confirm-status', data.message, 'success');
+    } else {
+      showStatus('v-confirm-status', data.error || 'Verification failed.', 'error');
+    }
+    btn.disabled = false;
+    btn.textContent = 'Verify';
+  })
+  .catch(function () {
+    showStatus('v-confirm-status', 'Network error. Try again.', 'error');
+    btn.disabled = false;
+    btn.textContent = 'Verify';
+  });
+}
+</script>
+
+<script src="js/cookie-consent.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/advisor-names.js"></script>
+<script src="js/advisor.js"></script>
+<script src="js/advisor-orb.js"></script>
+<script src="js/advisor-hooks.js"></script>
+<script src="js/advisor-chat.js"></script>
+<script src="js/advisor-cta.js"></script>
+<script src="js/advisor-lore.js"></script>
+<script src="js/advisor-referral.js"></script>
+<script src="js/advisor-alliance.js"></script>
+</body>
+</html>
