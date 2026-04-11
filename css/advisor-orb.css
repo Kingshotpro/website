@@ -741,6 +741,96 @@
   color: var(--text-muted);
 }
 
+/* ── Alliance Card in Sidebar ─────────────── */
+.sb-alliance {
+  padding: 12px;
+}
+.sb-alliance-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
+}
+.sb-alliance-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.sb-alliance-tag {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.sb-alliance-kingdom {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.sb-alliance-role {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--gold);
+  color: var(--bg);
+  margin-left: auto;
+}
+.sb-alliance-credits {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.sb-alliance-credits strong {
+  color: var(--gold);
+}
+.sb-alliance-actions {
+  display: flex;
+  gap: 6px;
+}
+.sb-alliance-actions a,
+.sb-alliance-actions button {
+  flex: 1;
+  padding: 4px 8px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.sb-alliance-link-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sb-alliance-link-form input,
+.sb-alliance-link-form select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  padding: 6px 8px;
+  font-size: 12px;
+  font-family: inherit;
+}
+.sb-alliance-link-form input:focus,
+.sb-alliance-link-form select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.sb-alliance-link-btn {
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  padding: 6px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 /* ── Referral Section ─────────────────────── */
 .orb-referral {
   margin-top: 8px;
