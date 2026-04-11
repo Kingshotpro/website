@@ -23,7 +23,10 @@
     .cal-event-countdown { font-size: 15px; font-weight: 700; color: var(--gold); font-family: monospace; }
     .cal-event-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
     .cal-freq { font-weight: 600; }
-    .cal-event-desc { font-size: 12px; color: var(--text-muted); font-style: italic; }
+    .cal-event-desc { font-size: 12px; color: var(--text-muted); font-style: italic; margin-bottom: 8px; }
+    .cal-event-actions { display: flex; gap: 8px; }
+    .cal-btn-ics, .cal-btn-gcal { font-size: 11px; padding: 5px 10px; border-radius: 5px; cursor: pointer; text-decoration: none; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); font-family: inherit; transition: border-color 0.2s; }
+    .cal-btn-ics:hover, .cal-btn-gcal:hover { border-color: var(--gold); color: var(--gold); }
     .cal-add { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 24px; }
     .cal-add h3 { color: var(--gold); margin: 0 0 12px; font-size: 15px; }
     .cal-add-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
@@ -57,6 +60,9 @@
     </div>
   </div>
 
+  <div style="margin-bottom:12px;">
+    <button class="cal-add-btn" id="cal-add-all" style="font-size:13px;">📥 Add ALL Events to Calendar (.ics)</button>
+  </div>
   <div id="cal-events"></div>
 
   <div class="ad-slot" data-slot="calendar-mid"></div>

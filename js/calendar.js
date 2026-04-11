@@ -107,6 +107,61 @@
     return m + 'm ' + s + 's';
   }
 
+  // ── Calendar export helpers ──────────────
+  function toICSDate(d) {
+    return d.toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+  }
+
+  function getRecurrenceRule(e) {
+    if (e.freq === 'daily') return 'RRULE:FREQ=DAILY';
+    if (e.freq === 'bi-daily') return 'RRULE:FREQ=DAILY;INTERVAL=2';
+    if (e.freq === 'weekly') return 'RRULE:FREQ=WEEKLY';
+    if (e.freq === 'biweekly') return 'RRULE:FREQ=WEEKLY;INTERVAL=2';
+    if (e.freq === 'monthly') return 'RRULE:FREQ=MONTHLY';
+    return '';
+  }
+
+  function downloadICS(e, nextDate) {
+    var start = new Date(nextDate);
+    var end = new Date(start.getTime() + (e.duration || 60) * 60000);
+    var rrule = getRecurrenceRule(e);
+
+    var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KingshotPro//EN\r\n' +
+      'BEGIN:VEVENT\r\n' +
+      'DTSTART:' + toICSDate(start) + '\r\n' +
+      'DTEND:' + toICSDate(end) + '\r\n' +
+      'SUMMARY:Kingshot: ' + e.name + '\r\n' +
+      'DESCRIPTION:' + (e.desc || e.name) + ' — via KingshotPro\\nkingshotpro.com/calendar.html\r\n' +
+      (rrule ? rrule + '\r\n' : '') +
+      'BEGIN:VALARM\r\nTRIGGER:-PT15M\r\nACTION:DISPLAY\r\nDESCRIPTION:' + e.name + ' starts in 15 minutes\r\nEND:VALARM\r\n' +
+      'END:VEVENT\r\nEND:VCALENDAR';
+
+    var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = e.name.replace(/[^a-zA-Z0-9]/g, '_') + '.ics';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function googleCalURL(e, nextDate) {
+    var start = new Date(nextDate);
+    var end = new Date(start.getTime() + (e.duration || 60) * 60000);
+    var fmt = function (d) { return d.toISOString().replace(/[-:]/g, '').replace(/\.\d+Z/, 'Z'); };
+    var recur = '';
+    if (e.freq === 'daily') recur = '&recur=RRULE:FREQ=DAILY';
+    else if (e.freq === 'weekly') recur = '&recur=RRULE:FREQ=WEEKLY';
+    else if (e.freq === 'biweekly') recur = '&recur=RRULE:FREQ=WEEKLY;INTERVAL=2';
+    else if (e.freq === 'monthly') recur = '&recur=RRULE:FREQ=MONTHLY';
+
+    return 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text=' + encodeURIComponent('Kingshot: ' + e.name) +
+      '&dates=' + fmt(start) + '/' + fmt(end) +
+      '&details=' + encodeURIComponent((e.desc || '') + '\nvia KingshotPro — kingshotpro.com') +
+      recur;
+  }
+
   // Render events
   function render() {
     var container = document.getElementById('cal-events');
@@ -140,10 +195,25 @@
           (e.duration ? ' · ' + (e.duration >= 1440 ? (e.duration / 1440) + ' day(s)' : e.duration + ' min') : '') +
         '</div>' +
         (e.desc ? '<div class="cal-event-desc">' + e.desc + '</div>' : '') +
+        '<div class="cal-event-actions">' +
+          '<button class="cal-btn-ics" data-idx="' + item.index + '" data-next="' + item.next.getTime() + '">📥 Add to Calendar</button>' +
+          '<a class="cal-btn-gcal" href="' + googleCalURL(e, item.next) + '" target="_blank" rel="noopener">📅 Google Calendar</a>' +
+        '</div>' +
         '</div>';
     }
 
     container.innerHTML = html;
+
+    // Wire ICS download buttons
+    var icsBtns = container.querySelectorAll('.cal-btn-ics');
+    for (var j = 0; j < icsBtns.length; j++) {
+      icsBtns[j].addEventListener('click', function () {
+        var idx = parseInt(this.getAttribute('data-idx'), 10);
+        var nextTs = parseInt(this.getAttribute('data-next'), 10);
+        var events = getEvents();
+        if (events[idx]) downloadICS(events[idx], new Date(nextTs));
+      });
+    }
   }
 
   // Update countdowns every second
@@ -224,6 +294,38 @@
     }
   }
 
+  // Download ALL events as one .ics file
+  function downloadAllICS() {
+    var events = getEvents();
+    var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KingshotPro//EN\r\n';
+
+    for (var i = 0; i < events.length; i++) {
+      var e = events[i];
+      var next = getNextOccurrence(e);
+      var start = new Date(next);
+      var end = new Date(start.getTime() + (e.duration || 60) * 60000);
+      var rrule = getRecurrenceRule(e);
+
+      ics += 'BEGIN:VEVENT\r\n' +
+        'DTSTART:' + toICSDate(start) + '\r\n' +
+        'DTEND:' + toICSDate(end) + '\r\n' +
+        'SUMMARY:Kingshot: ' + e.name + '\r\n' +
+        'DESCRIPTION:' + (e.desc || e.name) + '\\nvia KingshotPro\r\n' +
+        (rrule ? rrule + '\r\n' : '') +
+        'BEGIN:VALARM\r\nTRIGGER:-PT15M\r\nACTION:DISPLAY\r\nDESCRIPTION:' + e.name + ' starts soon\r\nEND:VALARM\r\n' +
+        'END:VEVENT\r\n';
+    }
+
+    ics += 'END:VCALENDAR';
+    var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'KingshotPro_Events.ics';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   // Init
   function init() {
     render();
@@ -231,6 +333,9 @@
     setupNotifToggle();
     setInterval(tick, 1000);
     setInterval(checkNotifications, 60000);
+
+    var addAllBtn = document.getElementById('cal-add-all');
+    if (addAllBtn) addAllBtn.addEventListener('click', downloadAllICS);
   }
 
   if (document.readyState === 'loading') {
