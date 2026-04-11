@@ -7,12 +7,18 @@
 
 var GRID_SIZE = 13;
 var CELL_TYPES = [
-  { id: 'empty',  label: '',       color: '#1e2030', border: '#2a2d3e' },
-  { id: 'r5',     label: 'R5',     color: '#f0c040', border: '#d4a830' },
-  { id: 'r4',     label: 'R4',     color: '#5c8ce0', border: '#4a70b8' },
-  { id: 'r3',     label: 'R3',     color: '#4caf82', border: '#3d8f6a' },
-  { id: 'farmer', label: 'F',      color: '#7a7d8e', border: '#5a5d6e' },
-  { id: 'flag',   label: '⚑',     color: '#e05c5c', border: '#c04040' },
+  { id: 'empty',    label: '',       color: '#1e2030', border: '#2a2d3e' },
+  { id: 'r5',       label: 'R5',     color: '#f0c040', border: '#d4a830' },
+  { id: 'r4',       label: 'R4',     color: '#5c8ce0', border: '#4a70b8' },
+  { id: 'r3',       label: 'R3',     color: '#4caf82', border: '#3d8f6a' },
+  { id: 'farmer',   label: 'F',      color: '#7a7d8e', border: '#5a5d6e' },
+  { id: 'flag',     label: '⚑',     color: '#e05c5c', border: '#c04040' },
+  { id: 'trap',     label: '🪤',    color: '#8B4513', border: '#6B3410' },
+  { id: 'hospital', label: '🏥',    color: '#2d8659', border: '#1d6640' },
+  { id: 'barracks', label: '⚔',     color: '#7048a6', border: '#5a3890' },
+  { id: 'wall',     label: '🧱',    color: '#6d6050', border: '#504030' },
+  { id: 'tower',    label: '🗼',    color: '#4a6fa5', border: '#3a5f90' },
+  { id: 'resource', label: '📦',    color: '#2a8a5a', border: '#1a7a4a' },
 ];
 
 var grid = [];

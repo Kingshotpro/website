@@ -146,11 +146,11 @@ img { max-width: 100%; display: block; }
 .sb-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
 .sb-cat {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.2px;
-  color: var(--text-dim);
-  padding: 16px 20px 6px;
+  color: var(--text-muted);
+  padding: 14px 20px 6px;
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
@@ -158,15 +158,25 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: space-between;
   user-select: none;
-  transition: color 0.15s;
+  transition: color 0.15s, background 0.15s;
+  border-radius: 6px;
+  margin: 0 8px;
 }
-.sb-cat:hover { color: var(--text-muted); }
+.sb-cat:hover { color: var(--gold); background: var(--surface-2); }
 .sb-cat-label { flex: 1; }
 .sb-chevron {
-  font-size: 10px;
-  color: var(--text-dim);
+  font-size: 12px;
+  color: var(--text-muted);
   transition: transform 0.2s;
+  background: var(--surface-2);
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.sb-cat:hover .sb-chevron { color: var(--gold); background: var(--border); }
 
 /* Accordion collapse */
 .sb-group {
