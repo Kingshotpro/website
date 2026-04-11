@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Us Build What You Need — KingshotPro</title>
+  <meta name="description" content="Tell us what tools and features you want for Kingshot. Your answers shape what we build next.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .survey-form { max-width: 600px; margin: 0 auto; }
+    .survey-q { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 16px; }
+    .survey-q label { display: block; color: var(--gold); font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+    .survey-q .note { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+    .survey-q select, .survey-q input[type="text"], .survey-q input[type="number"], .survey-q textarea {
+      width: 100%; padding: 10px 12px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); font-size: 14px; font-family: inherit; box-sizing: border-box;
+    }
+    .survey-q select:focus, .survey-q input:focus, .survey-q textarea:focus { outline: none; border-color: var(--gold); }
+    .survey-q textarea { min-height: 80px; resize: vertical; }
+    .survey-checks { display: flex; flex-wrap: wrap; gap: 8px; }
+    .survey-check { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+    .survey-check input { accent-color: var(--gold); }
+    .survey-submit { width: 100%; padding: 14px; background: var(--gold); color: var(--bg); border: none; border-radius: 8px;
+      font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px; }
+    .survey-submit:hover { opacity: 0.9; }
+    .survey-submit:disabled { opacity: 0.5; cursor: default; }
+    .survey-status { margin-top: 12px; padding: 12px; border-radius: 8px; text-align: center; font-size: 14px; display: none; }
+    .survey-status.success { display: block; background: rgba(74,222,128,0.1); border: 1px solid #4ade80; color: #4ade80; }
+    .survey-status.error { display: block; background: rgba(248,113,113,0.1); border: 1px solid #f87171; color: #f87171; }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+
+  <div class="survey-form">
+    <h1 style="color:var(--gold);text-align:center;margin-bottom:8px;">Help Us Build What You Need</h1>
+    <p style="color:var(--text-muted);text-align:center;margin-bottom:28px;">
+      We're building tools for Kingshot players. Your answers directly shape what we build next. Takes 2 minutes.
+    </p>
+
+    <form id="survey-form">
+
+      <div class="survey-q">
+        <label>What's your role in your alliance?</label>
+        <select id="s-role" required>
+          <option value="">Select...</option>
+          <option value="R5 Leader">R5 (Leader)</option>
+          <option value="R4 Officer">R4 (Officer)</option>
+          <option value="R3">R3</option>
+          <option value="Member">Member</option>
+          <option value="No alliance">Not in an alliance</option>
+        </select>
+      </div>
+
+      <div class="survey-q">
+        <label>How long have you played Kingshot?</label>
+        <select id="s-playtime" required>
+          <option value="">Select...</option>
+          <option value="Under 1 month">Under 1 month</option>
+          <option value="1-3 months">1-3 months</option>
+          <option value="3-6 months">3-6 months</option>
+          <option value="6-12 months">6-12 months</option>
+          <option value="Over 1 year">Over 1 year</option>
+        </select>
+      </div>
+
+      <div class="survey-q">
+        <label>How many active members does your alliance have?</label>
+        <div class="note">Skip if not in an alliance.</div>
+        <input type="number" id="s-members" placeholder="e.g. 85" min="0" max="200">
+      </div>
+
+      <div class="survey-q">
+        <label>Which events does your alliance track attendance for?</label>
+        <div class="note">Check all that apply.</div>
+        <div class="survey-checks">
+          <label class="survey-check"><input type="checkbox" value="Swordland Showdown"> Swordland</label>
+          <label class="survey-check"><input type="checkbox" value="KvK"> KvK</label>
+          <label class="survey-check"><input type="checkbox" value="Bear Hunt"> Bear Hunt</label>
+          <label class="survey-check"><input type="checkbox" value="Alliance Mobilization"> Mobilization</label>
+          <label class="survey-check"><input type="checkbox" value="Tri-Alliance Clash"> Tri-Alliance</label>
+          <label class="survey-check"><input type="checkbox" value="Strongest Governor"> Strongest Gov</label>
+          <label class="survey-check"><input type="checkbox" value="None"> We don't track</label>
+        </div>
+      </div>
+
+      <div class="survey-q">
+        <label>How do you currently track who shows up to events?</label>
+        <select id="s-current-tracking">
+          <option value="">Select...</option>
+          <option value="Spreadsheet">Spreadsheet (Google Sheets, Excel)</option>
+          <option value="Discord bot">Discord bot</option>
+          <option value="Memory">Memory / mental notes</option>
+          <option value="Don't track">Don't track at all</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="survey-q">
+        <label>What's the hardest part about managing your alliance?</label>
+        <textarea id="s-hardest" placeholder="Be honest — what frustrates you most?"></textarea>
+      </div>
+
+      <div class="survey-q">
+        <label>If a tool tracked event attendance for you, what would you want to see?</label>
+        <div class="note">Check all that apply.</div>
+        <div class="survey-checks">
+          <label class="survey-check"><input type="checkbox" value="Attendance %"> Attendance %</label>
+          <label class="survey-check"><input type="checkbox" value="Who's slacking"> Who's slacking</label>
+          <label class="survey-check"><input type="checkbox" value="Trends over time"> Trends over time</label>
+          <label class="survey-check"><input type="checkbox" value="Compare members"> Compare members</label>
+          <label class="survey-check"><input type="checkbox" value="Export data"> Export to spreadsheet</label>
+        </div>
+      </div>
+
+      <div class="survey-q">
+        <label>What tools or websites do you currently use for Kingshot?</label>
+        <textarea id="s-tools" placeholder="e.g. kingshot.net, Discord, spreadsheets, none..."></textarea>
+      </div>
+
+      <div class="survey-q">
+        <label>What's the ONE thing you wish a Kingshot tool could do that nothing does right now?</label>
+        <textarea id="s-wish" placeholder="Dream big. What would change the game for you?"></textarea>
+      </div>
+
+      <div class="survey-q">
+        <label>Would you use an AI advisor that knows your account and gives personalized strategy?</label>
+        <select id="s-ai">
+          <option value="">Select...</option>
+          <option value="Definitely">Definitely</option>
+          <option value="Maybe">Maybe — depends on how good it is</option>
+          <option value="Probably not">Probably not</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <button type="submit" class="survey-submit" id="s-submit">Submit</button>
+      <div class="survey-status" id="s-status"></div>
+    </form>
+
+    <p style="color:var(--text-muted);font-size:11px;text-align:center;margin-top:16px;">
+      Your answers are anonymous. No email required. Results help us build better tools for you.
+    </p>
+  </div>
+
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+</div></footer>
+
+<script>
+var API = 'https://kingshotpro-api.kingshotpro.workers.dev';
+
+document.getElementById('survey-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var btn = document.getElementById('s-submit');
+  var status = document.getElementById('s-status');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  // Collect checkbox values
+  function getChecked(container) {
+    var boxes = container.querySelectorAll('input[type="checkbox"]:checked');
+    var vals = [];
+    for (var i = 0; i < boxes.length; i++) vals.push(boxes[i].value);
+    return vals.join(', ') || 'None selected';
+  }
+
+  var data = {
+    role: document.getElementById('s-role').value,
+    playtime: document.getElementById('s-playtime').value,
+    members: document.getElementById('s-members').value || 'N/A',
+    events_tracked: getChecked(document.querySelectorAll('.survey-checks')[0]),
+    current_tracking: document.getElementById('s-current-tracking').value,
+    hardest: document.getElementById('s-hardest').value,
+    want_to_see: getChecked(document.querySelectorAll('.survey-checks')[1]),
+    tools_used: document.getElementById('s-tools').value,
+    wish: document.getElementById('s-wish').value,
+    use_ai: document.getElementById('s-ai').value,
+  };
+
+  fetch(API + '/survey/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function (r) { return r.json(); })
+  .then(function (res) {
+    if (res.ok) {
+      status.textContent = res.message;
+      status.className = 'survey-status success';
+      document.getElementById('survey-form').reset();
+    } else {
+      status.textContent = res.error || 'Something went wrong.';
+      status.className = 'survey-status error';
+    }
+    btn.disabled = false;
+    btn.textContent = 'Submit';
+  })
+  .catch(function () {
+    status.textContent = 'Network error. Please try again.';
+    status.className = 'survey-status error';
+    btn.disabled = false;
+    btn.textContent = 'Submit';
+  });
+});
+</script>
+
+<script src="js/cookie-consent.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/advisor-names.js"></script>
+<script src="js/advisor.js"></script>
+<script src="js/advisor-orb.js"></script>
+<script src="js/advisor-hooks.js"></script>
+<script src="js/advisor-chat.js"></script>
+<script src="js/advisor-cta.js"></script>
+<script src="js/advisor-lore.js"></script>
+<script src="js/advisor-referral.js"></script>
+<script src="js/advisor-alliance.js"></script>
+</body>
+</html>

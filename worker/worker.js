@@ -36,12 +36,17 @@ export default {
         return handleVerifyConfirm(request, env);
       } else if (url.pathname === '/verify/admin') {
         return handleVerifyAdmin(request, env);
+      } else if (url.pathname === '/survey/submit') {
+        return handleSurveySubmit(request, env);
       } else if (url.pathname === '/verify/mark-sent') {
         return handleVerifyMarkSent(request, env);
       }
     }
 
-    // Admin dashboard GET
+    // Admin GETs
+    if (request.method === 'GET' && url.pathname === '/survey/admin') {
+      return handleSurveyAdmin(request, env, url);
+    }
     if (request.method === 'GET' && url.pathname === '/verify/admin') {
       return handleVerifyAdminPage(request, env, url);
     }
@@ -429,6 +434,92 @@ async function handleVerifyAdminPage(request, env, url) {
     '<script>function markSent(fid){fetch("/verify/mark-sent",{method:"POST",headers:{"Content-Type":"application/json"},' +
     'body:JSON.stringify({fid:fid,adminKey:"' + (env.ADMIN_KEY || 'admin') + '"})}).then(function(){location.reload();});}</script>' +
     '</body></html>';
+
+  return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html' } });
+}
+
+// ── Survey System ──────────────────────────
+async function handleSurveySubmit(request, env) {
+  let answers;
+  try {
+    answers = await request.json();
+  } catch { return corsWrap('{"error":"bad request"}', 400); }
+
+  var id = 'survey_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+  answers._id = id;
+  answers._submitted = new Date().toISOString();
+
+  await env.KV.put(id, JSON.stringify(answers));
+
+  // Add to survey index
+  var index = await env.KV.get('survey_index', { type: 'json' }) || [];
+  index.push(id);
+  await env.KV.put('survey_index', JSON.stringify(index));
+
+  // Discord notification
+  if (env.DISCORD_WEBHOOK) {
+    try {
+      var role = answers.role || 'Unknown';
+      var playtime = answers.playtime || '?';
+      await fetch(env.DISCORD_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          embeds: [{
+            title: '\uD83D\uDCCB New Survey Response',
+            color: 4886754,
+            fields: [
+              { name: 'Role', value: role, inline: true },
+              { name: 'Playtime', value: playtime, inline: true },
+              { name: 'Wish Tool Could Do', value: (answers.wish || 'Not answered').slice(0, 200), inline: false },
+            ],
+            footer: { text: 'Response #' + index.length },
+          }],
+        }),
+      });
+    } catch {}
+  }
+
+  return corsWrap(JSON.stringify({ ok: true, message: 'Thank you! Your response has been recorded.' }));
+}
+
+async function handleSurveyAdmin(request, env, url) {
+  var key = url.searchParams.get('key');
+  if (key !== (env.ADMIN_KEY || 'admin')) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+
+  var index = await env.KV.get('survey_index', { type: 'json' }) || [];
+  var responses = [];
+  for (var i = 0; i < index.length; i++) {
+    var data = await env.KV.get(index[i], { type: 'json' });
+    if (data) responses.push(data);
+  }
+
+  var rows = '';
+  for (var r = 0; r < responses.length; r++) {
+    var d = responses[r];
+    rows += '<tr>' +
+      '<td>' + (d.role || '-') + '</td>' +
+      '<td>' + (d.playtime || '-') + '</td>' +
+      '<td>' + (d.events_tracked || '-') + '</td>' +
+      '<td>' + (d.current_tracking || '-') + '</td>' +
+      '<td>' + (d.members || '-') + '</td>' +
+      '<td>' + (d.hardest || '-') + '</td>' +
+      '<td>' + (d.want_to_see || '-') + '</td>' +
+      '<td>' + (d.wish || '-') + '</td>' +
+      '<td>' + (d.use_ai || '-') + '</td>' +
+      '<td>' + (d._submitted || '-') + '</td>' +
+      '</tr>';
+  }
+
+  var html = '<!DOCTYPE html><html><head><title>Survey Results</title>' +
+    '<style>body{background:#0d0d0f;color:#e8e6e3;font-family:sans-serif;padding:20px;}' +
+    'table{width:100%;border-collapse:collapse;font-size:12px;}th,td{padding:6px 8px;border:1px solid #2a2d3e;text-align:left;max-width:200px;word-wrap:break-word;}' +
+    'th{background:#16181f;color:#f0c040;position:sticky;top:0;}</style></head><body>' +
+    '<h1 style="color:#f0c040;">Survey Responses (' + responses.length + ')</h1>' +
+    '<div style="overflow-x:auto;"><table><tr><th>Role</th><th>Playtime</th><th>Events Tracked</th><th>Current Tracking</th><th>Members</th><th>Hardest Part</th><th>Want to See</th><th>Wish Tool Did</th><th>Use AI?</th><th>Submitted</th></tr>' +
+    rows + '</table></div></body></html>';
 
   return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html' } });
 }
