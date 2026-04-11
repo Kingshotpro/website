@@ -48,6 +48,7 @@
     { icon: '\u{1F43B}', label: 'Troop Split',      href: B + 'calculators/troop-split.html',    key: 'troop-split' },
     { icon: '\u{1F52E}', label: 'Mystic Trials',    href: B + 'calculators/mystic.html',         key: 'mystic' },
     { cat: 'TOOLS' },
+    { icon: '\u{1F6EB}', label: 'Transfer Calc',      href: B + 'calculators/transfer.html',       key: 'transfer',    badges: ['New'] },
     { icon: '\u{1F5FA}\uFE0F', label: 'Rally Planner', href: B + 'calculators/rally-planner.html', key: 'rally-planner' },
     { icon: '\u{1F5FA}\uFE0F', label: 'Map Planner',   href: B + 'calculators/map-planner.html',   key: 'map-planner' },
     { icon: '\u{1F48A}', label: 'Healing Cost',     href: B + 'calculators/healing.html',         key: 'healing' },
@@ -72,6 +73,7 @@
     { icon: '\u{1F30D}', label: 'Kingdom Orbit',         href: B + 'games/orbit.html',               key: 'orbit' },
     { cat: 'ALLIANCE' },
     { icon: '\u{1F6E1}\uFE0F', label: 'Alliance Pages',  href: B + 'alliance/index.html',            key: 'alliance',    badges: ['New'] },
+    { icon: '\u{1F4CB}', label: 'Alliance Directory',   href: B + 'alliance/directory.html',         key: 'directory' },
     { cat: 'GUIDES' },
     { icon: '\u{1F4D6}', label: 'Beginner Guide',       href: B + 'guides/beginner.html',           key: 'beginner',    badges: ['New'] },
     { icon: '\u{1F4B0}', label: 'F2P Guide',             href: B + 'guides/f2p.html',                key: 'f2p',         badges: ['New'] },
@@ -81,6 +83,8 @@
     { icon: '\u{1F91D}', label: 'Alliance Guide',        href: B + 'guides/alliance.html',             key: 'alliance-guide', badges: ['New'] },
     { icon: '\u{1F310}', label: 'Server Age Guide',      href: B + 'guides/server-age.html',           key: 'server-age',  badges: ['New'] },
     { icon: '\u{1F4B0}', label: 'Pack Value Guide',     href: B + 'guides/pack-value.html',           key: 'pack-value',  badges: ['New'] },
+    { icon: '\u{1F9B8}', label: 'F2P Hero Builds',       href: B + 'guides/f2p-heroes.html',           key: 'f2p-heroes', badges: ['New'] },
+    { icon: '\u{1F33E}', label: 'Farm Account Guide',   href: B + 'guides/farm-account.html',         key: 'farm-account', badges: ['New'] },
     { icon: '\u{1F4DA}', label: 'Glossary',              href: B + 'guides/glossary.html',            key: 'glossary' },
   ];
 
