@@ -84,31 +84,37 @@
     orbParallax = document.createElement('div');
     orbParallax.className = 'orb-parallax';
 
-    // Looping video for alive orb (Midjourney ping-pong, no lip sync)
-    var orbVid = document.createElement('video');
-    orbVid.className = 'orb-vid';
-    orbVid.src = getBase() + 'avatars/advisor_idle_loop.mp4';
-    orbVid.muted = true;
-    orbVid.loop = true;
-    orbVid.autoplay = true;
-    orbVid.playsInline = true;
-    orbVid.setAttribute('playsinline', '');
-    orbVid.poster = src;
-
-    // Fallback static image if video fails
+    // Static image shows immediately (fast, always works)
     orbImg = document.createElement('img');
     orbImg.className = 'orb-img';
     orbImg.src = src;
     orbImg.alt = name;
-    orbImg.style.display = 'none';
-
-    orbVid.addEventListener('error', function () {
-      orbVid.style.display = 'none';
-      orbImg.style.display = 'block';
-    });
-
-    orbParallax.appendChild(orbVid);
     orbParallax.appendChild(orbImg);
+
+    // Video overlays on top when loaded (desktop only — saves mobile bandwidth)
+    if (!isMobile) {
+      var orbVid = document.createElement('video');
+      orbVid.className = 'orb-vid';
+      orbVid.src = getBase() + 'avatars/advisor_idle_loop.mp4';
+      orbVid.muted = true;
+      orbVid.loop = true;
+      orbVid.autoplay = true;
+      orbVid.playsInline = true;
+      orbVid.setAttribute('playsinline', '');
+      orbVid.style.position = 'absolute';
+      orbVid.style.top = '0';
+      orbVid.style.left = '0';
+
+      orbVid.addEventListener('canplay', function () {
+        orbImg.style.display = 'none';
+      });
+      orbVid.addEventListener('error', function () {
+        orbVid.style.display = 'none';
+        orbImg.style.display = 'block';
+      });
+
+      orbParallax.appendChild(orbVid);
+    }
     orbCircle.appendChild(orbParallax);
     orbWrap.appendChild(orbCircle);
 
