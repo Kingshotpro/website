@@ -1,0 +1,161 @@
+{
+  "kingdom": 223,
+  "timestamp": "2026-04-06T16:02:29.015376",
+  "alliances": [
+    {
+      "power": 3649507586,
+      "rank": 1,
+      "id_hex": "5101",
+      "name": "TNaughtyPenguins",
+      "tag": "tnp"
+    },
+    {
+      "power": 3641908740,
+      "rank": 2,
+      "id_hex": "0c01",
+      "name": "ThePsychWard",
+      "tag": "PSY"
+    },
+    {
+      "power": 3641908740,
+      "rank": 3,
+      "id_hex": "8f01",
+      "name": "RuthlesS",
+      "tag": "RGUL"
+    },
+    {
+      "power": 3641708292,
+      "rank": 4,
+      "id_hex": "0902",
+      "name": "Ddysfunctionals",
+      "tag": "TTN"
+    },
+    {
+      "power": 3638566659,
+      "rank": 5,
+      "id_hex": "2902",
+      "name": "Madziankowo",
+      "tag": "bye3"
+    },
+    {
+      "power": 3638524140,
+      "rank": 6,
+      "id_hex": "cf02",
+      "name": "RAVEN",
+      "tag": "ttn"
+    },
+    {
+      "power": 3636407474,
+      "rank": 7,
+      "id_hex": "2e01",
+      "name": "IsleofMisfitTots",
+      "tag": "imt"
+    },
+    {
+      "power": 3608150513,
+      "rank": 8,
+      "id_hex": "e002"
+    },
+    {
+      "power": 3597074819,
+      "rank": 9,
+      "id_hex": "da03",
+      "name": "HELLENICtower",
+      "tag": "Rpq"
+    },
+    {
+      "power": 3592953627,
+      "rank": 10,
+      "id_hex": "ec02"
+    },
+    {
+      "power": 3490857264,
+      "rank": 11,
+      "id_hex": "0801"
+    },
+    {
+      "power": 3448704770,
+      "rank": 12,
+      "id_hex": "0b01"
+    },
+    {
+      "power": 3440968767,
+      "rank": 13,
+      "id_hex": "b201"
+    },
+    {
+      "power": 3398380566,
+      "rank": 14,
+      "id_hex": "9402"
+    },
+    {
+      "power": 3389202190,
+      "rank": 15,
+      "id_hex": "1202"
+    },
+    {
+      "power": 3373147967,
+      "rank": 16,
+      "id_hex": "0101"
+    },
+    {
+      "power": 3350595960,
+      "rank": 17,
+      "id_hex": "0201"
+    },
+    {
+      "power": 2733704767,
+      "rank": 18,
+      "id_hex": "a304"
+    },
+    {
+      "power": 1929912070,
+      "rank": 19,
+      "id_hex": "0803"
+    },
+    {
+      "power": 1205407093,
+      "rank": 20,
+      "id_hex": "0601"
+    },
+    {
+      "power": 1204972300,
+      "rank": 21,
+      "id_hex": "d101"
+    },
+    {
+      "power": 1201587715,
+      "rank": 22,
+      "id_hex": "1003"
+    },
+    {
+      "power": 1138289409,
+      "rank": 23,
+      "id_hex": "5101",
+      "name": "TNaughtyPenguins",
+      "tag": "tnp"
+    },
+    {
+      "power": 948960001,
+      "rank": 24,
+      "id_hex": "2201"
+    },
+    {
+      "power": 898571277,
+      "rank": 25,
+      "id_hex": "7801"
+    },
+    {
+      "power": 476188804,
+      "rank": 26,
+      "id_hex": "7603"
+    },
+    {
+      "power": 115089154,
+      "rank": 27,
+      "id_hex": "8c04"
+    }
+  ],
+  "players": [],
+  "chat": []
+}
