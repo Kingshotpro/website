@@ -303,25 +303,28 @@ async function handleVerifyRequest(request, env) {
   if (!queue.includes(fid)) { queue.push(fid); }
   await env.KV.put('verify_queue', JSON.stringify(queue));
 
-  // Email notification to admin
-  try {
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + env.RESEND_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: 'no-reply@kingshotpro.com',
-        to: 'greenboxhydro@gmail.com',
-        subject: 'KingshotPro: Verification Request — FID ' + fid,
-        html: '<h2>New Verification Request</h2>' +
-          '<p><strong>FID:</strong> ' + fid + '</p>' +
-          '<p><strong>Kingdom:</strong> ' + kingdom + '</p>' +
-          '<p><strong>Email:</strong> ' + email + '</p>' +
-          '<p><strong>Code to send in-game:</strong> <span style="font-size:24px;font-weight:bold;color:#f0c040;">' + code + '</span></p>' +
-          '<p>Log into Kingdom ' + kingdom + ', find this player, send them in-game mail with the code above.</p>' +
-          '<p><a href="https://kingshotpro-api.kingshotpro.workers.dev/verify/admin?key=' + (env.ADMIN_KEY || 'admin') + '">View Admin Dashboard</a></p>',
-      }),
-    });
-  } catch { /* email failed but request still saved */ }
+  // Discord notification
+  if (env.DISCORD_WEBHOOK) {
+    try {
+      await fetch(env.DISCORD_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          embeds: [{
+            title: '\uD83D\uDD14 New Verification Request',
+            color: 15778880,
+            fields: [
+              { name: 'Player ID', value: fid, inline: true },
+              { name: 'Kingdom', value: String(kingdom), inline: true },
+              { name: 'Email', value: email, inline: false },
+              { name: '\uD83D\uDD11 CODE TO SEND IN-GAME', value: '**' + code + '**', inline: false },
+            ],
+            footer: { text: 'Find this player in-game \u2192 send them this code via mail' },
+          }],
+        }),
+      });
+    } catch { /* discord failed but request still saved */ }
+  }
 
   return corsWrap(JSON.stringify({ ok: true, message: 'Verification request submitted. Check your in-game mail within 48 hours.' }));
 }
