@@ -528,12 +528,20 @@ async function handleStripeWebhook(request, env) {
   // Stripe sends events when subscriptions change
   // We map the Stripe price ID to our tier names
   const PRICE_TO_TIER = {
-    'price_1TKkEnFs4JpQNEkSRplADapH': 'pro',      // Pro monthly
-    'price_1TKkEoFs4JpQNEkSYu8qE89Y': 'pro',      // Pro annual
-    'price_1TKkEoFs4JpQNEkSRbbD3K5X': 'war_council', // WC monthly
-    'price_1TKkEoFs4JpQNEkSdD5BjG0A': 'war_council', // WC annual
-    'price_1TKkEpFs4JpQNEkSGg9BaCPw': 'elite',     // Elite monthly
-    'price_1TKkEpFs4JpQNEkSsDL82YV9': 'elite',     // Elite annual
+    // Test mode (old account)
+    'price_1TKkEnFs4JpQNEkSRplADapH': 'pro',
+    'price_1TKkEoFs4JpQNEkSYu8qE89Y': 'pro',
+    'price_1TKkEoFs4JpQNEkSRbbD3K5X': 'war_council',
+    'price_1TKkEoFs4JpQNEkSdD5BjG0A': 'war_council',
+    'price_1TKkEpFs4JpQNEkSGg9BaCPw': 'elite',
+    'price_1TKkEpFs4JpQNEkSsDL82YV9': 'elite',
+    // Live mode
+    'price_1TKr9uCTwcITa9f2GJdMCqzy': 'pro',        // Pro monthly
+    'price_1TKr9uCTwcITa9f2hjIdYqnz': 'pro',        // Pro annual
+    'price_1TKr9vCTwcITa9f2oceLoWsD': 'war_council', // WC monthly
+    'price_1TKr9vCTwcITa9f2Tn9SN6Bm': 'war_council', // WC annual
+    'price_1TKr9vCTwcITa9f2k1AbY1QL': 'elite',      // Elite monthly
+    'price_1TKr9vCTwcITa9f2TLeAfx4o': 'elite',      // Elite annual
   };
 
   let event;
