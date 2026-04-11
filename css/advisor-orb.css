@@ -741,6 +741,67 @@
   color: var(--text-muted);
 }
 
+/* ── Referral Section ─────────────────────── */
+.orb-referral {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.orb-referral-title {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+.orb-referral-link {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.orb-referral-link input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 11px;
+  padding: 4px 8px;
+  font-family: monospace;
+}
+.orb-referral-copy {
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.orb-referral-copy:hover { opacity: 0.9; }
+.orb-referral-count {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+.orb-referral-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
 /* ── Mobile ──────────────────────────────── */
 @media (max-width: 640px) {
   .orb-wrap.orb-at-rest {
