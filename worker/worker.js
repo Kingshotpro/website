@@ -283,6 +283,19 @@ async function handleVerifyRequest(request, env) {
 
   if (!fid || !kingdom || !email) return corsWrap('{"error":"fid, kingdom, and email required"}', 400);
 
+  // Pull player nickname from Century Games API
+  let nickname = 'Unknown';
+  try {
+    const pidRes = await fetch(UPSTREAM_BASE + '/api/player', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0' },
+      body: JSON.stringify({ fid: String(fid), cdkey: '' }),
+    });
+    const pidData = await pidRes.json();
+    if (pidData.data && pidData.data.nickname) nickname = pidData.data.nickname;
+    else if (pidData.data && Array.isArray(pidData.data) && pidData.data.length === 0) nickname = '(FID not found)';
+  } catch { /* API failed, continue with Unknown */ }
+
   // Check if already verified
   const existing = await env.KV.get(`verified:${fid}`, { type: 'json' });
   if (existing) return corsWrap('{"error":"already_verified"}', 400);
@@ -290,7 +303,7 @@ async function handleVerifyRequest(request, env) {
   // Generate 6-digit code
   const code = String(Math.floor(100000 + Math.random() * 900000));
   const req = {
-    fid, kingdom, email, code,
+    fid, kingdom, email, code, nickname,
     status: 'pending', // pending → code_sent → verified → expired
     created: Date.now(),
     expires: Date.now() + 48 * 3600 * 1000, // 48 hours
@@ -314,12 +327,13 @@ async function handleVerifyRequest(request, env) {
             title: '\uD83D\uDD14 New Verification Request',
             color: 15778880,
             fields: [
+              { name: 'Player Name', value: nickname, inline: true },
               { name: 'Player ID', value: fid, inline: true },
               { name: 'Kingdom', value: String(kingdom), inline: true },
               { name: 'Email', value: email, inline: false },
               { name: '\uD83D\uDD11 CODE TO SEND IN-GAME', value: '**' + code + '**', inline: false },
             ],
-            footer: { text: 'Find this player in-game \u2192 send them this code via mail' },
+            footer: { text: 'Find "' + nickname + '" in Kingdom ' + kingdom + ' \u2192 send them this code via in-game mail' },
           }],
         }),
       });
@@ -391,6 +405,7 @@ async function handleVerifyAdminPage(request, env, url) {
     if (!req) continue;
     const age = Math.round((Date.now() - req.created) / 3600000);
     rows += '<tr>' +
+      '<td>' + (req.nickname || 'Unknown') + '</td>' +
       '<td>' + fid + '</td>' +
       '<td>' + req.kingdom + '</td>' +
       '<td>' + req.email + '</td>' +
@@ -409,7 +424,7 @@ async function handleVerifyAdminPage(request, env, url) {
     'th{background:#16181f;color:#f0c040;}button{background:#f0c040;color:#0d0d0f;border:none;padding:6px 12px;cursor:pointer;font-weight:bold;border-radius:4px;}</style></head><body>' +
     '<h1 style="color:#f0c040;">Verification Queue</h1>' +
     '<p>' + queue.length + ' pending</p>' +
-    '<table><tr><th>FID</th><th>Kingdom</th><th>Email</th><th>Code</th><th>Status</th><th>Age</th><th>Action</th></tr>' +
+    '<table><tr><th>Name</th><th>FID</th><th>Kingdom</th><th>Email</th><th>Code</th><th>Status</th><th>Age</th><th>Action</th></tr>' +
     rows + '</table>' +
     '<script>function markSent(fid){fetch("/verify/mark-sent",{method:"POST",headers:{"Content-Type":"application/json"},' +
     'body:JSON.stringify({fid:fid,adminKey:"' + (env.ADMIN_KEY || 'admin') + '"})}).then(function(){location.reload();});}</script>' +
