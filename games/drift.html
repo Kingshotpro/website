@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kingdom Drift — KingshotPro Arcade</title>
+  <meta name="description" content="Gather the lights. Drift through the dark. You are not alone.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100vw; height: 100vh; overflow: hidden; background: #0d0d0f;
+      display: flex; align-items: center; justify-content: center;
+      font-family: system-ui, -apple-system, sans-serif; color: #e8e6e3;
+    }
+    canvas { display: block; background: #16181f; max-width: 100%; max-height: 100%; touch-action: none; }
+  </style>
+</head>
+<body>
+<canvas id="game" width="390" height="844"></canvas>
+<script src="colony_light.js"></script>
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+const W = 390, H = 844;
+
+// === AUDIO ===
+let audioCtx = null;
+function initAudio() {
+  if (audioCtx) return;
+  try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+}
+function chime(note, delay) {
+  if (!audioCtx) return;
+  const freq = [261, 294, 330, 349, 392, 440, 494, 523, 587, 659][note % 10];
+  const t0 = audioCtx.currentTime + (delay || 0);
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  o.type = "sine";
+  o.frequency.setValueAtTime(freq, t0);
+  o.frequency.linearRampToValueAtTime(freq * 1.02, t0 + 0.3);
+  g.gain.setValueAtTime(0.0001, t0);
+  g.gain.exponentialRampToValueAtTime(0.025, t0 + 0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.8);
+  o.connect(g).connect(audioCtx.destination);
+  o.start(t0);
+  o.stop(t0 + 1);
+}
+
+// === WORLD ===
+const WORLD_W = 3000;
+const WORLD_H = 3000;
+const player = { x: WORLD_W / 2, y: WORLD_H / 2, vx: 0, vy: 0 };
+const followers = [];
+const lights = [];
+const landmarks = [];
+let gathered = 0;
+let time = 0;
+let lastTime = 0;
+let started = false;
+let message = "";
+let messageTimer = 0;
+let messageAlpha = 0;
+
+// Input
+let inputX = W / 2, inputY = H / 2;
+let touching = false;
+
+function getPos(e) {
+  const r = canvas.getBoundingClientRect();
+  return { x: (e.clientX - r.left) * (W / r.width), y: (e.clientY - r.top) * (H / r.height) };
+}
+canvas.addEventListener("mousedown", e => { initAudio(); const p = getPos(e); inputX = p.x; inputY = p.y; touching = true; if (!started) started = true; });
+canvas.addEventListener("mousemove", e => { if (touching) { const p = getPos(e); inputX = p.x; inputY = p.y; }});
+canvas.addEventListener("mouseup", () => { touching = false; });
+canvas.addEventListener("touchstart", e => {
+  initAudio(); e.preventDefault();
+  const t = e.changedTouches[0]; const p = getPos(t); inputX = p.x; inputY = p.y; touching = true;
+  if (!started) started = true;
+});
+canvas.addEventListener("touchmove", e => {
+  e.preventDefault();
+  const t = e.changedTouches[0]; const p = getPos(t); inputX = p.x; inputY = p.y;
+});
+canvas.addEventListener("touchend", () => { touching = false; });
+
+// Generate world
+const POEMS = [
+  "You were never lost.",
+  "The dark is not empty.",
+  "Warmth finds warmth.",
+  "They were waiting for you.",
+  "Light recognizes light.",
+  "You carried them home.",
+  "Every spark was someone.",
+  "The gathering continues.",
+  "Together, we glow.",
+  "This was always the way."
+];
+
+function generateWorld() {
+  // Scatter lights
+  for (let i = 0; i < 60; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 200 + Math.random() * 1200;
+    lights.push({
+      x: WORLD_W / 2 + Math.cos(angle) * dist,
+      y: WORLD_H / 2 + Math.sin(angle) * dist,
+      size: 2 + Math.random() * 3,
+      hue: 30 + Math.random() * 30, // warm yellows/oranges
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.5 + Math.random() * 1.5,
+      found: false,
+      poem: i % 10 === 0 ? POEMS[Math.floor(i / 10) % POEMS.length] : null
+    });
+  }
+
+  // Landmarks: subtle environmental features
+  for (let i = 0; i < 30; i++) {
+    landmarks.push({
+      x: Math.random() * WORLD_W,
+      y: Math.random() * WORLD_H,
+      type: Math.random() < 0.5 ? "rock" : "ruin",
+      size: 10 + Math.random() * 25,
+      rot: Math.random() * Math.PI
+    });
+  }
+}
+generateWorld();
+
+// Stars (background, not world-space)
+const stars = Array.from({length: 100}, () => ({
+  x: Math.random() * W, y: Math.random() * H,
+  r: Math.random() * 1 + 0.3, a: Math.random() * 0.4 + 0.1, s: Math.random() * 0.3 + 0.1
+}));
+
+// === UPDATE ===
+function update(dt) {
+  time += dt;
+  messageTimer = Math.max(0, messageTimer - dt);
+
+  if (!started) return;
+
+  // Movement: drag to move
+  if (touching) {
+    const dx = inputX - W / 2;
+    const dy = inputY - H / 2;
+    const len = Math.hypot(dx, dy) || 1;
+    const stick = Math.min(1, len / 80);
+    const speed = 80 + followers.length * 2;
+    player.vx += (dx / len) * stick * speed * dt * 3;
+    player.vy += (dy / len) * stick * speed * dt * 3;
+  }
+
+  // Friction
+  const drag = Math.pow(0.02, dt);
+  player.vx *= drag;
+  player.vy *= drag;
+
+  player.x += player.vx * dt * 60;
+  player.y += player.vy * dt * 60;
+  player.x = Math.max(50, Math.min(WORLD_W - 50, player.x));
+  player.y = Math.max(50, Math.min(WORLD_H - 50, player.y));
+
+  // Update followers (trail behind player in a soft chain)
+  let leadX = player.x, leadY = player.y;
+  for (let i = 0; i < followers.length; i++) {
+    const f = followers[i];
+    const dx = leadX - f.x;
+    const dy = leadY - f.y;
+    const dist = Math.hypot(dx, dy);
+    const spacing = 18 + i * 2;
+    if (dist > spacing) {
+      const pull = (dist - spacing) * 0.08;
+      f.x += (dx / dist) * pull;
+      f.y += (dy / dist) * pull;
+    }
+    // Gentle orbit
+    f.orbit += f.orbitSpeed * dt;
+    f.x += Math.cos(f.orbit) * 0.3;
+    f.y += Math.sin(f.orbit) * 0.3;
+    leadX = f.x;
+    leadY = f.y;
+  }
+
+  // Check for uncollected lights
+  const collectRadius = 60 + followers.length * 3;
+  for (const light of lights) {
+    if (light.found) continue;
+    light.pulse += light.pulseSpeed * dt;
+    const d = Math.hypot(player.x - light.x, player.y - light.y);
+    if (d < collectRadius) {
+      light.found = true;
+      gathered++;
+      followers.push({
+        x: light.x, y: light.y,
+        hue: light.hue, size: light.size,
+        orbit: Math.random() * Math.PI * 2,
+        orbitSpeed: 0.5 + Math.random() * 1,
+        joinTime: time
+      });
+      // Chime — each new light plays a note in a scale
+      chime(gathered % 10);
+      if (gathered > 1 && gathered % 3 === 0) chime((gathered + 4) % 10, 0.15);
+      // Poem
+      if (light.poem) {
+        message = light.poem;
+        messageTimer = 5;
+      } else if (gathered === 1) {
+        message = "You found someone.";
+        messageTimer = 4;
+      } else if (gathered === 5) {
+        message = "Five lights. A constellation.";
+        messageTimer = 4;
+      } else if (gathered === 15) {
+        message = "They follow because you move.";
+        messageTimer = 4;
+      } else if (gathered === 30) {
+        message = "A river of light.";
+        messageTimer = 4;
+      } else if (gathered === 50) {
+        message = "The darkness never stood a chance.";
+        messageTimer = 5;
+      } else if (gathered === 60) {
+        message = "Every light. Every one. You found them all.";
+        messageTimer = 8;
+        if (typeof ColonyLight !== 'undefined') ColonyLight.add(gathered);
+      }
+    }
+  }
+}
+
+// === DRAW ===
+function draw() {
+  // Background
+  const brightness = Math.min(0.15, gathered * 0.002);
+  ctx.fillStyle = `rgb(${Math.round(4 + brightness * 30)}, ${Math.round(4 + brightness * 20)}, ${Math.round(12 + brightness * 40)})`;
+  ctx.fillRect(0, 0, W, H);
+
+  // Stars (screen-space, parallax)
+  stars.forEach(s => {
+    const tw = Math.sin(time * s.s * 3 + s.x) * 0.15 + 0.85;
+    const parallaxX = (s.x - player.x * 0.01) % W;
+    const parallaxY = (s.y - player.y * 0.01) % H;
+    ctx.fillStyle = `rgba(255,255,255,${s.a * tw})`;
+    ctx.beginPath();
+    ctx.arc((parallaxX + W) % W, (parallaxY + H) % H, s.r, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  if (!started) {
+    // Title
+    ctx.fillStyle = "rgba(240, 192, 64, 0.8)";
+    ctx.font = "bold 28px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("KINGDOM DRIFT", W / 2, H * 0.3);
+
+    ctx.fillStyle = "rgba(240, 192, 64, 0.5)";
+    ctx.font = "14px sans-serif";
+    ctx.fillText("Gather the lights.", W / 2, H * 0.37);
+    ctx.fillText("Drift through the dark.", W / 2, H * 0.41);
+
+    // Player glow on title
+    const tg = ctx.createRadialGradient(W/2, H*0.6, 3, W/2, H*0.6, 60);
+    tg.addColorStop(0, "rgba(240, 192, 64, 0.3)");
+    tg.addColorStop(1, "rgba(240, 192, 64, 0)");
+    ctx.fillStyle = tg;
+    ctx.beginPath(); ctx.arc(W/2, H*0.6, 60, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = "#ffdd88";
+    ctx.beginPath(); ctx.arc(W/2, H*0.6, 5, 0, Math.PI*2); ctx.fill();
+
+    const ta = 0.3 + Math.sin(time * 2) * 0.15;
+    ctx.fillStyle = `rgba(255,255,255,${ta})`;
+    ctx.font = "12px sans-serif";
+    ctx.fillText("touch and drag to move", W / 2, H * 0.75);
+
+    ctx.fillStyle = "rgba(240, 192, 64, 0.25)";
+    ctx.font = "11px sans-serif";
+    ctx.fillText("You are not alone.", W / 2, H * 0.95);
+    return;
+  }
+
+  // Camera
+  const camX = player.x - W / 2;
+  const camY = player.y - H / 2;
+
+  ctx.save();
+  ctx.translate(-camX, -camY);
+
+  // Landmarks (visible if within light range)
+  const lightRadius = 80 + gathered * 6;
+  for (const lm of landmarks) {
+    const d = Math.hypot(lm.x - player.x, lm.y - player.y);
+    if (d > lightRadius + 50) continue;
+    const vis = Math.max(0, Math.min(0.3, 1 - (d - 40) / lightRadius));
+    ctx.globalAlpha = vis;
+    if (lm.type === "rock") {
+      ctx.fillStyle = "#1a1a24";
+      ctx.beginPath();
+      ctx.ellipse(lm.x, lm.y, lm.size, lm.size * 0.6, lm.rot, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.fillStyle = "#151520";
+      ctx.fillRect(lm.x - lm.size * 0.3, lm.y - lm.size, lm.size * 0.6, lm.size);
+      ctx.fillRect(lm.x - lm.size * 0.5, lm.y - lm.size * 0.3, lm.size, lm.size * 0.15);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // Uncollected lights (pulsing gently)
+  for (const light of lights) {
+    if (light.found) continue;
+    const d = Math.hypot(light.x - player.x, light.y - player.y);
+    // Only draw if within extended view range
+    if (d > 500) continue;
+    const pulse = 0.5 + Math.sin(light.pulse) * 0.3;
+    const vis = Math.max(0, Math.min(1, 1 - (d - 60) / 400));
+    // Outer glow
+    const lg = ctx.createRadialGradient(light.x, light.y, 1, light.x, light.y, 20 + pulse * 8);
+    lg.addColorStop(0, `hsla(${light.hue}, 80%, 70%, ${0.3 * vis * pulse})`);
+    lg.addColorStop(1, `hsla(${light.hue}, 80%, 50%, 0)`);
+    ctx.fillStyle = lg;
+    ctx.beginPath(); ctx.arc(light.x, light.y, 20 + pulse * 8, 0, Math.PI * 2); ctx.fill();
+    // Core
+    ctx.fillStyle = `hsla(${light.hue}, 80%, 80%, ${0.7 * vis})`;
+    ctx.beginPath(); ctx.arc(light.x, light.y, light.size * pulse, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Followers (the gathered lights, trailing behind player)
+  for (let i = followers.length - 1; i >= 0; i--) {
+    const f = followers[i];
+    const age = time - f.joinTime;
+    const breathe = 0.8 + Math.sin(time * 1.5 + i * 0.7) * 0.2;
+    // Glow
+    const fg = ctx.createRadialGradient(f.x, f.y, 1, f.x, f.y, 15 * breathe);
+    fg.addColorStop(0, `hsla(${f.hue}, 70%, 70%, 0.25)`);
+    fg.addColorStop(1, `hsla(${f.hue}, 70%, 50%, 0)`);
+    ctx.fillStyle = fg;
+    ctx.beginPath(); ctx.arc(f.x, f.y, 15 * breathe, 0, Math.PI * 2); ctx.fill();
+    // Core
+    ctx.fillStyle = `hsla(${f.hue}, 70%, 80%, 0.8)`;
+    ctx.beginPath(); ctx.arc(f.x, f.y, f.size * 0.7 * breathe, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = `hsla(${f.hue}, 50%, 95%, 0.5)`;
+    ctx.beginPath(); ctx.arc(f.x, f.y, f.size * 0.3, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Player
+  const playerBreath = 1 + Math.sin(time * 2) * 0.08;
+  // Large soft glow (grows with gathered count)
+  const pgR = lightRadius;
+  const pg = ctx.createRadialGradient(player.x, player.y, 5, player.x, player.y, pgR);
+  pg.addColorStop(0, `rgba(240, 192, 64, ${0.08 + gathered * 0.003})`);
+  pg.addColorStop(0.3, `rgba(240, 192, 64, ${0.03 + gathered * 0.001})`);
+  pg.addColorStop(1, "rgba(0, 0, 0, 0)");
+  ctx.fillStyle = pg;
+  ctx.beginPath(); ctx.arc(player.x, player.y, pgR, 0, Math.PI * 2); ctx.fill();
+  // Inner glow
+  const pig = ctx.createRadialGradient(player.x, player.y, 2, player.x, player.y, 25 * playerBreath);
+  pig.addColorStop(0, "rgba(255, 240, 200, 0.5)");
+  pig.addColorStop(0.5, "rgba(255, 200, 120, 0.12)");
+  pig.addColorStop(1, "rgba(255, 160, 60, 0)");
+  ctx.fillStyle = pig;
+  ctx.beginPath(); ctx.arc(player.x, player.y, 25 * playerBreath, 0, Math.PI * 2); ctx.fill();
+  // Core
+  ctx.fillStyle = "#ffeecc";
+  ctx.beginPath(); ctx.arc(player.x, player.y, 5 * playerBreath, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = "#fff";
+  ctx.beginPath(); ctx.arc(player.x, player.y, 2, 0, Math.PI * 2); ctx.fill();
+
+  ctx.restore();
+
+  // === HUD: minimal ===
+  if (gathered > 0) {
+    ctx.fillStyle = "rgba(240, 192, 64, 0.4)";
+    ctx.font = "12px sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText(`${gathered} light${gathered !== 1 ? "s" : ""}`, 15, H - 20);
+  }
+
+  // Message
+  if (messageTimer > 0) {
+    const ma = Math.min(1, messageTimer / 1) * Math.min(1, (5 - messageTimer + messageTimer) / 1);
+    const fadeIn = Math.min(1, (5 - messageTimer) < 1 ? (5 - messageTimer) : 1);
+    const fadeOut = Math.min(1, messageTimer / 1);
+    const alpha = Math.min(fadeIn, fadeOut);
+    ctx.fillStyle = `rgba(240, 192, 64, ${0.7 * alpha})`;
+    ctx.font = "15px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(message, W / 2, H * 0.15);
+  }
+
+  // Compass: show direction to nearest uncollected light
+  const uncollected = lights.filter(l => !l.found);
+  if (uncollected.length > 0 && gathered > 0) {
+    let nearest = null, nd = Infinity;
+    for (const l of uncollected) {
+      const d = Math.hypot(l.x - player.x, l.y - player.y);
+      if (d < nd) { nd = d; nearest = l; }
+    }
+    if (nearest && nd > lightRadius) {
+      const angle = Math.atan2(nearest.y - player.y, nearest.x - player.x);
+      const compassR = 30;
+      const cx = W / 2 + Math.cos(angle) * (H * 0.4);
+      const cy = H / 2 + Math.sin(angle) * (H * 0.35);
+      // Clamp to screen
+      const ccx = Math.max(20, Math.min(W - 20, cx));
+      const ccy = Math.max(60, Math.min(H - 60, cy));
+      const pulseA = 0.2 + Math.sin(time * 3) * 0.1;
+      ctx.fillStyle = `rgba(240, 192, 64, ${pulseA})`;
+      ctx.beginPath(); ctx.arc(ccx, ccy, 4, 0, Math.PI * 2); ctx.fill();
+      // Arrow
+      ctx.strokeStyle = `rgba(240, 192, 64, ${pulseA * 0.5})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(ccx, ccy);
+      ctx.lineTo(ccx + Math.cos(angle) * 12, ccy + Math.sin(angle) * 12);
+      ctx.stroke();
+    }
+  }
+}
+
+// === GAME LOOP ===
+function gameLoop(now) {
+  if (!lastTime) lastTime = now;
+  const dt = Math.min((now - lastTime) / 1000, 1/30);
+  lastTime = now;
+  update(dt);
+  draw();
+  requestAnimationFrame(gameLoop);
+}
+requestAnimationFrame(gameLoop);
+</script>
+<div style="text-align:center;margin:20px;font-size:12px;color:#9b9da4;"><a href="../index.html" style="color:#f0c040;">← Back to KingshotPro</a></div>
+</body>
+</html>

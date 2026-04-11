@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kingdom Bloom — KingshotPro Arcade</title>
+  <meta name="description" content="Tap to plant light. Watch it flourish in the kingdom. A toy for the dark.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100vw; height: 100vh; overflow: hidden; background: #0d0d0f; display: flex; align-items: center; justify-content: center; font-family: system-ui, -apple-system, sans-serif; }
+    canvas { display: block; background: #16181f; max-width: 100%; max-height: 100%; touch-action: none; }
+    body { color: #e8e6e3; }
+  </style>
+</head>
+<body>
+<canvas id="game" width="390" height="844"></canvas>
+<script src="colony_light.js"></script>
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+const W = 390, H = 844;
+
+let audioCtx = null;
+function initAudio() { if (!audioCtx) try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
+function chime(freq, dur) {
+  if (!audioCtx) return;
+  const t0 = audioCtx.currentTime;
+  const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+  o.type = "sine"; o.frequency.setValueAtTime(freq, t0);
+  o.frequency.exponentialRampToValueAtTime(freq * 0.98, t0 + dur);
+  g.gain.setValueAtTime(0.0001, t0);
+  g.gain.exponentialRampToValueAtTime(0.018, t0 + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  o.connect(g).connect(audioCtx.destination); o.start(t0); o.stop(t0 + dur + 0.05);
+}
+
+// PARTICLES
+const MAX_PARTICLES = 600;
+let particles = [];
+let time = 0, lastTime = 0;
+let tapCount = 0;
+let hint = true;
+
+// Color palettes — each bloom picks one
+const PALETTES = [
+  { name: "ember", colors: ["#ff6622", "#ff9944", "#ffcc66", "#ffdd88", "#ffeeaa"] },
+  { name: "ocean", colors: ["#2266cc", "#4488dd", "#66aaee", "#88ccff", "#aaddff"] },
+  { name: "aurora", colors: ["#22cc88", "#44ddaa", "#66eebb", "#88ffcc", "#aaffdd"] },
+  { name: "rose", colors: ["#cc2266", "#dd4488", "#ee66aa", "#ff88cc", "#ffaadd"] },
+  { name: "gold", colors: ["#cc8822", "#ddaa44", "#eecc66", "#ffdd88", "#ffeeaa"] },
+  { name: "violet", colors: ["#6622cc", "#8844dd", "#aa66ee", "#cc88ff", "#ddaaff"] },
+  { name: "ice", colors: ["#88ccee", "#aaddff", "#cceeFF", "#ddf4ff", "#eef8ff"] },
+  { name: "forest", colors: ["#228844", "#44aa66", "#66cc88", "#88ddaa", "#aaeebb"] },
+];
+
+function bloom(x, y) {
+  const palette = PALETTES[tapCount % PALETTES.length];
+  const count = 25 + Math.floor(Math.random() * 20);
+  // Play a chord
+  const baseFreq = 200 + Math.random() * 400;
+  chime(baseFreq, 0.5);
+  chime(baseFreq * 1.25, 0.6);
+  chime(baseFreq * 1.5, 0.7);
+
+  for (let i = 0; i < count; i++) {
+    if (particles.length >= MAX_PARTICLES) {
+      // Remove oldest
+      particles.shift();
+    }
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 30 + Math.random() * 120;
+    const color = palette.colors[Math.floor(Math.random() * palette.colors.length)];
+    particles.push({
+      x, y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 30,
+      size: 1.5 + Math.random() * 3.5,
+      color,
+      alpha: 0.8 + Math.random() * 0.2,
+      life: 8 + Math.random() * 12, // Long-lived
+      maxLife: 20,
+      bounce: 0.6 + Math.random() * 0.2,
+      drag: 0.985 + Math.random() * 0.01,
+      glow: Math.random() < 0.3
+    });
+  }
+  tapCount++;
+  if (tapCount === 1 && typeof ColonyLight !== 'undefined') {
+    ColonyLight.add(1, "First bloom planted");
+  }
+}
+
+// Gravity wells — particles gently attract to each other in clusters
+function update(dt) {
+  time += dt;
+
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.life -= dt;
+    if (p.life <= 0) { particles.splice(i, 1); continue; }
+
+    // Gravity
+    p.vy += 18 * dt;
+
+    // Drag
+    p.vx *= p.drag;
+    p.vy *= p.drag;
+
+    // Gentle wind
+    p.vx += Math.sin(time * 0.5 + p.y * 0.01) * 3 * dt;
+
+    // Move
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+
+    // Bounce off walls
+    if (p.x < p.size) { p.x = p.size; p.vx *= -p.bounce; }
+    if (p.x > W - p.size) { p.x = W - p.size; p.vx *= -p.bounce; }
+    // Bounce off floor
+    if (p.y > H - p.size - 10) {
+      p.y = H - p.size - 10;
+      p.vy *= -p.bounce;
+      // Lose some energy
+      if (Math.abs(p.vy) < 5) p.vy = 0;
+    }
+    // Ceiling
+    if (p.y < p.size) { p.y = p.size; p.vy *= -p.bounce * 0.5; }
+
+    // Fade
+    p.alpha = Math.min(p.alpha, p.life / 3);
+  }
+}
+
+function draw() {
+  // Background — very subtle fade (leaves trails)
+  ctx.fillStyle = "rgba(2, 2, 6, 0.08)";
+  ctx.fillRect(0, 0, W, H);
+
+  // Stars (very subtle)
+  if (Math.floor(time * 2) % 60 === 0) {
+    // Only draw stars occasionally on the fade layer
+    for (let i = 0; i < 3; i++) {
+      ctx.fillStyle = `rgba(255,255,255,${Math.random()*0.08})`;
+      ctx.beginPath();
+      ctx.arc(Math.random()*W, Math.random()*H*0.3, Math.random()*0.8+0.2, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  // Particles
+  for (const p of particles) {
+    const a = Math.min(1, p.alpha);
+    if (a <= 0) continue;
+
+    if (p.glow) {
+      // Glowing particle
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = p.color;
+    }
+
+    ctx.globalAlpha = a * 0.9;
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (p.glow) {
+      ctx.shadowBlur = 0;
+    }
+  }
+  ctx.globalAlpha = 1;
+
+  // Hint
+  if (hint && tapCount === 0) {
+    const ha = 0.25 + Math.sin(time * 2) * 0.1;
+    ctx.fillStyle = `rgba(240, 192, 64, ${ha})`;
+    ctx.font = "14px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("tap anywhere in the kingdom", W/2, H * 0.5);
+  }
+
+  // Particle count (very subtle)
+  if (particles.length > 0) {
+    ctx.fillStyle = "rgba(255,255,255,0.08)";
+    ctx.font = "10px sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(`${particles.length} lights in the realm`, W - 10, H - 10);
+  }
+}
+
+// Input
+function getPos(e) {
+  const r = canvas.getBoundingClientRect();
+  return { x: (e.clientX-r.left)*(W/r.width), y: (e.clientY-r.top)*(H/r.height) };
+}
+canvas.addEventListener("mousedown", e => { initAudio(); const p = getPos(e); bloom(p.x, p.y); hint = false; });
+canvas.addEventListener("touchstart", e => {
+  initAudio(); e.preventDefault();
+  for (const t of e.changedTouches) {
+    const p = getPos(t); bloom(p.x, p.y);
+  }
+  hint = false;
+});
+
+// Clear with double-tap
+let lastTap = 0;
+canvas.addEventListener("dblclick", e => {
+  particles = [];
+  // Full clear — redraw black
+  ctx.fillStyle = "#020206";
+  ctx.fillRect(0, 0, W, H);
+});
+
+// Game loop
+function gameLoop(now) {
+  if (!lastTime) lastTime = now;
+  const dt = Math.min((now-lastTime)/1000, 1/30);
+  lastTime = now;
+  update(dt);
+  draw();
+  requestAnimationFrame(gameLoop);
+}
+
+// Initial black
+ctx.fillStyle = "#020206";
+ctx.fillRect(0, 0, W, H);
+
+requestAnimationFrame(gameLoop);
+</script>
+<div style="text-align:center;margin:20px;font-size:12px;color:#9b9da4;"><a href="../index.html" style="color:#f0c040;">← Back to KingshotPro</a></div>
+</body>
+</html>

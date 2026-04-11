@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pulse — KingshotPro Arcade</title>
+  <meta name="description" content="A heartbeat in the kingdom. Time the pulse. Keep the rhythm alive.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100vw; height: 100vh; overflow: hidden; background: #0d0d0f; display: flex; align-items: center; justify-content: center; font-family: system-ui, -apple-system, sans-serif; }
+    canvas { display: block; background: #16181f; max-width: 100%; max-height: 100%; touch-action: none; }
+  </style>
+</head>
+<body>
+<canvas id="game" width="390" height="844"></canvas>
+<script src="colony_light.js"></script>
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+const W = 390, H = 844;
+const CX = W/2, CY = H * 0.42;
+
+let audioCtx = null;
+function initAudio() { if (!audioCtx) try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
+function beep(freq, dur, type, gain, slide) {
+  if (!audioCtx) return;
+  const t0 = audioCtx.currentTime, o = audioCtx.createOscillator(), g = audioCtx.createGain();
+  o.type = type || "sine"; o.frequency.setValueAtTime(freq, t0);
+  if (slide) o.frequency.linearRampToValueAtTime(freq+slide, t0+dur);
+  g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(gain||0.04, t0+0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001, t0+dur);
+  o.connect(g).connect(audioCtx.destination); o.start(t0); o.stop(t0+dur+0.02);
+}
+function sndPerfect() { beep(520, 0.1, "triangle", 0.05, 80); beep(780, 0.15, "triangle", 0.03, 40); }
+function sndGood() { beep(440, 0.08, "triangle", 0.03, 30); }
+function sndMiss() { beep(200, 0.15, "sawtooth", 0.025, -60); }
+function sndHeartbeat() { beep(80, 0.12, "sine", 0.06, -20); setTimeout(() => beep(90, 0.1, "sine", 0.04, -15), 150); }
+
+// STATE
+let state = "title";
+let time = 0, lastTime = 0;
+let score = 0, streak = 0, maxStreak = 0, heartStrength = 0.3;
+let pulses = []; // Active expanding rings
+let targetR = 120; // Target ring radius
+let pulseSpeed = 180; // Pixels per second
+let pulseInterval = 1.8; // Seconds between pulses
+let pulseTimer = 0;
+let feedbacks = []; // Visual feedback text
+let tapped = false;
+let beatPhase = 0; // For ambient heartbeat visual
+let ripples = []; // Background ripples
+let totalPulses = 0, hits = 0;
+
+const stars = Array.from({length: 50}, () => ({
+  x: Math.random()*W, y: Math.random()*H, r: Math.random()*1+0.3, a: Math.random()*0.4+0.1, s: Math.random()*0.4+0.1
+}));
+
+canvas.addEventListener("mousedown", e => { initAudio(); tapped = true; });
+canvas.addEventListener("touchstart", e => { initAudio(); e.preventDefault(); tapped = true; });
+
+function spawnPulse() {
+  pulses.push({ r: 0, born: time, hit: false, missed: false });
+  totalPulses++;
+}
+
+function update(dt) {
+  time += dt;
+  beatPhase += dt * (1.5 + heartStrength * 2);
+
+  // Update feedbacks
+  for (let i = feedbacks.length-1; i >= 0; i--) {
+    feedbacks[i].life -= dt;
+    feedbacks[i].y -= dt * 30;
+    if (feedbacks[i].life <= 0) feedbacks.splice(i, 1);
+  }
+  // Update ripples
+  for (let i = ripples.length-1; i >= 0; i--) {
+    ripples[i].r += dt * 100;
+    ripples[i].a -= dt * 0.5;
+    if (ripples[i].a <= 0) ripples.splice(i, 1);
+  }
+
+  if (state === "title") {
+    heartStrength = 0.3 + Math.sin(time * 0.5) * 0.1;
+    if (tapped) {
+      state = "playing"; score = 0; streak = 0; maxStreak = 0; heartStrength = 0.3;
+      pulses = []; feedbacks = []; ripples = []; totalPulses = 0; hits = 0;
+      pulseTimer = 0.5; time = 0;
+    }
+    tapped = false;
+    return;
+  }
+
+  if (state === "gameover") {
+    heartStrength = Math.max(0, heartStrength - dt * 0.15);
+    if (tapped && time > 1.5) { state = "title"; time = 0; }
+    tapped = false;
+    return;
+  }
+
+  // Spawn pulses
+  pulseTimer -= dt;
+  if (pulseTimer <= 0) {
+    spawnPulse();
+    sndHeartbeat();
+    pulseTimer = pulseInterval;
+  }
+
+  // Update pulses
+  for (let i = pulses.length-1; i >= 0; i--) {
+    const p = pulses[i];
+    p.r += pulseSpeed * dt;
+    // Miss detection
+    if (!p.hit && p.r > targetR + 30) {
+      p.missed = true;
+      streak = 0;
+      heartStrength = Math.max(0, heartStrength - 0.08);
+      feedbacks.push({ text: "miss", x: CX, y: CY + targetR + 20, life: 1, color: "#ff4444" });
+      sndMiss();
+      if (heartStrength <= 0) {
+        state = "gameover"; time = 0;
+        if (typeof ColonyLight !== 'undefined') ColonyLight.add(Math.max(1, Math.floor(score / 100)));
+      }
+    }
+    if (p.r > targetR + 80) pulses.splice(i, 1);
+  }
+
+  // Handle tap
+  if (tapped) {
+    // Find the closest unhit pulse to the target ring
+    let bestPulse = null, bestDist = Infinity;
+    for (const p of pulses) {
+      if (p.hit || p.missed) continue;
+      const dist = Math.abs(p.r - targetR);
+      if (dist < bestDist) { bestDist = dist; bestPulse = p; }
+    }
+
+    if (bestPulse && bestDist < 40) {
+      bestPulse.hit = true;
+      hits++;
+      let quality, points, color;
+      if (bestDist < 8) {
+        quality = "PERFECT"; points = 100; color = "#ffd700";
+        sndPerfect();
+        heartStrength = Math.min(1, heartStrength + 0.06);
+        ripples.push({ r: targetR, a: 0.5, color: "#ffd700" });
+      } else if (bestDist < 20) {
+        quality = "great"; points = 60; color = "#88ccff";
+        sndGood();
+        heartStrength = Math.min(1, heartStrength + 0.03);
+        ripples.push({ r: targetR, a: 0.3, color: "#88ccff" });
+      } else {
+        quality = "ok"; points = 25; color = "#666";
+        beep(350, 0.06, "triangle", 0.02);
+        heartStrength = Math.min(1, heartStrength + 0.01);
+      }
+      streak++;
+      maxStreak = Math.max(maxStreak, streak);
+      const mult = 1 + Math.floor(streak / 5);
+      score += points * mult;
+      feedbacks.push({ text: quality + (mult > 1 ? ` x${mult}` : ""), x: CX, y: CY - 20, life: 1.2, color });
+    } else {
+      // Tapped with nothing to hit
+      streak = 0;
+      heartStrength = Math.max(0, heartStrength - 0.04);
+      feedbacks.push({ text: "early", x: CX, y: CY + 30, life: 0.8, color: "#884444" });
+      sndMiss();
+      if (heartStrength <= 0) {
+        state = "gameover"; time = 0;
+        if (typeof ColonyLight !== 'undefined') ColonyLight.add(Math.max(1, Math.floor(score / 100)));
+      }
+    }
+    tapped = false;
+    return;
+  }
+  tapped = false;
+
+  // Difficulty ramp
+  if (time > 20) pulseInterval = Math.max(0.8, 1.8 - time * 0.012);
+  if (time > 30) pulseSpeed = Math.min(260, 180 + time * 0.8);
+}
+
+function draw() {
+  // Background
+  const bg = Math.round(4 + heartStrength * 8);
+  ctx.fillStyle = `rgb(${bg}, ${Math.round(bg*0.8)}, ${Math.round(bg*1.5 + 6)})`;
+  ctx.fillRect(0, 0, W, H);
+
+  // Stars
+  stars.forEach(s => {
+    const tw = Math.sin(time*s.s*4+s.x)*0.2+0.8;
+    ctx.fillStyle = `rgba(255,255,255,${s.a*tw*(1-heartStrength*0.5)})`;
+    ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill();
+  });
+
+  // Heartbeat ambient glow
+  const beatPulse = Math.sin(beatPhase) * 0.5 + 0.5;
+  const ambR = 30 + heartStrength * 80 + beatPulse * 20;
+  const amb = ctx.createRadialGradient(CX, CY, 5, CX, CY, ambR);
+  const hue = 340 + heartStrength * 30; // Red -> warm orange as strength grows
+  amb.addColorStop(0, `hsla(${hue}, 60%, 50%, ${0.15 * heartStrength + beatPulse * 0.05})`);
+  amb.addColorStop(0.5, `hsla(${hue}, 50%, 40%, ${0.05 * heartStrength})`);
+  amb.addColorStop(1, "rgba(0,0,0,0)");
+  ctx.fillStyle = amb;
+  ctx.beginPath(); ctx.arc(CX, CY, ambR, 0, Math.PI*2); ctx.fill();
+
+  // Heart core
+  const coreSize = 8 + heartStrength * 6 + beatPulse * 4;
+  ctx.fillStyle = `hsla(${hue}, 60%, 60%, ${0.5 + heartStrength * 0.3})`;
+  ctx.beginPath(); ctx.arc(CX, CY, coreSize, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = `hsla(${hue}, 40%, 85%, ${0.3 + heartStrength * 0.3})`;
+  ctx.beginPath(); ctx.arc(CX, CY, coreSize * 0.4, 0, Math.PI*2); ctx.fill();
+
+  // Target ring
+  if (state === "playing") {
+    const ringAlpha = 0.15 + heartStrength * 0.15;
+    ctx.strokeStyle = `rgba(240, 192, 64, ${ringAlpha})`;
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(CX, CY, targetR, 0, Math.PI*2); ctx.stroke();
+    // Dashes on ring for visual guidance
+    ctx.setLineDash([8, 12]);
+    ctx.strokeStyle = `rgba(240, 192, 64, ${ringAlpha * 0.5})`;
+    ctx.beginPath(); ctx.arc(CX, CY, targetR, 0, Math.PI*2); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // Expanding pulses
+  for (const p of pulses) {
+    if (p.hit || p.missed) continue;
+    const dist = Math.abs(p.r - targetR);
+    const nearTarget = Math.max(0, 1 - dist / 40);
+    const baseAlpha = Math.max(0.1, 1 - p.r / (targetR + 60));
+    const glow = nearTarget * 0.3;
+    ctx.strokeStyle = `hsla(${hue}, 50%, ${60 + nearTarget * 30}%, ${baseAlpha + glow})`;
+    ctx.lineWidth = 2 + nearTarget * 3;
+    ctx.beginPath(); ctx.arc(CX, CY, p.r, 0, Math.PI*2); ctx.stroke();
+  }
+
+  // Ripples (from hits)
+  for (const r of ripples) {
+    ctx.strokeStyle = r.color;
+    ctx.globalAlpha = r.a;
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(CX, CY, r.r, 0, Math.PI*2); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  // Feedbacks
+  for (const f of feedbacks) {
+    const a = Math.min(1, f.life / 0.3);
+    ctx.fillStyle = f.color;
+    ctx.globalAlpha = a;
+    ctx.font = f.text === "PERFECT" ? "bold 22px sans-serif" : "bold 16px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(f.text, f.x, f.y);
+    ctx.globalAlpha = 1;
+  }
+
+  // HUD
+  if (state === "playing") {
+    // Heart strength bar (vertical, left side)
+    const barH = 200;
+    const barX = 20, barY = CY - barH/2;
+    ctx.fillStyle = "rgba(0,0,0,0.2)";
+    ctx.fillRect(barX, barY, 8, barH);
+    ctx.fillStyle = heartStrength < 0.25 ? "#ff4444" : `hsla(${hue}, 50%, 55%, 0.8)`;
+    ctx.fillRect(barX, barY + barH * (1-heartStrength), 8, barH * heartStrength);
+
+    // Score
+    ctx.fillStyle = `hsla(${hue}, 40%, 75%, 0.7)`;
+    ctx.font = "bold 18px sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(score, W-15, 30);
+
+    // Streak
+    if (streak >= 3) {
+      ctx.fillStyle = `hsla(${hue}, 50%, 70%, ${0.5 + Math.sin(time*4)*0.2})`;
+      ctx.font = "bold 14px sans-serif"; ctx.textAlign = "center";
+      ctx.fillText(`x${streak}`, CX, H * 0.72);
+    }
+
+    // Tap hint at bottom
+    const hintAlpha = 0.15 + Math.sin(time*2)*0.05;
+    ctx.fillStyle = `rgba(240,192,64,${hintAlpha})`;
+    ctx.font = "11px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText("tap when pulse hits the ring", CX, H * 0.85);
+  }
+
+  // TITLE
+  if (state === "title") {
+    ctx.fillStyle = "rgba(0,0,0,0.2)"; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = `hsla(350, 50%, 70%, 0.9)`;
+    ctx.font = "bold 32px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText("KINGDOM PULSE", CX, H*0.18);
+    ctx.fillStyle = "rgba(255,180,180,0.6)";
+    ctx.font = "14px sans-serif";
+    ctx.fillText("A heartbeat in the kingdom.", CX, H*0.24);
+    ctx.fillText("Tap when the pulse reaches the ring.", CX, H*0.28);
+    const ta = 0.3+Math.sin(time*2.5)*0.15;
+    ctx.fillStyle = `rgba(255,255,255,${ta})`;
+    ctx.font = "13px sans-serif";
+    ctx.fillText("tap to begin", CX, H*0.65);
+    ctx.fillStyle = "rgba(255,180,180,0.25)";
+    ctx.font = "11px sans-serif";
+    ctx.fillText("Keep the rhythm alive.", CX, H*0.95);
+  }
+
+  // GAME OVER
+  if (state === "gameover") {
+    const ga = Math.min(0.7, time*0.4);
+    ctx.fillStyle = `rgba(0,0,0,${ga})`; ctx.fillRect(0, 0, W, H);
+    if (time > 0.5) {
+      ctx.fillStyle = "#664444";
+      ctx.font = "bold 24px sans-serif"; ctx.textAlign = "center";
+      ctx.fillText("THE HEART STILLS", CX, H*0.25);
+      ctx.fillStyle = `hsla(350, 40%, 70%, 0.9)`;
+      ctx.font = "bold 36px sans-serif";
+      ctx.fillText(score, CX, H*0.38);
+      ctx.fillStyle = "#aaa"; ctx.font = "14px sans-serif";
+      ctx.fillText(`${hits}/${totalPulses} pulses caught`, CX, H*0.44);
+      ctx.fillText(`Best streak: x${maxStreak}`, CX, H*0.48);
+      if (time > 1.5) {
+        const ta = 0.3+Math.sin(time*3)*0.12;
+        ctx.fillStyle = `rgba(255,255,255,${ta})`;
+        ctx.font = "13px sans-serif";
+        ctx.fillText("tap to try again", CX, H*0.58);
+      }
+    }
+  }
+}
+
+function gameLoop(now) {
+  if (!lastTime) lastTime = now;
+  const dt = Math.min((now-lastTime)/1000, 1/30);
+  lastTime = now;
+  update(dt); draw();
+  requestAnimationFrame(gameLoop);
+}
+requestAnimationFrame(gameLoop);
+</script>
+<div style="text-align:center;margin:20px;font-size:12px;color:#9b9da4;"><a href="../index.html" style="color:#f0c040;">← Back to KingshotPro</a></div>
+</body>
+</html>

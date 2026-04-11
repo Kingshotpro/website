@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kingdom Drift — KingshotPro Arcade</title>
+  <meta name="description" content="Sneak through the dark. Avoid the watchers. Reach the beacon.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100vw; height: 100vh; overflow: hidden; background: #0d0d0f; display: flex; align-items: center; justify-content: center; font-family: system-ui, -apple-system, sans-serif; color: #e8e6e3; }
+    canvas { display: block; background: #16181f; max-width: 100%; max-height: 100%; touch-action: none; }
+  </style>
+</head>
+<body>
+<canvas id="game" width="390" height="844"></canvas>
+<script src="colony_light.js"></script>
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+const W = 390, H = 844;
+
+let audioCtx = null;
+function initAudio() { if (!audioCtx) try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
+function beep(f,d,t,g,s) {
+  if (!audioCtx) return;
+  const t0=audioCtx.currentTime,o=audioCtx.createOscillator(),ga=audioCtx.createGain();
+  o.type=t||"sine";o.frequency.setValueAtTime(f,t0);if(s)o.frequency.linearRampToValueAtTime(f+s,t0+d);
+  ga.gain.setValueAtTime(0.0001,t0);ga.gain.exponentialRampToValueAtTime(g||0.03,t0+0.01);
+  ga.gain.exponentialRampToValueAtTime(0.0001,t0+d);
+  o.connect(ga).connect(audioCtx.destination);o.start(t0);o.stop(t0+d+0.02);
+}
+
+// LEVELS — each is a set of walls and watchers
+const LEVELS = [
+  {
+    walls: [[50,200,300,20],[50,400,150,20],[200,400,150,20],[100,600,250,20]],
+    watchers: [{x:200,y:300,angle:0,speed:1.2,range:100,arc:0.8}],
+    beacon: {x:195,y:100}, start: {x:195,y:750}
+  },
+  {
+    walls: [[30,180,150,20],[210,180,150,20],[80,350,230,20],[30,520,150,20],[210,520,150,20]],
+    watchers: [
+      {x:100,y:260,angle:0,speed:0.8,range:110,arc:0.7},
+      {x:300,y:450,angle:Math.PI,speed:1,range:100,arc:0.8}
+    ],
+    beacon: {x:195,y:80}, start: {x:195,y:750}
+  },
+  {
+    walls: [[60,150,270,15],[60,300,120,15],[210,300,120,15],[60,450,270,15],[60,600,120,15],[210,600,120,15]],
+    watchers: [
+      {x:195,y:220,angle:0,speed:1.5,range:120,arc:0.6},
+      {x:100,y:380,angle:Math.PI/2,speed:1,range:100,arc:0.9},
+      {x:290,y:530,angle:-Math.PI/2,speed:1.2,range:110,arc:0.7}
+    ],
+    beacon: {x:195,y:70}, start: {x:195,y:760}
+  }
+];
+
+// STATE
+let state = "title";
+let time = 0, lastTime = 0;
+let levelIdx = 0;
+let player = {x:195, y:750};
+let walls = [];
+let watchers = [];
+let beacon = {x:195, y:100};
+let caught = false;
+let caughtTimer = 0;
+let won = false;
+let wonTimer = 0;
+let levelsCleared = 0;
+let touching = false, inputX = 0, inputY = 0;
+let tapped = false;
+let particles = [];
+
+function getPos(e) { const r=canvas.getBoundingClientRect(); return{x:(e.clientX-r.left)*(W/r.width),y:(e.clientY-r.top)*(H/r.height)}; }
+canvas.addEventListener("mousedown",e=>{initAudio();const p=getPos(e);inputX=p.x;inputY=p.y;touching=true;tapped=true;});
+canvas.addEventListener("mousemove",e=>{if(touching){const p=getPos(e);inputX=p.x;inputY=p.y;}});
+canvas.addEventListener("mouseup",()=>{touching=false;});
+canvas.addEventListener("touchstart",e=>{initAudio();e.preventDefault();const t=e.changedTouches[0];const p=getPos(t);inputX=p.x;inputY=p.y;touching=true;tapped=true;});
+canvas.addEventListener("touchmove",e=>{e.preventDefault();const t=e.changedTouches[0];const p=getPos(t);inputX=p.x;inputY=p.y;});
+canvas.addEventListener("touchend",()=>{touching=false;});
+
+function loadLevel(idx) {
+  const lv = LEVELS[idx % LEVELS.length];
+  player = {...lv.start};
+  walls = lv.walls.map(w => ({x:w[0],y:w[1],w:w[2],h:w[3]}));
+  watchers = lv.watchers.map(w => ({...w, baseAngle: w.angle}));
+  beacon = {...lv.beacon};
+  caught = false; caughtTimer = 0;
+  won = false; wonTimer = 0;
+}
+
+function rectContains(rx,ry,rw,rh,px,py) {
+  return px >= rx && px <= rx+rw && py >= ry && py <= ry+rh;
+}
+
+function lineIntersectsRect(x1,y1,x2,y2,rx,ry,rw,rh) {
+  return false; // Simplified — skip wall LOS blocking for now
+}
+
+function isInVisionCone(watcher, px, py) {
+  const dx = px - watcher.x, dy = py - watcher.y;
+  const dist = Math.hypot(dx, dy);
+  if (dist > watcher.range) return false;
+  const angleToPlayer = Math.atan2(dy, dx);
+  let diff = angleToPlayer - watcher.angle;
+  while (diff > Math.PI) diff -= Math.PI*2;
+  while (diff < -Math.PI) diff += Math.PI*2;
+  return Math.abs(diff) < watcher.arc / 2;
+}
+
+function update(dt) {
+  time += dt;
+  for (let i = particles.length-1; i >= 0; i--) {
+    particles[i].life -= dt; if (particles[i].life <= 0) particles.splice(i, 1);
+    else { particles[i].x += particles[i].vx*dt; particles[i].y += particles[i].vy*dt; }
+  }
+
+  if (state === "title") {
+    if (tapped) { state = "playing"; levelIdx = 0; levelsCleared = 0; loadLevel(0); }
+    tapped = false; return;
+  }
+  if (state === "complete") {
+    if (tapped && time > 1.5) { state = "title"; time = 0; }
+    tapped = false; return;
+  }
+
+  if (caught) {
+    caughtTimer += dt;
+    if (caughtTimer > 1.5) loadLevel(levelIdx); // Retry
+    tapped = false; return;
+  }
+  if (won) {
+    wonTimer += dt;
+    if (wonTimer > 2) {
+      levelIdx++;
+      levelsCleared++;
+      if (typeof ColonyLight !== 'undefined') ColonyLight.add(levelsCleared);
+      if (levelIdx >= LEVELS.length) { state = "complete"; time = 0; }
+      else loadLevel(levelIdx);
+    }
+    tapped = false; return;
+  }
+
+  // Player movement
+  if (touching) {
+    const dx = inputX - player.x, dy = inputY - player.y;
+    const len = Math.hypot(dx, dy) || 1;
+    const speed = 80;
+    const move = Math.min(speed * dt, len);
+    let nx = player.x + (dx/len) * move;
+    let ny = player.y + (dy/len) * move;
+    // Wall collision
+    let blocked = false;
+    for (const w of walls) {
+      if (rectContains(w.x-5, w.y-5, w.w+10, w.h+10, nx, ny)) { blocked = true; break; }
+    }
+    if (!blocked) { player.x = nx; player.y = ny; }
+    player.x = Math.max(10, Math.min(W-10, player.x));
+    player.y = Math.max(10, Math.min(H-10, player.y));
+  }
+
+  // Update watchers
+  for (const w of watchers) {
+    w.angle = w.baseAngle + Math.sin(time * w.speed) * 1.8;
+    // Check if player is in vision
+    if (isInVisionCone(w, player.x, player.y)) {
+      caught = true; caughtTimer = 0;
+      beep(200, 0.3, "sawtooth", 0.04, -60);
+      for (let j = 0; j < 10; j++) {
+        particles.push({x:player.x,y:player.y,vx:(Math.random()-0.5)*80,vy:(Math.random()-0.5)*80,life:0.5,color:"#ff4444",size:3});
+      }
+    }
+  }
+
+  // Check beacon
+  if (Math.hypot(player.x - beacon.x, player.y - beacon.y) < 25) {
+    won = true; wonTimer = 0;
+    beep(523,0.1,"triangle",0.04,80); setTimeout(()=>beep(659,0.1,"triangle",0.03,60),100); setTimeout(()=>beep(784,0.15,"triangle",0.04,80),200);
+    for (let j = 0; j < 15; j++) {
+      particles.push({x:beacon.x,y:beacon.y,vx:(Math.random()-0.5)*80,vy:(Math.random()-0.5)*80,life:0.6,color:"#ffd700",size:3});
+    }
+  }
+
+  tapped = false;
+}
+
+function draw() {
+  ctx.fillStyle = "#020210"; ctx.fillRect(0, 0, W, H);
+
+  if (state === "title") {
+    ctx.fillStyle = "#cc6644"; ctx.font = "bold 30px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText("KINGDOM DRIFT", W/2, H*0.25);
+    ctx.fillStyle = "rgba(200,120,80,0.5)"; ctx.font = "14px sans-serif";
+    ctx.fillText("Sneak through the dark.", W/2, H*0.32);
+    ctx.fillText("Avoid the watchers. Reach the beacon.", W/2, H*0.36);
+    // Vision cone demo
+    const demoX = W/2, demoY = H*0.55;
+    ctx.fillStyle = "rgba(200,60,60,0.1)";
+    ctx.beginPath(); ctx.moveTo(demoX, demoY);
+    ctx.arc(demoX, demoY, 80, -0.4+Math.sin(time)*0.3, 0.4+Math.sin(time)*0.3);
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle = "#cc4444"; ctx.beginPath(); ctx.arc(demoX, demoY, 6, 0, Math.PI*2); ctx.fill();
+    // Player dot
+    ctx.fillStyle = "#ffdd88"; ctx.beginPath(); ctx.arc(demoX-40, demoY+60, 4, 0, Math.PI*2); ctx.fill();
+    const ta = 0.3+Math.sin(time*2)*0.15;
+    ctx.fillStyle = `rgba(255,255,255,${ta})`; ctx.font = "13px sans-serif";
+    ctx.fillText("tap to begin", W/2, H*0.72);
+    ctx.fillStyle = "rgba(200,120,80,0.2)"; ctx.font = "11px sans-serif";
+    ctx.fillText("Move softly. The watchers sweep.", W/2, H*0.95);
+    return;
+  }
+
+  if (state === "complete") {
+    const a = Math.min(1, time*0.4);
+    ctx.fillStyle = `rgba(255,200,100,${0.8*a})`; ctx.font = "bold 24px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText("YOU SLIPPED THROUGH", W/2, H*0.3);
+    ctx.fillStyle = `rgba(255,220,160,${0.6*a})`; ctx.font = "15px sans-serif";
+    ctx.fillText(`${levelsCleared} rooms crossed in shadow.`, W/2, H*0.38);
+    if (time > 1.5) {
+      const ta = 0.3+Math.sin(time*3)*0.12;
+      ctx.fillStyle = `rgba(255,255,255,${ta})`; ctx.font = "13px sans-serif";
+      ctx.fillText("tap to return", W/2, H*0.52);
+    }
+    return;
+  }
+
+  // === PLAYING ===
+  // Walls
+  for (const w of walls) {
+    ctx.fillStyle = "rgba(25, 20, 35, 0.9)";
+    ctx.fillRect(w.x, w.y, w.w, w.h);
+    ctx.strokeStyle = "rgba(80, 60, 100, 0.3)"; ctx.lineWidth = 1;
+    ctx.strokeRect(w.x, w.y, w.w, w.h);
+  }
+
+  // Watcher vision cones
+  for (const w of watchers) {
+    const isAlert = caught && isInVisionCone(w, player.x, player.y);
+    ctx.fillStyle = isAlert ? "rgba(255,60,40,0.15)" : "rgba(200,60,60,0.06)";
+    ctx.beginPath();
+    ctx.moveTo(w.x, w.y);
+    ctx.arc(w.x, w.y, w.range, w.angle - w.arc/2, w.angle + w.arc/2);
+    ctx.closePath(); ctx.fill();
+    // Cone edge lines
+    ctx.strokeStyle = isAlert ? "rgba(255,80,60,0.3)" : "rgba(200,80,80,0.1)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(w.x, w.y);
+    ctx.lineTo(w.x + Math.cos(w.angle - w.arc/2)*w.range, w.y + Math.sin(w.angle - w.arc/2)*w.range);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(w.x, w.y);
+    ctx.lineTo(w.x + Math.cos(w.angle + w.arc/2)*w.range, w.y + Math.sin(w.angle + w.arc/2)*w.range);
+    ctx.stroke();
+    // Watcher core
+    ctx.fillStyle = isAlert ? "#ff4444" : "#cc4444";
+    ctx.beginPath(); ctx.arc(w.x, w.y, 6, 0, Math.PI*2); ctx.fill();
+    // Eye
+    ctx.fillStyle = "#ff8866";
+    ctx.beginPath(); ctx.arc(w.x + Math.cos(w.angle)*4, w.y + Math.sin(w.angle)*4, 2, 0, Math.PI*2); ctx.fill();
+  }
+
+  // Beacon
+  const bPulse = 0.7 + Math.sin(time*3)*0.3;
+  const bg = ctx.createRadialGradient(beacon.x, beacon.y, 3, beacon.x, beacon.y, 30*bPulse);
+  bg.addColorStop(0, "rgba(255,215,0,0.25)"); bg.addColorStop(1, "rgba(0,0,0,0)");
+  ctx.fillStyle = bg; ctx.beginPath(); ctx.arc(beacon.x, beacon.y, 30*bPulse, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = "#ffd700"; ctx.beginPath(); ctx.arc(beacon.x, beacon.y, 5*bPulse, 0, Math.PI*2); ctx.fill();
+
+  // Player
+  if (!caught) {
+    const pg = ctx.createRadialGradient(player.x, player.y, 2, player.x, player.y, 20);
+    pg.addColorStop(0, "rgba(255,220,140,0.2)"); pg.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = pg; ctx.beginPath(); ctx.arc(player.x, player.y, 20, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = "#ffeecc"; ctx.beginPath(); ctx.arc(player.x, player.y, 4, 0, Math.PI*2); ctx.fill();
+  }
+
+  // Particles
+  for (const p of particles) {
+    ctx.globalAlpha = Math.max(0, p.life/0.5); ctx.fillStyle = p.color;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+
+  // Caught overlay
+  if (caught) {
+    ctx.fillStyle = `rgba(180,40,30,${Math.min(0.3, caughtTimer*0.3)})`;
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = "rgba(255,80,60,0.8)"; ctx.font = "bold 18px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText("SPOTTED", W/2, H*0.45);
+  }
+
+  // Won overlay
+  if (won) {
+    ctx.fillStyle = `rgba(255,215,0,${Math.min(0.15, wonTimer*0.1)})`;
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = "rgba(255,220,100,0.8)"; ctx.font = "bold 18px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText("BEACON REACHED", W/2, H*0.45);
+  }
+
+  // HUD
+  ctx.fillStyle = "rgba(0,0,0,0.3)"; ctx.fillRect(0, 0, W, 35);
+  ctx.fillStyle = "#cc8866"; ctx.font = "13px sans-serif"; ctx.textAlign = "left";
+  ctx.fillText(`Room ${levelIdx + 1}/${LEVELS.length}`, 12, 23);
+  ctx.fillStyle = "rgba(255,200,100,0.3)"; ctx.textAlign = "center";
+  ctx.fillText("drag to move", W/2, 23);
+}
+
+function gameLoop(now) {
+  if (!lastTime) lastTime = now;
+  const dt = Math.min((now-lastTime)/1000, 1/30);
+  lastTime = now;
+  update(dt); draw();
+  requestAnimationFrame(gameLoop);
+}
+requestAnimationFrame(gameLoop);
+</script>
+<div style="text-align:center;margin:20px;font-size:12px;color:#9b9da4;"><a href="../index.html" style="color:#f0c040;">← Back to KingshotPro</a></div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kingdom Orbit — KingshotPro Arcade</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100vw; height: 100vh; overflow: hidden; background: #0d0d0f; display: flex; align-items: center; justify-content: center; }
+    canvas { display: block; max-width: 100%; max-height: 100%; touch-action: none; }
+    h1 { color: #f0c040; }
+    p { color: #e8e6e3; }
+  </style>
+</head>
+<body>
+<canvas id="c" width="390" height="844"></canvas>
+<script src="colony_light.js"></script>
+<script>
+const c = document.getElementById("c"), x = c.getContext("2d"), W = 390, H = 844, CX = W/2, CY = H*0.42;
+let audioCtx, bodies = [], t = 0, lt = 0, hint = true;
+const stars = Array.from({length:50},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*0.8+0.2,a:Math.random()*0.3+0.08}));
+function initA(){if(!audioCtx)try{audioCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+function chime(n){if(!audioCtx)return;const f=[262,294,330,392,440,523,587,659][n%8],t0=audioCtx.currentTime,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type="sine";o.frequency.setValueAtTime(f,t0);g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(.015,t0+.02);g.gain.exponentialRampToValueAtTime(.0001,t0+.5);o.connect(g).connect(audioCtx.destination);o.start(t0);o.stop(t0+.6)}
+function addBody(){
+  const n=bodies.length;
+  if(n===0){bodies.push({x:CX,y:CY,r:8,orbitR:0,speed:0,angle:0,hue:45,parent:-1});return}
+  const orbitR=40+n*25+Math.random()*15;
+  const speed=(0.8+Math.random()*0.6)*(Math.random()<0.5?1:-1);
+  bodies.push({x:0,y:0,r:Math.max(2,7-n*0.4),orbitR,speed,angle:Math.random()*Math.PI*2,hue:30+n*25,parent:n-1<0?0:Math.floor(Math.random()*n)});
+  chime(n);
+}
+function getP(e){const r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*(W/r.width),y:(e.clientY-r.top)*(H/r.height)}}
+c.addEventListener("mousedown",e=>{initA();if(hint&&typeof ColonyLight!=='undefined')ColonyLight.add(1);addBody();hint=false});
+c.addEventListener("touchstart",e=>{e.preventDefault();initA();if(hint&&typeof ColonyLight!=='undefined')ColonyLight.add(1);addBody();hint=false});
+function loop(now){
+  if(!lt)lt=now;const dt=Math.min((now-lt)/1000,1/30);lt=now;t+=dt;
+  // Update positions
+  for(const b of bodies){
+    if(b.parent<0||b.orbitR===0)continue;
+    b.angle+=b.speed*dt;
+    const p=bodies[b.parent];
+    b.x=p.x+Math.cos(b.angle)*b.orbitR;
+    b.y=p.y+Math.sin(b.angle)*b.orbitR;
+  }
+  // Draw
+  x.fillStyle="#16181f";x.fillRect(0,0,W,H);
+  stars.forEach(s=>{x.fillStyle=`rgba(255,255,255,${s.a*(0.85+Math.sin(t*0.3+s.x)*0.15)})`;x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);x.fill()});
+  // Orbit rings
+  for(const b of bodies){
+    if(b.orbitR===0)continue;
+    const p=bodies[b.parent];
+    x.strokeStyle=`hsla(${b.hue},40%,50%,0.04)`;x.lineWidth=0.5;
+    x.beginPath();x.arc(p.x,p.y,b.orbitR,0,Math.PI*2);x.stroke();
+  }
+  // Bodies
+  for(const b of bodies){
+    const br=1+Math.sin(t*2+b.hue)*0.1;
+    const g=x.createRadialGradient(b.x,b.y,1,b.x,b.y,b.r*3*br);
+    g.addColorStop(0,`hsla(${b.hue},60%,70%,0.15)`);g.addColorStop(1,"rgba(0,0,0,0)");
+    x.fillStyle=g;x.beginPath();x.arc(b.x,b.y,b.r*3*br,0,Math.PI*2);x.fill();
+    x.fillStyle=`hsla(${b.hue},60%,75%,0.7)`;x.beginPath();x.arc(b.x,b.y,b.r*br,0,Math.PI*2);x.fill();
+    x.fillStyle=`hsla(${b.hue},40%,90%,0.4)`;x.beginPath();x.arc(b.x,b.y,b.r*0.3,0,Math.PI*2);x.fill();
+  }
+  // HUD
+  if(bodies.length>0){x.fillStyle="rgba(240,192,64,0.25)";x.font="11px sans-serif";x.textAlign="left";x.fillText(`${bodies.length} light${bodies.length!==1?"s":""} in the kingdom`,12,H-12)}
+  if(hint){
+    x.fillStyle="rgba(240,192,64,0.7)";x.font="bold 26px sans-serif";x.textAlign="center";x.fillText("KINGDOM ORBIT",CX,H*0.25);
+    x.fillStyle="rgba(240,192,64,0.4)";x.font="13px sans-serif";x.fillText("Tap to summon lights. They orbit each other.",CX,H*0.32);
+    const ta=0.25+Math.sin(t*2)*0.1;x.fillStyle=`rgba(255,255,255,${ta})`;x.font="12px sans-serif";x.fillText("tap to begin your reign",CX,H*0.6);
+    x.fillStyle="rgba(240,192,64,0.15)";x.font="11px sans-serif";x.fillText("Everything circles everything else in the kingdom.",CX,H*0.95);
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+<div style="text-align:center;margin:20px;font-size:12px;color:#9b9da4;"><a href="../index.html" style="color:#f0c040;">← Back to KingshotPro</a></div>
+</body>
+</html>
