@@ -160,24 +160,26 @@
 
 /* ── Speech Bubble ───────────────────────── */
 .orb-speech {
-  position: absolute;
-  right: calc(100% + 14px);
-  top: 50%;
-  transform: translateY(-50%);
+  position: fixed;
+  bottom: 50%;
+  right: 140px;
+  transform: translateY(50%);
   background: var(--surface-2);
   color: var(--gold);
-  font-size: 14px;
+  font-size: 13px;
   font-style: italic;
   line-height: 1.4;
   padding: 10px 14px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  white-space: nowrap;
-  max-width: 260px;
+  white-space: normal;
+  max-width: 240px;
+  width: max-content;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 500ms ease, transform 500ms ease;
+  transition: opacity 500ms ease;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  z-index: 401;
 }
 .orb-speech.visible {
   opacity: 1;
