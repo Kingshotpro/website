@@ -85,6 +85,8 @@
           <label class="survey-check"><input type="checkbox" value="Strongest Governor"> Strongest Gov</label>
           <label class="survey-check"><input type="checkbox" value="None"> We don't track</label>
         </div>
+        <div class="note" style="margin-top:10px;">Don't see what you want? Add more here:</div>
+        <input type="text" id="s-events-other" placeholder="Other events you track...">
       </div>
 
       <div class="survey-q">
@@ -137,6 +139,11 @@
         </select>
       </div>
 
+      <div class="survey-q" style="border-color:var(--gold);">
+        <label>If we could custom build <em>anything</em> or even adjust existing tools anywhere, what would you like done?</label>
+        <textarea id="s-custom-build" placeholder="Nothing is off the table. Tell us what would make your Kingshot experience better."></textarea>
+      </div>
+
       <button type="submit" class="survey-submit" id="s-submit">Submit</button>
       <div class="survey-status" id="s-status"></div>
     </form>
@@ -171,17 +178,22 @@ document.getElementById('survey-form').addEventListener('submit', function (e) {
     return vals.join(', ') || 'None selected';
   }
 
+  var eventsOther = document.getElementById('s-events-other').value.trim();
+  var eventsTracked = getChecked(document.querySelectorAll('.survey-checks')[0]);
+  if (eventsOther) eventsTracked += ', ' + eventsOther;
+
   var data = {
     role: document.getElementById('s-role').value,
     playtime: document.getElementById('s-playtime').value,
     members: document.getElementById('s-members').value || 'N/A',
-    events_tracked: getChecked(document.querySelectorAll('.survey-checks')[0]),
+    events_tracked: eventsTracked,
     current_tracking: document.getElementById('s-current-tracking').value,
     hardest: document.getElementById('s-hardest').value,
     want_to_see: getChecked(document.querySelectorAll('.survey-checks')[1]),
     tools_used: document.getElementById('s-tools').value,
     wish: document.getElementById('s-wish').value,
     use_ai: document.getElementById('s-ai').value,
+    custom_build: document.getElementById('s-custom-build').value,
   };
 
   fetch(API + '/survey/submit', {
