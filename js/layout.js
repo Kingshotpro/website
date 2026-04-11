@@ -155,20 +155,7 @@
       h += '</div>';
     }
 
-    // Ecosystem (also accordion)
-    var ecoId = 'ecosystem';
-    var ecoCollapsed = collapsed.indexOf(ecoId) !== -1;
-    h += '<div class="sb-eco">';
-    h += '<div class="sb-cat' + (ecoCollapsed ? ' collapsed' : '') + '" data-section="' + ecoId + '">';
-    h += '<span class="sb-cat-label">ECOSYSTEM</span>';
-    h += '<span class="sb-chevron">' + (ecoCollapsed ? '\u25B8' : '\u25BE') + '</span>';
-    h += '</div>';
-    h += '<div class="sb-group' + (ecoCollapsed ? ' collapsed' : '') + '" data-group="' + ecoId + '">';
-    h += '<a href="https://kingshotdata.com" target="_blank" rel="noopener" class="sb-item ext">';
-    h += '<span class="sb-icon">\u{1F4D6}</span><span class="sb-text">Game Wiki</span><span class="sb-arrow">\u2197</span></a>';
-    h += '<a href="https://kingshotguides.com" target="_blank" rel="noopener" class="sb-item ext">';
-    h += '<span class="sb-icon">\u{1F4DD}</span><span class="sb-text">Guides</span><span class="sb-arrow">\u2197</span></a>';
-    h += '</div></div>';
+    // Ecosystem section removed — don't send users to competitor sites
 
     // Ad slot: sidebar bottom
     h += '<div class="ad-slot sb-ad" data-slot="sidebar-bottom"></div>';
