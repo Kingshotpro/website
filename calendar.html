@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Calendar — KingshotPro</title>
+  <meta name="description" content="Kingshot event calendar with live countdowns and push notifications. Never miss Hall of Governors, KvK, Bear Hunt, or any event again.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .cal-header { text-align: center; margin-bottom: 24px; }
+    .cal-header h1 { color: var(--gold); margin-bottom: 8px; }
+    .cal-controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; align-items: center; }
+    .cal-controls label { font-size: 13px; color: var(--text-muted); }
+    .cal-controls select { background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 10px; font-size: 13px; font-family: inherit; }
+    .cal-controls select:focus { border-color: var(--gold); outline: none; }
+    .cal-notif { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .cal-notif input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; }
+    .cal-event { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+    .cal-event-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .cal-event-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .cal-event-countdown { font-size: 15px; font-weight: 700; color: var(--gold); font-family: monospace; }
+    .cal-event-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .cal-freq { font-weight: 600; }
+    .cal-event-desc { font-size: 12px; color: var(--text-muted); font-style: italic; }
+    .cal-add { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 24px; }
+    .cal-add h3 { color: var(--gold); margin: 0 0 12px; font-size: 15px; }
+    .cal-add-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .cal-add-row input, .cal-add-row select { flex: 1; min-width: 100px; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 10px; font-size: 13px; font-family: inherit; }
+    .cal-add-btn { background: var(--gold); color: var(--bg); border: none; border-radius: 6px; padding: 8px 16px; font-weight: 700; cursor: pointer; font-family: inherit; }
+    @media (max-width: 640px) { .cal-controls { flex-direction: column; } .cal-notif { margin-left: 0; } }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="index.html">KingshotPro</a></nav>
+<div class="page"><div class="container" style="max-width:700px;">
+
+  <div class="cal-header">
+    <h1>Event Calendar</h1>
+    <p class="text-muted">Live countdowns. Push notifications. Never miss an event.</p>
+  </div>
+
+  <div class="cal-controls">
+    <div>
+      <label for="cal-lead-time">Notify me</label>
+      <select id="cal-lead-time">
+        <option value="5">5 min before</option>
+        <option value="15" selected>15 min before</option>
+        <option value="30">30 min before</option>
+        <option value="60">1 hour before</option>
+      </select>
+    </div>
+    <div class="cal-notif">
+      <input type="checkbox" id="cal-notif-toggle">
+      <label for="cal-notif-toggle">Push notifications</label>
+    </div>
+  </div>
+
+  <div id="cal-events"></div>
+
+  <div class="ad-slot" data-slot="calendar-mid"></div>
+
+  <div class="cal-add">
+    <h3>Add Custom Event</h3>
+    <div class="cal-add-row">
+      <input type="text" id="cal-custom-name" placeholder="Event name">
+      <select id="cal-custom-freq">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="biweekly">Biweekly</option>
+        <option value="monthly">Monthly</option>
+      </select>
+    </div>
+    <div class="cal-add-row">
+      <select id="cal-custom-day">
+        <option value="">Day (optional)</option>
+        <option value="0">Sunday</option>
+        <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+        <option value="6">Saturday</option>
+      </select>
+      <input type="number" id="cal-custom-dur" placeholder="Duration (min)" min="0">
+      <button class="cal-add-btn" id="cal-add-btn">Add</button>
+    </div>
+  </div>
+
+  <p class="text-muted" style="font-size:11px;margin-top:16px;text-align:center;">
+    Event times are approximate — verify in-game for exact start times on your server.
+    Push notifications require browser permission and only work while this page is open.
+  </p>
+
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script src="js/cookie-consent.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/advisor-names.js"></script>
+<script src="js/advisor.js"></script>
+<script src="js/advisor-orb.js"></script>
+<script src="js/advisor-hooks.js"></script>
+<script src="js/advisor-chat.js"></script>
+<script src="js/advisor-cta.js"></script>
+<script src="js/advisor-lore.js"></script>
+<script src="js/advisor-referral.js"></script>
+<script src="js/advisor-alliance.js"></script>
+<script src="js/calendar.js"></script>
+</body>
+</html>

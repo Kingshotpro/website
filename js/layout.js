@@ -24,6 +24,7 @@
     { cat: 'COMMUNITY' },
     { icon: '\u{1F381}', label: 'Gift Codes',       href: B + 'codes.html',                     key: 'codes',      badges: ['Popular'] },
     { icon: '\u{1F514}', label: 'Code Alerts',       href: B + 'auto-redeem.html',               key: 'auto-redeem', badges: ['Pro'] },
+    { icon: '\u{1F4C5}', label: 'Event Calendar',    href: B + 'calendar.html',                  key: 'calendar',    badges: ['New'] },
     { cat: 'CALCULATORS' },
     { icon: '\u{1F3F0}', label: 'Building',         href: B + 'calculators/building.html',      key: 'building',   badges: ['Popular'] },
     { icon: '\u2694\uFE0F', label: 'Troop Training', href: B + 'calculators/troops.html',       key: 'troops',     badges: ['Popular'] },
