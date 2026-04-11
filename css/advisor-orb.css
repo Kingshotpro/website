@@ -160,10 +160,10 @@
 
 /* ── Speech Bubble ───────────────────────── */
 .orb-speech {
-  position: fixed;
-  bottom: 50%;
-  right: 140px;
-  transform: translateY(50%);
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%);
   background: var(--surface-2);
   color: var(--gold);
   font-size: 13px;
