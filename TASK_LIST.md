@@ -355,3 +355,70 @@ BLOCKED:  Track 11 (AI integration — needs pricing research 9x3x3)
 - [ ] **CHECK SIMLI:** Ysabel face submitted ~6pm EDT April 10, 2026. Processing takes up to 24 hours. Check app.simli.com → Your Faces by April 11-12. Copy Face ID → give to Claude to wire lip sync integration.
 - [ ] **Simli API key:** 05ll4nqf31s20n3gk232x4fi
 - [ ] **Simli plan:** Hobby $10/mo, $25/mo spending cap, 1,000 min/mo at $0.01/min
+
+---
+
+## FEATURE IDEAS — RESEARCHED & VERIFIED (April 11, 2026)
+
+### 1. Alliance Activity Tracker
+**Status:** Competitor exists (Kingshot Alliance Tools — Discord integration, dashboards).
+**Architect input:** In-game tracking via mobile app plausible on Android (MediaProjection API, no jailbreak) but risky for Play Store + TOS. iOS not feasible without jailbreak.
+**Practical approach:** Screenshot upload + OCR. Player screenshots alliance member list, uploads to our site, we extract data server-side. No app needed, both platforms, no TOS risk.
+**Our differentiator:** Alliance credit system + AI analysis of member data. Advisor says: "Three members haven't been active in 5 days. Here's who to talk to."
+
+### 2. Account Value Estimator
+**Status:** VERIFIED — players mean selling accounts for USD (r/KingshotAccountSells exists). This violates Century Games TOS.
+**Decision:** Do NOT build a sale-price tool. CAN build an informational "investment tracker" — shows what they've invested in time/resources. Kept on list for reference/discussion.
+
+### 3. Event Timer + Push Notifications
+**Status:** VERIFIED demand. Existing calendars (Kingshot Atlas, kingshotguides.com) exist but lack push notifications and new-server calendars.
+**Architect input:** Build as standalone F2P calendar tool on our website. Captures Player ID + ad impressions. Not a calculator — a dedicated calendar/scheduler page.
+**Gap we fill:** Browser push notifications (no existing tool does this) + pre-first-KvK event schedule (commonly asked for, not available).
+- [ ] Build event calendar page with configurable server reset time
+- [ ] Browser Notifications API for event reminders
+- [ ] New server event schedule (first 40 days)
+- [ ] Recurring event templates (HoG, AM, KvK prep)
+
+### 4. PvP Meta / Troop Compositions
+**Status:** Public data EXISTS (Kingshot Mastery, LDShop, Fandom wiki). Specific comps documented (example: 5/4/1 ratio, Petra+Hilde+Rosa rally).
+**Architect input:** Can we do this as data scraping?
+**Answer:** Yes — scrape public guides/wiki pages periodically, AI synthesizes into "current meta" page. Sources: Kingshot Mastery (hero combos), Fandom wiki (troop formations), Reddit (community discussion). Updated weekly via AI processing.
+- [ ] Build meta tracker page — auto-updated from public sources
+- [ ] AI synthesis of current best comps per game stage
+- [ ] Community contribution option for verified players
+
+### 5. Server Transfer Calculator
+**Status:** EXISTS at kingshot.net (basic power-to-passes). Our version could add advisor integration + kingdom scouting.
+- [ ] Build enhanced transfer calculator with advisor recommendations
+- [ ] Tie into kingdom scouting (War Council feature)
+
+### 6. F2P Hero Builds
+**Status:** VERIFIED demand. Specific hero names per generation documented in community.
+**Architect input:** Dedicated F2P section on website with guides, directions, hero lineups per generation.
+**Known F2P lineups (from community, examples — need verification):**
+- Gen 1: Howard, Chenko, Jabel, Diana, Quinn
+- Gen 2: add Zoe, Marlin
+- Gen 3: add Petra
+- Gen 4: add Rosa
+- [ ] Create dedicated /f2p/ section or expand existing F2P guide
+- [ ] Hero lineup page with per-generation recommendations
+- [ ] Specific gear priority for F2P players
+
+### 7. Resource Farming + Farm Account Guide
+**Status:** Resource gathering calculator EXISTS elsewhere. Player demand is for strategy advice, not math.
+**Architect input:** Tie to AI advisor for personalized farming advice. ALSO teach how to create and manage a farm account (secondary account built for resource production). Farm accounts are extremely common in Kingshot.
+- [ ] Farm account setup guide (how to create, what to build, how to transfer resources)
+- [ ] AI advisor integration: personalized farming strategy based on player profile
+- [ ] Resource efficiency analysis: "you're farming X/hour, here's how to improve"
+
+---
+
+## CORRECTIONS LOG
+*Forge was wrong on these. Documenting for accountability.*
+
+1. "Alliance tracker — nobody has it" → WRONG. Kingshot Alliance Tools exists.
+2. "Account value — for server merges" → WRONG. Players mean selling for USD.
+3. "PvP meta — no data source" → WRONG. Public data exists at multiple sites.
+4. "Resource farming calculator needed" → PARTIALLY WRONG. Calculator exists. Demand is strategy, not math.
+5. "80+ posts requesting alliance tracker" → UNVERIFIED. Number came from Perplexity research that may have fabricated the count. Actual Reddit evidence shows interest but I cannot confirm the specific post count.
+
