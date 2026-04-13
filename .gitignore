@@ -8,3 +8,7 @@ video_cache/*.mp3
 avatars/originals/*.mp4
 avatars/*_speaking.mp4
 avatars/*_test.mp4
+worker/.wrangler/
+avatars/ysabel_v3.jpg
+avatars/ysabel_v3_q92.jpg
+avatars/ysabel_v3_1024.png
