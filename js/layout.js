@@ -66,15 +66,8 @@
     { icon: '\u{1F4AA}', label: 'Power Calculator',     href: B + 'calculators/power.html',         key: 'power',       badges: ['New'] },
     { icon: '\u2705',   label: 'Daily Checklist',       href: B + 'calculators/daily.html',         key: 'daily',       badges: ['New'] },
     { icon: '\u{1F4C5}', label: 'Event Timer',          href: B + 'calculators/events.html',        key: 'events',      badges: ['New'] },
-    { cat: 'GAMES' },
-    { icon: '\u2694\uFE0F', label: 'War Table',          href: B + 'games/war-table.html',           key: 'war-table',   badges: ['Daily'] },
-    { icon: '\u{1F3F0}', label: 'Vault Trial',           href: B + 'games/vault-trial.html',         key: 'vault-trial', badges: ['Daily'] },
-    { cat: 'ARCADE' },
-    { icon: '\u{1F33A}', label: 'Kingdom Bloom',         href: B + 'games/bloom.html',               key: 'bloom' },
-    { icon: '\u{1F30A}', label: 'Kingdom Drift',         href: B + 'games/drift.html',               key: 'drift' },
-    { icon: '\u{1F4AB}', label: 'Royal Pulse',           href: B + 'games/pulse.html',               key: 'pulse' },
-    { icon: '\u{1F525}', label: 'Torch Flicker',         href: B + 'games/flicker.html',             key: 'flicker' },
-    { icon: '\u{1F30D}', label: 'Kingdom Orbit',         href: B + 'games/orbit.html',               key: 'orbit' },
+    // GAMES and ARCADE removed from nav — discuss with Architect before re-adding
+    // Pages still exist at /games/*.html, just not linked in sidebar
     { cat: 'ALLIANCE' },
     { icon: '\u{1F6E1}\uFE0F', label: 'Alliance Pages',  href: B + 'alliance/index.html',            key: 'alliance',    badges: ['New'] },
     { icon: '\u{1F4CB}', label: 'Alliance Directory',   href: B + 'alliance/directory.html',         key: 'directory' },

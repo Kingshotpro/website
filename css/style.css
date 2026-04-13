@@ -149,8 +149,9 @@ img { max-width: 100%; display: block; }
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.2px;
-  color: var(--text-muted);
-  padding: 14px 20px 6px;
+  color: var(--gold);
+  padding: 10px 20px 8px;
+  margin: 8px 8px 2px;
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
@@ -160,14 +161,16 @@ img { max-width: 100%; display: block; }
   user-select: none;
   transition: color 0.15s, background 0.15s;
   border-radius: 6px;
-  margin: 0 8px;
+  border-bottom: 1px solid var(--border);
 }
-.sb-cat:hover { color: var(--gold); background: var(--surface-2); }
+.sb-cat:hover { color: #fff; background: rgba(240, 192, 64, 0.1); }
+.sb-cat.collapsed { color: var(--text-muted); border-bottom-color: transparent; }
+.sb-cat.collapsed:hover { color: var(--gold); }
 .sb-cat-label { flex: 1; }
 .sb-chevron {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--text-muted);
-  transition: transform 0.2s;
+  transition: transform 0.2s, color 0.15s;
   background: var(--surface-2);
   width: 20px;
   height: 20px;
@@ -177,6 +180,7 @@ img { max-width: 100%; display: block; }
   justify-content: center;
 }
 .sb-cat:hover .sb-chevron { color: var(--gold); background: var(--border); }
+.sb-cat.collapsed .sb-chevron { background: transparent; }
 
 /* Accordion collapse */
 .sb-group {
