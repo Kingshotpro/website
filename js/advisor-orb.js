@@ -36,8 +36,8 @@
 
   function getBase() {
     var p = location.pathname;
-    // Hero detail pages are 2 levels deep: /heroes/{slug}/
-    if (/\/heroes\/[a-z]/.test(p) && !/\/heroes\.html/.test(p)) return '../../';
+    // Hero + kingdom detail pages are 2 levels deep
+    if ((/\/heroes\/[a-z]/.test(p) && !/\/heroes\.html/.test(p)) || /\/kingdoms\/\d/.test(p)) return '../../';
     return /\/calculators\/|\/games\/|\/guides\/|\/alliance\//.test(p) ? '../' : '';
   }
 

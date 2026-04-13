@@ -13,7 +13,8 @@
   var loc = window.location.pathname;
   var inSub = /\/calculators\/|\/guides\/|\/games\/|\/alliance\//.test(loc);
   // Hero detail pages are 2 levels deep: /heroes/{slug}/index.html
-  var inDeepSub = /\/heroes\/[a-z]/.test(loc) && !/\/heroes\.html/.test(loc);
+  var inDeepSub = (/\/heroes\/[a-z]/.test(loc) && !/\/heroes\.html/.test(loc)) ||
+                   (/\/kingdoms\/\d/.test(loc));
   var B = inDeepSub ? '../../' : (inSub ? '../' : '');
 
   // ── Navigation items ──────────────────────
@@ -33,6 +34,7 @@
     { icon: '\u{1F91D}', label: 'Team Builder',      href: B + 'heroes/companion/',              key: 'companion' },
     { icon: '\u{1F464}', label: 'Player Profile',   href: B + 'profile.html',                   key: 'profile',     badges: ['New'] },
     { icon: '\u2694\uFE0F', label: 'PvP Meta',        href: B + 'meta.html',                      key: 'meta',        badges: ['New'] },
+    { icon: '\u{1F3F0}', label: 'Kingdom Rankings', href: B + 'kingdoms/',                       key: 'kingdoms',    badges: ['New'] },
     { cat: 'CALCULATORS' },
     { icon: '\u{1F3F0}', label: 'Building',         href: B + 'calculators/building.html',      key: 'building',   badges: ['Popular'] },
     { icon: '\u2694\uFE0F', label: 'Troop Training', href: B + 'calculators/troops.html',       key: 'troops',     badges: ['Popular'] },

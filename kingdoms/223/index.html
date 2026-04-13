@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom 223 — Alliance Rankings | KingshotPro</title>
+  <meta name="description" content="Kingdom 223 alliance power rankings. Live leaderboard with 27 alliances including ThePsychWard, RuthlesS, Ddysfunctionals, and more.">
+  <link rel="canonical" href="https://kingshotpro.com/kingdoms/223/">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .k-page { max-width: 800px; margin: 0 auto; }
+    .k-banner { background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; text-align: center; margin-bottom: 20px; position: relative; }
+    .k-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, transparent, var(--gold), transparent); border-radius: 16px 16px 0 0; }
+    .k-num { font-size: 48px; font-weight: 900; color: var(--gold); }
+    .k-label { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+    .k-stats { display: flex; gap: 20px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+    .k-stat { text-align: center; }
+    .k-stat-val { font-size: 20px; font-weight: 800; color: var(--text); }
+    .k-stat-lbl { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .k-updated { font-size: 11px; color: var(--text-muted); margin-top: 12px; }
+    .k-section { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .k-section h2 { color: var(--gold); font-size: 17px; margin: 0 0 16px; }
+    .k-table { width: 100%; border-collapse: collapse; }
+    .k-table th { text-align: left; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    .k-table td { padding: 10px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .k-table tr:hover { background: var(--surface); }
+    .k-rank { color: var(--text-muted); font-weight: 700; width: 40px; text-align: center; }
+    .k-rank-1 { color: var(--gold); font-size: 15px; }
+    .k-rank-2 { color: #c0c0c0; }
+    .k-rank-3 { color: #cd7f32; }
+    .k-name { color: var(--text); font-weight: 600; }
+    .k-tag { color: var(--gold); font-size: 11px; font-weight: 700; margin-right: 6px; }
+    .k-power { color: var(--text-muted); text-align: right; font-variant-numeric: tabular-nums; }
+    .k-unnamed { color: var(--text-muted); font-style: italic; opacity: 0.6; }
+    .k-bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; min-width: 60px; }
+    .k-bar-fill { height: 100%; background: var(--gold); border-radius: 3px; }
+    .k-nav { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 13px; }
+    .k-nav a { color: var(--gold); text-decoration: none; }
+    .k-nav a:hover { text-decoration: underline; }
+    .k-crumbs { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .k-crumbs a { color: var(--text-muted); text-decoration: none; }
+    .k-crumbs a:hover { color: var(--gold); }
+    .sources { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 24px; }
+    @media (max-width: 640px) {
+      .k-table th:nth-child(4), .k-table td:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+<div class="k-page">
+
+  <div class="k-crumbs"><a href="../">Kingdoms</a> &rsaquo; Kingdom 223</div>
+
+  <div class="k-banner">
+    <div class="k-num">#223</div>
+    <div class="k-label">Kingdom</div>
+    <div class="k-stats">
+      <div class="k-stat"><div class="k-stat-val">27</div><div class="k-stat-lbl">Alliances</div></div>
+      <div class="k-stat"><div class="k-stat-val">3.65B</div><div class="k-stat-lbl">Top Power</div></div>
+      <div class="k-stat"><div class="k-stat-val">115M</div><div class="k-stat-lbl">Lowest</div></div>
+    </div>
+    <div class="k-updated">Last updated: April 6, 2026 via live game data</div>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-detail-top">Ad</div>
+
+  <div class="k-section">
+    <h2>Alliance Power Rankings</h2>
+    <table class="k-table" id="k-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Alliance</th>
+          <th>Power</th>
+          <th>Relative</th>
+        </tr>
+      </thead>
+      <tbody id="k-tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-detail-mid">Ad</div>
+
+  <div class="k-section">
+    <h2>Kingdom Intelligence</h2>
+    <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">
+      Kingdom 223 has <strong style="color:var(--text);">27 tracked alliances</strong>. The top alliance (ThePsychWard [PSY]) holds 3.65 billion power. The gap between #1 and #27 is over 3.5 billion — indicating a highly stratified kingdom with a small elite and a long tail of smaller alliances.
+    </p>
+    <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:12px;">
+      Notable alliances: <strong style="color:var(--gold);">ThePsychWard</strong> and <strong style="color:var(--gold);">RuthlesS</strong> are tied at the top. <strong style="color:var(--gold);">TNaughtyPenguins</strong> appears twice in the data — likely a ranked alt or data collection artifact.
+    </p>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-detail-bottom">Ad</div>
+
+  <div class="sources">Data captured via binary protocol analysis of live game server. Alliance names extracted from game packets. Power values in raw game units.</div>
+
+</div>
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="../../about.html">About</a>
+    <a href="../../privacy.html">Privacy Policy</a>
+    <a href="../../terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script src="../../js/cookie-consent.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/advisor-names.js"></script>
+<script src="../../js/advisor.js"></script>
+<script src="../../js/advisor-orb.js"></script>
+<script src="../../js/advisor-hooks.js"></script>
+<script src="../../js/advisor-chat.js"></script>
+<script src="../../js/advisor-cta.js"></script>
+<script src="../../js/advisor-lore.js"></script>
+<script src="../../js/advisor-referral.js"></script>
+<script src="../../js/advisor-alliance.js"></script>
+<script src="../../js/advisor-accounts.js"></script>
+<script>
+// K223 alliance data — from live game server capture April 6, 2026
+var ALLIANCES = [
+  {rank:1,name:"ThePsychWard",tag:"PSY",power:3653574148},
+  {rank:2,name:"RuthlesS",tag:"RGUL",power:3653574148},
+  {rank:3,name:"Ddysfunctionals",tag:"TTN",power:3652259588},
+  {rank:4,name:"IsleofMisfitTots",tag:"imt",power:3650694322},
+  {rank:5,name:"",tag:"",power:3649765873},
+  {rank:6,name:"TNaughtyPenguins",tag:"tnp",power:3649555970},
+  {rank:7,name:"RAVEN",tag:"ttn",power:3645274348},
+  {rank:8,name:"Madziankowo",tag:"bye3",power:3638566659},
+  {rank:9,name:"HELLENICtower",tag:"Rpq",power:3597074819},
+  {rank:10,name:"",tag:"",power:3592953627},
+  {rank:11,name:"",tag:"",power:3490857264},
+  {rank:12,name:"",tag:"",power:3448704770},
+  {rank:13,name:"",tag:"",power:3440968767},
+  {rank:14,name:"",tag:"",power:3398380566},
+  {rank:15,name:"",tag:"",power:3389202190},
+  {rank:16,name:"",tag:"",power:3373147967},
+  {rank:17,name:"",tag:"",power:3350595960},
+  {rank:18,name:"",tag:"",power:2733704767},
+  {rank:19,name:"",tag:"",power:1929912070},
+  {rank:20,name:"",tag:"",power:1205446261},
+  {rank:21,name:"",tag:"",power:1204972300},
+  {rank:22,name:"",tag:"",power:1201587715},
+  {rank:23,name:"TNaughtyPenguins",tag:"tnp",power:1138341633},
+  {rank:24,name:"",tag:"",power:948960001},
+  {rank:25,name:"",tag:"",power:898571277},
+  {rank:26,name:"",tag:"",power:476188804},
+  {rank:27,name:"",tag:"",power:115089154}
+];
+
+(function() {
+  var tbody = document.getElementById('k-tbody');
+  var maxPower = ALLIANCES[0].power;
+
+  ALLIANCES.forEach(function(a) {
+    var tr = document.createElement('tr');
+    var rankClass = a.rank <= 3 ? ' k-rank-' + a.rank : '';
+    var nameHtml = a.name
+      ? (a.tag ? '<span class="k-tag">[' + a.tag + ']</span>' : '') + '<span class="k-name">' + a.name + '</span>'
+      : '<span class="k-unnamed">Unknown Alliance</span>';
+    var pct = (a.power / maxPower * 100).toFixed(1);
+
+    tr.innerHTML =
+      '<td class="k-rank' + rankClass + '">' + a.rank + '</td>' +
+      '<td>' + nameHtml + '</td>' +
+      '<td class="k-power">' + a.power.toLocaleString() + '</td>' +
+      '<td><div class="k-bar"><div class="k-bar-fill" style="width:' + pct + '%"></div></div></td>';
+    tbody.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>

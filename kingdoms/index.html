@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom Rankings — KingshotPro</title>
+  <meta name="description" content="Live Kingshot kingdom rankings and alliance leaderboards. Browse power rankings, alliance standings, and player data for every kingdom.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .kd-header { text-align: center; margin-bottom: 28px; }
+    .kd-header h1 { color: var(--gold); margin-bottom: 8px; }
+    .kd-search { display: flex; gap: 8px; max-width: 400px; margin: 0 auto 28px; }
+    .kd-search input { flex: 1; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; font-family: inherit; }
+    .kd-search input:focus { outline: none; border-color: var(--gold); }
+    .kd-search button { padding: 10px 20px; background: var(--gold); color: var(--bg); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-family: inherit; }
+    .kd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    .kd-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; text-decoration: none; transition: border-color 0.2s; display: block; }
+    .kd-card:hover { border-color: var(--gold); }
+    .kd-card-num { font-size: 28px; font-weight: 800; color: var(--gold); }
+    .kd-card-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .kd-card-alliances { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+    .kd-card-updated { font-size: 10px; color: var(--text-muted); opacity: 0.6; margin-top: 4px; }
+    .kd-coming { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; }
+    .kd-coming strong { color: var(--gold); }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container" style="max-width:900px;">
+
+  <div class="kd-header">
+    <h1>Kingdom Rankings</h1>
+    <p class="text-muted">Alliance power rankings for every kingdom we track. Updated from live game data.</p>
+  </div>
+
+  <div class="kd-search">
+    <input type="text" id="kd-search" inputmode="numeric" placeholder="Jump to kingdom #..." maxlength="5">
+    <button id="kd-go">Go</button>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-top">Ad</div>
+
+  <div id="kd-grid" class="kd-grid"></div>
+
+  <div class="kd-coming" id="kd-coming">
+    <p><strong>More kingdoms coming soon.</strong></p>
+    <p>Our intelligence network is expanding. Each kingdom requires a data source — we're adding new kingdoms every week.</p>
+    <p style="margin-top:16px;">Want your kingdom tracked? <a href="../survey.html" style="color:var(--gold);">Tell us in the survey.</a></p>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-bottom">Ad</div>
+
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script src="../js/cookie-consent.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/advisor-names.js"></script>
+<script src="../js/advisor.js"></script>
+<script src="../js/advisor-orb.js"></script>
+<script src="../js/advisor-hooks.js"></script>
+<script src="../js/advisor-chat.js"></script>
+<script src="../js/advisor-cta.js"></script>
+<script src="../js/advisor-lore.js"></script>
+<script src="../js/advisor-referral.js"></script>
+<script src="../js/advisor-alliance.js"></script>
+<script src="../js/advisor-accounts.js"></script>
+<script>
+// Kingdom directory data — updated as new kingdoms are scraped
+var KINGDOMS = [
+  { id: 223, alliances: 27, topAlliance: 'ThePsychWard', updated: '2026-04-06' },
+];
+
+(function() {
+  var grid = document.getElementById('kd-grid');
+  KINGDOMS.forEach(function(k) {
+    var card = document.createElement('a');
+    card.href = k.id + '/';
+    card.className = 'kd-card';
+    card.innerHTML =
+      '<div class="kd-card-num">#' + k.id + '</div>' +
+      '<div class="kd-card-label">Kingdom</div>' +
+      '<div class="kd-card-alliances">' + k.alliances + ' alliances tracked</div>' +
+      (k.topAlliance ? '<div class="kd-card-updated">Top: ' + k.topAlliance + '</div>' : '') +
+      '<div class="kd-card-updated">Updated ' + k.updated + '</div>';
+    grid.appendChild(card);
+  });
+
+  // Search / jump
+  var input = document.getElementById('kd-search');
+  var goBtn = document.getElementById('kd-go');
+  function jump() {
+    var val = (input.value || '').trim();
+    if (val && /^\d{1,5}$/.test(val)) {
+      window.location.href = val + '/';
+    }
+  }
+  goBtn.addEventListener('click', jump);
+  input.addEventListener('keydown', function(e) { if (e.key === 'Enter') jump(); });
+})();
+</script>
+</body>
+</html>
