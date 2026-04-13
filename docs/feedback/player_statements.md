@@ -31,3 +31,19 @@
 ---
 
 *Add more statements below as they come in. Every quote is valuable — these are the people who will pay.*
+
+---
+
+## Verified Research: Kingshot = Whiteout Survival Reskin — April 13, 2026
+
+**Source:** Perplexity search across YouTube analyses, gaming sites, player comparisons.
+
+**Finding:** CONFIRMED. Same developer (Century Games), same engine, same core mechanics. Players on YouTube call it "the exact same game with new skins."
+
+**What's identical:** Troop types (reskinned names), building system, resource types, progression pacing, charm/gear enhancement grind, pay-to-advance structure.
+
+**What's different:** Theme (medieval vs frozen survival), hero names (governors vs chiefs, different character names), UI tweaks, Kingshot is described as faster/more casual.
+
+**Hero prediction:** Hero MECHANICS follow the same progression pattern but specific hero NAMES and ABILITIES are not direct ports — they are "reskinned equivalents." So we can predict what TYPE of hero is coming (e.g., next gen rally hero) but not the exact stats/skills without checking WOS data specifically.
+
+**Implication:** Research WOS hero releases to predict Kingshot meta shifts. But verify each hero's specific abilities — don't assume 1:1 mapping of skills.
