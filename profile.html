@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Profile — KingshotPro</title>
+  <meta name="description" content="Kingshot player profile with stats, game stage analysis, and personalized hero recommendations.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .profile-page { max-width: 700px; margin: 0 auto; }
+    .profile-page h1 { color: var(--gold); text-align: center; margin-bottom: 8px; }
+
+    /* Profile hero banner */
+    .profile-banner {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px 24px; text-align: center; margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .profile-banner::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .profile-avatar-lg {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--gold); color: var(--bg);
+      font-size: 32px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .profile-nickname { font-size: 24px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .profile-kingdom { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+    .profile-badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .profile-badge {
+      font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 6px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .badge-stage { background: rgba(96, 165, 250, 0.15); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.3); }
+    .badge-tier { background: rgba(240, 192, 64, 0.15); color: var(--gold); border: 1px solid rgba(240, 192, 64, 0.3); }
+    .badge-server { background: rgba(168, 85, 247, 0.15); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    /* Stats grid */
+    .profile-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;
+    }
+    .profile-stat-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 16px; text-align: center;
+    }
+    .profile-stat-value { font-size: 24px; font-weight: 800; color: var(--gold); }
+    .profile-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* Sections */
+    .profile-section {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px; margin-bottom: 16px;
+    }
+    .profile-section h3 { color: var(--gold); margin: 0 0 12px; font-size: 16px; }
+    .profile-section p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+    .profile-section strong { color: var(--text); }
+
+    /* Hero recommendations */
+    .profile-hero-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .profile-hero-pill {
+      padding: 6px 14px; font-size: 12px; font-weight: 600;
+      background: rgba(240, 192, 64, 0.1); color: var(--gold);
+      border: 1px solid rgba(240, 192, 64, 0.3); border-radius: 6px;
+    }
+
+    /* Share section */
+    .profile-share { text-align: center; margin: 24px 0; }
+    .share-btn {
+      padding: 10px 24px; background: var(--gold); color: var(--bg);
+      border: none; border-radius: 8px; font-weight: 700; font-size: 14px;
+      cursor: pointer; font-family: inherit; transition: opacity 0.2s;
+    }
+    .share-btn:hover { opacity: 0.9; }
+    .share-copied { color: #4ade80; font-size: 13px; margin-top: 8px; display: none; }
+
+    /* Empty state */
+    .profile-empty { text-align: center; padding: 60px 20px; }
+    .profile-empty h2 { color: var(--gold); margin-bottom: 12px; }
+    .profile-empty p { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
+    .profile-lookup {
+      display: flex; gap: 8px; max-width: 400px; margin: 0 auto;
+    }
+    .profile-lookup input {
+      flex: 1; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-size: 14px; font-family: inherit;
+    }
+    .profile-lookup input:focus { outline: none; border-color: var(--gold); }
+    .profile-lookup button {
+      padding: 10px 20px; background: var(--gold); color: var(--bg); border: none;
+      border-radius: 8px; font-weight: 700; cursor: pointer; font-family: inherit;
+    }
+    .profile-error { color: #f87171; font-size: 13px; margin-top: 10px; display: none; }
+
+    @media (max-width: 640px) {
+      .profile-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+
+  <div class="profile-page">
+    <!-- Empty state (no FID) -->
+    <div id="profile-empty" class="profile-empty">
+      <h2>Player Profile</h2>
+      <p>Enter a Player ID to view their Kingshot profile.</p>
+      <div class="profile-lookup">
+        <input type="text" id="profile-fid-input" inputmode="numeric" placeholder="Player ID (e.g. 7291048)" maxlength="12">
+        <button id="profile-lookup-btn">Look Up</button>
+      </div>
+      <div class="profile-error" id="profile-error"></div>
+    </div>
+
+    <!-- Profile content (hidden until loaded) -->
+    <div id="profile-content" style="display:none;">
+
+      <div class="profile-banner" id="profile-banner"></div>
+
+      <div class="profile-stats" id="profile-stats"></div>
+
+      <div class="ad-slot" data-slot="profile-top"></div>
+
+      <div class="profile-section" id="profile-analysis"></div>
+
+      <div class="profile-section" id="profile-heroes"></div>
+
+      <div class="profile-section" id="profile-advice"></div>
+
+      <div class="ad-slot" data-slot="profile-bottom"></div>
+
+      <div class="profile-share">
+        <button class="share-btn" id="share-btn">Share This Profile</button>
+        <div class="share-copied" id="share-copied">Link copied to clipboard!</div>
+      </div>
+
+    </div>
+  </div>
+
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script src="js/cookie-consent.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/fid.js"></script>
+<script src="js/advisor-names.js"></script>
+<script src="js/advisor.js"></script>
+<script src="js/advisor-orb.js"></script>
+<script src="js/advisor-hooks.js"></script>
+<script src="js/advisor-chat.js"></script>
+<script src="js/advisor-cta.js"></script>
+<script src="js/advisor-lore.js"></script>
+<script src="js/advisor-referral.js"></script>
+<script src="js/advisor-alliance.js"></script>
+<script src="js/advisor-accounts.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

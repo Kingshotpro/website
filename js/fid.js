@@ -200,6 +200,9 @@ function renderProfileCard(profile) {
         <div class="profile-stat-label">Tier</div>
       </div>
     </div>
+    <div style="text-align:center;margin-top:12px;">
+      <a href="profile.html?fid=${escHtml(profile.fid)}" style="color:var(--gold);font-size:13px;font-weight:600;">View Full Profile &rarr;</a>
+    </div>
   `;
 
   card.classList.add('visible');
