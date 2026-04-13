@@ -35,18 +35,21 @@
   }
 
   function getBase() {
-    return /\/calculators\/|\/games\//.test(location.pathname) ? '../' : '';
+    var p = location.pathname;
+    // Hero detail pages are 2 levels deep: /heroes/{slug}/
+    if (/\/heroes\/[a-z]/.test(p) && !/\/heroes\.html/.test(p)) return '../../';
+    return /\/calculators\/|\/games\/|\/guides\/|\/alliance\//.test(p) ? '../' : '';
   }
 
   function getAvatarSrc() {
     if (window.Advisor && window.Advisor.getAvatarImage) {
       var s = window.Advisor.getAvatarImage(); if (s) return s;
     }
-    return getBase() + 'avatars/female_default.png';
+    return getBase() + 'avatars/ysabel_v4.jpg';
   }
 
-  function getIdleVideo() { return getBase() + 'avatars/advisor_idle.mp4'; }
-  function getGreetingVideo() { return getBase() + 'avatars/advisor_greeting.mp4'; }
+  function getIdleVideo() { return getBase() + 'avatars/ysabel_v4.mp4'; }
+  function getGreetingVideo() { return getBase() + 'avatars/ysabel_v4.mp4'; }
 
   // Greeting plays once per page load — NOT cached across sessions
   var greetingPlayed = false;
@@ -95,7 +98,7 @@
     if (!isMobile) {
       var orbVid = document.createElement('video');
       orbVid.className = 'orb-vid';
-      orbVid.src = getBase() + 'avatars/advisor_idle_loop.mp4';
+      orbVid.src = getBase() + 'avatars/ysabel_v4.mp4';
       orbVid.muted = true;
       orbVid.loop = true;
       orbVid.autoplay = true;

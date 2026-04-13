@@ -47,7 +47,7 @@ var ADVISOR_NAMES = [
   { id: 'beatrice',     name: 'Beatrice',     gender: 'f', img: null },
   { id: 'melisande',    name: 'Melisande',    gender: 'f', img: null },
   { id: 'theodora',     name: 'Theodora',     gender: 'f', img: null },
-  { id: 'ysabel',       name: 'Ysabel',       gender: 'f', img: 'female_default.png', video: 'advisor_idle_loop.mp4' },
+  { id: 'ysabel',       name: 'Ysabel',       gender: 'f', img: 'ysabel_v4.jpg', video: 'ysabel_v4.mp4' },
   { id: 'sigrid',       name: 'Sigrid',       gender: 'f', img: null },
   { id: 'rowena',       name: 'Rowena',       gender: 'f', img: null },
   { id: 'isolde',       name: 'Isolde',       gender: 'f', img: null },
@@ -64,9 +64,10 @@ var ADVISOR_NAMES = [
  * Falls back to gender default if no unique art exists.
  */
 function getAdvisorAvatar(nameEntry) {
-  var base = (window.location.pathname.indexOf('/calculators/') !== -1 ||
-              window.location.pathname.indexOf('/games/') !== -1)
-    ? '../' : '';
+  var p = window.location.pathname;
+  var base = '';
+  if (/\/heroes\/[a-z]/.test(p) && !/\/heroes\.html/.test(p)) base = '../../';
+  else if (/\/calculators\/|\/games\/|\/guides\/|\/alliance\//.test(p)) base = '../';
 
   if (nameEntry.img) {
     return base + 'avatars/' + nameEntry.img;
