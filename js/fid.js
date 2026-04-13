@@ -251,6 +251,11 @@ async function handleFidSubmit(e) {
     saveProfile(profile);
     renderProfileCard(profile);
 
+    // Auto-add to multi-account switcher
+    if (window.AccountSwitcher && window.AccountSwitcher.addAccount) {
+      window.AccountSwitcher.addAccount(fid, profile.nickname);
+    }
+
     // Advisor system: load or trigger selection
     if (window.Advisor) {
       const hasAdvisor = window.Advisor.load(fid);
