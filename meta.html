@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PvP Meta &amp; Troop Compositions — KingshotPro</title>
+  <meta name="description" content="Current Kingshot PvP meta guide. Best troop formations for rally, garrison, bear hunt, and events. Updated ratios and hero lineups by generation.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .meta-header { text-align: center; margin-bottom: 28px; }
+    .meta-header h1 { color: var(--gold); margin-bottom: 8px; }
+
+    /* Formation cards */
+    .meta-section { margin-bottom: 32px; }
+    .meta-section h2 { color: var(--gold); font-size: 20px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .formation-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px; margin-bottom: 14px;
+    }
+    .formation-card h3 { color: var(--text); font-size: 16px; margin: 0 0 8px; }
+    .formation-label { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+
+    /* Troop ratio bar */
+    .troop-bar { display: flex; height: 32px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+    .troop-bar-inf { background: #3b82f6; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+    .troop-bar-cav { background: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #000; }
+    .troop-bar-arc { background: #10b981; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+
+    .troop-legend { display: flex; gap: 16px; margin-bottom: 12px; font-size: 12px; }
+    .troop-legend-item { display: flex; align-items: center; gap: 6px; color: var(--text-muted); }
+    .troop-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .troop-dot-inf { background: #3b82f6; }
+    .troop-dot-cav { background: #f59e0b; }
+    .troop-dot-arc { background: #10b981; }
+
+    .formation-heroes { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .formation-hero {
+      padding: 4px 12px; font-size: 12px; font-weight: 600;
+      background: rgba(240,192,64,0.1); color: var(--gold);
+      border: 1px solid rgba(240,192,64,0.3); border-radius: 6px;
+    }
+    .formation-note { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .formation-note strong { color: var(--text); }
+
+    /* Counter triangle */
+    .counter-box {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px; margin-bottom: 20px; text-align: center;
+    }
+    .counter-box h3 { color: var(--gold); margin: 0 0 12px; }
+    .counter-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .counter-item { font-size: 14px; color: var(--text-muted); }
+    .counter-arrow { color: var(--gold); font-weight: 700; }
+
+    /* Quick reference table */
+    .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+    .meta-table th { text-align: left; font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+    .meta-table td { padding: 10px 12px; font-size: 13px; color: var(--text); border-bottom: 1px solid var(--border); }
+    .meta-table tr:hover { background: var(--surface); }
+
+    .meta-tip {
+      background: rgba(240,192,64,0.08); border: 1px solid rgba(240,192,64,0.2);
+      border-radius: 8px; padding: 14px; margin: 16px 0; font-size: 13px; color: var(--text-muted); line-height: 1.6;
+    }
+    .meta-tip strong { color: var(--gold); }
+
+    .meta-sources { font-size: 11px; color: var(--text-muted); margin-top: 32px; text-align: center; line-height: 1.8; }
+    .meta-sources a { color: var(--text-muted); text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .counter-row { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="index.html">KingshotPro</a></nav>
+<div class="page"><div class="container" style="max-width:800px;">
+
+  <div class="meta-header">
+    <h1>PvP Meta &amp; Troop Compositions</h1>
+    <p class="text-muted">Current best formations for every scenario. Updated for Generation 6.</p>
+  </div>
+
+  <!-- Counter triangle -->
+  <div class="counter-box">
+    <h3>Troop Counter System</h3>
+    <div class="counter-row">
+      <span class="counter-item"><span style="color:#3b82f6;font-weight:700;">Infantry</span> <span class="counter-arrow">&rarr; beats &rarr;</span> <span style="color:#f59e0b;font-weight:700;">Cavalry</span></span>
+      <span class="counter-item"><span style="color:#f59e0b;font-weight:700;">Cavalry</span> <span class="counter-arrow">&rarr; beats &rarr;</span> <span style="color:#10b981;font-weight:700;">Archers</span></span>
+      <span class="counter-item"><span style="color:#10b981;font-weight:700;">Archers</span> <span class="counter-arrow">&rarr; beats &rarr;</span> <span style="color:#3b82f6;font-weight:700;">Infantry</span></span>
+    </div>
+  </div>
+
+  <div class="troop-legend">
+    <span class="troop-legend-item"><span class="troop-dot troop-dot-inf"></span> Infantry</span>
+    <span class="troop-legend-item"><span class="troop-dot troop-dot-cav"></span> Cavalry</span>
+    <span class="troop-legend-item"><span class="troop-dot troop-dot-arc"></span> Archers</span>
+  </div>
+
+  <div class="meta-tip">
+    <strong>Rule:</strong> All formations must include at least 5% of each troop type to utilize hero bonuses effectively. Never send a march with 0% of any type.
+  </div>
+
+  <div class="ad-slot" data-slot="meta-top"></div>
+
+  <!-- RALLY SECTION -->
+  <div class="meta-section">
+    <h2>Rally Formations</h2>
+
+    <div class="formation-card">
+      <h3>Standard Rally (All Generations)</h3>
+      <div class="formation-label">The default go-to. Works for KvK rallies, alliance wars, and most PvP.</div>
+      <div class="troop-bar">
+        <div class="troop-bar-inf" style="width:50%">50% Inf</div>
+        <div class="troop-bar-cav" style="width:20%">20% Cav</div>
+        <div class="troop-bar-arc" style="width:30%">30% Arc</div>
+      </div>
+      <div class="formation-heroes">
+        <span class="formation-hero">Amadeus</span>
+        <span class="formation-hero">Vivian</span>
+        <span class="formation-hero">Petra</span>
+      </div>
+      <p class="formation-note">The <strong>50:20:30</strong> ratio is the most reliable composition across all generations. Infantry frontline absorbs damage, archers provide ranged DPS. Amadeus leads, Vivian buffs the army, Petra adds cavalry burst.</p>
+    </div>
+
+    <div class="formation-card">
+      <h3>Early Gen (1-2) Rally</h3>
+      <div class="formation-label">Optimized for early game when hero options are limited.</div>
+      <div class="troop-bar">
+        <div class="troop-bar-inf" style="width:50%">50% Inf</div>
+        <div class="troop-bar-cav" style="width:40%">40% Cav</div>
+        <div class="troop-bar-arc" style="width:10%">10% Arc</div>
+      </div>
+      <div class="formation-heroes">
+        <span class="formation-hero">Amadeus</span>
+        <span class="formation-hero">Helga</span>
+        <span class="formation-hero">Chenko</span>
+      </div>
+      <p class="formation-note">The <strong>5:4:1</strong> ratio was tested optimal during Gen 1-2. Heavy cavalry compensates for weaker archer heroes in early generations. Transition to 50:20:30 once Gen 3+ heroes are available.</p>
+    </div>
+
+    <div class="formation-card">
+      <h3>F2P Rally (Gen 6)</h3>
+      <div class="formation-label">Best rally composition for free-to-play players in late game.</div>
+      <div class="troop-bar">
+        <div class="troop-bar-inf" style="width:50%">50% Inf</div>
+        <div class="troop-bar-cav" style="width:20%">20% Cav</div>
+        <div class="troop-bar-arc" style="width:30%">30% Arc</div>
+      </div>
+      <div class="formation-heroes">
+        <span class="formation-hero">Yang</span>
+        <span class="formation-hero">Marlin</span>
+        <span class="formation-hero">Petra</span>
+        <span class="formation-hero">Chenko</span>
+      </div>
+      <p class="formation-note">Yang (S+ rally) leads with Marlin providing archer DPS. Petra covers cavalry. Chenko joins for his dependable first skill. This lineup is entirely F2P-accessible.</p>
+    </div>
+  </div>
+
+  <!-- GARRISON SECTION -->
+  <div class="meta-section">
+    <h2>Garrison Formations</h2>
+
+    <div class="formation-card">
+      <h3>Standard Garrison Defense</h3>
+      <div class="formation-label">High-health defensive wall. No archers — enemy cavalry bypasses frontline to eliminate them.</div>
+      <div class="troop-bar">
+        <div class="troop-bar-inf" style="width:60%">60% Inf</div>
+        <div class="troop-bar-cav" style="width:20%">20% Cav</div>
+        <div class="troop-bar-arc" style="width:20%">20% Arc</div>
+      </div>
+      <div class="formation-heroes">
+        <span class="formation-hero">Jabel</span>
+        <span class="formation-hero">Zoe</span>
+        <span class="formation-hero">Eric</span>
+        <span class="formation-hero">Hilde</span>
+        <span class="formation-hero">Saul</span>
+      </div>
+      <p class="formation-note"><strong>60:20:20</strong> with heavy infantry frontline. Jabel and Zoe tank, Hilde heals and stacks, Saul provides stacking via joining. Minimize archer count because enemy cavalry can bypass your frontline to target them directly.</p>
+    </div>
+
+    <div class="formation-card">
+      <h3>Gen 4+ Garrison</h3>
+      <div class="formation-label">Cavalry-heavy variant for later generations.</div>
+      <div class="troop-bar">
+        <div class="troop-bar-inf" style="width:40%">40% Inf</div>
+        <div class="troop-bar-cav" style="width:40%">40% Cav</div>
+        <div class="troop-bar-arc" style="width:20%">20% Arc</div>
+      </div>
+      <div class="formation-heroes">
+        <span class="formation-hero">Zoe</span>
+        <span class="formation-hero">Alcar</span>
+        <span class="formation-hero">Margot</span>
+        <span class="formation-hero">Hilde</span>
+      </div>
+      <p class="formation-note"><strong>40:40:20</strong> cavalry formation. Gen 4 introduces strong cavalry garrison heroes (Alcar, Margot). This ratio better counters archer-heavy rally compositions that become common in later generations.</p>
+    </div>
+  </div>
+
+  <div class="ad-slot" data-slot="meta-mid"></div>
+
+  <!-- BEAR HUNT SECTION -->
+  <div class="meta-section">
+    <h2>Bear Hunt Formations</h2>
+
+    <div class="formation-card">
+      <h3>Bear Hunt by Generation</h3>
+      <div class="formation-label">Archer-heavy compositions maximize damage output. Ratio shifts each generation.</div>
+
+      <table class="meta-table">
+        <thead>
+          <tr><th>Generation</th><th>Infantry</th><th>Cavalry</th><th>Archers</th><th>Ratio</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Gen 1</td><td>10%</td><td>30%</td><td>60%</td><td>1:3:6</td></tr>
+          <tr><td>Gen 2</td><td>10%</td><td>20%</td><td>70%</td><td>1:2:7</td></tr>
+          <tr><td>Gen 3</td><td>10%</td><td>10%</td><td>80%</td><td>1:1:8</td></tr>
+          <tr><td>Gen 4+</td><td>5%</td><td>10%</td><td>85%</td><td>~1:1:9</td></tr>
+        </tbody>
+      </table>
+
+      <div class="formation-heroes">
+        <span class="formation-hero">Amadeus</span>
+        <span class="formation-hero">Vivian</span>
+        <span class="formation-hero">Chenko</span>
+        <span class="formation-hero">Amane</span>
+        <span class="formation-hero">Yeonwoo</span>
+      </div>
+      <p class="formation-note">Bear hunt is all about maximizing archer DPS. Infantry is minimal — just enough to trigger hero bonuses. Joiners (Chenko, Amane, Yeonwoo) are S-tier for bear hunt participation. Vivian's army-wide buff is the biggest multiplier.</p>
+    </div>
+  </div>
+
+  <!-- EVENT SECTION -->
+  <div class="meta-section">
+    <h2>Event Formations</h2>
+
+    <div class="formation-card">
+      <h3>Mystic Trial / Alliance Championship / Swordland Showdown</h3>
+      <div class="formation-label">Standard balanced composition works for most events.</div>
+      <div class="troop-bar">
+        <div class="troop-bar-inf" style="width:50%">50% Inf</div>
+        <div class="troop-bar-cav" style="width:20%">20% Cav</div>
+        <div class="troop-bar-arc" style="width:30%">30% Arc</div>
+      </div>
+      <p class="formation-note">The standard <strong>50:20:30</strong> applies to most events. Scout your opponent first in PvP events and adjust if they're running archer-heavy (increase cavalry) or infantry-heavy (increase archers).</p>
+    </div>
+  </div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="meta-section">
+    <h2>Quick Reference</h2>
+    <table class="meta-table">
+      <thead>
+        <tr><th>Scenario</th><th>Formation</th><th>Key Principle</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Standard Rally</td><td>50:20:30</td><td>Balanced DPS with infantry wall</td></tr>
+        <tr><td>Early Game Rally</td><td>50:40:10</td><td>Cavalry-heavy for weak archer heroes</td></tr>
+        <tr><td>Garrison Defense</td><td>60:20:20</td><td>Max infantry HP, minimize archers</td></tr>
+        <tr><td>Gen 4+ Garrison</td><td>40:40:20</td><td>Cavalry counters archer rallies</td></tr>
+        <tr><td>Bear Hunt (Gen 1)</td><td>10:30:60</td><td>Maximize archer DPS</td></tr>
+        <tr><td>Bear Hunt (Gen 3+)</td><td>10:10:80</td><td>Near-full archer composition</td></tr>
+        <tr><td>PvP Events</td><td>50:20:30</td><td>Scout first, then adjust</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="meta-tip">
+    <strong>Widgets don't work in solo attacks.</strong> Hero selection and troop ratios should differ between solo content (stat-based) and group content (widget-based). These formations are for group content where widgets are active.
+  </div>
+
+  <div class="ad-slot" data-slot="meta-bottom"></div>
+
+  <div style="text-align:center;margin:24px 0;">
+    <a href="heroes.html" style="display:inline-block;padding:10px 24px;background:var(--gold);color:var(--bg);font-weight:700;border-radius:8px;text-decoration:none;font-size:14px;">View Hero Database for Lineup Details &rarr;</a>
+  </div>
+
+  <div class="meta-sources">
+    Data compiled from:
+    <a href="https://kingshotguides.com/guide/kingshot-troop-setup-guide-best-formations-for-every-event/" target="_blank" rel="noopener">Kingshot Guides</a>,
+    <a href="https://kingshotmastery.com/guides/kingshot-hero-tier-list-2025" target="_blank" rel="noopener">Kingshot Mastery</a>,
+    <a href="https://lootbar.gg/blog/en/the-best-troop-formations-to-win-every-battles-in-kingshot.html" target="_blank" rel="noopener">LootBar</a>,
+    <a href="https://kingshothandbook.com/guides/kingshot-hero-system-guide" target="_blank" rel="noopener">Kingshot Handbook</a>
+    <br>Last updated: April 13, 2026. Meta shifts with each generation release.
+  </div>
+
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script src="js/cookie-consent.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/advisor-names.js"></script>
+<script src="js/advisor.js"></script>
+<script src="js/advisor-orb.js"></script>
+<script src="js/advisor-hooks.js"></script>
+<script src="js/advisor-chat.js"></script>
+<script src="js/advisor-cta.js"></script>
+<script src="js/advisor-lore.js"></script>
+<script src="js/advisor-referral.js"></script>
+<script src="js/advisor-alliance.js"></script>
+<script src="js/advisor-accounts.js"></script>
+</body>
+</html>
