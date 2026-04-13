@@ -118,26 +118,26 @@
 
 /* ── The Portrait Image ──────────────────── */
 .orb-img {
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 15%;
   position: absolute;
-  top: -5%;
-  left: -5%;
+  top: 0;
+  left: 0;
   animation: orbBreathe 4s ease-in-out infinite alternate, orbFirelight 6s ease-in-out infinite;
   will-change: transform, filter;
 }
 
 /* Video portrait in the orb circle */
 .orb-vid {
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 15%;
   position: absolute;
-  top: -5%;
-  left: -5%;
+  top: 0;
+  left: 0;
   border-radius: inherit;
   pointer-events: none;
 }
@@ -301,13 +301,15 @@
   height: 100%;
   top: 0;
   left: 0;
-  object-position: center 25%;
+  object-fit: contain;
+  object-position: center top;
+  animation: none;
 }
 .orb-panel-portrait video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
+  object-fit: contain;
+  object-position: center top;
   display: block;
 }
 
