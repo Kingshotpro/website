@@ -48,8 +48,8 @@
     return getBase() + 'avatars/ysabel_v4.jpg';
   }
 
-  function getIdleVideo() { return getBase() + 'avatars/ysabel_v4.mp4'; }
-  function getGreetingVideo() { return getBase() + 'avatars/ysabel_v4.mp4'; }
+  function getIdleVideo() { return getBase() + 'avatars/ysabel_v4_web.mp4'; }
+  function getGreetingVideo() { return getBase() + 'avatars/ysabel_v4_web.mp4'; }
 
   // Greeting plays once per page load — NOT cached across sessions
   var greetingPlayed = false;
@@ -94,11 +94,11 @@
     orbImg.alt = name;
     orbParallax.appendChild(orbImg);
 
-    // Video overlays on top when loaded (desktop only — saves mobile bandwidth)
-    if (!isMobile) {
+    // Video overlays on top when loaded (317KB compressed — fine for all devices)
+    {
       var orbVid = document.createElement('video');
       orbVid.className = 'orb-vid';
-      orbVid.src = getBase() + 'avatars/ysabel_v4.mp4';
+      orbVid.src = getBase() + 'avatars/ysabel_v4_web.mp4';
       orbVid.muted = true;
       orbVid.loop = true;
       orbVid.autoplay = true;
