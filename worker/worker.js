@@ -45,7 +45,13 @@ export default {
       }
     }
 
-    // Admin GETs
+    // Admin GETs + public GETs
+    if (request.method === 'GET' && url.pathname === '/codes/check') {
+      return handleCodeCheck(request, env);
+    }
+    if (request.method === 'GET' && url.pathname === '/codes/list') {
+      return handleCodeList(request, env);
+    }
     if (request.method === 'GET' && url.pathname === '/video/cache') {
       return handleVideoCacheAdmin(request, env, url);
     }
@@ -527,6 +533,101 @@ async function handleSurveyAdmin(request, env, url) {
     rows + '</table></div></body></html>';
 
   return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html' } });
+}
+
+// ── Gift Code Auto-Checker ─────────────────
+// Scrapes third-party sites for active Kingshot gift codes
+// Stores in KV. Client reads from /codes/list.
+
+async function handleCodeCheck(request, env) {
+  // Scrape gamesradar (most reliable, structured format)
+  var codes = [];
+
+  try {
+    var res = await fetch('https://www.gamesradar.com/games/strategy/kingshot-codes-gift/', {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; KingshotPro/1.0)' }
+    });
+    var html = await res.text();
+
+    // Parse codes — they appear as bold text in format: CODE – description
+    var codeRegex = /(?:<strong>|<b>)([A-Z0-9]{4,20})(?:<\/strong>|<\/b>)\s*[–—-]\s*([^<]+)/gi;
+    var match;
+    while ((match = codeRegex.exec(html)) !== null) {
+      var code = match[1].trim();
+      var reward = match[2].trim();
+      if (code.length >= 4 && code.length <= 20) {
+        codes.push({ code: code, reward: reward, source: 'gamesradar' });
+      }
+    }
+  } catch {}
+
+  // Also try destructoid
+  try {
+    var res2 = await fetch('https://www.destructoid.com/kingshot-codes/', {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; KingshotPro/1.0)' }
+    });
+    var html2 = await res2.text();
+
+    var codeRegex2 = /(?:<strong>|<b>)([A-Z0-9]{4,20})(?:<\/strong>|<\/b>)\s*[–—-]\s*([^<]+)/gi;
+    var match2;
+    while ((match2 = codeRegex2.exec(html2)) !== null) {
+      var code2 = match2[1].trim();
+      var reward2 = match2[2].trim();
+      // Dedupe
+      var exists = codes.some(function (c) { return c.code === code2; });
+      if (!exists && code2.length >= 4 && code2.length <= 20) {
+        codes.push({ code: code2, reward: reward2, source: 'destructoid' });
+      }
+    }
+  } catch {}
+
+  // Save to KV
+  var entry = {
+    codes: codes,
+    checked: new Date().toISOString(),
+    count: codes.length,
+  };
+  await env.KV.put('gift_codes', JSON.stringify(entry));
+
+  // Discord notification if new codes found
+  var prev = await env.KV.get('gift_codes_prev', { type: 'json' });
+  var prevCodes = prev ? prev.codes.map(function (c) { return c.code; }) : [];
+  var newCodes = codes.filter(function (c) { return prevCodes.indexOf(c.code) === -1; });
+
+  if (newCodes.length > 0 && env.DISCORD_WEBHOOK) {
+    try {
+      var fields = newCodes.map(function (c) {
+        return { name: c.code, value: c.reward, inline: false };
+      });
+      await fetch(env.DISCORD_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          embeds: [{
+            title: '\uD83C\uDF81 New Gift Codes Detected! (' + newCodes.length + ')',
+            color: 15778880,
+            fields: fields.slice(0, 10),
+            footer: { text: 'Auto-detected by KingshotPro code checker' },
+          }],
+        }),
+      });
+    } catch {}
+  }
+
+  await env.KV.put('gift_codes_prev', JSON.stringify(entry));
+
+  return corsWrap(JSON.stringify({
+    ok: true,
+    codes_found: codes.length,
+    new_codes: newCodes.length,
+    checked: entry.checked,
+  }));
+}
+
+async function handleCodeList(request, env) {
+  var data = await env.KV.get('gift_codes', { type: 'json' });
+  if (!data) return corsWrap(JSON.stringify({ codes: [], checked: null }));
+  return corsWrap(JSON.stringify(data));
 }
 
 // ── Video Response Cache ───────────────────
