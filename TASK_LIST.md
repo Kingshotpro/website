@@ -1,5 +1,5 @@
 # KingshotPro — Master Task List
-*Last updated: April 13, 2026.*
+*Last updated: April 13, 2026 (Session by Opus — hero DB, profiles, PvP meta built).*
 *Every Claude working on KingshotPro reads this first, updates it before leaving.*
 
 Status key: [ ] not started · [~] in progress · [x] done · [!] blocked · [-] cut/deferred
@@ -76,9 +76,44 @@ GET endpoints:
 
 ---
 
+## RECENTLY COMPLETED (April 13, 2026)
+
+- [x] Hero Database: 27 heroes (19 legendary + 8 epic), Gen 1-6, cross-verified from 4 sources
+  - Filterable by role, generation, troop type, rarity, F2P accessibility
+  - 6 recommended lineups (F2P early/mid/late, rally offense, garrison defense, bear hunt)
+  - Personalized advisor recommendations based on player profile
+  - Files: heroes.html, js/heroes.js
+- [x] Player Profile Pages: shareable URLs with stats + analysis
+  - URL format: profile.html?fid=XXXXXX
+  - Profile banner, stats grid, game analysis, hero recs, strategic advice
+  - Share button (copy URL), dynamic OG meta for social previews
+  - Cache-first rendering, background API refresh
+  - Files: profile.html, js/profile.js
+- [x] PvP Meta & Troop Compositions page
+  - Visual troop ratio bars (color-coded infantry/cavalry/archer)
+  - Rally, garrison, bear hunt, event formations
+  - Bear hunt ratio progression by generation (60% arc → 85% arc)
+  - Counter system triangle, quick reference table
+  - Files: meta.html
+- [x] Hero Guide rewrite: removed fabricated hero names, replaced with verified data
+- [x] F2P Heroes: fixed broken script paths
+- [x] TASK_LIST.md: full rewrite reflecting actual build state
+- [x] Sidebar nav: added Hero Database, Player Profile, PvP Meta
+
+---
+
 ## TO BUILD — PRIORITY ORDER
 
 ### 1. Hero Database Page
+**Status: COMPLETED** (see above)
+
+### 2. Player Profile Pages
+**Status: COMPLETED** (see above)
+
+### 3. PvP Meta Tracker
+**Status: COMPLETED** (see above)
+
+### 4. Data Gap Fixes (NEXT)
 **Why:** Most-requested feature from player feedback (Cptkwark). No competitor does situational recommendations — they all just list stats.
 **What:** Dedicated hero page with:
 - [ ] Hero cards: name, generation, role, F2P/paid, key skills
