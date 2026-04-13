@@ -24,6 +24,8 @@ export default {
         return handleChronicle(request, env);
       } else if (url.pathname === '/advisor/illustration') {
         return handleIllustration(request, env);
+      } else if (url.pathname === '/advisor/video') {
+        return handleAdvisorVideo(request, env);
       } else if (url.pathname === '/advisor/voice') {
         return handleVoice(request, env);
       } else if (url.pathname === '/advisor/portrait') {
@@ -44,6 +46,9 @@ export default {
     }
 
     // Admin GETs
+    if (request.method === 'GET' && url.pathname === '/video/cache') {
+      return handleVideoCacheAdmin(request, env, url);
+    }
     if (request.method === 'GET' && url.pathname === '/survey/admin') {
       return handleSurveyAdmin(request, env, url);
     }
@@ -520,6 +525,148 @@ async function handleSurveyAdmin(request, env, url) {
     '<h1 style="color:#f0c040;">Survey Responses (' + responses.length + ')</h1>' +
     '<div style="overflow-x:auto;"><table><tr><th>Role</th><th>Playtime</th><th>Events Tracked</th><th>Current Tracking</th><th>Members</th><th>Hardest Part</th><th>Want to See</th><th>Wish Tool Did</th><th>Use AI?</th><th>Submitted</th></tr>' +
     rows + '</table></div></body></html>';
+
+  return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html' } });
+}
+
+// ── Video Response Cache ───────────────────
+// MANDATORY: Every Simli video is cached. Never discard.
+// See memory/project_kingshotpro_video_cache.md
+
+function hashCacheKey(text, archetype) {
+  // Simple hash: normalize text + archetype → deterministic key
+  var normalized = (text || '').toLowerCase().trim().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ');
+  var input = archetype + ':' + normalized;
+  var hash = 0;
+  for (var i = 0; i < input.length; i++) {
+    hash = ((hash << 5) - hash) + input.charCodeAt(i);
+    hash |= 0;
+  }
+  return 'vcache_' + Math.abs(hash).toString(36);
+}
+
+async function handleAdvisorVideo(request, env) {
+  let responseText, archetype, advisorName, faceId;
+  try {
+    var body = await request.json();
+    responseText = body.responseText;
+    archetype = body.archetype || 'steward';
+    advisorName = body.advisorName || 'Ysabel';
+    faceId = body.faceId || 'f3e0d64a-dda5-403e-8d23-b3c980dd3713';
+  } catch { return corsWrap('{"error":"bad request"}', 400); }
+
+  if (!responseText) return corsWrap('{"error":"responseText required"}', 400);
+
+  // 1. Check cache
+  var cacheKey = hashCacheKey(responseText, archetype);
+  var cached = await env.KV.get(cacheKey, { type: 'json' });
+
+  if (cached && cached.mp4_url) {
+    // Increment serve count
+    cached.times_served = (cached.times_served || 0) + 1;
+    await env.KV.put(cacheKey, JSON.stringify(cached));
+    return corsWrap(JSON.stringify({ mp4_url: cached.mp4_url, cached: true, times_served: cached.times_served }));
+  }
+
+  // 2. Generate TTS audio
+  var ttsRes;
+  try {
+    ttsRes = await fetch('https://api.openai.com/v1/audio/speech', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + env.OPENAI_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'tts-1', voice: 'nova', input: responseText, speed: 0.92 }),
+    });
+  } catch { return corsWrap('{"error":"tts failed"}', 502); }
+
+  var audioBytes = await ttsRes.arrayBuffer();
+  var audioBase64 = btoa(String.fromCharCode(...new Uint8Array(audioBytes)));
+
+  // 3. Generate lip-synced video via Simli
+  var simliRes;
+  try {
+    simliRes = await fetch('https://api.simli.ai/static/audio', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-simli-api-key': env.SIMLI_KEY || '05ll4nqf31s20n3gk232x4fi' },
+      body: JSON.stringify({
+        faceId: faceId,
+        audioBase64: audioBase64,
+        audioFormat: 'mp3',
+        audioSampleRate: 24000,
+        audioChannelCount: 1,
+      }),
+    });
+  } catch { return corsWrap('{"error":"simli failed"}', 502); }
+
+  var simliData = await simliRes.json();
+  var mp4Url = simliData.mp4_url || null;
+  var hlsUrl = simliData.hls_url || null;
+
+  if (!mp4Url) return corsWrap(JSON.stringify({ error: 'simli no mp4', detail: simliData }), 502);
+
+  // 4. Save to cache — MANDATORY, never skip this
+  var cacheEntry = {
+    prompt: responseText,
+    response_text: responseText,
+    archetype: archetype,
+    advisor_name: advisorName,
+    mp4_url: mp4Url,
+    hls_url: hlsUrl,
+    tts_voice: 'nova',
+    simli_face_id: faceId,
+    generated: new Date().toISOString(),
+    times_served: 1,
+    cache_key: cacheKey,
+  };
+
+  await env.KV.put(cacheKey, JSON.stringify(cacheEntry));
+
+  // 5. Also add to master cache index for browsing
+  var index = await env.KV.get('vcache_index', { type: 'json' }) || [];
+  index.push({ key: cacheKey, prompt: responseText.slice(0, 100), archetype: archetype, generated: cacheEntry.generated });
+  // Keep index manageable
+  if (index.length > 500) index = index.slice(-500);
+  await env.KV.put('vcache_index', JSON.stringify(index));
+
+  return corsWrap(JSON.stringify({
+    mp4_url: mp4Url,
+    hls_url: hlsUrl,
+    cached: false,
+    cache_key: cacheKey,
+    mp4_eta_seconds: simliData.mp4_availablility_eta_seconds || 10,
+  }));
+}
+
+// ── Video Cache Admin ──────────────────────
+async function handleVideoCacheAdmin(request, env, url) {
+  var key = url.searchParams.get('key');
+  if (key !== (env.ADMIN_KEY || 'admin')) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+
+  var index = await env.KV.get('vcache_index', { type: 'json' }) || [];
+
+  var rows = '';
+  for (var i = index.length - 1; i >= 0; i--) {
+    var entry = await env.KV.get(index[i].key, { type: 'json' });
+    if (!entry) continue;
+    rows += '<tr>' +
+      '<td>' + (entry.archetype || '-') + '</td>' +
+      '<td style="max-width:300px;word-wrap:break-word;">' + (entry.prompt || '-').slice(0, 200) + '</td>' +
+      '<td>' + (entry.times_served || 0) + '</td>' +
+      '<td>' + (entry.generated || '-') + '</td>' +
+      '<td>' + (entry.mp4_url ? '<a href="' + entry.mp4_url + '" target="_blank" style="color:#f0c040;">Play</a>' : '-') + '</td>' +
+      '<td>' + (entry.cache_key || '-') + '</td>' +
+      '</tr>';
+  }
+
+  var html = '<!DOCTYPE html><html><head><title>Video Cache</title>' +
+    '<style>body{background:#0d0d0f;color:#e8e6e3;font-family:sans-serif;padding:20px;}' +
+    'table{width:100%;border-collapse:collapse;font-size:12px;}th,td{padding:6px 8px;border:1px solid #2a2d3e;text-align:left;}' +
+    'th{background:#16181f;color:#f0c040;position:sticky;top:0;}a{color:#f0c040;}</style></head><body>' +
+    '<h1 style="color:#f0c040;">Video Response Cache (' + index.length + ' entries)</h1>' +
+    '<p style="color:#9b9da4;">Every generated video is saved here. Cached responses serve instantly without using Simli minutes.</p>' +
+    '<table><tr><th>Archetype</th><th>Response Text</th><th>Times Served</th><th>Generated</th><th>Video</th><th>Cache Key</th></tr>' +
+    rows + '</table></body></html>';
 
   return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html' } });
 }

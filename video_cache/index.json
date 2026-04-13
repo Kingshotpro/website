@@ -1,0 +1,28 @@
+[
+  {
+    "cache_key": "test_greeting_v1",
+    "prompt": "Governor. I have been waiting for you. Enter your Player ID and I shall show you what no other counsel can.",
+    "response_text": "Governor. I have been waiting for you. Enter your Player ID and I shall show you what no other counsel can.",
+    "archetype": "steward",
+    "advisor_name": "Ysabel",
+    "face_id": "f3e0d64a-dda5-403e-8d23-b3c980dd3713",
+    "filename": "ysabel_simli_test.mp4",
+    "tts_voice": "nova",
+    "generated": "2026-04-11T14:43:00Z",
+    "times_served": 1,
+    "file_size_bytes": 4663248
+  },
+  {
+    "cache_key": "test_greeting_v3",
+    "prompt": "Governor. I have been waiting for you. Enter your Player ID and I shall show you what no other counsel can.",
+    "response_text": "Governor. I have been waiting for you. Enter your Player ID and I shall show you what no other counsel can.",
+    "archetype": "steward",
+    "advisor_name": "Ysabel",
+    "face_id": "f3e0d64a-dda5-403e-8d23-b3c980dd3713",
+    "filename": "ysabel_v3_speaking.mp4",
+    "tts_voice": "nova",
+    "generated": "2026-04-12T14:43:00Z",
+    "times_served": 1,
+    "file_size_bytes": 4571952
+  }
+]

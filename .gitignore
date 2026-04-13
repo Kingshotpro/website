@@ -3,3 +3,8 @@
 monitor/node_modules/
 monitor/.next/
 scraper/__pycache__/
+video_cache/*.mp4
+video_cache/*.mp3
+avatars/originals/*.mp4
+avatars/*_speaking.mp4
+avatars/*_test.mp4
