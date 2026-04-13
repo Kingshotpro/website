@@ -9,10 +9,12 @@
 (function () {
   'use strict';
 
-  // ── Path prefix (pages in /calculators/ or /guides/ need ../) ──
+  // ── Path prefix (pages in subdirectories need ../ or ../../) ──
   var loc = window.location.pathname;
   var inSub = /\/calculators\/|\/guides\/|\/games\/|\/alliance\//.test(loc);
-  var B = inSub ? '../' : '';
+  // Hero detail pages are 2 levels deep: /heroes/{slug}/index.html
+  var inDeepSub = /\/heroes\/[a-z]/.test(loc) && !/\/heroes\.html/.test(loc);
+  var B = inDeepSub ? '../../' : (inSub ? '../' : '');
 
   // ── Navigation items ──────────────────────
   // cat  = category header
@@ -27,6 +29,8 @@
     { icon: '\u{1F514}', label: 'Code Alerts',       href: B + 'auto-redeem.html',               key: 'auto-redeem', badges: ['Pro'] },
     { icon: '\u{1F4C5}', label: 'Event Calendar',    href: B + 'calendar.html',                  key: 'calendar',    badges: ['New'] },
     { icon: '\u{1F9B8}', label: 'Hero Database',     href: B + 'heroes.html',                    key: 'heroes',      badges: ['New'] },
+    { icon: '\u{1F4CA}', label: 'Compare Heroes',   href: B + 'heroes/compare/',                key: 'compare' },
+    { icon: '\u{1F91D}', label: 'Team Builder',      href: B + 'heroes/companion/',              key: 'companion' },
     { icon: '\u{1F464}', label: 'Player Profile',   href: B + 'profile.html',                   key: 'profile',     badges: ['New'] },
     { icon: '\u2694\uFE0F', label: 'PvP Meta',        href: B + 'meta.html',                      key: 'meta',        badges: ['New'] },
     { cat: 'CALCULATORS' },

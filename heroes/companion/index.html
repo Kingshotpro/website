@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Builder — Build Your Kingshot Lineup | KingshotPro</title>
+  <meta name="description" content="Build and analyze 3-hero team compositions for Kingshot. See synergy analysis, role coverage, and recommended formations.">
+  <link rel="canonical" href="https://kingshotpro.com/heroes/companion/">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .hero-detail { max-width: 800px; margin: 0 auto; }
+    .hd-banner { background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; margin-bottom: 20px; position: relative; }
+    .hd-banner.legendary { border-left: 4px solid var(--gold); }
+    .hd-banner.epic { border-left: 4px solid #a78bfa; }
+    .hd-name { font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .hd-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+    .hd-tiers { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+    .ht { font-size: 13px; font-weight: 700; }
+    .hd-f2p { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 4px; background: rgba(74,222,128,0.15); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-left: 8px; }
+    .hd-best { font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+    .hd-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .hd-section { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .hd-section h2 { color: var(--gold); font-size: 17px; margin: 0 0 12px; }
+    .hd-section p, .hd-section li { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+    .hd-section strong { color: var(--text); }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .hero-pill { padding: 5px 14px; font-size: 12px; font-weight: 600; background: rgba(240,192,64,0.1); color: var(--gold); border: 1px solid rgba(240,192,64,0.3); border-radius: 6px; text-decoration: none; }
+    .hero-pill:hover { background: rgba(240,192,64,0.2); }
+    .hd-nav { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 13px; }
+    .hd-nav a { color: var(--gold); text-decoration: none; }
+    .hd-nav a:hover { text-decoration: underline; }
+    .hd-crumbs { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .hd-crumbs a { color: var(--text-muted); text-decoration: none; }
+    .hd-crumbs a:hover { color: var(--gold); }
+    .hd-actions { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .hd-btn { padding: 10px 20px; font-size: 13px; font-weight: 700; border-radius: 8px; text-decoration: none; display: inline-block; }
+    .hd-btn-gold { background: var(--gold); color: var(--bg); }
+    .hd-btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+    .hd-btn:hover { opacity: 0.9; }
+    .gen-heroes { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 12px; }
+    .gen-hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; text-decoration: none; color: var(--text); font-size: 13px; font-weight: 600; transition: border-color 0.2s; }
+    .gen-hero-card:hover { border-color: var(--gold); color: var(--gold); }
+    .gen-hero-card .troop-icon { font-size: 18px; display: block; margin-bottom: 4px; }
+    .ad-slot { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; color: var(--text-muted); font-size: 12px; margin: 16px 0; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+    .sources { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 24px; }
+    .sources a { color: var(--text-muted); text-decoration: underline; }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+<div class="hero-detail">
+<div class="hd-crumbs"><a href="../../heroes.html">Heroes</a> &rsaquo; Team Builder</div>
+<h1 style="color:var(--gold);text-align:center;margin-bottom:8px;">Team Builder</h1>
+<p class="text-muted" style="text-align:center;margin-bottom:24px;">Select 3 heroes to see how they work together. Synergy analysis, role coverage, and formation tips.</p>
+<div style="display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:12px;">
+  <span style="color:var(--gold);font-weight:700;width:60px;">Hero 1</span>
+  <select id="team-1" style="padding:10px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;min-width:180px;">
+    <option value="">— Select —</option>
+    <option value="amadeus">Amadeus (Infantry, Gen 1)</option>
+    <option value="jabel">Jabel (Cavalry, Gen 1)</option>
+    <option value="helga">Helga (Infantry, Gen 1)</option>
+    <option value="saul">Saul (Archer, Gen 1)</option>
+    <option value="zoe">Zoe (Infantry, Gen 2)</option>
+    <option value="hilde">Hilde (Cavalry, Gen 2)</option>
+    <option value="marlin">Marlin (Archer, Gen 2)</option>
+    <option value="petra">Petra (Cavalry, Gen 3)</option>
+    <option value="eric">Eric (Infantry, Gen 3)</option>
+    <option value="jaeger">Jaeger (Archer, Gen 3)</option>
+    <option value="rosa">Rosa (Archer, Gen 4)</option>
+    <option value="alcar">Alcar (Infantry, Gen 4)</option>
+    <option value="margot">Margot (Cavalry, Gen 4)</option>
+    <option value="vivian">Vivian (Archer, Gen 5)</option>
+    <option value="thrud">Thrud (Cavalry, Gen 5)</option>
+    <option value="long-fei">Long Fei (Infantry, Gen 5)</option>
+    <option value="yang">Yang (Archer, Gen 6)</option>
+    <option value="sophia">Sophia (Cavalry, Gen 6)</option>
+    <option value="triton">Triton (Infantry, Gen 6)</option>
+    <option value="chenko">Chenko (Cavalry, Gen 1)</option>
+    <option value="amane">Amane (Archer, Gen 1)</option>
+    <option value="yeonwoo">Yeonwoo (Archer, Gen 1)</option>
+    <option value="gordon">Gordon (Cavalry, Gen 1)</option>
+    <option value="howard">Howard (Infantry, Gen 1)</option>
+    <option value="quinn">Quinn (Archer, Gen 1)</option>
+    <option value="diana">Diana (Archer, Gen 1)</option>
+    <option value="fahd">Fahd (Cavalry, Gen 1)</option>
+  </select>
+</div>
+<div style="display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:12px;">
+  <span style="color:var(--gold);font-weight:700;width:60px;">Hero 2</span>
+  <select id="team-2" style="padding:10px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;min-width:180px;">
+    <option value="">— Select —</option>
+    <option value="amadeus">Amadeus (Infantry, Gen 1)</option>
+    <option value="jabel">Jabel (Cavalry, Gen 1)</option>
+    <option value="helga">Helga (Infantry, Gen 1)</option>
+    <option value="saul">Saul (Archer, Gen 1)</option>
+    <option value="zoe">Zoe (Infantry, Gen 2)</option>
+    <option value="hilde">Hilde (Cavalry, Gen 2)</option>
+    <option value="marlin">Marlin (Archer, Gen 2)</option>
+    <option value="petra">Petra (Cavalry, Gen 3)</option>
+    <option value="eric">Eric (Infantry, Gen 3)</option>
+    <option value="jaeger">Jaeger (Archer, Gen 3)</option>
+    <option value="rosa">Rosa (Archer, Gen 4)</option>
+    <option value="alcar">Alcar (Infantry, Gen 4)</option>
+    <option value="margot">Margot (Cavalry, Gen 4)</option>
+    <option value="vivian">Vivian (Archer, Gen 5)</option>
+    <option value="thrud">Thrud (Cavalry, Gen 5)</option>
+    <option value="long-fei">Long Fei (Infantry, Gen 5)</option>
+    <option value="yang">Yang (Archer, Gen 6)</option>
+    <option value="sophia">Sophia (Cavalry, Gen 6)</option>
+    <option value="triton">Triton (Infantry, Gen 6)</option>
+    <option value="chenko">Chenko (Cavalry, Gen 1)</option>
+    <option value="amane">Amane (Archer, Gen 1)</option>
+    <option value="yeonwoo">Yeonwoo (Archer, Gen 1)</option>
+    <option value="gordon">Gordon (Cavalry, Gen 1)</option>
+    <option value="howard">Howard (Infantry, Gen 1)</option>
+    <option value="quinn">Quinn (Archer, Gen 1)</option>
+    <option value="diana">Diana (Archer, Gen 1)</option>
+    <option value="fahd">Fahd (Cavalry, Gen 1)</option>
+  </select>
+</div>
+<div style="display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:12px;">
+  <span style="color:var(--gold);font-weight:700;width:60px;">Hero 3</span>
+  <select id="team-3" style="padding:10px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;min-width:180px;">
+    <option value="">— Select —</option>
+    <option value="amadeus">Amadeus (Infantry, Gen 1)</option>
+    <option value="jabel">Jabel (Cavalry, Gen 1)</option>
+    <option value="helga">Helga (Infantry, Gen 1)</option>
+    <option value="saul">Saul (Archer, Gen 1)</option>
+    <option value="zoe">Zoe (Infantry, Gen 2)</option>
+    <option value="hilde">Hilde (Cavalry, Gen 2)</option>
+    <option value="marlin">Marlin (Archer, Gen 2)</option>
+    <option value="petra">Petra (Cavalry, Gen 3)</option>
+    <option value="eric">Eric (Infantry, Gen 3)</option>
+    <option value="jaeger">Jaeger (Archer, Gen 3)</option>
+    <option value="rosa">Rosa (Archer, Gen 4)</option>
+    <option value="alcar">Alcar (Infantry, Gen 4)</option>
+    <option value="margot">Margot (Cavalry, Gen 4)</option>
+    <option value="vivian">Vivian (Archer, Gen 5)</option>
+    <option value="thrud">Thrud (Cavalry, Gen 5)</option>
+    <option value="long-fei">Long Fei (Infantry, Gen 5)</option>
+    <option value="yang">Yang (Archer, Gen 6)</option>
+    <option value="sophia">Sophia (Cavalry, Gen 6)</option>
+    <option value="triton">Triton (Infantry, Gen 6)</option>
+    <option value="chenko">Chenko (Cavalry, Gen 1)</option>
+    <option value="amane">Amane (Archer, Gen 1)</option>
+    <option value="yeonwoo">Yeonwoo (Archer, Gen 1)</option>
+    <option value="gordon">Gordon (Cavalry, Gen 1)</option>
+    <option value="howard">Howard (Infantry, Gen 1)</option>
+    <option value="quinn">Quinn (Archer, Gen 1)</option>
+    <option value="diana">Diana (Archer, Gen 1)</option>
+    <option value="fahd">Fahd (Cavalry, Gen 1)</option>
+  </select>
+</div>
+<div style="text-align:center;margin:16px 0;"><button id="analyze-btn" style="padding:12px 28px;background:var(--gold);color:var(--bg);border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;">Analyze Team</button></div>
+<div id="team-result"></div>
+<div class="ad-slot" data-slot="companion-bottom">Ad</div>
+<script>
+var HERO_DATA = {"amadeus": {"name": "Amadeus", "gen": 1, "rarity": "legendary", "troop": "infantry", "rally": "S", "garrison": "B", "bear": "S", "joiner": "A", "f2p": false, "bestUse": "Rally lead & bear hunt", "desc": "One of the strongest offensive heroes in the game. His first skill provides dependable rally value. Remains S-tier for rallies across all generations. Often requires premium investment to fully star up.", "tags": ["rally-lead", "bear", "offensive", "long-term"]}, "jabel": {"name": "Jabel", "gen": 1, "rarity": "legendary", "troop": "cavalry", "rally": "B", "garrison": "S", "bear": "B", "joiner": "-", "f2p": true, "bestUse": "Garrison defender", "desc": "The foundational garrison tank. Extremely robust and available early. Core of any defensive lineup from day one through late game.", "tags": ["garrison", "defensive", "f2p-friendly", "tank"]}, "helga": {"name": "Helga", "gen": 1, "rarity": "legendary", "troop": "infantry", "rally": "A", "garrison": "B", "bear": "B", "joiner": "-", "f2p": false, "bestUse": "Early rally alternative", "desc": "A decent early offensive hero who serves as an Amadeus alternative. Falls off in later generations as stronger rally leads become available.", "tags": ["rally-lead", "offensive", "early-game"]}, "saul": {"name": "Saul", "gen": 1, "rarity": "legendary", "troop": "archer", "rally": "B", "garrison": "A", "bear": "B", "joiner": "S", "f2p": true, "bestUse": "Garrison joiner & stacking", "desc": "An S-tier joiner for garrison defense via stacking. Also invaluable for F2P players due to construction speed boosts. Dual-purpose hero: city management and garrison.", "tags": ["garrison", "joiner", "stacking", "f2p-friendly", "construction"]}, "zoe": {"name": "Zoe", "gen": 2, "rarity": "legendary", "troop": "infantry", "rally": "B", "garrison": "S", "bear": "-", "joiner": "-", "f2p": true, "bestUse": "F2P garrison tank", "desc": "The F2P garrison MVP. Remains viable well into Gen 5-6 with proper support. Her defensive capabilities, damage reduction, and crowd control are unmatched for free players.", "tags": ["garrison", "defensive", "f2p-friendly", "tank", "long-term"]}, "hilde": {"name": "Hilde", "gen": 2, "rarity": "legendary", "troop": "cavalry", "rally": "B", "garrison": "S", "bear": "A", "joiner": "S", "f2p": false, "bestUse": "Garrison joiner & healer", "desc": "A dedicated healer who can also disable enemies briefly. One of the best healers in the game. S-tier joiner for garrison stacking.", "tags": ["garrison", "joiner", "stacking", "healer", "support"]}, "marlin": {"name": "Marlin", "gen": 2, "rarity": "legendary", "troop": "archer", "rally": "S", "garrison": "B", "bear": "B", "joiner": "-", "f2p": true, "bestUse": "Long-term archer carry", "desc": "Excellent ranged damage dealer. A long-term F2P investment \u2014 aim for 465 shards to reach 4-stars quickly when available. Excels in both PvE and PvP, powerful in arena and expedition.", "tags": ["rally-lead", "offensive", "f2p-friendly", "long-term", "arena"]}, "petra": {"name": "Petra", "gen": 3, "rarity": "legendary", "troop": "cavalry", "rally": "S", "garrison": "B", "bear": "B", "joiner": "-", "f2p": true, "bestUse": "Cavalry rally lead", "desc": "The premier cavalry rally lead. Often featured in Hero Roulette events, making her accessible to F2P players. Flexible hero that excels on offense.", "tags": ["rally-lead", "offensive", "cavalry", "f2p-friendly"]}, "eric": {"name": "Eric", "gen": 3, "rarity": "legendary", "troop": "infantry", "rally": "B", "garrison": "S", "bear": "B", "joiner": "-", "f2p": false, "bestUse": "Garrison defender", "desc": "A solid garrison infantry defender who joins the defensive rotation. Reliable but not as impactful as Zoe for F2P players.", "tags": ["garrison", "defensive"]}, "jaeger": {"name": "Jaeger", "gen": 3, "rarity": "legendary", "troop": "archer", "rally": "B", "garrison": "S", "bear": "B", "joiner": "-", "f2p": false, "bestUse": "Garrison archer", "desc": "Garrison-oriented archer who strengthens defensive lineups. Lower priority for F2P players compared to Marlin.", "tags": ["garrison", "defensive"]}, "rosa": {"name": "Rosa", "gen": 4, "rarity": "legendary", "troop": "archer", "rally": "A", "garrison": "B", "bear": "B", "joiner": "-", "f2p": false, "bestUse": "Arena specialist", "desc": "Strong offensive archer and arena specialist. Accessible through specific events. Only invest if you see a clear path to consistent shard collection.", "tags": ["rally-lead", "offensive", "arena"]}, "alcar": {"name": "Alcar", "gen": 4, "rarity": "legendary", "troop": "infantry", "rally": "B", "garrison": "S", "bear": "A", "joiner": "-", "f2p": false, "bestUse": "Garrison infantry", "desc": "Premium garrison infantry defender. Strong in garrison and bear hunt but typically requires significant investment.", "tags": ["garrison", "defensive", "bear"]}, "margot": {"name": "Margot", "gen": 4, "rarity": "legendary", "troop": "cavalry", "rally": "B", "garrison": "S", "bear": "S", "joiner": "A", "f2p": false, "bestUse": "Garrison & bear joiner", "desc": "Excels in garrison defense and bear hunt. A strong joiner who adds depth to both defensive and PvE lineups.", "tags": ["garrison", "joiner", "bear", "defensive"]}, "vivian": {"name": "Vivian", "gen": 5, "rarity": "legendary", "troop": "archer", "rally": "S+", "garrison": "B", "bear": "S", "joiner": "S", "f2p": false, "bestUse": "Army-wide damage buff", "desc": "One of the most impactful heroes in the game. Provides army-wide damage buffs that elevate entire rally lineups. S+ tier for rallies.", "tags": ["rally-lead", "offensive", "bear", "joiner", "buff", "long-term"]}, "thrud": {"name": "Thrud", "gen": 5, "rarity": "legendary", "troop": "cavalry", "rally": "S", "garrison": "A", "bear": "B", "joiner": "-", "f2p": false, "bestUse": "Cavalry multiplier", "desc": "A powerful cavalry multiplier who amplifies cavalry-heavy rally compositions. Strong on offense with some garrison flexibility.", "tags": ["rally-lead", "offensive", "cavalry"]}, "long-fei": {"name": "Long Fei", "gen": 5, "rarity": "legendary", "troop": "infantry", "rally": "A", "garrison": "S", "bear": "A", "joiner": "-", "f2p": false, "bestUse": "Garrison infantry", "desc": "Late-game garrison infantry specialist. Strong across garrison and bear hunt. A premium investment for defensive players.", "tags": ["garrison", "defensive", "bear"]}, "yang": {"name": "Yang", "gen": 6, "rarity": "legendary", "troop": "archer", "rally": "S+", "garrison": "B", "bear": "S", "joiner": "-", "f2p": true, "bestUse": "F2P rally carry", "desc": "The F2P late-game MVP. Provides significant rally impact and is accessible through challenging events, alliance activities, and daily play. Prioritize saving shards for Yang from Gen 5 onward.", "tags": ["rally-lead", "offensive", "f2p-friendly", "long-term"]}, "sophia": {"name": "Sophia", "gen": 6, "rarity": "legendary", "troop": "cavalry", "rally": "S", "garrison": "A", "bear": "B", "joiner": "-", "f2p": false, "bestUse": "Confusion-based debuffer", "desc": "A cavalry debuffer who disrupts enemy formations with confusion effects. Strong rally presence with some garrison capability.", "tags": ["rally-lead", "offensive", "cavalry", "debuff"]}, "triton": {"name": "Triton", "gen": 6, "rarity": "legendary", "troop": "infantry", "rally": "A", "garrison": "S", "bear": "A", "joiner": "-", "f2p": false, "bestUse": "Garrison infantry", "desc": "The strongest frontline unit in Gen 6. Dominates garrison defense and is a solid bear hunt contributor.", "tags": ["garrison", "defensive", "bear", "tank"]}, "chenko": {"name": "Chenko", "gen": 1, "rarity": "epic", "troop": "cavalry", "rally": "-", "garrison": "-", "bear": "S", "joiner": "S", "f2p": true, "bestUse": "Best F2P rally joiner", "desc": "His first skill provides dependable rally value \u2014 considered the best rally joiner skill for F2P players. Essential for bear hunt participation.", "tags": ["joiner", "bear", "f2p-friendly", "long-term"]}, "amane": {"name": "Amane", "gen": 1, "rarity": "epic", "troop": "archer", "rally": "-", "garrison": "-", "bear": "S", "joiner": "S", "f2p": true, "bestUse": "Offensive stacking joiner", "desc": "An excellent offensive stacking joiner for bear hunt and rallies. Pairs well with archer-heavy compositions.", "tags": ["joiner", "bear", "stacking", "f2p-friendly"]}, "yeonwoo": {"name": "Yeonwoo", "gen": 1, "rarity": "epic", "troop": "archer", "rally": "-", "garrison": "-", "bear": "S", "joiner": "S", "f2p": true, "bestUse": "Non-chance offensive joiner", "desc": "A reliable joiner whose offensive contribution does not rely on chance mechanics. Consistent value in rally and bear hunt.", "tags": ["joiner", "bear", "f2p-friendly"]}, "gordon": {"name": "Gordon", "gen": 1, "rarity": "epic", "troop": "cavalry", "rally": "B", "garrison": "-", "bear": "-", "joiner": "A", "f2p": true, "bestUse": "Early-game reliable", "desc": "A reliable early-game hero who provides decent value until stronger options become available.", "tags": ["early-game", "f2p-friendly", "joiner"]}, "howard": {"name": "Howard", "gen": 1, "rarity": "epic", "troop": "infantry", "rally": "-", "garrison": "B", "bear": "-", "joiner": "-", "f2p": true, "bestUse": "Garrison only", "desc": "Limited utility \u2014 garrison only. Quickly outclassed by Gen 2+ heroes. Low priority for investment.", "tags": ["garrison", "early-game", "f2p-friendly"]}, "quinn": {"name": "Quinn", "gen": 1, "rarity": "epic", "troop": "archer", "rally": "-", "garrison": "-", "bear": "-", "joiner": "-", "f2p": true, "bestUse": "Low priority", "desc": "Low boost value with limited combat utility. Not recommended for significant investment.", "tags": ["f2p-friendly", "early-game"]}, "diana": {"name": "Diana", "gen": 1, "rarity": "epic", "troop": "archer", "rally": "-", "garrison": "-", "bear": "-", "joiner": "-", "f2p": true, "bestUse": "Gathering (no battle skills)", "desc": "No battle skills \u2014 she is a gathering hero only. Useful for resource farming with farm accounts but has zero combat value.", "tags": ["gathering", "f2p-friendly", "farm"]}, "fahd": {"name": "Fahd", "gen": 1, "rarity": "epic", "troop": "cavalry", "rally": "-", "garrison": "-", "bear": "D", "joiner": "B", "f2p": true, "bestUse": "Low priority joiner", "desc": "Very low priority. Only use if you have absolutely no other joiner options. Quickly outclassed.", "tags": ["f2p-friendly", "early-game"]}};
+
+function analyzeTeam() {
+  var picks = [
+    document.getElementById("team-1").value,
+    document.getElementById("team-2").value,
+    document.getElementById("team-3").value
+  ].filter(Boolean);
+  var el = document.getElementById("team-result");
+
+  if (picks.length < 2) { el.innerHTML = '<p style="text-align:center;color:var(--text-muted);">Select at least 2 heroes.</p>'; return; }
+  if (new Set(picks).size !== picks.length) { el.innerHTML = '<p style="text-align:center;color:var(--text-muted);">Select different heroes.</p>'; return; }
+
+  var heroes = picks.map(function(s) { return HERO_DATA[s]; }).filter(Boolean);
+  if (heroes.length < 2) return;
+
+  function tc(t) { return {"S+":"#fbbf24","S":"#4ade80","A":"#60a5fa","B":"#9ca3af","C":"#f87171","D":"#ef4444"}[t] || "#6b7280"; }
+  function tv(t) { return {"S+":6,"S":5,"A":4,"B":3,"C":2,"D":1,"-":0}[t] || 0; }
+
+  // Role coverage
+  var bestRally = Math.max.apply(null, heroes.map(function(h){return tv(h.rally)}));
+  var bestGarrison = Math.max.apply(null, heroes.map(function(h){return tv(h.garrison)}));
+  var bestBear = Math.max.apply(null, heroes.map(function(h){return tv(h.bear)}));
+  var bestJoiner = Math.max.apply(null, heroes.map(function(h){return tv(h.joiner)}));
+
+  // Troop diversity
+  var troops = {};
+  heroes.forEach(function(h) { troops[h.troop] = (troops[h.troop] || 0) + 1; });
+  var troopTypes = Object.keys(troops).length;
+
+  // F2P count
+  var f2pCount = heroes.filter(function(h){return h.f2p;}).length;
+
+  var html = '<div style="margin-top:24px;">';
+
+  // Team cards
+  html += '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;justify-content:center;">';
+  heroes.forEach(function(h) {
+    var icon = {"infantry":"&#9876;","cavalry":"&#127943;","archer":"&#127993;"}[h.troop] || "";
+    html += '<a href="' + h.name.toLowerCase().replace(/ /g,"-").replace(/'/g,"") + '/" style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;min-width:120px;text-decoration:none;">';
+    html += '<div style="font-size:24px;">' + icon + '</div>';
+    html += '<div style="color:var(--gold);font-weight:700;font-size:15px;">' + h.name + '</div>';
+    html += '<div style="color:var(--text-muted);font-size:11px;">' + h.troop + ' · Gen ' + h.gen + '</div>';
+    html += '</a>';
+  });
+  html += '</div>';
+
+  // Synergy analysis
+  html += '<div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;">';
+  html += '<h2 style="color:var(--gold);font-size:17px;margin:0 0 12px;">Team Analysis</h2>';
+
+  // Strengths
+  var strengths = [];
+  if (bestRally >= 5) strengths.push("Strong rally potential (S or S+ rally hero present)");
+  if (bestGarrison >= 5) strengths.push("Solid garrison defense (S-tier garrison hero present)");
+  if (bestBear >= 5) strengths.push("Effective for bear hunt");
+  if (bestJoiner >= 5) strengths.push("Has S-tier joiner for stacking");
+  if (troopTypes >= 3) strengths.push("Full troop diversity (infantry + cavalry + archer)");
+  if (f2pCount === heroes.length) strengths.push("Fully F2P accessible team");
+
+  // Weaknesses
+  var weaknesses = [];
+  if (bestRally <= 3) weaknesses.push("Weak rally capability — no strong rally lead");
+  if (bestGarrison <= 3) weaknesses.push("Weak garrison defense");
+  if (troopTypes === 1) weaknesses.push("All same troop type — vulnerable to counters");
+  if (f2pCount === 0) weaknesses.push("No F2P heroes — requires significant investment");
+
+  if (strengths.length) {
+    html += '<div style="margin-bottom:12px;"><strong style="color:#4ade80;">Strengths</strong><ul style="margin:6px 0;padding-left:18px;">';
+    strengths.forEach(function(s) { html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">' + s + '</li>'; });
+    html += '</ul></div>';
+  }
+  if (weaknesses.length) {
+    html += '<div><strong style="color:#f87171;">Weaknesses</strong><ul style="margin:6px 0;padding-left:18px;">';
+    weaknesses.forEach(function(s) { html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">' + s + '</li>'; });
+    html += '</ul></div>';
+  }
+
+  // Role coverage grid
+  html += '<div style="margin-top:16px;"><strong style="color:var(--text);font-size:13px;">Role Coverage</strong>';
+  html += '<table style="width:100%;border-collapse:collapse;margin-top:8px;">';
+  html += '<tr><td style="padding:4px 8px;color:var(--text-muted);font-size:12px;">Rally</td>';
+  heroes.forEach(function(h) { html += '<td style="text-align:center;color:' + tc(h.rally) + ';font-weight:700;font-size:13px;">' + (h.rally||"—") + '</td>'; });
+  html += '</tr><tr><td style="padding:4px 8px;color:var(--text-muted);font-size:12px;">Garrison</td>';
+  heroes.forEach(function(h) { html += '<td style="text-align:center;color:' + tc(h.garrison) + ';font-weight:700;font-size:13px;">' + (h.garrison||"—") + '</td>'; });
+  html += '</tr><tr><td style="padding:4px 8px;color:var(--text-muted);font-size:12px;">Bear Hunt</td>';
+  heroes.forEach(function(h) { html += '<td style="text-align:center;color:' + tc(h.bear) + ';font-weight:700;font-size:13px;">' + (h.bear||"—") + '</td>'; });
+  html += '</tr><tr><td style="padding:4px 8px;color:var(--text-muted);font-size:12px;">Joiner</td>';
+  heroes.forEach(function(h) { html += '<td style="text-align:center;color:' + tc(h.joiner) + ';font-weight:700;font-size:13px;">' + (h.joiner||"—") + '</td>'; });
+  html += '</tr></table></div>';
+
+  html += '</div>';
+  html += '</div>';
+
+  el.innerHTML = html;
+}
+
+document.getElementById("analyze-btn").addEventListener("click", analyzeTeam);
+
+// Pre-fill from URL
+(function() {
+  var p = new URLSearchParams(window.location.search);
+  if (p.get("hero")) {
+    document.getElementById("team-1").value = p.get("hero");
+  }
+})();
+</script>
+
+</div></div></div>
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="../../about.html">About</a>
+    <a href="../../privacy.html">Privacy Policy</a>
+    <a href="../../terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+<script src="../../js/cookie-consent.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/advisor-names.js"></script>
+<script src="../../js/advisor.js"></script>
+<script src="../../js/advisor-orb.js"></script>
+<script src="../../js/advisor-hooks.js"></script>
+<script src="../../js/advisor-chat.js"></script>
+<script src="../../js/advisor-cta.js"></script>
+<script src="../../js/advisor-lore.js"></script>
+<script src="../../js/advisor-referral.js"></script>
+<script src="../../js/advisor-alliance.js"></script>
+<script src="../../js/advisor-accounts.js"></script>
+</body>
+</html>

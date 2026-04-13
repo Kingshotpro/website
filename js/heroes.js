@@ -491,7 +491,10 @@ function renderHeroCard(hero) {
   var rarityClass = hero.rarity === 'legendary' ? 'hero-legendary' : 'hero-epic';
   var f2pBadge = hero.f2p ? '<span class="hero-f2p">F2P</span>' : '';
 
-  return '<div class="hero-card ' + rarityClass + '">' +
+  var heroSlug = hero.name.toLowerCase().replace(/ /g, '-').replace(/'/g, '');
+  var heroLink = 'heroes/' + heroSlug + '/';
+
+  return '<a href="' + heroLink + '" class="hero-card ' + rarityClass + '" style="text-decoration:none;display:block;">' +
     '<div class="hero-card-header">' +
       '<div class="hero-name-row">' +
         '<span class="hero-name">' + escH(hero.name) + '</span>' +
@@ -511,7 +514,7 @@ function renderHeroCard(hero) {
     '</div>' +
     '<div class="hero-best-use">' + escH(hero.bestUse) + '</div>' +
     '<div class="hero-desc">' + escH(hero.desc) + '</div>' +
-  '</div>';
+  '</a>';
 }
 
 function renderLineup(key) {
