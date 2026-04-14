@@ -4,36 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kingdom Rankings — KingshotPro</title>
-  <meta name="description" content="Live Kingshot kingdom rankings and alliance leaderboards. Browse power rankings, alliance standings, and player data for every kingdom.">
+  <meta name="description" content="Live Kingshot kingdom rankings. Browse alliance power, top players, and server age for every kingdom we track. CoinGecko-style leaderboard.">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/advisor-orb.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
   <style>
-    .kd-header { text-align: center; margin-bottom: 28px; }
+    .kd-header { text-align: center; margin-bottom: 24px; }
     .kd-header h1 { color: var(--gold); margin-bottom: 8px; }
-    .kd-search { display: flex; gap: 8px; max-width: 400px; margin: 0 auto 28px; }
+    .kd-search { display: flex; gap: 8px; max-width: 360px; margin: 0 auto 24px; }
     .kd-search input { flex: 1; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; font-family: inherit; }
     .kd-search input:focus { outline: none; border-color: var(--gold); }
     .kd-search button { padding: 10px 20px; background: var(--gold); color: var(--bg); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-family: inherit; }
-    .kd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-    .kd-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; text-decoration: none; transition: border-color 0.2s; display: block; }
-    .kd-card:hover { border-color: var(--gold); }
-    .kd-card-num { font-size: 28px; font-weight: 800; color: var(--gold); }
-    .kd-card-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-    .kd-card-alliances { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
-    .kd-card-updated { font-size: 10px; color: var(--text-muted); opacity: 0.6; margin-top: 4px; }
-    .kd-coming { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; }
+
+    /* CoinGecko-style table */
+    .kd-table-wrap { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .kd-table { width: 100%; border-collapse: collapse; }
+    .kd-table th {
+      text-align: left; font-size: 11px; color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 0.5px; padding: 12px 14px; border-bottom: 1px solid var(--border);
+      cursor: pointer; user-select: none; white-space: nowrap;
+    }
+    .kd-table th:hover { color: var(--gold); }
+    .kd-table th.sort-asc::after { content: ' \u25B2'; font-size: 9px; }
+    .kd-table th.sort-desc::after { content: ' \u25BC'; font-size: 9px; }
+    .kd-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14px; }
+    .kd-table tr:hover { background: var(--surface); }
+    .kd-table tr { cursor: pointer; }
+    .kd-table a { text-decoration: none; color: inherit; display: contents; }
+
+    .kd-rank { color: var(--text-muted); font-weight: 700; width: 40px; text-align: center; }
+    .kd-kingdom { font-weight: 700; color: var(--text); }
+    .kd-kingdom-num { color: var(--gold); font-weight: 800; margin-right: 4px; }
+    .kd-top-alliance { color: var(--text-muted); font-size: 13px; }
+    .kd-top-alliance .kd-tag { color: var(--gold); font-size: 11px; font-weight: 700; margin-right: 4px; }
+    .kd-power { color: var(--text); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+    .kd-alliances { color: var(--text-muted); text-align: center; }
+    .kd-age { color: var(--text-muted); text-align: center; white-space: nowrap; }
+    .kd-updated { color: var(--text-muted); font-size: 12px; text-align: right; opacity: 0.7; }
+
+    /* Power bar (mini sparkline-style) */
+    .kd-bar { width: 80px; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; display: inline-block; vertical-align: middle; }
+    .kd-bar-fill { height: 100%; background: var(--gold); border-radius: 4px; }
+
+    .kd-coming { text-align: center; padding: 32px; color: var(--text-muted); font-size: 14px; }
     .kd-coming strong { color: var(--gold); }
+
+    .kd-stats-row { display: flex; gap: 16px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .kd-stat-pill { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; text-align: center; }
+    .kd-stat-pill-val { font-size: 18px; font-weight: 800; color: var(--gold); }
+    .kd-stat-pill-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    @media (max-width: 640px) {
+      .kd-table th:nth-child(5), .kd-table td:nth-child(5),
+      .kd-table th:nth-child(6), .kd-table td:nth-child(6) { display: none; }
+      .kd-table td { padding: 10px 8px; font-size: 13px; }
+    }
   </style>
 </head>
 <body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
-<div class="page"><div class="container" style="max-width:900px;">
+<div class="page"><div class="container" style="max-width:960px;">
 
   <div class="kd-header">
     <h1>Kingdom Rankings</h1>
     <p class="text-muted">Alliance power rankings for every kingdom we track. Updated from live game data.</p>
   </div>
+
+  <div class="kd-stats-row" id="kd-stats"></div>
 
   <div class="kd-search">
     <input type="text" id="kd-search" inputmode="numeric" placeholder="Jump to kingdom #..." maxlength="5">
@@ -42,12 +79,27 @@
 
   <div class="ad-slot" data-slot="kingdom-top">Ad</div>
 
-  <div id="kd-grid" class="kd-grid"></div>
+  <div class="kd-table-wrap">
+    <table class="kd-table" id="kd-table">
+      <thead>
+        <tr>
+          <th data-sort="rank" class="sort-asc">#</th>
+          <th data-sort="id">Kingdom</th>
+          <th data-sort="topAlliance">Top Alliance</th>
+          <th data-sort="topPower">Top Power</th>
+          <th data-sort="alliances">Alliances</th>
+          <th data-sort="age">Server Age</th>
+          <th data-sort="updated">Updated</th>
+        </tr>
+      </thead>
+      <tbody id="kd-tbody"></tbody>
+    </table>
+  </div>
 
   <div class="kd-coming" id="kd-coming">
     <p><strong>More kingdoms coming soon.</strong></p>
     <p>Our intelligence network is expanding. Each kingdom requires a data source — we're adding new kingdoms every week.</p>
-    <p style="margin-top:16px;">Want your kingdom tracked? <a href="../survey.html" style="color:var(--gold);">Tell us in the survey.</a></p>
+    <p style="margin-top:12px;">Want your kingdom tracked? <a href="../survey.html" style="color:var(--gold);">Tell us in the survey.</a></p>
   </div>
 
   <div class="ad-slot" data-slot="kingdom-bottom">Ad</div>
@@ -78,38 +130,84 @@
 <script src="../js/advisor-accounts.js"></script>
 <script>
 // Kingdom directory data — updated as new kingdoms are scraped
+// Server age: estimated from kingdom ID ranges (lower = older). Verified where possible.
 var KINGDOMS = [
-  { id: 223, alliances: 97, topAlliance: 'ThePsychWard', updated: '2026-04-13' },
-  { id: 300, alliances: 100, topAlliance: 'ADVANGE', updated: '2026-04-13' },
+  { rank: 1, id: 223, topAlliance: 'ThePsychWard', topTag: 'PSY', topPower: 3653574148, alliances: 97, age: '400+ days', ageSort: 400, updated: '2026-04-13' },
+  { rank: 2, id: 300, topAlliance: 'ADVANGE', topTag: 'AVB', topPower: 12779443655, alliances: 100, age: '300+ days', ageSort: 300, updated: '2026-04-13' },
 ];
 
-(function() {
-  var grid = document.getElementById('kd-grid');
-  KINGDOMS.forEach(function(k) {
-    var card = document.createElement('a');
-    card.href = k.id + '/';
-    card.className = 'kd-card';
-    card.innerHTML =
-      '<div class="kd-card-num">#' + k.id + '</div>' +
-      '<div class="kd-card-label">Kingdom</div>' +
-      '<div class="kd-card-alliances">' + k.alliances + ' alliances tracked</div>' +
-      (k.topAlliance ? '<div class="kd-card-updated">Top: ' + k.topAlliance + '</div>' : '') +
-      '<div class="kd-card-updated">Updated ' + k.updated + '</div>';
-    grid.appendChild(card);
+var sortKey = 'rank';
+var sortDir = 1; // 1 = asc, -1 = desc
+
+function formatPower(p) {
+  if (p >= 1e9) return (p / 1e9).toFixed(2) + 'B';
+  if (p >= 1e6) return (p / 1e6).toFixed(1) + 'M';
+  return p.toLocaleString();
+}
+
+function renderTable() {
+  var tbody = document.getElementById('kd-tbody');
+  tbody.innerHTML = '';
+
+  var sorted = KINGDOMS.slice().sort(function(a, b) {
+    var va = a[sortKey], vb = b[sortKey];
+    if (typeof va === 'string') return sortDir * va.localeCompare(vb);
+    return sortDir * (va - vb);
   });
 
-  // Search / jump
+  var maxPower = Math.max.apply(null, KINGDOMS.map(function(k) { return k.topPower; }));
+
+  sorted.forEach(function(k, i) {
+    var pct = (k.topPower / maxPower * 100).toFixed(1);
+    var tr = document.createElement('tr');
+    tr.onclick = function() { window.location.href = k.id + '/'; };
+    tr.innerHTML =
+      '<td class="kd-rank">' + (i + 1) + '</td>' +
+      '<td class="kd-kingdom"><span class="kd-kingdom-num">#' + k.id + '</span></td>' +
+      '<td class="kd-top-alliance"><span class="kd-tag">[' + k.topTag + ']</span>' + k.topAlliance + '</td>' +
+      '<td class="kd-power">' + formatPower(k.topPower) + ' <div class="kd-bar"><div class="kd-bar-fill" style="width:' + pct + '%"></div></div></td>' +
+      '<td class="kd-alliances">' + k.alliances + '</td>' +
+      '<td class="kd-age">' + k.age + '</td>' +
+      '<td class="kd-updated">' + k.updated + '</td>';
+    tbody.appendChild(tr);
+  });
+}
+
+function renderStats() {
+  var el = document.getElementById('kd-stats');
+  var total = KINGDOMS.length;
+  var totalAlliances = KINGDOMS.reduce(function(s, k) { return s + k.alliances; }, 0);
+  el.innerHTML =
+    '<div class="kd-stat-pill"><div class="kd-stat-pill-val">' + total + '</div><div class="kd-stat-pill-lbl">Kingdoms Tracked</div></div>' +
+    '<div class="kd-stat-pill"><div class="kd-stat-pill-val">' + totalAlliances + '</div><div class="kd-stat-pill-lbl">Total Alliances</div></div>';
+}
+
+// Sortable headers
+document.querySelectorAll('.kd-table th[data-sort]').forEach(function(th) {
+  th.addEventListener('click', function() {
+    var key = th.getAttribute('data-sort');
+    if (sortKey === key) { sortDir *= -1; }
+    else { sortKey = key; sortDir = 1; }
+    document.querySelectorAll('.kd-table th').forEach(function(t) { t.classList.remove('sort-asc', 'sort-desc'); });
+    th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+    renderTable();
+  });
+});
+
+// Search / jump
+(function() {
   var input = document.getElementById('kd-search');
   var goBtn = document.getElementById('kd-go');
   function jump() {
     var val = (input.value || '').trim();
-    if (val && /^\d{1,5}$/.test(val)) {
-      window.location.href = val + '/';
-    }
+    if (val && /^\d{1,5}$/.test(val)) window.location.href = val + '/';
   }
   goBtn.addEventListener('click', jump);
   input.addEventListener('keydown', function(e) { if (e.key === 'Enter') jump(); });
 })();
+
+renderStats();
+renderTable();
 </script>
 </body>
 </html>
