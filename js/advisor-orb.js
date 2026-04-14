@@ -38,7 +38,7 @@
     var p = location.pathname;
     // Hero + kingdom detail pages are 2 levels deep
     if ((/\/heroes\/[a-z]/.test(p) && !/\/heroes\.html/.test(p)) || /\/kingdoms\/\d/.test(p)) return '../../';
-    return /\/calculators\/|\/games\/|\/guides\/|\/alliance\//.test(p) ? '../' : '';
+    return /\/calculators\/|\/games\/|\/guides\/|\/alliance\/|\/kingdoms\//.test(p) ? '../' : '';
   }
 
   function getAvatarSrc() {

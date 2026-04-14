@@ -11,7 +11,7 @@
 
   // ── Path prefix (pages in subdirectories need ../ or ../../) ──
   var loc = window.location.pathname;
-  var inSub = /\/calculators\/|\/guides\/|\/games\/|\/alliance\//.test(loc);
+  var inSub = /\/calculators\/|\/guides\/|\/games\/|\/alliance\/|\/kingdoms\//.test(loc);
   // Hero detail pages are 2 levels deep: /heroes/{slug}/index.html
   var inDeepSub = (/\/heroes\/[a-z]/.test(loc) && !/\/heroes\.html/.test(loc)) ||
                    (/\/kingdoms\/\d/.test(loc));

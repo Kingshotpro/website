@@ -56,7 +56,8 @@
 
     @media (max-width: 640px) {
       .kd-table th:nth-child(5), .kd-table td:nth-child(5),
-      .kd-table th:nth-child(6), .kd-table td:nth-child(6) { display: none; }
+      .kd-table th:nth-child(6), .kd-table td:nth-child(6),
+      .kd-table th:nth-child(7), .kd-table td:nth-child(7) { display: none; }
       .kd-table td { padding: 10px 8px; font-size: 13px; }
     }
   </style>
@@ -87,6 +88,7 @@
           <th data-sort="id">Kingdom</th>
           <th data-sort="topAlliance">Top Alliance</th>
           <th data-sort="topPower">Top Power</th>
+          <th data-sort="totalPower">Total Power</th>
           <th data-sort="alliances">Alliances</th>
           <th data-sort="age">Server Age</th>
           <th data-sort="updated">Updated</th>
@@ -132,8 +134,8 @@
 // Kingdom directory data — updated as new kingdoms are scraped
 // Server age: estimated from kingdom ID ranges (lower = older). Verified where possible.
 var KINGDOMS = [
-  { rank: 1, id: 223, topAlliance: 'ThePsychWard', topTag: 'PSY', topPower: 3653574148, alliances: 97, age: '400+ days', ageSort: 400, updated: '2026-04-13' },
-  { rank: 2, id: 300, topAlliance: 'ADVANGE', topTag: 'AVB', topPower: 12779443655, alliances: 100, age: '300+ days', ageSort: 300, updated: '2026-04-13' },
+  { rank: 1, id: 223, topAlliance: 'ThePsychWard', topTag: 'PSY', topPower: 3653574148, totalPower: 72127924968, alliances: 97, age: '400+ days', ageSort: 400, updated: '2026-04-13' },
+  { rank: 2, id: 300, topAlliance: 'ADVANGE', topTag: 'AVB', topPower: 12779417655, totalPower: 52699142446, alliances: 100, age: '300+ days', ageSort: 300, updated: '2026-04-13' },
 ];
 
 var sortKey = 'rank';
@@ -166,6 +168,7 @@ function renderTable() {
       '<td class="kd-kingdom"><span class="kd-kingdom-num">#' + k.id + '</span></td>' +
       '<td class="kd-top-alliance"><span class="kd-tag">[' + k.topTag + ']</span>' + k.topAlliance + '</td>' +
       '<td class="kd-power">' + formatPower(k.topPower) + ' <div class="kd-bar"><div class="kd-bar-fill" style="width:' + pct + '%"></div></div></td>' +
+      '<td class="kd-power">' + formatPower(k.totalPower) + '</td>' +
       '<td class="kd-alliances">' + k.alliances + '</td>' +
       '<td class="kd-age">' + k.age + '</td>' +
       '<td class="kd-updated">' + k.updated + '</td>';
