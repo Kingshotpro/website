@@ -130,7 +130,18 @@
     for (var t = 0; t < tags.length; t++) {
       if (GUIDE_LINKS[tags[t]]) {
         var g = GUIDE_LINKS[tags[t]];
-        var base = /\/calculators\/|\/guides\/|\/games\/|\/alliance\//.test(location.pathname) ? '../' : '';
+        // Path prefix detection (must match layout.js):
+        // Hero detail pages (/heroes/{slug}/) and kingdom detail pages (/kingdoms/{id}/)
+        // are 2 levels deep and need ../../
+        var p = location.pathname;
+        var base;
+        if ((/\/heroes\/[a-z]/.test(p) && !/\/heroes\.html/.test(p)) || /\/kingdoms\/\d/.test(p)) {
+          base = '../../';
+        } else if (/\/calculators\/|\/guides\/|\/games\/|\/alliance\/|\/kingdoms\//.test(p)) {
+          base = '../';
+        } else {
+          base = '';
+        }
         guideLink = ' <a href="' + base + g.url + '" style="color:var(--gold);font-weight:600;">Read the ' + g.text + ' \u2192</a>';
         break;
       }
