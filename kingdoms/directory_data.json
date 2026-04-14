@@ -1,8 +1,56 @@
 {
-  "generated": "2026-04-14T06:57:58.442857",
+  "generated": "2026-04-14T13:11:00.485887",
   "generator": "kingdoms/build_directory.py",
-  "kingdom_count": 4,
+  "kingdom_count": 7,
   "kingdoms": [
+    {
+      "id": 224,
+      "topAlliance": "Titans",
+      "topTag": "TiT",
+      "topPower": 29255440532,
+      "totalPower": 200483950168,
+      "alliances": 106,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k224/2026-04-14_081616/alliance_power_extracted.csv",
+      "rank": 1
+    },
+    {
+      "id": 1,
+      "topAlliance": "Titans",
+      "topTag": "TiT",
+      "topPower": 29254913476,
+      "totalPower": 173105963353,
+      "alliances": 106,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k1/2026-04-14_074136/alliance_power_extracted.csv",
+      "rank": 2
+    },
+    {
+      "id": 222,
+      "topAlliance": "WINTER",
+      "topTag": "WIN",
+      "topPower": 22537764032,
+      "totalPower": 131952229278,
+      "alliances": 99,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k222/2026-04-14_054311/alliance_power_extracted.csv",
+      "rank": 3
+    },
+    {
+      "id": 221,
+      "topAlliance": "Bloodline",
+      "topTag": "BLD",
+      "topPower": 20968229439,
+      "totalPower": 86519681622,
+      "alliances": 94,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k221/2026-04-14_062431/alliance_power_extracted.csv",
+      "rank": 4
+    },
     {
       "id": 223,
       "topAlliance": "ThePsych Ward",
@@ -13,7 +61,7 @@
       "categories": 10,
       "updated": "2026-04-13",
       "source": "scraper/data/kingdoms/k223/2026-04-13_184352/alliance_power_extracted.csv",
-      "rank": 1
+      "rank": 5
     },
     {
       "id": 300,
@@ -25,31 +73,19 @@
       "categories": 10,
       "updated": "2026-04-13",
       "source": "scraper/data/kingdoms/k300/2026-04-13_172822/alliance_power_extracted.csv",
-      "rank": 2
+      "rank": 6
     },
     {
-      "id": 221,
-      "topAlliance": "?",
-      "topTag": "",
-      "topPower": null,
-      "totalPower": null,
-      "alliances": null,
-      "categories": 0,
-      "updated": "2026-04-14",
-      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k221/2026-04-14_062431",
-      "rank": 3
-    },
-    {
-      "id": 222,
-      "topAlliance": "?",
-      "topTag": "",
-      "topPower": null,
-      "totalPower": null,
-      "alliances": null,
+      "id": 1908,
+      "topAlliance": "BLACK",
+      "topTag": "VIP",
+      "topPower": 626559334,
+      "totalPower": 9541322068,
+      "alliances": 99,
       "categories": 10,
       "updated": "2026-04-14",
-      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k222/2026-04-14_054311",
-      "rank": 4
+      "source": "scraper/data/kingdoms/k1908/2026-04-14_104011/alliance_power_extracted.csv",
+      "rank": 7
     }
   ]
 }
