@@ -38,9 +38,9 @@ You MUST use 9 sources minimum, in 3 rounds of 3, for every data point that's di
 
 Each source must be logged. If 7/9 agree on a number, that's verified. If sources disagree, flag it and use the majority OR mark as "?" if the disagreement is significant.
 
-### For Whiteout Survival overlap data
+### Kingshot Only
 
-Kingshot is a reskin of Whiteout Survival by Century Games. Hero progression mechanics are the same. When Kingshot sources are thin, whiteoutsurvival.app and whiteoutsurvival.wiki can provide the underlying mechanic — **but you must verify the specific Kingshot value separately**, never assume WOS values transfer.
+Only use Kingshot sources. Do not pull data from other games even if they're by the same developer. If a number isn't in a Kingshot source, it's unknown — mark it `null` / `?`.
 
 ---
 

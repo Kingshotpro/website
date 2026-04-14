@@ -122,7 +122,7 @@ For each of the 27 heroes, produce a JSON entry with these fields. **Every field
 2. **Lore/backstory may be fabricated** — Kingshot heroes don't have rich lore. If you invent flavor text, mark it `"source": "fabricated for flavor"` so the Architect can review.
 3. **The deep_analysis field is synthesis writing.** You're combining verified facts into prose. Cite the facts, not the prose.
 4. **Skills are the hardest field.** Many community sources only describe skills vaguely. Do your best but mark uncertain skills as `"description": null` rather than guessing.
-5. **For WOS overlap:** Kingshot is a Whiteout Survival reskin. WOS hero skill descriptions are often the same or nearly so. You can use WOS sources (`whiteoutsurvival.app`, `whiteoutsurvival.wiki`) for skill mechanics as a starting point, but you must confirm against a Kingshot source before committing the data.
+5. **Kingshot sources only.** Do not pull data from any other game. Same developer ≠ same game. If a Kingshot source doesn't have it, mark it null.
 
 ---
 
@@ -132,10 +132,8 @@ For each of the 27 heroes, produce a JSON entry with these fields. **Every field
 2. **kingshotmastery.com** — tier list reasoning, why heroes are ranked
 3. **kingshotguides.com** — strategic context
 4. **kingshothandbook.com** — hero-by-hero guides
-5. **whiteoutsurvival.app/heroes/** — WOS parallels (skills often mirror)
-6. **Reddit r/KingShot** — community builds and specific claims
-7. **Reddit r/WhiteoutSurvival** — for WOS mechanics that carry over
-8. **AI cross-verification** — Perplexity, Grok, Gemini (see `api.rtf` for keys)
+5. **Reddit r/KingShot** — community builds and specific claims
+6. **AI cross-verification** — Perplexity, Grok, Gemini (see `api.rtf` for keys). Ask specifically about Kingshot, never about other games.
 
 ---
 
