@@ -5,6 +5,18 @@
  * Proactive lore delivery. The advisor volunteers pieces of her past
  * at milestones — not in response to questions, but when she judges
  * the player has earned them. Through consistency, not payment.
+ *
+ * Verification status April 14, 2026:
+ *   - All 10 lore fragments are pure character fiction about Ysabel,
+ *     a fictional advisor. No Kingshot game-mechanic claims.
+ *   - Narrative references to "the first kingdom", "siege pattern",
+ *     "alliance broken" are all about her fictional past, not
+ *     Kingshot-specific events.
+ *   - "You check your troops before events" is generic game-behavior
+ *     flavor, not a specific Kingshot mechanic claim.
+ *   - Trigger conditions reference player state (level, visits, streak)
+ *     which are real KingshotPro advisor fields, not in-game values.
+ *   - Safe to modify creatively. No verification burden on fragment text.
  */
 (function () {
   'use strict';
