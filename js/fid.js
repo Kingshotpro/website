@@ -46,15 +46,17 @@ async function fetchPlayerProfile(fid) {
 // ─────────────────────────────────────────
 
 function classifyProfile(raw) {
-  const furnaceLevel = Number(raw.stove_lv) || 0;
-  const kid          = Number(raw.kid)      || 0;
-  const payAmt       = Number(raw.pay_amt)  || 0; // lifetime spend in cents
-  const dollars      = payAmt / 100;
+  // Century Games API returns the field as 'stove_lv' (internal code name).
+  // The game's in-game UI calls this the Town Center. Verified April 14, 2026.
+  const townCenterLevel = Number(raw.stove_lv) || 0;
+  const kid             = Number(raw.kid)      || 0;
+  const payAmt          = Number(raw.pay_amt)  || 0; // lifetime spend in cents
+  const dollars         = payAmt / 100;
 
   // Spending tier — display labels from NAMING_RESEARCH_FINDINGS.md
-  // IMPORTANT: if a furnace-based fallback label system is ever added,
-  // do NOT use "Veteran" for any furnace band — it collides with the mid-tier label here.
-  // Use "Campaigner" for furnace 15–21 in any fallback system.
+  // IMPORTANT: if a TC-based fallback label system is ever added,
+  // do NOT use "Veteran" for any TC band — it collides with the mid-tier label here.
+  // Use "Campaigner" for Town Center 15–21 in any fallback system.
   let spendingTier, spendingLabel;
   if (dollars === 0) {
     spendingTier  = 'f2p';
@@ -72,10 +74,10 @@ function classifyProfile(raw) {
 
   // Game stage
   let gameStage, stageLabel;
-  if (furnaceLevel < 15) {
+  if (townCenterLevel < 15) {
     gameStage  = 'early';
     stageLabel = 'Early Game';
-  } else if (furnaceLevel <= 21) {
+  } else if (townCenterLevel <= 21) {
     gameStage  = 'mid';
     stageLabel = 'Mid Game';
   } else {
@@ -99,7 +101,10 @@ function classifyProfile(raw) {
   return {
     fid:          raw.fid || raw.uid || '',
     nickname:     raw.nickname || 'Unknown',
-    furnaceLevel,
+    townCenterLevel,
+    // Legacy field for backward compat with existing localStorage profiles
+    // Old field name was 'furnaceLevel' before April 14, 2026 rename
+    furnaceLevel: townCenterLevel,
     kid,
     dollars,
     spendingTier,
@@ -131,27 +136,40 @@ function saveProfile(profile) {
   } catch (e) { /* ignore */ }
 }
 
+// Backfill townCenterLevel on profiles saved before the April 14 rename.
+// Old profiles only have furnaceLevel; new profiles have both.
+function migrateProfile(profile) {
+  if (!profile) return profile;
+  if (profile.townCenterLevel == null && profile.furnaceLevel != null) {
+    profile.townCenterLevel = profile.furnaceLevel;
+  }
+  if (profile.furnaceLevel == null && profile.townCenterLevel != null) {
+    profile.furnaceLevel = profile.townCenterLevel; // keep legacy readers working
+  }
+  return profile;
+}
+
 function loadProfile() {
   // 1. Try localStorage with last known FID
   try {
     var lastFid = localStorage.getItem(LAST_FID_KEY);
     if (lastFid) {
       var stored = localStorage.getItem('ksp_profile_' + lastFid);
-      if (stored) return JSON.parse(stored);
+      if (stored) return migrateProfile(JSON.parse(stored));
     }
   } catch (e) { /* fall through */ }
 
   // 2. Fallback: sessionStorage (backward compat / private browsing)
   try {
     var raw = sessionStorage.getItem(PROFILE_KEY);
-    return raw ? JSON.parse(raw) : null;
+    return raw ? migrateProfile(JSON.parse(raw)) : null;
   } catch (e) { return null; }
 }
 
 function loadProfileByFid(fid) {
   try {
     var stored = localStorage.getItem('ksp_profile_' + fid);
-    return stored ? JSON.parse(stored) : null;
+    return stored ? migrateProfile(JSON.parse(stored)) : null;
   } catch (e) { return null; }
 }
 
@@ -188,8 +206,8 @@ function renderProfileCard(profile) {
     </div>
     <div class="profile-stats">
       <div class="profile-stat">
-        <div class="profile-stat-value">${profile.furnaceLevel}</div>
-        <div class="profile-stat-label">Furnace</div>
+        <div class="profile-stat-value">${profile.townCenterLevel || profile.furnaceLevel || 0}</div>
+        <div class="profile-stat-label">Town Center</div>
       </div>
       <div class="profile-stat">
         <div class="profile-stat-value">${profile.stageLabel}</div>
@@ -313,7 +331,9 @@ function showManualEntry() {
 function handleManualSubmit(e) {
   e.preventDefault();
 
-  const furnaceLevel  = Number(document.getElementById('manual-furnace')?.value) || 0;
+  // Try the new input ID first, fall back to legacy ID for browsers with cached HTML
+  const tcInput = document.getElementById('manual-tc') || document.getElementById('manual-furnace');
+  const townCenterLevel = Number(tcInput?.value) || 0;
   const spendingTier  = document.getElementById('manual-spend')?.value || 'f2p';
   const kid           = Number(document.getElementById('manual-kid')?.value) || 999;
   const nickname      = (document.getElementById('manual-name')?.value || 'Player').trim();
@@ -321,9 +341,9 @@ function handleManualSubmit(e) {
   // Build a synthetic profile
   const spendingLabels = { f2p: 'Free Commander', low: 'Tactician', mid: 'Veteran', whale: 'Warlord' };
   let gameStage, stageLabel;
-  if (furnaceLevel < 15)       { gameStage = 'early'; stageLabel = 'Early Game'; }
-  else if (furnaceLevel <= 21) { gameStage = 'mid';   stageLabel = 'Mid Game'; }
-  else                         { gameStage = 'late';  stageLabel = 'Late Game'; }
+  if (townCenterLevel < 15)       { gameStage = 'early'; stageLabel = 'Early Game'; }
+  else if (townCenterLevel <= 21) { gameStage = 'mid';   stageLabel = 'Mid Game'; }
+  else                            { gameStage = 'late';  stageLabel = 'Late Game'; }
 
   let serverAge, serverAgeLabel;
   if (kid < 500)       { serverAge = 'mature'; serverAgeLabel = 'Mature (180+ days)'; }
@@ -331,7 +351,10 @@ function handleManualSubmit(e) {
   else                 { serverAge = 'new';    serverAgeLabel = 'New (<90 days)'; }
 
   const profile = {
-    fid: 'manual', nickname, furnaceLevel, kid, dollars: 0,
+    fid: 'manual', nickname, townCenterLevel,
+    // Legacy field for backward compat
+    furnaceLevel: townCenterLevel,
+    kid, dollars: 0,
     spendingTier, spendingLabel: spendingLabels[spendingTier] || spendingTier,
     gameStage, stageLabel, serverAge, serverAgeLabel,
   };

@@ -97,7 +97,7 @@
   // ── Guide links by topic ────────────────
   var GUIDE_LINKS = {
     combat_prioritizer: { url: 'guides/kvk.html', text: 'KvK Guide' },
-    builder: { url: 'guides/furnace.html', text: 'Furnace Guide' },
+    builder: { url: 'guides/town-center.html', text: 'Town Center Guide' },
     optimizer: { url: 'guides/hero-guide.html', text: 'Hero Guide' },
     neglects_gear: { url: 'guides/hero-guide.html', text: 'Hero Guide' },
     daily_player: { url: 'guides/beginner.html', text: 'Beginner Guide' },

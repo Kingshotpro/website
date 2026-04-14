@@ -86,18 +86,18 @@ const ADVICE_TREE = {
         body: 'Don\'t buy random bundles. Wait for event-linked packs (HoG event packs, KvK packs) — they give training speedups + event points, doubling the effective value.'
       },
       {
-        title: 'Avoid combat spending until Furnace 15',
-        body: 'Early combat gear and troop packs are inefficient. Your $20 goes 3× further after Furnace 15 when T4 troops and tier-2 research is available.'
+        title: 'Avoid combat spending until Town Center 15',
+        body: 'Early combat gear and troop packs are inefficient. Your $20 goes 3× further after Town Center 15 when T4 troops and tier-2 research is available.'
       },
     ]
   },
 
   low_mid: {
-    headline: 'The bottleneck is furnace. Everything flows from it.',
+    headline: 'The bottleneck is Town Center. Everything flows from it.',
     tips: [
       {
-        title: 'Furnace upgrade is your highest ROI spend',
-        body: 'Each furnace level unlocks research and troop tiers that multiplicatively improve everything else. If you\'re spending, spend here — speedup packs for the next furnace level.'
+        title: 'Town Center upgrade is your highest ROI spend',
+        body: 'Each Town Center level unlocks research and troop tiers that multiplicatively improve everything else. If you\'re spending, spend here — speedup packs for the next Town Center level.'
       },
       {
         title: 'Buy hero gear packs, not raw resource packs',
@@ -139,8 +139,8 @@ const ADVICE_TREE = {
         body: 'Mid-spenders who max VIP early enjoy compounding daily rewards for the entire game. Don\'t spread early spend on combat — lock in VIP ROI first.'
       },
       {
-        title: 'Speedup packs at furnace gates (10, 15, 21)',
-        body: 'Furnace gates are where mid-spenders pull ahead. Buy speedup-heavy packs to hit F15, F21, and F25+ faster than low spenders. The gap compounds.'
+        title: 'Speedup packs at Town Center gates (10, 15, 21)',
+        body: 'Town Center gates are where mid-spenders pull ahead. Buy speedup-heavy packs to hit TC15, TC21, and TC25+ faster than low spenders. The gap compounds.'
       },
       {
         title: 'Don\'t upgrade heroes evenly',
@@ -191,8 +191,8 @@ const ADVICE_TREE = {
     headline: 'You\'ll dominate early. Position for late-game.',
     tips: [
       {
-        title: 'Skip early combat — it\'s a waste at furnace < 15',
-        body: 'Even whale spending on combat before F15 has poor ROI. Spend on VIP max, furnace speedups, and research. You\'ll lap everyone else when you unlock T4 in week 2.'
+        title: 'Skip early combat — it\'s a waste at Town Center < 15',
+        body: 'Even whale spending on combat before TC15 has poor ROI. Spend on VIP max, Town Center speedups, and research. You\'ll lap everyone else when you unlock T4 in week 2.'
       },
       {
         title: 'Form or join the strongest alliance immediately',

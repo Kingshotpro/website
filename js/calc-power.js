@@ -21,9 +21,11 @@ function calculate() {
   totalPower += troopPower;
   breakdown.push({ label: 'Troop Power', value: troopPower });
 
-  // Building power (rough: furnace level × 50K)
-  var furnace = parseInt(document.getElementById('pow-furnace').value, 10) || 0;
-  var buildPower = furnace * 50000;
+  // Building power (rough: Town Center level × 50K)
+  // Accepts either new 'pow-tc' or legacy 'pow-furnace' input ID for cached HTML
+  var tcInput = document.getElementById('pow-tc') || document.getElementById('pow-furnace');
+  var tcLevel = tcInput ? (parseInt(tcInput.value, 10) || 0) : 0;
+  var buildPower = tcLevel * 50000;
   totalPower += buildPower;
   breakdown.push({ label: 'Building Power (est.)', value: buildPower });
 
@@ -53,7 +55,7 @@ function calculate() {
 
   // Benchmark
   html += '<div class="alert alert-info mt-16" style="font-size:12px;">';
-  if (totalPower < 1000000) html += 'Early game. Focus on furnace upgrades and troop training.';
+  if (totalPower < 1000000) html += 'Early game. Focus on Town Center upgrades and troop training.';
   else if (totalPower < 5000000) html += 'Growing. You\'re competitive on newer servers.';
   else if (totalPower < 20000000) html += 'Mid-game. Competitive for most kingdom events.';
   else if (totalPower < 50000000) html += 'Strong. Rally leader territory.';

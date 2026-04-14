@@ -18,10 +18,11 @@
 
   // ─── PROFILE CLASSIFICATION (mirrors fid.js classifyProfile) ───
   function classifyProfile(raw) {
-    var furnaceLevel = Number(raw.stove_lv) || 0;
-    var kid          = Number(raw.kid)      || 0;
-    var payAmt       = Number(raw.pay_amt)  || 0;
-    var dollars      = payAmt / 100;
+    // API returns 'stove_lv' (internal code name). Game UI calls this the Town Center.
+    var townCenterLevel = Number(raw.stove_lv) || 0;
+    var kid             = Number(raw.kid)      || 0;
+    var payAmt          = Number(raw.pay_amt)  || 0;
+    var dollars         = payAmt / 100;
 
     var spendingTier, spendingLabel;
     if (dollars === 0)        { spendingTier = 'f2p';   spendingLabel = 'Free Commander'; }
@@ -30,9 +31,9 @@
     else                      { spendingTier = 'whale'; spendingLabel = 'Warlord'; }
 
     var gameStage, stageLabel;
-    if (furnaceLevel < 15)       { gameStage = 'early'; stageLabel = 'Early Game'; }
-    else if (furnaceLevel <= 21) { gameStage = 'mid';   stageLabel = 'Mid Game'; }
-    else                         { gameStage = 'late';  stageLabel = 'Late Game'; }
+    if (townCenterLevel < 15)       { gameStage = 'early'; stageLabel = 'Early Game'; }
+    else if (townCenterLevel <= 21) { gameStage = 'mid';   stageLabel = 'Mid Game'; }
+    else                            { gameStage = 'late';  stageLabel = 'Late Game'; }
 
     var serverAge, serverAgeLabel;
     if (kid < 500)       { serverAge = 'mature'; serverAgeLabel = 'Mature (180+ days)'; }
@@ -40,18 +41,27 @@
     else                 { serverAge = 'new';    serverAgeLabel = 'New (<90 days)'; }
 
     return {
-      fid:            raw.fid || raw.uid || '',
-      nickname:       raw.nickname || 'Unknown',
-      furnaceLevel:   furnaceLevel,
-      kid:            kid,
-      dollars:        dollars,
-      spendingTier:   spendingTier,
-      spendingLabel:  spendingLabel,
-      gameStage:      gameStage,
-      stageLabel:     stageLabel,
-      serverAge:      serverAge,
-      serverAgeLabel: serverAgeLabel,
+      fid:             raw.fid || raw.uid || '',
+      nickname:        raw.nickname || 'Unknown',
+      townCenterLevel: townCenterLevel,
+      furnaceLevel:    townCenterLevel, // legacy field for backward compat
+      kid:             kid,
+      dollars:         dollars,
+      spendingTier:    spendingTier,
+      spendingLabel:   spendingLabel,
+      gameStage:       gameStage,
+      stageLabel:      stageLabel,
+      serverAge:       serverAge,
+      serverAgeLabel:  serverAgeLabel,
     };
+  }
+
+  // Backfill townCenterLevel on profiles loaded from localStorage before the rename
+  function normalizeProfile(p) {
+    if (!p) return p;
+    if (p.townCenterLevel == null && p.furnaceLevel != null) p.townCenterLevel = p.furnaceLevel;
+    if (p.furnaceLevel == null && p.townCenterLevel != null) p.furnaceLevel = p.townCenterLevel;
+    return p;
   }
 
   // ─── RENDER PROFILE ───
@@ -64,8 +74,9 @@
     document.title = profile.nickname + ' — Player Profile — KingshotPro';
 
     // Update OG meta tags dynamically (for share previews)
+    normalizeProfile(profile);
     setMeta('og:title', profile.nickname + ' — Kingshot Player Profile');
-    setMeta('og:description', 'Furnace ' + profile.furnaceLevel + ' · Kingdom ' + profile.kid + ' · ' + profile.stageLabel + ' · ' + profile.spendingLabel);
+    setMeta('og:description', 'Town Center ' + profile.townCenterLevel + ' · Kingdom ' + profile.kid + ' · ' + profile.stageLabel + ' · ' + profile.spendingLabel);
     setMeta('og:url', window.location.origin + '/profile.html?fid=' + profile.fid);
 
     // Banner
@@ -84,8 +95,8 @@
     var stats = document.getElementById('profile-stats');
     stats.innerHTML =
       '<div class="profile-stat-card">' +
-        '<div class="profile-stat-value">' + profile.furnaceLevel + '</div>' +
-        '<div class="profile-stat-label">Furnace Level</div>' +
+        '<div class="profile-stat-value">' + profile.townCenterLevel + '</div>' +
+        '<div class="profile-stat-label">Town Center</div>' +
       '</div>' +
       '<div class="profile-stat-card">' +
         '<div class="profile-stat-value">' + profile.kid + '</div>' +
@@ -153,22 +164,23 @@
   function getAnalysis(p) {
     var html = '';
 
+    var tcLevel = p.townCenterLevel != null ? p.townCenterLevel : p.furnaceLevel;
     if (p.gameStage === 'early') {
       html += '<p><strong>Early game player</strong> on a ';
       if (p.serverAge === 'new') {
         html += 'new server. You\'re in the growth phase — building power and establishing your base. ';
-        html += 'Focus on furnace progression, troop training, and joining an active alliance.</p>';
+        html += 'Focus on Town Center progression, troop training, and joining an active alliance.</p>';
       } else {
-        html += p.serverAgeLabel.toLowerCase() + ' server. With a low furnace on an older kingdom, ';
-        html += 'you may face pressure from established players. Prioritize furnace upgrades and find a protective alliance.</p>';
+        html += p.serverAgeLabel.toLowerCase() + ' server. With a low Town Center on an older kingdom, ';
+        html += 'you may face pressure from established players. Prioritize Town Center upgrades and find a protective alliance.</p>';
       }
     } else if (p.gameStage === 'mid') {
-      html += '<p><strong>Mid-game player</strong> (Furnace ' + p.furnaceLevel + ') ';
+      html += '<p><strong>Mid-game player</strong> (TC ' + tcLevel + ') ';
       html += 'on a ' + p.serverAgeLabel.toLowerCase() + ' server. ';
       html += 'You\'re past the initial grind — now it\'s about strategic hero investment, gear optimization, and preparing for KvK. ';
       html += 'This is where smart resource management separates good players from great ones.</p>';
     } else {
-      html += '<p><strong>Late-game player</strong> (Furnace ' + p.furnaceLevel + ') ';
+      html += '<p><strong>Late-game player</strong> (TC ' + tcLevel + ') ';
       html += 'on a ' + p.serverAgeLabel.toLowerCase() + ' server. ';
       html += 'At this stage, optimization matters more than growth. Hero lineups, rally compositions, ';
       html += 'and KvK preparation define your competitive edge.</p>';
@@ -237,7 +249,7 @@
 
     // Game stage advice
     if (p.gameStage === 'early') {
-      html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Prioritize furnace upgrades — every level unlocks new troop tiers and building capacity.</li>';
+      html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Prioritize Town Center upgrades — every level unlocks new troop tiers and building capacity.</li>';
       html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Join every alliance event. The rewards compound faster than solo play.</li>';
       html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Don\'t spread hero shards across many heroes. Pick 3-4 and go deep.</li>';
     } else if (p.gameStage === 'mid') {
@@ -254,7 +266,7 @@
     if (p.serverAge === 'new' && p.gameStage !== 'early') {
       html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Your server is young — you have time to establish dominance before KvK pressure builds.</li>';
     } else if (p.serverAge === 'mature' && p.gameStage === 'early') {
-      html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">On a mature server with a low furnace, consider transferring to a newer kingdom for a more balanced experience.</li>';
+      html += '<li style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">On a mature server with a low Town Center, consider transferring to a newer kingdom for a more balanced experience.</li>';
     }
 
     html += '</ul>';

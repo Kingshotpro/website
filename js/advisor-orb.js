@@ -486,7 +486,8 @@
     var profile = getProfile();
     var advState = window.Advisor && window.Advisor.getState ? window.Advisor.getState() : null;
 
-    if (profile && profile.furnaceLevel > 0 && advState) {
+    var tcLevel = profile ? (profile.townCenterLevel != null ? profile.townCenterLevel : profile.furnaceLevel) : 0;
+    if (profile && tcLevel > 0 && advState) {
       var greeting = window.Advisor.getGreeting ? window.Advisor.getGreeting(profile.nickname) : '';
       addAdvisorMsg(greeting || ('Welcome back, <strong>' + esc(profile.nickname) + '</strong>.'));
 
@@ -544,8 +545,8 @@
 
   function showCapabilities() {
     addAdvisorMsg(
-      '\u{1F451} <strong>Know your account</strong> \u2014 furnace, spending, server age, pulled instantly<br>' +
-      '\u{1F4CA} <strong>36 calculators</strong> \u2014 all pre-filled with your data<br>' +
+      '\u{1F451} <strong>Know your account</strong> \u2014 Town Center, spending, server age, pulled instantly<br>' +
+      '\u{1F4CA} <strong>31 calculators</strong> \u2014 all pre-filled with your data<br>' +
       '\u{1F9E0} <strong>Personalized advice</strong> \u2014 strategy built for your exact situation<br>' +
       '\u{1F3AE} <strong>Your advisor grows</strong> \u2014 level up, earn XP, I get smarter'
     );
@@ -585,7 +586,7 @@
     addAdvisorMsg(
       '<strong>' + esc(profile.nickname) + '</strong> \u2014 ' + esc(profile.spendingLabel) + ' Governor<br>' +
       'Kingdom ' + (profile.kid || '?') + ' \u2014 ' + esc(profile.serverAgeLabel || '') + '<br>' +
-      'Furnace Level ' + (profile.furnaceLevel || '?') + ' \u2014 ' + esc(profile.stageLabel || '') +
+      'Town Center Level ' + (profile.townCenterLevel || profile.furnaceLevel || '?') + ' \u2014 ' + esc(profile.stageLabel || '') +
       (profile.dollars > 0 ? '<br>Lifetime investment: $' + profile.dollars.toFixed(0) : '')
     );
   }

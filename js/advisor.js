@@ -244,9 +244,10 @@
         }
         if (!profile) return mult;
 
-        // Furnace bonus
-        if (profile.furnaceLevel >= 22) mult = 1.25;
-        else if (profile.furnaceLevel >= 15) mult = 1.1;
+        // Town Center bonus (legacy profiles may still have furnaceLevel)
+        var tcLevel = profile.townCenterLevel != null ? profile.townCenterLevel : profile.furnaceLevel;
+        if (tcLevel >= 22) mult = 1.25;
+        else if (tcLevel >= 15) mult = 1.1;
 
         // Whale bonus (stacks)
         if (profile.spendingTier === 'whale') mult *= 1.15;

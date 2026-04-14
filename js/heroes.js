@@ -595,7 +595,7 @@ function initAdvisorRecommendation() {
 
   var recs = [];
   if (profile.gameStage === 'early') {
-    recs.push('Your furnace is below 15 — focus on <strong>Jabel</strong> (garrison) and <strong>Marlin</strong> (offense). Save universal shards.');
+    recs.push('Your Town Center is below 15 — focus on <strong>Jabel</strong> (garrison) and <strong>Marlin</strong> (offense). Save universal shards.');
     recs.push('Get <strong>Chenko</strong> starred up for rally joining — his first skill is the best F2P joiner skill in the game.');
     recs.push('Don\'t spread resources thin. Pick 3-4 heroes and invest deeply.');
   } else if (profile.gameStage === 'mid') {

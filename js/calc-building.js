@@ -23,7 +23,7 @@
 const BUILDING_DATA = {
 
   castle: {
-    name: 'Castle (Furnace)',
+    name: 'Town Center',
     maxLevel: 30,
     source: 'kingshot.net/database/buildings/town-center',
     costs: [
