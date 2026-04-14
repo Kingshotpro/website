@@ -1,3 +1,28 @@
+/**
+ * advisor-cta.js — CTA escalation system
+ * KingshotPro
+ *
+ * Visit-based CTA progression: 1-3 none, 4-7 context, 8-14 proactive tag-based,
+ * 15+ subtle with cooldown after 3 dismissals (7-day cooldown).
+ *
+ * Verification status April 14, 2026:
+ *   - Escalation logic verified (no hard caps, user-dismissable, cooldown works).
+ *   - Generic upsell CTAs (lines 55-59, 73-76): no game-mechanic claims, generic
+ *     marketing copy about Pro features.
+ *   - Elite "full memory" CTA (line 32): matches delivered feature (permanent
+ *     memory on Elite per Worker Phase 5), accurate.
+ *   - Pro→War Council CTA (line 28) "KvK is coming. War Council subscribers
+ *     already have enemy intelligence": FLAGGED — this makes a concrete feature
+ *     promise about War Council tier. Needs Architect confirmation that the
+ *     enemy intelligence feature is actually delivered to paying War Council
+ *     users right now. Scraper fleet is in active development.
+ *   - "KvK is coming" is hardcoded regardless of user's actual server timing.
+ *     Could feel off if shown during a non-KvK period.
+ *   - Energy depleted event handler: listens for 'ksp:energy_depleted'. The
+ *     energy system should be a SOFT upsell prompt only, never a hard cap on
+ *     free users per Architect rule. Verify upstream that energy never blocks
+ *     free-tier actions, only shows upsell CTA.
+ */
 (function() {
   const visitCountKey = 'ksp_visit_count';
   const lastCtaKey = 'ksp_last_cta';
