@@ -79,7 +79,7 @@ const ADVICE_TREE = {
     tips: [
       {
         title: 'Spend on VIP first',
-        body: 'The highest ROI early purchase is VIP levels. VIP 6–8 unlocks builder queue slots, resource boosts, and daily rewards that compound for the lifetime of your account.'
+        body: 'The highest ROI early purchase is VIP levels. VIP 6 unlocks an extra march queue (essential for gathering, rallies, and Bear Hunt). VIP 8 adds daily mythic hero shards. Both compound for the lifetime of your account.'
       },
       {
         title: 'Event packs over random packs',
@@ -87,7 +87,7 @@ const ADVICE_TREE = {
       },
       {
         title: 'Avoid combat spending until Town Center 15',
-        body: 'Early combat gear and troop packs are inefficient. Your $20 goes 3× further after Town Center 15 when T4 troops and tier-2 research is available.'
+        body: 'Early combat gear and troop packs are inefficient. Your $20 goes much further after Town Center 15 when higher-tier troops and mid-tier research become available.'
       },
     ]
   },
@@ -175,8 +175,8 @@ const ADVICE_TREE = {
         body: 'A mid-spender on a stale server may get more value by transferring to a newer or more competitive server where $100 of spend has server-level impact.'
       },
       {
-        title: 'Buy T5 research speedups — not T5 troops directly',
-        body: 'T5 research gives permanent bonuses even after the content ages. T5 troop packs are expensive and the troops can be killed. Unlock the research, then train troops slowly.'
+        title: 'Buy research speedups — not troop packs directly',
+        body: 'Research gives permanent bonuses even after the content ages. Troop packs are expensive and the troops can be killed. Unlock the next-tier research (T8 through T11 Truegold), then train troops slowly.'
       },
       {
         title: 'Watch your server intel before kingdom events',
@@ -209,8 +209,8 @@ const ADVICE_TREE = {
     headline: 'Server dominance is achievable. Lock it in now.',
     tips: [
       {
-        title: 'T5 research is your moat',
-        body: 'Getting T5 research before your server competitors is the single highest-impact whale spend. The research bonuses affect every combat engagement for the rest of the game.'
+        title: 'Top-tier research is your moat',
+        body: 'Getting higher-tier troop research (T10-T11 Truegold) before your server competitors is the single highest-impact whale spend. The research bonuses affect every combat engagement for the rest of the game. Note: T11 requires Town Center 30 and War Academy TG5.'
       },
       {
         title: 'Gear max, then gems on hero shards',

@@ -198,4 +198,60 @@ When sources disagree, the verdict goes: **In-game screenshot > Architect statem
 
 ---
 
-*Compiled April 14, 2026 — part of the ongoing accuracy initiative following the Town Center rename discovery.*
+## PHASE 3 FINDINGS — Troop Tiers + VIP (April 14, continued)
+
+### Troop Tier Max Level — MAJOR INCONSISTENCY FOUND
+
+Our codebase had THREE conflicting answers:
+- `KINGSHOT_KNOWLEDGE_BASE.md`: "T1-T4 unlocked via Town Center level" — **WRONG**
+- `js/calc-troops.js` + `calc-war-academy.js`: T1-T11 — **CLOSE** but missing T12
+- `js/advisory.js`: treats T4/T5 as late-game targets — **OUTDATED**
+
+**Verified from 8 external sources (kingshotguide.org, kingshotmastery.com, heaven-guardian.com, kingshothandbook.com, kingshot.fandom.com, kingshotcalculator.com, kingshot.net, kingshotguides.com):**
+
+Kingshot troops go **T1 through T12**:
+- T1-T10: standard progression via Town Center level + War Academy research
+- **T11 = Truegold troops** — requires TC 30, War Academy Truegold Level 5 (TG5), server ≥220 days. Cost ~13,421 Truegold Dust per troop type, ~271 days base research time.
+- **T12 = Tempered Truegold troops** — current endgame cap.
+- T11/T12 troops cost ~2.5× more to heal than T10.
+
+**Fixes applied:**
+- `KINGSHOT_KNOWLEDGE_BASE.md`: Troop Tiers section rewritten with full T1-T12 ladder and Truegold unlock gates
+- `js/advisory.js` mid_late tips: replaced hardcoded "T5 research" with "next-tier research (T8-T11 Truegold)"
+- `js/advisory.js` whale_mid tips: "T5 research is your moat" → "Top-tier research is your moat (T10-T11 Truegold)" with TC 30 + War Academy TG5 prerequisite noted
+- `js/advisory.js` low_early tips: removed specific "T4 troops and tier-2 research" claim in favor of generic "higher-tier troops and mid-tier research"
+
+**Not changed:** Early-game whale_early tip mentioning "unlock T4 in week 2" — T4 is a valid early-game milestone for whales, not a claim about endgame. Left alone.
+
+### VIP System — Critical Correction
+
+Our advisory.js claimed: "VIP 6–8 unlocks builder queue slots, resource boosts, and daily rewards"
+
+**This was wrong.** Verified via Perplexity + kingshotmastery.com + kingshot.fandom.com + kingshothandbook.com:
+
+- **VIP 5**: +1 Formation
+- **VIP 6**: **+1 March Queue** (NOT builder queue — these are different systems). Most impactful VIP perk for gathering, rallies, Bear Hunt.
+- **VIP 7**: stat bumps only, no new unlock
+- **VIP 8**: Daily mythic hero shards begin appearing
+- **Max VIP**: 12
+- **VIP 9-10**: realistic ceiling for F2P/low spenders
+- VIP perks require BOTH the VIP level AND activated VIP Time (gem-purchased) to apply
+
+**Key distinction:** A "builder queue" (second building upgrade slot) is typically a one-time gem purchase, not VIP-gated. A "march queue" is the ability to send an additional army out simultaneously. Conflating the two is a common mistake — we made it.
+
+**Fixes applied:**
+- `js/advisory.js` low_early "Spend on VIP first" tip: replaced builder queue claim with correct march queue description
+- `docs/specs/KINGSHOT_KNOWLEDGE_BASE.md`: added detailed VIP section with all verified milestones and XP requirements
+
+### Molten Fort — Additional research
+
+Earlier research left Molten Fort as "partially resolved." Additional TikTok search result confirmed:
+> "Molten Fort is a Mystic Trials event in Kingshot where players strategize the best troop percentages to send."
+
+So Molten Fort is a real Kingshot event, specifically a Mystic Trial variant. That explains why it "follows Mystic Trial rotation schedule" per kingshotmastery.com. DeepSeek's "Molten Castle" claim had zero search results — pure hallucination. WOS has "Fortress Battles" (unrelated 8-week seasonal event).
+
+**Status:** Still removed from calendar.js per Architect authority. Can be restored as part of the Mystic Trial rotation if confirmed in-game.
+
+---
+
+*Phase 3 compiled April 14, 2026 — troop/VIP terminology fixes.*
