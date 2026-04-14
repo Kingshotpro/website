@@ -102,12 +102,11 @@ All 10 categories verified from actual screenshots:
 
 ## UNRESOLVED / FLAGGED (requires Architect decision)
 
-### 1. Mystic Trial duration per day
-**Our calendar:** `duration: 1440` (24 hours)
-**Mistral claim:** 2-hour windows at fixed times (12:00-14:00, 18:00-20:00, 00:00-02:00 UTC)
-**kingshotmastery.com:** "Daily with rotating dungeons" — no duration specified
-**Status:** Unclear. Only one AI source claims 2-hour windows; can't cross-verify.
-**Recommendation:** Architect confirms in-game. If 24h is wrong, fix to actual duration.
+### 1. Mystic Trial duration per day — RESOLVED
+**Our calendar:** `duration: 1440` (24 hours) — **CORRECT**
+**Perplexity (live search) confirmed:** "each daily session lasting 24 hours, refreshing at UTC 00:00. 5 free attempts per active dungeon per day, reset daily."
+**Scraper confirmed:** Mystic Trial rankings screen shows "Total Stages" column — consistent with a dungeon progression model.
+**Mistral was wrong** about 2-hour windows. Our value stands.
 
 ### 2. Hall of Governors duration
 **Our calendar:** `duration: 4320` (3 days), biweekly Monday
@@ -129,14 +128,22 @@ All 10 categories verified from actual screenshots:
 **Status:** One AI source disagrees. Day may vary by server.
 **Recommendation:** Architect confirms.
 
-### 5. Molten Fort / Molten Castle
+### 5. Molten Fort — PARTIALLY RESOLVED
 **Removed from calendar.js** per Architect ("I have no idea what molten fort is").
-**Findings since:**
-- kingshotmastery.com lists "Molten Fort" as a real event with specifics ("follows Mystic Trial rotation schedule, full day duration")
-- DeepSeek claims the correct name is "Molten Castle" — a "Cross-Server PvP Alliance Event" — and "Molten Fort" may be a mistranslation or community shorthand
-- **Possibility:** The event IS real, the Architect just hasn't encountered it (possibly restricted by server age, TC level, or kingdom stage)
-- **Alternative possibility:** The event doesn't exist and kingshotmastery.com borrowed from our site (Herd Lens failure)
-**Status:** Flagged. Not restoring the entry. Architect may want to verify by searching the in-game event menu.
+
+**Follow-up research (3 sources):**
+- **TikTok search result:** "Molten Fort is a Mystic Trials event in Kingshot where players strategize the best troop percentages to send. Players have reported testing new formations for Molten Fort."
+- **kingshotmastery.com:** "Molten Fort - Follows Mystic Trial rotation schedule, full day duration"
+- **DeepSeek AI claimed the real name is "Molten Castle":** ZERO search results for "Molten Castle Kingshot". DeepSeek was HALLUCINATING.
+
+**Conclusion:** Molten Fort is a real Kingshot event — specifically a Mystic Trial variant/sub-event. That's why it "follows Mystic Trial rotation schedule." The Architect likely hasn't seen it because:
+- Architect's primary account may not have reached the TC level that unlocks it, OR
+- His server rotation hasn't cycled to it yet, OR
+- It's part of the Mystic Trial event pool but only appears on certain days
+
+**Whiteout Survival check:** No evidence of "Molten Fort" in WOS. WOS has "Fortress Battles" (different — seasonal 8-week PvP, Fridays). So this is NOT a WOS import.
+
+**Status:** Keeping entry removed from calendar.js. Architect can verify in-game whether Molten Fort appears on the Mystic Trial rotation selector. If confirmed, we can add it back as a sub-entry under Mystic Trial rather than a standalone daily event.
 
 ### 6. Alliance Mobilization post-KvK replacement
 **kingshotguides.com:** "Alliance Mobilization... replaced by Alliance Brawl on eligible servers"
