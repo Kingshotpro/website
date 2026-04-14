@@ -1,0 +1,55 @@
+{
+  "generated": "2026-04-14T06:57:58.442857",
+  "generator": "kingdoms/build_directory.py",
+  "kingdom_count": 4,
+  "kingdoms": [
+    {
+      "id": 223,
+      "topAlliance": "ThePsych Ward",
+      "topTag": "PSY",
+      "topPower": 21916701378,
+      "totalPower": 83045318994,
+      "alliances": 92,
+      "categories": 10,
+      "updated": "2026-04-13",
+      "source": "scraper/data/kingdoms/k223/2026-04-13_184352/alliance_power_extracted.csv",
+      "rank": 1
+    },
+    {
+      "id": 300,
+      "topAlliance": "ADVANGE",
+      "topTag": "AVB",
+      "topPower": 12779417655,
+      "totalPower": 52699142446,
+      "alliances": 95,
+      "categories": 10,
+      "updated": "2026-04-13",
+      "source": "scraper/data/kingdoms/k300/2026-04-13_172822/alliance_power_extracted.csv",
+      "rank": 2
+    },
+    {
+      "id": 221,
+      "topAlliance": "?",
+      "topTag": "",
+      "topPower": null,
+      "totalPower": null,
+      "alliances": null,
+      "categories": 0,
+      "updated": "2026-04-14",
+      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k221/2026-04-14_062431",
+      "rank": 3
+    },
+    {
+      "id": 222,
+      "topAlliance": "?",
+      "topTag": "",
+      "topPower": null,
+      "totalPower": null,
+      "alliances": null,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k222/2026-04-14_054311",
+      "rank": 4
+    }
+  ]
+}
