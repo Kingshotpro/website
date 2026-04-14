@@ -27,9 +27,10 @@ var HEROES = [
     bear:     'S',
     joiner:   'A',
     f2p:      false,
-    bestUse:  'Rally lead & bear hunt',
-    desc:     'One of the strongest offensive heroes in the game. His first skill provides dependable rally value. Remains S-tier for rallies across all generations. Often requires premium investment to fully star up.',
-    tags:     ['rally-lead', 'bear', 'offensive', 'long-term'],
+    vip:      true,
+    bestUse:  'Rally lead & bear hunt (VIP hero)',
+    desc:     'One of the strongest offensive heroes in the game. His first skill provides dependable rally value. Remains S-tier for rallies across all generations. Amadeus is a VIP hero — access is gated behind VIP progression, which in practice requires spending to reach quickly.',
+    tags:     ['rally-lead', 'bear', 'offensive', 'long-term', 'vip'],
   },
   {
     name:     'Jabel',

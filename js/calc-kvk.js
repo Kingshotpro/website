@@ -1,5 +1,5 @@
 /**
- * calc-kvk.js — KvK Kingdom of Power Score Calculator
+ * calc-kvk.js — KvK (Kingdom vs Kingdom) Score Calculator
  * KingshotPro
  *
  * Data: kingshotguide.org/guide/kingshot-kvk-event — April 2026

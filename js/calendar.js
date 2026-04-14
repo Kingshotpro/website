@@ -21,14 +21,13 @@
     { name: 'Bear Hunt', freq: 'bi-daily', duration: 30, desc: 'Rally-based, free resources. 30 min.' },
     { name: 'Arena', freq: 'daily', duration: 0, desc: '5 daily attempts. Fight for ranking.' },
     { name: 'Mystic Trial', freq: 'daily', duration: 1440, desc: 'Rotating daily challenge.' },
-    { name: 'Eternity Reach', freq: 'daily', duration: 30, desc: 'Multiple 30-min slots per day.' },
-    { name: 'Molten Fort', freq: 'weekly', day: 3, duration: 1440, desc: 'Weekly full-day event.' },
+    { name: "Eternity's Reach", freq: 'daily', duration: 30, desc: 'Multiple 30-min slots per day. Verify schedule in-game.' },
     { name: 'Tri-Alliance Clash', freq: 'weekly', day: 6, duration: 60, desc: 'Saturday 60-min battle.' },
     { name: 'Swordland Showdown', freq: 'biweekly', day: 0, duration: 60, desc: 'Biweekly Sunday battle.' },
     { name: 'Alliance Championship', freq: 'weekly', day: 5, duration: 0, desc: 'Weekly alliance competition.' },
     { name: 'Strongest Governor', freq: 'weekly', day: 1, duration: 4320, desc: 'Multi-day weekly event starting Monday.' },
     { name: 'Hall of Governors', freq: 'biweekly', day: 1, duration: 4320, desc: 'Major growth event. Save speedups for this.' },
-    { name: 'KvK (Kingdom of Power)', freq: 'monthly', day: 22, duration: 10080, desc: 'Monthly kingdom vs kingdom. Week 4.' },
+    { name: 'KvK (Kingdom vs Kingdom)', freq: 'monthly', day: 22, duration: 10080, desc: 'Monthly kingdom vs kingdom. Week 4.' },
     { name: 'Alliance Mobilization', freq: 'weekly', day: 4, duration: 1440, desc: 'After Strongest Governor. Coordinate with alliance.' },
   ];
 

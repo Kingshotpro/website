@@ -26,7 +26,7 @@ Buildings & Research:
 Events (priority order):
 - Hall of Governors: THE growth event. Save speedups and resources for this. Massive rewards.
 - Growth Missions: 5-day event with daily tasks, huge rewards for normal play.
-- KvK (Kingdom of Power): kingdom vs kingdom competition. Preparation matters more than power.
+- KvK (Kingdom vs Kingdom): kingdom vs kingdom competition. Preparation matters more than power.
 - Viking Vengeance: good for governor gear and alliance credits.
 - Bear Hunt: rally-based, gives resources without cost. Always participate.
 - Alliance Mobilization: coordinate with alliance for maximum rewards.
