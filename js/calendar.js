@@ -25,7 +25,7 @@
     { name: 'Tri-Alliance Clash', freq: 'weekly', day: 6, duration: 60, desc: 'Saturday 60-min battle.' },
     { name: 'Swordland Showdown', freq: 'biweekly', day: 0, duration: 60, desc: 'Biweekly Sunday battle.' },
     { name: 'Alliance Championship', freq: 'weekly', day: 5, duration: 0, desc: 'Weekly alliance competition.' },
-    { name: 'Strongest Governor', freq: 'weekly', day: 1, duration: 4320, desc: 'Multi-day weekly event starting Monday.' },
+    { name: 'Strongest Governor', freq: 'weekly', day: 1, duration: 10080, desc: '7-day weekly event starting Monday. Rotates through City Building, Research, Training, Elimination, Gathering phases.' },
     { name: 'Hall of Governors', freq: 'biweekly', day: 1, duration: 4320, desc: 'Major growth event. Save speedups for this.' },
     { name: 'KvK (Kingdom vs Kingdom)', freq: 'monthly', day: 22, duration: 10080, desc: 'Monthly kingdom vs kingdom. Week 4.' },
     { name: 'Alliance Mobilization', freq: 'weekly', day: 4, duration: 1440, desc: 'After Strongest Governor. Coordinate with alliance.' },
