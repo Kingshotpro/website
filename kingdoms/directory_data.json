@@ -1,7 +1,7 @@
 {
-  "generated": "2026-04-14T20:17:21.276573",
+  "generated": "2026-04-14T23:23:42.464829",
   "generator": "kingdoms/build_directory.py",
-  "kingdom_count": 12,
+  "kingdom_count": 14,
   "kingdoms": [
     {
       "id": 1,
@@ -64,6 +64,18 @@
       "rank": 5
     },
     {
+      "id": 227,
+      "topAlliance": "TruFilthyCasuals",
+      "topTag": "TFC",
+      "topPower": 19433348189,
+      "totalPower": 98877588347,
+      "alliances": 93,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k227/2026-04-14_212422/alliance_power_extracted.csv",
+      "rank": 6
+    },
+    {
       "id": 233,
       "topAlliance": "JankenPon",
       "topTag": "JPI",
@@ -73,7 +85,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k233/2026-04-14_133222/alliance_power_extracted.csv",
-      "rank": 6
+      "rank": 7
     },
     {
       "id": 229,
@@ -85,7 +97,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k229/2026-04-14_190148/alliance_power_extracted.csv",
-      "rank": 7
+      "rank": 8
     },
     {
       "id": 221,
@@ -97,7 +109,19 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k221/2026-04-14_062431/alliance_power_extracted.csv",
-      "rank": 8
+      "rank": 9
+    },
+    {
+      "id": 228,
+      "topAlliance": "Badhabit",
+      "topTag": "LIE",
+      "topPower": 21419626336,
+      "totalPower": 83231616975,
+      "alliances": 97,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k228/2026-04-14_204423/alliance_power_extracted.csv",
+      "rank": 10
     },
     {
       "id": 223,
@@ -109,7 +133,7 @@
       "categories": 10,
       "updated": "2026-04-13",
       "source": "scraper/data/kingdoms/k223/2026-04-13_184352/alliance_power_extracted.csv",
-      "rank": 9
+      "rank": 11
     },
     {
       "id": 300,
@@ -121,7 +145,7 @@
       "categories": 10,
       "updated": "2026-04-13",
       "source": "scraper/data/kingdoms/k300/2026-04-13_172822/alliance_power_extracted.csv",
-      "rank": 10
+      "rank": 12
     },
     {
       "id": 1908,
@@ -133,19 +157,19 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k1908/2026-04-14_104011/alliance_power_extracted.csv",
-      "rank": 11
+      "rank": 13
     },
     {
-      "id": 228,
-      "topAlliance": "?",
-      "topTag": "",
-      "topPower": null,
-      "totalPower": null,
-      "alliances": null,
-      "categories": 0,
+      "id": 1916,
+      "topAlliance": "TheBADGuys",
+      "topTag": "BAD",
+      "topPower": 434052561,
+      "totalPower": 8029294648,
+      "alliances": 93,
+      "categories": 10,
       "updated": "2026-04-14",
-      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k228/2026-04-14_194426",
-      "rank": 12
+      "source": "scraper/data/kingdoms/k1916/2026-04-14_220953/alliance_power_extracted.csv",
+      "rank": 14
     }
   ]
 }
