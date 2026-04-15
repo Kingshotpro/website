@@ -22,10 +22,14 @@
   // href = null → "Coming Soon"
   var NAV = [
     { icon: '\u{1F3E0}', label: 'Home',             href: B || './',                             key: 'home' },
-    { icon: '\u{1F3F0}', label: 'Kingdom Rankings', href: B + 'kingdoms/',                       key: 'kingdoms',    badges: ['Hot'] },
     { icon: '\u{1F451}', label: 'Pro Plans',          href: B + 'pricing.html',                   key: 'pricing',    badges: ['New'] },
-    { icon: '\u2764\uFE0F', label: 'Support Advisor',   href: B + 'support.html',                   key: 'support' },
+    // Support Advisor — hidden because its features (custom greetings, battle portraits,
+    // personalized songs) are now bundled into the Pro/War Council/Elite tiers via subscription.
+    // File still exists at /support.html. Uncomment the line below to re-enable in nav.
+    // { icon: '\u2764\uFE0F', label: 'Support Advisor',   href: B + 'support.html',                   key: 'support' },
     { icon: '\u{1F4DD}', label: 'Player Survey',       href: B + 'survey.html',                    key: 'survey',     badges: ['New'] },
+    { cat: 'WAR COUNSEL' },
+    { icon: '\u{1F3F0}', label: 'Kingdom Rankings', href: B + 'kingdoms/',                       key: 'kingdoms',    badges: ['Hot'] },
     { cat: 'COMMUNITY' },
     { icon: '\u{1F381}', label: 'Gift Codes',       href: B + 'codes.html',                     key: 'codes',      badges: ['Popular'] },
     { icon: '\u{1F514}', label: 'Code Alerts',       href: B + 'auto-redeem.html',               key: 'auto-redeem', badges: ['Pro'] },
