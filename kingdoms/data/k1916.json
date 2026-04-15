@@ -4180,6 +4180,608 @@
         "name": "ogamot",
         "value": 434425
       }
+    ],
+    "mystic_trial": [
+      {
+        "rank": 1,
+        "tag": "B4D",
+        "name": "Cora",
+        "value": 6559998
+      },
+      {
+        "rank": 2,
+        "tag": "Nsu",
+        "name": "lgt # B",
+        "value": 6361477
+      },
+      {
+        "rank": 3,
+        "tag": "RVL",
+        "name": "SearchNDestroY",
+        "value": 6222503
+      },
+      {
+        "rank": 4,
+        "tag": "NSU",
+        "name": "Eden",
+        "value": 5933759
+      },
+      {
+        "rank": 5,
+        "tag": "SQM",
+        "name": "defarious",
+        "value": 5352450
+      },
+      {
+        "rank": 6,
+        "tag": "WRM",
+        "name": "jiyeon",
+        "value": 5276214
+      },
+      {
+        "rank": 7,
+        "tag": "BDS",
+        "name": "Supreme",
+        "value": 4958342
+      },
+      {
+        "rank": 8,
+        "tag": "BAD",
+        "name": "TripleX83",
+        "value": 4920090
+      },
+      {
+        "rank": 9,
+        "tag": "BAD",
+        "name": "UplnSmOkE",
+        "value": 4844306
+      },
+      {
+        "rank": 10,
+        "tag": "BAD",
+        "name": "Howahade",
+        "value": 4656127
+      },
+      {
+        "rank": 11,
+        "tag": "BAD",
+        "name": "Shadow",
+        "value": 4558268
+      },
+      {
+        "rank": 12,
+        "tag": "NSU",
+        "name": "Echo",
+        "value": 4546669
+      },
+      {
+        "rank": 13,
+        "tag": "B4O",
+        "name": "333",
+        "value": 4544420
+      },
+      {
+        "rank": 14,
+        "tag": "SIS",
+        "name": "Jechua",
+        "value": 4538498
+      },
+      {
+        "rank": 15,
+        "tag": "REX",
+        "name": "miinnan",
+        "value": 4522344
+      },
+      {
+        "rank": 16,
+        "tag": "NSU",
+        "name": "Opeth",
+        "value": 4510155
+      },
+      {
+        "rank": 17,
+        "tag": "NSU",
+        "name": "Great Hambino",
+        "value": 4404780
+      },
+      {
+        "rank": 18,
+        "tag": "",
+        "name": "Ice '",
+        "value": 4381520
+      },
+      {
+        "rank": 19,
+        "tag": "BAD",
+        "name": "Blackfyre",
+        "value": 4360810
+      },
+      {
+        "rank": 20,
+        "tag": "FAM",
+        "name": "KoHaze",
+        "value": 4334934
+      },
+      {
+        "rank": 21,
+        "tag": "BAD",
+        "name": "lllcw123",
+        "value": 4333654
+      },
+      {
+        "rank": 22,
+        "tag": "",
+        "name": "OurmotrEr",
+        "value": 4332010
+      },
+      {
+        "rank": 23,
+        "tag": "OTT",
+        "name": "Mahombo",
+        "value": 4331450
+      },
+      {
+        "rank": 24,
+        "tag": "BAD",
+        "name": "Ayesha",
+        "value": 4322003
+      },
+      {
+        "rank": 25,
+        "tag": "NSU",
+        "name": "Maxii",
+        "value": 4282305
+      },
+      {
+        "rank": 26,
+        "tag": "NSU",
+        "name": "Lord Shizispanz",
+        "value": 4170925
+      },
+      {
+        "rank": 27,
+        "tag": "",
+        "name": "Batte",
+        "value": 4169530
+      },
+      {
+        "rank": 28,
+        "tag": "SIS",
+        "name": "JFunky",
+        "value": 4149529
+      },
+      {
+        "rank": 29,
+        "tag": "ITR",
+        "name": "KRAL 71",
+        "value": 4101422
+      },
+      {
+        "rank": 30,
+        "tag": "BAD",
+        "name": "Bosque",
+        "value": 4028694
+      },
+      {
+        "rank": 31,
+        "tag": "NSU",
+        "name": "orb",
+        "value": 4025299
+      },
+      {
+        "rank": 32,
+        "tag": "BAD",
+        "name": "SymbioGaian",
+        "value": 3997310
+      },
+      {
+        "rank": 33,
+        "tag": "TAM",
+        "name": "Kingmaji",
+        "value": 3937870
+      },
+      {
+        "rank": 34,
+        "tag": "BAD",
+        "name": "BeringSeaCowboY",
+        "value": 3922835
+      },
+      {
+        "rank": 35,
+        "tag": "WAR",
+        "name": "Jonesberg",
+        "value": 3910304
+      },
+      {
+        "rank": 36,
+        "tag": "BAD",
+        "name": "Sylla",
+        "value": 3908439
+      },
+      {
+        "rank": 37,
+        "tag": "KRP",
+        "name": "JohnB",
+        "value": 3903105
+      },
+      {
+        "rank": 38,
+        "tag": "TAM",
+        "name": "Xavier Azrail",
+        "value": 3815623
+      },
+      {
+        "rank": 39,
+        "tag": "ATL",
+        "name": "BuckShot",
+        "value": 3809505
+      },
+      {
+        "rank": 40,
+        "tag": "BDs",
+        "name": "Zacari",
+        "value": 3781670
+      },
+      {
+        "rank": 41,
+        "tag": "WRM",
+        "name": "UmOs",
+        "value": 3735710
+      },
+      {
+        "rank": 42,
+        "tag": "DRG",
+        "name": "Gorillaosf",
+        "value": 3721615
+      },
+      {
+        "rank": 43,
+        "tag": "SIS",
+        "name": "EKO7",
+        "value": 3660405
+      },
+      {
+        "rank": 44,
+        "tag": "BAD",
+        "name": "HiBokChoy 378",
+        "value": 3653730
+      },
+      {
+        "rank": 45,
+        "tag": "MSF",
+        "name": "SmokyMo",
+        "value": 3646412
+      },
+      {
+        "rank": 46,
+        "tag": "ITR",
+        "name": "HolielAA",
+        "value": 3644520
+      },
+      {
+        "rank": 47,
+        "tag": "REX",
+        "name": "Henry",
+        "value": 3640282
+      },
+      {
+        "rank": 48,
+        "tag": "OTT",
+        "name": "Axiom",
+        "value": 3608395
+      },
+      {
+        "rank": 49,
+        "tag": "BAD",
+        "name": "BAHUBALI",
+        "value": 3599952
+      },
+      {
+        "rank": 50,
+        "tag": "RVL",
+        "name": "Amat",
+        "value": 3598325
+      },
+      {
+        "rank": 51,
+        "tag": "BDS",
+        "name": "BRYANT",
+        "value": 3590042
+      },
+      {
+        "rank": 52,
+        "tag": "BAD",
+        "name": "YossiTheKing",
+        "value": 3573589
+      },
+      {
+        "rank": 53,
+        "tag": "MBG",
+        "name": "DarkPluto",
+        "value": 3569971
+      },
+      {
+        "rank": 54,
+        "tag": "RVL",
+        "name": "Lord Maxwell",
+        "value": 3569596
+      },
+      {
+        "rank": 55,
+        "tag": "B4D",
+        "name": "Abc",
+        "value": 3538435
+      },
+      {
+        "rank": 56,
+        "tag": "BAD",
+        "name": "RLENG TiDGAME",
+        "value": 3532820
+      },
+      {
+        "rank": 57,
+        "tag": "jEV",
+        "name": "StyngLikeABee",
+        "value": 3508198
+      },
+      {
+        "rank": 58,
+        "tag": "KRP",
+        "name": "Jack Heinrich",
+        "value": 3498331
+      },
+      {
+        "rank": 59,
+        "tag": "OTT",
+        "name": "Zhepa",
+        "value": 3461943
+      },
+      {
+        "rank": 60,
+        "tag": "SIS",
+        "name": "+EM#RBJEQIE#",
+        "value": 3444255
+      },
+      {
+        "rank": 61,
+        "tag": "RVL",
+        "name": "The Shadow",
+        "value": 3439820
+      },
+      {
+        "rank": 62,
+        "tag": "SIS",
+        "name": "Cycu",
+        "value": 3436486
+      },
+      {
+        "rank": 63,
+        "tag": "SIS",
+        "name": "EZEi",
+        "value": 3419370
+      },
+      {
+        "rank": 64,
+        "tag": "SQM",
+        "name": "Minpangon",
+        "value": 3417174
+      },
+      {
+        "rank": 65,
+        "tag": "BAD",
+        "name": "xWotans YWolfy",
+        "value": 3388445
+      },
+      {
+        "rank": 66,
+        "tag": "NSU",
+        "name": "OhSoSoftTofu",
+        "value": 3377711
+      },
+      {
+        "rank": 67,
+        "tag": "WAR",
+        "name": "Jntan",
+        "value": 3373835
+      },
+      {
+        "rank": 68,
+        "tag": "SQM",
+        "name": "Sir AJ",
+        "value": 3372112
+      },
+      {
+        "rank": 69,
+        "tag": "RVL",
+        "name": "KAKASHI",
+        "value": 3359728
+      },
+      {
+        "rank": 70,
+        "tag": "BAD",
+        "name": "Caspernix",
+        "value": 3357982
+      },
+      {
+        "rank": 71,
+        "tag": "WAR",
+        "name": "StonebrOOk",
+        "value": 3349675
+      },
+      {
+        "rank": 72,
+        "tag": "TAM",
+        "name": "MightyBush",
+        "value": 3348849
+      },
+      {
+        "rank": 73,
+        "tag": "BDS",
+        "name": "McBrooski",
+        "value": 3345450
+      },
+      {
+        "rank": 74,
+        "tag": "BaD",
+        "name": "eklol",
+        "value": 3319878
+      },
+      {
+        "rank": 75,
+        "tag": "SIs",
+        "name": "+i?E",
+        "value": 3317583
+      },
+      {
+        "rank": 76,
+        "tag": "NSU",
+        "name": "PFSZO}",
+        "value": 3296128
+      },
+      {
+        "rank": 77,
+        "tag": "SIS",
+        "name": "AdanaliAsi",
+        "value": 3248558
+      },
+      {
+        "rank": 78,
+        "tag": "RVL",
+        "name": "Remy Rumm",
+        "value": 3245790
+      },
+      {
+        "rank": 79,
+        "tag": "B4D",
+        "name": "Sen O) Yuan",
+        "value": 3230049
+      },
+      {
+        "rank": 80,
+        "tag": "BDSJ",
+        "name": "EDI",
+        "value": 3228403
+      },
+      {
+        "rank": 81,
+        "tag": "BDS",
+        "name": "Murk",
+        "value": 3224033
+      },
+      {
+        "rank": 82,
+        "tag": "NSU",
+        "name": "ArtVandelay",
+        "value": 3217441
+      },
+      {
+        "rank": 83,
+        "tag": "NSU",
+        "name": "Lucid",
+        "value": 3214508
+      },
+      {
+        "rank": 84,
+        "tag": "NSU",
+        "name": "Raindiculous",
+        "value": 3212572
+      },
+      {
+        "rank": 85,
+        "tag": "NSU",
+        "name": "Emily Bourn",
+        "value": 3211652
+      },
+      {
+        "rank": 86,
+        "tag": "RVL",
+        "name": "REHAN",
+        "value": 3210035
+      },
+      {
+        "rank": 87,
+        "tag": "NSU",
+        "name": "Bania",
+        "value": 3208890
+      },
+      {
+        "rank": 88,
+        "tag": "NSU",
+        "name": "Fluxcapacitor",
+        "value": 3208630
+      },
+      {
+        "rank": 89,
+        "tag": "BAD",
+        "name": "Sir William III",
+        "value": 3203855
+      },
+      {
+        "rank": 90,
+        "tag": "NSU",
+        "name": "Giovanni",
+        "value": 3201240
+      },
+      {
+        "rank": 91,
+        "tag": "sbz",
+        "name": "Galleon",
+        "value": 3200285
+      },
+      {
+        "rank": 92,
+        "tag": "NSU",
+        "name": ". Pyschoo",
+        "value": 3192253
+      },
+      {
+        "rank": 93,
+        "tag": "NSU",
+        "name": "e Pyschoo",
+        "value": 3192253
+      },
+      {
+        "rank": 94,
+        "tag": "SiS",
+        "name": "masyl",
+        "value": 3188752
+      },
+      {
+        "rank": 95,
+        "tag": "SIS",
+        "name": "masyl",
+        "value": 3188752
+      },
+      {
+        "rank": 96,
+        "tag": "B4D",
+        "name": "Juan",
+        "value": 3186335
+      },
+      {
+        "rank": 97,
+        "tag": "BAD",
+        "name": "Juan",
+        "value": 3186335
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "lord294626158",
+        "value": 30400
+      },
+      {
+        "rank": 99,
+        "tag": "",
+        "name": "Hero's Total Power",
+        "value": 0
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Govelnor",
+        "value": 0
+      }
     ]
   }
 }

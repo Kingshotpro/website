@@ -22,6 +22,7 @@
   // href = null → "Coming Soon"
   var NAV = [
     { icon: '\u{1F3E0}', label: 'Home',             href: B + 'index.html',                     key: 'home' },
+    { icon: '\u{1F3F0}', label: 'Kingdom Rankings', href: B + 'kingdoms/',                       key: 'kingdoms',    badges: ['Hot'] },
     { icon: '\u{1F451}', label: 'Pro Plans',          href: B + 'pricing.html',                   key: 'pricing',    badges: ['New'] },
     { icon: '\u2764\uFE0F', label: 'Support Advisor',   href: B + 'support.html',                   key: 'support' },
     { icon: '\u{1F4DD}', label: 'Player Survey',       href: B + 'survey.html',                    key: 'survey',     badges: ['New'] },
@@ -34,7 +35,6 @@
     { icon: '\u{1F91D}', label: 'Team Builder',      href: B + 'heroes/companion/',              key: 'companion' },
     { icon: '\u{1F464}', label: 'Player Profile',   href: B + 'profile.html',                   key: 'profile',     badges: ['New'] },
     { icon: '\u2694\uFE0F', label: 'PvP Meta',        href: B + 'meta.html',                      key: 'meta',        badges: ['New'] },
-    { icon: '\u{1F3F0}', label: 'Kingdom Rankings', href: B + 'kingdoms/',                       key: 'kingdoms',    badges: ['New'] },
     { cat: 'CALCULATORS' },
     { icon: '\u{1F3F0}', label: 'Building',         href: B + 'calculators/building.html',      key: 'building',   badges: ['Popular'] },
     { icon: '\u2694\uFE0F', label: 'Troop Training', href: B + 'calculators/troops.html',       key: 'troops',     badges: ['Popular'] },

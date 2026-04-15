@@ -4216,6 +4216,608 @@
         "name": "Govelnor",
         "value": 0
       }
+    ],
+    "mystic_trial": [
+      {
+        "rank": 1,
+        "tag": "FTA",
+        "name": "Kakarot",
+        "value": 2680
+      },
+      {
+        "rank": 2,
+        "tag": "",
+        "name": "GDMJNINE 9",
+        "value": 2480
+      },
+      {
+        "rank": 3,
+        "tag": "SnG",
+        "name": "JBear",
+        "value": 2312
+      },
+      {
+        "rank": 4,
+        "tag": "",
+        "name": "KAP [SnG]Kap",
+        "value": 2188
+      },
+      {
+        "rank": 5,
+        "tag": "GDM",
+        "name": "i FEB ALON",
+        "value": 2078
+      },
+      {
+        "rank": 6,
+        "tag": "",
+        "name": "I[GDM]@ IAzkfJf @",
+        "value": 2021
+      },
+      {
+        "rank": 7,
+        "tag": "",
+        "name": "I[FTA]Tyrant Arthur",
+        "value": 1962
+      },
+      {
+        "rank": 8,
+        "tag": "GDM",
+        "name": "12A 0J9J=",
+        "value": 1935
+      },
+      {
+        "rank": 9,
+        "tag": "OTCJWL",
+        "name": "",
+        "value": 1909
+      },
+      {
+        "rank": 10,
+        "tag": "OTC",
+        "name": "Norman Conquest",
+        "value": 1899
+      },
+      {
+        "rank": 11,
+        "tag": "FTA",
+        "name": "Feng",
+        "value": 1833
+      },
+      {
+        "rank": 12,
+        "tag": "",
+        "name": "Hang",
+        "value": 1782
+      },
+      {
+        "rank": 13,
+        "tag": "oTc",
+        "name": "imageofyou",
+        "value": 1745
+      },
+      {
+        "rank": 14,
+        "tag": "oTc",
+        "name": "Gol D Snorlax",
+        "value": 1744
+      },
+      {
+        "rank": 15,
+        "tag": "OTC",
+        "name": "Figgs",
+        "value": 1741
+      },
+      {
+        "rank": 16,
+        "tag": "FTA",
+        "name": "SpiderPigxl7",
+        "value": 1725
+      },
+      {
+        "rank": 17,
+        "tag": "COR",
+        "name": "Scrooge",
+        "value": 1676
+      },
+      {
+        "rank": 18,
+        "tag": "FTA",
+        "name": "Siwy",
+        "value": 1671
+      },
+      {
+        "rank": 19,
+        "tag": "SnG",
+        "name": "Bobby Lee 82",
+        "value": 1665
+      },
+      {
+        "rank": 20,
+        "tag": "FTA",
+        "name": "MagicznaMarchew",
+        "value": 1638
+      },
+      {
+        "rank": 21,
+        "tag": "FTA",
+        "name": "vichung",
+        "value": 1637
+      },
+      {
+        "rank": 22,
+        "tag": "FTA",
+        "name": "MinusNull815",
+        "value": 1627
+      },
+      {
+        "rank": 23,
+        "tag": "FTA",
+        "name": "Cold",
+        "value": 1627
+      },
+      {
+        "rank": 24,
+        "tag": "",
+        "name": "FISH",
+        "value": 1610
+      },
+      {
+        "rank": 25,
+        "tag": "SnG",
+        "name": "MR the",
+        "value": 1602
+      },
+      {
+        "rank": 26,
+        "tag": "COR",
+        "name": "Z 32Jason",
+        "value": 1602
+      },
+      {
+        "rank": 27,
+        "tag": "SnG",
+        "name": "Sky Pirate",
+        "value": 1595
+      },
+      {
+        "rank": 28,
+        "tag": "SnG",
+        "name": "Monsieur",
+        "value": 1590
+      },
+      {
+        "rank": 29,
+        "tag": "FTA",
+        "name": "M_A X",
+        "value": 1590
+      },
+      {
+        "rank": 30,
+        "tag": "SnG",
+        "name": "Domi",
+        "value": 1586
+      },
+      {
+        "rank": 31,
+        "tag": "SnG",
+        "name": "Almightyso",
+        "value": 1571
+      },
+      {
+        "rank": 32,
+        "tag": "FTA",
+        "name": "databyte",
+        "value": 1547
+      },
+      {
+        "rank": 33,
+        "tag": "oTc",
+        "name": "kosmos",
+        "value": 1547
+      },
+      {
+        "rank": 34,
+        "tag": "SnG",
+        "name": "Big Puss Hisoka",
+        "value": 1537
+      },
+      {
+        "rank": 35,
+        "tag": "OTC",
+        "name": "Big Boss Banana",
+        "value": 1520
+      },
+      {
+        "rank": 36,
+        "tag": "FTA",
+        "name": "Dracut",
+        "value": 1490
+      },
+      {
+        "rank": 37,
+        "tag": "FTA",
+        "name": "TTQ",
+        "value": 1484
+      },
+      {
+        "rank": 38,
+        "tag": "FTA",
+        "name": "-James=",
+        "value": 1483
+      },
+      {
+        "rank": 39,
+        "tag": "OTC",
+        "name": "Supermarco51",
+        "value": 1483
+      },
+      {
+        "rank": 40,
+        "tag": "OTC",
+        "name": "AARON WINE",
+        "value": 1472
+      },
+      {
+        "rank": 41,
+        "tag": "FTA",
+        "name": "Chroby",
+        "value": 1466
+      },
+      {
+        "rank": 42,
+        "tag": "FTAJ",
+        "name": "ay",
+        "value": 1465
+      },
+      {
+        "rank": 43,
+        "tag": "FTA",
+        "name": "Thorfinn",
+        "value": 1465
+      },
+      {
+        "rank": 44,
+        "tag": "COR",
+        "name": "Z#let 444@",
+        "value": 1463
+      },
+      {
+        "rank": 45,
+        "tag": "OTc",
+        "name": "LiICountry",
+        "value": 1462
+      },
+      {
+        "rank": 46,
+        "tag": "COR",
+        "name": "Dany",
+        "value": 1460
+      },
+      {
+        "rank": 47,
+        "tag": "FTA",
+        "name": "Niamory",
+        "value": 1454
+      },
+      {
+        "rank": 48,
+        "tag": "FTA",
+        "name": "Jordan65k",
+        "value": 1454
+      },
+      {
+        "rank": 49,
+        "tag": "GDM",
+        "name": "Avery",
+        "value": 1449
+      },
+      {
+        "rank": 50,
+        "tag": "SnG",
+        "name": "Salty",
+        "value": 1448
+      },
+      {
+        "rank": 51,
+        "tag": "OTC",
+        "name": "Lord Lucky Lucan",
+        "value": 1445
+      },
+      {
+        "rank": 52,
+        "tag": "SnG",
+        "name": "SuperMorty",
+        "value": 1434
+      },
+      {
+        "rank": 53,
+        "tag": "GDM",
+        "name": "Groot",
+        "value": 1417
+      },
+      {
+        "rank": 54,
+        "tag": "FTA",
+        "name": "Lopatos",
+        "value": 1417
+      },
+      {
+        "rank": 55,
+        "tag": "OTC",
+        "name": "CRONOS",
+        "value": 1410
+      },
+      {
+        "rank": 56,
+        "tag": "FTA",
+        "name": "sbalu",
+        "value": 1404
+      },
+      {
+        "rank": 57,
+        "tag": "FTA",
+        "name": "Sherwood7425",
+        "value": 1403
+      },
+      {
+        "rank": 58,
+        "tag": "",
+        "name": "[GDMj91O",
+        "value": 1397
+      },
+      {
+        "rank": 59,
+        "tag": "FTA",
+        "name": "xFLHx",
+        "value": 1395
+      },
+      {
+        "rank": 60,
+        "tag": "FTA",
+        "name": "Denozoros",
+        "value": 1393
+      },
+      {
+        "rank": 61,
+        "tag": "",
+        "name": "GHerbo ]",
+        "value": 1390
+      },
+      {
+        "rank": 62,
+        "tag": "FTA",
+        "name": "Sirtatox",
+        "value": 1387
+      },
+      {
+        "rank": 63,
+        "tag": "OTC",
+        "name": "Banana Cat",
+        "value": 1386
+      },
+      {
+        "rank": 64,
+        "tag": "FTA",
+        "name": "REAE",
+        "value": 1382
+      },
+      {
+        "rank": 65,
+        "tag": "SnG",
+        "name": "Doberman",
+        "value": 1380
+      },
+      {
+        "rank": 66,
+        "tag": "",
+        "name": "End)",
+        "value": 1380
+      },
+      {
+        "rank": 67,
+        "tag": "FTA",
+        "name": "Mari Posa",
+        "value": 1380
+      },
+      {
+        "rank": 68,
+        "tag": "GDM",
+        "name": "KKND",
+        "value": 1377
+      },
+      {
+        "rank": 69,
+        "tag": "SnG",
+        "name": "Rickie Bakken",
+        "value": 1377
+      },
+      {
+        "rank": 70,
+        "tag": "OTc",
+        "name": "Booms",
+        "value": 1375
+      },
+      {
+        "rank": 71,
+        "tag": "GDM",
+        "name": "keke",
+        "value": 1374
+      },
+      {
+        "rank": 72,
+        "tag": "FTA",
+        "name": "Dillanova",
+        "value": 1373
+      },
+      {
+        "rank": 73,
+        "tag": "FTA",
+        "name": "jaonobre",
+        "value": 1366
+      },
+      {
+        "rank": 74,
+        "tag": "SnG",
+        "name": "PsychoPrincess",
+        "value": 1359
+      },
+      {
+        "rank": 75,
+        "tag": "SnG",
+        "name": "Drevim",
+        "value": 1359
+      },
+      {
+        "rank": 76,
+        "tag": "",
+        "name": "",
+        "value": 1358
+      },
+      {
+        "rank": 77,
+        "tag": "FTA",
+        "name": "ELENDER",
+        "value": 1356
+      },
+      {
+        "rank": 78,
+        "tag": "OTC",
+        "name": "Poolboy",
+        "value": 1354
+      },
+      {
+        "rank": 79,
+        "tag": "OFA",
+        "name": "LeeHankeePankee",
+        "value": 1354
+      },
+      {
+        "rank": 80,
+        "tag": "FTA",
+        "name": "Kuma",
+        "value": 1351
+      },
+      {
+        "rank": 81,
+        "tag": "SnG",
+        "name": "EFII2",
+        "value": 1351
+      },
+      {
+        "rank": 82,
+        "tag": "GDM",
+        "name": "Kong",
+        "value": 1349
+      },
+      {
+        "rank": 83,
+        "tag": "OTC",
+        "name": "DrBreakenspein",
+        "value": 1347
+      },
+      {
+        "rank": 84,
+        "tag": "SnG",
+        "name": "-PK ~",
+        "value": 1341
+      },
+      {
+        "rank": 85,
+        "tag": "OTc",
+        "name": "Jeroen the First",
+        "value": 1340
+      },
+      {
+        "rank": 86,
+        "tag": "FTA",
+        "name": "xalaromatomoonee",
+        "value": 1339
+      },
+      {
+        "rank": 87,
+        "tag": "OC",
+        "name": "Samurai Jeanpi",
+        "value": 1338
+      },
+      {
+        "rank": 88,
+        "tag": "OTc",
+        "name": "Samurai Jeanpi",
+        "value": 1338
+      },
+      {
+        "rank": 89,
+        "tag": "oTC",
+        "name": "Samurai Jeanpi",
+        "value": 1338
+      },
+      {
+        "rank": 90,
+        "tag": "oTc",
+        "name": "Samurai Jeanpi",
+        "value": 1338
+      },
+      {
+        "rank": 91,
+        "tag": "SnG",
+        "name": "LeejTwgKojTxiv",
+        "value": 1336
+      },
+      {
+        "rank": 92,
+        "tag": "SnG",
+        "name": "eejTwgKojTxiv",
+        "value": 1336
+      },
+      {
+        "rank": 93,
+        "tag": "SnG",
+        "name": "MochaHontas",
+        "value": 1332
+      },
+      {
+        "rank": 94,
+        "tag": "FTA",
+        "name": "ider",
+        "value": 1329
+      },
+      {
+        "rank": 95,
+        "tag": "FTA",
+        "name": "Gymre",
+        "value": 1329
+      },
+      {
+        "rank": 96,
+        "tag": "FTA",
+        "name": "Lord",
+        "value": 1323
+      },
+      {
+        "rank": 97,
+        "tag": "FTA",
+        "name": "Lord_Groot",
+        "value": 1323
+      },
+      {
+        "rank": 98,
+        "tag": "FTA",
+        "name": "Osmium",
+        "value": 1322
+      },
+      {
+        "rank": 99,
+        "tag": "FTA",
+        "name": "MaliSam",
+        "value": 1321
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Mystic Trial",
+        "value": 0
+      }
     ]
   }
 }

@@ -1,6 +1,6 @@
 {
   "kingdom": 223,
-  "last_updated": "2026-04-14",
+  "last_updated": "2026-04-13",
   "source": "ADB screenshot scraper + EasyOCR extraction",
   "categories": {
     "alliance_power": [
@@ -4197,6 +4197,608 @@
         "tag": "",
         "name": "Total Pet Power",
         "value": 0
+      }
+    ],
+    "mystic_trial": [
+      {
+        "rank": 1,
+        "tag": "",
+        "name": "PsY]Salah",
+        "value": 2898
+      },
+      {
+        "rank": 2,
+        "tag": "PSY",
+        "name": "Dexter Hulk",
+        "value": 2736
+      },
+      {
+        "rank": 3,
+        "tag": "TTN",
+        "name": "EvilAxhole",
+        "value": 2528
+      },
+      {
+        "rank": 4,
+        "tag": "",
+        "name": "ITNPJEscanor",
+        "value": 2365
+      },
+      {
+        "rank": 5,
+        "tag": "",
+        "name": "[PsYIClark",
+        "value": 2070
+      },
+      {
+        "rank": 6,
+        "tag": "PSY",
+        "name": "Rubi",
+        "value": 2030
+      },
+      {
+        "rank": 7,
+        "tag": "PSY",
+        "name": "Heisl",
+        "value": 2022
+      },
+      {
+        "rank": 8,
+        "tag": "",
+        "name": "[TNPISHIN",
+        "value": 1872
+      },
+      {
+        "rank": 9,
+        "tag": "IMT",
+        "name": "DdDd",
+        "value": 1871
+      },
+      {
+        "rank": 10,
+        "tag": "TNP",
+        "name": "Kbazz",
+        "value": 1858
+      },
+      {
+        "rank": 11,
+        "tag": "TNP",
+        "name": "Oblak 1",
+        "value": 1822
+      },
+      {
+        "rank": 12,
+        "tag": "PSY",
+        "name": "RALF",
+        "value": 1820
+      },
+      {
+        "rank": 13,
+        "tag": "IMT",
+        "name": "Beaowolf",
+        "value": 1813
+      },
+      {
+        "rank": 14,
+        "tag": "PSY",
+        "name": "Joker Unchained",
+        "value": 1784
+      },
+      {
+        "rank": 15,
+        "tag": "PSY",
+        "name": "HerbyDerby",
+        "value": 1765
+      },
+      {
+        "rank": 16,
+        "tag": "PSY",
+        "name": "Tratty",
+        "value": 1737
+      },
+      {
+        "rank": 17,
+        "tag": "PSY",
+        "name": "Bassam",
+        "value": 1731
+      },
+      {
+        "rank": 18,
+        "tag": "PSY",
+        "name": "Raccoon Queen",
+        "value": 1699
+      },
+      {
+        "rank": 19,
+        "tag": "TNP",
+        "name": "Dash",
+        "value": 1698
+      },
+      {
+        "rank": 20,
+        "tag": "TNP",
+        "name": "Scrith",
+        "value": 1687
+      },
+      {
+        "rank": 21,
+        "tag": "TNP",
+        "name": "WhOoPa",
+        "value": 1686
+      },
+      {
+        "rank": 22,
+        "tag": "TNP",
+        "name": "Lady Fea",
+        "value": 1679
+      },
+      {
+        "rank": 23,
+        "tag": "PSY",
+        "name": "Keriel",
+        "value": 1678
+      },
+      {
+        "rank": 24,
+        "tag": "PSY",
+        "name": "Hadi",
+        "value": 1675
+      },
+      {
+        "rank": 25,
+        "tag": "PSY",
+        "name": "MAC",
+        "value": 1663
+      },
+      {
+        "rank": 26,
+        "tag": "PSY",
+        "name": "IVOXYGEN",
+        "value": 1659
+      },
+      {
+        "rank": 27,
+        "tag": "PSY",
+        "name": "Greebow",
+        "value": 1638
+      },
+      {
+        "rank": 28,
+        "tag": "PsY",
+        "name": "Chris1975",
+        "value": 1637
+      },
+      {
+        "rank": 29,
+        "tag": "PSY",
+        "name": "Fused",
+        "value": 1634
+      },
+      {
+        "rank": 30,
+        "tag": "TNP",
+        "name": "SkyWalker",
+        "value": 1620
+      },
+      {
+        "rank": 31,
+        "tag": "TTN",
+        "name": "Sampy",
+        "value": 1617
+      },
+      {
+        "rank": 32,
+        "tag": "TNP",
+        "name": "Mezna",
+        "value": 1612
+      },
+      {
+        "rank": 33,
+        "tag": "TNP",
+        "name": "Gumduck",
+        "value": 1611
+      },
+      {
+        "rank": 34,
+        "tag": "",
+        "name": "[PSYIChuke",
+        "value": 1600
+      },
+      {
+        "rank": 35,
+        "tag": "PsY",
+        "name": "Chuke",
+        "value": 1600
+      },
+      {
+        "rank": 36,
+        "tag": "TNP",
+        "name": "LvL X",
+        "value": 1598
+      },
+      {
+        "rank": 37,
+        "tag": "TNP",
+        "name": "Harp",
+        "value": 1596
+      },
+      {
+        "rank": 38,
+        "tag": "TNP",
+        "name": "BibsKiii",
+        "value": 1589
+      },
+      {
+        "rank": 39,
+        "tag": "TNP",
+        "name": "Xprezzo",
+        "value": 1569
+      },
+      {
+        "rank": 40,
+        "tag": "",
+        "name": "Junxt",
+        "value": 1563
+      },
+      {
+        "rank": 41,
+        "tag": "TNPIHE",
+        "name": "ENMIMT_#",
+        "value": 1560
+      },
+      {
+        "rank": 42,
+        "tag": "PSY",
+        "name": "Leona the",
+        "value": 1545
+      },
+      {
+        "rank": 43,
+        "tag": "PSY",
+        "name": "cascaill",
+        "value": 1533
+      },
+      {
+        "rank": 44,
+        "tag": "TNP",
+        "name": "Azazello",
+        "value": 1533
+      },
+      {
+        "rank": 45,
+        "tag": "",
+        "name": "[TNPHHermes",
+        "value": 1531
+      },
+      {
+        "rank": 46,
+        "tag": "TNP",
+        "name": "Franklin",
+        "value": 1523
+      },
+      {
+        "rank": 47,
+        "tag": "TNP",
+        "name": "Mateos",
+        "value": 1521
+      },
+      {
+        "rank": 48,
+        "tag": "TNP",
+        "name": "MaGNoOoN",
+        "value": 1510
+      },
+      {
+        "rank": 49,
+        "tag": "",
+        "name": "[TNPlbombardieros",
+        "value": 1502
+      },
+      {
+        "rank": 50,
+        "tag": "IMT",
+        "name": "BunnyNuke",
+        "value": 1500
+      },
+      {
+        "rank": 51,
+        "tag": "TNP",
+        "name": "Jet X",
+        "value": 1482
+      },
+      {
+        "rank": 52,
+        "tag": "TNP",
+        "name": "Orca",
+        "value": 1474
+      },
+      {
+        "rank": 53,
+        "tag": "TNP",
+        "name": "Tikitoki",
+        "value": 1466
+      },
+      {
+        "rank": 54,
+        "tag": "TNP",
+        "name": "Jet Li",
+        "value": 1462
+      },
+      {
+        "rank": 55,
+        "tag": "TNP",
+        "name": "Yuki",
+        "value": 1455
+      },
+      {
+        "rank": 56,
+        "tag": "PSY",
+        "name": "Starlord",
+        "value": 1452
+      },
+      {
+        "rank": 57,
+        "tag": "PsY",
+        "name": "kyle",
+        "value": 1449
+      },
+      {
+        "rank": 58,
+        "tag": "ANR",
+        "name": "Rupert",
+        "value": 1447
+      },
+      {
+        "rank": 59,
+        "tag": "PSY",
+        "name": "FoxxyRedhead",
+        "value": 1446
+      },
+      {
+        "rank": 60,
+        "tag": "",
+        "name": "[TNPINithen",
+        "value": 1443
+      },
+      {
+        "rank": 61,
+        "tag": "TNP",
+        "name": "Sully",
+        "value": 1441
+      },
+      {
+        "rank": 62,
+        "tag": "ANR",
+        "name": "Nobby",
+        "value": 1440
+      },
+      {
+        "rank": 63,
+        "tag": "PSY",
+        "name": "KhaZmo",
+        "value": 1439
+      },
+      {
+        "rank": 64,
+        "tag": "",
+        "name": "Nolct",
+        "value": 1436
+      },
+      {
+        "rank": 65,
+        "tag": "Tnp",
+        "name": "Josdios",
+        "value": 1431
+      },
+      {
+        "rank": 66,
+        "tag": "TNP",
+        "name": "Scray",
+        "value": 1430
+      },
+      {
+        "rank": 67,
+        "tag": "",
+        "name": "[PSYIRoger the Hare",
+        "value": 1424
+      },
+      {
+        "rank": 68,
+        "tag": "TNP",
+        "name": "NickGodia",
+        "value": 1420
+      },
+      {
+        "rank": 69,
+        "tag": "TNP",
+        "name": "Omar",
+        "value": 1420
+      },
+      {
+        "rank": 70,
+        "tag": "TNP",
+        "name": "DamentedKarl",
+        "value": 1408
+      },
+      {
+        "rank": 71,
+        "tag": "",
+        "name": "[TNPERARITE1EC",
+        "value": 1404
+      },
+      {
+        "rank": 72,
+        "tag": "TNP",
+        "name": "Kronos",
+        "value": 1397
+      },
+      {
+        "rank": 73,
+        "tag": "PSY",
+        "name": "Morlane",
+        "value": 1383
+      },
+      {
+        "rank": 74,
+        "tag": "",
+        "name": "[PSYINPC",
+        "value": 1380
+      },
+      {
+        "rank": 75,
+        "tag": "PSY",
+        "name": "Greasyhurricane",
+        "value": 1374
+      },
+      {
+        "rank": 76,
+        "tag": "PSY",
+        "name": "Kannan ) AJ",
+        "value": 1371
+      },
+      {
+        "rank": 77,
+        "tag": "TNP",
+        "name": "MysterDyslexia",
+        "value": 1367
+      },
+      {
+        "rank": 78,
+        "tag": "PSY",
+        "name": "Ademo",
+        "value": 1367
+      },
+      {
+        "rank": 79,
+        "tag": "PSY",
+        "name": "NoMojo",
+        "value": 1365
+      },
+      {
+        "rank": 80,
+        "tag": "TTN",
+        "name": "JohnRambo",
+        "value": 1363
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "[PSYICoumplex",
+        "value": 1358
+      },
+      {
+        "rank": 82,
+        "tag": "PSY",
+        "name": "kanem",
+        "value": 1349
+      },
+      {
+        "rank": 83,
+        "tag": "PSY",
+        "name": "Deathrain7",
+        "value": 1347
+      },
+      {
+        "rank": 84,
+        "tag": "PSY",
+        "name": "Hagbard Handfast",
+        "value": 1345
+      },
+      {
+        "rank": 85,
+        "tag": "TNP",
+        "name": "Keyboardwarrior",
+        "value": 1344
+      },
+      {
+        "rank": 86,
+        "tag": "TNP",
+        "name": "Queen Rasta",
+        "value": 1343
+      },
+      {
+        "rank": 87,
+        "tag": "PSY",
+        "name": "JamEdLyn",
+        "value": 1342
+      },
+      {
+        "rank": 88,
+        "tag": "TNP",
+        "name": "Jeremigz",
+        "value": 1341
+      },
+      {
+        "rank": 89,
+        "tag": "PSY",
+        "name": "Lilfrank",
+        "value": 1341
+      },
+      {
+        "rank": 90,
+        "tag": "IMT",
+        "name": "Colitix",
+        "value": 1332
+      },
+      {
+        "rank": 91,
+        "tag": "",
+        "name": "[IM !JCOIIEIX",
+        "value": 1332
+      },
+      {
+        "rank": 92,
+        "tag": "TNP",
+        "name": "Marc",
+        "value": 1329
+      },
+      {
+        "rank": 93,
+        "tag": "TTN",
+        "name": "AxHole",
+        "value": 1326
+      },
+      {
+        "rank": 94,
+        "tag": "",
+        "name": "LordTMP",
+        "value": 1319
+      },
+      {
+        "rank": 95,
+        "tag": "TNP",
+        "name": "LARA DAN BARRA",
+        "value": 1319
+      },
+      {
+        "rank": 96,
+        "tag": "TNP",
+        "name": "Volk",
+        "value": 1313
+      },
+      {
+        "rank": 97,
+        "tag": "",
+        "name": "[TNPIMouFra",
+        "value": 1311
+      },
+      {
+        "rank": 98,
+        "tag": "TNP",
+        "name": "MouFra",
+        "value": 1311
+      },
+      {
+        "rank": 99,
+        "tag": "PSY",
+        "name": "ZEVEN_FREE",
+        "value": 1308
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "(PSYJ7EVEN_FREE",
+        "value": 1308
       }
     ]
   }

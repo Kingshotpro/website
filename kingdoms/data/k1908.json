@@ -4204,6 +4204,608 @@
         "name": "IUU",
         "value": 0
       }
+    ],
+    "mystic_trial": [
+      {
+        "rank": 1,
+        "tag": "",
+        "name": "BROKEN",
+        "value": 7733872
+      },
+      {
+        "rank": 2,
+        "tag": "VIP",
+        "name": "Teeto",
+        "value": 7606084
+      },
+      {
+        "rank": 3,
+        "tag": "FIX",
+        "name": "Xoloq",
+        "value": 7476038
+      },
+      {
+        "rank": 4,
+        "tag": "FIX",
+        "name": "Actalis",
+        "value": 7282345
+      },
+      {
+        "rank": 5,
+        "tag": "FIX",
+        "name": "Biggie",
+        "value": 6848621
+      },
+      {
+        "rank": 6,
+        "tag": "VIP",
+        "name": "Wildwolf73",
+        "value": 6049201
+      },
+      {
+        "rank": 7,
+        "tag": "WRD",
+        "name": "hayu",
+        "value": 5581107
+      },
+      {
+        "rank": 8,
+        "tag": "VIP",
+        "name": "Wanderer",
+        "value": 5377187
+      },
+      {
+        "rank": 9,
+        "tag": "FIX",
+        "name": "Puc",
+        "value": 5373006
+      },
+      {
+        "rank": 10,
+        "tag": "FIX",
+        "name": "NightHawk]",
+        "value": 5251378
+      },
+      {
+        "rank": 11,
+        "tag": "FIX",
+        "name": "Jmoore",
+        "value": 5213341
+      },
+      {
+        "rank": 12,
+        "tag": "WRD",
+        "name": "kayne",
+        "value": 5025833
+      },
+      {
+        "rank": 13,
+        "tag": "VIP",
+        "name": "KHAIT",
+        "value": 4931937
+      },
+      {
+        "rank": 14,
+        "tag": "VIP",
+        "name": "Wicked",
+        "value": 4784110
+      },
+      {
+        "rank": 15,
+        "tag": "GIA",
+        "name": "Yo 16",
+        "value": 4739223
+      },
+      {
+        "rank": 16,
+        "tag": "VIP",
+        "name": "Edoras",
+        "value": 4690268
+      },
+      {
+        "rank": 17,
+        "tag": "VIP",
+        "name": "ReignRiley",
+        "value": 4663981
+      },
+      {
+        "rank": 18,
+        "tag": "WRD",
+        "name": "eagle581",
+        "value": 4568640
+      },
+      {
+        "rank": 19,
+        "tag": "VIP",
+        "name": "Husker",
+        "value": 4553047
+      },
+      {
+        "rank": 20,
+        "tag": "FIX",
+        "name": "Smokey",
+        "value": 4548008
+      },
+      {
+        "rank": 21,
+        "tag": "VIP",
+        "name": "Sir Osric",
+        "value": 4538105
+      },
+      {
+        "rank": 22,
+        "tag": "FIX",
+        "name": "Wonsama",
+        "value": 4487078
+      },
+      {
+        "rank": 23,
+        "tag": "VIP",
+        "name": "King Jay",
+        "value": 4475290
+      },
+      {
+        "rank": 24,
+        "tag": "KGs",
+        "name": "HWE",
+        "value": 4438267
+      },
+      {
+        "rank": 25,
+        "tag": "FIXILVs",
+        "name": "ustice",
+        "value": 4401097
+      },
+      {
+        "rank": 26,
+        "tag": "VIP",
+        "name": "Deinial",
+        "value": 4330460
+      },
+      {
+        "rank": 27,
+        "tag": "VIP",
+        "name": "Arkangel",
+        "value": 4326840
+      },
+      {
+        "rank": 28,
+        "tag": "WRD",
+        "name": "Fleps",
+        "value": 4322930
+      },
+      {
+        "rank": 29,
+        "tag": "LFA",
+        "name": "BARON MHD",
+        "value": 4294005
+      },
+      {
+        "rank": 30,
+        "tag": "WRD",
+        "name": "TitusVoss",
+        "value": 4278760
+      },
+      {
+        "rank": 31,
+        "tag": "VIP",
+        "name": "Arcana",
+        "value": 4239365
+      },
+      {
+        "rank": 32,
+        "tag": "GIA",
+        "name": "Choi",
+        "value": 4224639
+      },
+      {
+        "rank": 33,
+        "tag": "Idk",
+        "name": "Geohar",
+        "value": 4192368
+      },
+      {
+        "rank": 34,
+        "tag": "ROK",
+        "name": "Dmacdd",
+        "value": 4170733
+      },
+      {
+        "rank": 35,
+        "tag": "VIP",
+        "name": "def",
+        "value": 4164099
+      },
+      {
+        "rank": 36,
+        "tag": "",
+        "name": "[GIAljaehyeok22",
+        "value": 4148803
+      },
+      {
+        "rank": 37,
+        "tag": "VIP",
+        "name": "Denzel Knight",
+        "value": 4111608
+      },
+      {
+        "rank": 38,
+        "tag": "FIX",
+        "name": "Little",
+        "value": 4095455
+      },
+      {
+        "rank": 39,
+        "tag": "VIP",
+        "name": "Fouzzyyy",
+        "value": 4086917
+      },
+      {
+        "rank": 40,
+        "tag": "VIP",
+        "name": "Chint",
+        "value": 4082176
+      },
+      {
+        "rank": 41,
+        "tag": "FIX",
+        "name": "19o8Turbine",
+        "value": 4066689
+      },
+      {
+        "rank": 42,
+        "tag": "CNY",
+        "name": "Saber",
+        "value": 4057028
+      },
+      {
+        "rank": 43,
+        "tag": "FIX",
+        "name": "Insidious]",
+        "value": 4050782
+      },
+      {
+        "rank": 44,
+        "tag": "FIX",
+        "name": "8,4 F",
+        "value": 4049225
+      },
+      {
+        "rank": 45,
+        "tag": "WRD",
+        "name": "kakospartakus",
+        "value": 4036985
+      },
+      {
+        "rank": 46,
+        "tag": "",
+        "name": "[No IJSonOfAGun",
+        "value": 4027170
+      },
+      {
+        "rank": 47,
+        "tag": "VIP",
+        "name": "DafUup",
+        "value": 4022308
+      },
+      {
+        "rank": 48,
+        "tag": "GIA",
+        "name": "Koreanzombiee",
+        "value": 3999092
+      },
+      {
+        "rank": 49,
+        "tag": "VIP",
+        "name": "2LI440/x/",
+        "value": 3983480
+      },
+      {
+        "rank": 50,
+        "tag": "VIP",
+        "name": "Edwx",
+        "value": 3947540
+      },
+      {
+        "rank": 51,
+        "tag": "WRD",
+        "name": "Slumpoffthegoop",
+        "value": 3926302
+      },
+      {
+        "rank": 52,
+        "tag": "VIP",
+        "name": "bigotes",
+        "value": 3911385
+      },
+      {
+        "rank": 53,
+        "tag": "BRA",
+        "name": "KENO",
+        "value": 3901752
+      },
+      {
+        "rank": 54,
+        "tag": "FIX",
+        "name": "Smutlu",
+        "value": 3878666
+      },
+      {
+        "rank": 55,
+        "tag": "KIK",
+        "name": "Malauh '",
+        "value": 3849124
+      },
+      {
+        "rank": 56,
+        "tag": "",
+        "name": "Heneto",
+        "value": 3837204
+      },
+      {
+        "rank": 57,
+        "tag": "FIX",
+        "name": "Burnz",
+        "value": 3831371
+      },
+      {
+        "rank": 58,
+        "tag": "RIP",
+        "name": "Boribori",
+        "value": 3829922
+      },
+      {
+        "rank": 59,
+        "tag": "VIP",
+        "name": "EZJV)",
+        "value": 3826154
+      },
+      {
+        "rank": 60,
+        "tag": "VIP",
+        "name": "Casimir81",
+        "value": 3793560
+      },
+      {
+        "rank": 61,
+        "tag": "KGT",
+        "name": "Lord Bandit420",
+        "value": 3771591
+      },
+      {
+        "rank": 62,
+        "tag": "TOP",
+        "name": "souzaOO7z",
+        "value": 3766179
+      },
+      {
+        "rank": 63,
+        "tag": "FIX",
+        "name": "Passee39",
+        "value": 3741107
+      },
+      {
+        "rank": 64,
+        "tag": "FIX",
+        "name": "Likwid",
+        "value": 3733285
+      },
+      {
+        "rank": 65,
+        "tag": "BRA",
+        "name": "zecapapi",
+        "value": 3720150
+      },
+      {
+        "rank": 66,
+        "tag": "",
+        "name": "[TOPjizmirli 35",
+        "value": 3715745
+      },
+      {
+        "rank": 67,
+        "tag": "VIP",
+        "name": "Kareem",
+        "value": 3712629
+      },
+      {
+        "rank": 68,
+        "tag": "CNY",
+        "name": "Moloch",
+        "value": 3711147
+      },
+      {
+        "rank": 69,
+        "tag": "VIP",
+        "name": "Banshee",
+        "value": 3690865
+      },
+      {
+        "rank": 70,
+        "tag": "GIA",
+        "name": "Sher3",
+        "value": 3677673
+      },
+      {
+        "rank": 71,
+        "tag": "VIP",
+        "name": "amfsb",
+        "value": 3647916
+      },
+      {
+        "rank": 72,
+        "tag": "VIP",
+        "name": "Twist3d",
+        "value": 3642115
+      },
+      {
+        "rank": 73,
+        "tag": "",
+        "name": "[VIPHH@DI",
+        "value": 3631425
+      },
+      {
+        "rank": 74,
+        "tag": "KGT",
+        "name": "Ladida",
+        "value": 3614087
+      },
+      {
+        "rank": 75,
+        "tag": "INV",
+        "name": "Denbronco",
+        "value": 3607788
+      },
+      {
+        "rank": 76,
+        "tag": "VIP",
+        "name": "Gordon Shumway",
+        "value": 3607750
+      },
+      {
+        "rank": 77,
+        "tag": "VIP",
+        "name": "ORION",
+        "value": 3591274
+      },
+      {
+        "rank": 78,
+        "tag": "KGS",
+        "name": "Todd",
+        "value": 3559431
+      },
+      {
+        "rank": 79,
+        "tag": "GIA",
+        "name": "Lpeters22",
+        "value": 3559250
+      },
+      {
+        "rank": 80,
+        "tag": "YDG",
+        "name": "EI tincho",
+        "value": 3544854
+      },
+      {
+        "rank": 81,
+        "tag": "VIP",
+        "name": "Oa 0 x Oa0",
+        "value": 3538704
+      },
+      {
+        "rank": 82,
+        "tag": "VIP",
+        "name": "Lizzi",
+        "value": 3538382
+      },
+      {
+        "rank": 83,
+        "tag": "VRS",
+        "name": "Lt Night",
+        "value": 3510773
+      },
+      {
+        "rank": 84,
+        "tag": "",
+        "name": "Chackalacka",
+        "value": 3500075
+      },
+      {
+        "rank": 85,
+        "tag": "VIP",
+        "name": "Turkiye",
+        "value": 3492005
+      },
+      {
+        "rank": 86,
+        "tag": "BRA",
+        "name": "DemineeX",
+        "value": 3488150
+      },
+      {
+        "rank": 87,
+        "tag": "RIP",
+        "name": "GhostPup95",
+        "value": 3485577
+      },
+      {
+        "rank": 88,
+        "tag": "BRA",
+        "name": "IBanBr",
+        "value": 3483222
+      },
+      {
+        "rank": 89,
+        "tag": "VIP",
+        "name": "Napkin",
+        "value": 3477973
+      },
+      {
+        "rank": 90,
+        "tag": "ONE",
+        "name": "lord296144698",
+        "value": 3476022
+      },
+      {
+        "rank": 91,
+        "tag": "VIP",
+        "name": "Danishroll",
+        "value": 3475055
+      },
+      {
+        "rank": 92,
+        "tag": "WRd",
+        "name": "macky",
+        "value": 3473865
+      },
+      {
+        "rank": 93,
+        "tag": "FIX",
+        "name": "alley_oop",
+        "value": 3470870
+      },
+      {
+        "rank": 94,
+        "tag": "FIX",
+        "name": "MyLord",
+        "value": 3468836
+      },
+      {
+        "rank": 95,
+        "tag": "PAS",
+        "name": "Mujahidave",
+        "value": 3467531
+      },
+      {
+        "rank": 96,
+        "tag": "VIP",
+        "name": "Laaazy",
+        "value": 3459478
+      },
+      {
+        "rank": 97,
+        "tag": "VIP",
+        "name": "Tioreio",
+        "value": 3456709
+      },
+      {
+        "rank": 98,
+        "tag": "FIX",
+        "name": "ArmyJumper",
+        "value": 3435625
+      },
+      {
+        "rank": 99,
+        "tag": "FIX",
+        "name": "Army Jumper",
+        "value": 3435625
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "lord297259128",
+        "value": 15457
+      }
     ]
   }
 }

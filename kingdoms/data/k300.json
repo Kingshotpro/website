@@ -1,6 +1,6 @@
 {
   "kingdom": 300,
-  "last_updated": "2026-04-14",
+  "last_updated": "2026-04-13",
   "source": "ADB screenshot scraper + EasyOCR extraction",
   "categories": {
     "alliance_power": [
@@ -4112,6 +4112,608 @@
         "rank": 93,
         "tag": "",
         "name": "Zuy,Y6u",
+        "value": 0
+      }
+    ],
+    "mystic_trial": [
+      {
+        "rank": 1,
+        "tag": "",
+        "name": "lord300719986",
+        "value": 20709
+      },
+      {
+        "rank": 2,
+        "tag": "",
+        "name": "Rebel Conquest Stage",
+        "value": 0
+      },
+      {
+        "rank": 3,
+        "tag": "",
+        "name": "Govetuor",
+        "value": 0
+      },
+      {
+        "rank": 4,
+        "tag": "AWK",
+        "name": "Gragas",
+        "value": 0
+      },
+      {
+        "rank": 5,
+        "tag": "EMP",
+        "name": "ReDaV",
+        "value": 0
+      },
+      {
+        "rank": 6,
+        "tag": "AVB",
+        "name": "DarkZenith",
+        "value": 0
+      },
+      {
+        "rank": 7,
+        "tag": "AWK",
+        "name": "OShadow-S7Oe",
+        "value": 0
+      },
+      {
+        "rank": 8,
+        "tag": "TSF",
+        "name": "Luigi",
+        "value": 0
+      },
+      {
+        "rank": 9,
+        "tag": "AVB",
+        "name": "lord mot",
+        "value": 0
+      },
+      {
+        "rank": 10,
+        "tag": "",
+        "name": "[AWKHHafiz",
+        "value": 0
+      },
+      {
+        "rank": 11,
+        "tag": "AWK",
+        "name": "Inzane",
+        "value": 0
+      },
+      {
+        "rank": 12,
+        "tag": "PHX",
+        "name": "Tirano Assand",
+        "value": 0
+      },
+      {
+        "rank": 13,
+        "tag": "PHX",
+        "name": "GinapHx",
+        "value": 0
+      },
+      {
+        "rank": 14,
+        "tag": "",
+        "name": "[EMPIBIGbris",
+        "value": 0
+      },
+      {
+        "rank": 15,
+        "tag": "AVB",
+        "name": "T \u20ac M Mr Pita",
+        "value": 0
+      },
+      {
+        "rank": 16,
+        "tag": "AWK",
+        "name": "King Lancelot",
+        "value": 0
+      },
+      {
+        "rank": 17,
+        "tag": "PHX",
+        "name": "BABAYAGAPHX",
+        "value": 0
+      },
+      {
+        "rank": 18,
+        "tag": "",
+        "name": "Rudibager",
+        "value": 0
+      },
+      {
+        "rank": 19,
+        "tag": "AWK",
+        "name": "RachelH2I",
+        "value": 0
+      },
+      {
+        "rank": 20,
+        "tag": "AWK",
+        "name": "MO HERO",
+        "value": 0
+      },
+      {
+        "rank": 21,
+        "tag": "",
+        "name": "[pHXIRichiellennu",
+        "value": 0
+      },
+      {
+        "rank": 22,
+        "tag": "AVB",
+        "name": "F 07",
+        "value": 0
+      },
+      {
+        "rank": 23,
+        "tag": "AVB",
+        "name": "MASTER",
+        "value": 0
+      },
+      {
+        "rank": 24,
+        "tag": "AWK",
+        "name": "AHol",
+        "value": 0
+      },
+      {
+        "rank": 25,
+        "tag": "",
+        "name": "[TSFlwillyfsterbottom",
+        "value": 0
+      },
+      {
+        "rank": 26,
+        "tag": "AVB",
+        "name": "LordLew",
+        "value": 0
+      },
+      {
+        "rank": 27,
+        "tag": "AWK",
+        "name": "EIsino",
+        "value": 0
+      },
+      {
+        "rank": 28,
+        "tag": "",
+        "name": "lordy99",
+        "value": 0
+      },
+      {
+        "rank": 29,
+        "tag": "PHX",
+        "name": "Rasyell",
+        "value": 0
+      },
+      {
+        "rank": 30,
+        "tag": "AWK",
+        "name": "King Leo",
+        "value": 0
+      },
+      {
+        "rank": 31,
+        "tag": "AVB",
+        "name": "Phil",
+        "value": 0
+      },
+      {
+        "rank": 32,
+        "tag": "TSF",
+        "name": "Mafo",
+        "value": 0
+      },
+      {
+        "rank": 33,
+        "tag": "AVB",
+        "name": "LVST",
+        "value": 0
+      },
+      {
+        "rank": 34,
+        "tag": "TSF",
+        "name": "Asap_lyfe",
+        "value": 0
+      },
+      {
+        "rank": 35,
+        "tag": "AWK",
+        "name": "lbraminovic",
+        "value": 0
+      },
+      {
+        "rank": 36,
+        "tag": "PHX",
+        "name": "CaspHx",
+        "value": 0
+      },
+      {
+        "rank": 37,
+        "tag": "grp",
+        "name": "stveno",
+        "value": 0
+      },
+      {
+        "rank": 38,
+        "tag": "EMP",
+        "name": "sirNikolas",
+        "value": 0
+      },
+      {
+        "rank": 39,
+        "tag": "AWK",
+        "name": "taxi",
+        "value": 0
+      },
+      {
+        "rank": 40,
+        "tag": "AVB",
+        "name": "RebsThaBest",
+        "value": 0
+      },
+      {
+        "rank": 41,
+        "tag": "AWK",
+        "name": "Fury7",
+        "value": 0
+      },
+      {
+        "rank": 42,
+        "tag": "AVB",
+        "name": "HoloDoK",
+        "value": 0
+      },
+      {
+        "rank": 43,
+        "tag": "AVB",
+        "name": "TonyR",
+        "value": 0
+      },
+      {
+        "rank": 44,
+        "tag": "",
+        "name": "Reka",
+        "value": 0
+      },
+      {
+        "rank": 45,
+        "tag": "AWK",
+        "name": "Orion",
+        "value": 0
+      },
+      {
+        "rank": 46,
+        "tag": "AVB",
+        "name": "Mudpossum",
+        "value": 0
+      },
+      {
+        "rank": 47,
+        "tag": "AWK",
+        "name": "Lera La Fleur",
+        "value": 0
+      },
+      {
+        "rank": 48,
+        "tag": "AWK",
+        "name": "TOOLMUCH",
+        "value": 0
+      },
+      {
+        "rank": 49,
+        "tag": "AVB",
+        "name": "Herzogbone",
+        "value": 0
+      },
+      {
+        "rank": 50,
+        "tag": "TSF",
+        "name": "Gapie",
+        "value": 0
+      },
+      {
+        "rank": 51,
+        "tag": "AWK",
+        "name": "SBHSH}",
+        "value": 0
+      },
+      {
+        "rank": 52,
+        "tag": "AVB",
+        "name": "Chris",
+        "value": 0
+      },
+      {
+        "rank": 53,
+        "tag": "",
+        "name": "Uncle",
+        "value": 0
+      },
+      {
+        "rank": 54,
+        "tag": "AVB",
+        "name": "Blue Cheese",
+        "value": 0
+      },
+      {
+        "rank": 55,
+        "tag": "TSF",
+        "name": "sosa",
+        "value": 0
+      },
+      {
+        "rank": 56,
+        "tag": "TSF",
+        "name": "Lord Edward 5",
+        "value": 0
+      },
+      {
+        "rank": 57,
+        "tag": "TSF",
+        "name": "Ward to the wise",
+        "value": 0
+      },
+      {
+        "rank": 58,
+        "tag": "",
+        "name": "m3rlino",
+        "value": 0
+      },
+      {
+        "rank": 59,
+        "tag": "PHX",
+        "name": "skyooz",
+        "value": 0
+      },
+      {
+        "rank": 60,
+        "tag": "AVB",
+        "name": "Billy Bob Hick",
+        "value": 0
+      },
+      {
+        "rank": 61,
+        "tag": "TSF",
+        "name": "Cay Qel Droma",
+        "value": 0
+      },
+      {
+        "rank": 62,
+        "tag": "TSF",
+        "name": "Antani",
+        "value": 0
+      },
+      {
+        "rank": 63,
+        "tag": "AWK",
+        "name": "Nayalmeidaf",
+        "value": 0
+      },
+      {
+        "rank": 64,
+        "tag": "AWK",
+        "name": "Micahit",
+        "value": 0
+      },
+      {
+        "rank": 65,
+        "tag": "AWK",
+        "name": "Krama",
+        "value": 0
+      },
+      {
+        "rank": 66,
+        "tag": "AVB",
+        "name": "Moon",
+        "value": 0
+      },
+      {
+        "rank": 67,
+        "tag": "PHX",
+        "name": "Number One",
+        "value": 0
+      },
+      {
+        "rank": 68,
+        "tag": "EMP",
+        "name": "Chuck",
+        "value": 0
+      },
+      {
+        "rank": 69,
+        "tag": "AVB",
+        "name": "LadyAragogShelob",
+        "value": 0
+      },
+      {
+        "rank": 70,
+        "tag": "EMP",
+        "name": "Mikaaltawil",
+        "value": 0
+      },
+      {
+        "rank": 71,
+        "tag": "Sus",
+        "name": "Bruce",
+        "value": 0
+      },
+      {
+        "rank": 72,
+        "tag": "AWK",
+        "name": "Abster",
+        "value": 0
+      },
+      {
+        "rank": 73,
+        "tag": "",
+        "name": "Furlough",
+        "value": 0
+      },
+      {
+        "rank": 74,
+        "tag": "AWK",
+        "name": "David",
+        "value": 0
+      },
+      {
+        "rank": 75,
+        "tag": "AWK",
+        "name": "Princ3",
+        "value": 0
+      },
+      {
+        "rank": 76,
+        "tag": "TSF",
+        "name": "Bugiiii",
+        "value": 0
+      },
+      {
+        "rank": 77,
+        "tag": "Sus",
+        "name": "K 3ing",
+        "value": 0
+      },
+      {
+        "rank": 78,
+        "tag": "AVB",
+        "name": "Mike D",
+        "value": 0
+      },
+      {
+        "rank": 79,
+        "tag": "AWK",
+        "name": "Falcon",
+        "value": 0
+      },
+      {
+        "rank": 80,
+        "tag": "PHX",
+        "name": "Gold Jack",
+        "value": 0
+      },
+      {
+        "rank": 81,
+        "tag": "PHX",
+        "name": "Coffee Falbalic 'V)",
+        "value": 0
+      },
+      {
+        "rank": 82,
+        "tag": "AVB",
+        "name": "Buttered Toast",
+        "value": 0
+      },
+      {
+        "rank": 83,
+        "tag": "AVB",
+        "name": "LordPablo360",
+        "value": 0
+      },
+      {
+        "rank": 84,
+        "tag": "",
+        "name": "Reem",
+        "value": 0
+      },
+      {
+        "rank": 85,
+        "tag": "AWK",
+        "name": "AILexandRu",
+        "value": 0
+      },
+      {
+        "rank": 86,
+        "tag": "AVB",
+        "name": "D U T A",
+        "value": 0
+      },
+      {
+        "rank": 87,
+        "tag": "PHX",
+        "name": "Dano",
+        "value": 0
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "MyShinyQwfNme",
+        "value": 0
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "JY' \u20ac",
+        "value": 0
+      },
+      {
+        "rank": 90,
+        "tag": "AWK",
+        "name": "Halil Gunesli",
+        "value": 0
+      },
+      {
+        "rank": 91,
+        "tag": "AWK",
+        "name": "Fugaswolf",
+        "value": 0
+      },
+      {
+        "rank": 92,
+        "tag": "AWK",
+        "name": "Jordyfox",
+        "value": 0
+      },
+      {
+        "rank": 93,
+        "tag": "AVB",
+        "name": "sErCo",
+        "value": 0
+      },
+      {
+        "rank": 94,
+        "tag": "AVB",
+        "name": "Gam2o",
+        "value": 0
+      },
+      {
+        "rank": 95,
+        "tag": "AWK",
+        "name": "Shiverdecker",
+        "value": 0
+      },
+      {
+        "rank": 96,
+        "tag": "PHX",
+        "name": "ysl &s",
+        "value": 0
+      },
+      {
+        "rank": 97,
+        "tag": "Sus",
+        "name": "JustWooley",
+        "value": 0
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "[PHXLLol",
+        "value": 0
+      },
+      {
+        "rank": 99,
+        "tag": "Sus",
+        "name": "JustWooley",
+        "value": 0
+      },
+      {
+        "rank": 100,
+        "tag": "AVB",
+        "name": "JWebs",
         "value": 0
       }
     ]
