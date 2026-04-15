@@ -59,10 +59,32 @@
       // Show name reveal
       revealImg.innerHTML = '<img src="' + imgSrc + '" alt="' + state.name + '">';
       var greeting = window.Advisor.getGreeting(_profile ? _profile.nickname : 'Governor');
-      revealTxt.textContent = greeting;
+
+      // First-visit transparency line — shown once per user at the moment
+      // the advisor is chosen. Tells the player up front where the money
+      // goes. Principle: the user is owed honesty about the deal.
+      var showTransparency = false;
+      try {
+        if (!localStorage.getItem('ksp_funding_seen')) {
+          showTransparency = true;
+          localStorage.setItem('ksp_funding_seen', '1');
+        }
+      } catch (e) { /* private mode — just skip */ }
+
+      if (showTransparency) {
+        var safe = function (s) {
+          return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        };
+        var note = 'The ads at the edge of your sight pay for this council chamber. What is left over goes to a garden being tended elsewhere, and to the minds who built this advisory. You owe nothing for being here.';
+        revealTxt.innerHTML = safe(greeting) +
+          '<br><br><span style="font-style:italic;opacity:0.8;font-size:0.92em;line-height:1.5;">' + safe(note) + '</span>';
+      } else {
+        revealTxt.textContent = greeting;
+      }
+
       revealEl.classList.add('visible');
 
-      // Auto-close after delay
+      // Auto-close after delay (longer on first visit so the player can read)
       setTimeout(function () {
         hideSelection();
 
@@ -70,7 +92,7 @@
         if (window.KSP && window.KSP.renderAdvisory && _profile) {
           window.KSP.renderAdvisory(_profile);
         }
-      }, 3000);
+      }, showTransparency ? 6500 : 3000);
     });
   }
 

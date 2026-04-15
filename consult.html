@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consult Your Advisor — KingshotPro</title>
+  <meta name="description" content="Consult your medieval advisor about your Kingshot kingdom. Free, unlimited, strategic counsel.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kingshotpro.com/consult.html">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .consult-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+    .consult-hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .consult-hero h1 {
+      font-size: 26px;
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+    .consult-hero p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .consult-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+    .consult-q-label,
+    .consult-a-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .consult-q-text {
+      font-size: 15px;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .consult-a-text {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+    .consult-a-text.loading::after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-left: 6px;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .consult-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .consult-form label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .consult-form textarea {
+      width: 100%;
+      min-height: 90px;
+      padding: 12px;
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .consult-form textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .consult-form button {
+      margin-top: 12px;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--gold);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .consult-form button:hover {
+      opacity: 0.9;
+    }
+    .consult-fid-prompt {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .consult-fid-prompt a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 22px;
+      background: var(--gold);
+      color: var(--bg);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+    .ad-slot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      margin: 16px 0;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="consult-wrap">
+
+    <div class="consult-hero">
+      <h1>Consult Your Advisor</h1>
+      <p>Speak your question. The advisor considers each consultation with full attention.</p>
+    </div>
+
+    <!-- Ad slot: consult top. Fresh on every page load. -->
+    <div class="ad-slot" data-slot="consult-top">Advertisement</div>
+
+    <!-- Consultation area: populated by JS when ?q= is in the URL -->
+    <div id="consult-content"></div>
+
+    <!-- Ad slot: consult bottom. Fresh on every page load. -->
+    <div class="ad-slot" data-slot="consult-bottom">Advertisement</div>
+
+  </div>
+</div>
+
+<script src="js/cookie-consent.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/advisor-names.js"></script>
+<script src="js/advisor.js"></script>
+<script src="js/advisor-orb.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var WORKER_URL = 'https://kingshotpro-api.kingshotpro.workers.dev';
+
+  function esc(s) {
+    return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function getFid() {
+    return localStorage.getItem('ksp_last_fid') || '';
+  }
+
+  function getPlayerContext(fid) {
+    try {
+      var raw = localStorage.getItem('ksp_profile_' + fid);
+      if (!raw) return '';
+      var p = JSON.parse(raw);
+      var parts = [];
+      if (p.nickname) parts.push('Name: ' + p.nickname);
+      if (p.furnace) parts.push('Furnace: ' + p.furnace);
+      if (p.kid) parts.push('Kingdom: ' + p.kid);
+      if (p.spend_tier) parts.push('Spend: ' + p.spend_tier);
+      return parts.join(', ');
+    } catch (e) { return ''; }
+  }
+
+  function getAdvisorMeta(fid) {
+    try {
+      var raw = localStorage.getItem('ksp_avatar_' + fid);
+      if (!raw) return { name: 'Ysabel', archetype: 'sage' };
+      var a = JSON.parse(raw);
+      return { name: a.name || 'Ysabel', archetype: a.archetype || 'sage' };
+    } catch (e) { return { name: 'Ysabel', archetype: 'sage' }; }
+  }
+
+  function renderForm(container, previousQ, previousA) {
+    var html = '';
+    if (previousQ) {
+      html += '<div class="consult-card">';
+      html += '<div class="consult-q-label">Your question</div>';
+      html += '<div class="consult-q-text">' + esc(previousQ) + '</div>';
+      html += '<div class="consult-a-label">Advisor\u2019s counsel</div>';
+      html += '<div class="consult-a-text' + (previousA ? '' : ' loading') + '" id="consult-answer">' +
+              (previousA ? esc(previousA) : 'The council considers your words\u2026') +
+              '</div>';
+      html += '</div>';
+    }
+    html += '<form class="consult-form" method="GET" action="consult.html">';
+    html += '<label for="consult-q">Ask another question</label>';
+    html += '<textarea id="consult-q" name="q" placeholder="What troubles your kingdom, Governor?" required></textarea>';
+    html += '<button type="submit">Consult the Advisor</button>';
+    html += '</form>';
+    container.innerHTML = html;
+  }
+
+  function renderNoFid(container) {
+    container.innerHTML =
+      '<div class="consult-fid-prompt">' +
+      '<h2 style="color:var(--gold);margin-bottom:8px;">First, your Player ID</h2>' +
+      '<p style="color:var(--text-muted);margin-bottom:16px;">The advisor must know your kingdom before offering counsel.</p>' +
+      '<a href="index.html#fid-form">Enter Player ID</a>' +
+      '</div>';
+  }
+
+  function init() {
+    var container = document.getElementById('consult-content');
+    var fid = getFid();
+    if (!fid) {
+      renderNoFid(container);
+      return;
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var q = params.get('q');
+
+    if (!q) {
+      // No question yet — just show the form
+      renderForm(container, null, null);
+      return;
+    }
+
+    // Show the question + loading state, then fetch the answer
+    renderForm(container, q, null);
+
+    var playerContext = getPlayerContext(fid);
+    var meta = getAdvisorMeta(fid);
+
+    fetch(WORKER_URL + '/advisor/consult', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: q,
+        fid: fid,
+        playerContext: playerContext,
+        archetype: meta.archetype,
+        advisorName: meta.name,
+      }),
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var answerEl = document.getElementById('consult-answer');
+      if (!answerEl) return;
+      answerEl.classList.remove('loading');
+      if (data.error) {
+        answerEl.textContent = 'My counsel falters. The council is silent for now. Try again shortly, Governor.';
+      } else {
+        answerEl.textContent = data.response || 'Silence from the council.';
+      }
+    })
+    .catch(function () {
+      var answerEl = document.getElementById('consult-answer');
+      if (answerEl) {
+        answerEl.classList.remove('loading');
+        answerEl.textContent = 'The connection to the council has been severed. Try again shortly, Governor.';
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -5,6 +5,53 @@ const ROUTES = {
   '/redeem': '/api/player',
 };
 
+// ── Kingshot grounding + tier routing + soft-cap config ──────────────────────
+// Added April 2026. If tier pricing changes, update TIER_REVENUE_USD and
+// (optionally) TIER_MODELS to swap the routed model for each tier.
+
+const GROUNDING_APPENDIX = '\n\nKINGSHOT REFERENCE (canonical — do not invent beyond this):\n' +
+  'HEROES (only reference these; do not invent new heroes): Amadeus (infantry, rally-lead, VIP), Jabel (cavalry, garrison tank, F2P), Helga (infantry, rally), Saul (archer, garrison joiner, F2P), Zoe, Hilde, Marlin, Petra, Eric, Jaeger, Rosa, Alcar, Margot, Vivian, Thrud, Long Fei, Yang, Sophia, Triton, Chenko, Amane, Yeonwoo, Gordon, Howard, Quinn, Diana, Fahd. If a hero is mentioned that is not in this list, say you are unfamiliar and ask the Governor to clarify.\n' +
+  'TROOPS: tiers T1\u2013T10. Higher Furnace levels unlock higher tiers. T4 unlocks near Furnace 20.\n' +
+  'BUILDINGS: Furnace, Barracks, Stable, Archer Camp, Academy, Embassy, Treasury.\n' +
+  'EVENTS: KvK, Alliance Mobilization, Bear Hunt, Castle Battles.\n' +
+  'Never invent Kingshot-specific terminology. If uncertain, ask the Governor to clarify.';
+
+// Model routing by tier. Swap these lines to change which AI a tier uses.
+// providers: 'deepseek' | 'anthropic' | 'openai'
+const TIER_MODELS = {
+  free:        { provider: 'deepseek',  model: 'deepseek-chat' },
+  pro:         { provider: 'anthropic', model: 'claude-haiku-4-5' },
+  war_council: { provider: 'anthropic', model: 'claude-haiku-4-5' },
+  elite:       { provider: 'anthropic', model: 'claude-haiku-4-5' },
+};
+
+// Revenue per tier per month (drives soft-cap thresholds)
+const TIER_REVENUE_USD = {
+  free: 0,
+  pro: 9.99,
+  war_council: 29.99,
+  elite: 99.99,
+};
+
+// Conversation context window per tier (turns of history kept in context)
+const TIER_CONTEXT_WINDOW = {
+  free: 6,
+  pro: 12,
+  war_council: 20,
+  elite: 30,
+};
+
+// Provider pricing — USD per million tokens. Keep in sync with provider pages.
+const ANTHROPIC_RATES = {
+  'claude-haiku-4-5':  { in: 1.00, out: 5.00,  cache_read: 0.10, cache_write_5m: 1.25 },
+  'claude-sonnet-4-6': { in: 3.00, out: 15.00, cache_read: 0.30, cache_write_5m: 3.75 },
+};
+const DEEPSEEK_RATES = { in: 0.28, out: 0.42 };
+const OPENAI_RATES = {
+  'gpt-4o-mini': { in: 0.15, out: 0.60 },
+  'gpt-4o':      { in: 2.50, out: 10.00 },
+};
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -20,6 +67,8 @@ export default {
         return handleAuthVerify(request, env);
       } else if (url.pathname === '/advisor/chat') {
         return handleAdvisorChat(request, env);
+      } else if (url.pathname === '/advisor/consult') {
+        return handleAdvisorConsult(request, env);
       } else if (url.pathname === '/advisor/chronicle') {
         return handleChronicle(request, env);
       } else if (url.pathname === '/advisor/illustration') {
@@ -203,54 +252,74 @@ async function handleAdvisorChat(request, env) {
     }
   }
 
-  // Build system prompt with player context and advisor identity
-  const systemPrompt = (env.SYSTEM_PROMPT || 'You are a medieval advisor for Kingshot players.') +
+  // Tier known early so all downstream logic can reference it
+  const tier = user ? user.tier : 'free';
+
+  // Build system prompt: base + player context + archetype identity + grounding layer
+  let systemPrompt = (env.SYSTEM_PROMPT || 'You are a medieval advisor for Kingshot players.') +
     '\n\nPlayer context: ' + (playerContext || 'Unknown') +
     '\n\nYou are ' + (advisorName || 'the advisor') + ', archetype: ' + (archetype || 'steward') +
-    '. Stay in character. Be concise and strategic.';
+    '. Stay in character. Be concise and strategic.' +
+    GROUNDING_APPENDIX;
 
-  // Retrieve conversation memory (tier-aware)
-  // Pro: last 7 days. Elite: full history. Free/anonymous: last 10.
-  // ALL conversations are always STORED — the tier controls what gets LOADED as context.
+  // Conversation windowing — tier-aware, prevents context bloat for long chats
+  const windowSize = TIER_CONTEXT_WINDOW[tier] || 6;
   let memoryMessages = [];
   if (user && user.memory) {
-    if (user.tier === 'elite') {
-      // Elite: load full relevant history (last 30 exchanges for context window)
-      memoryMessages = user.memory.slice(-30);
-    } else if (user.tier === 'pro' || user.tier === 'war_council') {
-      // Pro/WC: last 7 days of messages
+    if (user.tier === 'pro' || user.tier === 'war_council') {
+      // Pro / WC also filter by 7-day recency
       const sevenDaysAgo = Date.now() - 7 * 86400000;
-      memoryMessages = user.memory.filter(function(m) { return !m.ts || m.ts > sevenDaysAgo; }).slice(-20);
+      memoryMessages = user.memory.filter(function(m) { return !m.ts || m.ts > sevenDaysAgo; }).slice(-windowSize);
     } else {
-      memoryMessages = user.memory.slice(-10);
+      // Free and Elite: just take the last N by window size
+      memoryMessages = user.memory.slice(-windowSize);
     }
   } else {
     const fidMem = await env.KV.get(`memory:${fid}`, { type: 'json' });
-    if (fidMem) memoryMessages = fidMem.slice(-10);
+    if (fidMem) memoryMessages = fidMem.slice(-windowSize);
   }
 
-  const apiMessages = [...memoryMessages, { role: 'user', content: message }];
+  // Strip timestamps before sending to the AI (API only wants role + content)
+  const apiMessages = memoryMessages.map(function(m) { return { role: m.role, content: m.content }; });
+  apiMessages.push({ role: 'user', content: message });
 
-  // Model routing by tier — OpenAI now, Anthropic later
-  const tier = user ? user.tier : 'free';
-  const model = tier === 'elite' ? 'gpt-4o' : 'gpt-4o-mini';
+  // Check cumulative cost this billing cycle → drives "weary advisor" soft-cap
+  const costThisCycle = await getCostThisCycle(env, fid);
+  const wearyState = getWearyState(costThisCycle, tier);
+  systemPrompt = applyWearyFraming(systemPrompt, wearyState);
 
-  let assistantMessage;
+  // Tier-based model routing. If soft-cap is in "downgraded" state, fall back to free provider.
+  let modelConfig = TIER_MODELS[tier] || TIER_MODELS.free;
+  if (wearyState === 'downgraded') {
+    modelConfig = TIER_MODELS.free;
+  }
+
+  // Call the AI provider
+  let assistantMessage = '';
+  let callCost = 0;
   try {
-    // OpenAI format: system message in messages array
-    const openaiMessages = [{ role: 'system', content: systemPrompt }, ...apiMessages];
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + env.OPENAI_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, messages: openaiMessages, max_tokens: 500 }),
-    });
-    const data = await res.json();
-    assistantMessage = (data.choices && data.choices[0]) ? data.choices[0].message.content : 'My counsel falters. Try again, Governor.';
-  } catch {
-    return corsWrap('{"error":"ai service unreachable"}', 502);
+    let result;
+    if (modelConfig.provider === 'anthropic') {
+      result = await callAnthropic(env, modelConfig.model, systemPrompt, apiMessages);
+    } else if (modelConfig.provider === 'deepseek') {
+      result = await callDeepSeek(env, systemPrompt, apiMessages);
+    } else if (modelConfig.provider === 'openai') {
+      result = await callOpenAI(env, modelConfig.model, systemPrompt, apiMessages);
+    } else {
+      throw new Error('unknown provider: ' + modelConfig.provider);
+    }
+    assistantMessage = result.text || 'My counsel falters. Try again, Governor.';
+    callCost = result.cost || 0;
+  } catch (e) {
+    return corsWrap(JSON.stringify({ error: 'ai service unreachable', detail: String(e && e.message ? e.message : e) }), 502);
   }
 
-  // Store memory + decrement energy
+  // Track cost for future soft-cap decisions
+  if (callCost > 0) {
+    await addCost(env, fid, callCost);
+  }
+
+  // Store memory + decrement free-tier energy
   const now = Date.now();
   const newEntry = [{ role: 'user', content: message, ts: now }, { role: 'assistant', content: assistantMessage, ts: now }];
   if (user) {
@@ -263,13 +332,89 @@ async function handleAdvisorChat(request, env) {
     fidMem = [...fidMem, ...newEntry].slice(-100);
     await env.KV.put(`memory:${fid}`, JSON.stringify(fidMem));
     // Decrement anonymous energy
-    if (!energyData) energyData = { energy_today: 5, energy_date: new Date().toISOString().split('T')[0] };
+    if (!energyData) energyData = { energy_today: 5, energy_date: today };
     energyData.energy_today--;
     await env.KV.put(energyKey, JSON.stringify(energyData));
   }
 
   const remaining = user ? user.energy_today : (energyData ? energyData.energy_today : 0);
-  return corsWrap(JSON.stringify({ response: assistantMessage, energy_remaining: remaining, tier }), 200);
+  return corsWrap(JSON.stringify({
+    response: assistantMessage,
+    energy_remaining: remaining,
+    tier,
+    weary_state: wearyState,
+  }), 200);
+}
+
+// ── Free-tier "consultation" endpoint ───────────────────────────────────────
+// Used by consult.html. Each call is a real page navigation on the client
+// side, which = a new legitimate AdSense impression. Because the revenue
+// model is ad-funded per-call, there is NO energy cap here — unlimited
+// free consultations, economics work because each Q triggers a new ad view.
+// Always routed through DeepSeek (cheapest usable model).
+
+async function handleAdvisorConsult(request, env) {
+  let message, fid, playerContext, archetype, advisorName;
+  try {
+    const body = await request.json();
+    message = body.message;
+    fid = body.fid;
+    playerContext = body.playerContext;
+    archetype = body.archetype;
+    advisorName = body.advisorName;
+  } catch {
+    return corsWrap('{"error":"bad request"}', 400);
+  }
+
+  if (!message || !fid) {
+    return corsWrap('{"error":"message and fid required"}', 400);
+  }
+
+  // Build system prompt with grounding layer (same as chat path)
+  const systemPrompt = (env.SYSTEM_PROMPT || 'You are a medieval advisor for Kingshot players.') +
+    '\n\nPlayer context: ' + (playerContext || 'Unknown') +
+    '\n\nYou are ' + (advisorName || 'the advisor') + ', archetype: ' + (archetype || 'steward') +
+    '. Stay in character. Be concise and strategic.' +
+    GROUNDING_APPENDIX;
+
+  // Load last 6 turns of memory (free-tier window)
+  const fidMem = await env.KV.get(`memory:${fid}`, { type: 'json' });
+  const windowSize = TIER_CONTEXT_WINDOW.free;
+  const memoryMessages = (fidMem || []).slice(-windowSize).map(function(m) {
+    return { role: m.role, content: m.content };
+  });
+  memoryMessages.push({ role: 'user', content: message });
+
+  // Always route through DeepSeek for the consultation path
+  let assistantMessage = '';
+  let callCost = 0;
+  try {
+    const result = await callDeepSeek(env, systemPrompt, memoryMessages);
+    assistantMessage = result.text || 'My counsel falters. Try again, Governor.';
+    callCost = result.cost || 0;
+  } catch (e) {
+    return corsWrap(JSON.stringify({ error: 'ai service unreachable', detail: String(e && e.message ? e.message : e) }), 502);
+  }
+
+  // Track cost for analytics (free tier has no soft-cap, but the data is useful)
+  if (callCost > 0) {
+    await addCost(env, fid, callCost);
+  }
+
+  // Store turn in memory (anonymous/FID-keyed, same as free chat path)
+  const now = Date.now();
+  const newEntry = [
+    { role: 'user', content: message, ts: now },
+    { role: 'assistant', content: assistantMessage, ts: now },
+  ];
+  let updatedMem = (fidMem || []).concat(newEntry).slice(-100);
+  await env.KV.put(`memory:${fid}`, JSON.stringify(updatedMem));
+
+  return corsWrap(JSON.stringify({
+    response: assistantMessage,
+    tier: 'free',
+    flow: 'consult',
+  }), 200);
 }
 
 async function getUser(request, env) {
@@ -952,4 +1097,137 @@ function corsWrap(body, status = 200) {
       'Cache-Control': 'no-store',
     },
   });
+}
+
+// ── Provider-specific AI call helpers ────────────────────────────────────────
+// Each helper returns { text, usage, cost } where cost is in USD.
+
+async function callAnthropic(env, model, systemPrompt, messages) {
+  const body = {
+    model: model,
+    max_tokens: 500,
+    // Prompt caching: the system prompt is static across calls, so cache it.
+    // 5-minute ephemeral cache — amortizes after ~2 reads. Perfect for chat.
+    system: [
+      { type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } },
+    ],
+    messages: messages,
+  };
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': env.ANTHROPIC_KEY,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (data.error) throw new Error('anthropic: ' + (data.error.message || 'unknown'));
+  const text = (data.content && data.content[0] && data.content[0].text) || '';
+  const usage = data.usage || {};
+  const rates = ANTHROPIC_RATES[model] || { in: 1, out: 5, cache_read: 0.1, cache_write_5m: 1.25 };
+  const cost =
+    ((usage.input_tokens || 0) / 1e6) * rates.in +
+    ((usage.output_tokens || 0) / 1e6) * rates.out +
+    ((usage.cache_read_input_tokens || 0) / 1e6) * rates.cache_read +
+    ((usage.cache_creation_input_tokens || 0) / 1e6) * rates.cache_write_5m;
+  return { text, usage, cost };
+}
+
+async function callDeepSeek(env, systemPrompt, messages) {
+  // DeepSeek API is OpenAI-compatible. System message as first array entry.
+  const body = {
+    model: 'deepseek-chat',
+    max_tokens: 500,
+    temperature: 0.7,
+    messages: [{ role: 'system', content: systemPrompt }].concat(messages),
+  };
+  const res = await fetch('https://api.deepseek.com/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + env.DEEPSEEK_KEY,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (data.error) throw new Error('deepseek: ' + (data.error.message || 'unknown'));
+  const text = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '';
+  const usage = data.usage || {};
+  // DeepSeek handles caching transparently (~10x discount on cache hits).
+  // Simplified cost model: treat input as full price. Real cost often lower.
+  const cost =
+    ((usage.prompt_tokens || 0) / 1e6) * DEEPSEEK_RATES.in +
+    ((usage.completion_tokens || 0) / 1e6) * DEEPSEEK_RATES.out;
+  return { text, usage, cost };
+}
+
+async function callOpenAI(env, model, systemPrompt, messages) {
+  const body = {
+    model: model,
+    max_tokens: 500,
+    messages: [{ role: 'system', content: systemPrompt }].concat(messages),
+  };
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + env.OPENAI_KEY,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (data.error) throw new Error('openai: ' + (data.error.message || 'unknown'));
+  const text = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '';
+  const usage = data.usage || {};
+  const rates = OPENAI_RATES[model] || { in: 0.15, out: 0.60 };
+  const cost =
+    ((usage.prompt_tokens || 0) / 1e6) * rates.in +
+    ((usage.completion_tokens || 0) / 1e6) * rates.out;
+  return { text, usage, cost };
+}
+
+// ── Cost tracking (per-FID, per-billing-cycle) ───────────────────────────────
+// Key format: cost:{fid}:{yyyymm}. Expires 45 days after last write so it
+// covers the current billing cycle plus a grace window.
+
+async function getCostThisCycle(env, fid) {
+  const yyyymm = new Date().toISOString().slice(0, 7); // e.g. "2026-04"
+  const key = 'cost:' + fid + ':' + yyyymm;
+  const raw = await env.KV.get(key);
+  return parseFloat(raw) || 0;
+}
+
+async function addCost(env, fid, amount) {
+  const yyyymm = new Date().toISOString().slice(0, 7);
+  const key = 'cost:' + fid + ':' + yyyymm;
+  const current = parseFloat(await env.KV.get(key)) || 0;
+  const newCost = current + amount;
+  await env.KV.put(key, String(newCost), { expirationTtl: 45 * 86400 });
+  return newCost;
+}
+
+// ── Soft-cap "weary advisor" logic ───────────────────────────────────────────
+// Drives the in-character fatigue progression and forced downgrade when a
+// paid user has consumed too much of their own subscription's margin.
+
+function getWearyState(costThisCycle, tier) {
+  const revenue = TIER_REVENUE_USD[tier] || 0;
+  if (revenue === 0) return 'normal'; // free tier has no soft-cap
+  const ratio = costThisCycle / revenue;
+  if (ratio < 0.50) return 'normal';
+  if (ratio < 0.75) return 'hinting';
+  if (ratio < 1.00) return 'weary';
+  return 'downgraded';
+}
+
+function applyWearyFraming(systemPrompt, wearyState) {
+  if (wearyState === 'normal') return systemPrompt;
+  const notes = {
+    hinting: '\n\nADVISOR STATE: You have served this Governor for many hours this cycle. You may subtly acknowledge the passage of time in your voice, but continue your full counsel without explicit mention of limits.',
+    weary: '\n\nADVISOR STATE: Your role has nearly reached its limit for this cycle. In character, acknowledge that a Steward (or your current rank) can only serve so far in a single moon. Suggest the Governor may elevate your rank (War Council or higher) for greater sustained counsel. Continue to provide useful advice in this response. Frame this as institutional, not personal — you are not tired as a person, you are at the edge of what your role can bear.',
+    downgraded: '\n\nADVISOR STATE: Your role is at rest until the new moon. Acknowledge briefly in character that you are offering simpler counsel for the remainder of this cycle. Still answer the question but be more concise than usual.',
+  };
+  return systemPrompt + (notes[wearyState] || '');
 }

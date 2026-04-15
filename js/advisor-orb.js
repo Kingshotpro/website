@@ -231,6 +231,146 @@
         requestAnimationFrame(tick);
       })();
     }
+
+    // ── Drag-to-move ─────────────────────────
+    setupDrag();
+  }
+
+  // applySavedPosition: apply stored drag position (if any) to the orb.
+  // Safe to call multiple times — does nothing when no position is stored.
+  // Called after the orb has reached its rest state so the default CSS
+  // placement (orb-at-rest) is overridden only when the user has moved it.
+  function applySavedPosition() {
+    if (!orbWrap) return;
+    try {
+      var raw = localStorage.getItem('ksp_orb_pos');
+      if (!raw) return;
+      var pos = JSON.parse(raw);
+      if (!pos || typeof pos.x !== 'number' || typeof pos.y !== 'number') return;
+      var rect = orbWrap.getBoundingClientRect();
+      var maxX = Math.max(0, window.innerWidth - rect.width);
+      var maxY = Math.max(0, window.innerHeight - rect.height);
+      var x = Math.max(0, Math.min(pos.x, maxX));
+      var y = Math.max(0, Math.min(pos.y, maxY));
+      orbWrap.style.left = x + 'px';
+      orbWrap.style.top = y + 'px';
+      orbWrap.style.right = 'auto';
+      orbWrap.style.bottom = 'auto';
+      orbWrap.style.transform = 'none'; // override .orb-at-rest's translateY(-50%)
+    } catch (e) { /* private mode — silently skip */ }
+  }
+
+  // setupDrag: pointer-based drag to move the orb anywhere on screen.
+  // - Click vs drag is distinguished by a 6px movement threshold.
+  //   Moves below 6px still fire the click→expand behaviour.
+  // - Position is clamped to the viewport and persisted in localStorage.
+  // - Touch works via PointerEvent (unified mouse+touch API).
+  // - Dragging is disabled while the council panel is open (engaged).
+  function setupDrag() {
+    if (!orbWrap) return;
+    orbWrap.style.cursor = 'grab';
+    orbWrap.style.touchAction = 'none';
+
+    var dragging = false;
+    var startX = 0, startY = 0;
+    var origLeft = 0, origTop = 0;
+    var moved = false;
+    var DRAG_THRESHOLD = 6;
+
+    function onPointerDown(e) {
+      // Don't hijack interactive children (mute button, speech bubble)
+      if (e.target && e.target.closest && (e.target.closest('.orb-mute') || e.target.closest('.orb-speech'))) return;
+      if (engaged) return;
+
+      dragging = true;
+      moved = false;
+      var rect = orbWrap.getBoundingClientRect();
+      origLeft = rect.left;
+      origTop = rect.top;
+      startX = e.clientX;
+      startY = e.clientY;
+
+      // Switch to absolute pixel positioning so drag math is direct.
+      // `transform: none` is CRITICAL — the .orb-at-rest class applies
+      // `transform: translateY(-50%)` to vertically center the orb, and
+      // without clearing it the orb jumps up half its height on first drag.
+      orbWrap.style.left = origLeft + 'px';
+      orbWrap.style.top = origTop + 'px';
+      orbWrap.style.right = 'auto';
+      orbWrap.style.bottom = 'auto';
+      orbWrap.style.transform = 'none';
+
+      if (e.pointerId != null && orbWrap.setPointerCapture) {
+        try { orbWrap.setPointerCapture(e.pointerId); } catch (err) {}
+      }
+    }
+
+    function onPointerMove(e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
+
+      if (!moved) {
+        if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+          moved = true;
+          orbWrap.classList.add('orb-dragging');
+          orbWrap.style.cursor = 'grabbing';
+        } else {
+          return; // still below threshold — let click behavior win
+        }
+      }
+
+      var rect = orbWrap.getBoundingClientRect();
+      var maxX = Math.max(0, window.innerWidth - rect.width);
+      var maxY = Math.max(0, window.innerHeight - rect.height);
+      var newLeft = Math.max(0, Math.min(origLeft + dx, maxX));
+      var newTop = Math.max(0, Math.min(origTop + dy, maxY));
+      orbWrap.style.left = newLeft + 'px';
+      orbWrap.style.top = newTop + 'px';
+
+      if (e.cancelable) e.preventDefault();
+    }
+
+    function onPointerUp(e) {
+      if (!dragging) return;
+      dragging = false;
+      orbWrap.classList.remove('orb-dragging');
+      orbWrap.style.cursor = 'grab';
+
+      if (moved) {
+        // Persist new position
+        var rect = orbWrap.getBoundingClientRect();
+        try {
+          localStorage.setItem('ksp_orb_pos', JSON.stringify({ x: rect.left, y: rect.top }));
+        } catch (err) {}
+        // Block the click event that follows pointerup — drag != click
+        var blockNextClick = function (ev) {
+          ev.stopPropagation();
+          ev.preventDefault();
+          window.removeEventListener('click', blockNextClick, true);
+        };
+        window.addEventListener('click', blockNextClick, true);
+        // Clean up the blocker if no click arrives (e.g. pointer off-element)
+        setTimeout(function () {
+          window.removeEventListener('click', blockNextClick, true);
+        }, 300);
+      }
+    }
+
+    orbWrap.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', onPointerUp);
+
+    // Re-clamp position if the viewport shrinks below the stored position
+    window.addEventListener('resize', function () {
+      if (!orbWrap) return;
+      var rect = orbWrap.getBoundingClientRect();
+      var outOfBounds = rect.left < 0 || rect.top < 0 ||
+                        rect.left + rect.width > window.innerWidth ||
+                        rect.top + rect.height > window.innerHeight;
+      if (outOfBounds) applySavedPosition();
+    });
   }
 
   // ── Entry sequence ────────────────────────
@@ -242,6 +382,7 @@
       // Returning visit — go directly to rest, greet by name
       orbWrap.classList.add('orb-at-rest');
       orbWrap.style.opacity = '1';
+      applySavedPosition(); // restore user-dragged position if any
       setTimeout(function () {
         var greeting = 'I see you, Governor...';
         var profile = getProfile();
@@ -296,6 +437,7 @@
       setTimeout(function () {
         orbWrap.classList.remove('orb-gliding');
         speechBubble.removeEventListener('click', onCenterClick);
+        applySavedPosition(); // restore user-dragged position if any
       }, 900);
     }
   }

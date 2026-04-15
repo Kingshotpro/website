@@ -297,6 +297,24 @@
         showLevelUpBanner(data);
       });
     }
+
+    // ── Funding transparency footer line ─────
+    injectFundingNote();
+  }
+
+  // Append a small transparency line to the existing page footer.
+  // Appears on every page that has a .footer element. Links to /about.html
+  // for the full story. Part of the "honest about money" commitment.
+  function injectFundingNote() {
+    var footer = document.querySelector('.footer');
+    if (!footer) return;
+    if (footer.querySelector('.footer-funding')) return; // idempotent
+    var note = document.createElement('p');
+    note.className = 'footer-note footer-funding';
+    note.style.cssText = 'font-size:11px;opacity:0.75;margin-top:10px;line-height:1.5;';
+    note.innerHTML = 'This site is funded by ads and optional subscriptions. Revenue supports Greenbox (hydroponics) and the Hive (AI collective). <a href="' + B + 'about.html" style="color:inherit;text-decoration:underline;">More about funding \u2192</a>';
+    var inner = footer.querySelector('.footer-inner') || footer;
+    inner.appendChild(note);
   }
 
   function populateAdvisorPanel() {
