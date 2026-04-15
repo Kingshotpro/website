@@ -1,0 +1,4203 @@
+{
+  "kingdom": 230,
+  "last_updated": "2026-04-14",
+  "source": "ADB screenshot scraper + EasyOCR extraction",
+  "categories": {
+    "alliance_power": [
+      {
+        "rank": 1,
+        "tag": "EON",
+        "name": "ETERNALS",
+        "value": 20947090128
+      },
+      {
+        "rank": 2,
+        "tag": "THE",
+        "name": "WarMachine",
+        "value": 20648940643
+      },
+      {
+        "rank": 3,
+        "tag": "PNX",
+        "name": "Phoenix",
+        "value": 20192278661
+      },
+      {
+        "rank": 4,
+        "tag": "kNK",
+        "name": "EL YSIUM",
+        "value": 11882386045
+      },
+      {
+        "rank": 5,
+        "tag": "WoF",
+        "name": "WarriorsofFire",
+        "value": 8467146297
+      },
+      {
+        "rank": 6,
+        "tag": "VIV",
+        "name": "TheBBQparty",
+        "value": 4505957547
+      },
+      {
+        "rank": 7,
+        "tag": "xjD",
+        "name": "Together",
+        "value": 3496800833
+      },
+      {
+        "rank": 8,
+        "tag": "NGU",
+        "name": "NeverGiveUpFarm",
+        "value": 1584499739
+      },
+      {
+        "rank": 9,
+        "tag": "JNC",
+        "name": "ResidentEvil2",
+        "value": 1456759295
+      },
+      {
+        "rank": 10,
+        "tag": "HAF",
+        "name": "HopeAndFun",
+        "value": 1376860523
+      },
+      {
+        "rank": 11,
+        "tag": "RNK",
+        "name": "Ragnarok",
+        "value": 907063801
+      },
+      {
+        "rank": 12,
+        "tag": "",
+        "name": "[WLGWarriorLegacy",
+        "value": 830919349
+      },
+      {
+        "rank": 13,
+        "tag": "WTF",
+        "name": "KingOfTheKill",
+        "value": 711087750
+      },
+      {
+        "rank": 14,
+        "tag": "NoT",
+        "name": "Unsanctioned",
+        "value": 470625331
+      },
+      {
+        "rank": 15,
+        "tag": "",
+        "name": "",
+        "value": 407328601
+      },
+      {
+        "rank": 16,
+        "tag": "",
+        "name": "",
+        "value": 372074923
+      },
+      {
+        "rank": 17,
+        "tag": "GER",
+        "name": "DeutscheAkademie",
+        "value": 372074923
+      },
+      {
+        "rank": 18,
+        "tag": "PtE",
+        "name": "PtEPOLSKA",
+        "value": 262084183
+      },
+      {
+        "rank": 19,
+        "tag": "AAX",
+        "name": "Assasins",
+        "value": 251689452
+      },
+      {
+        "rank": 20,
+        "tag": "",
+        "name": "[YXYhhappy",
+        "value": 251534280
+      },
+      {
+        "rank": 21,
+        "tag": "CHr",
+        "name": "Chronicles",
+        "value": 242434721
+      },
+      {
+        "rank": 22,
+        "tag": "jWb",
+        "name": "Franceamitie",
+        "value": 231680072
+      },
+      {
+        "rank": 23,
+        "tag": "HKU",
+        "name": "HKUnion",
+        "value": 205842887
+      },
+      {
+        "rank": 24,
+        "tag": "zoz",
+        "name": "Greece",
+        "value": 192747048
+      },
+      {
+        "rank": 25,
+        "tag": "AzB",
+        "name": "Queenshot",
+        "value": 181927293
+      },
+      {
+        "rank": 26,
+        "tag": "hmg",
+        "name": "Poooes",
+        "value": 150374517
+      },
+      {
+        "rank": 27,
+        "tag": "Prq",
+        "name": "79935133",
+        "value": 147945020
+      },
+      {
+        "rank": 28,
+        "tag": "XRP",
+        "name": "EON",
+        "value": 136584590
+      },
+      {
+        "rank": 29,
+        "tag": "RpX",
+        "name": "Schweizergarde",
+        "value": 119810545
+      },
+      {
+        "rank": 30,
+        "tag": "hC",
+        "name": "]Wintertome",
+        "value": 88255654
+      },
+      {
+        "rank": 31,
+        "tag": "FtE",
+        "name": "FATEBREAKERS",
+        "value": 79211591
+      },
+      {
+        "rank": 32,
+        "tag": "",
+        "name": "",
+        "value": 73947703
+      },
+      {
+        "rank": 33,
+        "tag": "KSA",
+        "name": "KSA",
+        "value": 73947703
+      },
+      {
+        "rank": 34,
+        "tag": "KOR",
+        "name": "II. ZHII",
+        "value": 70904589
+      },
+      {
+        "rank": 35,
+        "tag": "FeB",
+        "name": "lronband",
+        "value": 67739116
+      },
+      {
+        "rank": 36,
+        "tag": "Ger",
+        "name": "Krieger",
+        "value": 65163179
+      },
+      {
+        "rank": 37,
+        "tag": "OMG",
+        "name": "PlaceOfTheGod",
+        "value": 63266459
+      },
+      {
+        "rank": 38,
+        "tag": "uWu",
+        "name": "UWUKillerSamurai",
+        "value": 58831486
+      },
+      {
+        "rank": 39,
+        "tag": "",
+        "name": "",
+        "value": 52650100
+      },
+      {
+        "rank": 40,
+        "tag": "",
+        "name": "",
+        "value": 49570481
+      },
+      {
+        "rank": 41,
+        "tag": "RaC",
+        "name": "RavenClaw",
+        "value": 49444526
+      },
+      {
+        "rank": 42,
+        "tag": "Tdw",
+        "name": "MBS",
+        "value": 47041113
+      },
+      {
+        "rank": 43,
+        "tag": "MGA",
+        "name": "MegaAlianza",
+        "value": 46748654
+      },
+      {
+        "rank": 44,
+        "tag": "Pxp",
+        "name": "Tiger",
+        "value": 44690558
+      },
+      {
+        "rank": 45,
+        "tag": "NcT",
+        "name": "ForcaBR",
+        "value": 44545388
+      },
+      {
+        "rank": 46,
+        "tag": "sAb",
+        "name": "Foooes",
+        "value": 43361771
+      },
+      {
+        "rank": 47,
+        "tag": "",
+        "name": "",
+        "value": 40553448
+      },
+      {
+        "rank": 48,
+        "tag": "",
+        "name": "",
+        "value": 38107191
+      },
+      {
+        "rank": 49,
+        "tag": "SRO",
+        "name": "SiLkRoaD",
+        "value": 36748412
+      },
+      {
+        "rank": 50,
+        "tag": "PAR",
+        "name": "Paradise",
+        "value": 36381230
+      },
+      {
+        "rank": 51,
+        "tag": "FyU",
+        "name": "keck",
+        "value": 36366081
+      },
+      {
+        "rank": 52,
+        "tag": "JuS",
+        "name": "JusticeOfBlades",
+        "value": 36329270
+      },
+      {
+        "rank": 53,
+        "tag": "XHR",
+        "name": "Solidon",
+        "value": 32305082
+      },
+      {
+        "rank": 54,
+        "tag": "",
+        "name": "",
+        "value": 26407310
+      },
+      {
+        "rank": 55,
+        "tag": "",
+        "name": "",
+        "value": 25877094
+      },
+      {
+        "rank": 56,
+        "tag": "SLO",
+        "name": "TUJSAH'R",
+        "value": 19717226
+      },
+      {
+        "rank": 57,
+        "tag": "REX",
+        "name": "DinoCorp",
+        "value": 16945415
+      },
+      {
+        "rank": 58,
+        "tag": "kZx",
+        "name": "Barmezan",
+        "value": 15936670
+      },
+      {
+        "rank": 59,
+        "tag": "NDf",
+        "name": "LiwaFighter",
+        "value": 15146835
+      },
+      {
+        "rank": 60,
+        "tag": "AAA",
+        "name": "UFO",
+        "value": 14674669
+      },
+      {
+        "rank": 61,
+        "tag": "INC",
+        "name": "TeamPlolo",
+        "value": 12968325
+      },
+      {
+        "rank": 62,
+        "tag": "",
+        "name": "",
+        "value": 10554074
+      },
+      {
+        "rank": 63,
+        "tag": "",
+        "name": "",
+        "value": 7771844
+      },
+      {
+        "rank": 64,
+        "tag": "",
+        "name": "[vtglTheGovernor",
+        "value": 7090924
+      },
+      {
+        "rank": 65,
+        "tag": "OLS",
+        "name": "OVerLords",
+        "value": 6568362
+      },
+      {
+        "rank": 66,
+        "tag": "ZGM",
+        "name": "vxvx",
+        "value": 6376303
+      },
+      {
+        "rank": 67,
+        "tag": "VCe",
+        "name": "lalaland",
+        "value": 4730795
+      },
+      {
+        "rank": 68,
+        "tag": "KvP",
+        "name": "JJJ",
+        "value": 4336372
+      },
+      {
+        "rank": 69,
+        "tag": "666",
+        "name": "Heroes Tecamac",
+        "value": 3876355
+      },
+      {
+        "rank": 70,
+        "tag": "",
+        "name": "",
+        "value": 3748367
+      },
+      {
+        "rank": 71,
+        "tag": "",
+        "name": "",
+        "value": 3513290
+      },
+      {
+        "rank": 72,
+        "tag": "Fyr",
+        "name": "FairyTail",
+        "value": 3403851
+      },
+      {
+        "rank": 73,
+        "tag": "2oo",
+        "name": "lntelligenceCo",
+        "value": 3358855
+      },
+      {
+        "rank": 74,
+        "tag": "HUN",
+        "name": "Magyarok",
+        "value": 3261359
+      },
+      {
+        "rank": 75,
+        "tag": "Jjv",
+        "name": "Thunder",
+        "value": 3222414
+      },
+      {
+        "rank": 76,
+        "tag": "PUQ",
+        "name": "BoomBoomClan",
+        "value": 3211971
+      },
+      {
+        "rank": 77,
+        "tag": "Ydb",
+        "name": "ltalia",
+        "value": 3204215
+      },
+      {
+        "rank": 78,
+        "tag": "TRK",
+        "name": "GOKTURK",
+        "value": 2985473
+      },
+      {
+        "rank": 79,
+        "tag": "Ryb",
+        "name": "SoloYo",
+        "value": 2980545
+      },
+      {
+        "rank": 80,
+        "tag": "",
+        "name": "",
+        "value": 2826737
+      },
+      {
+        "rank": 81,
+        "tag": "zTR",
+        "name": "Abc",
+        "value": 2826737
+      },
+      {
+        "rank": 82,
+        "tag": "FbM",
+        "name": "Dadijinda",
+        "value": 2744711
+      },
+      {
+        "rank": 83,
+        "tag": "ncx",
+        "name": "Lupo",
+        "value": 2620304
+      },
+      {
+        "rank": 84,
+        "tag": "LDo",
+        "name": "cwo",
+        "value": 2557614
+      },
+      {
+        "rank": 85,
+        "tag": "Dde",
+        "name": "TheShimadaClan",
+        "value": 2498454
+      },
+      {
+        "rank": 86,
+        "tag": "neJ",
+        "name": "HellRZR sArmy",
+        "value": 2252592
+      },
+      {
+        "rank": 87,
+        "tag": "AVk",
+        "name": "F I+XMly gE",
+        "value": 2162682
+      },
+      {
+        "rank": 88,
+        "tag": "AVk",
+        "name": "F (+XMEHy#BB",
+        "value": 2162682
+      },
+      {
+        "rank": 89,
+        "tag": "FWM",
+        "name": "Godofkingdoms",
+        "value": 1927231
+      },
+      {
+        "rank": 90,
+        "tag": "ZCM",
+        "name": "IBeaners101",
+        "value": 1881747
+      },
+      {
+        "rank": 91,
+        "tag": "ZCM",
+        "name": "IBeanersI01",
+        "value": 1881747
+      },
+      {
+        "rank": 92,
+        "tag": "mnN",
+        "name": "usMC",
+        "value": 1855709
+      },
+      {
+        "rank": 93,
+        "tag": "mnN",
+        "name": "uSMC",
+        "value": 1855709
+      },
+      {
+        "rank": 94,
+        "tag": "Hhz",
+        "name": "x3EX",
+        "value": 1854063
+      },
+      {
+        "rank": 95,
+        "tag": "NKa",
+        "name": "France44",
+        "value": 1839543
+      },
+      {
+        "rank": 96,
+        "tag": "BNb",
+        "name": "MineianKingdom",
+        "value": 1835809
+      },
+      {
+        "rank": 97,
+        "tag": "yaz",
+        "name": "NurzumSpafs",
+        "value": 1766421
+      },
+      {
+        "rank": 98,
+        "tag": "yaz",
+        "name": "NurzumSpals",
+        "value": 1766421
+      },
+      {
+        "rank": 99,
+        "tag": "AjP",
+        "name": "Dark",
+        "value": 1762696
+      },
+      {
+        "rank": 100,
+        "tag": "XrK",
+        "name": "KRAVENHUNTER",
+        "value": 964699
+      }
+    ],
+    "alliance_kills": [
+      {
+        "rank": 1,
+        "tag": "EON",
+        "name": "ETERNALS",
+        "value": 1775436540
+      },
+      {
+        "rank": 2,
+        "tag": "THE",
+        "name": "WarMachine",
+        "value": 1671375019
+      },
+      {
+        "rank": 3,
+        "tag": "PNX",
+        "name": "Phoenix",
+        "value": 950927338
+      },
+      {
+        "rank": 4,
+        "tag": "ToP",
+        "name": "Titans of-Power",
+        "value": 932736482
+      },
+      {
+        "rank": 5,
+        "tag": "kNK",
+        "name": "ELYSIUM",
+        "value": 139968846
+      },
+      {
+        "rank": 6,
+        "tag": "WoF",
+        "name": "WarriorsofFire",
+        "value": 85045022
+      },
+      {
+        "rank": 7,
+        "tag": "VIV",
+        "name": "TheBBQparty",
+        "value": 54554611
+      },
+      {
+        "rank": 8,
+        "tag": "xjD",
+        "name": "Together",
+        "value": 39826861
+      },
+      {
+        "rank": 9,
+        "tag": "",
+        "name": "[WLGWWarriorLegacy",
+        "value": 22411520
+      },
+      {
+        "rank": 10,
+        "tag": "WTF",
+        "name": "KingOfTheKill",
+        "value": 14125346
+      },
+      {
+        "rank": 11,
+        "tag": "HAF",
+        "name": "HopeAndFun",
+        "value": 10328338
+      },
+      {
+        "rank": 12,
+        "tag": "NGU",
+        "name": "NeverGiveUpFarm",
+        "value": 5393633
+      },
+      {
+        "rank": 13,
+        "tag": "JNC",
+        "name": "ResidentEvil2",
+        "value": 5105976
+      },
+      {
+        "rank": 14,
+        "tag": "RNK",
+        "name": "Ragnarok",
+        "value": 3169059
+      },
+      {
+        "rank": 15,
+        "tag": "AzB",
+        "name": "Queenshot",
+        "value": 3115183
+      },
+      {
+        "rank": 16,
+        "tag": "NoT",
+        "name": "Unsanctioned",
+        "value": 3029720
+      },
+      {
+        "rank": 17,
+        "tag": "AAX",
+        "name": "Assasins",
+        "value": 2374597
+      },
+      {
+        "rank": 18,
+        "tag": "Cwf",
+        "name": "fenix",
+        "value": 1509222
+      },
+      {
+        "rank": 19,
+        "tag": "",
+        "name": "[YXYhhappy",
+        "value": 1222530
+      },
+      {
+        "rank": 20,
+        "tag": "",
+        "name": "[STPITTG",
+        "value": 1104197
+      },
+      {
+        "rank": 21,
+        "tag": "PtE",
+        "name": "PtEPOLSKA",
+        "value": 1061411
+      },
+      {
+        "rank": 22,
+        "tag": "",
+        "name": "[hmglPoooes",
+        "value": 991419
+      },
+      {
+        "rank": 23,
+        "tag": "GER",
+        "name": "DeutscheAkademie",
+        "value": 827700
+      },
+      {
+        "rank": 24,
+        "tag": "jWb",
+        "name": "Franceamitie",
+        "value": 817902
+      },
+      {
+        "rank": 25,
+        "tag": "kZx",
+        "name": "Barmezan",
+        "value": 800345
+      },
+      {
+        "rank": 26,
+        "tag": "OMG",
+        "name": "PlaceOfTheGod",
+        "value": 722885
+      },
+      {
+        "rank": 27,
+        "tag": "Akx",
+        "name": "79935",
+        "value": 649613
+      },
+      {
+        "rank": 28,
+        "tag": "HKU",
+        "name": "HKUnion",
+        "value": 518961
+      },
+      {
+        "rank": 29,
+        "tag": "XRP",
+        "name": "EON",
+        "value": 514411
+      },
+      {
+        "rank": 30,
+        "tag": "FtE",
+        "name": "FATEBREAKERS",
+        "value": 418209
+      },
+      {
+        "rank": 31,
+        "tag": "hC J",
+        "name": "Wintertome",
+        "value": 380032
+      },
+      {
+        "rank": 32,
+        "tag": "CHr",
+        "name": "Chronicles",
+        "value": 283376
+      },
+      {
+        "rank": 33,
+        "tag": "jkr",
+        "name": "DLSL",
+        "value": 240661
+      },
+      {
+        "rank": 34,
+        "tag": "sAb",
+        "name": "Foooes",
+        "value": 225380
+      },
+      {
+        "rank": 35,
+        "tag": "KSA",
+        "name": "KSA",
+        "value": 203413
+      },
+      {
+        "rank": 36,
+        "tag": "XHR",
+        "name": "Solidon",
+        "value": 196245
+      },
+      {
+        "rank": 37,
+        "tag": "RaC",
+        "name": "RavenClaw",
+        "value": 147207
+      },
+      {
+        "rank": 38,
+        "tag": "FeB",
+        "name": "lronband",
+        "value": 144546
+      },
+      {
+        "rank": 39,
+        "tag": "Ger",
+        "name": "Krieger",
+        "value": 134517
+      },
+      {
+        "rank": 40,
+        "tag": "INc",
+        "name": "TeamPlolo",
+        "value": 116957
+      },
+      {
+        "rank": 41,
+        "tag": "TWE",
+        "name": "TWD",
+        "value": 106493
+      },
+      {
+        "rank": 42,
+        "tag": "XXX",
+        "name": "WarBand",
+        "value": 93038
+      },
+      {
+        "rank": 43,
+        "tag": "FyU",
+        "name": "keck",
+        "value": 78007
+      },
+      {
+        "rank": 44,
+        "tag": "Pxp",
+        "name": "Tiger",
+        "value": 76682
+      },
+      {
+        "rank": 45,
+        "tag": "NcT",
+        "name": "ForcaBR",
+        "value": 65939
+      },
+      {
+        "rank": 46,
+        "tag": "KOR",
+        "name": "IIZ #HII",
+        "value": 60470
+      },
+      {
+        "rank": 47,
+        "tag": "JuS",
+        "name": "JusticeOfBlades",
+        "value": 60253
+      },
+      {
+        "rank": 48,
+        "tag": "KvP",
+        "name": "JJJ",
+        "value": 57611
+      },
+      {
+        "rank": 49,
+        "tag": "ysN",
+        "name": "cZaSK",
+        "value": 55839
+      },
+      {
+        "rank": 50,
+        "tag": "666",
+        "name": "Heroes Tecamac",
+        "value": 54271
+      },
+      {
+        "rank": 51,
+        "tag": "Wkn",
+        "name": "Toasted",
+        "value": 47510
+      },
+      {
+        "rank": 52,
+        "tag": "PAR",
+        "name": "Paradise",
+        "value": 47281
+      },
+      {
+        "rank": 53,
+        "tag": "LDo",
+        "name": "cwo",
+        "value": 44062
+      },
+      {
+        "rank": 54,
+        "tag": "XrK",
+        "name": "KRAVENHUNTER",
+        "value": 40075
+      },
+      {
+        "rank": 55,
+        "tag": "REX",
+        "name": "DinoCorp",
+        "value": 39844
+      },
+      {
+        "rank": 56,
+        "tag": "uWu",
+        "name": "UWUKillerSamurai",
+        "value": 39631
+      },
+      {
+        "rank": 57,
+        "tag": "RYL",
+        "name": "RoyalSovereigns",
+        "value": 29845
+      },
+      {
+        "rank": 58,
+        "tag": "zTR",
+        "name": "Abc",
+        "value": 25088
+      },
+      {
+        "rank": 59,
+        "tag": "Ydb",
+        "name": "ltalia",
+        "value": 19436
+      },
+      {
+        "rank": 60,
+        "tag": "BNb",
+        "name": "MineianKingdom",
+        "value": 18663
+      },
+      {
+        "rank": 61,
+        "tag": "Kdx",
+        "name": "Reapers",
+        "value": 17218
+      },
+      {
+        "rank": 62,
+        "tag": "XAe",
+        "name": "= E1yg",
+        "value": 13981
+      },
+      {
+        "rank": 63,
+        "tag": "",
+        "name": "",
+        "value": 13606
+      },
+      {
+        "rank": 64,
+        "tag": "",
+        "name": "[Uz JJciyan",
+        "value": 13305
+      },
+      {
+        "rank": 65,
+        "tag": "ncx",
+        "name": "Lupo",
+        "value": 8956
+      },
+      {
+        "rank": 66,
+        "tag": "neJ",
+        "name": "HellRZR sArmy",
+        "value": 8414
+      },
+      {
+        "rank": 67,
+        "tag": "HUN",
+        "name": "Magyarok",
+        "value": 8328
+      },
+      {
+        "rank": 68,
+        "tag": "zoz",
+        "name": "Greece",
+        "value": 8217
+      },
+      {
+        "rank": 69,
+        "tag": "",
+        "name": "[kQqlutegt",
+        "value": 8101
+      },
+      {
+        "rank": 70,
+        "tag": "ZGM",
+        "name": "vxvx",
+        "value": 8023
+      },
+      {
+        "rank": 71,
+        "tag": "NDf",
+        "name": "LiwaFighter",
+        "value": 7880
+      },
+      {
+        "rank": 72,
+        "tag": "OLS",
+        "name": "OVerLords",
+        "value": 6315
+      },
+      {
+        "rank": 73,
+        "tag": "AjP",
+        "name": "Dark",
+        "value": 5530
+      },
+      {
+        "rank": 74,
+        "tag": "Dtj",
+        "name": "Thunderchickens",
+        "value": 4276
+      },
+      {
+        "rank": 75,
+        "tag": "Dde",
+        "name": "TheShimadaClan",
+        "value": 3972
+      },
+      {
+        "rank": 76,
+        "tag": "dmj",
+        "name": "DEATHEATERS",
+        "value": 3942
+      },
+      {
+        "rank": 77,
+        "tag": "PUQ",
+        "name": "BoomBoomClan",
+        "value": 2726
+      },
+      {
+        "rank": 78,
+        "tag": "SLO",
+        "name": "TRJSAT'",
+        "value": 2235
+      },
+      {
+        "rank": 79,
+        "tag": "bkz",
+        "name": "Marsteam",
+        "value": 2197
+      },
+      {
+        "rank": 80,
+        "tag": "FxE",
+        "name": "kunfoupanda",
+        "value": 2133
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "[JjvlThunder",
+        "value": 2085
+      },
+      {
+        "rank": 82,
+        "tag": "FbM",
+        "name": "Dadijinda",
+        "value": 1475
+      },
+      {
+        "rank": 83,
+        "tag": "mnN",
+        "name": "usMC",
+        "value": 1416
+      },
+      {
+        "rank": 84,
+        "tag": "mnN",
+        "name": "uSMC",
+        "value": 1416
+      },
+      {
+        "rank": 85,
+        "tag": "Fyr",
+        "name": "FairyTail",
+        "value": 1124
+      },
+      {
+        "rank": 86,
+        "tag": "ysu",
+        "name": "theundead",
+        "value": 1122
+      },
+      {
+        "rank": 87,
+        "tag": "",
+        "name": "[UQghhavoc",
+        "value": 1064
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "[UQglhavoc",
+        "value": 1064
+      },
+      {
+        "rank": 89,
+        "tag": "Xfb",
+        "name": "Agaete2208",
+        "value": 1042
+      },
+      {
+        "rank": 90,
+        "tag": "",
+        "name": "Alliance Kills",
+        "value": 0
+      },
+      {
+        "rank": 91,
+        "tag": "",
+        "name": "Alance",
+        "value": 0
+      },
+      {
+        "rank": 92,
+        "tag": "",
+        "name": "[USAIFternalslISA",
+        "value": 0
+      },
+      {
+        "rank": 93,
+        "tag": "",
+        "name": "Ge@/ EON",
+        "value": 0
+      },
+      {
+        "rank": 94,
+        "tag": "Tdw",
+        "name": "MBS",
+        "value": 0
+      },
+      {
+        "rank": 95,
+        "tag": "EPE",
+        "name": "KORPORATE",
+        "value": 0
+      },
+      {
+        "rank": 96,
+        "tag": "vjc",
+        "name": "Poop",
+        "value": 0
+      },
+      {
+        "rank": 97,
+        "tag": "cRA",
+        "name": "Vanster",
+        "value": 0
+      }
+    ],
+    "personal_power": [
+      {
+        "rank": 1,
+        "tag": "EON",
+        "name": "Thunder",
+        "value": 639203751
+      },
+      {
+        "rank": 2,
+        "tag": "PNX",
+        "name": "Aladeen",
+        "value": 614440849
+      },
+      {
+        "rank": 3,
+        "tag": "",
+        "name": "Phontom",
+        "value": 541562665
+      },
+      {
+        "rank": 4,
+        "tag": "THE",
+        "name": "Mighty Simeon",
+        "value": 468168618
+      },
+      {
+        "rank": 5,
+        "tag": "ToP",
+        "name": "Saji",
+        "value": 462590238
+      },
+      {
+        "rank": 6,
+        "tag": "THE",
+        "name": "YARA",
+        "value": 454133933
+      },
+      {
+        "rank": 7,
+        "tag": "EON",
+        "name": "Tux Dinosauron",
+        "value": 436163703
+      },
+      {
+        "rank": 8,
+        "tag": "PNX",
+        "name": "Alcatraz",
+        "value": 393602897
+      },
+      {
+        "rank": 9,
+        "tag": "THE",
+        "name": "Redsquadron",
+        "value": 369326262
+      },
+      {
+        "rank": 10,
+        "tag": "PNX",
+        "name": "DarkwingDL",
+        "value": 368431457
+      },
+      {
+        "rank": 11,
+        "tag": "EON",
+        "name": "Jin EON",
+        "value": 366625249
+      },
+      {
+        "rank": 12,
+        "tag": "THE",
+        "name": "Aussie",
+        "value": 366356156
+      },
+      {
+        "rank": 13,
+        "tag": "EON",
+        "name": "98Spec Tre8oe/ EON",
+        "value": 361476758
+      },
+      {
+        "rank": 14,
+        "tag": "",
+        "name": "",
+        "value": 348678510
+      },
+      {
+        "rank": 15,
+        "tag": "",
+        "name": "",
+        "value": 339217634
+      },
+      {
+        "rank": 16,
+        "tag": "",
+        "name": "",
+        "value": 336536901
+      },
+      {
+        "rank": 17,
+        "tag": "EON",
+        "name": "NAKSU",
+        "value": 330139466
+      },
+      {
+        "rank": 18,
+        "tag": "EON",
+        "name": "Jdub",
+        "value": 329466769
+      },
+      {
+        "rank": 19,
+        "tag": "EON",
+        "name": "MidNiTeStar",
+        "value": 324305663
+      },
+      {
+        "rank": 20,
+        "tag": "THE",
+        "name": "Nitaaa~",
+        "value": 324085736
+      },
+      {
+        "rank": 21,
+        "tag": "THE",
+        "name": "Dalaran",
+        "value": 320505356
+      },
+      {
+        "rank": 22,
+        "tag": "EON",
+        "name": "9-8Outlaw8oe/ EON",
+        "value": 319733736
+      },
+      {
+        "rank": 23,
+        "tag": "",
+        "name": "[ToPlturtle",
+        "value": 319178319
+      },
+      {
+        "rank": 24,
+        "tag": "THE",
+        "name": "Toke",
+        "value": 319025679
+      },
+      {
+        "rank": 25,
+        "tag": "",
+        "name": "",
+        "value": 318952521
+      },
+      {
+        "rank": 26,
+        "tag": "ToP",
+        "name": "Jomo",
+        "value": 311578068
+      },
+      {
+        "rank": 27,
+        "tag": "PNX",
+        "name": "Labubu",
+        "value": 311314177
+      },
+      {
+        "rank": 28,
+        "tag": "EON",
+        "name": "Poyraz EON",
+        "value": 305383050
+      },
+      {
+        "rank": 29,
+        "tag": "ToP",
+        "name": "Thanatos",
+        "value": 304853711
+      },
+      {
+        "rank": 30,
+        "tag": "THE",
+        "name": "",
+        "value": 304267057
+      },
+      {
+        "rank": 31,
+        "tag": "ToP",
+        "name": "Asmo",
+        "value": 304222121
+      },
+      {
+        "rank": 32,
+        "tag": "PNX",
+        "name": "AmirBeys",
+        "value": 303846675
+      },
+      {
+        "rank": 33,
+        "tag": "EON",
+        "name": "Harald",
+        "value": 302529947
+      },
+      {
+        "rank": 34,
+        "tag": "",
+        "name": "Tord",
+        "value": 300915711
+      },
+      {
+        "rank": 35,
+        "tag": "THE",
+        "name": "KNB 0913",
+        "value": 298137750
+      },
+      {
+        "rank": 36,
+        "tag": "PNX",
+        "name": "ivi",
+        "value": 294106849
+      },
+      {
+        "rank": 37,
+        "tag": "ToP",
+        "name": "Hoffey",
+        "value": 293889786
+      },
+      {
+        "rank": 38,
+        "tag": "EON",
+        "name": "Jon SnowEON",
+        "value": 291640338
+      },
+      {
+        "rank": 39,
+        "tag": "THE",
+        "name": "walay",
+        "value": 290728180
+      },
+      {
+        "rank": 40,
+        "tag": "PNX",
+        "name": "Cariandin",
+        "value": 286287720
+      },
+      {
+        "rank": 41,
+        "tag": "",
+        "name": "",
+        "value": 284398138
+      },
+      {
+        "rank": 42,
+        "tag": "ToP",
+        "name": "Tuma",
+        "value": 277935804
+      },
+      {
+        "rank": 43,
+        "tag": "THE",
+        "name": "SkyBlue",
+        "value": 277734545
+      },
+      {
+        "rank": 44,
+        "tag": "THE",
+        "name": "Tomica",
+        "value": 277288007
+      },
+      {
+        "rank": 45,
+        "tag": "EON",
+        "name": "Y KAIDO * EON",
+        "value": 277054949
+      },
+      {
+        "rank": 46,
+        "tag": "PNX",
+        "name": "Pola",
+        "value": 276437950
+      },
+      {
+        "rank": 47,
+        "tag": "",
+        "name": "",
+        "value": 276234525
+      },
+      {
+        "rank": 48,
+        "tag": "",
+        "name": "",
+        "value": 273519652
+      },
+      {
+        "rank": 49,
+        "tag": "",
+        "name": "",
+        "value": 272102235
+      },
+      {
+        "rank": 50,
+        "tag": "",
+        "name": "",
+        "value": 270815445
+      },
+      {
+        "rank": 51,
+        "tag": "kNK",
+        "name": "DomixD",
+        "value": 268185391
+      },
+      {
+        "rank": 52,
+        "tag": "PNX",
+        "name": "PauLRuLeZzz",
+        "value": 267482934
+      },
+      {
+        "rank": 53,
+        "tag": "THE",
+        "name": "Lord Fartzzz",
+        "value": 266840179
+      },
+      {
+        "rank": 54,
+        "tag": "ToP",
+        "name": "Tiwolf",
+        "value": 266574651
+      },
+      {
+        "rank": 55,
+        "tag": "EON",
+        "name": "Freya",
+        "value": 265305225
+      },
+      {
+        "rank": 56,
+        "tag": "ToP",
+        "name": "Meanface32",
+        "value": 265060595
+      },
+      {
+        "rank": 57,
+        "tag": "",
+        "name": "",
+        "value": 265054361
+      },
+      {
+        "rank": 58,
+        "tag": "",
+        "name": "",
+        "value": 264887442
+      },
+      {
+        "rank": 59,
+        "tag": "EON",
+        "name": "Melissa",
+        "value": 261824646
+      },
+      {
+        "rank": 60,
+        "tag": "PNX",
+        "name": "ROCKu",
+        "value": 261092164
+      },
+      {
+        "rank": 61,
+        "tag": "THE",
+        "name": "SilverLady",
+        "value": 260660182
+      },
+      {
+        "rank": 62,
+        "tag": "EON",
+        "name": "lcePanda",
+        "value": 260562983
+      },
+      {
+        "rank": 63,
+        "tag": "",
+        "name": "",
+        "value": 259894780
+      },
+      {
+        "rank": 64,
+        "tag": "",
+        "name": "",
+        "value": 259338456
+      },
+      {
+        "rank": 65,
+        "tag": "",
+        "name": "",
+        "value": 259190217
+      },
+      {
+        "rank": 66,
+        "tag": "",
+        "name": "",
+        "value": 258331375
+      },
+      {
+        "rank": 67,
+        "tag": "EON",
+        "name": "MingleEON",
+        "value": 257429691
+      },
+      {
+        "rank": 68,
+        "tag": "EON",
+        "name": "coten reborn",
+        "value": 257412844
+      },
+      {
+        "rank": 69,
+        "tag": "ToP",
+        "name": "Tunder",
+        "value": 254963554
+      },
+      {
+        "rank": 70,
+        "tag": "ToP",
+        "name": "W3iRdKiD",
+        "value": 254938567
+      },
+      {
+        "rank": 71,
+        "tag": "THE",
+        "name": "Just Joshin",
+        "value": 254909837
+      },
+      {
+        "rank": 72,
+        "tag": "EON",
+        "name": "Derek",
+        "value": 254246539
+      },
+      {
+        "rank": 73,
+        "tag": "ToP",
+        "name": "Domino_Daddy",
+        "value": 253906864
+      },
+      {
+        "rank": 74,
+        "tag": "",
+        "name": "",
+        "value": 253783897
+      },
+      {
+        "rank": 75,
+        "tag": "",
+        "name": "",
+        "value": 252306067
+      },
+      {
+        "rank": 76,
+        "tag": "EON",
+        "name": "Lt Aldo RaineEON",
+        "value": 251097330
+      },
+      {
+        "rank": 77,
+        "tag": "THE",
+        "name": "Floki3o",
+        "value": 250749357
+      },
+      {
+        "rank": 78,
+        "tag": "PNX",
+        "name": "Licious69",
+        "value": 248582806
+      },
+      {
+        "rank": 79,
+        "tag": "PNX",
+        "name": "Licious420",
+        "value": 248437463
+      },
+      {
+        "rank": 80,
+        "tag": "PNX",
+        "name": "Crazy",
+        "value": 248290521
+      },
+      {
+        "rank": 81,
+        "tag": "EON",
+        "name": "3bd",
+        "value": 247893451
+      },
+      {
+        "rank": 82,
+        "tag": "",
+        "name": "",
+        "value": 247620725
+      },
+      {
+        "rank": 83,
+        "tag": "EON",
+        "name": "Lifted",
+        "value": 247620725
+      },
+      {
+        "rank": 84,
+        "tag": "",
+        "name": "",
+        "value": 246999305
+      },
+      {
+        "rank": 85,
+        "tag": "PNX",
+        "name": "~ V ~",
+        "value": 246999305
+      },
+      {
+        "rank": 86,
+        "tag": "",
+        "name": "",
+        "value": 246804424
+      },
+      {
+        "rank": 87,
+        "tag": "PNX",
+        "name": "oo8Noctylus8oe",
+        "value": 246804424
+      },
+      {
+        "rank": 88,
+        "tag": "PNX",
+        "name": "o8Noctylus8e",
+        "value": 246804424
+      },
+      {
+        "rank": 89,
+        "tag": "PNX",
+        "name": "9o8Noctylus8oe",
+        "value": 246804424
+      },
+      {
+        "rank": 90,
+        "tag": "PNX",
+        "name": "9o8Noctylus8e",
+        "value": 246804424
+      },
+      {
+        "rank": 91,
+        "tag": "EON",
+        "name": "BearkaN",
+        "value": 246560833
+      },
+      {
+        "rank": 92,
+        "tag": "ToP",
+        "name": "Erikku 230",
+        "value": 246268798
+      },
+      {
+        "rank": 93,
+        "tag": "PNX",
+        "name": "Amoroso",
+        "value": 245605599
+      },
+      {
+        "rank": 94,
+        "tag": "EON",
+        "name": "Kaelor",
+        "value": 245599484
+      },
+      {
+        "rank": 95,
+        "tag": "",
+        "name": "KAELCR",
+        "value": 245599484
+      },
+      {
+        "rank": 96,
+        "tag": "",
+        "name": "KAEOR",
+        "value": 245599484
+      },
+      {
+        "rank": 97,
+        "tag": "THE",
+        "name": "Zyrx",
+        "value": 245147525
+      },
+      {
+        "rank": 98,
+        "tag": "EON",
+        "name": "Rengaw EON",
+        "value": 915375
+      },
+      {
+        "rank": 99,
+        "tag": "PNX",
+        "name": "~ V ~",
+        "value": 246999
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Pumpkinbumpkin",
+        "value": 48973
+      }
+    ],
+    "kill_count": [
+      {
+        "rank": 1,
+        "tag": "[ToP",
+        "name": "Saji",
+        "value": 259972945
+      },
+      {
+        "rank": 2,
+        "tag": "THE",
+        "name": "Binawal UAE",
+        "value": 177468974
+      },
+      {
+        "rank": 3,
+        "tag": "PNX",
+        "name": "Aladeen",
+        "value": 164719046
+      },
+      {
+        "rank": 4,
+        "tag": "ToP",
+        "name": "Coez",
+        "value": 147597832
+      },
+      {
+        "rank": 5,
+        "tag": "EON",
+        "name": "Rengaw EON",
+        "value": 130721631
+      },
+      {
+        "rank": 6,
+        "tag": "EON",
+        "name": "Tux Dinosauron",
+        "value": 120873126
+      },
+      {
+        "rank": 7,
+        "tag": "[THE",
+        "name": "xxGonX",
+        "value": 115525655
+      },
+      {
+        "rank": 8,
+        "tag": "",
+        "name": "I[EON] 9o8Spec Tre8e/ EON",
+        "value": 113784795
+      },
+      {
+        "rank": 9,
+        "tag": "EON",
+        "name": "Thunder",
+        "value": 109706024
+      },
+      {
+        "rank": 10,
+        "tag": "THE",
+        "name": "Dalaran",
+        "value": 95540935
+      },
+      {
+        "rank": 11,
+        "tag": "",
+        "name": "MiHal",
+        "value": 94646701
+      },
+      {
+        "rank": 12,
+        "tag": "PNX",
+        "name": "Crazy",
+        "value": 90920765
+      },
+      {
+        "rank": 13,
+        "tag": "",
+        "name": "Phontom",
+        "value": 88019170
+      },
+      {
+        "rank": 14,
+        "tag": "EON",
+        "name": "NAKSU",
+        "value": 84491859
+      },
+      {
+        "rank": 15,
+        "tag": "ToP",
+        "name": "Versa",
+        "value": 79392449
+      },
+      {
+        "rank": 16,
+        "tag": "EON",
+        "name": "oc8Outlaw8e/ EON",
+        "value": 78428290
+      },
+      {
+        "rank": 17,
+        "tag": "EON",
+        "name": "Jin EON",
+        "value": 74356544
+      },
+      {
+        "rank": 18,
+        "tag": "EON",
+        "name": "MidNiTeStar",
+        "value": 72153526
+      },
+      {
+        "rank": 19,
+        "tag": "EON",
+        "name": "Jdub",
+        "value": 71712388
+      },
+      {
+        "rank": 20,
+        "tag": "THE",
+        "name": "Mighty Simeon",
+        "value": 64765751
+      },
+      {
+        "rank": 21,
+        "tag": "EON",
+        "name": "Harald",
+        "value": 60371676
+      },
+      {
+        "rank": 22,
+        "tag": "THE",
+        "name": "Nitaaa~",
+        "value": 58633305
+      },
+      {
+        "rank": 23,
+        "tag": "THE",
+        "name": "robert EON",
+        "value": 58496514
+      },
+      {
+        "rank": 24,
+        "tag": "",
+        "name": "XELA MI",
+        "value": 56570672
+      },
+      {
+        "rank": 25,
+        "tag": "PNX",
+        "name": "DarkwingDL",
+        "value": 51276431
+      },
+      {
+        "rank": 26,
+        "tag": "THE",
+        "name": "Redsquadron",
+        "value": 51100961
+      },
+      {
+        "rank": 27,
+        "tag": "THE",
+        "name": "Tojorayo",
+        "value": 50958949
+      },
+      {
+        "rank": 28,
+        "tag": "THE",
+        "name": "YARA",
+        "value": 48241979
+      },
+      {
+        "rank": 29,
+        "tag": "THE",
+        "name": "Toke",
+        "value": 47706315
+      },
+      {
+        "rank": 30,
+        "tag": "ToP",
+        "name": "Tuma",
+        "value": 47534508
+      },
+      {
+        "rank": 31,
+        "tag": "ToP",
+        "name": "Hoffey",
+        "value": 44805682
+      },
+      {
+        "rank": 32,
+        "tag": "EON",
+        "name": "Plaboy PandaEON",
+        "value": 43999867
+      },
+      {
+        "rank": 33,
+        "tag": "",
+        "name": "DeadlyGoat",
+        "value": 43793573
+      },
+      {
+        "rank": 34,
+        "tag": "PNX",
+        "name": "Labubu",
+        "value": 43620022
+      },
+      {
+        "rank": 35,
+        "tag": "THE",
+        "name": "Aussie",
+        "value": 41111200
+      },
+      {
+        "rank": 36,
+        "tag": "ToP",
+        "name": "Jomo",
+        "value": 40586217
+      },
+      {
+        "rank": 37,
+        "tag": "EON",
+        "name": "BearkaN",
+        "value": 39814224
+      },
+      {
+        "rank": 38,
+        "tag": "THE",
+        "name": "Valgary Master",
+        "value": 39475960
+      },
+      {
+        "rank": 39,
+        "tag": "",
+        "name": "ligho",
+        "value": 35767219
+      },
+      {
+        "rank": 40,
+        "tag": "ToP",
+        "name": "Asmo",
+        "value": 35716322
+      },
+      {
+        "rank": 41,
+        "tag": "THE",
+        "name": "SuperHero",
+        "value": 34253641
+      },
+      {
+        "rank": 42,
+        "tag": "PNX",
+        "name": "Alcatraz",
+        "value": 33690958
+      },
+      {
+        "rank": 43,
+        "tag": "",
+        "name": "[ToPlturtle",
+        "value": 33355741
+      },
+      {
+        "rank": 44,
+        "tag": "PNX",
+        "name": "PauLRuLeZzz",
+        "value": 33243982
+      },
+      {
+        "rank": 45,
+        "tag": "THE",
+        "name": "KNB 0913",
+        "value": 32699198
+      },
+      {
+        "rank": 46,
+        "tag": "THE",
+        "name": "Lady Furriossa",
+        "value": 32383814
+      },
+      {
+        "rank": 47,
+        "tag": "EON",
+        "name": "FuryEON",
+        "value": 31018310
+      },
+      {
+        "rank": 48,
+        "tag": "THE",
+        "name": "Retro Pepper",
+        "value": 30501039
+      },
+      {
+        "rank": 49,
+        "tag": "EON",
+        "name": "Juveleer EON",
+        "value": 30026636
+      },
+      {
+        "rank": 50,
+        "tag": "",
+        "name": "",
+        "value": 29962163
+      },
+      {
+        "rank": 51,
+        "tag": "PNX",
+        "name": "oo8Noctylus8er",
+        "value": 29678421
+      },
+      {
+        "rank": 52,
+        "tag": "THE",
+        "name": "MasMas Jawa",
+        "value": 29561865
+      },
+      {
+        "rank": 53,
+        "tag": "EON",
+        "name": "Lars Broadshldrs",
+        "value": 29455169
+      },
+      {
+        "rank": 54,
+        "tag": "EON",
+        "name": "IcePanda",
+        "value": 29017312
+      },
+      {
+        "rank": 55,
+        "tag": "",
+        "name": "Big fat Hero",
+        "value": 28962972
+      },
+      {
+        "rank": 56,
+        "tag": "THEJ",
+        "name": "ust Joshin",
+        "value": 25017518
+      },
+      {
+        "rank": 57,
+        "tag": "",
+        "name": "",
+        "value": 24876917
+      },
+      {
+        "rank": 58,
+        "tag": "ToP",
+        "name": "Erikku 230",
+        "value": 24150751
+      },
+      {
+        "rank": 59,
+        "tag": "THE",
+        "name": "D W",
+        "value": 23693270
+      },
+      {
+        "rank": 60,
+        "tag": "PNX",
+        "name": "AmirBeys",
+        "value": 22787788
+      },
+      {
+        "rank": 61,
+        "tag": "EON",
+        "name": "siriusEON",
+        "value": 22552217
+      },
+      {
+        "rank": 62,
+        "tag": "EON",
+        "name": "MingleEON",
+        "value": 22124419
+      },
+      {
+        "rank": 63,
+        "tag": "PNX",
+        "name": "baby Pola",
+        "value": 22110268
+      },
+      {
+        "rank": 64,
+        "tag": "EON",
+        "name": "Jon SnowEON",
+        "value": 22065448
+      },
+      {
+        "rank": 65,
+        "tag": "",
+        "name": "[NEvven",
+        "value": 22059665
+      },
+      {
+        "rank": 66,
+        "tag": "EON",
+        "name": "Melissa",
+        "value": 21802141
+      },
+      {
+        "rank": 67,
+        "tag": "ToP",
+        "name": "W3iRdKiD",
+        "value": 21730572
+      },
+      {
+        "rank": 68,
+        "tag": "",
+        "name": "'IvKatai\"I",
+        "value": 21565687
+      },
+      {
+        "rank": 69,
+        "tag": "EON",
+        "name": "DinoKiddoEON",
+        "value": 21459708
+      },
+      {
+        "rank": 70,
+        "tag": "EONJP",
+        "name": "EON",
+        "value": 20710696
+      },
+      {
+        "rank": 71,
+        "tag": "",
+        "name": "JJOUUoN",
+        "value": 20708549
+      },
+      {
+        "rank": 72,
+        "tag": "EON",
+        "name": "PRP",
+        "value": 20507330
+      },
+      {
+        "rank": 73,
+        "tag": "",
+        "name": "",
+        "value": 20291176
+      },
+      {
+        "rank": 74,
+        "tag": "THE",
+        "name": "ShadowZilence",
+        "value": 20233028
+      },
+      {
+        "rank": 75,
+        "tag": "THE",
+        "name": "Bu Fahad",
+        "value": 19957024
+      },
+      {
+        "rank": 76,
+        "tag": "",
+        "name": "Relax",
+        "value": 19905891
+      },
+      {
+        "rank": 77,
+        "tag": "THE",
+        "name": "Zyrx",
+        "value": 19824551
+      },
+      {
+        "rank": 78,
+        "tag": "PNX",
+        "name": "Acidburn",
+        "value": 19321137
+      },
+      {
+        "rank": 79,
+        "tag": "PNX",
+        "name": "Willyweeee",
+        "value": 19066620
+      },
+      {
+        "rank": 80,
+        "tag": "THE",
+        "name": "IpinUpin",
+        "value": 18504462
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "",
+        "value": 18267043
+      },
+      {
+        "rank": 82,
+        "tag": "",
+        "name": "",
+        "value": 18015805
+      },
+      {
+        "rank": 83,
+        "tag": "ToP",
+        "name": "K E NZIE",
+        "value": 17882909
+      },
+      {
+        "rank": 84,
+        "tag": "PNX",
+        "name": "Pola",
+        "value": 17756235
+      },
+      {
+        "rank": 85,
+        "tag": "PNX",
+        "name": "Punch~kun",
+        "value": 17749257
+      },
+      {
+        "rank": 86,
+        "tag": "kNK",
+        "name": "ltzZeepz",
+        "value": 17432117
+      },
+      {
+        "rank": 87,
+        "tag": "",
+        "name": "",
+        "value": 17305438
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "",
+        "value": 16799821
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "Daxmiano",
+        "value": 16799821
+      },
+      {
+        "rank": 90,
+        "tag": "",
+        "name": "",
+        "value": 16459029
+      },
+      {
+        "rank": 91,
+        "tag": "ToP",
+        "name": "Goblin",
+        "value": 16459029
+      },
+      {
+        "rank": 92,
+        "tag": "",
+        "name": "",
+        "value": 16375048
+      },
+      {
+        "rank": 93,
+        "tag": "",
+        "name": "dont know",
+        "value": 16375048
+      },
+      {
+        "rank": 94,
+        "tag": "",
+        "name": "i dont know",
+        "value": 16375048
+      },
+      {
+        "rank": 95,
+        "tag": "",
+        "name": "Darter",
+        "value": 16337775
+      },
+      {
+        "rank": 96,
+        "tag": "PNX",
+        "name": "ivi",
+        "value": 16000961
+      },
+      {
+        "rank": 97,
+        "tag": "",
+        "name": "Free Rss",
+        "value": 15806827
+      },
+      {
+        "rank": 98,
+        "tag": "PNX",
+        "name": "LordRiddick",
+        "value": 15741767
+      },
+      {
+        "rank": 99,
+        "tag": "EON",
+        "name": "GOMBIEON",
+        "value": 15326792
+      },
+      {
+        "rank": 100,
+        "tag": "THE",
+        "name": "Lord Fartzzz",
+        "value": 428695
+      }
+    ],
+    "hero_power": [
+      {
+        "rank": 1,
+        "tag": "EON",
+        "name": "Thunder",
+        "value": 19226068
+      },
+      {
+        "rank": 2,
+        "tag": "PNX",
+        "name": "Aladeen",
+        "value": 19226068
+      },
+      {
+        "rank": 3,
+        "tag": "",
+        "name": "Phontom",
+        "value": 17219193
+      },
+      {
+        "rank": 4,
+        "tag": "",
+        "name": "THEJMighty Simeon",
+        "value": 16533237
+      },
+      {
+        "rank": 5,
+        "tag": "THE",
+        "name": "xxGonX",
+        "value": 15799722
+      },
+      {
+        "rank": 6,
+        "tag": "THE",
+        "name": "YARA",
+        "value": 14015272
+      },
+      {
+        "rank": 7,
+        "tag": "EON",
+        "name": "Tux Dinosauron",
+        "value": 13950936
+      },
+      {
+        "rank": 8,
+        "tag": "THE",
+        "name": "Binawal UAE",
+        "value": 12659070
+      },
+      {
+        "rank": 9,
+        "tag": "EON",
+        "name": "Rengaw EON",
+        "value": 12355064
+      },
+      {
+        "rank": 10,
+        "tag": "[EON",
+        "name": "Rengaw EON",
+        "value": 12355064
+      },
+      {
+        "rank": 11,
+        "tag": "PNX",
+        "name": "DarkwingDL",
+        "value": 12342158
+      },
+      {
+        "rank": 12,
+        "tag": "EON",
+        "name": "9-8Spec Tre8oe/ EON",
+        "value": 12277761
+      },
+      {
+        "rank": 13,
+        "tag": "[ToP",
+        "name": "Saji",
+        "value": 10867348
+      },
+      {
+        "rank": 14,
+        "tag": "EON",
+        "name": "Jin EON",
+        "value": 10446219
+      },
+      {
+        "rank": 15,
+        "tag": "",
+        "name": "MiHal",
+        "value": 9768517
+      },
+      {
+        "rank": 16,
+        "tag": "EON",
+        "name": "Jdub",
+        "value": 9549911
+      },
+      {
+        "rank": 17,
+        "tag": "PNX",
+        "name": "Crazy",
+        "value": 9014864
+      },
+      {
+        "rank": 18,
+        "tag": "THE",
+        "name": "Dalaran",
+        "value": 8967574
+      },
+      {
+        "rank": 19,
+        "tag": "",
+        "name": "Big fat Hero",
+        "value": 8784671
+      },
+      {
+        "rank": 20,
+        "tag": "THE",
+        "name": "Wen",
+        "value": 8734023
+      },
+      {
+        "rank": 21,
+        "tag": "",
+        "name": "[ToPlturtle",
+        "value": 8428335
+      },
+      {
+        "rank": 22,
+        "tag": "PNX",
+        "name": "Alcatraz",
+        "value": 8415377
+      },
+      {
+        "rank": 23,
+        "tag": "ToP",
+        "name": "Coez",
+        "value": 8196684
+      },
+      {
+        "rank": 24,
+        "tag": "ToP",
+        "name": "Versa",
+        "value": 8166064
+      },
+      {
+        "rank": 25,
+        "tag": "PNX",
+        "name": "AmirBeys",
+        "value": 8105798
+      },
+      {
+        "rank": 26,
+        "tag": "THE",
+        "name": "Aussie",
+        "value": 7499639
+      },
+      {
+        "rank": 27,
+        "tag": "EON",
+        "name": "NAKSU",
+        "value": 7456452
+      },
+      {
+        "rank": 28,
+        "tag": "ToP",
+        "name": "Jomo",
+        "value": 7321220
+      },
+      {
+        "rank": 29,
+        "tag": "EON",
+        "name": "Harald",
+        "value": 7141739
+      },
+      {
+        "rank": 30,
+        "tag": "ToP",
+        "name": "Hoffey",
+        "value": 7025084
+      },
+      {
+        "rank": 31,
+        "tag": "THE",
+        "name": "Nitaaa~",
+        "value": 7017707
+      },
+      {
+        "rank": 32,
+        "tag": "EON",
+        "name": "BearkaN",
+        "value": 6972190
+      },
+      {
+        "rank": 33,
+        "tag": "PNX",
+        "name": "Labubu",
+        "value": 6903824
+      },
+      {
+        "rank": 34,
+        "tag": "THE",
+        "name": "robert EON",
+        "value": 6780581
+      },
+      {
+        "rank": 35,
+        "tag": "EON",
+        "name": "Jon SnowEON",
+        "value": 6724520
+      },
+      {
+        "rank": 36,
+        "tag": "ToP",
+        "name": "Thanatos",
+        "value": 6649402
+      },
+      {
+        "rank": 37,
+        "tag": "ToP",
+        "name": "Asmo",
+        "value": 6613461
+      },
+      {
+        "rank": 38,
+        "tag": "PNX",
+        "name": "-G~RI-M~M~",
+        "value": 6440469
+      },
+      {
+        "rank": 39,
+        "tag": "EON",
+        "name": "siriusEON",
+        "value": 6178962
+      },
+      {
+        "rank": 40,
+        "tag": "THE",
+        "name": "Toke",
+        "value": 6004402
+      },
+      {
+        "rank": 41,
+        "tag": "EON",
+        "name": "Gecata",
+        "value": 5973307
+      },
+      {
+        "rank": 42,
+        "tag": "ToP",
+        "name": "Tuma",
+        "value": 5931279
+      },
+      {
+        "rank": 43,
+        "tag": "",
+        "name": "RIN",
+        "value": 5904620
+      },
+      {
+        "rank": 44,
+        "tag": "THE",
+        "name": "Valgary Master",
+        "value": 5870351
+      },
+      {
+        "rank": 45,
+        "tag": "EON",
+        "name": "Danzo",
+        "value": 5679514
+      },
+      {
+        "rank": 46,
+        "tag": "THE",
+        "name": "Tojorayo",
+        "value": 5628309
+      },
+      {
+        "rank": 47,
+        "tag": "EON",
+        "name": "Wowza",
+        "value": 5565667
+      },
+      {
+        "rank": 48,
+        "tag": "THE",
+        "name": "Manuelaya",
+        "value": 5440700
+      },
+      {
+        "rank": 49,
+        "tag": "ToP",
+        "name": "Meanface32",
+        "value": 5410427
+      },
+      {
+        "rank": 50,
+        "tag": "",
+        "name": "igho",
+        "value": 5398302
+      },
+      {
+        "rank": 51,
+        "tag": "THE",
+        "name": "KNB 0913",
+        "value": 5383082
+      },
+      {
+        "rank": 52,
+        "tag": "PNX",
+        "name": "Oo8Noctylus8oe",
+        "value": 5359070
+      },
+      {
+        "rank": 53,
+        "tag": "PNX",
+        "name": "Oo8Nyxaris8oe",
+        "value": 5258880
+      },
+      {
+        "rank": 54,
+        "tag": "kNK",
+        "name": "DomixD",
+        "value": 5212502
+      },
+      {
+        "rank": 55,
+        "tag": "ToP",
+        "name": "Dagda",
+        "value": 5186844
+      },
+      {
+        "rank": 56,
+        "tag": "PNX",
+        "name": "Licious420",
+        "value": 5153979
+      },
+      {
+        "rank": 57,
+        "tag": "EON",
+        "name": "Lars Broadshldrs",
+        "value": 5114110
+      },
+      {
+        "rank": 58,
+        "tag": "PNX",
+        "name": "Licious69",
+        "value": 5104682
+      },
+      {
+        "rank": 59,
+        "tag": "PNX",
+        "name": "baby Pola",
+        "value": 4972372
+      },
+      {
+        "rank": 60,
+        "tag": "PNX",
+        "name": "Cariandin",
+        "value": 4960396
+      },
+      {
+        "rank": 61,
+        "tag": "EON",
+        "name": "DeosolusRexEON",
+        "value": 4855285
+      },
+      {
+        "rank": 62,
+        "tag": "ToP",
+        "name": "Erikku 230",
+        "value": 4832764
+      },
+      {
+        "rank": 63,
+        "tag": "EON",
+        "name": "IcePanda",
+        "value": 4777767
+      },
+      {
+        "rank": 64,
+        "tag": "EON",
+        "name": "Freya",
+        "value": 4770477
+      },
+      {
+        "rank": 65,
+        "tag": "THEJMasMas",
+        "name": "awa",
+        "value": 4751065
+      },
+      {
+        "rank": 66,
+        "tag": "EON",
+        "name": "Juveleer EON",
+        "value": 4668459
+      },
+      {
+        "rank": 67,
+        "tag": "",
+        "name": "Hero: Rosa",
+        "value": 4647911
+      },
+      {
+        "rank": 68,
+        "tag": "PNX",
+        "name": "~ V ~",
+        "value": 4633878
+      },
+      {
+        "rank": 69,
+        "tag": "kNK",
+        "name": "DaMarLu",
+        "value": 4617872
+      },
+      {
+        "rank": 70,
+        "tag": "",
+        "name": "lcUijIEISSd",
+        "value": 4484710
+      },
+      {
+        "rank": 71,
+        "tag": "PNX",
+        "name": "Punch~kun",
+        "value": 4431684
+      },
+      {
+        "rank": 72,
+        "tag": "THE",
+        "name": "Redsquadron",
+        "value": 4399158
+      },
+      {
+        "rank": 73,
+        "tag": "THE",
+        "name": "MMMMMMMM",
+        "value": 4393660
+      },
+      {
+        "rank": 74,
+        "tag": "PNX",
+        "name": "Little Town",
+        "value": 4354510
+      },
+      {
+        "rank": 75,
+        "tag": "",
+        "name": "[VIVIMiniDalaran",
+        "value": 4342600
+      },
+      {
+        "rank": 76,
+        "tag": "PNX",
+        "name": "NO PANTS",
+        "value": 4323146
+      },
+      {
+        "rank": 77,
+        "tag": "PNX",
+        "name": "Pola",
+        "value": 4306090
+      },
+      {
+        "rank": 78,
+        "tag": "kNK",
+        "name": "DadOfTheDead",
+        "value": 4284859
+      },
+      {
+        "rank": 79,
+        "tag": "EONJP",
+        "name": "EON",
+        "value": 4274359
+      },
+      {
+        "rank": 80,
+        "tag": "PNX",
+        "name": "Kira",
+        "value": 4268460
+      },
+      {
+        "rank": 81,
+        "tag": "kNK",
+        "name": "OldGrayOne",
+        "value": 4259527
+      },
+      {
+        "rank": 82,
+        "tag": "EON",
+        "name": "Ado EON",
+        "value": 4252647
+      },
+      {
+        "rank": 83,
+        "tag": "THE",
+        "name": "walay",
+        "value": 4235681
+      },
+      {
+        "rank": 84,
+        "tag": "",
+        "name": "Hero:",
+        "value": 4169732
+      },
+      {
+        "rank": 85,
+        "tag": "",
+        "name": "IxjDJDaniel",
+        "value": 4169732
+      },
+      {
+        "rank": 86,
+        "tag": "PNX",
+        "name": "Spartachris",
+        "value": 4153853
+      },
+      {
+        "rank": 87,
+        "tag": "",
+        "name": "FNX",
+        "value": 4153853
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "FNA",
+        "value": 4153853
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "FNI",
+        "value": 4153853
+      },
+      {
+        "rank": 90,
+        "tag": "",
+        "name": "PNX",
+        "value": 4153853
+      },
+      {
+        "rank": 91,
+        "tag": "",
+        "name": "Hero: Long Fei",
+        "value": 4148292
+      },
+      {
+        "rank": 92,
+        "tag": "THE",
+        "name": "ShayDLaw",
+        "value": 4148292
+      },
+      {
+        "rank": 93,
+        "tag": "kNK",
+        "name": "King",
+        "value": 4143458
+      },
+      {
+        "rank": 94,
+        "tag": "ToP",
+        "name": "3(TDUS#",
+        "value": 4140395
+      },
+      {
+        "rank": 95,
+        "tag": "ToP",
+        "name": "0(TDUS#",
+        "value": 4140395
+      },
+      {
+        "rank": 96,
+        "tag": "ToP",
+        "name": "9-_TDLSI",
+        "value": 4140395
+      },
+      {
+        "rank": 97,
+        "tag": "",
+        "name": "RD lkaer",
+        "value": 4140395
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "(ToP] 0-8(TDUS#",
+        "value": 4140395
+      },
+      {
+        "rank": 99,
+        "tag": "THE",
+        "name": "Retro Pepper",
+        "value": 4133615
+      },
+      {
+        "rank": 100,
+        "tag": "EON",
+        "name": "DinoKiddoEON",
+        "value": 4112566
+      }
+    ],
+    "heros_total_power": [
+      {
+        "rank": 1,
+        "tag": "PNX",
+        "name": "Aladeen",
+        "value": 109019956
+      },
+      {
+        "rank": 2,
+        "tag": "EON",
+        "name": "Thunder",
+        "value": 108137504
+      },
+      {
+        "rank": 3,
+        "tag": "[THE",
+        "name": "Mighty Simeon",
+        "value": 72538843
+      },
+      {
+        "rank": 4,
+        "tag": "",
+        "name": "Phentom",
+        "value": 72111432
+      },
+      {
+        "rank": 5,
+        "tag": "EON",
+        "name": "Tux Dinosauron",
+        "value": 65053582
+      },
+      {
+        "rank": 6,
+        "tag": "THE",
+        "name": "xxGonX",
+        "value": 63469276
+      },
+      {
+        "rank": 7,
+        "tag": "",
+        "name": "I[THE]YARA",
+        "value": 63342768
+      },
+      {
+        "rank": 8,
+        "tag": "ToP",
+        "name": "Saji",
+        "value": 61831845
+      },
+      {
+        "rank": 9,
+        "tag": "THE",
+        "name": "Wen",
+        "value": 60867808
+      },
+      {
+        "rank": 10,
+        "tag": "EON",
+        "name": "Rengaw EON",
+        "value": 56237307
+      },
+      {
+        "rank": 11,
+        "tag": "EON",
+        "name": "Jin EON",
+        "value": 55915334
+      },
+      {
+        "rank": 12,
+        "tag": "",
+        "name": "I[EON] 98Spec Tre8oe/ EON",
+        "value": 54775073
+      },
+      {
+        "rank": 13,
+        "tag": "PNX",
+        "name": "DarkwingDL",
+        "value": 54269960
+      },
+      {
+        "rank": 14,
+        "tag": "THE",
+        "name": "Binawal UAE",
+        "value": 53463200
+      },
+      {
+        "rank": 15,
+        "tag": "THE",
+        "name": "Dalaran",
+        "value": 50079473
+      },
+      {
+        "rank": 16,
+        "tag": "THE",
+        "name": "Aussie",
+        "value": 48927321
+      },
+      {
+        "rank": 17,
+        "tag": "EON",
+        "name": "Jdub",
+        "value": 47234674
+      },
+      {
+        "rank": 18,
+        "tag": "",
+        "name": "[ToPlturtle",
+        "value": 46745421
+      },
+      {
+        "rank": 19,
+        "tag": "EON",
+        "name": "MidNiTeStar",
+        "value": 46175668
+      },
+      {
+        "rank": 20,
+        "tag": "ToP",
+        "name": "Versa",
+        "value": 45978669
+      },
+      {
+        "rank": 21,
+        "tag": "ToP",
+        "name": "coez",
+        "value": 45881834
+      },
+      {
+        "rank": 22,
+        "tag": "PNX",
+        "name": "Crazy",
+        "value": 44521541
+      },
+      {
+        "rank": 23,
+        "tag": "PNX",
+        "name": "Labubu",
+        "value": 43677949
+      },
+      {
+        "rank": 24,
+        "tag": "ToP",
+        "name": "Hoffey",
+        "value": 43293831
+      },
+      {
+        "rank": 25,
+        "tag": "THE",
+        "name": "Valgary Master",
+        "value": 43006445
+      },
+      {
+        "rank": 26,
+        "tag": "THE",
+        "name": "Toke",
+        "value": 42901221
+      },
+      {
+        "rank": 27,
+        "tag": "EON",
+        "name": "siriusEON",
+        "value": 42846628
+      },
+      {
+        "rank": 28,
+        "tag": "ToP",
+        "name": "Jomo",
+        "value": 42554299
+      },
+      {
+        "rank": 29,
+        "tag": "EON",
+        "name": "NAKSU",
+        "value": 40593320
+      },
+      {
+        "rank": 30,
+        "tag": "PNX",
+        "name": "Alcatraz",
+        "value": 40223776
+      },
+      {
+        "rank": 31,
+        "tag": "THE",
+        "name": "Nitaaa~",
+        "value": 39901610
+      },
+      {
+        "rank": 32,
+        "tag": "ToP",
+        "name": "Asmo",
+        "value": 39741378
+      },
+      {
+        "rank": 33,
+        "tag": "THE",
+        "name": "SkyBlue",
+        "value": 39710426
+      },
+      {
+        "rank": 34,
+        "tag": "kNK",
+        "name": "BAT",
+        "value": 39572897
+      },
+      {
+        "rank": 35,
+        "tag": "EON",
+        "name": "Harald",
+        "value": 38801827
+      },
+      {
+        "rank": 36,
+        "tag": "EON",
+        "name": "Jon SnowEON",
+        "value": 38523341
+      },
+      {
+        "rank": 37,
+        "tag": "PNX",
+        "name": "Cariandin",
+        "value": 38350246
+      },
+      {
+        "rank": 38,
+        "tag": "THE",
+        "name": "Redsquadron",
+        "value": 38155561
+      },
+      {
+        "rank": 39,
+        "tag": "EON",
+        "name": "INVID",
+        "value": 37969756
+      },
+      {
+        "rank": 40,
+        "tag": "ToP",
+        "name": "Meanface32",
+        "value": 37437276
+      },
+      {
+        "rank": 41,
+        "tag": "PNX",
+        "name": "-G-R-I-M~M~",
+        "value": 37315178
+      },
+      {
+        "rank": 42,
+        "tag": "",
+        "name": "",
+        "value": 37302505
+      },
+      {
+        "rank": 43,
+        "tag": "PNX",
+        "name": "ROCKu",
+        "value": 36957049
+      },
+      {
+        "rank": 44,
+        "tag": "EON",
+        "name": "Danzo",
+        "value": 36863286
+      },
+      {
+        "rank": 45,
+        "tag": "EON",
+        "name": "Beavis EON",
+        "value": 36615701
+      },
+      {
+        "rank": 46,
+        "tag": "PNX",
+        "name": "Kira",
+        "value": 36293151
+      },
+      {
+        "rank": 47,
+        "tag": "THE",
+        "name": "KNB 0913",
+        "value": 35790461
+      },
+      {
+        "rank": 48,
+        "tag": "THE",
+        "name": "robert EON",
+        "value": 35699349
+      },
+      {
+        "rank": 49,
+        "tag": "EON",
+        "name": "Lars Broadshldrs",
+        "value": 35313340
+      },
+      {
+        "rank": 50,
+        "tag": "ThE",
+        "name": "aEzmf",
+        "value": 35280477
+      },
+      {
+        "rank": 51,
+        "tag": "",
+        "name": "MiHal",
+        "value": 35167977
+      },
+      {
+        "rank": 52,
+        "tag": "THE",
+        "name": "Just Joshin",
+        "value": 35110878
+      },
+      {
+        "rank": 53,
+        "tag": "EON",
+        "name": "PRP",
+        "value": 34618543
+      },
+      {
+        "rank": 54,
+        "tag": "EON",
+        "name": "Derek",
+        "value": 34602332
+      },
+      {
+        "rank": 55,
+        "tag": "PNX",
+        "name": "Punch~kun",
+        "value": 34564016
+      },
+      {
+        "rank": 56,
+        "tag": "EON",
+        "name": "FuryEON",
+        "value": 34387740
+      },
+      {
+        "rank": 57,
+        "tag": "EON",
+        "name": "BearkaN",
+        "value": 34230788
+      },
+      {
+        "rank": 58,
+        "tag": "ToP",
+        "name": "Tuma",
+        "value": 34131394
+      },
+      {
+        "rank": 59,
+        "tag": "THE",
+        "name": "walay",
+        "value": 34098011
+      },
+      {
+        "rank": 60,
+        "tag": "ToP",
+        "name": "Tiwolf",
+        "value": 34076219
+      },
+      {
+        "rank": 61,
+        "tag": "PNX",
+        "name": "LordKiing",
+        "value": 33963261
+      },
+      {
+        "rank": 62,
+        "tag": "kNK",
+        "name": "DaMarLu",
+        "value": 33915830
+      },
+      {
+        "rank": 63,
+        "tag": "THE",
+        "name": "Tojorayo",
+        "value": 33762089
+      },
+      {
+        "rank": 64,
+        "tag": "THE",
+        "name": "ua",
+        "value": 33731857
+      },
+      {
+        "rank": 65,
+        "tag": "ToP",
+        "name": "Erikku 230",
+        "value": 33716072
+      },
+      {
+        "rank": 66,
+        "tag": "kNK",
+        "name": "DomixD",
+        "value": 33510373
+      },
+      {
+        "rank": 67,
+        "tag": "EON",
+        "name": "Lt Aldo RaineEON",
+        "value": 33485019
+      },
+      {
+        "rank": 68,
+        "tag": "THE",
+        "name": "SuperHero",
+        "value": 33467246
+      },
+      {
+        "rank": 69,
+        "tag": "EON",
+        "name": "Wowza",
+        "value": 33423408
+      },
+      {
+        "rank": 70,
+        "tag": "THE",
+        "name": "",
+        "value": 33377356
+      },
+      {
+        "rank": 71,
+        "tag": "EON",
+        "name": "Juveleer EON",
+        "value": 33267323
+      },
+      {
+        "rank": 72,
+        "tag": "PNX",
+        "name": "Willyweeee",
+        "value": 33180473
+      },
+      {
+        "rank": 73,
+        "tag": "THE",
+        "name": "D W",
+        "value": 33171556
+      },
+      {
+        "rank": 74,
+        "tag": "EON",
+        "name": "IcePanda",
+        "value": 33122596
+      },
+      {
+        "rank": 75,
+        "tag": "PNX",
+        "name": "Alex TN",
+        "value": 33108704
+      },
+      {
+        "rank": 76,
+        "tag": "EONJP",
+        "name": "EON",
+        "value": 33083374
+      },
+      {
+        "rank": 77,
+        "tag": "PNX",
+        "name": "NO PANTS",
+        "value": 33055079
+      },
+      {
+        "rank": 78,
+        "tag": "",
+        "name": "RIN",
+        "value": 32882547
+      },
+      {
+        "rank": 79,
+        "tag": "THE",
+        "name": "Manuelaya",
+        "value": 32739389
+      },
+      {
+        "rank": 80,
+        "tag": "EON",
+        "name": "Captain Nemo EON",
+        "value": 32727167
+      },
+      {
+        "rank": 81,
+        "tag": "PNX",
+        "name": "Shanks",
+        "value": 32660172
+      },
+      {
+        "rank": 82,
+        "tag": "EON",
+        "name": "* KAIDO # EON",
+        "value": 32656208
+      },
+      {
+        "rank": 83,
+        "tag": "kNK",
+        "name": "DadOfTheDead",
+        "value": 32450134
+      },
+      {
+        "rank": 84,
+        "tag": "EON",
+        "name": "MingleEON",
+        "value": 32444208
+      },
+      {
+        "rank": 85,
+        "tag": "THE",
+        "name": "Skippy",
+        "value": 32358925
+      },
+      {
+        "rank": 86,
+        "tag": "PNX",
+        "name": "#142Hunter",
+        "value": 32182352
+      },
+      {
+        "rank": 87,
+        "tag": "PNX",
+        "name": "#142Hunter",
+        "value": 32182352
+      },
+      {
+        "rank": 88,
+        "tag": "kNK",
+        "name": "SPC",
+        "value": 32175696
+      },
+      {
+        "rank": 89,
+        "tag": "ToP",
+        "name": "Domino_Daddy",
+        "value": 32142722
+      },
+      {
+        "rank": 90,
+        "tag": "THE",
+        "name": "Coneye",
+        "value": 32061346
+      },
+      {
+        "rank": 91,
+        "tag": "EON",
+        "name": "Rey EON",
+        "value": 31962735
+      },
+      {
+        "rank": 92,
+        "tag": "EON",
+        "name": "MELIO_REXEON",
+        "value": 31870839
+      },
+      {
+        "rank": 93,
+        "tag": "EON",
+        "name": "DeosolusRexEON",
+        "value": 31744759
+      },
+      {
+        "rank": 94,
+        "tag": "EON",
+        "name": "9c8Outlaw8e/ EON",
+        "value": 31708218
+      },
+      {
+        "rank": 95,
+        "tag": "EON",
+        "name": "oc8Outlaw8e/ EON",
+        "value": 31708218
+      },
+      {
+        "rank": 96,
+        "tag": "EONJA",
+        "name": "AX69EON",
+        "value": 31574837
+      },
+      {
+        "rank": 97,
+        "tag": "EONJA",
+        "name": "AXG9EON",
+        "value": 31574837
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "Ford",
+        "value": 630858
+      },
+      {
+        "rank": 99,
+        "tag": "PNX",
+        "name": "Lord Deniz",
+        "value": 32289
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Pumpkinbumpkin",
+        "value": 31280
+      }
+    ],
+    "total_pet_power": [
+      {
+        "rank": 1,
+        "tag": "EON",
+        "name": "Thunder",
+        "value": 34059480
+      },
+      {
+        "rank": 2,
+        "tag": "THE",
+        "name": "Mighty Simeon",
+        "value": 24435840
+      },
+      {
+        "rank": 3,
+        "tag": "[ToP",
+        "name": "Saji",
+        "value": 22349640
+      },
+      {
+        "rank": 4,
+        "tag": "EON",
+        "name": "Danzo",
+        "value": 21204240
+      },
+      {
+        "rank": 5,
+        "tag": "THE",
+        "name": "Wen",
+        "value": 20853480
+      },
+      {
+        "rank": 6,
+        "tag": "",
+        "name": "I[EON]Tux Dinosauron",
+        "value": 20667960
+      },
+      {
+        "rank": 7,
+        "tag": "THE",
+        "name": "Dalaran",
+        "value": 19919520
+      },
+      {
+        "rank": 8,
+        "tag": "EON",
+        "name": "Rengaw EON",
+        "value": 19757160
+      },
+      {
+        "rank": 9,
+        "tag": "",
+        "name": "Tird",
+        "value": 19215600
+      },
+      {
+        "rank": 10,
+        "tag": "ToP",
+        "name": "Jomo",
+        "value": 18812040
+      },
+      {
+        "rank": 11,
+        "tag": "THE",
+        "name": "Aussie",
+        "value": 18769680
+      },
+      {
+        "rank": 12,
+        "tag": "THE",
+        "name": "KNB 0913",
+        "value": 18731040
+      },
+      {
+        "rank": 13,
+        "tag": "THE",
+        "name": "YARA",
+        "value": 18123840
+      },
+      {
+        "rank": 14,
+        "tag": "",
+        "name": "Phontom",
+        "value": 18107760
+      },
+      {
+        "rank": 15,
+        "tag": "PNX",
+        "name": "AmirBeys",
+        "value": 17962920
+      },
+      {
+        "rank": 16,
+        "tag": "ToP",
+        "name": "Hoffey",
+        "value": 17889840
+      },
+      {
+        "rank": 17,
+        "tag": "EON",
+        "name": "PRP",
+        "value": 17746200
+      },
+      {
+        "rank": 18,
+        "tag": "PNX",
+        "name": "Crazy",
+        "value": 17562480
+      },
+      {
+        "rank": 19,
+        "tag": "EON",
+        "name": "Jin EON",
+        "value": 17434800
+      },
+      {
+        "rank": 20,
+        "tag": "",
+        "name": "[ToPlturtle",
+        "value": 17366040
+      },
+      {
+        "rank": 21,
+        "tag": "EON",
+        "name": "NAKSU",
+        "value": 17315880
+      },
+      {
+        "rank": 22,
+        "tag": "EON",
+        "name": "oc8Outlaw8e EON",
+        "value": 17273280
+      },
+      {
+        "rank": 23,
+        "tag": "THE",
+        "name": "Tojorayo",
+        "value": 17186520
+      },
+      {
+        "rank": 24,
+        "tag": "PNX",
+        "name": "Acidburn",
+        "value": 17112600
+      },
+      {
+        "rank": 25,
+        "tag": "EON",
+        "name": "Jon SnowEON",
+        "value": 17045400
+      },
+      {
+        "rank": 26,
+        "tag": "THE",
+        "name": "xxGonX",
+        "value": 16868760
+      },
+      {
+        "rank": 27,
+        "tag": "PNX",
+        "name": "ROCKu",
+        "value": 16840800
+      },
+      {
+        "rank": 28,
+        "tag": "kNK",
+        "name": "DaMarLu",
+        "value": 16839960
+      },
+      {
+        "rank": 29,
+        "tag": "THE",
+        "name": "SilverLady",
+        "value": 16791000
+      },
+      {
+        "rank": 30,
+        "tag": "PNX",
+        "name": "Punch~kun",
+        "value": 16770000
+      },
+      {
+        "rank": 31,
+        "tag": "PNX",
+        "name": "ivi",
+        "value": 16745040
+      },
+      {
+        "rank": 32,
+        "tag": "THE",
+        "name": "Manuelaya",
+        "value": 16725120
+      },
+      {
+        "rank": 33,
+        "tag": "THE",
+        "name": "Valgary Master",
+        "value": 16711680
+      },
+      {
+        "rank": 34,
+        "tag": "EON",
+        "name": "Jdub",
+        "value": 16685280
+      },
+      {
+        "rank": 35,
+        "tag": "THE",
+        "name": "ua",
+        "value": 16625400
+      },
+      {
+        "rank": 36,
+        "tag": "PNX",
+        "name": "Alcatraz",
+        "value": 16606440
+      },
+      {
+        "rank": 37,
+        "tag": "PNX",
+        "name": "Labubu",
+        "value": 16550160
+      },
+      {
+        "rank": 38,
+        "tag": "PNX",
+        "name": "NO PANTS",
+        "value": 16518240
+      },
+      {
+        "rank": 39,
+        "tag": "THE",
+        "name": "Toke",
+        "value": 16507320
+      },
+      {
+        "rank": 40,
+        "tag": "PNX",
+        "name": "9o8Noctylus8e",
+        "value": 16443840
+      },
+      {
+        "rank": 41,
+        "tag": "PNX",
+        "name": "PauLRuLeZzz",
+        "value": 16425120
+      },
+      {
+        "rank": 42,
+        "tag": "PNX",
+        "name": "SkimOoh",
+        "value": 16365600
+      },
+      {
+        "rank": 43,
+        "tag": "PNX",
+        "name": "Snekpis25",
+        "value": 16332120
+      },
+      {
+        "rank": 44,
+        "tag": "EON",
+        "name": "Lt Aldo RaineEON",
+        "value": 16258560
+      },
+      {
+        "rank": 45,
+        "tag": "ToP",
+        "name": "9(TDUSI",
+        "value": 16253160
+      },
+      {
+        "rank": 46,
+        "tag": "kNK",
+        "name": "DomixD",
+        "value": 16209720
+      },
+      {
+        "rank": 47,
+        "tag": "PNX",
+        "name": "LordKiing",
+        "value": 16187520
+      },
+      {
+        "rank": 48,
+        "tag": "EON",
+        "name": "O8SpecTre8oe/ EON",
+        "value": 16179360
+      },
+      {
+        "rank": 49,
+        "tag": "",
+        "name": "I[EON] 9c8Spec Tre8oe/ EON",
+        "value": 16179360
+      },
+      {
+        "rank": 50,
+        "tag": "ToP",
+        "name": "ZagrosQendil",
+        "value": 16154400
+      },
+      {
+        "rank": 51,
+        "tag": "THE",
+        "name": "Lord Fartzzz",
+        "value": 16116960
+      },
+      {
+        "rank": 52,
+        "tag": "",
+        "name": "[THElyour opinions",
+        "value": 16096680
+      },
+      {
+        "rank": 53,
+        "tag": "PNX",
+        "name": "ssharkk",
+        "value": 16078320
+      },
+      {
+        "rank": 54,
+        "tag": "PNX",
+        "name": "Gexman",
+        "value": 16076760
+      },
+      {
+        "rank": 55,
+        "tag": "ToP",
+        "name": "Tiwolf",
+        "value": 16071720
+      },
+      {
+        "rank": 56,
+        "tag": "THE",
+        "name": "Chino",
+        "value": 16062960
+      },
+      {
+        "rank": 57,
+        "tag": "PNX",
+        "name": "Pola",
+        "value": 16055160
+      },
+      {
+        "rank": 58,
+        "tag": "kNK",
+        "name": "K3V",
+        "value": 16048320
+      },
+      {
+        "rank": 59,
+        "tag": "kNK",
+        "name": "JimPanse",
+        "value": 16044960
+      },
+      {
+        "rank": 60,
+        "tag": "EON",
+        "name": "FOSSY 2/PzBtl413",
+        "value": 16007280
+      },
+      {
+        "rank": 61,
+        "tag": "THE",
+        "name": "PostalloneUA",
+        "value": 16005600
+      },
+      {
+        "rank": 62,
+        "tag": "",
+        "name": "[VIVllord Parks",
+        "value": 15949080
+      },
+      {
+        "rank": 63,
+        "tag": "THE",
+        "name": "Skippy",
+        "value": 15934440
+      },
+      {
+        "rank": 64,
+        "tag": "PNX",
+        "name": "Alex TN",
+        "value": 15918120
+      },
+      {
+        "rank": 65,
+        "tag": "PNX",
+        "name": "Lord Deniz",
+        "value": 15877800
+      },
+      {
+        "rank": 66,
+        "tag": "PNX",
+        "name": "menny",
+        "value": 15817200
+      },
+      {
+        "rank": 67,
+        "tag": "",
+        "name": "[PNXlyuyfzp",
+        "value": 15809640
+      },
+      {
+        "rank": 68,
+        "tag": "EON",
+        "name": "Y KAIDO # EON",
+        "value": 15803400
+      },
+      {
+        "rank": 69,
+        "tag": "PNX",
+        "name": "Thaeric",
+        "value": 15798120
+      },
+      {
+        "rank": 70,
+        "tag": "EON",
+        "name": "Lord Ripop EON",
+        "value": 15795120
+      },
+      {
+        "rank": 71,
+        "tag": "THE",
+        "name": "LEEEEERRROOOYYYY",
+        "value": 15777120
+      },
+      {
+        "rank": 72,
+        "tag": "PNX",
+        "name": "UCMEUDEAD",
+        "value": 15769320
+      },
+      {
+        "rank": 73,
+        "tag": "PNX",
+        "name": "Licious420",
+        "value": 15745200
+      },
+      {
+        "rank": 74,
+        "tag": "kNK",
+        "name": "Kokainarienvogel",
+        "value": 15734640
+      },
+      {
+        "rank": 75,
+        "tag": "EON",
+        "name": "Poyraz EON",
+        "value": 15720600
+      },
+      {
+        "rank": 76,
+        "tag": "kNK",
+        "name": "Woodiii",
+        "value": 15719880
+      },
+      {
+        "rank": 77,
+        "tag": "THE",
+        "name": "Nitaaa~",
+        "value": 15713400
+      },
+      {
+        "rank": 78,
+        "tag": "EON",
+        "name": "poootskie",
+        "value": 15692160
+      },
+      {
+        "rank": 79,
+        "tag": "ToP",
+        "name": "Asmo",
+        "value": 15691560
+      },
+      {
+        "rank": 80,
+        "tag": "PNX",
+        "name": "Licious69",
+        "value": 15685560
+      },
+      {
+        "rank": 81,
+        "tag": "THE",
+        "name": "MMMMMMMM",
+        "value": 15674280
+      },
+      {
+        "rank": 82,
+        "tag": "EONJP",
+        "name": "EON",
+        "value": 15670800
+      },
+      {
+        "rank": 83,
+        "tag": "kNK",
+        "name": "DadOfTheDead",
+        "value": 15669240
+      },
+      {
+        "rank": 84,
+        "tag": "THE",
+        "name": "Rayyannn",
+        "value": 15668520
+      },
+      {
+        "rank": 85,
+        "tag": "ToP",
+        "name": "Neil",
+        "value": 15665400
+      },
+      {
+        "rank": 86,
+        "tag": "VIV",
+        "name": "SoSWURSTKONIGSe/",
+        "value": 15663480
+      },
+      {
+        "rank": 87,
+        "tag": "kNK",
+        "name": "Frajas",
+        "value": 15658560
+      },
+      {
+        "rank": 88,
+        "tag": "PNX",
+        "name": "SPQR",
+        "value": 15657480
+      },
+      {
+        "rank": 89,
+        "tag": "PNX",
+        "name": "Kira",
+        "value": 15651360
+      },
+      {
+        "rank": 90,
+        "tag": "",
+        "name": "",
+        "value": 15635760
+      },
+      {
+        "rank": 91,
+        "tag": "kNK",
+        "name": "YUUKING",
+        "value": 15635760
+      },
+      {
+        "rank": 92,
+        "tag": "",
+        "name": "",
+        "value": 15632880
+      },
+      {
+        "rank": 93,
+        "tag": "WoF",
+        "name": "Lord Hawila",
+        "value": 15632880
+      },
+      {
+        "rank": 94,
+        "tag": "THE",
+        "name": "Barboza30",
+        "value": 15617280
+      },
+      {
+        "rank": 95,
+        "tag": "PNX",
+        "name": "Estrela",
+        "value": 15570720
+      },
+      {
+        "rank": 96,
+        "tag": "ToP",
+        "name": "Thanatos",
+        "value": 15570600
+      },
+      {
+        "rank": 97,
+        "tag": "THE",
+        "name": "Hanyss",
+        "value": 15562800
+      },
+      {
+        "rank": 98,
+        "tag": "THE",
+        "name": "HanySS",
+        "value": 15562800
+      },
+      {
+        "rank": 99,
+        "tag": "[PNX",
+        "name": "CRAZZY",
+        "value": 887840
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "IlI",
+        "value": 421400
+      }
+    ]
+  }
+}

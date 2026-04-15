@@ -1,20 +1,8 @@
 {
-  "generated": "2026-04-14T13:11:00.485887",
+  "generated": "2026-04-14T20:17:21.276573",
   "generator": "kingdoms/build_directory.py",
-  "kingdom_count": 7,
+  "kingdom_count": 12,
   "kingdoms": [
-    {
-      "id": 224,
-      "topAlliance": "Titans",
-      "topTag": "TiT",
-      "topPower": 29255440532,
-      "totalPower": 200483950168,
-      "alliances": 106,
-      "categories": 10,
-      "updated": "2026-04-14",
-      "source": "scraper/data/kingdoms/k224/2026-04-14_081616/alliance_power_extracted.csv",
-      "rank": 1
-    },
     {
       "id": 1,
       "topAlliance": "Titans",
@@ -25,7 +13,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k1/2026-04-14_074136/alliance_power_extracted.csv",
-      "rank": 2
+      "rank": 1
     },
     {
       "id": 222,
@@ -37,7 +25,67 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k222/2026-04-14_054311/alliance_power_extracted.csv",
+      "rank": 2
+    },
+    {
+      "id": 231,
+      "topAlliance": "NoThroneNeeded",
+      "topTag": "KNG",
+      "topPower": 25679534484,
+      "totalPower": 126845791754,
+      "alliances": 94,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k231/2026-04-14_173719/alliance_power_extracted.csv",
       "rank": 3
+    },
+    {
+      "id": 232,
+      "topAlliance": "CERBERUS",
+      "topTag": "CRB",
+      "topPower": 24045482725,
+      "totalPower": 107714790410,
+      "alliances": 101,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k232/2026-04-14_143459/alliance_power_extracted.csv",
+      "rank": 4
+    },
+    {
+      "id": 230,
+      "topAlliance": "ETERNALS",
+      "topTag": "EON",
+      "topPower": 20947090128,
+      "totalPower": 102556647632,
+      "alliances": 104,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k230/2026-04-14_182333/alliance_power_extracted.csv",
+      "rank": 5
+    },
+    {
+      "id": 233,
+      "topAlliance": "JankenPon",
+      "topTag": "JPI",
+      "topPower": 20535225150,
+      "totalPower": 88774582734,
+      "alliances": 104,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k233/2026-04-14_133222/alliance_power_extracted.csv",
+      "rank": 6
+    },
+    {
+      "id": 229,
+      "topAlliance": "From TheAshes",
+      "topTag": "FTA",
+      "topPower": 20156234133,
+      "totalPower": 88147316230,
+      "alliances": 103,
+      "categories": 10,
+      "updated": "2026-04-14",
+      "source": "scraper/data/kingdoms/k229/2026-04-14_190148/alliance_power_extracted.csv",
+      "rank": 7
     },
     {
       "id": 221,
@@ -49,7 +97,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k221/2026-04-14_062431/alliance_power_extracted.csv",
-      "rank": 4
+      "rank": 8
     },
     {
       "id": 223,
@@ -61,7 +109,7 @@
       "categories": 10,
       "updated": "2026-04-13",
       "source": "scraper/data/kingdoms/k223/2026-04-13_184352/alliance_power_extracted.csv",
-      "rank": 5
+      "rank": 9
     },
     {
       "id": 300,
@@ -73,7 +121,7 @@
       "categories": 10,
       "updated": "2026-04-13",
       "source": "scraper/data/kingdoms/k300/2026-04-13_172822/alliance_power_extracted.csv",
-      "rank": 6
+      "rank": 10
     },
     {
       "id": 1908,
@@ -85,7 +133,19 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k1908/2026-04-14_104011/alliance_power_extracted.csv",
-      "rank": 7
+      "rank": 11
+    },
+    {
+      "id": 228,
+      "topAlliance": "?",
+      "topTag": "",
+      "topPower": null,
+      "totalPower": null,
+      "alliances": null,
+      "categories": 0,
+      "updated": "2026-04-14",
+      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k228/2026-04-14_194426",
+      "rank": 12
     }
   ]
 }
