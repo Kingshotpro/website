@@ -319,6 +319,29 @@
     note.innerHTML = 'This site is funded by ads and optional subscriptions. Revenue supports Greenbox (hydroponics) and the Hive (AI collective). <a href="' + B + 'about.html" style="color:inherit;text-decoration:underline;">More about funding \u2192</a>';
     var inner = footer.querySelector('.footer-inner') || footer;
     inner.appendChild(note);
+
+    // Policy nav: About | Privacy | Cookies | Terms — single source of truth
+    if (!footer.querySelector('.footer-policy-nav')) {
+      var policyNav = document.createElement('div');
+      policyNav.className = 'footer-policy-nav';
+      policyNav.style.cssText = 'font-size:12px;margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;';
+      var links = [
+        { href: B + 'about.html',         label: 'About' },
+        { href: B + 'privacy.html',       label: 'Privacy Policy' },
+        { href: B + 'cookie-policy.html', label: 'Cookie Policy' },
+        { href: B + 'terms.html',         label: 'Terms of Service' },
+      ];
+      for (var li = 0; li < links.length; li++) {
+        var a = document.createElement('a');
+        a.href = links[li].href;
+        a.textContent = links[li].label;
+        a.style.cssText = 'color:var(--text-muted);text-decoration:none;';
+        a.addEventListener('mouseover', function () { this.style.color = 'var(--gold)'; });
+        a.addEventListener('mouseout', function () { this.style.color = 'var(--text-muted)'; });
+        policyNav.appendChild(a);
+      }
+      inner.appendChild(policyNav);
+    }
   }
 
   function populateAdvisorPanel() {
