@@ -72,8 +72,8 @@
       },
       {
         "rank": 12,
-        "tag": "",
-        "name": "[WLGWarriorLegacy",
+        "tag": "WLG",
+        "name": "WarriorLegacy",
         "value": 830919349
       },
       {
@@ -120,8 +120,8 @@
       },
       {
         "rank": 20,
-        "tag": "",
-        "name": "[YXYhhappy",
+        "tag": "YX",
+        "name": "Yhhappy",
         "value": 251534280
       },
       {
@@ -181,7 +181,7 @@
       {
         "rank": 30,
         "tag": "hC",
-        "name": "]Wintertome",
+        "name": "Wintertome",
         "value": 88255654
       },
       {
@@ -384,8 +384,8 @@
       },
       {
         "rank": 64,
-        "tag": "",
-        "name": "[vtglTheGovernor",
+        "tag": "vtgl",
+        "name": "TheGovernor",
         "value": 7090924
       },
       {
@@ -656,8 +656,8 @@
       },
       {
         "rank": 9,
-        "tag": "",
-        "name": "[WLGWWarriorLegacy",
+        "tag": "WLGW",
+        "name": "WarriorLegacy",
         "value": 22411520
       },
       {
@@ -716,14 +716,14 @@
       },
       {
         "rank": 19,
-        "tag": "",
-        "name": "[YXYhhappy",
+        "tag": "YX",
+        "name": "Yhhappy",
         "value": 1222530
       },
       {
         "rank": 20,
-        "tag": "",
-        "name": "[STPITTG",
+        "tag": "STPIT",
+        "name": "TG",
         "value": 1104197
       },
       {
@@ -734,8 +734,8 @@
       },
       {
         "rank": 22,
-        "tag": "",
-        "name": "[hmglPoooes",
+        "tag": "hmgl",
+        "name": "Poooes",
         "value": 991419
       },
       {
@@ -788,8 +788,8 @@
       },
       {
         "rank": 31,
-        "tag": "hC J",
-        "name": "Wintertome",
+        "tag": "hC",
+        "name": "JWintertome",
         "value": 380032
       },
       {
@@ -986,8 +986,8 @@
       },
       {
         "rank": 64,
-        "tag": "",
-        "name": "[Uz JJciyan",
+        "tag": "Uz",
+        "name": "JJciyan",
         "value": 13305
       },
       {
@@ -1016,8 +1016,8 @@
       },
       {
         "rank": 69,
-        "tag": "",
-        "name": "[kQqlutegt",
+        "tag": "kQqlu",
+        "name": "tegt",
         "value": 8101
       },
       {
@@ -1071,7 +1071,7 @@
       {
         "rank": 78,
         "tag": "SLO",
-        "name": "TRJSAT'",
+        "name": "TRJSAT",
         "value": 2235
       },
       {
@@ -1088,8 +1088,8 @@
       },
       {
         "rank": 81,
-        "tag": "",
-        "name": "[JjvlThunder",
+        "tag": "Jjvl",
+        "name": "Thunder",
         "value": 2085
       },
       {
@@ -1124,14 +1124,14 @@
       },
       {
         "rank": 87,
-        "tag": "",
-        "name": "[UQghhavoc",
+        "tag": "UQghh",
+        "name": "avoc",
         "value": 1064
       },
       {
         "rank": 88,
-        "tag": "",
-        "name": "[UQglhavoc",
+        "tag": "UQglh",
+        "name": "avoc",
         "value": 1064
       },
       {
@@ -1154,8 +1154,8 @@
       },
       {
         "rank": 92,
-        "tag": "",
-        "name": "[USAIFternalslISA",
+        "tag": "USAI",
+        "name": "FternalslISA",
         "value": 0
       },
       {
@@ -1324,8 +1324,8 @@
       },
       {
         "rank": 23,
-        "tag": "",
-        "name": "[ToPlturtle",
+        "tag": "To",
+        "name": "Plturtle",
         "value": 319178319
       },
       {
@@ -1794,7 +1794,7 @@
     "kill_count": [
       {
         "rank": 1,
-        "tag": "[ToP",
+        "tag": "ToP",
         "name": "Saji",
         "value": 259972945
       },
@@ -1830,14 +1830,14 @@
       },
       {
         "rank": 7,
-        "tag": "[THE",
+        "tag": "THE",
         "name": "xxGonX",
         "value": 115525655
       },
       {
         "rank": 8,
-        "tag": "",
-        "name": "I[EON] 9o8Spec Tre8e/ EON",
+        "tag": "EON",
+        "name": "9o8Spec Tre8e/ EON",
         "value": 113784795
       },
       {
@@ -2046,8 +2046,8 @@
       },
       {
         "rank": 43,
-        "tag": "",
-        "name": "[ToPlturtle",
+        "tag": "To",
+        "name": "Plturtle",
         "value": 33355741
       },
       {
@@ -2178,8 +2178,8 @@
       },
       {
         "rank": 65,
-        "tag": "",
-        "name": "[NEvven",
+        "tag": "NEvve",
+        "name": "n",
         "value": 22059665
       },
       {
@@ -2197,7 +2197,7 @@
       {
         "rank": 68,
         "tag": "",
-        "name": "'IvKatai\"I",
+        "name": "IvKatai\"I",
         "value": 21565687
       },
       {
@@ -2450,7 +2450,7 @@
       },
       {
         "rank": 10,
-        "tag": "[EON",
+        "tag": "EON",
         "name": "Rengaw EON",
         "value": 12355064
       },
@@ -2468,7 +2468,7 @@
       },
       {
         "rank": 13,
-        "tag": "[ToP",
+        "tag": "ToP",
         "name": "Saji",
         "value": 10867348
       },
@@ -2516,8 +2516,8 @@
       },
       {
         "rank": 21,
-        "tag": "",
-        "name": "[ToPlturtle",
+        "tag": "To",
+        "name": "Plturtle",
         "value": 8428335
       },
       {
@@ -2780,8 +2780,8 @@
       },
       {
         "rank": 65,
-        "tag": "THEJMasMas",
-        "name": "awa",
+        "tag": "THE",
+        "name": "MasMasawa",
         "value": 4751065
       },
       {
@@ -2840,8 +2840,8 @@
       },
       {
         "rank": 75,
-        "tag": "",
-        "name": "[VIVIMiniDalaran",
+        "tag": "VIVI",
+        "name": "MiniDalaran",
         "value": 4342600
       },
       {
@@ -2979,7 +2979,7 @@
       {
         "rank": 98,
         "tag": "",
-        "name": "(ToP] 0-8(TDUS#",
+        "name": "(ToP 0-8(TDUS#",
         "value": 4140395
       },
       {
@@ -3010,7 +3010,7 @@
       },
       {
         "rank": 3,
-        "tag": "[THE",
+        "tag": "THE",
         "name": "Mighty Simeon",
         "value": 72538843
       },
@@ -3034,8 +3034,8 @@
       },
       {
         "rank": 7,
-        "tag": "",
-        "name": "I[THE]YARA",
+        "tag": "THE",
+        "name": "YARA",
         "value": 63342768
       },
       {
@@ -3064,8 +3064,8 @@
       },
       {
         "rank": 12,
-        "tag": "",
-        "name": "I[EON] 98Spec Tre8oe/ EON",
+        "tag": "EON",
+        "name": "98Spec Tre8oe/ EON",
         "value": 54775073
       },
       {
@@ -3100,8 +3100,8 @@
       },
       {
         "rank": 18,
-        "tag": "",
-        "name": "[ToPlturtle",
+        "tag": "To",
+        "name": "Plturtle",
         "value": 46745421
       },
       {
@@ -3612,7 +3612,7 @@
       },
       {
         "rank": 3,
-        "tag": "[ToP",
+        "tag": "ToP",
         "name": "Saji",
         "value": 22349640
       },
@@ -3630,8 +3630,8 @@
       },
       {
         "rank": 6,
-        "tag": "",
-        "name": "I[EON]Tux Dinosauron",
+        "tag": "EON",
+        "name": "Tux Dinosauron",
         "value": 20667960
       },
       {
@@ -3714,8 +3714,8 @@
       },
       {
         "rank": 20,
-        "tag": "",
-        "name": "[ToPlturtle",
+        "tag": "To",
+        "name": "Plturtle",
         "value": 17366040
       },
       {
@@ -3888,8 +3888,8 @@
       },
       {
         "rank": 49,
-        "tag": "",
-        "name": "I[EON] 9c8Spec Tre8oe/ EON",
+        "tag": "EON",
+        "name": "9c8Spec Tre8oe/ EON",
         "value": 16179360
       },
       {
@@ -3906,8 +3906,8 @@
       },
       {
         "rank": 52,
-        "tag": "",
-        "name": "[THElyour opinions",
+        "tag": "TH",
+        "name": "Elyour opinions",
         "value": 16096680
       },
       {
@@ -3966,8 +3966,8 @@
       },
       {
         "rank": 62,
-        "tag": "",
-        "name": "[VIVllord Parks",
+        "tag": "VI",
+        "name": "Vllord Parks",
         "value": 15949080
       },
       {
@@ -3996,8 +3996,8 @@
       },
       {
         "rank": 67,
-        "tag": "",
-        "name": "[PNXlyuyfzp",
+        "tag": "PN",
+        "name": "Xlyuyfzp",
         "value": 15809640
       },
       {
@@ -4188,7 +4188,7 @@
       },
       {
         "rank": 99,
-        "tag": "[PNX",
+        "tag": "PNX",
         "name": "CRAZZY",
         "value": 887840
       },
@@ -4208,19 +4208,19 @@
       },
       {
         "rank": 2,
-        "tag": "[PNX",
+        "tag": "PNX",
         "name": "CRAZZY",
         "value": 2651
       },
       {
         "rank": 3,
         "tag": "",
-        "name": "([THE]Mighty Simeon",
+        "name": "(THEMighty Simeon",
         "value": 2532
       },
       {
         "rank": 4,
-        "tag": "[ToP",
+        "tag": "ToP",
         "name": "Saji",
         "value": 2363
       },
@@ -4232,14 +4232,14 @@
       },
       {
         "rank": 6,
-        "tag": "",
-        "name": "I[THE]YARA",
+        "tag": "THE",
+        "name": "YARA",
         "value": 2345
       },
       {
         "rank": 7,
-        "tag": "",
-        "name": "I[EON]Tux Dinosauron",
+        "tag": "EON",
+        "name": "Tux Dinosauron",
         "value": 2287
       },
       {
@@ -4280,7 +4280,7 @@
       },
       {
         "rank": 14,
-        "tag": "[EON",
+        "tag": "EON",
         "name": "Rengaw EON",
         "value": 2029
       },
@@ -4292,8 +4292,8 @@
       },
       {
         "rank": 16,
-        "tag": "",
-        "name": "[ToPlturtle",
+        "tag": "To",
+        "name": "Plturtle",
         "value": 1916
       },
       {
@@ -4406,8 +4406,8 @@
       },
       {
         "rank": 35,
-        "tag": "",
-        "name": "[PNXIAlcatraz",
+        "tag": "PNXI",
+        "name": "Alcatraz",
         "value": 1673
       },
       {
@@ -4556,8 +4556,8 @@
       },
       {
         "rank": 60,
-        "tag": "THEJMasMas",
-        "name": "awa",
+        "tag": "THE",
+        "name": "MasMasawa",
         "value": 1494
       },
       {
