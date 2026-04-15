@@ -153,8 +153,8 @@ const ADVICE_TREE = {
     headline: 'You\'re in the game. Now outposition, not outspend.',
     tips: [
       {
-        title: 'T4 research is non-negotiable',
-        body: 'If T4 troops aren\'t unlocked, that\'s the single spend target. Everything else is supplementary until you have T4. Focus spending here until it\'s done.'
+        title: 'Troop tier research is non-negotiable',
+        body: 'At mid-game, prioritize whichever next troop tier you can reach (T4 if you\'re just past early, pushing T6-T8 by mid-game proper). Every tier compounds — spend on the research gate, not the troops directly.'
       },
       {
         title: 'War Academy tech before hero gear upgrades',
