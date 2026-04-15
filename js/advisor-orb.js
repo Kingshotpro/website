@@ -282,6 +282,11 @@
       if (e.target && e.target.closest && (e.target.closest('.orb-mute') || e.target.closest('.orb-speech'))) return;
       if (engaged) return;
 
+      // Record state ONLY. No style changes, no pointer capture yet —
+      // doing either now would steal the click event away from orb-circle
+      // (which holds the expand() handler). We only commit to "drag mode"
+      // once the user has moved > DRAG_THRESHOLD pixels. Quick clicks
+      // never touch these side effects and pass through normally.
       dragging = true;
       moved = false;
       var rect = orbWrap.getBoundingClientRect();
@@ -289,20 +294,6 @@
       origTop = rect.top;
       startX = e.clientX;
       startY = e.clientY;
-
-      // Switch to absolute pixel positioning so drag math is direct.
-      // `transform: none` is CRITICAL — the .orb-at-rest class applies
-      // `transform: translateY(-50%)` to vertically center the orb, and
-      // without clearing it the orb jumps up half its height on first drag.
-      orbWrap.style.left = origLeft + 'px';
-      orbWrap.style.top = origTop + 'px';
-      orbWrap.style.right = 'auto';
-      orbWrap.style.bottom = 'auto';
-      orbWrap.style.transform = 'none';
-
-      if (e.pointerId != null && orbWrap.setPointerCapture) {
-        try { orbWrap.setPointerCapture(e.pointerId); } catch (err) {}
-      }
     }
 
     function onPointerMove(e) {
@@ -312,9 +303,28 @@
 
       if (!moved) {
         if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+          // Threshold crossed — NOW we commit to drag mode.
           moved = true;
           orbWrap.classList.add('orb-dragging');
           orbWrap.style.cursor = 'grabbing';
+
+          // Switch to absolute pixel positioning. `transform: none` is
+          // critical — the .orb-at-rest class applies `translateY(-50%)`
+          // to vertically center the orb; without clearing it the orb
+          // jumps half its height on first drag.
+          orbWrap.style.left = origLeft + 'px';
+          orbWrap.style.top = origTop + 'px';
+          orbWrap.style.right = 'auto';
+          orbWrap.style.bottom = 'auto';
+          orbWrap.style.transform = 'none';
+
+          // Capture pointer so drag keeps tracking even if cursor leaves
+          // the orb element. Safe to do now — the click is already lost
+          // because we're past the click threshold anyway. Browser auto-
+          // releases on pointerup, so no explicit release needed.
+          if (e.pointerId != null && orbWrap.setPointerCapture) {
+            try { orbWrap.setPointerCapture(e.pointerId); } catch (err) {}
+          }
         } else {
           return; // still below threshold — let click behavior win
         }
