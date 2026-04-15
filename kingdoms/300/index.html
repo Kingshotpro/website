@@ -50,9 +50,25 @@
     .k-crumbs a { color: var(--text-muted); text-decoration: none; }
     .k-crumbs a:hover { color: var(--gold); }
     .sources { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 24px; }
+    /* Top-level page tabs */
+    .k-pagetabs { display: flex; gap: 8px; margin-bottom: 16px; background: var(--surface-2); padding: 6px; border: 1px solid var(--border); border-radius: 12px; }
+    .k-pagetab { flex: 1; padding: 12px 16px; background: transparent; border: none; color: var(--text-muted); font-size: 14px; font-weight: 700; cursor: pointer; border-radius: 8px; font-family: inherit; transition: all 0.2s; }
+    .k-pagetab:hover { color: var(--text); background: var(--surface); }
+    .k-pagetab.active { background: var(--gold); color: var(--bg); }
+    .k-panel { display: none; }
+    .k-panel.active { display: block; }
+    /* Collapsible inactive section */
+    .k-inactive-wrap { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .k-inactive-toggle { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 13px; font-weight: 600; width: 100%; font-family: inherit; }
+    .k-inactive-toggle:hover { border-color: var(--gold); color: var(--gold); }
+    .k-inactive-toggle-icon { font-size: 11px; transition: transform 0.2s; }
+    .k-inactive-toggle.expanded .k-inactive-toggle-icon { transform: rotate(180deg); }
+    .k-inactive-content { display: none; margin-top: 12px; }
+    .k-inactive-content.expanded { display: block; }
     @media (max-width: 640px) {
       .k-table th:nth-child(4), .k-table td:nth-child(4) { display: none; }
       .k-tab { padding: 6px 10px; font-size: 11px; }
+      .k-pagetab { padding: 10px 8px; font-size: 12px; }
     }
   </style>
 </head>
@@ -77,39 +93,63 @@
 
   <div class="ad-slot" data-slot="kingdom-detail-top">Ad</div>
 
-  <!-- Alliance Rankings -->
-  <div class="k-section">
-    <h2>Alliance Rankings</h2>
-    <div class="k-tabs" id="alliance-tabs"></div>
-    <div class="k-search"><input type="text" id="alliance-search" placeholder="Search alliances..."></div>
-    <table class="k-table">
-      <thead><tr><th>#</th><th>Alliance</th><th>Value</th><th></th></tr></thead>
-      <tbody id="alliance-tbody"></tbody>
-    </table>
+  <!-- Top-level page tabs -->
+  <div class="k-pagetabs">
+    <button class="k-pagetab active" data-panel="alliance-panel">Alliance</button>
+    <button class="k-pagetab" data-panel="player-panel">Player</button>
+    <button class="k-pagetab" data-panel="event-panel">Event</button>
   </div>
 
-  <div class="ad-slot" data-slot="kingdom-detail-mid">Ad</div>
-
-  <!-- Player Rankings -->
-  <div class="k-section">
-    <h2>Player Rankings</h2>
-    <div class="k-tabs" id="player-tabs"></div>
-    <div class="k-search"><input type="text" id="player-search" placeholder="Search players..."></div>
-    <table class="k-table">
-      <thead><tr><th>#</th><th>Governor</th><th>Value</th><th></th></tr></thead>
-      <tbody id="player-tbody"></tbody>
-    </table>
+  <!-- Alliance Panel -->
+  <div class="k-panel active" id="alliance-panel">
+    <div class="k-section">
+      <h2>Alliance Rankings</h2>
+      <div class="k-tabs" id="alliance-tabs"></div>
+      <div class="k-search"><input type="text" id="alliance-search" placeholder="Search alliances..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Alliance</th><th>Value</th><th></th></tr></thead>
+        <tbody id="alliance-tbody"></tbody>
+      </table>
+      <!-- Inactive alliances (collapsible) -->
+      <div class="k-inactive-wrap" id="alliance-inactive-wrap" style="display:none;">
+        <button class="k-inactive-toggle" id="alliance-inactive-toggle">
+          <span id="alliance-inactive-label">Inactive alliances (0)</span>
+          <span class="k-inactive-toggle-icon">▼</span>
+        </button>
+        <div class="k-inactive-content" id="alliance-inactive-content">
+          <table class="k-table">
+            <thead><tr><th>#</th><th>Alliance</th><th>Value</th><th></th></tr></thead>
+            <tbody id="alliance-inactive-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Event Rankings -->
-  <div class="k-section">
-    <h2>Event Rankings</h2>
-    <div class="k-tabs" id="event-tabs"></div>
-    <div class="k-search"><input type="text" id="event-search" placeholder="Search players..."></div>
-    <table class="k-table">
-      <thead><tr><th>#</th><th>Governor</th><th>Score</th><th></th></tr></thead>
-      <tbody id="event-tbody"></tbody>
-    </table>
+  <!-- Player Panel -->
+  <div class="k-panel" id="player-panel">
+    <div class="k-section">
+      <h2>Player Rankings</h2>
+      <div class="k-tabs" id="player-tabs"></div>
+      <div class="k-search"><input type="text" id="player-search" placeholder="Search players..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Governor</th><th>Value</th><th></th></tr></thead>
+        <tbody id="player-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Event Panel -->
+  <div class="k-panel" id="event-panel">
+    <div class="k-section">
+      <h2>Event Rankings</h2>
+      <div class="k-tabs" id="event-tabs"></div>
+      <div class="k-search"><input type="text" id="event-search" placeholder="Search players..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Governor</th><th>Score</th><th></th></tr></thead>
+        <tbody id="event-tbody"></tbody>
+      </table>
+    </div>
   </div>
 
   <div class="ad-slot" data-slot="kingdom-detail-bottom">Ad</div>
@@ -231,12 +271,102 @@ var KINGDOM_DATA = {"kingdom":300,"last_updated":"2026-04-13","source":"ADB scre
   document.getElementById('stat-updated').textContent = 'Last updated: ' + data.last_updated + ' via ADB scraper';
 
   // Setup tabs and render defaults
-  setupTabs('alliance-tabs', ALLIANCE_CATS, 'alliance-tbody', 'alliance-search');
+  // Split alliances into active and inactive based on power threshold
+  // Active = power >= 1% of top alliance, OR top 30 alliances (whichever captures more)
+  // Long-term this should use timeline diff; for now use power threshold
+  function splitActiveInactive(entries) {
+    if (!entries || entries.length === 0) return {active: [], inactive: []};
+    var topPower = entries[0].value;
+    var threshold = Math.max(topPower * 0.01, 50000000); // 1% of top, min 50M
+    var active = [], inactive = [];
+    entries.forEach(function(e) {
+      if (e.value >= threshold) active.push(e);
+      else inactive.push(e);
+    });
+    // Always show at least 10 active even if all small
+    if (active.length < 10 && inactive.length > 0) {
+      var promote = inactive.splice(0, 10 - active.length);
+      active = active.concat(promote);
+    }
+    return {active: active, inactive: inactive};
+  }
+
+  // Override alliance tabs behavior to use active/inactive split
+  function setupAllianceTabs() {
+    var container = document.getElementById('alliance-tabs');
+    var searchInput = document.getElementById('alliance-search');
+    var activeKey = ALLIANCE_CATS[0].key;
+
+    function render(filter) {
+      var entries = data.categories[activeKey] || [];
+      var split = splitActiveInactive(entries);
+      renderTable('alliance-tbody', split.active, '', filter || '');
+      renderTable('alliance-inactive-tbody', split.inactive, '', filter || '');
+
+      // Show/hide inactive section
+      var wrap = document.getElementById('alliance-inactive-wrap');
+      var label = document.getElementById('alliance-inactive-label');
+      if (split.inactive.length > 0) {
+        wrap.style.display = 'block';
+        label.textContent = 'Inactive alliances (' + split.inactive.length + ')';
+      } else {
+        wrap.style.display = 'none';
+      }
+    }
+
+    ALLIANCE_CATS.forEach(function(cat) {
+      var btn = document.createElement('button');
+      btn.className = 'k-tab' + (cat.key === activeKey ? ' active' : '');
+      btn.textContent = cat.label;
+      btn.dataset.key = cat.key;
+      btn.addEventListener('click', function() {
+        activeKey = cat.key;
+        container.querySelectorAll('.k-tab').forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+        render(searchInput.value);
+      });
+      container.appendChild(btn);
+    });
+
+    searchInput.addEventListener('input', function() {
+      render(searchInput.value);
+    });
+
+    // Inactive toggle
+    var toggle = document.getElementById('alliance-inactive-toggle');
+    var content = document.getElementById('alliance-inactive-content');
+    toggle.addEventListener('click', function() {
+      toggle.classList.toggle('expanded');
+      content.classList.toggle('expanded');
+    });
+
+    render('');
+  }
+
+  // Top-level page tab switching (Alliance / Player / Event)
+  function setupPageTabs() {
+    var tabs = document.querySelectorAll('.k-pagetab');
+    var panels = document.querySelectorAll('.k-panel');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = tab.dataset.panel;
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+        // Scroll to top of panels so user sees the content
+        window.scrollTo({top: document.querySelector('.k-pagetabs').offsetTop - 20, behavior: 'smooth'});
+      });
+    });
+  }
+
+  setupPageTabs();
+  setupAllianceTabs();
   setupTabs('player-tabs', PLAYER_CATS, 'player-tbody', 'player-search');
   setupTabs('event-tabs', EVENT_CATS, 'event-tbody', 'event-search');
 
   // Render initial data
-  renderTable('alliance-tbody', data.categories.alliance_power || [], 'Power', '');
+  // Alliance rendering handled by setupAllianceTabs
   renderTable('player-tbody', data.categories.personal_power || [], 'Power', '');
   renderTable('event-tbody', data.categories.mystic_trial || [], 'Score', '');
 })();
