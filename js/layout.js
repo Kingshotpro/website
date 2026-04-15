@@ -21,7 +21,7 @@
   // cat  = category header
   // href = null → "Coming Soon"
   var NAV = [
-    { icon: '\u{1F3E0}', label: 'Home',             href: B + 'index.html',                     key: 'home' },
+    { icon: '\u{1F3E0}', label: 'Home',             href: B || './',                             key: 'home' },
     { icon: '\u{1F3F0}', label: 'Kingdom Rankings', href: B + 'kingdoms/',                       key: 'kingdoms',    badges: ['Hot'] },
     { icon: '\u{1F451}', label: 'Pro Plans',          href: B + 'pricing.html',                   key: 'pricing',    badges: ['New'] },
     { icon: '\u2764\uFE0F', label: 'Support Advisor',   href: B + 'support.html',                   key: 'support' },
