@@ -295,6 +295,46 @@ async function handleFidSubmit(e) {
 
   setSubmitState(btn, true);
 
+  // ── Admin bypass: magic Player ID unlocks everything ──
+  // Skips the API call entirely, creates a synthetic elite-tier profile.
+  if (fid === '99999') {
+    const profile = {
+      fid: '99999',
+      nickname: 'Architect',
+      townCenterLevel: 30,
+      furnaceLevel: 30,
+      kid: 1908,
+      dollars: 9999,
+      spendingTier: 'whale',
+      spendingLabel: 'Warlord',
+      gameStage: 'late',
+      stageLabel: 'Late Game',
+      serverAge: 'mature',
+      serverAgeLabel: 'Mature (180+ days)',
+    };
+    saveProfile(profile);
+    renderProfileCard(profile);
+    // Set elite tier for all premium features
+    try {
+      localStorage.setItem('ksp_tier', 'elite');
+      localStorage.setItem('ksp_last_fid', '99999');
+    } catch (e) {}
+    if (window.AccountSwitcher && window.AccountSwitcher.addAccount) {
+      window.AccountSwitcher.addAccount('99999', 'Architect');
+    }
+    if (window.Advisor) {
+      if (!window.Advisor.load('99999')) {
+        window.Advisor.create('99999', 'steward', 'Ysabel');
+      }
+      window.Advisor.processDailyVisit();
+      window.Advisor.grantXP('admin_login', 100);
+    }
+    if (window.KSP?.renderAdvisory) window.KSP.renderAdvisory(profile);
+    setSubmitState(btn, false);
+    document.getElementById('profile-card')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
+  }
+
   try {
     const raw     = await fetchPlayerProfile(fid);
     const profile = classifyProfile({ ...raw, fid });
