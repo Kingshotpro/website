@@ -750,45 +750,29 @@
   }
 
   function showPlayerIdInput() {
-    addAdvisorMsg('Enter your Player ID below. You\'ll find it in-game: avatar \u2192 Settings \u2192 Player Info. The number labeled "FID."');
-    panelInput.innerHTML = '';
-    var wrap = document.createElement('div');
-    wrap.className = 'orb-fid-input';
-    wrap.innerHTML =
-      '<input type="text" id="orb-fid-field" inputmode="numeric" ' +
-      'placeholder="Your Player ID (e.g. 7291048)" maxlength="12" ' +
-      'pattern="\\d{5,12}" autocomplete="off">' +
-      '<button id="orb-fid-go" class="orb-reply-btn" style="background:var(--gold);color:var(--bg);font-weight:700;text-align:center;">Look up</button>';
-    panelInput.appendChild(wrap);
-
-    var field = document.getElementById('orb-fid-field');
-    var btn = document.getElementById('orb-fid-go');
-
-    setTimeout(function () { field.focus(); }, 100);
-
-    function doLookup() {
-      var val = field.value.trim();
-      if (!val || !/^\d{5,12}$/.test(val)) {
-        addAdvisorMsg('That doesn\'t look right. Your Player ID is 5\u201312 digits \u2014 numbers only.');
-        return;
-      }
-      addUserMsg(val);
-      panelInput.innerHTML = '';
-      addAdvisorMsg('Looking up your kingdom...');
-
-      // Fill the main page FID input and submit
-      var mainInput = document.getElementById('fid-input');
-      if (mainInput) {
-        mainInput.value = val;
-        var form = document.getElementById('fid-form');
-        if (form) form.dispatchEvent(new Event('submit', { cancelable: true }));
-      }
+    // Redirect to the homepage Player ID form instead of duplicating the input
+    // inside the chat. The homepage form is the single source of truth for
+    // Player ID entry — Ysabel reads from localStorage after the lookup completes.
+    var mainInput = document.getElementById('fid-input');
+    if (mainInput) {
+      // We're on the homepage — close the panel and scroll to the form
+      addAdvisorMsg('Enter your Player ID in the form below. You\'ll find it in-game: avatar \u2192 Settings \u2192 Player Info. The number labeled "FID." I\'ll be waiting.');
+      setTimeout(function () {
+        minimize(); // close the council chamber
+        mainInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        mainInput.focus();
+        // Brief flash to draw attention
+        mainInput.style.boxShadow = '0 0 20px rgba(240, 192, 64, 0.8)';
+        setTimeout(function () { mainInput.style.boxShadow = ''; }, 2000);
+      }, 1500);
+    } else {
+      // We're on a different page — navigate to homepage with form anchor
+      addAdvisorMsg('Let me take you to the homepage where you can enter your Player ID.');
+      setTimeout(function () {
+        var base = getBase();
+        window.location.href = base + 'index.html#fid-form';
+      }, 1500);
     }
-
-    btn.addEventListener('click', doLookup);
-    field.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); doLookup(); }
-    });
   }
 
   // ── Update identity ───────────────────────
