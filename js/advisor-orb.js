@@ -688,7 +688,7 @@
       '1. Open Kingshot<br>' +
       '2. Tap your <strong>avatar</strong> (top-left)<br>' +
       '3. <strong>Settings \u2192 Player Info</strong><br>' +
-      '4. The number next to <strong>"FID"</strong> \u2014 usually 7\u201310 digits<br><br>' +
+      '4. Your <strong>Player ID</strong> (labeled "FID" in-game) \u2014 usually 7\u201310 digits<br><br>' +
       'Enter it above and I\'ll pull up everything about your account.'
     );
     playVoice('help_find_id');
@@ -750,7 +750,7 @@
   }
 
   function showPlayerIdInput() {
-    addAdvisorMsg('Enter your Player ID below. You\'ll find it in-game: avatar \u2192 Settings \u2192 Player Info. The number next to FID.');
+    addAdvisorMsg('Enter your Player ID below. You\'ll find it in-game: avatar \u2192 Settings \u2192 Player Info. The number labeled "FID."');
     panelInput.innerHTML = '';
     var wrap = document.createElement('div');
     wrap.className = 'orb-fid-input';

@@ -169,7 +169,7 @@
       speech: function (profile) {
         return "We're done with the tour. But the site doesn't end here. " +
           "Try looking up another player — a rival, an ally, anyone. " +
-          "Every FID has a profile. Every kingdom has rankings. " +
+          "Every Player ID has a profile. Every kingdom has rankings. " +
           "<strong>Come back every day. I'll be here.</strong>";
       },
       nextText: null,

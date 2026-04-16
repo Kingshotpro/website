@@ -209,7 +209,7 @@
             form.innerHTML = `
                 <input type="text" 
                        class="ksp-fid-input" 
-                       placeholder="Enter FID" 
+                       placeholder="Enter Player ID"
                        style="width: 100%; padding: 8px; margin-bottom: 8px; background: #1e2030; border: 1px solid ${STYLES.border}; color: ${STYLES.text}; border-radius: 3px;">
                 <input type="text" 
                        class="ksp-nickname-input" 
