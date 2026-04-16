@@ -89,6 +89,9 @@
   function checkLore() {
     if (!window.Advisor || !window.AdvisorOrb) return;
 
+    // Suppress lore fragments while site tour is active
+    if (window.KSPTour && window.KSPTour.isActive()) return;
+
     var state = window.Advisor.getState();
     if (!state) return;
 

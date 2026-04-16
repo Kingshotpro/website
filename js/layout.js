@@ -304,6 +304,22 @@
 
     // ── Funding transparency footer line ─────
     injectFundingNote();
+
+    // ── Load the site tour module (advisor-tour.js) on every page ─
+    // Dynamically injected so no individual HTML file needs to be touched.
+    // The tour checks its own state and only activates when appropriate.
+    injectTourScript();
+  }
+
+  // Dynamically load advisor-tour.js. Idempotent — never double-loads.
+  function injectTourScript() {
+    if (document.querySelector('script[data-ksp-tour]')) return;
+    if (window.KSPTour) return; // already loaded
+    var s = document.createElement('script');
+    s.src = B + 'js/advisor-tour.js';
+    s.setAttribute('data-ksp-tour', '1');
+    s.async = true;
+    document.head.appendChild(s);
   }
 
   // Append a small transparency line to the existing page footer.

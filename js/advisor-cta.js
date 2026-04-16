@@ -39,6 +39,9 @@
 
   if (now < cooldownDate) return;
 
+  // Suppress CTAs while the site tour is active — tour bubbles take priority
+  if (window.KSPTour && window.KSPTour.isActive()) return;
+
   const dismissedCount = parseInt(localStorage.getItem(dismissedCountKey) || '0', 10);
 
   function showCta(text) {

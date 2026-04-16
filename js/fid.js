@@ -227,6 +227,35 @@ function renderProfileCard(profile) {
 }
 
 // ─────────────────────────────────────────
+// TOUR START PROMPT
+// ─────────────────────────────────────────
+// First-time users see an invitation to take the site tour after their
+// first successful FID lookup. One-shot — if they decline or skip, the
+// prompt never appears again. Delivered via the advisor orb speech bubble.
+
+function promptTourStart(profile) {
+  if (!window.AdvisorOrb || !window.AdvisorOrb.showSpeechBubble) return;
+  if (!window.KSPTour) return;
+
+  const name = profile && profile.nickname ? escHtml(profile.nickname) : 'Governor';
+  const html =
+    '<div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Welcome</div>' +
+    'Welcome, <strong>' + name + '</strong>. I can show you what this site actually does. ' +
+    '<strong>Two minutes, seven stops.</strong> You\'ll see things no other tool can show you — ' +
+    'your kingdom, your KvK math, your rally compositions, and more.' +
+    '<div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;">' +
+    '<button onclick="window.KSPTour.skip()" ' +
+    'style="background:transparent;color:var(--text-muted);border:1px solid var(--border);padding:8px 14px;border-radius:6px;cursor:pointer;font-family:inherit;">' +
+    'Maybe later</button>' +
+    '<button onclick="window.KSPTour.start()" ' +
+    'style="background:var(--gold);color:var(--bg);border:none;padding:8px 18px;border-radius:6px;font-weight:700;cursor:pointer;font-family:inherit;">' +
+    'Take the tour \u2192</button>' +
+    '</div>';
+
+  window.AdvisorOrb.showSpeechBubble(html);
+}
+
+// ─────────────────────────────────────────
 // ERROR / STATUS HELPERS
 // ─────────────────────────────────────────
 
@@ -294,6 +323,15 @@ async function handleFidSubmit(e) {
     if (window.KSP?.renderAdvisory) {
       window.KSP.renderAdvisory(profile);
     }
+
+    // Tour prompt: first-time users get offered a guided walkthrough.
+    // Only shown once per browser — if they skip or complete, never again.
+    // Delay lets the advisor orb settle first.
+    setTimeout(function () {
+      if (window.KSPTour && !window.KSPTour.hasRun() && !window.KSPTour.isActive()) {
+        promptTourStart(profile);
+      }
+    }, 3000);
 
     // Scroll to profile
     document.getElementById('profile-card')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

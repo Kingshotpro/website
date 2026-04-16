@@ -108,6 +108,8 @@
   // After enough data, the advisor speaks through the orb speech bubble
   function checkForInsight() {
     if (!window.AdvisorOrb) return;
+    // Suppress insights while site tour is active — tour takes priority
+    if (window.KSPTour && window.KSPTour.isActive()) return;
     var tags = Advisor.getTags();
     if (tags.length === 0) return;
 
