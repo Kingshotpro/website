@@ -1,7 +1,7 @@
 {
-  "generated": "2026-04-14T23:23:42.464829",
+  "generated": "2026-04-16T09:01:22.419629",
   "generator": "kingdoms/build_directory.py",
-  "kingdom_count": 14,
+  "kingdom_count": 19,
   "kingdoms": [
     {
       "id": 1,
@@ -40,6 +40,18 @@
       "rank": 3
     },
     {
+      "id": 303,
+      "topAlliance": "BerserkerBees",
+      "topTag": "BEE",
+      "topPower": 23635937615,
+      "totalPower": 108128275014,
+      "alliances": 102,
+      "categories": 10,
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k303/2026-04-16_031830/alliance_power_extracted.csv",
+      "rank": 4
+    },
+    {
       "id": 232,
       "topAlliance": "CERBERUS",
       "topTag": "CRB",
@@ -49,7 +61,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k232/2026-04-14_143459/alliance_power_extracted.csv",
-      "rank": 4
+      "rank": 5
     },
     {
       "id": 230,
@@ -61,7 +73,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k230/2026-04-14_182333/alliance_power_extracted.csv",
-      "rank": 5
+      "rank": 6
     },
     {
       "id": 227,
@@ -73,7 +85,19 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k227/2026-04-14_212422/alliance_power_extracted.csv",
-      "rank": 6
+      "rank": 7
+    },
+    {
+      "id": 301,
+      "topAlliance": "madhouse",
+      "topTag": "MAD",
+      "topPower": 20695123670,
+      "totalPower": 90433195513,
+      "alliances": 99,
+      "categories": 10,
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k301/2026-04-16_070011/alliance_power_extracted.csv",
+      "rank": 8
     },
     {
       "id": 233,
@@ -85,7 +109,19 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k233/2026-04-14_133222/alliance_power_extracted.csv",
-      "rank": 7
+      "rank": 9
+    },
+    {
+      "id": 302,
+      "topAlliance": "LoktarOgar",
+      "topTag": "Lto",
+      "topPower": 23306414353,
+      "totalPower": 88637092003,
+      "alliances": 101,
+      "categories": 10,
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k302/2026-04-16_073510/alliance_power_extracted.csv",
+      "rank": 10
     },
     {
       "id": 229,
@@ -97,7 +133,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k229/2026-04-14_190148/alliance_power_extracted.csv",
-      "rank": 8
+      "rank": 11
     },
     {
       "id": 221,
@@ -109,7 +145,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k221/2026-04-14_062431/alliance_power_extracted.csv",
-      "rank": 9
+      "rank": 12
     },
     {
       "id": 228,
@@ -121,7 +157,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k228/2026-04-14_204423/alliance_power_extracted.csv",
-      "rank": 10
+      "rank": 13
     },
     {
       "id": 223,
@@ -133,19 +169,19 @@
       "categories": 10,
       "updated": "2026-04-13",
       "source": "scraper/data/kingdoms/k223/2026-04-13_184352/alliance_power_extracted.csv",
-      "rank": 11
+      "rank": 14
     },
     {
       "id": 300,
-      "topAlliance": "ADVANGE",
-      "topTag": "AVB",
-      "topPower": 12779417655,
-      "totalPower": 52699142446,
-      "alliances": 95,
+      "topAlliance": "AWAKENS",
+      "topTag": "AWK",
+      "topPower": 13702306090,
+      "totalPower": 56181490629,
+      "alliances": 80,
       "categories": 10,
-      "updated": "2026-04-13",
-      "source": "scraper/data/kingdoms/k300/2026-04-13_172822/alliance_power_extracted.csv",
-      "rank": 12
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k300/2026-04-16_061736/alliance_power_extracted.csv",
+      "rank": 15
     },
     {
       "id": 1908,
@@ -157,7 +193,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k1908/2026-04-14_104011/alliance_power_extracted.csv",
-      "rank": 13
+      "rank": 16
     },
     {
       "id": 1916,
@@ -169,7 +205,31 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k1916/2026-04-14_220953/alliance_power_extracted.csv",
-      "rank": 14
+      "rank": 17
+    },
+    {
+      "id": 1945,
+      "topAlliance": "[VIPIVIP",
+      "topTag": "",
+      "topPower": 62905656,
+      "totalPower": 1562933403,
+      "alliances": 97,
+      "categories": 10,
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k1945/2026-04-16_040406/alliance_power_extracted.csv",
+      "rank": 18
+    },
+    {
+      "id": 1944,
+      "topAlliance": "lceLegion",
+      "topTag": "ICE",
+      "topPower": 74216837,
+      "totalPower": 1527589763,
+      "alliances": 94,
+      "categories": 10,
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k1944/2026-04-16_050354/alliance_power_extracted.csv",
+      "rank": 19
     }
   ]
 }

@@ -54,6 +54,17 @@
     .kd-stat-pill-val { font-size: 18px; font-weight: 800; color: var(--gold); }
     .kd-stat-pill-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
+    .kd-req-btn {
+      padding: 10px 20px; background: var(--gold); color: var(--bg); border: none; border-radius: 8px;
+      font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit;
+    }
+    .kd-req-btn:hover { opacity: 0.9; }
+    .kd-req-btn:disabled { opacity: 0.5; cursor: default; }
+    .kd-req-btn.small { padding: 4px 10px; font-size: 11px; border-radius: 6px; }
+    .kd-req-status-ok { display: block; background: rgba(74,222,128,0.1); border: 1px solid #4ade80; color: #4ade80; }
+    .kd-req-status-err { display: block; background: rgba(248,113,113,0.1); border: 1px solid #f87171; color: #f87171; }
+    .kd-req-status-info { display: block; background: rgba(240,192,64,0.1); border: 1px solid var(--gold); color: var(--gold); }
+
     @media (max-width: 640px) {
       .kd-table th:nth-child(5), .kd-table td:nth-child(5),
       .kd-table th:nth-child(6), .kd-table td:nth-child(6),
@@ -101,7 +112,14 @@
   <div class="kd-coming" id="kd-coming">
     <p><strong>More kingdoms coming soon.</strong></p>
     <p>Our intelligence network is expanding. Each kingdom requires a data source — we're adding new kingdoms every week.</p>
-    <p style="margin-top:12px;">Want your kingdom tracked? <a href="../survey.html" style="color:var(--gold);">Tell us in the survey.</a></p>
+    <div style="margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <button class="kd-req-btn" id="kd-add-btn" onclick="showAddKingdom()">Request New Kingdom (5 credits)</button>
+    </div>
+    <div id="kd-add-form" style="display:none;margin-top:16px;text-align:center;">
+      <input type="number" id="kd-add-input" min="1" max="9999" placeholder="Kingdom number (e.g. 734)" style="padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;font-family:inherit;width:200px;">
+      <button class="kd-req-btn" style="margin-left:8px;" onclick="submitAddKingdom()">Submit</button>
+    </div>
+    <div id="kd-req-status" style="display:none;margin-top:12px;padding:10px;border-radius:8px;font-size:13px;"></div>
   </div>
 
   <div class="ad-slot" data-slot="kingdom-bottom">Ad</div>
@@ -168,7 +186,7 @@ function renderTable() {
       '<td class="kd-power">' + (k.totalPower ? formatPower(k.totalPower) : '<span style="opacity:0.4">?</span>') + '</td>' +
       '<td class="kd-alliances">' + (k.alliances != null ? k.alliances : '<span style="opacity:0.4">?</span>') + '</td>' +
       '<td class="kd-age">' + k.age + '</td>' +
-      '<td class="kd-updated">' + k.updated + '</td>';
+      '<td class="kd-updated">' + k.updated + ' <button class="kd-req-btn small" onclick="event.stopPropagation();requestUpdate(' + k.id + ');" title="Request data update (3 credits)">↻</button></td>';
     tbody.appendChild(tr);
   });
 }
@@ -231,6 +249,58 @@ fetch('directory_data.json')
     // Fallback if JSON fails to load
     document.getElementById('kd-tbody').innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:20px;">Failed to load kingdom data. Try refreshing.</td></tr>';
   });
+
+// Kingdom request functions (require credits.js)
+function showReqStatus(msg, type) {
+  var el = document.getElementById('kd-req-status');
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.className = type === 'ok' ? 'kd-req-status-ok' : type === 'info' ? 'kd-req-status-info' : 'kd-req-status-err';
+}
+
+function showAddKingdom() {
+  var form = document.getElementById('kd-add-form');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+function submitAddKingdom() {
+  var val = parseInt(document.getElementById('kd-add-input').value, 10);
+  if (!val || val < 1 || val > 9999) {
+    showReqStatus('Enter a valid kingdom number (1-9999).', 'err');
+    return;
+  }
+  if (!window.KSP_CREDITS) {
+    showReqStatus('Please log in to request kingdoms. Credits required.', 'err');
+    return;
+  }
+  window.KSP_CREDITS.requestKingdom('add', val, function(res) {
+    if (res.ok) {
+      showReqStatus('Request submitted! Kingdom ' + val + ' will be added within 48 hours. Balance: ' + res.balance + ' credits.', 'ok');
+      document.getElementById('kd-add-form').style.display = 'none';
+    } else if (res.error === 'insufficient_credits') {
+      showReqStatus('Not enough credits. You need ' + res.cost + ' but have ' + res.balance + '. Buy credits on the pricing page.', 'info');
+    } else {
+      showReqStatus(res.message || 'Something went wrong. Try again.', 'err');
+    }
+  });
+}
+
+function requestUpdate(kingdom) {
+  if (!window.KSP_CREDITS) {
+    showReqStatus('Please log in to request updates. Credits required.', 'err');
+    return;
+  }
+  window.KSP_CREDITS.requestKingdom('update', kingdom, function(res) {
+    if (res.ok) {
+      showReqStatus('Update requested for Kingdom ' + kingdom + '! Data will refresh within 48 hours. Balance: ' + res.balance + ' credits.', 'ok');
+    } else if (res.error === 'insufficient_credits') {
+      showReqStatus('Not enough credits. You need ' + res.cost + ' but have ' + res.balance + '. Buy credits on the pricing page.', 'info');
+    } else {
+      showReqStatus(res.message || 'Something went wrong. Try again.', 'err');
+    }
+  });
+}
 </script>
+<script src="../js/credits.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ SCRAPER_DATA = '/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms'
 RELIABLE = ['alliance_power', 'alliance_kills', 'personal_power', 'kill_count',
             'hero_power', 'heros_total_power', 'total_pet_power', 'mystic_trial']
 
-KINGDOM_IDS = [1, 221, 222, 223, 227, 228, 229, 230, 231, 232, 233, 300, 1908, 1916]
+KINGDOM_IDS = [1, 221, 222, 223, 227, 228, 229, 230, 231, 232, 233, 300, 301, 302, 303, 1908, 1916, 1944, 1945]
 
 
 def clean_tag_name(raw):
@@ -104,21 +104,24 @@ def build_json_for_kingdom(kid):
     if not dirs:
         return None
 
-    # For K300 skip the partial run
-    if kid == 300:
-        latest = '2026-04-13_172822'
-    else:
-        latest = dirs[-1]
-
-    extract_path = f'{base}/{latest}/extracted_data.json'
-    if not os.path.exists(extract_path):
+    # Find latest run that has extracted_data.json
+    latest = None
+    for d in reversed(dirs):
+        if os.path.exists(f'{base}/{d}/extracted_data.json'):
+            latest = d
+            break
+    if latest is None:
         return None
 
+    extract_path = f'{base}/{latest}/extracted_data.json'
     src = json.load(open(extract_path))
+
+    # Derive date from directory name (format: 2026-04-16_031830)
+    last_updated = latest[:10]  # "2026-04-16"
 
     output = {
         'kingdom': kid,
-        'last_updated': '2026-04-13' if kid in (223, 300) else '2026-04-14',
+        'last_updated': last_updated,
         'source': 'ADB screenshot scraper + EasyOCR extraction',
         'categories': {}
     }
