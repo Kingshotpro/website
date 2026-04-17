@@ -2,6 +2,16 @@
 """
 popup_handler.py — Universal popup detection & dismissal.
 
+CALIBRATION STATUS:
+  Pixel signatures and tap coordinates are approximations from observed
+  screenshots of each popup type on the Samsung A16 5G (1080x2340). They
+  may drift if the game UI changes. Detection uses 20x20 pixel REGIONS
+  (averaged) rather than single pixels to reduce coord sensitivity.
+
+  If a popup is not being detected on-device, take a screenshot during the
+  popup and compare actual RGB values at the listed coords against the
+  expected ranges in each detector method.
+
 Known popups in Kingshot (observed empirically):
 1. Rookie Value Pack / promo packs — large colorful overlay, X at top-right (~1040, 130)
 2. Welcome Back offline income — "Time Offline" text, Confirm button bottom
@@ -44,6 +54,26 @@ class PopupHandler:
     def _pixel(self, img, x, y):
         return img.getpixel((x, y))
 
+    def _region_avg(self, img, x, y, half=10):
+        """Average color of a 2*half by 2*half region centered at (x, y).
+        More robust than single-pixel reads."""
+        w, h = img.size
+        x0 = max(0, x - half)
+        y0 = max(0, y - half)
+        x1 = min(w, x + half)
+        y1 = min(h, y + half)
+        r_sum = g_sum = b_sum = n = 0
+        for py in range(y0, y1, 2):
+            for px in range(x0, x1, 2):
+                p = img.getpixel((px, py))
+                r_sum += p[0]
+                g_sum += p[1]
+                b_sum += p[2]
+                n += 1
+        if n == 0:
+            return (0, 0, 0)
+        return (r_sum // n, g_sum // n, b_sum // n)
+
     def _is_color(self, px, r_range, g_range, b_range):
         """Check if pixel matches color range."""
         return (r_range[0] <= px[0] <= r_range[1] and
@@ -56,8 +86,8 @@ class PopupHandler:
         """
         'Quit game?' confirmation. Orange Cancel (~300, 1440), Cyan Confirm (~750, 1440).
         """
-        cancel = self._pixel(img, 300, 1440)
-        confirm = self._pixel(img, 750, 1440)
+        cancel = self._region_avg(img, 300, 1440)
+        confirm = self._region_avg(img, 750, 1440)
         is_orange = self._is_color(cancel, (200, 255), (80, 170), (30, 110))
         is_cyan = self._is_color(confirm, (50, 140), (180, 240), (190, 245))
         return is_orange and is_cyan
@@ -69,12 +99,12 @@ class PopupHandler:
         checking for portrait's rounded-square frame.
         """
         # Same button pattern
-        cancel = self._pixel(img, 300, 1440)
-        confirm = self._pixel(img, 750, 1440)
+        cancel = self._region_avg(img, 300, 1440)
+        confirm = self._region_avg(img, 750, 1440)
         is_orange = self._is_color(cancel, (200, 255), (80, 170), (30, 110))
         is_cyan = self._is_color(confirm, (50, 140), (180, 240), (190, 245))
         # Login has a character portrait around y=1150 center
-        portrait = self._pixel(img, 540, 1150)
+        portrait = self._region_avg(img, 540, 1150, half=30)
         # Portrait area has skin/bright colors, Quit dialog has beige/tan text
         is_portrait = (portrait[0] > 100 and portrait[1] > 80 and sum(portrait[:3]) > 400)
         return is_orange and is_cyan and is_portrait
@@ -84,7 +114,7 @@ class PopupHandler:
         'Welcome back!' offline income dialog. Green Confirm button at bottom ~y=1800.
         Has 'Time Offline' label area. Green RGB approximately (100-180, 200-255, 100-170).
         """
-        confirm_btn = self._pixel(img, 540, 1800)
+        confirm_btn = self._region_avg(img, 540, 1800)
         return self._is_color(confirm_btn, (80, 180), (180, 255), (80, 170))
 
     def detect_teleport_confirm(self, img):
@@ -92,7 +122,7 @@ class PopupHandler:
         'Respected Governor' teleport notice. Single cyan Confirm at ~y=1500.
         No Cancel button. Distinguished from welcome-back by y position.
         """
-        confirm_btn = self._pixel(img, 540, 1500)
+        confirm_btn = self._region_avg(img, 540, 1500)
         # Cyan/teal button
         return self._is_color(confirm_btn, (50, 140), (180, 240), (190, 245))
 
@@ -104,25 +134,25 @@ class PopupHandler:
         # Check for dark X at common positions
         candidates = [(1040, 130), (1040, 175), (1010, 175), (930, 400)]
         # Also check if the screen has the "promotional yellow/orange" banner
-        banner = self._pixel(img, 540, 800)
+        banner = self._region_avg(img, 540, 800, half=40)
         is_promo = self._is_color(banner, (180, 255), (120, 200), (50, 130))
         return is_promo
 
     def detect_wish_popup(self, img):
         """Wish/Mystic Divination — purple background."""
-        bg = self._pixel(img, 300, 900)
+        bg = self._region_avg(img, 300, 900, half=40)
         return self._is_color(bg, (50, 120), (20, 80), (60, 140))
 
     def detect_wilderness_exploration(self, img):
         """First-time world map intro — tabs at top with 'Plunder', 'Battle', etc."""
         # Has orange tab header around y=290-340
-        header = self._pixel(img, 200, 310)
+        header = self._region_avg(img, 200, 310, half=20)
         return self._is_color(header, (220, 255), (130, 200), (50, 130))
 
     def detect_bonus_overview(self, img):
         """Accidentally opened Bonus Overview — has 'Bonus Overview' text header."""
         # Beige banner header
-        header = self._pixel(img, 540, 400)
+        header = self._region_avg(img, 540, 400, half=20)
         return self._is_color(header, (190, 220), (180, 210), (150, 190))
 
     # --------------------------------------------------------------- dismissal

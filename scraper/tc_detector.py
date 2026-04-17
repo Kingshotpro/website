@@ -60,10 +60,45 @@ class TCDetector:
                        capture_output=True, timeout=10)
         time.sleep(delay)
 
+    # ------------------------------------------------ state detection
+
+    def _is_on_profile(self, img=None):
+        """
+        Check whether the current screen is the Governor Profile.
+        The profile background is a distinctive light blue gradient.
+        Sample a region that's background (not character art) to avoid
+        false negatives.
+        """
+        if img is None:
+            img = self._screenshot()
+        # Top-right corner of profile screen is solid blue-gray
+        # (well above any overlay menu). Sample a 40x40 region there.
+        w, h = img.size
+        x0, y0 = w - 100, 300
+        r_sum = g_sum = b_sum = n = 0
+        for y in range(y0, y0 + 40, 4):
+            for x in range(x0, x0 + 40, 4):
+                p = img.getpixel((x, y))
+                r_sum += p[0]
+                g_sum += p[1]
+                b_sum += p[2]
+                n += 1
+        if n == 0:
+            return False
+        r, g, b = r_sum // n, g_sum // n, b_sum // n
+        # Profile blue: R~180-220, G~200-230, B~220-240
+        return (170 <= r <= 230 and 195 <= g <= 235 and 210 <= b <= 250)
+
     # ------------------------------------------------ read level from profile
 
     def _open_profile(self):
-        """Triple-tap the avatar to reliably open the profile panel."""
+        """
+        Ensure the profile panel is open. No-op if already there.
+        Triple-tap the avatar with short delays — some kingdoms have
+        invisible overlays that absorb the first tap.
+        """
+        if self._is_on_profile():
+            return
         for _ in range(3):
             subprocess.run([ADB, "-s", DEVICE_ID, "shell", "input", "tap",
                            str(AVATAR_XY[0]), str(AVATAR_XY[1])],
@@ -72,7 +107,12 @@ class TCDetector:
         time.sleep(3)
 
     def _close_profile(self):
-        """Back arrow at top-left of profile screen."""
+        """
+        Close the profile if open. No-op if we're not on profile —
+        avoids accidentally navigating from city by tapping at (55, 160).
+        """
+        if not self._is_on_profile():
+            return
         self._tap(55, 160, delay=2)
 
     def _read_profile_level(self):

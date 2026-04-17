@@ -52,15 +52,41 @@ def recording_exists(name):
     return (TUTORIAL_DIR / f"{name}.json").exists()
 
 
-def play_recording(name, slowdown=1.15):
-    """Run tutorial_recorder.py --replay NAME synchronously."""
+def play_recording(name, slowdown=1.15, glow_recovery=True):
+    """
+    Run tutorial_recorder.py --replay NAME synchronously.
+
+    Return values (distinguished by replayer exit code):
+        0 — success (all actions played without drift)
+        3 — drift detected, replay aborted
+        other — unexpected failure (missing file, phone disconnect, etc)
+
+    On drift (exit 3), optionally attempt glow-based recovery before
+    returning failure.
+    """
     print(f"\n▶  Playing {name}")
     result = subprocess.run(
         ["python3", "-u", str(SCRAPER_DIR / "tutorial_recorder.py"),
          "--replay", name, "--slowdown", str(slowdown)],
         cwd=str(SCRAPER_DIR),
     )
-    return result.returncode == 0
+    if result.returncode == 0:
+        return True
+    if result.returncode == 3 and glow_recovery:
+        print(f"\n⚠  Drift detected in {name}. Attempting glow-based recovery...")
+        try:
+            sys.path.insert(0, str(SCRAPER_DIR))
+            from glow_follower import GlowFollower
+            gf = GlowFollower()
+            n_taps = gf.run(max_iterations=40, per_tap_delay=2.5,
+                            no_glow_timeout=20)
+            print(f"   glow-recovery executed {n_taps} taps")
+            # Caller will verify TC level next — that's our success check.
+            return True
+        except Exception as e:
+            print(f"   glow-recovery failed: {e}")
+            return False
+    return False
 
 
 def wait_for_tc_level(target_level, poll_seconds=45, timeout=3600):

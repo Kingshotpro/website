@@ -437,6 +437,10 @@ def replay(name, jitter_px=10, start_at=0, slowdown=1.15, screenshot_every=25,
                 try:
                     from PIL import Image
                     from io import BytesIO
+                    # Brief settle so in-flight animations finish before
+                    # comparing. Reference screenshots during recording were
+                    # captured at tap-start; here we compensate.
+                    time.sleep(0.5)
                     res = subprocess.run(
                         [ADB, "exec-out", "screencap", "-p"],
                         capture_output=True, timeout=10
