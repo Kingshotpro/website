@@ -1,68 +1,50 @@
 #!/usr/bin/env python3
 """
-tc_detector.py — Detect whether the Town Center can be upgraded right now.
+tc_detector.py — Determine the current Town Center (Town Hall) level.
 
-Strategy (two-tier):
-  Tier 1 (fast, pixel-only): scan the top-left HUD for the "Upgrade" ribbon.
-        In Kingshot, when any building (especially TC) can be upgraded, a
-        golden "Upgrade [Building] to Lv. N (x/y)" banner appears at the
-        bottom of the screen — the same area as the "Build Iron Mine"
-        messages we've seen. When READY (all requirements met), the banner
-        also shows a small arrow icon; when NOT ready, it shows a lock or
-        greyed-out text.
+The only reliable success signal for a sub-tutorial is: "did the TC level
+actually increase?" The TC level is visible in multiple places on screen;
+we use OCR to read it.
 
-  Tier 2 (slower, OCR fallback): if tier 1 is ambiguous, run EasyOCR on the
-        bottom banner region. Look for "Upgrade Town Center" text.
+Primary source: profile screen shows 'Town Center Level: N'. This is the
+most reliable place because the label text is unambiguous.
 
-Calibration:
-  First-time setup: run `python3 tc_detector.py --calibrate` and follow the
-  prompts. It will save pixel coords + reference values to tc_calibration.json.
-
-Usage as library:
+Usage as a library:
     from tc_detector import TCDetector
     det = TCDetector()
-    if det.is_ready():
-        print("TC can be upgraded")
+    level = det.get_level()                     # current TC level (int) or None
+    det.wait_for_level(target=2, timeout=3600)  # block until TC reaches L2
 
 CLI:
-    python3 tc_detector.py           # one-shot check
-    python3 tc_detector.py --watch   # poll every 30s, exit when ready
-    python3 tc_detector.py --calibrate
+    python3 tc_detector.py                      # one-shot level reading
+    python3 tc_detector.py --wait-for 3         # poll until level==3, exit 0
+    python3 tc_detector.py --watch              # poll, print whenever level changes
 """
 import subprocess
 import sys
 import time
-import json
 import os
+import re
 from io import BytesIO
 from pathlib import Path
 from PIL import Image
 
 ADB = os.path.expanduser("~/platform-tools/adb")
 DEVICE_ID = "R5CY61LHZVA"
-CALIB_FILE = Path(__file__).parent / "tc_calibration.json"
 
-# ----------------------------------------------------------- default config
-
-DEFAULT_BANNER_REGION = (40, 2050, 720, 2150)  # x1, y1, x2, y2 of bottom banner
-DEFAULT_BUILDING_REGION = (440, 800, 720, 1200)  # typical TC location in city
+# Avatar position for opening profile (calibrated to this phone's UI)
+AVATAR_XY = (65, 165)
 
 
 class TCDetector:
-    def __init__(self, calibration=None):
-        """
-        calibration: dict with optional keys:
-          - banner_region: (x1, y1, x2, y2) for the upgrade banner
-          - ready_signature: dict of known "ready" pixel signatures
-          - not_ready_signature: dict of known "not ready" pixel signatures
-        """
-        self.calib = calibration or {}
+    def __init__(self):
         self._reader = None
 
-    def _load_calibration(self):
-        if CALIB_FILE.exists():
-            with open(CALIB_FILE) as f:
-                self.calib = json.load(f)
+    def _ocr(self):
+        if self._reader is None:
+            import easyocr
+            self._reader = easyocr.Reader(['en'], gpu=False, verbose=False)
+        return self._reader
 
     def _screenshot(self):
         res = subprocess.run(
@@ -73,207 +55,137 @@ class TCDetector:
             raise RuntimeError("screenshot failed")
         return Image.open(BytesIO(res.stdout))
 
-    # -------------------------------------------------- tier 1: pixel scan
+    def _tap(self, x, y, delay=2):
+        subprocess.run([ADB, "-s", DEVICE_ID, "shell", "input", "tap", str(x), str(y)],
+                       capture_output=True, timeout=10)
+        time.sleep(delay)
 
-    def _scan_for_green_upgrade_button(self, img):
+    # ------------------------------------------------ read level from profile
+
+    def _open_profile(self):
+        """Triple-tap the avatar to reliably open the profile panel."""
+        for _ in range(3):
+            subprocess.run([ADB, "-s", DEVICE_ID, "shell", "input", "tap",
+                           str(AVATAR_XY[0]), str(AVATAR_XY[1])],
+                          capture_output=True, timeout=10)
+            time.sleep(0.35)
+        time.sleep(3)
+
+    def _close_profile(self):
+        """Back arrow at top-left of profile screen."""
+        self._tap(55, 160, delay=2)
+
+    def _read_profile_level(self):
         """
-        When TC upgrade is ready, a green "UPGRADE" button appears somewhere
-        (either as a floating arrow above the building, or in the bottom
-        banner). Scan for a distinctive saturated-green pixel cluster.
+        Open profile, OCR the info panel for 'Town Center Level: N',
+        return N as an integer, or None if not found. Closes profile after.
         """
-        # Kingshot's upgrade-ready green: approximately (70, 180, 100)
-        # (saturated medium-bright green). Check a sampled grid.
-        target = (70, 180, 100)
-        tol = 40
-        region = self.calib.get('banner_region', DEFAULT_BANNER_REGION)
-        x1, y1, x2, y2 = region
+        self._open_profile()
+        try:
+            img = self._screenshot()
+            # Info panel is in the lower third of the profile screen.
+            # OCR the bottom half — saves time, reduces false matches.
+            crop = img.crop((0, 1400, 1080, 2340))
+            buf = BytesIO()
+            crop.save(buf, 'PNG')
+            results = self._ocr().readtext(buf.getvalue())
 
-        hits = 0
-        samples = 0
-        for y in range(y1, y2, 10):
-            for x in range(x1, x2, 20):
-                px = img.getpixel((x, y))
-                samples += 1
-                if all(abs(px[i] - target[i]) < tol for i in range(3)):
-                    hits += 1
-        # Threshold: need at least 2% of samples to be green
-        return (hits / samples) > 0.02 if samples > 0 else False
-
-    # -------------------------------------------------- tier 2: OCR fallback
-
-    def _ocr_bottom_banner(self, img):
-        if self._reader is None:
-            import easyocr
-            self._reader = easyocr.Reader(['en'], gpu=False, verbose=False)
-        region = self.calib.get('banner_region', DEFAULT_BANNER_REGION)
-        crop = img.crop(region)
-        buf = BytesIO()
-        crop.save(buf, 'PNG')
-        results = self._reader.readtext(buf.getvalue())
-        text = ' '.join(t for _, t, _ in results).lower()
-        return text
-
-    def _ocr_says_tc_upgrade(self, img):
-        text = self._ocr_bottom_banner(img)
-        # Positive signals
-        if 'town center' in text or 'town hall' in text or 'townhall' in text:
-            if 'upgrade' in text:
-                return True
-        return False
-
-    # -------------------------------------------------- public API
-
-    def _scan_calibrated_signatures(self, img):
-        """
-        If we have calibration samples, check whether the current image
-        matches the 'ready' signatures at the sampled pixel locations.
-        Returns a confidence 0.0-1.0, or None if no calibration.
-        """
-        samples = self.calib.get('ready_samples')
-        if not samples:
+            # Look for 'Town Center Level' + number combinations.
+            # OCR may split into separate regions, so join all text first
+            # and regex-search for the pattern.
+            full_text = ' '.join(t for _, t, _ in results)
+            m = re.search(r'Town\s*Center\s*Level[:\s]*(\d+)', full_text,
+                          re.IGNORECASE)
+            if not m:
+                # Fallback: "Town Hall" in case game strings vary
+                m = re.search(r'Town\s*Hall\s*Level[:\s]*(\d+)', full_text,
+                              re.IGNORECASE)
+            if m:
+                return int(m.group(1))
             return None
-        hits = 0
-        for s in samples:
-            px = img.getpixel((s['x'], s['y']))
-            ready_rgb = s['ready_rgb']
-            not_ready_rgb = s['not_ready_rgb']
-            d_ready = sum(abs(px[i] - ready_rgb[i]) for i in range(3))
-            d_not_ready = sum(abs(px[i] - not_ready_rgb[i]) for i in range(3))
-            if d_ready < d_not_ready:
-                hits += 1
-        return hits / len(samples)
+        finally:
+            self._close_profile()
 
-    def is_ready(self, tier='auto'):
+    # ---------------------------------------------------------- public API
+
+    def get_level(self):
         """
-        Returns True if the TC can be upgraded right now.
-
-        tier: 'pixel' (fast, unreliable), 'ocr' (slow, reliable),
-              'calibrated' (use learned samples only), 'auto' (best available).
+        Return the current TC level as an integer, or None if unreadable.
+        Opens and closes the profile screen as a side effect.
         """
-        img = self._screenshot()
+        try:
+            return self._read_profile_level()
+        except Exception as e:
+            print(f"  tc_detector: error reading level: {e}")
+            return None
 
-        # Prefer calibrated signatures if available
-        calib_conf = self._scan_calibrated_signatures(img)
-        if calib_conf is not None:
-            # Need >=60% of calibrated pixels to match "ready" profile
-            if calib_conf >= 0.6:
-                return True
-            if tier == 'calibrated':
-                return False
-            # Otherwise fall through to other tiers
-
-        if tier in ('pixel', 'auto'):
-            if self._scan_for_green_upgrade_button(img):
-                return True
-            if tier == 'pixel':
-                return False
-
-        # Final fallback: OCR
-        return self._ocr_says_tc_upgrade(img)
-
-    def wait_until_ready(self, poll_seconds=30, timeout_seconds=3600):
+    def wait_for_level(self, target, poll_seconds=45, timeout_seconds=3600):
         """
-        Poll until TC is upgradable or timeout.
-        Returns True if ready, False if timed out.
+        Block until TC level reaches >= target, or timeout.
+        Returns the final level observed, or None if timeout.
         """
         start = time.time()
+        last_seen = None
         while time.time() - start < timeout_seconds:
-            if self.is_ready(tier='auto'):
-                return True
-            elapsed = int(time.time() - start)
-            print(f"  TC not ready yet (elapsed: {elapsed}s), waiting {poll_seconds}s...")
+            level = self.get_level()
+            if level is not None:
+                if level != last_seen:
+                    elapsed = int(time.time() - start)
+                    print(f"  tc_detector: level={level} (target={target}, "
+                          f"elapsed={elapsed}s)")
+                    last_seen = level
+                if level >= target:
+                    return level
             time.sleep(poll_seconds)
-        return False
+        return None
+
+    def verify_upgrade(self, before_level, timeout_seconds=1800):
+        """
+        After a sub-tutorial plays, verify the TC level bumped by 1.
+        Returns True iff the level is now before_level + 1 (or higher).
+        """
+        return self.wait_for_level(before_level + 1,
+                                    timeout_seconds=timeout_seconds) is not None
 
 
-# ----------------------------------------------------------- CLI
+# ---------------------------------------------------------------------- CLI
 
 def main():
     import argparse
     parser = argparse.ArgumentParser()
+    parser.add_argument('--wait-for', type=int, default=None,
+                        help='Block until level >= N, then exit 0')
     parser.add_argument('--watch', action='store_true',
-                        help='Poll until ready, then exit 0')
-    parser.add_argument('--calibrate', action='store_true',
-                        help='Save reference screenshots for calibration')
-    parser.add_argument('--poll-seconds', type=int, default=30)
+                        help='Poll and print whenever level changes')
+    parser.add_argument('--poll-seconds', type=int, default=45)
     parser.add_argument('--timeout', type=int, default=3600)
     args = parser.parse_args()
 
     det = TCDetector()
-    det._load_calibration()
 
-    if args.calibrate:
-        print("=== TC Detector Calibration ===")
-        print()
-        print("This will save TWO reference screenshots and then learn the")
-        print("pixel signature of 'TC ready' vs 'TC not ready'.")
-        print()
-        calib_dir = SCRAPER_DIR / 'tc_calib_shots' if 'SCRAPER_DIR' in dir() else Path(__file__).parent / 'tc_calib_shots'
-        calib_dir.mkdir(exist_ok=True)
-
-        # Step 1: ready screenshot
-        input("1) Put the phone in the state where TC IS READY for upgrade "
-              "(glowing icon / upgrade banner visible). Press Enter when ready... ")
-        ready_img = det._screenshot()
-        ready_path = calib_dir / 'ready.png'
-        ready_img.save(ready_path)
-        print(f"   saved {ready_path}")
-
-        # Step 2: not-ready screenshot
-        input("\n2) Put the phone in the state where TC is NOT ready "
-              "(upgrading or at cap). Press Enter when ready... ")
-        not_ready_img = det._screenshot()
-        not_ready_path = calib_dir / 'not_ready.png'
-        not_ready_img.save(not_ready_path)
-        print(f"   saved {not_ready_path}")
-
-        # Step 3: diff the two to find distinctive pixels
-        from PIL import ImageChops
-        diff = ImageChops.difference(ready_img, not_ready_img)
-        bbox = diff.getbbox()
-        print(f"\n   Diff bounding box: {bbox}")
-
-        # Save calibration
-        calib = {
-            'calibrated_at': time.strftime('%Y-%m-%d %H:%M:%S'),
-            'diff_bbox': bbox,
-            'banner_region': list(bbox) if bbox else list(DEFAULT_BANNER_REGION),
-            # Sample 10 pixels from the diff area in the ready image — these are
-            # candidate "ready" signatures
-            'ready_samples': [],
-        }
-        if bbox:
-            x1, y1, x2, y2 = bbox
-            import random as _r
-            for _ in range(10):
-                sx = _r.randint(x1, x2 - 1) if x2 > x1 else x1
-                sy = _r.randint(y1, y2 - 1) if y2 > y1 else y1
-                calib['ready_samples'].append({
-                    'x': sx, 'y': sy,
-                    'ready_rgb': list(ready_img.getpixel((sx, sy)))[:3],
-                    'not_ready_rgb': list(not_ready_img.getpixel((sx, sy)))[:3],
-                })
-        with open(CALIB_FILE, 'w') as f:
-            json.dump(calib, f, indent=2)
-        print(f"\n   Calibration saved to {CALIB_FILE}")
-        print(f"   Banner region set to: {calib['banner_region']}")
-        print(f"   Captured {len(calib['ready_samples'])} pixel signatures")
-        return
+    if args.wait_for is not None:
+        level = det.wait_for_level(args.wait_for,
+                                    poll_seconds=args.poll_seconds,
+                                    timeout_seconds=args.timeout)
+        if level is not None:
+            print(f"reached level {level}")
+            sys.exit(0)
+        print(f"timed out (level did not reach {args.wait_for})")
+        sys.exit(1)
 
     if args.watch:
-        ready = det.wait_until_ready(poll_seconds=args.poll_seconds,
-                                      timeout_seconds=args.timeout)
-        if ready:
-            print("TC IS READY")
-            sys.exit(0)
-        else:
-            print("TIMED OUT — TC not ready within", args.timeout, "seconds")
-            sys.exit(1)
+        last = None
+        while True:
+            level = det.get_level()
+            if level != last:
+                print(f"[{time.strftime('%H:%M:%S')}] TC level = {level}")
+                last = level
+            time.sleep(args.poll_seconds)
 
-    # Default: one-shot check
-    ready = det.is_ready(tier='auto')
-    print(f"TC ready: {ready}")
-    sys.exit(0 if ready else 1)
+    # Default: one-shot reading
+    level = det.get_level()
+    print(f"TC level: {level}")
+    sys.exit(0 if level is not None else 1)
 
 
 if __name__ == '__main__':

@@ -63,23 +63,29 @@ def play_recording(name, slowdown=1.15):
     return result.returncode == 0
 
 
-def wait_for_tc_upgrade_complete(finished_level, poll_seconds=30, timeout=3600):
+def wait_for_tc_level(target_level, poll_seconds=45, timeout=3600):
     """
-    Block until the TC upgrade completes (i.e. the *next* upgrade becomes
-    available). After upgrading to L2, we wait for L3 to become available.
+    Block until the TC reaches target_level.
+    Ground truth = the level number displayed on the profile screen.
     """
-    next_level = finished_level + 1
-    print(f"\n⏳ Waiting for TC upgrade to L{next_level} to become available...")
+    print(f"\n⏳ Waiting for TC to reach L{target_level}...")
     sys.path.insert(0, str(SCRAPER_DIR))
     from tc_detector import TCDetector
     det = TCDetector()
-    det._load_calibration()
-    ready = det.wait_until_ready(poll_seconds=poll_seconds, timeout_seconds=timeout)
-    if not ready:
-        print(f"⚠  TIMED OUT waiting for TC L{next_level} to be ready. Aborting.")
+    level = det.wait_for_level(target_level, poll_seconds=poll_seconds,
+                                timeout_seconds=timeout)
+    if level is None:
+        print(f"⚠  TIMED OUT — TC did not reach L{target_level}")
         return False
-    print(f"✓  TC L{next_level} upgrade available.")
+    print(f"✓  TC is now L{level}")
     return True
+
+
+def read_tc_level():
+    """Read current TC level from the profile screen."""
+    sys.path.insert(0, str(SCRAPER_DIR))
+    from tc_detector import TCDetector
+    return TCDetector().get_level()
 
 
 def plan(max_tc):
@@ -119,6 +125,8 @@ def main():
                         help='Max seconds to wait at each TC gate')
     parser.add_argument('--strict', action='store_true',
                         help='Abort on any sub-recording failure (default: continue)')
+    parser.add_argument('--start-sub', type=str, default=None,
+                        help='Skip sub-recordings before this name (e.g. tutorial_after_tc3)')
     args = parser.parse_args()
 
     # Random TC ceiling per run, if user didn't specify
@@ -131,6 +139,15 @@ def main():
         print("No recordings to play. Record some first.")
         sys.exit(1)
 
+    # Optional: resume from specific sub-recording
+    if args.start_sub:
+        start_idx = next((i for i, (n, _) in enumerate(sequence) if n == args.start_sub), None)
+        if start_idx is None:
+            print(f"Sub-recording '{args.start_sub}' not in planned sequence.")
+            sys.exit(1)
+        sequence = sequence[start_idx:]
+        print(f"Starting from {args.start_sub} (skipping {start_idx} earlier sub(s))")
+
     print("\n=== Tutorial Orchestration Plan ===")
     for name, gate in sequence:
         gate_s = f"(wait for TC{gate+1} ready)" if gate else ""
@@ -142,23 +159,37 @@ def main():
 
     # Execute
     failures = []
-    for i, (name, gate) in enumerate(sequence):
-        if gate is not None:
-            if not wait_for_tc_upgrade_complete(
-                    gate,
-                    poll_seconds=args.poll_seconds,
-                    timeout=args.gate_timeout):
-                print(f"\n⨯  Aborting orchestration at gate TC L{gate+1}")
+    for i, (name, preceding_gate) in enumerate(sequence):
+        # Gate: before running this sub, the previous upgrade must be done.
+        # preceding_gate is the level the TC must have REACHED before we proceed.
+        if preceding_gate is not None:
+            if not wait_for_tc_level(preceding_gate,
+                                      poll_seconds=args.poll_seconds,
+                                      timeout=args.gate_timeout):
+                print(f"\n⨯  Aborting — TC never reached L{preceding_gate}")
                 sys.exit(1)
+
+        # Record the level right before we start this sub
+        level_before = read_tc_level()
+        print(f"\n📊 TC level before {name}: {level_before}")
+
+        # Play the sub-recording
         ok = play_recording(name, slowdown=args.slowdown)
         if not ok:
             failures.append(name)
-            print(f"\n⚠  Sub-recording {name} exited non-zero.")
+            print(f"\n⚠  {name} exited non-zero.")
             if args.strict:
                 print("   --strict: aborting.")
                 sys.exit(1)
-            else:
-                print("   continuing; TC-ready gate will verify state before next chunk.")
+
+        # Post-play verification: did the level bump?
+        # Each sub ends with an upgrade TRIGGERED (not necessarily finished).
+        # So immediately after, the level may still be old — but the TC
+        # should be ACTIVELY UPGRADING. The next iteration's gate check
+        # will wait for level to actually bump.
+        #
+        # However, if the next gate check TIMES OUT, we know this sub failed.
+        # We handle that in the next iteration.
 
     if failures:
         print(f"\n⚠  Completed with {len(failures)} failure(s): {failures}")
