@@ -1,7 +1,7 @@
 {
-  "generated": "2026-04-16T09:01:22.419629",
+  "generated": "2026-04-17T04:01:09.006723",
   "generator": "kingdoms/build_directory.py",
-  "kingdom_count": 19,
+  "kingdom_count": 23,
   "kingdoms": [
     {
       "id": 1,
@@ -161,15 +161,27 @@
     },
     {
       "id": 223,
-      "topAlliance": "ThePsych Ward",
-      "topTag": "PSY",
-      "topPower": 21916701378,
-      "totalPower": 83045318994,
-      "alliances": 92,
+      "topAlliance": "TheNakedPenguins",
+      "topTag": "TNP",
+      "topPower": 21181374033,
+      "totalPower": 80070136336,
+      "alliances": 98,
       "categories": 10,
-      "updated": "2026-04-13",
-      "source": "scraper/data/kingdoms/k223/2026-04-13_184352/alliance_power_extracted.csv",
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k223/2026-04-16_191112/alliance_power_extracted.csv",
       "rank": 14
+    },
+    {
+      "id": 350,
+      "topAlliance": "IMMORTALS",
+      "topTag": "MRT",
+      "topPower": 12228735617,
+      "totalPower": 56487621679,
+      "alliances": 95,
+      "categories": 10,
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k350/2026-04-16_175423/alliance_power_extracted.csv",
+      "rank": 15
     },
     {
       "id": 300,
@@ -181,19 +193,19 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k300/2026-04-16_061736/alliance_power_extracted.csv",
-      "rank": 15
+      "rank": 16
     },
     {
       "id": 1908,
       "topAlliance": "BLACK",
       "topTag": "VIP",
-      "topPower": 626559334,
-      "totalPower": 9541322068,
-      "alliances": 99,
+      "topPower": 713514671,
+      "totalPower": 10345273791,
+      "alliances": 91,
       "categories": 10,
-      "updated": "2026-04-14",
-      "source": "scraper/data/kingdoms/k1908/2026-04-14_104011/alliance_power_extracted.csv",
-      "rank": 16
+      "updated": "2026-04-16",
+      "source": "scraper/data/kingdoms/k1908/2026-04-16_183118/alliance_power_extracted.csv",
+      "rank": 17
     },
     {
       "id": 1916,
@@ -205,7 +217,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k1916/2026-04-14_220953/alliance_power_extracted.csv",
-      "rank": 17
+      "rank": 18
     },
     {
       "id": 1945,
@@ -217,7 +229,7 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k1945/2026-04-16_040406/alliance_power_extracted.csv",
-      "rank": 18
+      "rank": 19
     },
     {
       "id": 1944,
@@ -229,7 +241,43 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k1944/2026-04-16_050354/alliance_power_extracted.csv",
-      "rank": 19
+      "rank": 20
+    },
+    {
+      "id": 224,
+      "topAlliance": "?",
+      "topTag": "",
+      "topPower": null,
+      "totalPower": null,
+      "alliances": null,
+      "categories": 10,
+      "updated": "2026-04-17",
+      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k224/2026-04-17_032517",
+      "rank": 21
+    },
+    {
+      "id": 225,
+      "topAlliance": "?",
+      "topTag": "",
+      "topPower": null,
+      "totalPower": null,
+      "alliances": null,
+      "categories": 10,
+      "updated": "2026-04-16",
+      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k225/2026-04-16_221902",
+      "rank": 22
+    },
+    {
+      "id": 226,
+      "topAlliance": "?",
+      "topTag": "",
+      "topPower": null,
+      "totalPower": null,
+      "alliances": null,
+      "categories": 10,
+      "updated": "2026-04-17",
+      "source": "/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms/k226/2026-04-17_021038",
+      "rank": 23
     }
   ]
 }

@@ -6,8 +6,8 @@
     "alliance_power": [
       {
         "rank": 1,
-        "tag": "VIPIV",
-        "name": "IP",
+        "tag": "VIP",
+        "name": "IVIP",
         "value": 62905656
       },
       {
@@ -36,8 +36,8 @@
       },
       {
         "rank": 6,
-        "tag": "FAMF",
-        "name": "RoxyAnakMerdeka",
+        "tag": "FAM",
+        "name": "FRoxyAnakMerdeka",
         "value": 37309881
       },
       {
@@ -120,8 +120,8 @@
       },
       {
         "rank": 20,
-        "tag": "JVAJ",
-        "name": "AVANESEE",
+        "tag": "JVA",
+        "name": "JAVANESEE",
         "value": 20260140
       },
       {
@@ -644,8 +644,8 @@
       },
       {
         "rank": 7,
-        "tag": "VIPIV",
-        "name": "IP",
+        "tag": "VIP",
+        "name": "IVIP",
         "value": 1894
       },
       {
@@ -1150,8 +1150,8 @@
       },
       {
         "rank": 2,
-        "tag": "VIPIS",
-        "name": "AVCI",
+        "tag": "VIP",
+        "name": "ISAVCI",
         "value": 3536685
       },
       {
@@ -1758,8 +1758,8 @@
       },
       {
         "rank": 5,
-        "tag": "KORJD",
-        "name": "ARUM COKLAT",
+        "tag": "KOR",
+        "name": "JDARUM COKLAT",
         "value": 4102
       },
       {
@@ -1818,8 +1818,8 @@
       },
       {
         "rank": 15,
-        "tag": "VIPIS",
-        "name": "AVCI",
+        "tag": "VIP",
+        "name": "ISAVCI",
         "value": 1614
       },
       {
@@ -2264,8 +2264,8 @@
       },
       {
         "rank": 4,
-        "tag": "VIPIS",
-        "name": "AVCI",
+        "tag": "VIP",
+        "name": "ISAVCI",
         "value": 563475
       },
       {
@@ -2390,8 +2390,8 @@
       },
       {
         "rank": 25,
-        "tag": "VIPI",
-        "name": "Kaisar",
+        "tag": "VIP",
+        "name": "IKaisar",
         "value": 176100
       },
       {
@@ -2438,8 +2438,8 @@
       },
       {
         "rank": 33,
-        "tag": "GARJ",
-        "name": "OYBOY",
+        "tag": "GAR",
+        "name": "JOYBOY",
         "value": 153830
       },
       {
@@ -2708,8 +2708,8 @@
       },
       {
         "rank": 78,
-        "tag": "VIPI",
-        "name": "Notnot V",
+        "tag": "VIP",
+        "name": "INotnot V",
         "value": 125600
       },
       {
@@ -2726,8 +2726,8 @@
       },
       {
         "rank": 81,
-        "tag": "VIPI9",
-        "name": "Cengkia",
+        "tag": "VIP",
+        "name": "I9Cengkia",
         "value": 125120
       },
       {
@@ -2750,8 +2750,8 @@
       },
       {
         "rank": 85,
-        "tag": "VIP9",
-        "name": "Cengkia",
+        "tag": "VIP",
+        "name": "9Cengkia",
         "value": 125120
       },
       {
@@ -2842,8 +2842,8 @@
     "heros_total_power": [
       {
         "rank": 1,
-        "tag": "VIPIS",
-        "name": "AVCI",
+        "tag": "VIP",
+        "name": "ISAVCI",
         "value": 2173430
       },
       {
@@ -3070,8 +3070,8 @@
       },
       {
         "rank": 39,
-        "tag": "aesll",
-        "name": "ord300577928",
+        "tag": "aes",
+        "name": "llord300577928",
         "value": 857525
       },
       {
@@ -3370,8 +3370,8 @@
       },
       {
         "rank": 89,
-        "tag": "VIPI",
-        "name": "BlackMamba",
+        "tag": "VIP",
+        "name": "IBlackMamba",
         "value": 741130
       },
       {
@@ -3462,8 +3462,8 @@
       },
       {
         "rank": 4,
-        "tag": "VIPIS",
-        "name": "AVCI",
+        "tag": "VIP",
+        "name": "ISAVCI",
         "value": 563475
       },
       {
@@ -3636,8 +3636,8 @@
       },
       {
         "rank": 33,
-        "tag": "GARJ",
-        "name": "OYBOY",
+        "tag": "GAR",
+        "name": "JOYBOY",
         "value": 153830
       },
       {
@@ -3882,8 +3882,8 @@
       },
       {
         "rank": 74,
-        "tag": "VIPI",
-        "name": "Notnot )",
+        "tag": "VIP",
+        "name": "INotnot )",
         "value": 125600
       },
       {
@@ -3948,8 +3948,8 @@
       },
       {
         "rank": 85,
-        "tag": "VIP9",
-        "name": "Cengkia",
+        "tag": "VIP",
+        "name": "9Cengkia",
         "value": 125120
       },
       {
@@ -4046,8 +4046,8 @@
     "mystic_trial": [
       {
         "rank": 1,
-        "tag": "VIPIS",
-        "name": "AVCI",
+        "tag": "VIP",
+        "name": "ISAVCI",
         "value": 2173430
       },
       {
@@ -4574,8 +4574,8 @@
       },
       {
         "rank": 89,
-        "tag": "VIPI",
-        "name": "BlackMamba",
+        "tag": "VIP",
+        "name": "IBlackMamba",
         "value": 741130
       },
       {

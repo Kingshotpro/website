@@ -1330,8 +1330,8 @@
       },
       {
         "rank": 37,
-        "tag": "AWKIT",
-        "name": "OOLMUCH",
+        "tag": "AWK",
+        "name": "ITOOLMUCH",
         "value": 212325394
       },
       {
@@ -1962,8 +1962,8 @@
       },
       {
         "rank": 42,
-        "tag": "AWKIT",
-        "name": "OOLMUCH",
+        "tag": "AWK",
+        "name": "ITOOLMUCH",
         "value": 9647488
       },
       {
@@ -2980,8 +2980,8 @@
       },
       {
         "rank": 11,
-        "tag": "EMPIB",
-        "name": "IGbris",
+        "tag": "EMP",
+        "name": "IBIGbris",
         "value": 33840802
       },
       {
@@ -3508,8 +3508,8 @@
       },
       {
         "rank": 99,
-        "tag": "TSFII",
-        "name": "ord FAiard 5",
+        "tag": "TSF",
+        "name": "IIord FAiard 5",
         "value": 0
       },
       {
@@ -3864,14 +3864,14 @@
       },
       {
         "rank": 58,
-        "tag": "EMPIB",
-        "name": "IGbris",
+        "tag": "EMP",
+        "name": "IBIGbris",
         "value": 14590320
       },
       {
         "rank": 59,
-        "tag": "AVBJ",
-        "name": "Blener",
+        "tag": "AVB",
+        "name": "JBlener",
         "value": 14582040
       },
       {
@@ -4358,8 +4358,8 @@
       },
       {
         "rank": 43,
-        "tag": "AWKIT",
-        "name": "OOLMUCH",
+        "tag": "AWK",
+        "name": "ITOOLMUCH",
         "value": 1219
       },
       {
@@ -4454,8 +4454,8 @@
       },
       {
         "rank": 59,
-        "tag": "AWKI",
-        "name": "Orion",
+        "tag": "AWK",
+        "name": "IOrion",
         "value": 1150
       },
       {

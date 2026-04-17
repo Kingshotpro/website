@@ -1714,20 +1714,20 @@
       },
       {
         "rank": 85,
-        "tag": "EMPI",
-        "name": "Linee",
+        "tag": "EMP",
+        "name": "ILinee",
         "value": 251918305
       },
       {
         "rank": 86,
-        "tag": "EMPI",
-        "name": "Linge",
+        "tag": "EMP",
+        "name": "ILinge",
         "value": 251918305
       },
       {
         "rank": 87,
-        "tag": "EMPI",
-        "name": "Linsr",
+        "tag": "EMP",
+        "name": "ILinsr",
         "value": 251918305
       },
       {
@@ -2028,8 +2028,8 @@
       },
       {
         "rank": 37,
-        "tag": "EMPI",
-        "name": "Cruelsun",
+        "tag": "EMP",
+        "name": "ICruelsun",
         "value": 30974202
       },
       {
@@ -2172,8 +2172,8 @@
       },
       {
         "rank": 61,
-        "tag": "EMPJ",
-        "name": "Ack",
+        "tag": "EMP",
+        "name": "JAck",
         "value": 23251584
       },
       {
@@ -2244,8 +2244,8 @@
       },
       {
         "rank": 73,
-        "tag": "EMPI",
-        "name": "Liszt",
+        "tag": "EMP",
+        "name": "ILiszt",
         "value": 19840565
       },
       {
@@ -2310,8 +2310,8 @@
       },
       {
         "rank": 84,
-        "tag": "EMPI",
-        "name": "Liopleurodon",
+        "tag": "EMP",
+        "name": "ILiopleurodon",
         "value": 17849172
       },
       {
@@ -2462,8 +2462,8 @@
       },
       {
         "rank": 9,
-        "tag": "EMPI",
-        "name": "Ghazi",
+        "tag": "EMP",
+        "name": "IGhazi",
         "value": 10377384
       },
       {
@@ -2984,8 +2984,8 @@
       },
       {
         "rank": 96,
-        "tag": "FABJ",
-        "name": "agielonek",
+        "tag": "FAB",
+        "name": "Jagielonek",
         "value": 4119719
       },
       {
@@ -3008,8 +3008,8 @@
       },
       {
         "rank": 100,
-        "tag": "EMPI",
-        "name": "Beto",
+        "tag": "EMP",
+        "name": "IBeto",
         "value": 4045085
       }
     ],
@@ -3304,8 +3304,8 @@
       },
       {
         "rank": 49,
-        "tag": "LLTI",
-        "name": "Nightfury",
+        "tag": "LLT",
+        "name": "INightfury",
         "value": 34847170
       },
       {
@@ -3322,8 +3322,8 @@
       },
       {
         "rank": 52,
-        "tag": "LLTET",
-        "name": "ZN",
+        "tag": "LLT",
+        "name": "ETZN",
         "value": 34780070
       },
       {
@@ -3340,8 +3340,8 @@
       },
       {
         "rank": 55,
-        "tag": "EMPI",
-        "name": "Blob",
+        "tag": "EMP",
+        "name": "IBlob",
         "value": 34310410
       },
       {
@@ -3364,8 +3364,8 @@
       },
       {
         "rank": 59,
-        "tag": "EMPI",
-        "name": "Linsr",
+        "tag": "EMP",
+        "name": "ILinsr",
         "value": 33891342
       },
       {
@@ -3508,8 +3508,8 @@
       },
       {
         "rank": 83,
-        "tag": "EMPI",
-        "name": "Beto",
+        "tag": "EMP",
+        "name": "IBeto",
         "value": 32173536
       },
       {
@@ -3864,8 +3864,8 @@
       },
       {
         "rank": 42,
-        "tag": "EMPI",
-        "name": "Linse",
+        "tag": "EMP",
+        "name": "ILinse",
         "value": 16217280
       },
       {
@@ -3894,8 +3894,8 @@
       },
       {
         "rank": 47,
-        "tag": "LLTI",
-        "name": "Nightfury",
+        "tag": "LLT",
+        "name": "INightfury",
         "value": 16147440
       },
       {
@@ -4020,8 +4020,8 @@
       },
       {
         "rank": 68,
-        "tag": "LLTI",
-        "name": "Vigo",
+        "tag": "LLT",
+        "name": "IVigo",
         "value": 15855480
       },
       {
@@ -4182,8 +4182,8 @@
       },
       {
         "rank": 95,
-        "tag": "LLTI",
-        "name": "King_Alva",
+        "tag": "LLT",
+        "name": "IKing_Alva",
         "value": 15587160
       },
       {
@@ -4194,8 +4194,8 @@
       },
       {
         "rank": 97,
-        "tag": "LLTI",
-        "name": "King",
+        "tag": "LLT",
+        "name": "IKing",
         "value": 15587160
       },
       {
@@ -4526,8 +4526,8 @@
       },
       {
         "rank": 52,
-        "tag": "EMPI",
-        "name": "Blob",
+        "tag": "EMP",
+        "name": "IBlob",
         "value": 1489
       },
       {
@@ -4550,8 +4550,8 @@
       },
       {
         "rank": 56,
-        "tag": "LLTI",
-        "name": "Nightfury",
+        "tag": "LLT",
+        "name": "INightfury",
         "value": 1480
       },
       {
@@ -4562,8 +4562,8 @@
       },
       {
         "rank": 58,
-        "tag": "EMPJ",
-        "name": "Ack",
+        "tag": "EMP",
+        "name": "JAck",
         "value": 1472
       },
       {
@@ -4670,8 +4670,8 @@
       },
       {
         "rank": 76,
-        "tag": "EMPI",
-        "name": "Linee",
+        "tag": "EMP",
+        "name": "ILinee",
         "value": 1415
       },
       {
@@ -4688,8 +4688,8 @@
       },
       {
         "rank": 79,
-        "tag": "EMPIB",
-        "name": "LODE",
+        "tag": "EMP",
+        "name": "IBLODE",
         "value": 1402
       },
       {

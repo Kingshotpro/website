@@ -11,7 +11,7 @@ SCRAPER_DATA = '/Users/defimagic/Desktop/Hive/KingshotPro/scraper/data/kingdoms'
 RELIABLE = ['alliance_power', 'alliance_kills', 'personal_power', 'kill_count',
             'hero_power', 'heros_total_power', 'total_pet_power', 'mystic_trial']
 
-KINGDOM_IDS = [1, 221, 222, 223, 227, 228, 229, 230, 231, 232, 233, 300, 301, 302, 303, 1908, 1916, 1944, 1945]
+KINGDOM_IDS = [1, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 300, 301, 302, 303, 350, 1908, 1916, 1944, 1945]
 
 
 def clean_tag_name(raw):
@@ -95,6 +95,74 @@ def clean_category(entries, max_entries=100):
     return result
 
 
+def consolidate_tags(output):
+    """
+    Fix OCR-garbled tags by consolidating rare variants into common ones.
+
+    Pattern: when OCR drops the ']' bracket, '[TNP]SHIN' becomes '[TNPISHIN'
+    which my parser splits as tag='TNPIS', name='HIN'. The real tag is 'TNP'.
+
+    Algorithm:
+    1. Count tag frequency across ALL categories in this kingdom
+    2. For any rare tag (≤2 occurrences), check if a common tag (≥5) is its prefix
+    3. If yes: tag becomes common one, the suffix prepends to the name
+
+    This catches the most common OCR failure mode.
+    """
+    # Count tags across all categories
+    tag_counts = {}
+    for cat_entries in output['categories'].values():
+        for e in cat_entries:
+            tag = e.get('tag', '')
+            if tag:
+                tag_counts[tag] = tag_counts.get(tag, 0) + 1
+
+    # For every tag, find the SHORTEST prefix that dominates it (≥3x occurrences).
+    # If TNP appears 184 times and TNPIS appears 4 times, TNP dominates TNPIS.
+    # Build a per-tag "best ancestor" by walking up to the shortest dominant prefix.
+    def find_dominant(tag):
+        """Walk down to the shortest prefix ≥3 chars that dominates this tag."""
+        best = tag
+        cur = tag
+        while len(cur) > 3:
+            for plen in range(len(cur) - 1, 2, -1):
+                prefix = cur[:plen]
+                pcount = tag_counts.get(prefix, 0)
+                if pcount >= max(5, tag_counts.get(cur, 0) * 3):
+                    best = prefix
+                    cur = prefix
+                    break
+            else:
+                break
+        return best
+
+    fixes = {}  # candidate_tag -> (dominant_tag, suffix_to_prepend_to_name)
+    for candidate in tag_counts:
+        if len(candidate) <= 2:
+            continue
+        dominant = find_dominant(candidate)
+        if dominant != candidate:
+            suffix = candidate[len(dominant):]
+            fixes[candidate] = (dominant, suffix)
+
+    if not fixes:
+        return output
+
+    # Apply fixes
+    fixed_count = 0
+    for cat_entries in output['categories'].values():
+        for e in cat_entries:
+            if e['tag'] in fixes:
+                new_tag, suffix = fixes[e['tag']]
+                e['name'] = suffix + e['name']
+                e['tag'] = new_tag
+                fixed_count += 1
+
+    if fixed_count:
+        print(f'    consolidated {fixed_count} OCR-garbled tags: {dict(list(fixes.items())[:5])}{"..." if len(fixes) > 5 else ""}')
+    return output
+
+
 def build_json_for_kingdom(kid):
     base = f'{SCRAPER_DATA}/k{kid}'
     if not os.path.exists(base):
@@ -128,7 +196,40 @@ def build_json_for_kingdom(kid):
     for cat in RELIABLE:
         if cat in src:
             output['categories'][cat] = clean_category(src[cat])
+    # Post-process: fix OCR-garbled tags by consolidating rare variants
+    output = consolidate_tags(output)
     return output
+
+
+def build_history_for_embed(kid, max_snapshots=30, max_entries_per_cat=50):
+    """
+    Build trimmed history for embedding in HTML page.
+    Keeps only most recent N snapshots and top M entries per category.
+    """
+    history_path = f'{KINGDOMS_DIR}/data/k{kid}_history.json'
+    if not os.path.exists(history_path):
+        return None
+    hist = json.load(open(history_path))
+    snaps = hist.get('snapshots', [])
+    if not snaps:
+        return None
+    # Keep most recent N
+    snaps = snaps[-max_snapshots:]
+    # Trim entries per category
+    trimmed_snaps = []
+    for snap in snaps:
+        new_cats = {}
+        for cat, entries in snap.get('categories', {}).items():
+            new_cats[cat] = entries[:max_entries_per_cat]
+        trimmed_snaps.append({
+            'timestamp': snap['timestamp'],
+            'categories': new_cats,
+        })
+    return {
+        'kingdom': kid,
+        'snapshot_count': len(trimmed_snaps),
+        'snapshots': trimmed_snaps,
+    }
 
 
 def write_all_jsons():
@@ -151,28 +252,44 @@ def write_all_pages():
     # Update K223 template with new clean JSON first
     k223 = build_json_for_kingdom(223)
     pattern = re.compile(r'var KINGDOM_DATA = \{.*?\};', re.DOTALL)
+    history_pattern = re.compile(r'var KINGDOM_HISTORY = \{.*?\};', re.DOTALL)
     m = pattern.search(template)
     new_data_js = 'var KINGDOM_DATA = ' + json.dumps(k223, separators=(',', ':')) + ';'
+    # Append KINGDOM_HISTORY right after KINGDOM_DATA
+    k223_hist = build_history_for_embed(223)
+    if k223_hist:
+        new_data_js += '\nvar KINGDOM_HISTORY = ' + json.dumps(k223_hist, separators=(',', ':')) + ';'
+    # Remove any existing KINGDOM_HISTORY first
+    template = history_pattern.sub('', template)
+    m = pattern.search(template)
     template = template[:m.start()] + new_data_js + template[m.end():]
     with open(f'{KINGDOMS_DIR}/223/index.html', 'w') as f:
         f.write(template)
-    print(f'  K223 updated (template)')
+    print(f'  K223 updated (template) — history: {k223_hist["snapshot_count"] if k223_hist else 0} snapshots')
 
     # Generate all others from the updated template
     for kid in KINGDOM_IDS:
         if kid == 223:
             continue
+        json_path = f'{KINGDOMS_DIR}/data/k{kid}.json'
+        if not os.path.exists(json_path):
+            print(f'  K{kid} skipped (no JSON yet)')
+            continue
         html = template
-        d_new = json.load(open(f'{KINGDOMS_DIR}/data/k{kid}.json'))
+        d_new = json.load(open(json_path))
 
         html = html.replace('Kingdom 223', f'Kingdom {kid}')
         html = html.replace('kingdom 223', f'kingdom {kid}')
         html = html.replace('#223', f'#{kid}')
         html = html.replace('kingdoms/223', f'kingdoms/{kid}')
 
-        # Replace embedded data
+        # Strip any pre-existing KINGDOM_HISTORY then replace KINGDOM_DATA + append history
+        html = history_pattern.sub('', html)
         m = pattern.search(html)
         new_data_js = 'var KINGDOM_DATA = ' + json.dumps(d_new, separators=(',', ':')) + ';'
+        khist = build_history_for_embed(kid)
+        if khist:
+            new_data_js += '\nvar KINGDOM_HISTORY = ' + json.dumps(khist, separators=(',', ':')) + ';'
         html = html[:m.start()] + new_data_js + html[m.end():]
 
         os.makedirs(f'{KINGDOMS_DIR}/{kid}', exist_ok=True)
