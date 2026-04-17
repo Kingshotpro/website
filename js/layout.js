@@ -11,7 +11,7 @@
 
   // ── Path prefix (pages in subdirectories need ../ or ../../) ──
   var loc = window.location.pathname;
-  var inSub = /\/calculators\/|\/guides\/|\/games\/|\/alliance\/|\/kingdoms\//.test(loc);
+  var inSub = /\/calculators\/|\/guides\/|\/games\/|\/alliance\/|\/kingdoms\/|\/players\//.test(loc);
   // Hero detail pages are 2 levels deep: /heroes/{slug}/index.html
   var inDeepSub = (/\/heroes\/[a-z]/.test(loc) && !/\/heroes\.html/.test(loc)) ||
                    (/\/kingdoms\/\d/.test(loc));
@@ -30,6 +30,7 @@
     { icon: '\u{1F4DD}', label: 'Player Survey',       href: B + 'survey.html',                    key: 'survey',     badges: ['New'] },
     { cat: 'WAR COUNSEL' },
     { icon: '\u{1F3F0}', label: 'Kingdom Rankings', href: B + 'kingdoms/',                       key: 'kingdoms',    badges: ['Hot'] },
+    { icon: '\u{1F3C6}', label: 'Top Players',      href: B + 'players/',                        key: 'players',     badges: ['New'] },
     { cat: 'COMMUNITY' },
     { icon: '\u{1F381}', label: 'Gift Codes',       href: B + 'codes.html',                     key: 'codes',      badges: ['Popular'] },
     { icon: '\u{1F514}', label: 'Code Alerts',       href: B + 'auto-redeem.html',               key: 'auto-redeem', badges: ['Pro'] },
@@ -101,6 +102,9 @@
     if (item.key === 'home') {
       return loc === '/' || loc.endsWith('/index.html') || loc.endsWith('/');
     }
+    // Directory-style items (kingdoms/, players/, heroes/compare/, etc.)
+    if (item.key === 'kingdoms') return /\/kingdoms(\/|$)/.test(loc);
+    if (item.key === 'players')  return /\/players(\/|$)/.test(loc);
     return loc.indexOf(item.key + '.html') !== -1;
   }
 

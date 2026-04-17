@@ -28,13 +28,34 @@
     .kd-table th.sort-asc::after { content: ' \u25B2'; font-size: 9px; }
     .kd-table th.sort-desc::after { content: ' \u25BC'; font-size: 9px; }
     .kd-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14px; }
-    .kd-table tr:hover { background: var(--surface); }
-    .kd-table tr { cursor: pointer; }
+    .kd-table tbody tr { cursor: pointer; transition: background 0.15s, box-shadow 0.15s; }
+    .kd-table tbody tr:hover {
+      background: rgba(240, 192, 64, 0.08);
+      box-shadow: inset 3px 0 0 var(--gold);
+    }
+    .kd-table tbody tr:hover .kd-kingdom-num { text-decoration: underline; }
+    .kd-table tbody tr:hover .kd-view-btn { opacity: 1; transform: translateX(0); }
     .kd-table a { text-decoration: none; color: inherit; display: contents; }
 
     .kd-rank { color: var(--text-muted); font-weight: 700; width: 40px; text-align: center; }
     .kd-kingdom { font-weight: 700; color: var(--text); }
     .kd-kingdom-num { color: var(--gold); font-weight: 800; margin-right: 4px; }
+    .kd-view-btn {
+      display: inline-block; padding: 3px 10px; margin-left: 8px; font-size: 11px;
+      font-weight: 700; color: var(--gold); background: rgba(240, 192, 64, 0.12);
+      border: 1px solid rgba(240, 192, 64, 0.35); border-radius: 4px;
+      opacity: 0.6; transform: translateX(-4px); transition: opacity 0.15s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    /* Click-to-open banner */
+    .kd-click-hint {
+      background: linear-gradient(90deg, rgba(240,192,64,0.08), rgba(240,192,64,0.02));
+      border: 1px solid rgba(240, 192, 64, 0.3); border-radius: 8px;
+      padding: 10px 14px; margin-bottom: 12px; text-align: center;
+      font-size: 13px; color: var(--text);
+    }
+    .kd-click-hint strong { color: var(--gold); }
     .kd-top-alliance { color: var(--text-muted); font-size: 13px; }
     .kd-top-alliance .kd-tag { color: var(--gold); font-size: 11px; font-weight: 700; margin-right: 4px; }
     .kd-power { color: var(--text); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
@@ -90,6 +111,10 @@
   </div>
 
   <div class="ad-slot" data-slot="kingdom-top">Ad</div>
+
+  <div class="kd-click-hint">
+    👇 <strong>Click any kingdom row below</strong> to open full alliance rankings, top players, kill counts, hero power, and more.
+  </div>
 
   <div class="kd-table-wrap">
     <table class="kd-table" id="kd-table">
@@ -180,7 +205,7 @@ function renderTable() {
     tr.onclick = function() { window.location.href = k.id + '/'; };
     tr.innerHTML =
       '<td class="kd-rank">' + (i + 1) + '</td>' +
-      '<td class="kd-kingdom"><span class="kd-kingdom-num">#' + k.id + '</span></td>' +
+      '<td class="kd-kingdom"><span class="kd-kingdom-num">#' + k.id + '</span><span class="kd-view-btn">View →</span></td>' +
       '<td class="kd-top-alliance">' + (k.topAlliance === '?' ? '<span style="opacity:0.4">?</span>' : (k.topTag ? '<span class="kd-tag">[' + k.topTag + ']</span>' : '') + k.topAlliance) + '</td>' +
       '<td class="kd-power">' + (k.topPower ? formatPower(k.topPower) + ' <div class="kd-bar"><div class="kd-bar-fill" style="width:' + pct + '%"></div></div>' : '<span style="opacity:0.4">?</span>') + '</td>' +
       '<td class="kd-power">' + (k.totalPower ? formatPower(k.totalPower) : '<span style="opacity:0.4">?</span>') + '</td>' +
