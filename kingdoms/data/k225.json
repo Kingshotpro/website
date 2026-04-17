@@ -1,0 +1,4823 @@
+{
+  "kingdom": 225,
+  "last_updated": "2026-04-16",
+  "source": "ADB screenshot scraper + EasyOCR extraction",
+  "categories": {
+    "alliance_power": [
+      {
+        "rank": 1,
+        "tag": "TBP",
+        "name": "TheBlackPearl",
+        "value": 21392866388
+      },
+      {
+        "rank": 2,
+        "tag": "NWO",
+        "name": "NewWorldOrder",
+        "value": 20080511989
+      },
+      {
+        "rank": 3,
+        "tag": "KuN",
+        "name": "TheKuntsmen",
+        "value": 18796043909
+      },
+      {
+        "rank": 4,
+        "tag": "PSR",
+        "name": "PhoenixSwdReborn",
+        "value": 17808002629
+      },
+      {
+        "rank": 5,
+        "tag": "nwo",
+        "name": "TheWolfpac",
+        "value": 7929347647
+      },
+      {
+        "rank": 6,
+        "tag": "tbp",
+        "name": "TBPxAcademy",
+        "value": 5660713849
+      },
+      {
+        "rank": 7,
+        "tag": "kun",
+        "name": "tsintraining",
+        "value": 3151865508
+      },
+      {
+        "rank": 8,
+        "tag": "KNG",
+        "name": "Kingdom",
+        "value": 1501190842
+      },
+      {
+        "rank": 9,
+        "tag": "psrlp",
+        "name": "hoenixswdrebrn2",
+        "value": 1468292197
+      },
+      {
+        "rank": 10,
+        "tag": "KbN",
+        "name": "KinsmenBrothers",
+        "value": 1298108116
+      },
+      {
+        "rank": 11,
+        "tag": "vhI",
+        "name": "Valhalla",
+        "value": 1005995194
+      },
+      {
+        "rank": 12,
+        "tag": "abc",
+        "name": "abc",
+        "value": 992743398
+      },
+      {
+        "rank": 13,
+        "tag": "WZ",
+        "name": "JjcatLover",
+        "value": 690860034
+      },
+      {
+        "rank": 14,
+        "tag": "BAR",
+        "name": "TittyBar",
+        "value": 392534352
+      },
+      {
+        "rank": 15,
+        "tag": "cBQl",
+        "name": "Mustangs",
+        "value": 336339200
+      },
+      {
+        "rank": 16,
+        "tag": "upghh",
+        "name": "elpmeimdrunk",
+        "value": 334276215
+      },
+      {
+        "rank": 17,
+        "tag": "",
+        "name": "",
+        "value": 293972636
+      },
+      {
+        "rank": 18,
+        "tag": "tgp",
+        "name": "GGFacademy",
+        "value": 293972636
+      },
+      {
+        "rank": 19,
+        "tag": "LGD",
+        "name": "TheLegend",
+        "value": 259002674
+      },
+      {
+        "rank": 20,
+        "tag": "RAM",
+        "name": "RageAgainstMach",
+        "value": 214166841
+      },
+      {
+        "rank": 21,
+        "tag": "BAG",
+        "name": "BattleAndGlory",
+        "value": 183482002
+      },
+      {
+        "rank": 22,
+        "tag": "yrp",
+        "name": "There4U",
+        "value": 177528058
+      },
+      {
+        "rank": 23,
+        "tag": "pQylm",
+        "name": "aggiebella",
+        "value": 142926524
+      },
+      {
+        "rank": 24,
+        "tag": "AnB",
+        "name": "OrlySokoly",
+        "value": 139074727
+      },
+      {
+        "rank": 25,
+        "tag": "",
+        "name": "",
+        "value": 127993486
+      },
+      {
+        "rank": 26,
+        "tag": "",
+        "name": "",
+        "value": 120098936
+      },
+      {
+        "rank": 27,
+        "tag": "TuS",
+        "name": "TheUnity",
+        "value": 116668332
+      },
+      {
+        "rank": 28,
+        "tag": "kin",
+        "name": "KinsmenAcademy",
+        "value": 114232614
+      },
+      {
+        "rank": 29,
+        "tag": "SPA",
+        "name": "ESPANA",
+        "value": 112385497
+      },
+      {
+        "rank": 30,
+        "tag": "MMB",
+        "name": "Mamba",
+        "value": 107443146
+      },
+      {
+        "rank": 31,
+        "tag": "FLT",
+        "name": "FuerzaLatina",
+        "value": 92231155
+      },
+      {
+        "rank": 32,
+        "tag": "BIG",
+        "name": "BIG OLANUS",
+        "value": 91455994
+      },
+      {
+        "rank": 33,
+        "tag": "KbR",
+        "name": "Polska2025",
+        "value": 90179669
+      },
+      {
+        "rank": 34,
+        "tag": "",
+        "name": "",
+        "value": 89800507
+      },
+      {
+        "rank": 35,
+        "tag": "Fa",
+        "name": "Blqweryyu789900245",
+        "value": 89800507
+      },
+      {
+        "rank": 36,
+        "tag": "BRS",
+        "name": "Brazucas",
+        "value": 84118924
+      },
+      {
+        "rank": 37,
+        "tag": "nwZ",
+        "name": "NWOprovince2",
+        "value": 71940001
+      },
+      {
+        "rank": 38,
+        "tag": "KOR",
+        "name": "cH?+pz",
+        "value": 65732691
+      },
+      {
+        "rank": 39,
+        "tag": "TTY",
+        "name": "Savages",
+        "value": 64811381
+      },
+      {
+        "rank": 40,
+        "tag": "ZTb",
+        "name": "Griffon",
+        "value": 57697359
+      },
+      {
+        "rank": 41,
+        "tag": "yjf",
+        "name": "Yippikiyay",
+        "value": 54113752
+      },
+      {
+        "rank": 42,
+        "tag": "",
+        "name": "",
+        "value": 49654961
+      },
+      {
+        "rank": 43,
+        "tag": "Gkql",
+        "name": "Casual",
+        "value": 49417895
+      },
+      {
+        "rank": 44,
+        "tag": "Uuh",
+        "name": "Naco",
+        "value": 47585631
+      },
+      {
+        "rank": 45,
+        "tag": "DUW",
+        "name": "USMCSgtM",
+        "value": 46695686
+      },
+      {
+        "rank": 46,
+        "tag": "cCh",
+        "name": "#X#@ (ExF>Z#m)",
+        "value": 44550995
+      },
+      {
+        "rank": 47,
+        "tag": "rKz",
+        "name": "GoD",
+        "value": 38838221
+      },
+      {
+        "rank": 48,
+        "tag": "dHf",
+        "name": "Drehafnur",
+        "value": 36297369
+      },
+      {
+        "rank": 49,
+        "tag": "TOc",
+        "name": "TheOutcasts",
+        "value": 34683304
+      },
+      {
+        "rank": 50,
+        "tag": "tsC",
+        "name": "AguilasPlateada",
+        "value": 34514648
+      },
+      {
+        "rank": 51,
+        "tag": "",
+        "name": "",
+        "value": 32359964
+      },
+      {
+        "rank": 52,
+        "tag": "qcz",
+        "name": "RRR",
+        "value": 26311446
+      },
+      {
+        "rank": 53,
+        "tag": "FJm",
+        "name": "Ragnarok",
+        "value": 25825272
+      },
+      {
+        "rank": 54,
+        "tag": "rxdja",
+        "name": "gw",
+        "value": 25761925
+      },
+      {
+        "rank": 55,
+        "tag": "nwG",
+        "name": "NWOprovince6",
+        "value": 23627245
+      },
+      {
+        "rank": 56,
+        "tag": "",
+        "name": "",
+        "value": 23069886
+      },
+      {
+        "rank": 57,
+        "tag": "",
+        "name": "",
+        "value": 21946068
+      },
+      {
+        "rank": 58,
+        "tag": "",
+        "name": "",
+        "value": 21656703
+      },
+      {
+        "rank": 59,
+        "tag": "",
+        "name": "",
+        "value": 21495402
+      },
+      {
+        "rank": 60,
+        "tag": "",
+        "name": "",
+        "value": 19780109
+      },
+      {
+        "rank": 61,
+        "tag": "nw3",
+        "name": "NWOprovince3",
+        "value": 19183125
+      },
+      {
+        "rank": 62,
+        "tag": "Nw2",
+        "name": "Nw2",
+        "value": 18524535
+      },
+      {
+        "rank": 63,
+        "tag": "nwH",
+        "name": "1893",
+        "value": 17264362
+      },
+      {
+        "rank": 64,
+        "tag": "OSU",
+        "name": "BuckeyeKingdom",
+        "value": 17003721
+      },
+      {
+        "rank": 65,
+        "tag": "tDZ",
+        "name": "Theprotectors",
+        "value": 16552092
+      },
+      {
+        "rank": 66,
+        "tag": "AYJ",
+        "name": "DBathbysnOOsnOO",
+        "value": 16542816
+      },
+      {
+        "rank": 67,
+        "tag": "Ywy",
+        "name": "NItroops",
+        "value": 15488103
+      },
+      {
+        "rank": 68,
+        "tag": "ITA",
+        "name": "ITALIA",
+        "value": 15221149
+      },
+      {
+        "rank": 69,
+        "tag": "ePw",
+        "name": "rosebud",
+        "value": 14989642
+      },
+      {
+        "rank": 70,
+        "tag": "WZW",
+        "name": "BLUELUES",
+        "value": 14893098
+      },
+      {
+        "rank": 71,
+        "tag": "hTylG",
+        "name": "GB",
+        "value": 14857055
+      },
+      {
+        "rank": 72,
+        "tag": "SYN",
+        "name": "Synergy",
+        "value": 13760133
+      },
+      {
+        "rank": 73,
+        "tag": "xxj",
+        "name": "Whosits",
+        "value": 13100280
+      },
+      {
+        "rank": 74,
+        "tag": "Zc",
+        "name": "UjxXX",
+        "value": 12663075
+      },
+      {
+        "rank": 75,
+        "tag": "",
+        "name": "",
+        "value": 12631497
+      },
+      {
+        "rank": 76,
+        "tag": "",
+        "name": "",
+        "value": 12440666
+      },
+      {
+        "rank": 77,
+        "tag": "nwS",
+        "name": "NWOprovince5",
+        "value": 12246789
+      },
+      {
+        "rank": 78,
+        "tag": "UGn",
+        "name": "cuqijkca",
+        "value": 11748428
+      },
+      {
+        "rank": 79,
+        "tag": "pip",
+        "name": "PeaslnAPod",
+        "value": 11697429
+      },
+      {
+        "rank": 80,
+        "tag": "AfK",
+        "name": "202Are TheBest",
+        "value": 11653857
+      },
+      {
+        "rank": 81,
+        "tag": "dznle",
+        "name": "dizberra",
+        "value": 10753368
+      },
+      {
+        "rank": 82,
+        "tag": "KhN",
+        "name": "losquesitos",
+        "value": 10648304
+      },
+      {
+        "rank": 83,
+        "tag": "",
+        "name": "",
+        "value": 10378901
+      },
+      {
+        "rank": 84,
+        "tag": "",
+        "name": "",
+        "value": 9894291
+      },
+      {
+        "rank": 85,
+        "tag": "zWx",
+        "name": "TheCreed",
+        "value": 9839087
+      },
+      {
+        "rank": 86,
+        "tag": "ssS",
+        "name": "Onepiece",
+        "value": 9618804
+      },
+      {
+        "rank": 87,
+        "tag": "UAN",
+        "name": "Aincrad",
+        "value": 9595214
+      },
+      {
+        "rank": 88,
+        "tag": "WYN",
+        "name": "AEX#Z EZEx",
+        "value": 9573723
+      },
+      {
+        "rank": 89,
+        "tag": "TPd",
+        "name": "Stega4Eva",
+        "value": 9515868
+      },
+      {
+        "rank": 90,
+        "tag": "Xc",
+        "name": "YJNndnid",
+        "value": 9158899
+      },
+      {
+        "rank": 91,
+        "tag": "sjulg",
+        "name": "arudawarrior",
+        "value": 8999049
+      },
+      {
+        "rank": 92,
+        "tag": "",
+        "name": "",
+        "value": 8993686
+      },
+      {
+        "rank": 93,
+        "tag": "SOL",
+        "name": "SoloLevel",
+        "value": 8993686
+      },
+      {
+        "rank": 94,
+        "tag": "Zak",
+        "name": "Titanes",
+        "value": 8645541
+      },
+      {
+        "rank": 95,
+        "tag": "yzC",
+        "name": "KASH",
+        "value": 8465099
+      },
+      {
+        "rank": 96,
+        "tag": "FWg",
+        "name": "Kingg",
+        "value": 8041312
+      },
+      {
+        "rank": 97,
+        "tag": "FWgl",
+        "name": "Kingg",
+        "value": 8041312
+      },
+      {
+        "rank": 98,
+        "tag": "vsS",
+        "name": "225areSCUM",
+        "value": 7789121
+      },
+      {
+        "rank": 99,
+        "tag": "VsS",
+        "name": "225areSCUM",
+        "value": 7789121
+      },
+      {
+        "rank": 100,
+        "tag": "FRZ",
+        "name": "costa",
+        "value": 7698969
+      }
+    ],
+    "alliance_kills": [
+      {
+        "rank": 1,
+        "tag": "TBP",
+        "name": "TheBlackPearl",
+        "value": 1515706446
+      },
+      {
+        "rank": 2,
+        "tag": "NWO",
+        "name": "NewWorldOrder",
+        "value": 1257982860
+      },
+      {
+        "rank": 3,
+        "tag": "KuN",
+        "name": "TheKuntsmen",
+        "value": 926536411
+      },
+      {
+        "rank": 4,
+        "tag": "PSR",
+        "name": "PhoenixSwdReborn",
+        "value": 580064374
+      },
+      {
+        "rank": 5,
+        "tag": "tbp",
+        "name": "TBPxAcademy",
+        "value": 70318848
+      },
+      {
+        "rank": 6,
+        "tag": "nwo",
+        "name": "TheWolfpac",
+        "value": 53301053
+      },
+      {
+        "rank": 7,
+        "tag": "kun",
+        "name": "tsintraining",
+        "value": 30526124
+      },
+      {
+        "rank": 8,
+        "tag": "SLI",
+        "name": "SoloLeveling",
+        "value": 18476837
+      },
+      {
+        "rank": 9,
+        "tag": "KNG",
+        "name": "Kingdom",
+        "value": 6039526
+      },
+      {
+        "rank": 10,
+        "tag": "KbN",
+        "name": "KinsmenBrothers",
+        "value": 5780331
+      },
+      {
+        "rank": 11,
+        "tag": "TGP",
+        "name": "TheGothPirates",
+        "value": 5371041
+      },
+      {
+        "rank": 12,
+        "tag": "abc",
+        "name": "abc",
+        "value": 5035333
+      },
+      {
+        "rank": 13,
+        "tag": "psrlp",
+        "name": "hoenixswdrebrn2",
+        "value": 4800750
+      },
+      {
+        "rank": 14,
+        "tag": "vhI",
+        "name": "Valhalla",
+        "value": 3255212
+      },
+      {
+        "rank": 15,
+        "tag": "upglh",
+        "name": "elpmeimdrunk",
+        "value": 3122834
+      },
+      {
+        "rank": 16,
+        "tag": "RAM",
+        "name": "RageAgainstMach",
+        "value": 2885041
+      },
+      {
+        "rank": 17,
+        "tag": "AnB",
+        "name": "orlySokoly",
+        "value": 2333870
+      },
+      {
+        "rank": 18,
+        "tag": "WZ",
+        "name": "JjcatLover",
+        "value": 2183323
+      },
+      {
+        "rank": 19,
+        "tag": "BAR",
+        "name": "TittyBar",
+        "value": 1335075
+      },
+      {
+        "rank": 20,
+        "tag": "cBQ",
+        "name": "Mustangs",
+        "value": 1316220
+      },
+      {
+        "rank": 21,
+        "tag": "LGD",
+        "name": "TheLegend",
+        "value": 1301956
+      },
+      {
+        "rank": 22,
+        "tag": "tgp",
+        "name": "GGFacademy",
+        "value": 1142206
+      },
+      {
+        "rank": 23,
+        "tag": "yrp",
+        "name": "There4U",
+        "value": 1108706
+      },
+      {
+        "rank": 24,
+        "tag": "By",
+        "name": "FllmperioRom",
+        "value": 786194
+      },
+      {
+        "rank": 25,
+        "tag": "Fa",
+        "name": "Blqweryyu789900245",
+        "value": 626119
+      },
+      {
+        "rank": 26,
+        "tag": "TuS",
+        "name": "TheUnity",
+        "value": 624564
+      },
+      {
+        "rank": 27,
+        "tag": "TTY",
+        "name": "Savages",
+        "value": 603568
+      },
+      {
+        "rank": 28,
+        "tag": "pip",
+        "name": "PeaslnAPod",
+        "value": 540721
+      },
+      {
+        "rank": 29,
+        "tag": "SPA",
+        "name": "ESPANA",
+        "value": 492490
+      },
+      {
+        "rank": 30,
+        "tag": "KOR",
+        "name": "cH2luz",
+        "value": 438671
+      },
+      {
+        "rank": 31,
+        "tag": "nwZ",
+        "name": "NWOprovince2",
+        "value": 432882
+      },
+      {
+        "rank": 32,
+        "tag": "tsC",
+        "name": "AguilasPlateada",
+        "value": 389412
+      },
+      {
+        "rank": 33,
+        "tag": "BIG",
+        "name": "BIG OLANUS",
+        "value": 385060
+      },
+      {
+        "rank": 34,
+        "tag": "MMB",
+        "name": "Mamba",
+        "value": 307680
+      },
+      {
+        "rank": 35,
+        "tag": "FLT",
+        "name": "FuerzaLatina",
+        "value": 291007
+      },
+      {
+        "rank": 36,
+        "tag": "pQylm",
+        "name": "aggiebella",
+        "value": 257835
+      },
+      {
+        "rank": 37,
+        "tag": "BAG",
+        "name": "BattleAndGlory",
+        "value": 256194
+      },
+      {
+        "rank": 38,
+        "tag": "Uuh",
+        "name": "Naco",
+        "value": 202394
+      },
+      {
+        "rank": 39,
+        "tag": "nw4",
+        "name": "NWOprovince4",
+        "value": 188226
+      },
+      {
+        "rank": 40,
+        "tag": "kin",
+        "name": "KinsmenAcademy",
+        "value": 177308
+      },
+      {
+        "rank": 41,
+        "tag": "cCh",
+        "name": "#A1#@ (2x+>Z4M)",
+        "value": 174591
+      },
+      {
+        "rank": 42,
+        "tag": "KbR",
+        "name": "Polska2025",
+        "value": 134015
+      },
+      {
+        "rank": 43,
+        "tag": "Gkq",
+        "name": "Casual",
+        "value": 114403
+      },
+      {
+        "rank": 44,
+        "tag": "yjf",
+        "name": "Yippikiyay",
+        "value": 113412
+      },
+      {
+        "rank": 45,
+        "tag": "WYN",
+        "name": "AE#Z EIEER",
+        "value": 103364
+      },
+      {
+        "rank": 46,
+        "tag": "OSU",
+        "name": "BuckeyeKingdom",
+        "value": 100697
+      },
+      {
+        "rank": 47,
+        "tag": "Ywy",
+        "name": "NItroops",
+        "value": 91181
+      },
+      {
+        "rank": 48,
+        "tag": "BRS",
+        "name": "Brazucas",
+        "value": 87470
+      },
+      {
+        "rank": 49,
+        "tag": "",
+        "name": "",
+        "value": 82979
+      },
+      {
+        "rank": 50,
+        "tag": "whvl",
+        "name": "Rosemerry",
+        "value": 79279
+      },
+      {
+        "rank": 51,
+        "tag": "TPd",
+        "name": "Stega4Eva",
+        "value": 78101
+      },
+      {
+        "rank": 52,
+        "tag": "LLL",
+        "name": "INFERNAL",
+        "value": 64674
+      },
+      {
+        "rank": 53,
+        "tag": "ZTb",
+        "name": "Griffon",
+        "value": 64220
+      },
+      {
+        "rank": 54,
+        "tag": "AYJ",
+        "name": "DBathbysnOOsnOO",
+        "value": 63745
+      },
+      {
+        "rank": 55,
+        "tag": "SYR",
+        "name": "SYRIA",
+        "value": 59922
+      },
+      {
+        "rank": 56,
+        "tag": "nwH",
+        "name": "1893",
+        "value": 56196
+      },
+      {
+        "rank": 57,
+        "tag": "hvm",
+        "name": "DieVerfluchten",
+        "value": 49251
+      },
+      {
+        "rank": 58,
+        "tag": "SYN",
+        "name": "Synergy",
+        "value": 43558
+      },
+      {
+        "rank": 59,
+        "tag": "qkyl",
+        "name": "A #W (Zk+YZit)",
+        "value": 42192
+      },
+      {
+        "rank": 60,
+        "tag": "TOc",
+        "name": "TheOutcasts",
+        "value": 41069
+      },
+      {
+        "rank": 61,
+        "tag": "YXQ",
+        "name": "AZADI",
+        "value": 40272
+      },
+      {
+        "rank": 62,
+        "tag": "zcP",
+        "name": "VKL",
+        "value": 39314
+      },
+      {
+        "rank": 63,
+        "tag": "Fbr",
+        "name": "Slayer",
+        "value": 36950
+      },
+      {
+        "rank": 64,
+        "tag": "F",
+        "name": "mRagnarok",
+        "value": 29208
+      },
+      {
+        "rank": 65,
+        "tag": "zWx",
+        "name": "TheCreed",
+        "value": 27789
+      },
+      {
+        "rank": 66,
+        "tag": "TUR",
+        "name": "TURKiYE",
+        "value": 27561
+      },
+      {
+        "rank": 67,
+        "tag": "NDN",
+        "name": "ThunderClan",
+        "value": 26778
+      },
+      {
+        "rank": 68,
+        "tag": "rKz",
+        "name": "GoD",
+        "value": 26075
+      },
+      {
+        "rank": 69,
+        "tag": "Zak",
+        "name": "Titanes",
+        "value": 25763
+      },
+      {
+        "rank": 70,
+        "tag": "ZcU",
+        "name": "xXX",
+        "value": 22556
+      },
+      {
+        "rank": 71,
+        "tag": "42O",
+        "name": "420Family",
+        "value": 22353
+      },
+      {
+        "rank": 72,
+        "tag": "qcz",
+        "name": "RRR",
+        "value": 22220
+      },
+      {
+        "rank": 73,
+        "tag": "nw6",
+        "name": "NWOprovince6",
+        "value": 22141
+      },
+      {
+        "rank": 74,
+        "tag": "HNG",
+        "name": "Light sBasement",
+        "value": 21968
+      },
+      {
+        "rank": 75,
+        "tag": "uhH",
+        "name": "chispal3",
+        "value": 21491
+      },
+      {
+        "rank": 76,
+        "tag": "ZMB",
+        "name": "TinaLaDivina",
+        "value": 21071
+      },
+      {
+        "rank": 77,
+        "tag": "tDZ",
+        "name": "Theprotectors",
+        "value": 19957
+      },
+      {
+        "rank": 78,
+        "tag": "SOLI",
+        "name": "SoloLevel",
+        "value": 19537
+      },
+      {
+        "rank": 79,
+        "tag": "LoL",
+        "name": "LiveorLive",
+        "value": 19370
+      },
+      {
+        "rank": 80,
+        "tag": "mpolt",
+        "name": "heticklers",
+        "value": 18383
+      },
+      {
+        "rank": 81,
+        "tag": "yjujo",
+        "name": "loland",
+        "value": 18004
+      },
+      {
+        "rank": 82,
+        "tag": "AfK",
+        "name": "2O2Are TheBest",
+        "value": 16901
+      },
+      {
+        "rank": 83,
+        "tag": "KhN",
+        "name": "losquesitos",
+        "value": 16736
+      },
+      {
+        "rank": 84,
+        "tag": "Kh",
+        "name": "Nllosquesitos",
+        "value": 16736
+      },
+      {
+        "rank": 85,
+        "tag": "mRD",
+        "name": "Arabic Team",
+        "value": 16638
+      },
+      {
+        "rank": 86,
+        "tag": "Fdc",
+        "name": "Gtfsvvf",
+        "value": 15620
+      },
+      {
+        "rank": 87,
+        "tag": "fdc",
+        "name": "Gtfsvvf",
+        "value": 15620
+      },
+      {
+        "rank": 88,
+        "tag": "DUW",
+        "name": "USMCSgtM",
+        "value": 14935
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "",
+        "value": 14394
+      },
+      {
+        "rank": 90,
+        "tag": "rsql",
+        "name": "Carovigno",
+        "value": 14394
+      },
+      {
+        "rank": 91,
+        "tag": "yzC",
+        "name": "KASH",
+        "value": 12375
+      },
+      {
+        "rank": 92,
+        "tag": "yzc",
+        "name": "KASH",
+        "value": 12375
+      },
+      {
+        "rank": 93,
+        "tag": "ZTg",
+        "name": "INDOSQUAD",
+        "value": 11722
+      },
+      {
+        "rank": 94,
+        "tag": "ZTglI",
+        "name": "NDOSQUAD",
+        "value": 11722
+      },
+      {
+        "rank": 95,
+        "tag": "vGt",
+        "name": "TheDarkSide",
+        "value": 11468
+      },
+      {
+        "rank": 96,
+        "tag": "rxd",
+        "name": "agw",
+        "value": 817
+      },
+      {
+        "rank": 97,
+        "tag": "OVL",
+        "name": "TheOverlords",
+        "value": 232
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "",
+        "value": 225
+      },
+      {
+        "rank": 99,
+        "tag": "",
+        "name": "Alliance Kills",
+        "value": 0
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Alance",
+        "value": 0
+      }
+    ],
+    "personal_power": [
+      {
+        "rank": 1,
+        "tag": "NW",
+        "name": "Ojcipherhead",
+        "value": 1189976737
+      },
+      {
+        "rank": 2,
+        "tag": "KuN",
+        "name": "Sinbadthegamer07",
+        "value": 591520858
+      },
+      {
+        "rank": 3,
+        "tag": "NWO",
+        "name": "NoCipher",
+        "value": 558124908
+      },
+      {
+        "rank": 4,
+        "tag": "PSR",
+        "name": "Zeke",
+        "value": 522028190
+      },
+      {
+        "rank": 5,
+        "tag": "NWO",
+        "name": "Eclipse",
+        "value": 490518259
+      },
+      {
+        "rank": 6,
+        "tag": "TBP",
+        "name": "CipherB",
+        "value": 470353946
+      },
+      {
+        "rank": 7,
+        "tag": "NWO",
+        "name": "Venom",
+        "value": 461891132
+      },
+      {
+        "rank": 8,
+        "tag": "TBP",
+        "name": "Cipher KJ",
+        "value": 409896397
+      },
+      {
+        "rank": 9,
+        "tag": "TBP",
+        "name": "CipherRebornSeb",
+        "value": 404791874
+      },
+      {
+        "rank": 10,
+        "tag": "NWO",
+        "name": "scA",
+        "value": 392631770
+      },
+      {
+        "rank": 11,
+        "tag": "TBP",
+        "name": "CIPHER Rip",
+        "value": 369415251
+      },
+      {
+        "rank": 12,
+        "tag": "TBP",
+        "name": "Casper",
+        "value": 368552115
+      },
+      {
+        "rank": 13,
+        "tag": "KuN",
+        "name": "Goat",
+        "value": 353058359
+      },
+      {
+        "rank": 14,
+        "tag": "",
+        "name": "",
+        "value": 352858898
+      },
+      {
+        "rank": 15,
+        "tag": "TBP",
+        "name": "Geek Dojo",
+        "value": 346429389
+      },
+      {
+        "rank": 16,
+        "tag": "",
+        "name": "",
+        "value": 346222027
+      },
+      {
+        "rank": 17,
+        "tag": "KuN",
+        "name": "zzC",
+        "value": 342788746
+      },
+      {
+        "rank": 18,
+        "tag": "NWO",
+        "name": "llara",
+        "value": 341068007
+      },
+      {
+        "rank": 19,
+        "tag": "NWO",
+        "name": "Jimmy",
+        "value": 338985149
+      },
+      {
+        "rank": 20,
+        "tag": "TBP",
+        "name": "CipherRIP",
+        "value": 338707754
+      },
+      {
+        "rank": 21,
+        "tag": "KuN",
+        "name": "PerryTouchedThis",
+        "value": 337378834
+      },
+      {
+        "rank": 22,
+        "tag": "NWO",
+        "name": "joxi",
+        "value": 331527850
+      },
+      {
+        "rank": 23,
+        "tag": "TBP",
+        "name": "Ciphron",
+        "value": 330164595
+      },
+      {
+        "rank": 24,
+        "tag": "",
+        "name": "",
+        "value": 323576565
+      },
+      {
+        "rank": 25,
+        "tag": "KuN",
+        "name": "APEX_daddy",
+        "value": 313696288
+      },
+      {
+        "rank": 26,
+        "tag": "NWO",
+        "name": "SPARTACUS",
+        "value": 309503807
+      },
+      {
+        "rank": 27,
+        "tag": "KuN",
+        "name": "Rayan",
+        "value": 308790192
+      },
+      {
+        "rank": 28,
+        "tag": "NWO",
+        "name": "KOPIKAT",
+        "value": 307497571
+      },
+      {
+        "rank": 29,
+        "tag": "TBP",
+        "name": "Scarface Sabs",
+        "value": 299537052
+      },
+      {
+        "rank": 30,
+        "tag": "TBP",
+        "name": "Baba",
+        "value": 297983628
+      },
+      {
+        "rank": 31,
+        "tag": "",
+        "name": "",
+        "value": 296419421
+      },
+      {
+        "rank": 32,
+        "tag": "",
+        "name": "",
+        "value": 294741613
+      },
+      {
+        "rank": 33,
+        "tag": "KuN",
+        "name": "Raw222",
+        "value": 293782124
+      },
+      {
+        "rank": 34,
+        "tag": "NWO",
+        "name": "G IZ M0",
+        "value": 291575328
+      },
+      {
+        "rank": 35,
+        "tag": "NWO",
+        "name": "LUSIA",
+        "value": 290648433
+      },
+      {
+        "rank": 36,
+        "tag": "KuN",
+        "name": "Thatscotknut",
+        "value": 289958915
+      },
+      {
+        "rank": 37,
+        "tag": "PSR",
+        "name": "SCG",
+        "value": 287861974
+      },
+      {
+        "rank": 38,
+        "tag": "",
+        "name": "",
+        "value": 287621934
+      },
+      {
+        "rank": 39,
+        "tag": "",
+        "name": "",
+        "value": 285276516
+      },
+      {
+        "rank": 40,
+        "tag": "KuN",
+        "name": "PA_+",
+        "value": 284729203
+      },
+      {
+        "rank": 41,
+        "tag": "TBP",
+        "name": "Root",
+        "value": 283645235
+      },
+      {
+        "rank": 42,
+        "tag": "",
+        "name": "(TBPLilp",
+        "value": 282952882
+      },
+      {
+        "rank": 43,
+        "tag": "KuN",
+        "name": "E721",
+        "value": 281397741
+      },
+      {
+        "rank": 44,
+        "tag": "PSR",
+        "name": "LordPingPong",
+        "value": 281347725
+      },
+      {
+        "rank": 45,
+        "tag": "KuN",
+        "name": "DonKnigge",
+        "value": 280138663
+      },
+      {
+        "rank": 46,
+        "tag": "NWO",
+        "name": "TattoosbyLeo",
+        "value": 279752048
+      },
+      {
+        "rank": 47,
+        "tag": "TBP",
+        "name": "Oaken",
+        "value": 278732563
+      },
+      {
+        "rank": 48,
+        "tag": "",
+        "name": "",
+        "value": 274252463
+      },
+      {
+        "rank": 49,
+        "tag": "TBP",
+        "name": "CipherKirby",
+        "value": 273875911
+      },
+      {
+        "rank": 50,
+        "tag": "NWO",
+        "name": "TheCudGod",
+        "value": 271186244
+      },
+      {
+        "rank": 51,
+        "tag": "PSR",
+        "name": "BigBulll8",
+        "value": 271124518
+      },
+      {
+        "rank": 52,
+        "tag": "TBP",
+        "name": "DarkCipher31",
+        "value": 270513282
+      },
+      {
+        "rank": 53,
+        "tag": "TBP",
+        "name": "CipherDrink",
+        "value": 269533804
+      },
+      {
+        "rank": 54,
+        "tag": "TBP",
+        "name": "Northern Cipher",
+        "value": 268414214
+      },
+      {
+        "rank": 55,
+        "tag": "KuN",
+        "name": "Heimdall",
+        "value": 267813468
+      },
+      {
+        "rank": 56,
+        "tag": "",
+        "name": "",
+        "value": 267493174
+      },
+      {
+        "rank": 57,
+        "tag": "KuN",
+        "name": "ITG",
+        "value": 263775100
+      },
+      {
+        "rank": 58,
+        "tag": "NWO",
+        "name": "Dr strange",
+        "value": 263412374
+      },
+      {
+        "rank": 59,
+        "tag": "KuN",
+        "name": "PERRYS SAUSAGE",
+        "value": 263201127
+      },
+      {
+        "rank": 60,
+        "tag": "PSR",
+        "name": "Logen",
+        "value": 262657749
+      },
+      {
+        "rank": 61,
+        "tag": "KuN",
+        "name": "Nyx Sol",
+        "value": 262550729
+      },
+      {
+        "rank": 62,
+        "tag": "TBP",
+        "name": "CipherArwen",
+        "value": 260801090
+      },
+      {
+        "rank": 63,
+        "tag": "PSR",
+        "name": "iamabltch",
+        "value": 260277642
+      },
+      {
+        "rank": 64,
+        "tag": "PSR",
+        "name": "Wlastik",
+        "value": 259711712
+      },
+      {
+        "rank": 65,
+        "tag": "NWO",
+        "name": "Nona_Selir",
+        "value": 257299774
+      },
+      {
+        "rank": 66,
+        "tag": "NWO",
+        "name": "Nona_Selir",
+        "value": 257299774
+      },
+      {
+        "rank": 67,
+        "tag": "KuN",
+        "name": "Archon",
+        "value": 256984009
+      },
+      {
+        "rank": 68,
+        "tag": "PSR",
+        "name": "Ina'nis",
+        "value": 256971297
+      },
+      {
+        "rank": 69,
+        "tag": "KuN",
+        "name": "Papa Perry",
+        "value": 255951241
+      },
+      {
+        "rank": 70,
+        "tag": "TBP",
+        "name": "TOPHIz,8",
+        "value": 255476462
+      },
+      {
+        "rank": 71,
+        "tag": "KuN",
+        "name": "snoah",
+        "value": 253870008
+      },
+      {
+        "rank": 72,
+        "tag": "TBP",
+        "name": "Sacred32",
+        "value": 252220578
+      },
+      {
+        "rank": 73,
+        "tag": "",
+        "name": "",
+        "value": 250671406
+      },
+      {
+        "rank": 74,
+        "tag": "",
+        "name": "",
+        "value": 250662889
+      },
+      {
+        "rank": 75,
+        "tag": "KuN",
+        "name": "BuBBle",
+        "value": 248857397
+      },
+      {
+        "rank": 76,
+        "tag": "KuN",
+        "name": "Allywan",
+        "value": 248474730
+      },
+      {
+        "rank": 77,
+        "tag": "NWO",
+        "name": "Vulkan",
+        "value": 246801219
+      },
+      {
+        "rank": 78,
+        "tag": "KuN",
+        "name": "Oh Lord",
+        "value": 246785725
+      },
+      {
+        "rank": 79,
+        "tag": "KuN",
+        "name": "Gouvna",
+        "value": 245663805
+      },
+      {
+        "rank": 80,
+        "tag": "TBP",
+        "name": "PoohCipherDEP",
+        "value": 245200585
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "",
+        "value": 244226591
+      },
+      {
+        "rank": 82,
+        "tag": "",
+        "name": "",
+        "value": 243882033
+      },
+      {
+        "rank": 83,
+        "tag": "NWO",
+        "name": "SILVER 1977",
+        "value": 243536697
+      },
+      {
+        "rank": 84,
+        "tag": "KuN",
+        "name": "ButtKrak",
+        "value": 242603678
+      },
+      {
+        "rank": 85,
+        "tag": "TBP",
+        "name": "Caballo",
+        "value": 242517188
+      },
+      {
+        "rank": 86,
+        "tag": "PSR",
+        "name": "Laslofuntec",
+        "value": 241546779
+      },
+      {
+        "rank": 87,
+        "tag": "nwo",
+        "name": "UNDZAHILL",
+        "value": 240708659
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "FOLAHILL",
+        "value": 240708659
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "Aeinesus",
+        "value": 240708659
+      },
+      {
+        "rank": 90,
+        "tag": "",
+        "name": "NWO",
+        "value": 240708659
+      },
+      {
+        "rank": 91,
+        "tag": "",
+        "name": "UCdLhILL",
+        "value": 240708659
+      },
+      {
+        "rank": 92,
+        "tag": "PSR",
+        "name": "SpArTac",
+        "value": 240226859
+      },
+      {
+        "rank": 93,
+        "tag": "TBP",
+        "name": "DeeFender",
+        "value": 239833182
+      },
+      {
+        "rank": 94,
+        "tag": "",
+        "name": "",
+        "value": 239683407
+      },
+      {
+        "rank": 95,
+        "tag": "KuN",
+        "name": "Arthurx",
+        "value": 239683407
+      },
+      {
+        "rank": 96,
+        "tag": "",
+        "name": "",
+        "value": 238869749
+      },
+      {
+        "rank": 97,
+        "tag": "KuN",
+        "name": "Hirvi",
+        "value": 238869749
+      },
+      {
+        "rank": 98,
+        "tag": "KuN",
+        "name": "Santa",
+        "value": 238829143
+      },
+      {
+        "rank": 99,
+        "tag": "TBP",
+        "name": "CipherNini",
+        "value": 475033
+      },
+      {
+        "rank": 100,
+        "tag": "TBP",
+        "name": "CipherBilly",
+        "value": 470279
+      }
+    ],
+    "kill_count": [
+      {
+        "rank": 1,
+        "tag": "NW",
+        "name": "Ojcipherhead",
+        "value": 145314973
+      },
+      {
+        "rank": 2,
+        "tag": "KuN",
+        "name": "Rayan",
+        "value": 136464774
+      },
+      {
+        "rank": 3,
+        "tag": "NWO",
+        "name": "NoCipher",
+        "value": 128281470
+      },
+      {
+        "rank": 4,
+        "tag": "TBP",
+        "name": "Cipherlin",
+        "value": 124445586
+      },
+      {
+        "rank": 5,
+        "tag": "TBP",
+        "name": "Cipher KJ",
+        "value": 110762614
+      },
+      {
+        "rank": 6,
+        "tag": "TBP",
+        "name": "Ciphron",
+        "value": 107297745
+      },
+      {
+        "rank": 7,
+        "tag": "KuN",
+        "name": "Goat",
+        "value": 100573138
+      },
+      {
+        "rank": 8,
+        "tag": "TBP",
+        "name": "CipherB",
+        "value": 94835223
+      },
+      {
+        "rank": 9,
+        "tag": "TBP",
+        "name": "CipherBilly",
+        "value": 75228825
+      },
+      {
+        "rank": 10,
+        "tag": "NwO",
+        "name": "Jimmy",
+        "value": 72884248
+      },
+      {
+        "rank": 11,
+        "tag": "TBP",
+        "name": "Oaken",
+        "value": 70564803
+      },
+      {
+        "rank": 12,
+        "tag": "NWO",
+        "name": "scA",
+        "value": 66531061
+      },
+      {
+        "rank": 13,
+        "tag": "",
+        "name": "Simde",
+        "value": 61506874
+      },
+      {
+        "rank": 14,
+        "tag": "NWO",
+        "name": "Eclipse",
+        "value": 59595041
+      },
+      {
+        "rank": 15,
+        "tag": "",
+        "name": "TBPCipherBuck",
+        "value": 54256581
+      },
+      {
+        "rank": 16,
+        "tag": "TBP",
+        "name": "Scarface Sabs",
+        "value": 52923759
+      },
+      {
+        "rank": 17,
+        "tag": "KuN",
+        "name": "snoah",
+        "value": 52700369
+      },
+      {
+        "rank": 18,
+        "tag": "KuN",
+        "name": "Thatscotknut",
+        "value": 50558232
+      },
+      {
+        "rank": 19,
+        "tag": "KuN",
+        "name": "Sinbadthegamer07",
+        "value": 50022969
+      },
+      {
+        "rank": 20,
+        "tag": "TBP",
+        "name": "CipherNini",
+        "value": 39433789
+      },
+      {
+        "rank": 21,
+        "tag": "TBP",
+        "name": "CipherGoose",
+        "value": 38952106
+      },
+      {
+        "rank": 22,
+        "tag": "TBP",
+        "name": "CIPHER Rip",
+        "value": 38414892
+      },
+      {
+        "rank": 23,
+        "tag": "",
+        "name": "PLUMEZ",
+        "value": 38266183
+      },
+      {
+        "rank": 24,
+        "tag": "TBP",
+        "name": "CipherRebornSeb",
+        "value": 36476437
+      },
+      {
+        "rank": 25,
+        "tag": "NWo",
+        "name": "TheCudGod",
+        "value": 36202794
+      },
+      {
+        "rank": 26,
+        "tag": "PSR",
+        "name": "PeteyTheMidget",
+        "value": 36146917
+      },
+      {
+        "rank": 27,
+        "tag": "NWO",
+        "name": "Venom",
+        "value": 35629825
+      },
+      {
+        "rank": 28,
+        "tag": "NWO",
+        "name": "Monster TR",
+        "value": 32432172
+      },
+      {
+        "rank": 29,
+        "tag": "PSR",
+        "name": "Kitkat",
+        "value": 31899834
+      },
+      {
+        "rank": 30,
+        "tag": "TBP",
+        "name": "CipherRIP",
+        "value": 30944429
+      },
+      {
+        "rank": 31,
+        "tag": "NWO",
+        "name": "TattoosbyLeo",
+        "value": 28177421
+      },
+      {
+        "rank": 32,
+        "tag": "TBP",
+        "name": "CipherDrink",
+        "value": 26956149
+      },
+      {
+        "rank": 33,
+        "tag": "KuN",
+        "name": "Perry TouchedThis",
+        "value": 26621870
+      },
+      {
+        "rank": 34,
+        "tag": "NWO",
+        "name": "SPARTACUS",
+        "value": 26410201
+      },
+      {
+        "rank": 35,
+        "tag": "NWO",
+        "name": "Vulkan",
+        "value": 26363420
+      },
+      {
+        "rank": 36,
+        "tag": "TBP",
+        "name": "Lady Moon Cipher",
+        "value": 26225528
+      },
+      {
+        "rank": 37,
+        "tag": "TBP",
+        "name": "CipherKirby",
+        "value": 25177152
+      },
+      {
+        "rank": 38,
+        "tag": "KuN",
+        "name": "Raw222",
+        "value": 24950991
+      },
+      {
+        "rank": 39,
+        "tag": "NWO",
+        "name": "Nona_Selir",
+        "value": 24460702
+      },
+      {
+        "rank": 40,
+        "tag": "",
+        "name": "Limitless",
+        "value": 23371796
+      },
+      {
+        "rank": 41,
+        "tag": "PSR",
+        "name": "LordPingPong",
+        "value": 23116642
+      },
+      {
+        "rank": 42,
+        "tag": "KuN",
+        "name": "PERRYS SAUSAGE",
+        "value": 22618220
+      },
+      {
+        "rank": 43,
+        "tag": "TBP",
+        "name": "PoohCipherDEP",
+        "value": 22525659
+      },
+      {
+        "rank": 44,
+        "tag": "PSR",
+        "name": "GATOTKACA",
+        "value": 22465122
+      },
+      {
+        "rank": 45,
+        "tag": "",
+        "name": "",
+        "value": 22147645
+      },
+      {
+        "rank": 46,
+        "tag": "TBP",
+        "name": "Sacred32",
+        "value": 21304324
+      },
+      {
+        "rank": 47,
+        "tag": "TBP",
+        "name": "Carnage",
+        "value": 19861425
+      },
+      {
+        "rank": 48,
+        "tag": "KuN",
+        "name": "ITG",
+        "value": 19302736
+      },
+      {
+        "rank": 49,
+        "tag": "KuN",
+        "name": "Rorotomogo",
+        "value": 19271347
+      },
+      {
+        "rank": 50,
+        "tag": "TBP",
+        "name": "Dunlop",
+        "value": 18956005
+      },
+      {
+        "rank": 51,
+        "tag": "NWO",
+        "name": "G IZ M0",
+        "value": 18308365
+      },
+      {
+        "rank": 52,
+        "tag": "SLI",
+        "name": "StLina",
+        "value": 18025250
+      },
+      {
+        "rank": 53,
+        "tag": "KuN",
+        "name": "zzc",
+        "value": 17887120
+      },
+      {
+        "rank": 54,
+        "tag": "TBP",
+        "name": "RIP Cipher",
+        "value": 17406730
+      },
+      {
+        "rank": 55,
+        "tag": "PSR",
+        "name": "iamabltch",
+        "value": 17144425
+      },
+      {
+        "rank": 56,
+        "tag": "TBP",
+        "name": "Doctor Farquaad",
+        "value": 16888412
+      },
+      {
+        "rank": 57,
+        "tag": "TBP",
+        "name": "DarkCipher31",
+        "value": 16650249
+      },
+      {
+        "rank": 58,
+        "tag": "TBP",
+        "name": "Brawler",
+        "value": 16477795
+      },
+      {
+        "rank": 59,
+        "tag": "NWO",
+        "name": "LUSIA",
+        "value": 16185343
+      },
+      {
+        "rank": 60,
+        "tag": "KuN",
+        "name": "Archon",
+        "value": 16035575
+      },
+      {
+        "rank": 61,
+        "tag": "KuN",
+        "name": "Heimdall",
+        "value": 16007679
+      },
+      {
+        "rank": 62,
+        "tag": "",
+        "name": "",
+        "value": 15987611
+      },
+      {
+        "rank": 63,
+        "tag": "KuN",
+        "name": "Allywan",
+        "value": 15925474
+      },
+      {
+        "rank": 64,
+        "tag": "KuN",
+        "name": "Wikkyy",
+        "value": 15801158
+      },
+      {
+        "rank": 65,
+        "tag": "PSR",
+        "name": "Wlastik",
+        "value": 15569261
+      },
+      {
+        "rank": 66,
+        "tag": "",
+        "name": "Don Promillo",
+        "value": 15316484
+      },
+      {
+        "rank": 67,
+        "tag": "PSR",
+        "name": "Laura",
+        "value": 15277708
+      },
+      {
+        "rank": 68,
+        "tag": "KuN",
+        "name": "Re Nicola",
+        "value": 15069547
+      },
+      {
+        "rank": 69,
+        "tag": "PSR",
+        "name": "Thor Johnson",
+        "value": 14757580
+      },
+      {
+        "rank": 70,
+        "tag": "TBP",
+        "name": "Baba",
+        "value": 14517426
+      },
+      {
+        "rank": 71,
+        "tag": "PSR",
+        "name": "Dny",
+        "value": 14406582
+      },
+      {
+        "rank": 72,
+        "tag": "NWO",
+        "name": "ThizleCipherDsyr",
+        "value": 14370782
+      },
+      {
+        "rank": 73,
+        "tag": "TBP",
+        "name": "Theryx",
+        "value": 14285427
+      },
+      {
+        "rank": 74,
+        "tag": "KuN",
+        "name": "Hirvi",
+        "value": 14164583
+      },
+      {
+        "rank": 75,
+        "tag": "",
+        "name": "Calina",
+        "value": 13704771
+      },
+      {
+        "rank": 76,
+        "tag": "KuN",
+        "name": "Poolverine",
+        "value": 13610392
+      },
+      {
+        "rank": 77,
+        "tag": "PSR",
+        "name": "UrhoKKekkonen",
+        "value": 13551362
+      },
+      {
+        "rank": 78,
+        "tag": "",
+        "name": "",
+        "value": 13284410
+      },
+      {
+        "rank": 79,
+        "tag": "",
+        "name": "",
+        "value": 13146098
+      },
+      {
+        "rank": 80,
+        "tag": "KuN",
+        "name": "Oh Lord",
+        "value": 13126760
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "(drInk Wi",
+        "value": 13090734
+      },
+      {
+        "rank": 82,
+        "tag": "",
+        "name": "InurjnaMa",
+        "value": 13070134
+      },
+      {
+        "rank": 83,
+        "tag": "PSR",
+        "name": "Jolly",
+        "value": 13057675
+      },
+      {
+        "rank": 84,
+        "tag": "PSR",
+        "name": "Jolly",
+        "value": 13057675
+      },
+      {
+        "rank": 85,
+        "tag": "PSR",
+        "name": "Logen",
+        "value": 12981096
+      },
+      {
+        "rank": 86,
+        "tag": "NWO",
+        "name": "MoistOyster",
+        "value": 12822881
+      },
+      {
+        "rank": 87,
+        "tag": "KuN",
+        "name": "Papa",
+        "value": 12715572
+      },
+      {
+        "rank": 88,
+        "tag": "KuN",
+        "name": "Papa Perry",
+        "value": 12715572
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "",
+        "value": 12585460
+      },
+      {
+        "rank": 90,
+        "tag": "KuN",
+        "name": "JesusLovesYou",
+        "value": 12585460
+      },
+      {
+        "rank": 91,
+        "tag": "KuN",
+        "name": "JesusLovesYou",
+        "value": 12585460
+      },
+      {
+        "rank": 92,
+        "tag": "PSR",
+        "name": "EEi Ahehe",
+        "value": 12536557
+      },
+      {
+        "rank": 93,
+        "tag": "PSR",
+        "name": "ERA hehe",
+        "value": 12536557
+      },
+      {
+        "rank": 94,
+        "tag": "PSR",
+        "name": "EBA'A-hehe",
+        "value": 12536557
+      },
+      {
+        "rank": 95,
+        "tag": "PSR",
+        "name": "ER  hehe",
+        "value": 12536557
+      },
+      {
+        "rank": 96,
+        "tag": "",
+        "name": "Cipherdias",
+        "value": 12530231
+      },
+      {
+        "rank": 97,
+        "tag": "",
+        "name": "TAmUaOne",
+        "value": 220975
+      },
+      {
+        "rank": 98,
+        "tag": "TBP",
+        "name": "CipherArwen",
+        "value": 137855
+      },
+      {
+        "rank": 99,
+        "tag": "KuN",
+        "name": "Karma",
+        "value": 90734
+      },
+      {
+        "rank": 100,
+        "tag": "TBP",
+        "name": "Lilp",
+        "value": 55234
+      }
+    ],
+    "hero_power": [
+      {
+        "rank": 1,
+        "tag": "NWO",
+        "name": "Cipherhead",
+        "value": 18803568
+      },
+      {
+        "rank": 2,
+        "tag": "NWO",
+        "name": "NoCipher",
+        "value": 17854265
+      },
+      {
+        "rank": 3,
+        "tag": "NWO",
+        "name": "Eclipse",
+        "value": 12897502
+      },
+      {
+        "rank": 4,
+        "tag": "PSR",
+        "name": "Zeke",
+        "value": 12796201
+      },
+      {
+        "rank": 5,
+        "tag": "KuN",
+        "name": "Sinbadthegamer07",
+        "value": 12649642
+      },
+      {
+        "rank": 6,
+        "tag": "TBP",
+        "name": "CipherBilly",
+        "value": 11924688
+      },
+      {
+        "rank": 7,
+        "tag": "KuN",
+        "name": "Goat",
+        "value": 11771767
+      },
+      {
+        "rank": 8,
+        "tag": "TBP",
+        "name": "Scarface Sabs",
+        "value": 10738672
+      },
+      {
+        "rank": 9,
+        "tag": "TBP",
+        "name": "Lilp",
+        "value": 9672395
+      },
+      {
+        "rank": 10,
+        "tag": "TBP",
+        "name": "Lilp",
+        "value": 9672395
+      },
+      {
+        "rank": 11,
+        "tag": "TBP",
+        "name": "CipherB",
+        "value": 9636136
+      },
+      {
+        "rank": 12,
+        "tag": "NWO",
+        "name": "llara",
+        "value": 9168462
+      },
+      {
+        "rank": 13,
+        "tag": "TBP",
+        "name": "CipherRebornSeb",
+        "value": 9142774
+      },
+      {
+        "rank": 14,
+        "tag": "TBP",
+        "name": "CIPHER Rip",
+        "value": 9020948
+      },
+      {
+        "rank": 15,
+        "tag": "NWO",
+        "name": "scA",
+        "value": 8960304
+      },
+      {
+        "rank": 16,
+        "tag": "TBP",
+        "name": "Cipher KJ",
+        "value": 8763591
+      },
+      {
+        "rank": 17,
+        "tag": "TBP",
+        "name": "Cipherlin",
+        "value": 7669480
+      },
+      {
+        "rank": 18,
+        "tag": "KuN",
+        "name": "Rayan",
+        "value": 7639278
+      },
+      {
+        "rank": 19,
+        "tag": "",
+        "name": "(TBPCipherBuck",
+        "value": 7458521
+      },
+      {
+        "rank": 20,
+        "tag": "KuN",
+        "name": "Thatscotknut",
+        "value": 7301287
+      },
+      {
+        "rank": 21,
+        "tag": "NWO",
+        "name": "Venom",
+        "value": 7217281
+      },
+      {
+        "rank": 22,
+        "tag": "NwO",
+        "name": "Jimmy",
+        "value": 7114061
+      },
+      {
+        "rank": 23,
+        "tag": "TBP",
+        "name": "Casper",
+        "value": 6718748
+      },
+      {
+        "rank": 24,
+        "tag": "NWO",
+        "name": "KOPIK4T",
+        "value": 6419794
+      },
+      {
+        "rank": 25,
+        "tag": "TBP",
+        "name": "Oaken",
+        "value": 6242405
+      },
+      {
+        "rank": 26,
+        "tag": "Nwo",
+        "name": "Storm Blessed",
+        "value": 6223281
+      },
+      {
+        "rank": 27,
+        "tag": "KuN",
+        "name": "DonKnigge",
+        "value": 6166368
+      },
+      {
+        "rank": 28,
+        "tag": "NW",
+        "name": "Oljoxi",
+        "value": 6092691
+      },
+      {
+        "rank": 29,
+        "tag": "NWO",
+        "name": "G IZ M0",
+        "value": 5926602
+      },
+      {
+        "rank": 30,
+        "tag": "PSR",
+        "name": "Logen",
+        "value": 5760527
+      },
+      {
+        "rank": 31,
+        "tag": "KuN",
+        "name": "PerryTouchedThis",
+        "value": 5751575
+      },
+      {
+        "rank": 32,
+        "tag": "",
+        "name": "MONSTER TR",
+        "value": 5473837
+      },
+      {
+        "rank": 33,
+        "tag": "TBP",
+        "name": "Carnage",
+        "value": 5466210
+      },
+      {
+        "rank": 34,
+        "tag": "PSR",
+        "name": "PeteyTheMidget",
+        "value": 5361932
+      },
+      {
+        "rank": 35,
+        "tag": "",
+        "name": "PLUMEZ",
+        "value": 5342374
+      },
+      {
+        "rank": 36,
+        "tag": "TBP",
+        "name": "CipherArwen",
+        "value": 5266435
+      },
+      {
+        "rank": 37,
+        "tag": "",
+        "name": "IAmU_Ore",
+        "value": 5179760
+      },
+      {
+        "rank": 38,
+        "tag": "NWO",
+        "name": "smoke",
+        "value": 5174702
+      },
+      {
+        "rank": 39,
+        "tag": "TBP",
+        "name": "RIP Cipher",
+        "value": 5029240
+      },
+      {
+        "rank": 40,
+        "tag": "NWO",
+        "name": "LUSIA",
+        "value": 5018269
+      },
+      {
+        "rank": 41,
+        "tag": "KuN",
+        "name": "Nyx Sol",
+        "value": 4981410
+      },
+      {
+        "rank": 42,
+        "tag": "NWO",
+        "name": "SPARTACUS",
+        "value": 4938673
+      },
+      {
+        "rank": 43,
+        "tag": "KuN",
+        "name": "Heimdall",
+        "value": 4909790
+      },
+      {
+        "rank": 44,
+        "tag": "NWO",
+        "name": "TheCudGod",
+        "value": 4822012
+      },
+      {
+        "rank": 45,
+        "tag": "NWO",
+        "name": "Vulkan",
+        "value": 4776165
+      },
+      {
+        "rank": 46,
+        "tag": "PSR",
+        "name": "iamabltch",
+        "value": 4755306
+      },
+      {
+        "rank": 47,
+        "tag": "KuN",
+        "name": "Rorotomogo",
+        "value": 4738517
+      },
+      {
+        "rank": 48,
+        "tag": "KuN",
+        "name": "PERRYS SAUSAGE",
+        "value": 4651460
+      },
+      {
+        "rank": 49,
+        "tag": "NWO",
+        "name": "TattoosbyLeo",
+        "value": 4634460
+      },
+      {
+        "rank": 50,
+        "tag": "KuN",
+        "name": "Papa Perry",
+        "value": 4576560
+      },
+      {
+        "rank": 51,
+        "tag": "TBP",
+        "name": "CipherNini",
+        "value": 4565985
+      },
+      {
+        "rank": 52,
+        "tag": "TBP",
+        "name": "Ciphron",
+        "value": 4539722
+      },
+      {
+        "rank": 53,
+        "tag": "KuN",
+        "name": "zzC",
+        "value": 4457269
+      },
+      {
+        "rank": 54,
+        "tag": "KuN",
+        "name": "Shibashou",
+        "value": 4448365
+      },
+      {
+        "rank": 55,
+        "tag": "TBP",
+        "name": "Sacred32",
+        "value": 4440902
+      },
+      {
+        "rank": 56,
+        "tag": "KuN",
+        "name": "E721",
+        "value": 4402773
+      },
+      {
+        "rank": 57,
+        "tag": "TBP",
+        "name": "CipherGoose",
+        "value": 4401160
+      },
+      {
+        "rank": 58,
+        "tag": "PSR",
+        "name": "sCG",
+        "value": 4395410
+      },
+      {
+        "rank": 59,
+        "tag": "KuN",
+        "name": "APEX_daddy",
+        "value": 4394829
+      },
+      {
+        "rank": 60,
+        "tag": "PSR",
+        "name": "Bandana",
+        "value": 4377287
+      },
+      {
+        "rank": 61,
+        "tag": "KuN",
+        "name": "Raw222",
+        "value": 4332157
+      },
+      {
+        "rank": 62,
+        "tag": "NWO",
+        "name": "Aluna",
+        "value": 4329230
+      },
+      {
+        "rank": 63,
+        "tag": "KuN",
+        "name": "Allywan",
+        "value": 4286346
+      },
+      {
+        "rank": 64,
+        "tag": "PSR",
+        "name": "Ina'nis",
+        "value": 4279024
+      },
+      {
+        "rank": 65,
+        "tag": "KuN",
+        "name": "Archon",
+        "value": 4220310
+      },
+      {
+        "rank": 66,
+        "tag": "",
+        "name": "Untimrlk",
+        "value": 4192804
+      },
+      {
+        "rank": 67,
+        "tag": "PSR",
+        "name": "Kitkat",
+        "value": 4165944
+      },
+      {
+        "rank": 68,
+        "tag": "NWO",
+        "name": "Atlas",
+        "value": 4152590
+      },
+      {
+        "rank": 69,
+        "tag": "TBP",
+        "name": "Root",
+        "value": 4150542
+      },
+      {
+        "rank": 70,
+        "tag": "PSR",
+        "name": "Jolly",
+        "value": 4064460
+      },
+      {
+        "rank": 71,
+        "tag": "kun",
+        "name": "Monster Mini",
+        "value": 4014397
+      },
+      {
+        "rank": 72,
+        "tag": "PSR",
+        "name": "UrhoKKekkonen",
+        "value": 3990979
+      },
+      {
+        "rank": 73,
+        "tag": "PSR",
+        "name": "GATOTKACA",
+        "value": 3964103
+      },
+      {
+        "rank": 74,
+        "tag": "PSR",
+        "name": "IA#RIE ACE",
+        "value": 3949684
+      },
+      {
+        "rank": 75,
+        "tag": "KuN",
+        "name": "ITG",
+        "value": 3932195
+      },
+      {
+        "rank": 76,
+        "tag": "",
+        "name": "Ozzie79",
+        "value": 3901570
+      },
+      {
+        "rank": 77,
+        "tag": "PSR",
+        "name": "Lord Lordlord",
+        "value": 3852458
+      },
+      {
+        "rank": 78,
+        "tag": "KuN",
+        "name": "Gouvna",
+        "value": 3792389
+      },
+      {
+        "rank": 79,
+        "tag": "NWO",
+        "name": "ThizleCipherDsyr",
+        "value": 3787060
+      },
+      {
+        "rank": 80,
+        "tag": "PSR",
+        "name": "Wlastik",
+        "value": 3765305
+      },
+      {
+        "rank": 81,
+        "tag": "PSR",
+        "name": "Janopkmplm",
+        "value": 3755567
+      },
+      {
+        "rank": 82,
+        "tag": "TBP",
+        "name": "Baba Yaga",
+        "value": 3725002
+      },
+      {
+        "rank": 83,
+        "tag": "KuN",
+        "name": "PE_+",
+        "value": 3710207
+      },
+      {
+        "rank": 84,
+        "tag": "PSR",
+        "name": "King Jaguar Paw",
+        "value": 3684397
+      },
+      {
+        "rank": 85,
+        "tag": "NWO",
+        "name": "G U N",
+        "value": 3684096
+      },
+      {
+        "rank": 86,
+        "tag": "PSR",
+        "name": "Kilo",
+        "value": 3679197
+      },
+      {
+        "rank": 87,
+        "tag": "KuN",
+        "name": "FlexThisMF",
+        "value": 3663792
+      },
+      {
+        "rank": 88,
+        "tag": "TBP",
+        "name": "Theryx",
+        "value": 3656720
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "Hero: Rosa",
+        "value": 3656720
+      },
+      {
+        "rank": 90,
+        "tag": "TBP",
+        "name": "CipherName",
+        "value": 3653420
+      },
+      {
+        "rank": 91,
+        "tag": "TBP",
+        "name": "CipherDrink",
+        "value": 3636977
+      },
+      {
+        "rank": 92,
+        "tag": "KuN",
+        "name": "BaD",
+        "value": 3634255
+      },
+      {
+        "rank": 93,
+        "tag": "KuN",
+        "name": "BaD_KinG",
+        "value": 3634255
+      },
+      {
+        "rank": 94,
+        "tag": "TBP",
+        "name": "IChris",
+        "value": 3627410
+      },
+      {
+        "rank": 95,
+        "tag": "TBP",
+        "name": "Chris",
+        "value": 3627410
+      },
+      {
+        "rank": 96,
+        "tag": "",
+        "name": "Hero: Long Fei",
+        "value": 3609243
+      },
+      {
+        "rank": 97,
+        "tag": "nwo",
+        "name": "Hethiter",
+        "value": 3609243
+      },
+      {
+        "rank": 98,
+        "tag": "PSR",
+        "name": "SpArTac",
+        "value": 3601797
+      },
+      {
+        "rank": 99,
+        "tag": "PSR",
+        "name": "SpArTaC",
+        "value": 3601797
+      },
+      {
+        "rank": 100,
+        "tag": "nwo",
+        "name": "-Mithrandir~",
+        "value": 3590237
+      }
+    ],
+    "heros_total_power": [
+      {
+        "rank": 1,
+        "tag": "NW",
+        "name": "Ojcipherhead",
+        "value": 98639826
+      },
+      {
+        "rank": 2,
+        "tag": "KuN",
+        "name": "Sinbadthegamer07",
+        "value": 79770542
+      },
+      {
+        "rank": 3,
+        "tag": "NWO",
+        "name": "NoCipher",
+        "value": 79252530
+      },
+      {
+        "rank": 4,
+        "tag": "NWO",
+        "name": "Eclipse",
+        "value": 69982884
+      },
+      {
+        "rank": 5,
+        "tag": "TBP",
+        "name": "CipherBilly",
+        "value": 69386503
+      },
+      {
+        "rank": 6,
+        "tag": "TBP",
+        "name": "CIPHER",
+        "value": 60389585
+      },
+      {
+        "rank": 7,
+        "tag": "PSR",
+        "name": "Zeke",
+        "value": 60273291
+      },
+      {
+        "rank": 8,
+        "tag": "NWO",
+        "name": "Venom",
+        "value": 59881930
+      },
+      {
+        "rank": 9,
+        "tag": "KuN",
+        "name": "Goat",
+        "value": 57668412
+      },
+      {
+        "rank": 10,
+        "tag": "TBP",
+        "name": "Lilp",
+        "value": 57111010
+      },
+      {
+        "rank": 11,
+        "tag": "NWO",
+        "name": "scA",
+        "value": 56707925
+      },
+      {
+        "rank": 12,
+        "tag": "TBP",
+        "name": "CipherB",
+        "value": 56290139
+      },
+      {
+        "rank": 13,
+        "tag": "TBP",
+        "name": "Scarface Sabs",
+        "value": 56141420
+      },
+      {
+        "rank": 14,
+        "tag": "TBP",
+        "name": "Cipher KJ",
+        "value": 55855596
+      },
+      {
+        "rank": 15,
+        "tag": "TBP",
+        "name": "Cipherlin",
+        "value": 54494966
+      },
+      {
+        "rank": 16,
+        "tag": "TBP",
+        "name": "CipherRebornSeb",
+        "value": 50540831
+      },
+      {
+        "rank": 17,
+        "tag": "TBP",
+        "name": "Oaken",
+        "value": 48175436
+      },
+      {
+        "rank": 18,
+        "tag": "KuN",
+        "name": "Rayan",
+        "value": 48091950
+      },
+      {
+        "rank": 19,
+        "tag": "KuN",
+        "name": "Thatscotknut",
+        "value": 46050930
+      },
+      {
+        "rank": 20,
+        "tag": "KuN",
+        "name": "DonKnigge",
+        "value": 45299560
+      },
+      {
+        "rank": 21,
+        "tag": "NWO",
+        "name": "Jimmy",
+        "value": 44196519
+      },
+      {
+        "rank": 22,
+        "tag": "NWO",
+        "name": "llara",
+        "value": 44159386
+      },
+      {
+        "rank": 23,
+        "tag": "PSR",
+        "name": "Logen",
+        "value": 41927376
+      },
+      {
+        "rank": 24,
+        "tag": "NWO",
+        "name": "KOPIKAT",
+        "value": 41583384
+      },
+      {
+        "rank": 25,
+        "tag": "KuN",
+        "name": "Raw222",
+        "value": 40610696
+      },
+      {
+        "rank": 26,
+        "tag": "KuN",
+        "name": "APEX_daddy",
+        "value": 40248142
+      },
+      {
+        "rank": 27,
+        "tag": "KuN",
+        "name": "Archon",
+        "value": 39950257
+      },
+      {
+        "rank": 28,
+        "tag": "TBP",
+        "name": "Casper",
+        "value": 39879448
+      },
+      {
+        "rank": 29,
+        "tag": "PSR",
+        "name": "SCG",
+        "value": 39666743
+      },
+      {
+        "rank": 30,
+        "tag": "",
+        "name": "PLUMEZ",
+        "value": 39347797
+      },
+      {
+        "rank": 31,
+        "tag": "Nw",
+        "name": "Oljoxi",
+        "value": 39337285
+      },
+      {
+        "rank": 32,
+        "tag": "TBP",
+        "name": "CipherBuck",
+        "value": 39296050
+      },
+      {
+        "rank": 33,
+        "tag": "KuN",
+        "name": "pE_+",
+        "value": 39030738
+      },
+      {
+        "rank": 34,
+        "tag": "KuN",
+        "name": "PerryTouchedThis",
+        "value": 38898607
+      },
+      {
+        "rank": 35,
+        "tag": "",
+        "name": "UsiN9e4",
+        "value": 38498313
+      },
+      {
+        "rank": 36,
+        "tag": "NWO",
+        "name": "G U N",
+        "value": 38077877
+      },
+      {
+        "rank": 37,
+        "tag": "TBP",
+        "name": "DarkCipher31",
+        "value": 37822277
+      },
+      {
+        "rank": 38,
+        "tag": "TBP",
+        "name": "CipherDrink",
+        "value": 37340687
+      },
+      {
+        "rank": 39,
+        "tag": "TBP",
+        "name": "CipherArwen",
+        "value": 36980157
+      },
+      {
+        "rank": 40,
+        "tag": "TBP",
+        "name": "CipherGoose",
+        "value": 36889913
+      },
+      {
+        "rank": 41,
+        "tag": "NWO",
+        "name": "LUSIA",
+        "value": 36885324
+      },
+      {
+        "rank": 42,
+        "tag": "TBP",
+        "name": "Geek Dojo",
+        "value": 35948887
+      },
+      {
+        "rank": 43,
+        "tag": "NWO",
+        "name": "G IZ M0",
+        "value": 35835343
+      },
+      {
+        "rank": 44,
+        "tag": "KuN",
+        "name": "Heimdall",
+        "value": 35752508
+      },
+      {
+        "rank": 45,
+        "tag": "TBP",
+        "name": "Carnage",
+        "value": 35664429
+      },
+      {
+        "rank": 46,
+        "tag": "KuN",
+        "name": "PERRYS SAUSAGE",
+        "value": 35522712
+      },
+      {
+        "rank": 47,
+        "tag": "",
+        "name": "Side",
+        "value": 35504369
+      },
+      {
+        "rank": 48,
+        "tag": "PSR",
+        "name": "LordPingPong",
+        "value": 35428847
+      },
+      {
+        "rank": 49,
+        "tag": "",
+        "name": "TAmJOne",
+        "value": 35157811
+      },
+      {
+        "rank": 50,
+        "tag": "TBP",
+        "name": "CipherNini",
+        "value": 35069819
+      },
+      {
+        "rank": 51,
+        "tag": "TBP",
+        "name": "Doctor Farquaad",
+        "value": 34994531
+      },
+      {
+        "rank": 52,
+        "tag": "PSR",
+        "name": "Janopkmplm",
+        "value": 34818745
+      },
+      {
+        "rank": 53,
+        "tag": "NWO",
+        "name": "SPARTACUS",
+        "value": 34520010
+      },
+      {
+        "rank": 54,
+        "tag": "PSR",
+        "name": "iamabItch",
+        "value": 34090950
+      },
+      {
+        "rank": 55,
+        "tag": "TBP",
+        "name": "CipherKirby",
+        "value": 34025130
+      },
+      {
+        "rank": 56,
+        "tag": "NWO",
+        "name": "TattoosbyLeo",
+        "value": 33711942
+      },
+      {
+        "rank": 57,
+        "tag": "nwo",
+        "name": "Hethiter",
+        "value": 33668587
+      },
+      {
+        "rank": 58,
+        "tag": "",
+        "name": "",
+        "value": 33533849
+      },
+      {
+        "rank": 59,
+        "tag": "",
+        "name": "",
+        "value": 33456830
+      },
+      {
+        "rank": 60,
+        "tag": "KuN",
+        "name": "Gouvna",
+        "value": 33250912
+      },
+      {
+        "rank": 61,
+        "tag": "TBP",
+        "name": "Dunlop",
+        "value": 33230194
+      },
+      {
+        "rank": 62,
+        "tag": "NWO",
+        "name": "The Reds",
+        "value": 32872764
+      },
+      {
+        "rank": 63,
+        "tag": "KuN",
+        "name": "snoah",
+        "value": 32854320
+      },
+      {
+        "rank": 64,
+        "tag": "NWo",
+        "name": "TheCudGod",
+        "value": 32641019
+      },
+      {
+        "rank": 65,
+        "tag": "NWO",
+        "name": "EI barto 28",
+        "value": 32629992
+      },
+      {
+        "rank": 66,
+        "tag": "",
+        "name": "",
+        "value": 32613499
+      },
+      {
+        "rank": 67,
+        "tag": "KuN",
+        "name": "Arthurx",
+        "value": 32519773
+      },
+      {
+        "rank": 68,
+        "tag": "KuN",
+        "name": "BaD_KinG",
+        "value": 32341685
+      },
+      {
+        "rank": 69,
+        "tag": "KuN",
+        "name": "zzc",
+        "value": 32282975
+      },
+      {
+        "rank": 70,
+        "tag": "TBP",
+        "name": "TheDeathDealer77",
+        "value": 32095112
+      },
+      {
+        "rank": 71,
+        "tag": "PSR",
+        "name": "Dny",
+        "value": 32092571
+      },
+      {
+        "rank": 72,
+        "tag": "TBP",
+        "name": "JRemes",
+        "value": 31955496
+      },
+      {
+        "rank": 73,
+        "tag": "TBP",
+        "name": "TOPHIz,8",
+        "value": 31833461
+      },
+      {
+        "rank": 74,
+        "tag": "Nwo",
+        "name": "Storm Blessed",
+        "value": 31827254
+      },
+      {
+        "rank": 75,
+        "tag": "KuN",
+        "name": "FlexThisMF",
+        "value": 31750875
+      },
+      {
+        "rank": 76,
+        "tag": "PSR",
+        "name": "Lord Nitchky",
+        "value": 31738253
+      },
+      {
+        "rank": 77,
+        "tag": "PSR",
+        "name": "Rob3Irr",
+        "value": 31588755
+      },
+      {
+        "rank": 78,
+        "tag": "TBP",
+        "name": "Aradite",
+        "value": 31559626
+      },
+      {
+        "rank": 79,
+        "tag": "TBP",
+        "name": "Caballo",
+        "value": 31557027
+      },
+      {
+        "rank": 80,
+        "tag": "NWO",
+        "name": "SILVER 1977",
+        "value": 31529908
+      },
+      {
+        "rank": 81,
+        "tag": "NWO",
+        "name": "Majestic",
+        "value": 31511598
+      },
+      {
+        "rank": 82,
+        "tag": "KuN",
+        "name": "Wikkyy",
+        "value": 31472717
+      },
+      {
+        "rank": 83,
+        "tag": "PSR",
+        "name": "Ron 07",
+        "value": 31464527
+      },
+      {
+        "rank": 84,
+        "tag": "",
+        "name": "",
+        "value": 31461523
+      },
+      {
+        "rank": 85,
+        "tag": "",
+        "name": "SABO",
+        "value": 31461523
+      },
+      {
+        "rank": 86,
+        "tag": "TBP",
+        "name": "Cipherdaz",
+        "value": 31389898
+      },
+      {
+        "rank": 87,
+        "tag": "",
+        "name": "(otinkti",
+        "value": 31269098
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "(ornk W",
+        "value": 31269098
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "uorinke",
+        "value": 31269098
+      },
+      {
+        "rank": 90,
+        "tag": "",
+        "name": "omne",
+        "value": 31269098
+      },
+      {
+        "rank": 91,
+        "tag": "",
+        "name": "RSR",
+        "value": 31222977
+      },
+      {
+        "rank": 92,
+        "tag": "TBP",
+        "name": "IBrawler",
+        "value": 31193181
+      },
+      {
+        "rank": 93,
+        "tag": "TBP",
+        "name": "Brawler",
+        "value": 31193181
+      },
+      {
+        "rank": 94,
+        "tag": "PSR",
+        "name": "Thor Johnson",
+        "value": 31148816
+      },
+      {
+        "rank": 95,
+        "tag": "PSR",
+        "name": "Leo",
+        "value": 31095128
+      },
+      {
+        "rank": 96,
+        "tag": "PSR",
+        "name": "iAmNumb3r Sive",
+        "value": 30928466
+      },
+      {
+        "rank": 97,
+        "tag": "PSR",
+        "name": "Ilham",
+        "value": 167338
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "French Toast",
+        "value": 18734
+      },
+      {
+        "rank": 99,
+        "tag": "NWO",
+        "name": "Atlas",
+        "value": 331
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Hero's Total Power",
+        "value": 0
+      }
+    ],
+    "total_pet_power": [
+      {
+        "rank": 1,
+        "tag": "NW",
+        "name": "Ojcipherhead",
+        "value": 32903640
+      },
+      {
+        "rank": 2,
+        "tag": "KuN",
+        "name": "Sinbadthegamer07",
+        "value": 24173640
+      },
+      {
+        "rank": 3,
+        "tag": "NWO",
+        "name": "NoCipher",
+        "value": 22403280
+      },
+      {
+        "rank": 4,
+        "tag": "TBP",
+        "name": "Lilp",
+        "value": 20691120
+      },
+      {
+        "rank": 5,
+        "tag": "PSR",
+        "name": "Zeke",
+        "value": 20122200
+      },
+      {
+        "rank": 6,
+        "tag": "TBP",
+        "name": "Cipher KJ",
+        "value": 19573080
+      },
+      {
+        "rank": 7,
+        "tag": "TBP",
+        "name": "CipherBilly",
+        "value": 18834960
+      },
+      {
+        "rank": 8,
+        "tag": "TBP",
+        "name": "CipherB",
+        "value": 18435240
+      },
+      {
+        "rank": 9,
+        "tag": "TBP",
+        "name": "CipherDrink",
+        "value": 17831280
+      },
+      {
+        "rank": 10,
+        "tag": "KuN",
+        "name": "QA_+",
+        "value": 17731440
+      },
+      {
+        "rank": 11,
+        "tag": "KuN",
+        "name": "floweyjoey",
+        "value": 17373240
+      },
+      {
+        "rank": 12,
+        "tag": "NWO",
+        "name": "Eclipse",
+        "value": 17367360
+      },
+      {
+        "rank": 13,
+        "tag": "NWO",
+        "name": "SPARTACUS",
+        "value": 17326320
+      },
+      {
+        "rank": 14,
+        "tag": "KuN",
+        "name": "BaD_KinG",
+        "value": 17091480
+      },
+      {
+        "rank": 15,
+        "tag": "TBP",
+        "name": "CIPHER Rip",
+        "value": 16940520
+      },
+      {
+        "rank": 16,
+        "tag": "KuN",
+        "name": "Raw222",
+        "value": 16924440
+      },
+      {
+        "rank": 17,
+        "tag": "KuN",
+        "name": "Thatscotknut",
+        "value": 16787280
+      },
+      {
+        "rank": 18,
+        "tag": "NW",
+        "name": "Oljoxi",
+        "value": 16762920
+      },
+      {
+        "rank": 19,
+        "tag": "KuN",
+        "name": "E721",
+        "value": 16640040
+      },
+      {
+        "rank": 20,
+        "tag": "KuN",
+        "name": "Gouvna",
+        "value": 16559280
+      },
+      {
+        "rank": 21,
+        "tag": "TBP",
+        "name": "Cipherlin",
+        "value": 16447320
+      },
+      {
+        "rank": 22,
+        "tag": "NWO",
+        "name": "KOPIKAT",
+        "value": 16319040
+      },
+      {
+        "rank": 23,
+        "tag": "NWO",
+        "name": "Atlas",
+        "value": 16316640
+      },
+      {
+        "rank": 24,
+        "tag": "TBP",
+        "name": "Gudu",
+        "value": 16264320
+      },
+      {
+        "rank": 25,
+        "tag": "TBP",
+        "name": "Oaken",
+        "value": 16186560
+      },
+      {
+        "rank": 26,
+        "tag": "TBP",
+        "name": "Ginseng",
+        "value": 16145520
+      },
+      {
+        "rank": 27,
+        "tag": "NWO",
+        "name": "TheCudGod",
+        "value": 16131240
+      },
+      {
+        "rank": 28,
+        "tag": "",
+        "name": "IAmOne",
+        "value": 16109040
+      },
+      {
+        "rank": 29,
+        "tag": "KuN",
+        "name": "Wikkyy",
+        "value": 16079040
+      },
+      {
+        "rank": 30,
+        "tag": "tbp",
+        "name": "Capo",
+        "value": 16059000
+      },
+      {
+        "rank": 31,
+        "tag": "TBP",
+        "name": "Caballo",
+        "value": 15966240
+      },
+      {
+        "rank": 32,
+        "tag": "PSR",
+        "name": "BigBull18",
+        "value": 15956640
+      },
+      {
+        "rank": 33,
+        "tag": "TBP",
+        "name": "Sacred32",
+        "value": 15919680
+      },
+      {
+        "rank": 34,
+        "tag": "TBP",
+        "name": "CipherRIP",
+        "value": 15919320
+      },
+      {
+        "rank": 35,
+        "tag": "PSR",
+        "name": "Leo",
+        "value": 15913560
+      },
+      {
+        "rank": 36,
+        "tag": "KuN",
+        "name": "LordAragorn",
+        "value": 15909480
+      },
+      {
+        "rank": 37,
+        "tag": "PSR",
+        "name": "UrhoKKekkonen",
+        "value": 15894240
+      },
+      {
+        "rank": 38,
+        "tag": "KuN",
+        "name": "Lord 4711",
+        "value": 15877080
+      },
+      {
+        "rank": 39,
+        "tag": "KuN",
+        "name": "snoah",
+        "value": 15835080
+      },
+      {
+        "rank": 40,
+        "tag": "PSR",
+        "name": "Janopkmplm",
+        "value": 15830280
+      },
+      {
+        "rank": 41,
+        "tag": "PSR",
+        "name": "iAmNumb3r Sive",
+        "value": 15771600
+      },
+      {
+        "rank": 42,
+        "tag": "KuN",
+        "name": "FlexThisMF",
+        "value": 15727680
+      },
+      {
+        "rank": 43,
+        "tag": "Nwo",
+        "name": "Serdar",
+        "value": 15679800
+      },
+      {
+        "rank": 44,
+        "tag": "TBP",
+        "name": "Aleksander",
+        "value": 15651000
+      },
+      {
+        "rank": 45,
+        "tag": "TBP",
+        "name": "Dunlop",
+        "value": 15636480
+      },
+      {
+        "rank": 46,
+        "tag": "KuN",
+        "name": "Bastion",
+        "value": 15626160
+      },
+      {
+        "rank": 47,
+        "tag": "KuN",
+        "name": "Arthurx",
+        "value": 15621960
+      },
+      {
+        "rank": 48,
+        "tag": "",
+        "name": "",
+        "value": 15614160
+      },
+      {
+        "rank": 49,
+        "tag": "",
+        "name": "",
+        "value": 15607560
+      },
+      {
+        "rank": 50,
+        "tag": "NWO",
+        "name": "SILVER 1977",
+        "value": 15588720
+      },
+      {
+        "rank": 51,
+        "tag": "NWO",
+        "name": "SILVER 44",
+        "value": 15574680
+      },
+      {
+        "rank": 52,
+        "tag": "TBP",
+        "name": "Ciphron",
+        "value": 15555120
+      },
+      {
+        "rank": 53,
+        "tag": "KuN",
+        "name": "Archon",
+        "value": 15554040
+      },
+      {
+        "rank": 54,
+        "tag": "PSR",
+        "name": "GATOTKACA",
+        "value": 15554040
+      },
+      {
+        "rank": 55,
+        "tag": "vhljo",
+        "name": "utlaw",
+        "value": 15543720
+      },
+      {
+        "rank": 56,
+        "tag": "KuN",
+        "name": "Perry TouchedThis",
+        "value": 15535440
+      },
+      {
+        "rank": 57,
+        "tag": "NWO",
+        "name": "Dr strange",
+        "value": 15530880
+      },
+      {
+        "rank": 58,
+        "tag": "PSR",
+        "name": "Rob31rr",
+        "value": 15530760
+      },
+      {
+        "rank": 59,
+        "tag": "KuN",
+        "name": "Shibashou",
+        "value": 15527640
+      },
+      {
+        "rank": 60,
+        "tag": "PSR",
+        "name": "Thor Johnson",
+        "value": 15502440
+      },
+      {
+        "rank": 61,
+        "tag": "",
+        "name": "MONSTER TR",
+        "value": 15486840
+      },
+      {
+        "rank": 62,
+        "tag": "TBP",
+        "name": "HHansMan",
+        "value": 15484440
+      },
+      {
+        "rank": 63,
+        "tag": "NWO",
+        "name": "JPAUELO",
+        "value": 15469680
+      },
+      {
+        "rank": 64,
+        "tag": "nwo",
+        "name": "Gokturk",
+        "value": 15432240
+      },
+      {
+        "rank": 65,
+        "tag": "PSR",
+        "name": "EEA\"rhehe",
+        "value": 15412560
+      },
+      {
+        "rank": 66,
+        "tag": "TBP",
+        "name": "Baba",
+        "value": 15403680
+      },
+      {
+        "rank": 67,
+        "tag": "TBP",
+        "name": "Aradite",
+        "value": 15392520
+      },
+      {
+        "rank": 68,
+        "tag": "NWo",
+        "name": "Kennedy",
+        "value": 15384120
+      },
+      {
+        "rank": 69,
+        "tag": "nwo",
+        "name": "ronny",
+        "value": 15374280
+      },
+      {
+        "rank": 70,
+        "tag": "",
+        "name": "SABO",
+        "value": 15363960
+      },
+      {
+        "rank": 71,
+        "tag": "PSR",
+        "name": "pub_playballo",
+        "value": 15357720
+      },
+      {
+        "rank": 72,
+        "tag": "NWO",
+        "name": "TattoosbyLeo",
+        "value": 15313800
+      },
+      {
+        "rank": 73,
+        "tag": "KuN",
+        "name": "gsm",
+        "value": 15290040
+      },
+      {
+        "rank": 74,
+        "tag": "NWO",
+        "name": "LUSIA",
+        "value": 15288120
+      },
+      {
+        "rank": 75,
+        "tag": "PSR",
+        "name": "Farocha",
+        "value": 15276000
+      },
+      {
+        "rank": 76,
+        "tag": "NWO",
+        "name": "llara",
+        "value": 15254760
+      },
+      {
+        "rank": 77,
+        "tag": "",
+        "name": "PLUMEZ",
+        "value": 15245160
+      },
+      {
+        "rank": 78,
+        "tag": "NW",
+        "name": "Ojcosmo",
+        "value": 15235080
+      },
+      {
+        "rank": 79,
+        "tag": "NWO",
+        "name": "Waikeria",
+        "value": 15212760
+      },
+      {
+        "rank": 80,
+        "tag": "NWO",
+        "name": "EI barto 28",
+        "value": 15208440
+      },
+      {
+        "rank": 81,
+        "tag": "KuN",
+        "name": "zzc",
+        "value": 15201360
+      },
+      {
+        "rank": 82,
+        "tag": "PSR",
+        "name": "Logen",
+        "value": 15192600
+      },
+      {
+        "rank": 83,
+        "tag": "KuN",
+        "name": "Rafabs",
+        "value": 15162960
+      },
+      {
+        "rank": 84,
+        "tag": "PSR",
+        "name": "Saltynuts",
+        "value": 15145920
+      },
+      {
+        "rank": 85,
+        "tag": "PSR",
+        "name": "GooFyNuTs",
+        "value": 15117120
+      },
+      {
+        "rank": 86,
+        "tag": "NWO",
+        "name": "Nona_Selir",
+        "value": 15101040
+      },
+      {
+        "rank": 87,
+        "tag": "NWO",
+        "name": "Nona_Selir",
+        "value": 15101040
+      },
+      {
+        "rank": 88,
+        "tag": "NWO",
+        "name": "Dr Mines a Lot",
+        "value": 15070800
+      },
+      {
+        "rank": 89,
+        "tag": "KuN",
+        "name": "PERRYS SAUSAGE",
+        "value": 15061680
+      },
+      {
+        "rank": 90,
+        "tag": "KuN",
+        "name": "PERRYS S4USAGE",
+        "value": 15061680
+      },
+      {
+        "rank": 91,
+        "tag": "",
+        "name": "",
+        "value": 15057840
+      },
+      {
+        "rank": 92,
+        "tag": "KuN",
+        "name": "Moonlight",
+        "value": 15057840
+      },
+      {
+        "rank": 93,
+        "tag": "TBP",
+        "name": "CipherNini",
+        "value": 15042840
+      },
+      {
+        "rank": 94,
+        "tag": "",
+        "name": "",
+        "value": 15040440
+      },
+      {
+        "rank": 95,
+        "tag": "NWO",
+        "name": "Venom",
+        "value": 725560
+      },
+      {
+        "rank": 96,
+        "tag": "TBP",
+        "name": "Scarface Sabs",
+        "value": 469200
+      },
+      {
+        "rank": 97,
+        "tag": "NWO",
+        "name": "Gangreen94",
+        "value": 40440
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "French Toast",
+        "value": 35654
+      },
+      {
+        "rank": 99,
+        "tag": "",
+        "name": "Total Pet Power",
+        "value": 0
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Govelnor",
+        "value": 0
+      }
+    ],
+    "mystic_trial": [
+      {
+        "rank": 1,
+        "tag": "NW",
+        "name": "Ojcipherhead",
+        "value": 2873
+      },
+      {
+        "rank": 2,
+        "tag": "NWO",
+        "name": "NoCipher",
+        "value": 2574
+      },
+      {
+        "rank": 3,
+        "tag": "TBP",
+        "name": "CipherBilly",
+        "value": 2418
+      },
+      {
+        "rank": 4,
+        "tag": "KuN",
+        "name": "Sinbadthegamer07",
+        "value": 2417
+      },
+      {
+        "rank": 5,
+        "tag": "NWO",
+        "name": "Eclipse",
+        "value": 2280
+      },
+      {
+        "rank": 6,
+        "tag": "PSR",
+        "name": "Zeke",
+        "value": 2259
+      },
+      {
+        "rank": 7,
+        "tag": "TBP",
+        "name": "Scarface Sabs",
+        "value": 2177
+      },
+      {
+        "rank": 8,
+        "tag": "",
+        "name": "(TBPLilp",
+        "value": 2130
+      },
+      {
+        "rank": 9,
+        "tag": "TBP",
+        "name": "Cipherlin",
+        "value": 2106
+      },
+      {
+        "rank": 10,
+        "tag": "TBP",
+        "name": "CipherB",
+        "value": 2072
+      },
+      {
+        "rank": 11,
+        "tag": "TBP",
+        "name": "CIPHER Rip",
+        "value": 2064
+      },
+      {
+        "rank": 12,
+        "tag": "NwO",
+        "name": "llara",
+        "value": 2045
+      },
+      {
+        "rank": 13,
+        "tag": "KuN",
+        "name": "Goat",
+        "value": 2041
+      },
+      {
+        "rank": 14,
+        "tag": "TBP",
+        "name": "Cipher KJ",
+        "value": 2030
+      },
+      {
+        "rank": 15,
+        "tag": "NWO",
+        "name": "scA",
+        "value": 1996
+      },
+      {
+        "rank": 16,
+        "tag": "NWO",
+        "name": "Venom",
+        "value": 1978
+      },
+      {
+        "rank": 17,
+        "tag": "KuN",
+        "name": "Thatscotknut",
+        "value": 1848
+      },
+      {
+        "rank": 18,
+        "tag": "TBP",
+        "name": "CipherRebornSeb",
+        "value": 1826
+      },
+      {
+        "rank": 19,
+        "tag": "NWO",
+        "name": "joxi",
+        "value": 1807
+      },
+      {
+        "rank": 20,
+        "tag": "KuN",
+        "name": "PerryTouchedThis",
+        "value": 1795
+      },
+      {
+        "rank": 21,
+        "tag": "TBP",
+        "name": "CipherBuck",
+        "value": 1782
+      },
+      {
+        "rank": 22,
+        "tag": "KuN",
+        "name": "Rayan",
+        "value": 1733
+      },
+      {
+        "rank": 23,
+        "tag": "NWO",
+        "name": "Jimmy",
+        "value": 1728
+      },
+      {
+        "rank": 24,
+        "tag": "PSR",
+        "name": "PeteyTheMidget",
+        "value": 1708
+      },
+      {
+        "rank": 25,
+        "tag": "KuN",
+        "name": "Raw222",
+        "value": 1687
+      },
+      {
+        "rank": 26,
+        "tag": "NWO",
+        "name": "KOPIKAT",
+        "value": 1662
+      },
+      {
+        "rank": 27,
+        "tag": "KuN",
+        "name": "Heimdall",
+        "value": 1635
+      },
+      {
+        "rank": 28,
+        "tag": "TBP",
+        "name": "CipherDrink",
+        "value": 1623
+      },
+      {
+        "rank": 29,
+        "tag": "KuN",
+        "name": "Archon",
+        "value": 1616
+      },
+      {
+        "rank": 30,
+        "tag": "",
+        "name": "PLUMEZ",
+        "value": 1605
+      },
+      {
+        "rank": 31,
+        "tag": "KuN",
+        "name": "E721",
+        "value": 1595
+      },
+      {
+        "rank": 32,
+        "tag": "PSR",
+        "name": "Logen",
+        "value": 1594
+      },
+      {
+        "rank": 33,
+        "tag": "NWO",
+        "name": "G IZ Mo",
+        "value": 1593
+      },
+      {
+        "rank": 34,
+        "tag": "",
+        "name": "IAmUaOne",
+        "value": 1592
+      },
+      {
+        "rank": 35,
+        "tag": "KuN",
+        "name": "DonKnigge",
+        "value": 1576
+      },
+      {
+        "rank": 36,
+        "tag": "NWO",
+        "name": "TattoosbyLeo",
+        "value": 1570
+      },
+      {
+        "rank": 37,
+        "tag": "TBP",
+        "name": "CipherArwen",
+        "value": 1567
+      },
+      {
+        "rank": 38,
+        "tag": "KuN",
+        "name": "APEX_daddy",
+        "value": 1567
+      },
+      {
+        "rank": 39,
+        "tag": "",
+        "name": "Side",
+        "value": 1564
+      },
+      {
+        "rank": 40,
+        "tag": "KuN",
+        "name": "AA_+",
+        "value": 1561
+      },
+      {
+        "rank": 41,
+        "tag": "NWO",
+        "name": "Atlas",
+        "value": 1558
+      },
+      {
+        "rank": 42,
+        "tag": "TBP",
+        "name": "Ciphron",
+        "value": 1557
+      },
+      {
+        "rank": 43,
+        "tag": "TBP",
+        "name": "Carnage",
+        "value": 1551
+      },
+      {
+        "rank": 44,
+        "tag": "NWO",
+        "name": "LUSIA",
+        "value": 1551
+      },
+      {
+        "rank": 45,
+        "tag": "TBP",
+        "name": "CipherNini",
+        "value": 1534
+      },
+      {
+        "rank": 46,
+        "tag": "TBP",
+        "name": "Geek Dojo",
+        "value": 1527
+      },
+      {
+        "rank": 47,
+        "tag": "NWO",
+        "name": "SPARTACUS",
+        "value": 1521
+      },
+      {
+        "rank": 48,
+        "tag": "TBP",
+        "name": "DarkCipher31",
+        "value": 1516
+      },
+      {
+        "rank": 49,
+        "tag": "TBP",
+        "name": "Casper",
+        "value": 1514
+      },
+      {
+        "rank": 50,
+        "tag": "TBP",
+        "name": "CipherGoose",
+        "value": 1486
+      },
+      {
+        "rank": 51,
+        "tag": "TBP",
+        "name": "DeeFender",
+        "value": 1466
+      },
+      {
+        "rank": 52,
+        "tag": "PSR",
+        "name": "King Jaguar Paw",
+        "value": 1463
+      },
+      {
+        "rank": 53,
+        "tag": "KuN",
+        "name": "snoah",
+        "value": 1461
+      },
+      {
+        "rank": 54,
+        "tag": "KuN",
+        "name": "Gouvna",
+        "value": 1455
+      },
+      {
+        "rank": 55,
+        "tag": "",
+        "name": "Limitless",
+        "value": 1454
+      },
+      {
+        "rank": 56,
+        "tag": "TBP",
+        "name": "Dunlop",
+        "value": 1428
+      },
+      {
+        "rank": 57,
+        "tag": "KuN",
+        "name": "Arthurx",
+        "value": 1424
+      },
+      {
+        "rank": 58,
+        "tag": "NWo",
+        "name": "TheCudGod",
+        "value": 1417
+      },
+      {
+        "rank": 59,
+        "tag": "KuN",
+        "name": "BaD",
+        "value": 1415
+      },
+      {
+        "rank": 60,
+        "tag": "KuN",
+        "name": "zZC",
+        "value": 1415
+      },
+      {
+        "rank": 61,
+        "tag": "TBP",
+        "name": "RIP Cipher",
+        "value": 1413
+      },
+      {
+        "rank": 62,
+        "tag": "PSR",
+        "name": "Thor Johnson",
+        "value": 1402
+      },
+      {
+        "rank": 63,
+        "tag": "TBP",
+        "name": "Sacred32",
+        "value": 1391
+      },
+      {
+        "rank": 64,
+        "tag": "PSR",
+        "name": "Jolly",
+        "value": 1391
+      },
+      {
+        "rank": 65,
+        "tag": "KuN",
+        "name": "Shibashou",
+        "value": 1388
+      },
+      {
+        "rank": 66,
+        "tag": "KuN",
+        "name": "PERRYS SAUSAGE",
+        "value": 1387
+      },
+      {
+        "rank": 67,
+        "tag": "KuN",
+        "name": "Nyx Sol",
+        "value": 1383
+      },
+      {
+        "rank": 68,
+        "tag": "KuN",
+        "name": "Rorotomogo",
+        "value": 1383
+      },
+      {
+        "rank": 69,
+        "tag": "",
+        "name": "MONSTER TR",
+        "value": 1383
+      },
+      {
+        "rank": 70,
+        "tag": "KuN",
+        "name": "Allywan",
+        "value": 1374
+      },
+      {
+        "rank": 71,
+        "tag": "TBP",
+        "name": "Aleksander",
+        "value": 1369
+      },
+      {
+        "rank": 72,
+        "tag": "PSR",
+        "name": "GATOTKACA",
+        "value": 1368
+      },
+      {
+        "rank": 73,
+        "tag": "TBP",
+        "name": "Ginseng",
+        "value": 1367
+      },
+      {
+        "rank": 74,
+        "tag": "NWO",
+        "name": "NOSAA2",
+        "value": 1367
+      },
+      {
+        "rank": 75,
+        "tag": "PSR",
+        "name": "Dny",
+        "value": 1366
+      },
+      {
+        "rank": 76,
+        "tag": "KuN",
+        "name": "Wikkyy",
+        "value": 1363
+      },
+      {
+        "rank": 77,
+        "tag": "TBP",
+        "name": "Gudu",
+        "value": 1359
+      },
+      {
+        "rank": 78,
+        "tag": "NWO",
+        "name": "Vulkan",
+        "value": 1357
+      },
+      {
+        "rank": 79,
+        "tag": "TBP",
+        "name": "TheDeathDealer77",
+        "value": 1352
+      },
+      {
+        "rank": 80,
+        "tag": "Nwo",
+        "name": "Storm Blessed",
+        "value": 1352
+      },
+      {
+        "rank": 81,
+        "tag": "PSR",
+        "name": "iamabItch",
+        "value": 1352
+      },
+      {
+        "rank": 82,
+        "tag": "PSR",
+        "name": "SCG",
+        "value": 1349
+      },
+      {
+        "rank": 83,
+        "tag": "PSR",
+        "name": "Wlastik",
+        "value": 1345
+      },
+      {
+        "rank": 84,
+        "tag": "PSR",
+        "name": "Kitkat",
+        "value": 1343
+      },
+      {
+        "rank": 85,
+        "tag": "KuN",
+        "name": "FlexThisMF",
+        "value": 1343
+      },
+      {
+        "rank": 86,
+        "tag": "Nw",
+        "name": "Ojcosmo",
+        "value": 1341
+      },
+      {
+        "rank": 87,
+        "tag": "KuN",
+        "name": "Annie Rekshun",
+        "value": 1339
+      },
+      {
+        "rank": 88,
+        "tag": "PSR",
+        "name": "Ina'nis",
+        "value": 1336
+      },
+      {
+        "rank": 89,
+        "tag": "NWO",
+        "name": "Aluna",
+        "value": 1335
+      },
+      {
+        "rank": 90,
+        "tag": "TBP",
+        "name": "Baba",
+        "value": 1335
+      },
+      {
+        "rank": 91,
+        "tag": "NWO",
+        "name": "SILVER 44",
+        "value": 1335
+      },
+      {
+        "rank": 92,
+        "tag": "PSR",
+        "name": "SpArTac",
+        "value": 1332
+      },
+      {
+        "rank": 93,
+        "tag": "KuN",
+        "name": "floweyjoey",
+        "value": 1331
+      },
+      {
+        "rank": 94,
+        "tag": "",
+        "name": "(orint",
+        "value": 1330
+      },
+      {
+        "rank": 95,
+        "tag": "",
+        "name": "udrink Vnll",
+        "value": 1330
+      },
+      {
+        "rank": 96,
+        "tag": "",
+        "name": "Vorink",
+        "value": 1330
+      },
+      {
+        "rank": 97,
+        "tag": "",
+        "name": "(drInk wni",
+        "value": 1330
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "(orinem",
+        "value": 1330
+      },
+      {
+        "rank": 99,
+        "tag": "NWO",
+        "name": "G U N",
+        "value": 1329
+      },
+      {
+        "rank": 100,
+        "tag": "TBP",
+        "name": "Cipherdaz",
+        "value": 1323
+      }
+    ]
+  }
+}

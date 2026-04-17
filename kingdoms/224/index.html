@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom 224 — Rankings | KingshotPro</title>
+  <meta name="description" content="Kingdom 224 rankings — alliance power, personal power, kill count, hero power. Top 100 leaderboard with live data.">
+  <link rel="canonical" href="https://kingshotpro.com/kingdoms/224/">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .k-page { max-width: 800px; margin: 0 auto; }
+    .k-back { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; font-weight: 600; text-decoration: none; margin-bottom: 16px; transition: border-color 0.2s, background 0.2s; }
+    .k-back:hover { border-color: var(--gold); background: var(--surface); color: var(--gold); }
+    .k-back-arrow { font-size: 18px; }
+    /* Compact header — kingdom number + last updated footnote */
+    .k-header-compact { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; padding: 0 4px; }
+    .k-header-title { font-size: 22px; font-weight: 700; color: var(--text); margin: 0; line-height: 1.1; }
+    .k-header-num { color: var(--gold); }
+    .k-header-footnote { font-size: 11px; color: var(--text-muted); text-align: right; }
+    .k-section { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .k-section h2 { color: var(--gold); font-size: 17px; margin: 0 0 16px; }
+    .k-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+    .k-tab { padding: 7px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .k-tab:hover { border-color: var(--gold); color: var(--text); }
+    .k-tab.active { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+    .k-table { width: 100%; border-collapse: collapse; }
+    .k-table th { text-align: left; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    .k-table td { padding: 10px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .k-table tr:hover { background: var(--surface); }
+    .k-rank { color: var(--text-muted); font-weight: 700; width: 40px; text-align: center; }
+    .k-rank-1 { color: var(--gold); font-size: 15px; }
+    .k-rank-2 { color: #c0c0c0; }
+    .k-rank-3 { color: #cd7f32; }
+    .k-name { color: var(--text); font-weight: 600; }
+    .k-tag { color: var(--gold); font-size: 11px; font-weight: 700; margin-right: 6px; }
+    .k-power { color: var(--text-muted); text-align: right; font-variant-numeric: tabular-nums; }
+    .k-unnamed { color: var(--text-muted); font-style: italic; opacity: 0.6; }
+    .k-bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; min-width: 60px; }
+    .k-bar-fill { height: 100%; background: var(--gold); border-radius: 3px; }
+    .k-search { margin-bottom: 12px; }
+    .k-search input { width: 100%; padding: 8px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; font-family: inherit; box-sizing: border-box; }
+    .k-search input:focus { outline: none; border-color: var(--gold); }
+    .k-crumbs { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .k-crumbs a { color: var(--text-muted); text-decoration: none; }
+    .k-crumbs a:hover { color: var(--gold); }
+    .sources { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 24px; }
+    /* Top-level page tabs — all tabs look like buttons so clickability is obvious */
+    .k-pagetabs { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    /* Timeline charts */
+    .k-trend-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center; }
+    .k-trend-controls select { background: var(--surface-2); color: var(--text); border: 2px solid var(--border); border-radius: 8px; padding: 8px 12px; font-family: inherit; font-size: 14px; cursor: pointer; }
+    .k-trend-controls select:hover, .k-trend-controls select:focus { border-color: var(--gold); outline: none; }
+    .k-chart-wrap { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; position: relative; min-height: 360px; }
+    .k-chart-wrap canvas { max-height: 380px; }
+    .k-trend-empty { text-align: center; color: var(--text-muted); padding: 60px 20px; }
+    .k-movers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .k-movers-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+    .k-movers-card h3 { margin: 0 0 10px 0; font-size: 14px; color: var(--gold); display: flex; align-items: center; gap: 6px; }
+    .k-movers-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .k-movers-row:last-child { border-bottom: none; }
+    .k-movers-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .k-movers-delta { font-weight: 700; margin-left: 8px; }
+    .k-movers-delta.up { color: #4ade80; }
+    .k-movers-delta.down { color: #f87171; }
+    /* Clickable rows */
+    .k-table tr.clickable { cursor: pointer; transition: background 0.15s; }
+    .k-table tr.clickable:hover { background: rgba(212, 175, 55, 0.08); }
+    /* Modal */
+    .k-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.2s; }
+    .k-modal-overlay.active { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .k-modal { background: var(--surface); border: 2px solid var(--gold); border-radius: 16px; max-width: 640px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); animation: slideUp 0.25s; }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .k-modal-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .k-modal-title { margin: 0; font-size: 20px; }
+    .k-modal-tag { color: var(--gold); margin-right: 6px; }
+    .k-modal-close { background: var(--surface-2); border: 1px solid var(--border); color: var(--text); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+    .k-modal-close:hover { background: var(--surface); border-color: var(--gold); }
+    .k-modal-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 14px 0; }
+    .k-modal-stat { background: var(--surface-2); border-radius: 10px; padding: 10px 12px; text-align: center; }
+    .k-modal-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .k-modal-stat-val { font-size: 16px; font-weight: 700; }
+    .k-modal-stat-val.up { color: #4ade80; }
+    .k-modal-stat-val.down { color: #f87171; }
+    .k-modal-chart { height: 240px; margin-top: 12px; }
+    .k-no-history { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 14px; }
+    .k-pagetab { padding: 16px 12px; background: var(--surface-2); border: 2px solid var(--border); color: var(--text); font-size: 15px; font-weight: 700; cursor: pointer; border-radius: 12px; font-family: inherit; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; }
+    .k-pagetab-icon { font-size: 22px; }
+    .k-pagetab:hover { border-color: var(--gold); background: var(--surface); transform: translateY(-1px); }
+    .k-pagetab.active { background: var(--gold); color: var(--bg); border-color: var(--gold); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); }
+    .k-pagetab.active .k-pagetab-sub { color: rgba(0,0,0,0.7); }
+    .k-pagetab-sub { font-size: 11px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .k-panel { display: none; }
+    .k-panel.active { display: block; }
+    /* Collapsible inactive section */
+    .k-inactive-wrap { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .k-inactive-toggle { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 13px; font-weight: 600; width: 100%; font-family: inherit; }
+    .k-inactive-toggle:hover { border-color: var(--gold); color: var(--gold); }
+    .k-inactive-toggle-icon { font-size: 11px; transition: transform 0.2s; }
+    .k-inactive-toggle.expanded .k-inactive-toggle-icon { transform: rotate(180deg); }
+    .k-inactive-content { display: none; margin-top: 12px; }
+    .k-inactive-content.expanded { display: block; }
+    @media (max-width: 640px) {
+      .k-table th:nth-child(4), .k-table td:nth-child(4) { display: none; }
+      .k-tab { padding: 6px 10px; font-size: 11px; }
+      .k-pagetab { padding: 10px 8px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+<div class="k-page">
+
+  <a href="../" class="k-back"><span class="k-back-arrow">&larr;</span> All Kingdoms</a>
+
+  <div class="k-header-compact">
+    <h1 class="k-header-title">Kingdom <span class="k-header-num">#224</span></h1>
+    <div class="k-header-footnote" id="stat-updated">Loading…</div>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-detail-top">Ad</div>
+
+  <!-- Top-level page tabs -->
+  <div class="k-pagetabs">
+    <button class="k-pagetab active" data-panel="alliance-panel">
+      <span class="k-pagetab-icon">🏰</span>
+      <span>Alliances</span>
+      <span class="k-pagetab-sub">Power · Kills</span>
+    </button>
+    <button class="k-pagetab" data-panel="player-panel">
+      <span class="k-pagetab-icon">⚔️</span>
+      <span>Players</span>
+      <span class="k-pagetab-sub">Power · Kills · Heroes</span>
+    </button>
+    <button class="k-pagetab" data-panel="event-panel">
+      <span class="k-pagetab-icon">🏆</span>
+      <span>Events</span>
+      <span class="k-pagetab-sub">Mystic Trial</span>
+    </button>
+    <button class="k-pagetab" data-panel="trend-panel">
+      <span class="k-pagetab-icon">📈</span>
+      <span>Trends</span>
+      <span class="k-pagetab-sub">Over Time</span>
+    </button>
+  </div>
+
+  <!-- Alliance Panel -->
+  <div class="k-panel active" id="alliance-panel">
+    <div class="k-section">
+      <h2>Alliance Rankings</h2>
+      <div class="k-tabs" id="alliance-tabs"></div>
+      <div class="k-search"><input type="text" id="alliance-search" placeholder="Search alliances..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Alliance</th><th>Value</th><th></th></tr></thead>
+        <tbody id="alliance-tbody"></tbody>
+      </table>
+      <!-- Inactive alliances (collapsible) -->
+      <div class="k-inactive-wrap" id="alliance-inactive-wrap" style="display:none;">
+        <button class="k-inactive-toggle" id="alliance-inactive-toggle">
+          <span id="alliance-inactive-label">Inactive alliances (0)</span>
+          <span class="k-inactive-toggle-icon">▼</span>
+        </button>
+        <div class="k-inactive-content" id="alliance-inactive-content">
+          <table class="k-table">
+            <thead><tr><th>#</th><th>Alliance</th><th>Value</th><th></th></tr></thead>
+            <tbody id="alliance-inactive-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Player Panel -->
+  <div class="k-panel" id="player-panel">
+    <div class="k-section">
+      <h2>Player Rankings</h2>
+      <div class="k-tabs" id="player-tabs"></div>
+      <div class="k-search"><input type="text" id="player-search" placeholder="Search players..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Governor</th><th>Value</th><th></th></tr></thead>
+        <tbody id="player-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Event Panel -->
+  <div class="k-panel" id="event-panel">
+    <div class="k-section">
+      <h2>Event Rankings</h2>
+      <div class="k-tabs" id="event-tabs"></div>
+      <div class="k-search"><input type="text" id="event-search" placeholder="Search players..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Governor</th><th>Score</th><th></th></tr></thead>
+        <tbody id="event-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Trends Panel -->
+  <div class="k-panel" id="trend-panel">
+    <div class="k-section">
+      <h2>Trends Over Time</h2>
+      <div class="k-trend-controls">
+        <label style="font-size:13px;color:var(--text-muted);">Category:</label>
+        <select id="trend-category"></select>
+        <label style="font-size:13px;color:var(--text-muted);margin-left:8px;">Show:</label>
+        <select id="trend-topn">
+          <option value="5">Top 5</option>
+          <option value="10" selected>Top 10</option>
+          <option value="20">Top 20</option>
+        </select>
+      </div>
+      <div class="k-chart-wrap">
+        <canvas id="trend-chart"></canvas>
+        <div class="k-trend-empty" id="trend-empty" style="display:none;">
+          Need at least 2 snapshots to show trends. Check back after the next scrape.
+        </div>
+      </div>
+      <div class="k-movers-grid">
+        <div class="k-movers-card">
+          <h3>📈 Top Gainers</h3>
+          <div id="movers-up"></div>
+        </div>
+        <div class="k-movers-card">
+          <h3>📉 Top Droppers</h3>
+          <div id="movers-down"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entity detail modal -->
+  <div class="k-modal-overlay" id="entity-modal">
+    <div class="k-modal">
+      <div class="k-modal-head">
+        <h3 class="k-modal-title" id="modal-title">—</h3>
+        <button class="k-modal-close" id="modal-close" aria-label="Close">×</button>
+      </div>
+      <div class="k-modal-stats" id="modal-stats"></div>
+      <div class="k-modal-chart"><canvas id="modal-chart"></canvas></div>
+      <div class="k-no-history" id="modal-no-history" style="display:none;">
+        Only one snapshot yet. Trend will appear after the next scrape.
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-detail-bottom">Ad</div>
+
+  <div class="sources">Data captured via ADB screenshot automation from live game client. Updated April 13, 2026.</div>
+
+</div>
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="../../about.html">About</a>
+    <a href="../../privacy.html">Privacy Policy</a>
+    <a href="../../terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../../js/cookie-consent.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/advisor-names.js"></script>
+<script src="../../js/advisor.js"></script>
+<script src="../../js/advisor-orb.js"></script>
+<script src="../../js/advisor-hooks.js"></script>
+<script src="../../js/advisor-chat.js"></script>
+<script src="../../js/advisor-cta.js"></script>
+<script src="../../js/advisor-lore.js"></script>
+<script src="../../js/advisor-referral.js"></script>
+<script src="../../js/advisor-alliance.js"></script>
+<script src="../../js/advisor-accounts.js"></script>
+<script src="../../js/credits.js"></script>
+<script>
+var KINGDOM_DATA = {"kingdom":224,"last_updated":"2026-04-17","source":"ADB screenshot scraper + EasyOCR extraction","categories":{"alliance_power":[{"rank":1,"tag":"ALC","name":"AlsoCrab","value":16983496683},{"rank":2,"tag":"Tov","name":"R R 0BAE","value":16018619702},{"rank":3,"tag":"YMG","name":"Ft Eyvstf/zn4  +","value":9420744589},{"rank":4,"tag":"zoo","name":"johunto<zuizuis-","value":7930778061},{"rank":5,"tag":"GDC","name":"Gardenciel","value":6741503356},{"rank":6,"tag":"BNr","name":"ItKEY","value":5390129109},{"rank":7,"tag":"VAN","name":"TF JL?z7-7","value":3685789636},{"rank":8,"tag":"AUR","name":"Aurora7 505","value":2886569468},{"rank":9,"tag":"Frala","name":"2tnpntlin","value":1046145399},{"rank":10,"tag":"UTF","name":"Rakusan","value":822825252},{"rank":11,"tag":"Hmk","name":"zn-57","value":574555968},{"rank":12,"tag":"Owal","name":"-tly>:ntyo-","value":568721866},{"rank":13,"tag":"ZTS","name":"Zero Trust","value":514968504},{"rank":14,"tag":"aRpll","name":"lOGnbh","value":467678551},{"rank":15,"tag":"JTF","name":"> 15","value":427041902},{"rank":16,"tag":"","name":"","value":413962014},{"rank":17,"tag":"svG","name":"E#E","value":371725545},{"rank":18,"tag":"PKM","name":"EhSyF","value":360792962},{"rank":19,"tag":"qQs","name":"$ &","value":293063777},{"rank":20,"tag":"pWm","name":"lA","value":290444884},{"rank":21,"tag":"mmm","name":"vh=<","value":238378327},{"rank":22,"tag":"zoo","name":"tJiL=xERi","value":236496741},{"rank":23,"tag":"","name":"","value":233588793},{"rank":24,"tag":"","name":"","value":225162234},{"rank":25,"tag":"STs","name":"FO Eftt2","value":206593684},{"rank":26,"tag":"xrD","name":"1-FJLAyh","value":206410758},{"rank":27,"tag":"hee","name":"fq","value":194876831},{"rank":28,"tag":"bnrlt","name":"KEYEIo) #Y1","value":183874740},{"rank":29,"tag":"FNG","name":"F","value":181855798},{"rank":30,"tag":"Svd","name":"h =vt_","value":163869881},{"rank":31,"tag":"xwD","name":"at-bOK","value":131920193},{"rank":32,"tag":"","name":"","value":117358948},{"rank":33,"tag":"xyz","name":"xyz","value":111381750},{"rank":34,"tag":"nCm","name":"imbltsli","value":110554958},{"rank":35,"tag":"ALL","name":"ET##RL","value":96657797},{"rank":36,"tag":"auglt","name":"+i","value":59344866},{"rank":37,"tag":"BbNJ","name":"tar;3/J7 F9re","value":42183527},{"rank":38,"tag":"cgz","name":"FLAIR","value":41259719},{"rank":39,"tag":"","name":"AEARAA","value":40390918},{"rank":40,"tag":"nwc","name":"F ->","value":35251787},{"rank":41,"tag":"Nyu","name":"FREEDRIVE","value":17675937},{"rank":42,"tag":"Rm","name":"Tlt #t$","value":16760880},{"rank":43,"tag":"RLS","name":"RedLaelaps","value":16119585},{"rank":44,"tag":"QYc","name":"38n 323","value":13145307},{"rank":45,"tag":"","name":"","value":12706989},{"rank":46,"tag":"","name":"","value":11214351},{"rank":47,"tag":"","name":"","value":9325192},{"rank":48,"tag":"","name":"","value":8134656},{"rank":49,"tag":"UZO","name":"Kraken","value":7383562},{"rank":50,"tag":"UMR","name":"5 &+ 3","value":6596346},{"rank":51,"tag":"hh","name":"Blt < 45","value":5222392},{"rank":52,"tag":"mCF","name":"iKB","value":4999136},{"rank":53,"tag":"tpm","name":"+7>3v +","value":4739991},{"rank":54,"tag":"Bac","name":"-t?v#hih","value":4689975},{"rank":55,"tag":"gkU","name":"t~uxn","value":4652613},{"rank":56,"tag":"","name":"","value":4343024},{"rank":57,"tag":"bRuj","name":"--JFy+D-","value":3917814},{"rank":58,"tag":"dqW","name":"AF","value":3809642},{"rank":59,"tag":"KuX","name":"eg","value":3430717},{"rank":60,"tag":"iii","name":"IMA","value":3418055},{"rank":61,"tag":"ZvF","name":"a 5+5+","value":2728941},{"rank":62,"tag":"","name":"(jjuli6g7>7371)-ilr0","value":2693487},{"rank":63,"tag":"BCT","name":"FJE","value":2579189},{"rank":64,"tag":"","name":"","value":2103738},{"rank":65,"tag":"jJNHHI","name":"+ OFel","value":1876361},{"rank":66,"tag":"WEK","name":"LF+vb@w","value":1836471},{"rank":67,"tag":"Qav","name":"= +Ly>FB","value":1807360},{"rank":68,"tag":"wUqlI","name":"+H#Ftt","value":1592920},{"rank":69,"tag":"","name":"","value":1482058},{"rank":70,"tag":"","name":"","value":1475322},{"rank":71,"tag":"","name":"","value":1351771},{"rank":72,"tag":"","name":"","value":1332216},{"rank":73,"tag":"","name":"","value":1248577},{"rank":74,"tag":"Scx","name":"m 3++ >","value":1194966},{"rank":75,"tag":"DGJ","name":"Aaa","value":1183654},{"rank":76,"tag":"EbK","name":"TF#E","value":1171020},{"rank":77,"tag":"yYY","name":"IchocolateRabbit","value":1127090},{"rank":78,"tag":"ZqD","name":"s255","value":1071790},{"rank":79,"tag":"ugg","name":"147564","value":1067098},{"rank":80,"tag":"Hvr","name":"/La-X","value":1051500},{"rank":81,"tag":"eWE","name":"kb &kb 3 k SnowWorld","value":1005931},{"rank":82,"tag":"Fy","name":"Plmbboxs&11","value":912542},{"rank":83,"tag":"Uzh","name":"th^L","value":910364},{"rank":84,"tag":"W","name":"CTREX","value":798797},{"rank":85,"tag":"nzql","name":"CottonCandy","value":774105},{"rank":86,"tag":"UWR","name":"X TlisxhE","value":754787},{"rank":87,"tag":"w","name":"K  I)L","value":735990},{"rank":88,"tag":"Epc","name":"#Zok","value":735892},{"rank":89,"tag":"Qvg","name":"v m","value":693348},{"rank":90,"tag":"UHv","name":"h'thiklkplt","value":690072},{"rank":91,"tag":"","name":"Alliance Power","value":0}],"alliance_kills":[{"rank":1,"tag":"ALC","name":"AlsoCrab","value":1367048796},{"rank":2,"tag":"Tov","name":"R R 0BAE","value":1209441772},{"rank":3,"tag":"zoo","name":"johunkolaiuizlis-","value":311673437},{"rank":4,"tag":"YMG","name":"TTEyvsttEJtv=","value":267890120},{"rank":5,"tag":"GDC","name":"Gardenciel","value":135346411},{"rank":6,"tag":"BNr","name":"ItKEY","value":130305958},{"rank":7,"tag":"VAN","name":"TF JL?z7-7","value":116208468},{"rank":8,"tag":"AUR","name":"Aurora7 505","value":24849669},{"rank":9,"tag":"Xbp","name":"s ?v'nlt","value":14681094},{"rank":10,"tag":"Frqla","name":"2tnpntuih","value":2985138},{"rank":11,"tag":"Hmk","name":"zn-5t?","value":2153588},{"rank":12,"tag":"UTF","name":"Rakusan","value":2034549},{"rank":13,"tag":"JTFV","name":"> 15","value":2032039},{"rank":14,"tag":"aRpll","name":"luGnbh","value":1831970},{"rank":15,"tag":"FNG","name":"F","value":1700108},{"rank":16,"tag":"Owal","name":"-TLy>","value":1691141},{"rank":17,"tag":"zoo","name":"JhiL #KERi","value":1591867},{"rank":18,"tag":"ZTS","name":"ZeroTrust","value":1263710},{"rank":19,"tag":"Svd","name":"h=vt_","value":961322},{"rank":20,"tag":"svG","name":"A#@","value":751426},{"rank":21,"tag":"xmx","name":"#vbm?< n","value":665400},{"rank":22,"tag":"tov","name":"Khfquiolfld","value":652913},{"rank":23,"tag":"xWD","name":"a# ~b0K","value":493657},{"rank":24,"tag":"CZm","name":"KINGSHOTCLUB","value":393359},{"rank":25,"tag":"PNf","name":"StatueofLibert","value":388831},{"rank":26,"tag":"mmm","name":"v4=h","value":385439},{"rank":27,"tag":"pWm","name":"mlA","value":361492},{"rank":28,"tag":"bnr","name":"VKEYEKO) #RYEI","value":296824},{"rank":29,"tag":"xrD","name":"A-FJLAyk","value":289734},{"rank":30,"tag":"Nyu","name":"FREEDRIVE","value":231312},{"rank":31,"tag":"STS","name":"R0 Effltbz","value":219685},{"rank":32,"tag":"sAd","name":"Mrmichtada","value":169216},{"rank":33,"tag":"ALL","name":"ET##RL","value":163743},{"rank":34,"tag":"hee","name":"fq","value":137181},{"rank":35,"tag":"uky","name":"E9T45","value":128731},{"rank":36,"tag":"RLS","name":"RedLaelaps","value":117079},{"rank":37,"tag":"nCmli","name":"nbtli","value":102558},{"rank":38,"tag":"auglt","name":"i","value":99788},{"rank":39,"tag":"Dmc","name":"zornouou","value":72034},{"rank":40,"tag":"Gtu","name":"ouou","value":56660},{"rank":41,"tag":"xua","name":"Za65+dJP","value":29197},{"rank":42,"tag":"vHE","name":"? IiHILH","value":25729},{"rank":43,"tag":"tpm","name":"+7>3v +","value":18758},{"rank":44,"tag":"nwc","name":"F- >","value":17828},{"rank":45,"tag":"","name":"Alliance Kills","value":0}],"personal_power":[{"rank":1,"tag":"ALc","name":"Guita ALc@ 7 7&;","value":511953020},{"rank":2,"tag":"TOv","name":"C mhlis","value":500074685},{"rank":3,"tag":"ALC","name":"AC LazyCat","value":453586627},{"rank":4,"tag":"ALC","name":"V > J","value":387833240},{"rank":5,"tag":"zoo","name":"5 >AF","value":385079981},{"rank":6,"tag":"ALc","name":"lht b@fItoxh","value":379912326},{"rank":7,"tag":"ALc","name":"Korn0512","value":372279285},{"rank":8,"tag":"ALc","name":"Gerry","value":363129938},{"rank":9,"tag":"YMG","name":"sphSphx","value":360662674},{"rank":10,"tag":"TOV","name":"KID vaN","value":353831973},{"rank":11,"tag":"TOv","name":"s C #hvaN","value":342199279},{"rank":12,"tag":"TOv","name":"--ozo@","value":340565228},{"rank":13,"tag":"GDc","name":"MASAGDc","value":338135316},{"rank":14,"tag":"ALC","name":"Beroncho","value":331789405},{"rank":15,"tag":"","name":"","value":329065460},{"rank":16,"tag":"","name":"","value":325269438},{"rank":17,"tag":"Tov","name":"T = #sph","value":323641782},{"rank":18,"tag":"tov","name":"t F","value":319816717},{"rank":19,"tag":"TOv","name":"hh / JO)rain","value":316641698},{"rank":20,"tag":"ALc","name":"riran777","value":314523719},{"rank":21,"tag":"ALc","name":"li@tItoz","value":314480389},{"rank":22,"tag":"ALc","name":"lhT-# 6@ 0 56h7 ) A","value":310180816},{"rank":23,"tag":"YMG","name":"a >VJ <","value":308839888},{"rank":24,"tag":"TOv","name":"o) < 6 <","value":308663966},{"rank":25,"tag":"ALc","name":"tI+ozIla","value":306549822},{"rank":26,"tag":"zoo","name":"Uniqlo","value":304220758},{"rank":27,"tag":"","name":"sphnyJ>-","value":303825509},{"rank":28,"tag":"YMG","name":"bIs7","value":300346667},{"rank":29,"tag":"GDc","name":"SH+o? GDc","value":297517567},{"rank":30,"tag":"ALc","name":"C  <","value":297014459},{"rank":31,"tag":"TOv","name":"jaE","value":296101216},{"rank":32,"tag":"","name":"","value":293739846},{"rank":33,"tag":"Tov","name":"ozo","value":291706006},{"rank":34,"tag":"TOv","name":"U ml@LA","value":289414548},{"rank":35,"tag":"ALC","name":"A> 7","value":288119314},{"rank":36,"tag":"","name":"vaN","value":285354916},{"rank":37,"tag":"ALC","name":"EE+AJL","value":284687044},{"rank":38,"tag":"TOV","name":"< 33","value":284651576},{"rank":39,"tag":"","name":"","value":283860487},{"rank":40,"tag":"","name":"","value":283737098},{"rank":41,"tag":"20O","name":"z _tfj","value":283620683},{"rank":42,"tag":"Tov","name":"4(r@u+E","value":282684050},{"rank":43,"tag":"ALc","name":"coffee","value":281505886},{"rank":44,"tag":"GDc","name":"a$5","value":277930407},{"rank":45,"tag":"zoo","name":"s Cald","value":277616523},{"rank":46,"tag":"VAN","name":"kids vaN","value":277590458},{"rank":47,"tag":"BNr","name":"cocoa","value":276611334},{"rank":48,"tag":"zoo","name":"jizIFhlh","value":276304639},{"rank":49,"tag":"zoo","name":"+ 5 / EAE","value":274886782},{"rank":50,"tag":"ALc","name":"tItta","value":273042875},{"rank":51,"tag":"TOv","name":"h\" 25 & vaN","value":268690138},{"rank":52,"tag":"Tov","name":"ltIozot+-","value":268618007},{"rank":53,"tag":"ALc","name":"steeb","value":267796911},{"rank":54,"tag":"","name":"","value":267526044},{"rank":55,"tag":"","name":"","value":267000324},{"rank":56,"tag":"","name":"","value":266802943},{"rank":57,"tag":"ALc","name":"+ECph","value":266332755},{"rank":58,"tag":"","name":"DaNna","value":263968693},{"rank":59,"tag":"YMG","name":"@7=x","value":263791150},{"rank":60,"tag":"Tov","name":"shinon","value":261586455},{"rank":61,"tag":"ALC","name":"o3^@#03","value":261468966},{"rank":62,"tag":"TOV","name":"JICK","value":261293265},{"rank":63,"tag":"","name":"","value":260659063},{"rank":64,"tag":"","name":"","value":257139472},{"rank":65,"tag":"","name":"","value":256906143},{"rank":66,"tag":"ALC","name":"shibuyas","value":255673440},{"rank":67,"tag":"ALc","name":"FUhi","value":255609927},{"rank":68,"tag":"ALC","name":"amuro0123","value":252997688},{"rank":69,"tag":"TOv","name":"TZEB","value":250017202},{"rank":70,"tag":"ALc","name":"-","value":249253431},{"rank":71,"tag":"ALC","name":"C p &l Ixx","value":245757850},{"rank":72,"tag":"","name":"","value":245317372},{"rank":73,"tag":"","name":"","value":244850541},{"rank":74,"tag":"","name":"","value":243718289},{"rank":75,"tag":"BNr","name":"fatboy","value":242294703},{"rank":76,"tag":"ALC","name":"IZ < 45","value":241465748},{"rank":77,"tag":"ALc","name":"5U3","value":238477434},{"rank":78,"tag":"ALC","name":"unidy","value":238179579},{"rank":79,"tag":"Tov","name":"imtzorsv-t","value":236607502},{"rank":80,"tag":"","name":"","value":236313110},{"rank":81,"tag":"","name":"","value":236152998},{"rank":82,"tag":"","name":"","value":234412948},{"rank":83,"tag":"ALc","name":"Jirou","value":233365998},{"rank":84,"tag":"YMG","name":"s 74","value":232724835},{"rank":85,"tag":"ALc","name":"nhxeo","value":230784834},{"rank":86,"tag":"","name":"GOCOl","value":230184729},{"rank":87,"tag":"ALc","name":"+301b","value":230176545},{"rank":88,"tag":"ALc","name":"h2Kmz","value":229340528},{"rank":89,"tag":"Tov","name":"m >AwF","value":229148928},{"rank":90,"tag":"ALc","name":"bIs 5","value":228850504},{"rank":91,"tag":"BNr","name":"Nuts","value":227771915},{"rank":92,"tag":"TOv","name":"W) -7xt","value":226355560},{"rank":93,"tag":"ALC","name":"5&h)","value":225190069},{"rank":94,"tag":"tov","name":"ie-#amAW e5Rn#","value":224947330},{"rank":95,"tag":"ALC","name":"Gerry","value":363129},{"rank":96,"tag":"TOv","name":"-vs & vaN","value":233769},{"rank":97,"tag":"","name":"Fermented Syrup","value":75758},{"rank":98,"tag":"","name":"Personal Power","value":0}],"kill_count":[{"rank":1,"tag":"ALc","name":"Guita ALc@ 7 7&;","value":122180797},{"rank":2,"tag":"ALC","name":"Beroncho","value":95446488},{"rank":3,"tag":"TOv","name":"C mhlis","value":94931881},{"rank":4,"tag":"Tov","name":"z74r@\"+E","value":87844628},{"rank":5,"tag":"Tov","name":"t SvaN","value":83203384},{"rank":6,"tag":"ALC","name":"AC LazyCat","value":67936274},{"rank":7,"tag":"ALC","name":"5 #ho4hottai","value":58498760},{"rank":8,"tag":"ALc","name":"lu@tItoz","value":57584493},{"rank":9,"tag":"ALc","name":"tItta","value":53638421},{"rank":10,"tag":"TOv","name":"h / JO)rain","value":53152875},{"rank":11,"tag":"TOV","name":"< 33","value":50868550},{"rank":12,"tag":"TOv","name":"s C #hvaN","value":44965021},{"rank":13,"tag":"zoo","name":"5 > ANF","value":44572577},{"rank":14,"tag":"ALC","name":"V > J","value":43611112},{"rank":15,"tag":"","name":"DaNna","value":42839925},{"rank":16,"tag":"TOV","name":"hi25 + vaN","value":42579466},{"rank":17,"tag":"TOv","name":"--ozo@","value":39990811},{"rank":18,"tag":"TOv","name":"U mhl@LA","value":38967143},{"rank":19,"tag":"ALc","name":"o3^@402","value":38561925},{"rank":20,"tag":"ALC","name":"ER+AJL","value":38278984},{"rank":21,"tag":"","name":"Jtyta","value":37073516},{"rank":22,"tag":"ALc","name":"Korn0512","value":36811179},{"rank":23,"tag":"ALc","name":"tItozIla","value":35981491},{"rank":24,"tag":"ALC","name":"Juhi","value":35816839},{"rank":25,"tag":"Tov","name":"T =Fsph","value":32481910},{"rank":26,"tag":"ALc","name":"lhts@tI+ozh","value":31634856},{"rank":27,"tag":"","name":"sphnyny-","value":31113217},{"rank":28,"tag":"tov","name":"t +w","value":30771852},{"rank":29,"tag":"VAN","name":"GEL EvaN RE;BORN","value":30266682},{"rank":30,"tag":"ALC","name":"IA6430653676 ) Ji","value":30158900},{"rank":31,"tag":"YMG","name":") - /1=","value":28970899},{"rank":32,"tag":"TOv","name":"JICK","value":28476649},{"rank":33,"tag":"tovltI","name":"oziot+-","value":28393042},{"rank":34,"tag":"","name":"","value":26982732},{"rank":35,"tag":"ALC","name":"/>","value":26857134},{"rank":36,"tag":"ALc","name":"IZ & 3U","value":26633996},{"rank":37,"tag":"","name":"","value":25725144},{"rank":38,"tag":"ALc","name":"Jirou","value":25617382},{"rank":39,"tag":"","name":"","value":25240101},{"rank":40,"tag":"YMG","name":"sphSphs","value":25123472},{"rank":41,"tag":"TOV","name":"AceKing21","value":24935900},{"rank":42,"tag":"ALC","name":"MuRo Takenoko","value":24707029},{"rank":43,"tag":"BNr","name":"SRS8k85","value":24572734},{"rank":44,"tag":"TOV","name":"KID vaN","value":24554190},{"rank":45,"tag":"zoo","name":"tJJDw )","value":24530489},{"rank":46,"tag":"TOv","name":"-v\"5 & vaN","value":24400765},{"rank":47,"tag":"ALc","name":"a hSph","value":24379292},{"rank":48,"tag":"ALc","name":"Gerry","value":24034997},{"rank":49,"tag":"BNr","name":"- JTLxiaxfangin","value":23821824},{"rank":50,"tag":"ALc","name":"+ECph","value":23575827},{"rank":51,"tag":"GDc","name":"MASAGDc","value":23353202},{"rank":52,"tag":"","name":"~GOGO:","value":23135216},{"rank":53,"tag":"TOv","name":"5 ##4h","value":22398893},{"rank":54,"tag":"GDC","name":"RaiKey GDc","value":22338332},{"rank":55,"tag":"TOv","name":"WJ -7xt","value":20333087},{"rank":56,"tag":"YMG","name":"nIs-","value":20326662},{"rank":57,"tag":"ALc","name":"C = <","value":19563262},{"rank":58,"tag":"TOv","name":"i) >hiltjwjil","value":19545701},{"rank":59,"tag":"ALc","name":"bIs5","value":19279968},{"rank":60,"tag":"TOV","name":"THa BKT","value":18871595},{"rank":61,"tag":"TOV","name":"o) < 6 <","value":18425755},{"rank":62,"tag":"zoo","name":"-tfj","value":17813867},{"rank":63,"tag":"ALC","name":"shibuyas","value":17727647},{"rank":64,"tag":"TOV","name":"shinon","value":17704425},{"rank":65,"tag":"ALc","name":"n hzeo","value":17612912},{"rank":66,"tag":"YMG","name":"oz-x","value":17523584},{"rank":67,"tag":"ALC","name":"MIOSKY","value":17434991},{"rank":68,"tag":"TOv","name":"b #zU","value":17414552},{"rank":69,"tag":"YMG","name":"(#-JL","value":17067376},{"rank":70,"tag":"","name":"","value":17043317},{"rank":71,"tag":"zoo","name":"+ 5 / EFE","value":15837531},{"rank":72,"tag":"","name":"TJivaN RE;BORN","value":15625942},{"rank":73,"tag":"Tov","name":"mt\"70115 ) -(","value":15587428},{"rank":74,"tag":"Tov","name":"h>+-k","value":15095495},{"rank":75,"tag":"TOV","name":"E m#h","value":14956384},{"rank":76,"tag":"ALc","name":"riran777","value":14923362},{"rank":77,"tag":"YMG","name":"GaGa","value":14890541},{"rank":78,"tag":"Xbp","name":"> AZ+ >","value":14680136},{"rank":79,"tag":"zoo","name":"ju1 28","value":14616657},{"rank":80,"tag":"TOV","name":"KucingBobok","value":14347464},{"rank":81,"tag":"","name":"7oUh","value":14302529},{"rank":82,"tag":"","name":"AALhz5(@FE","value":13923632},{"rank":83,"tag":"","name":"jhenju AVENGERS","value":13624519},{"rank":84,"tag":"YMG","name":"a >VJ <","value":13540230},{"rank":85,"tag":"ALc","name":"sL p","value":13261178},{"rank":86,"tag":"GDC","name":"SH+o? GDc","value":13045555},{"rank":87,"tag":"ALC","name":"coffee","value":13001329},{"rank":88,"tag":"","name":"Mlkuri83","value":12905064},{"rank":89,"tag":"zoo","name":"lh#xIfrmn","value":12881726},{"rank":90,"tag":"zoo","name":"lt> +Kiss SHOT Fw =","value":12872090},{"rank":91,"tag":"ALc","name":"Yul@a O Z","value":12724244},{"rank":92,"tag":"Tov","name":"zJv=.751F","value":12602521},{"rank":93,"tag":"","name":"~TOVIn","value":12561573},{"rank":94,"tag":"YMG","name":"3 vE-","value":12474592},{"rank":95,"tag":"TOV","name":"PHYZ","value":11952504},{"rank":96,"tag":"zoo","name":"jizIfhlh","value":11893944},{"rank":97,"tag":"Tov","name":"o7o","value":976441},{"rank":98,"tag":"Tov","name":"my. @#02i9","value":796380},{"rank":99,"tag":"","name":"Fermented","value":20124},{"rank":100,"tag":"ALC","name":"MF %","value":4464}],"hero_power":[{"rank":1,"tag":"ALC","name":"AF %","value":14696046},{"rank":2,"tag":"ALC","name":"Guita ALc@ ' T&","value":13271666},{"rank":3,"tag":"ALC","name":"Beroncho","value":12738309},{"rank":4,"tag":"","name":"DaNna","value":11197805},{"rank":5,"tag":"Tov","name":"C mhl@LA","value":10631414},{"rank":6,"tag":"TOv","name":"C phlis","value":10058319},{"rank":7,"tag":"ALC","name":"AC LazyCat","value":9155635},{"rank":8,"tag":"TOV","name":"s C # hvaN","value":8874122},{"rank":9,"tag":"ALc","name":"lui@tItox","value":8347102},{"rank":10,"tag":"ALC","name":"V > J","value":8132632},{"rank":11,"tag":"ALC","name":"5 #ho4h@zti","value":8047106},{"rank":12,"tag":"TOV","name":"hi35 + vaN","value":7697592},{"rank":13,"tag":"YMG","name":"a >VJ <","value":7169156},{"rank":14,"tag":"zoo","name":"5\" > AF","value":7064265},{"rank":15,"tag":"Tov","name":"7(r@u+E","value":6871955},{"rank":16,"tag":"YMG","name":"sphsphx","value":6775464},{"rank":17,"tag":"Tov","name":"t: SvaN","value":6647914},{"rank":18,"tag":"Xbp","name":"> /1=+ >","value":6160122},{"rank":19,"tag":"GDc","name":"MASAGDc","value":6117740},{"rank":20,"tag":"zoo","name":"lb_ #Ch@tEuta","value":6042440},{"rank":21,"tag":"ALc","name":"t-ItozIla","value":5986757},{"rank":22,"tag":"Tov","name":"5 ##th","value":5736813},{"rank":23,"tag":"TOV","name":"o) < 6 <","value":5679059},{"rank":24,"tag":"Tov","name":"t kw","value":5653464},{"rank":25,"tag":"ALc","name":"lhts@tI+ozh","value":5651509},{"rank":26,"tag":"GDc","name":"SH+o? GDc","value":5522695},{"rank":27,"tag":"Tov","name":"T _ Fsph","value":5439067},{"rank":28,"tag":"ALc","name":"tItt&","value":5438114},{"rank":29,"tag":"ALc","name":"C = <","value":5427094},{"rank":30,"tag":"ALC","name":"Hh6#3@853h9T , J","value":5336182},{"rank":31,"tag":"20O","name":"z _tj","value":5251269},{"rank":32,"tag":"Tov","name":"i? >miltjujil","value":5186045},{"rank":33,"tag":"ALc","name":"Gerry","value":5028838},{"rank":34,"tag":"","name":"SphnyJ>-","value":4894485},{"rank":35,"tag":"YMG","name":"GaGa","value":4885645},{"rank":36,"tag":"YMG","name":"- /1=","value":4877085},{"rank":37,"tag":"VAN","name":"Lute","value":4842151},{"rank":38,"tag":"BNr","name":"Rhinoceros","value":4803342},{"rank":39,"tag":"TOV","name":"< 33","value":4780052},{"rank":40,"tag":"ALc","name":"+ECph","value":4739935},{"rank":41,"tag":"TOV","name":"KID vaN","value":4696614},{"rank":42,"tag":"YMG","name":"nIt W","value":4696190},{"rank":43,"tag":"TOv","name":"JICK","value":4655695},{"rank":44,"tag":"ALc","name":"iIs5","value":4627394},{"rank":45,"tag":"TOv","name":"o7o","value":4575669},{"rank":46,"tag":"zoo","name":"lb&xljrJn","value":4541787},{"rank":47,"tag":"zoo","name":"Uniqlo","value":4529006},{"rank":48,"tag":"TOv","name":"< ?U","value":4511603},{"rank":49,"tag":"","name":"J+yta","value":4454752},{"rank":50,"tag":"ALC","name":"C p &l Ixx","value":4417982},{"rank":51,"tag":"ALC","name":"MuRoTakenoko","value":4416335},{"rank":52,"tag":"Tov","name":"zJv=.751 F","value":4350214},{"rank":53,"tag":"Tov","name":"# -20f","value":4333437},{"rank":54,"tag":"ALC","name":"EE+AJL","value":4323861},{"rank":55,"tag":"ALC","name":"o3^@#02","value":4275242},{"rank":56,"tag":"ALC","name":"shibuyas","value":4270007},{"rank":57,"tag":"GDc","name":"+55","value":4229028},{"rank":58,"tag":"BNr","name":"SR58n8S","value":4181164},{"rank":59,"tag":"zoo","name":"+ 5 / EAB","value":4168887},{"rank":60,"tag":"YMG","name":"cooper","value":4137014},{"rank":61,"tag":"2o0jo","name":"924","value":4117087},{"rank":62,"tag":"TOv","name":"hh / JOrain","value":4109902},{"rank":63,"tag":"","name":"Arrivederci","value":4081682},{"rank":64,"tag":"VAN","name":"EL!HvaN RE;BORN","value":4066907},{"rank":65,"tag":"TOV","name":"II","value":4060613},{"rank":66,"tag":"ToVI","name":"shinon","value":4055537},{"rank":67,"tag":"ALC","name":"IZ & 3U","value":4052620},{"rank":68,"tag":"zoo","name":"jizIFhlh","value":4036234},{"rank":69,"tag":"ALc","name":"+Uh","value":4024718},{"rank":70,"tag":"","name":"zzZz","value":3977316},{"rank":71,"tag":"YMG","name":"@7 =x","value":3946318},{"rank":72,"tag":"GDc","name":"g LiZESe/GDc","value":3906216},{"rank":73,"tag":"","name":"NANJEEL !jEvaN RE:BORN","value":3901116},{"rank":74,"tag":"BNr","name":"Zaku","value":3873322},{"rank":75,"tag":"TOv","name":"I+ ,Jkesntt?t","value":3865197},{"rank":76,"tag":"ALc","name":"lPS5hrr","value":3857437},{"rank":77,"tag":"TOv","name":"PHYZ","value":3846428},{"rank":78,"tag":"Tov","name":"svo @#O30","value":3838993},{"rank":79,"tag":"BNr","name":"cocoa","value":3837783},{"rank":80,"tag":"ALC","name":"VANPS","value":3829320},{"rank":81,"tag":"YMG","name":"? <v+JIT","value":3813881},{"rank":82,"tag":"ALC","name":"","value":3811235},{"rank":83,"tag":"TOV","name":"IBagoos","value":3759093},{"rank":84,"tag":"YMG","name":"dh'h63","value":3752483},{"rank":85,"tag":"","name":"Hero: Eric","value":3748070},{"rank":86,"tag":"BNr","name":"< !) 7","value":3741008},{"rank":87,"tag":"zoo","name":"lt> +Kiss SHOTT v =","value":3692085},{"rank":88,"tag":"zoo","name":"s Up#l*t","value":3687284},{"rank":89,"tag":"BNr","name":"choco","value":3668643},{"rank":90,"tag":"AUR","name":"L ! p?","value":3663738},{"rank":91,"tag":"ALC","name":"MIOSKY","value":3648819},{"rank":92,"tag":"ALC","name":"IZ < 45","value":3629045},{"rank":93,"tag":"","name":"Fermented","value":18800},{"rank":94,"tag":"","name":"Hero: Eric","value":7480},{"rank":95,"tag":"","name":"Hero Power","value":0}],"heros_total_power":[{"rank":1,"tag":"TOv","name":"U phlis","value":69637559},{"rank":2,"tag":"ALc","name":"Guita ALc@ 'J T%","value":65716107},{"rank":3,"tag":"ALC","name":"Beroncho","value":62572644},{"rank":4,"tag":"ALC","name":"AC LazyCat","value":56515610},{"rank":5,"tag":"TOv","name":"U mhl@LA","value":54598320},{"rank":6,"tag":"GDc","name":"MASAGDc","value":53330599},{"rank":7,"tag":"TOV","name":"s C # hvaN","value":51416936},{"rank":8,"tag":"YMG","name":"a >WJ <","value":48546160},{"rank":9,"tag":"tov","name":"+ kw","value":48065819},{"rank":10,"tag":"ALC","name":"VJ > J","value":47905780},{"rank":11,"tag":"200jo","name":"924","value":45170887},{"rank":12,"tag":"ALc","name":"5 #nioah@#z","value":44645724},{"rank":13,"tag":"MALc","name":"li@TItoz","value":44513534},{"rank":14,"tag":"GDc","name":"SH+o? GDc","value":43638613},{"rank":15,"tag":"TOv","name":"5 #a4h","value":42800610},{"rank":16,"tag":"YMG","name":"bIttw","value":42670736},{"rank":17,"tag":"AL","name":"ClhT s@TIJoxm","value":42273673},{"rank":18,"tag":"BNr","name":"fatboy","value":42162695},{"rank":19,"tag":"TOv","name":"--ozo@","value":41914686},{"rank":20,"tag":"TOv","name":"i? >hiltjwjtl","value":40978426},{"rank":21,"tag":"ALc","name":"Korn0512","value":40562138},{"rank":22,"tag":"YMG","name":"A (#-J","value":39823877},{"rank":23,"tag":"TOV","name":"hi 25 & vaN","value":39636339},{"rank":24,"tag":"Xbp","name":"> /1=+>","value":39567214},{"rank":25,"tag":"","name":"sphnyJy-","value":39399912},{"rank":26,"tag":"zoO","name":"z -tpj","value":38702942},{"rank":27,"tag":"YMG","name":"GaGa","value":38576424},{"rank":28,"tag":"TOv","name":"o) < & <","value":38547624},{"rank":29,"tag":"tov","name":"ie_MRMAM4951N#","value":38443757},{"rank":30,"tag":"ALC","name":"Gerry","value":37394075},{"rank":31,"tag":"TOv","name":"h / JOrain","value":37374294},{"rank":32,"tag":"Tov","name":"T _Fsph","value":37285963},{"rank":33,"tag":"Tov","name":"t; 5vaN","value":36797748},{"rank":34,"tag":"ALc","name":"C _ <","value":36649179},{"rank":35,"tag":"TOV","name":"HAKU","value":36245465},{"rank":36,"tag":"ALC","name":"riran777","value":36085675},{"rank":37,"tag":"ALc","name":"steeb","value":35758716},{"rank":38,"tag":"BNr","name":"zaku","value":35745520},{"rank":39,"tag":"TOv","name":"TZEB","value":35721417},{"rank":40,"tag":"ALc","name":"IZ & 3U8","value":35437424},{"rank":41,"tag":"BNr","name":"SR58k85","value":35263152},{"rank":42,"tag":"ALc","name":"MuRo Takenoko","value":34966497},{"rank":43,"tag":"ALc","name":"tItta","value":34758037},{"rank":44,"tag":"","name":"","value":34734243},{"rank":45,"tag":"ALc","name":"IZ < #5","value":34708404},{"rank":46,"tag":"zoo","name":"lnz # lh@tIuija","value":34680008},{"rank":47,"tag":"ALc","name":"tI+ozIA","value":34643340},{"rank":48,"tag":"zoo","name":"+ 5 / EHB","value":34564740},{"rank":49,"tag":"TOv","name":"< 33","value":34283307},{"rank":50,"tag":"GDc","name":"+65","value":34036867},{"rank":51,"tag":"TOv","name":"jAE","value":34017520},{"rank":52,"tag":"ALc","name":"+ECph","value":33929544},{"rank":53,"tag":"ALc","name":"Jirou","value":33706199},{"rank":54,"tag":"Tov","name":") FWJ","value":33696209},{"rank":55,"tag":"TOV","name":"JICK","value":33556799},{"rank":56,"tag":"ALC","name":"o3^@#02","value":33454267},{"rank":57,"tag":"ALC","name":"> 7","value":33420524},{"rank":58,"tag":"Tov","name":"zJvt.75tF","value":32998799},{"rank":59,"tag":"ALc","name":"Yul@# O Z","value":32939775},{"rank":60,"tag":"ALc","name":"coffee","value":32934100},{"rank":61,"tag":"VAN","name":"SEL !9vaN RE;BORN","value":32826274},{"rank":62,"tag":"ALC","name":"Hh6#30653h27 ) 7m","value":32738592},{"rank":63,"tag":"BNr","name":"choco","value":32555514},{"rank":64,"tag":"","name":"COCO","value":32454133},{"rank":65,"tag":"zoo","name":"s Cp#l+t","value":32410547},{"rank":66,"tag":"","name":"J+yta","value":32371720},{"rank":67,"tag":"ALC","name":"Bad","value":32192573},{"rank":68,"tag":"YMG","name":"s 94","value":32183252},{"rank":69,"tag":"","name":"Waw","value":32142066},{"rank":70,"tag":"GDc","name":"SH+MAGDc","value":32110342},{"rank":71,"tag":"TOV","name":"Ipochi","value":32093781},{"rank":72,"tag":"TOV","name":"PHYZ","value":32051348},{"rank":73,"tag":"ToV","name":"Ishinon","value":32003215},{"rank":74,"tag":"ALC","name":"IR+AJL","value":31918570},{"rank":75,"tag":"YMG","name":"- /1=","value":31814452},{"rank":76,"tag":"zoo","name":"jia& h","value":31810662},{"rank":77,"tag":"zoo","name":"Wall Sina","value":31644491},{"rank":78,"tag":"TOv","name":"jv\"5 & vaN","value":31580347},{"rank":79,"tag":"ALC","name":"shibuyas","value":31552644},{"rank":80,"tag":"GDc","name":"S LiZEBe/GDc","value":31371130},{"rank":81,"tag":"ALc","name":"jahSph","value":31369226},{"rank":82,"tag":"ALC","name":"Rainbow","value":31369187},{"rank":83,"tag":"TOV","name":"Bagoos","value":31299933},{"rank":84,"tag":"TOV","name":"bukkiTov","value":31248941},{"rank":85,"tag":"TOV","name":"KID vaN","value":31194559},{"rank":86,"tag":"BNr","name":"Nuts","value":31184928},{"rank":87,"tag":"zoo","name":"Sh ~ WhereDoWeGo?","value":31068082},{"rank":88,"tag":"ALC","name":"MIOSKY","value":30955663},{"rank":89,"tag":"Tov","name":"ozo","value":30937453},{"rank":90,"tag":"YMG","name":"S, < 9I+","value":30884883},{"rank":91,"tag":"YMG","name":"sphSphs","value":300743},{"rank":92,"tag":"Tov","name":"7 4(r@u+E","value":140797},{"rank":93,"tag":"zoo","name":"l3ih < WhereDoWeGo?","value":68082},{"rank":94,"tag":"","name":"Fermented","value":48800},{"rank":95,"tag":"ALC","name":"A %","value":44404},{"rank":96,"tag":"","name":"Hero's Total Power","value":0}],"total_pet_power":[{"rank":1,"tag":"ALc","name":"Guita ALc@ 7 7&;","value":21271920},{"rank":2,"tag":"ALC","name":"AC LazyCat","value":20876760},{"rank":3,"tag":"","name":"8 : IJ","value":19841040},{"rank":4,"tag":"TOV","name":"U mhlis","value":19722960},{"rank":5,"tag":"TOv","name":"s C #hvaN","value":19589640},{"rank":6,"tag":"TOv","name":"U mhl@Ln","value":18063960},{"rank":7,"tag":"GDc","name":"MASAGDc","value":17919960},{"rank":8,"tag":"ALC","name":"VJ > 7","value":17887680},{"rank":9,"tag":"","name":"sphnyoy-","value":17715120},{"rank":10,"tag":"tov","name":"+ F","value":17617920},{"rank":11,"tag":"ToV","name":"shinon","value":17599440},{"rank":12,"tag":"zoo","name":"z >A=","value":17451840},{"rank":13,"tag":"GDC","name":"SH+O? GDc","value":17262600},{"rank":14,"tag":"ALc","name":"Gerry","value":17087640},{"rank":15,"tag":"Tov","name":"z74r@\"+E","value":16994760},{"rank":16,"tag":"YMG","name":"sphsphx","value":16987680},{"rank":17,"tag":"TOv","name":"o) < & <","value":16926240},{"rank":18,"tag":"ALc","name":"Korn0512","value":16875600},{"rank":19,"tag":"BNr","name":"SR580n8s","value":16758960},{"rank":20,"tag":"TOv","name":"5 ##th","value":16708920},{"rank":21,"tag":"Tov","name":"zvt.75t","value":16436160},{"rank":22,"tag":"YMG","name":"GaGa","value":16400760},{"rank":23,"tag":"TOv","name":"-vozo@","value":16348080},{"rank":24,"tag":"ALC","name":"AR*3@853h27 ) Ji","value":16321920},{"rank":25,"tag":"ALc","name":"IZ & ?U","value":16314000},{"rank":26,"tag":"Tov","name":"h>+-+","value":16305360},{"rank":27,"tag":"YMG","name":"a >IJ <","value":16253040},{"rank":28,"tag":"TOv","name":"h / JO)rain","value":16232160},{"rank":29,"tag":"zoo","name":"<Jl?Jl","value":16222680},{"rank":30,"tag":"zoo","name":"Kirindo","value":16182720},{"rank":31,"tag":"YMG","name":"s9 4","value":16060200},{"rank":32,"tag":"2o0jo","name":"924","value":16050960},{"rank":33,"tag":"GDC","name":"GGGGDc","value":16029120},{"rank":34,"tag":"TOv","name":"t 5vaN","value":16020240},{"rank":35,"tag":"ALc","name":"+ECph","value":16009560},{"rank":36,"tag":"ALc","name":"coffee","value":16004040},{"rank":37,"tag":"ALc","name":"lui@tItoz","value":16003680},{"rank":38,"tag":"ALC","name":"MuRoTakenoko","value":16003200},{"rank":39,"tag":"BNr","name":"- JiTLtiantin","value":15999120},{"rank":40,"tag":"YMG","name":"l (#-J","value":15961920},{"rank":41,"tag":"zoo","name":"s Cpalst","value":15941280},{"rank":42,"tag":"Tov","name":"jaE","value":15907200},{"rank":43,"tag":"ALc","name":"~","value":15906360},{"rank":44,"tag":"zoo","name":"3h < WhereDoWeGo?","value":15904920},{"rank":45,"tag":"ALc","name":"C - <","value":15888360},{"rank":46,"tag":"LTov","name":"T =Fsph","value":15884040},{"rank":47,"tag":"zoo","name":"Tsukajack","value":15848640},{"rank":48,"tag":"GDC","name":"MachaGDc","value":15848400},{"rank":49,"tag":"ALc","name":"tItta","value":15837120},{"rank":50,"tag":"ALc","name":"5wly","value":15822960},{"rank":51,"tag":"YMG","name":"@-x","value":15816240},{"rank":52,"tag":"YMG","name":"RMNFIZ","value":15778320},{"rank":53,"tag":"TOv","name":"i? >Jiltjvtl","value":15767040},{"rank":54,"tag":"ALC","name":"C + &l xx","value":15762240},{"rank":55,"tag":"GDC","name":"SH+MAGDc","value":15755880},{"rank":56,"tag":"ALc","name":"jahsph","value":15740400},{"rank":57,"tag":"BNr","name":"fatboy","value":15671400},{"rank":58,"tag":"YMG","name":"#RE","value":15619800},{"rank":59,"tag":"ALC","name":"MIRADY","value":15602040},{"rank":60,"tag":"ALc","name":"nhxeo","value":15586320},{"rank":61,"tag":"Tov","name":"sy. @#O3R","value":15581400},{"rank":62,"tag":"","name":"COCO","value":15579720},{"rank":63,"tag":"","name":"","value":15576360},{"rank":64,"tag":"tovltI","name":"oxiot+-","value":15564720},{"rank":65,"tag":"GDc","name":"+55","value":15559200},{"rank":66,"tag":"zoo","name":"jia+h","value":15544200},{"rank":67,"tag":"GDc","name":"JL _","value":15543840},{"rank":68,"tag":"ALc","name":"tI+ozIla","value":15541200},{"rank":69,"tag":"BNr","name":"cocoa","value":15529920},{"rank":70,"tag":"ALc","name":"amuro0123","value":15509520},{"rank":71,"tag":"YMG","name":"- /1 _","value":15509040},{"rank":72,"tag":"tov","name":"#-DISwAMiSATRN &","value":15486960},{"rank":73,"tag":"TOv","name":") #WJ","value":15468600},{"rank":74,"tag":"ALc","name":"lps5hrr","value":15408240},{"rank":75,"tag":"YMG","name":"lh's","value":15397440},{"rank":76,"tag":"GDC","name":"MooferdGDc","value":15388200},{"rank":77,"tag":"YMG","name":"BOM BAY","value":15362520},{"rank":78,"tag":"","name":"JrvaN","value":15353280},{"rank":79,"tag":"YMG","name":"5 >","value":15341280},{"rank":80,"tag":"zoo","name":"+ 5 /EFE","value":15337800},{"rank":81,"tag":"ALC","name":"unidy","value":15325440},{"rank":82,"tag":"ALC","name":"/> ?","value":15297960},{"rank":83,"tag":"BNr","name":"Nuts","value":15294000},{"rank":84,"tag":"ALc","name":"steeb","value":15275280},{"rank":85,"tag":"BNr","name":"Rhinoceros","value":15258720},{"rank":86,"tag":"Xbp","name":"> AZ+>","value":15248400},{"rank":87,"tag":"TOV","name":"KYYD","value":15245160},{"rank":88,"tag":"GDC","name":"RaiKey GDc","value":15236880},{"rank":89,"tag":"ALc","name":"lhf b@f-IJoxhx","value":15235200},{"rank":90,"tag":"YMG","name":"a 3=","value":15217200},{"rank":91,"tag":"TOv","name":"JICK","value":15204240},{"rank":92,"tag":"ALC","name":"Beroncho","value":157560},{"rank":93,"tag":"","name":"Fermented Syrup","value":20124},{"rank":94,"tag":"","name":"Total Pet Power","value":0}],"mystic_trial":[{"rank":1,"tag":"ALC","name":"AF %","value":6846},{"rank":2,"tag":"ALc","name":"Guita ALc@ 7 7&;","value":2410},{"rank":3,"tag":"TOv","name":"C mhlis","value":2315},{"rank":4,"tag":"ALC","name":"Beroncho","value":2284},{"rank":5,"tag":"ALC","name":"AC LazyCat","value":2257},{"rank":6,"tag":"TOV","name":"ss C #hvaN","value":2044},{"rank":7,"tag":"zoo","name":"5 >AF","value":1977},{"rank":8,"tag":"TOv","name":"U mhl@LA","value":1966},{"rank":9,"tag":"YMG","name":"sphSphs","value":1939},{"rank":10,"tag":"ALC","name":"3#bb&h@#ta","value":1905},{"rank":11,"tag":"GDc","name":"MASAGDc","value":1891},{"rank":12,"tag":"Tov","name":"/ (r@u+\u20ac","value":1860},{"rank":13,"tag":"ALc","name":"lui@tItox","value":1831},{"rank":14,"tag":"ALc","name":"Korn0512","value":1805},{"rank":15,"tag":"YMG","name":"a >VJ <","value":1780},{"rank":16,"tag":"ALC","name":"VJ > ?","value":1777},{"rank":17,"tag":"YMG","name":"nIs-","value":1702},{"rank":18,"tag":"ALc","name":"Gerry","value":1699},{"rank":19,"tag":"TOv","name":"t 5vaN","value":1669},{"rank":20,"tag":"z0O","name":"z _tj","value":1668},{"rank":21,"tag":"ALc","name":"lhts@tIJozi","value":1657},{"rank":22,"tag":"YMG","name":"GaGa","value":1655},{"rank":23,"tag":"Xbp","name":"> /=+ >","value":1653},{"rank":24,"tag":"Tov","name":"jo) < 6 <","value":1644},{"rank":25,"tag":"BNr","name":"fatboy","value":1642},{"rank":26,"tag":"TOv","name":"i? >hiltjijtl","value":1606},{"rank":27,"tag":"tov","name":"_HSwAMAsAT4RN %","value":1601},{"rank":28,"tag":"TOV","name":"< 33","value":1597},{"rank":29,"tag":"YMG","name":"A (t-J","value":1596},{"rank":30,"tag":"ALc","name":"C - <","value":1590},{"rank":31,"tag":"BNr","name":"SR586n8S","value":1585},{"rank":32,"tag":"TOv","name":"hh / JO)rain","value":1548},{"rank":33,"tag":"TOv","name":"T _ Fsph","value":1534},{"rank":34,"tag":"GDc","name":"SH+o? GDc","value":1533},{"rank":35,"tag":"ALc","name":"tI+ozIla","value":1531},{"rank":36,"tag":"YMG","name":"- /1=","value":1527},{"rank":37,"tag":"","name":"IALCHhE#3065369\" ) Ji","value":1521},{"rank":38,"tag":"ALc","name":"IZ & 3U","value":1512},{"rank":39,"tag":"ALc","name":"ltItta","value":1509},{"rank":40,"tag":"TOv","name":") FWJ","value":1478},{"rank":41,"tag":"TOV","name":"JICK","value":1475},{"rank":42,"tag":"zoo","name":"jizIFhCh","value":1470},{"rank":43,"tag":"ToV","name":"shinon","value":1459},{"rank":44,"tag":"zoo","name":"Uniqlo","value":1452},{"rank":45,"tag":"","name":"EZA;","value":1439},{"rank":46,"tag":"Tov","name":"izavs.75t F","value":1422},{"rank":47,"tag":"ALc","name":"+ECph","value":1419},{"rank":48,"tag":"ALC","name":"o3^@#03","value":1416},{"rank":49,"tag":"Tov","name":"o7o","value":1414},{"rank":50,"tag":"TOV","name":"Bagoos","value":1413},{"rank":51,"tag":"TOV","name":"IKID vaN","value":1408},{"rank":52,"tag":"GDC","name":"S LiZEBe GDc","value":1403},{"rank":53,"tag":"TOV","name":"PHYZ","value":1399},{"rank":54,"tag":"zoo","name":"+ 5 7 E1E","value":1394},{"rank":55,"tag":"BNr","name":"zaku","value":1391},{"rank":56,"tag":"VAN","name":"SEL!9vaN RE;BORN","value":1389},{"rank":57,"tag":"","name":"GOGOl","value":1383},{"rank":58,"tag":"ALC","name":"MIOSKY","value":1373},{"rank":59,"tag":"tovltI","name":"oziot+-","value":1370},{"rank":60,"tag":"ALC","name":"shibuyas","value":1365},{"rank":61,"tag":"Tov","name":"iog. @#0-iQ","value":1362},{"rank":62,"tag":"ALc","name":"YUl@# O Zi","value":1354},{"rank":63,"tag":"ALc","name":"-Uh","value":1351},{"rank":64,"tag":"ALc","name":"bIFs","value":1349},{"rank":65,"tag":"zoo","name":"jia & h","value":1348},{"rank":66,"tag":"TOv","name":"bazU","value":1344},{"rank":67,"tag":"ALc","name":"n hzeo","value":1342},{"rank":68,"tag":"ALc","name":"IZ < 45","value":1341},{"rank":69,"tag":"GDC","name":"MachaGDc","value":1335},{"rank":70,"tag":"Tov","name":"-v\"5 & vaN","value":1331},{"rank":71,"tag":"zoo","name":"lb#xl+rJn","value":1329},{"rank":72,"tag":"GDc","name":"a$5","value":1326},{"rank":73,"tag":"TOv","name":"I+ ,Jkosn+t?t","value":1324},{"rank":74,"tag":"","name":"Govelnor","value":1323},{"rank":75,"tag":"","name":"","value":1321},{"rank":76,"tag":"ALc","name":"","value":1317},{"rank":77,"tag":"YM","name":"Gj@7=x","value":1314},{"rank":78,"tag":"ALc","name":"steeb","value":1310},{"rank":79,"tag":"zoo","name":"s Cpalv","value":1308},{"rank":80,"tag":"Tov","name":"jaE","value":1307},{"rank":81,"tag":"ALC","name":"unidy","value":1305},{"rank":82,"tag":"TOv","name":"TZEB","value":1300},{"rank":83,"tag":"BNr","name":"v!J 7","value":1298},{"rank":84,"tag":"ALC","name":"EE+AJL","value":1297},{"rank":85,"tag":"TOV","name":"< 3U","value":1292},{"rank":86,"tag":"zoo","name":"ju1 38","value":1289},{"rank":87,"tag":"","name":"Mystic Trial","value":0}]}};
+var KINGDOM_HISTORY = {"kingdom":224,"snapshot_count":1,"snapshots":[{"timestamp":"2026-04-17_032517","categories":{"alliance_power":[{"rank":1,"tag":"ALC","name":"AlsoCrab","value":16983496683},{"rank":2,"tag":"Tov","name":"R R 0BAE","value":16018619702},{"rank":3,"tag":"YMG","name":"Ft Eyvstf/zn4  +","value":9420744589},{"rank":4,"tag":"zoojo","name":"hunto<zuizuis-","value":7930778061},{"rank":5,"tag":"GDC","name":"Gardenciel","value":6741503356},{"rank":6,"tag":"BNr","name":"ItKEY","value":5390129109},{"rank":7,"tag":"VAN","name":"TF JL?z7-7","value":3685789636},{"rank":8,"tag":"AUR","name":"Aurora7 505","value":2886569468},{"rank":9,"tag":"Frala","name":"2tnpntlin","value":1046145399},{"rank":10,"tag":"UTF","name":"Rakusan","value":822825252},{"rank":11,"tag":"Hmk","name":"zn-57","value":574555968},{"rank":12,"tag":"Owal","name":"-tly>:ntyo-","value":568721866},{"rank":13,"tag":"ZTS","name":"Zero Trust","value":514968504},{"rank":14,"tag":"aRpll","name":"lOGnbh","value":467678551},{"rank":15,"tag":"JTF","name":"> 15","value":427041902},{"rank":16,"tag":"","name":"","value":413962014},{"rank":17,"tag":"svG","name":"E#E","value":371725545},{"rank":18,"tag":"PKM","name":"EhSyF","value":360792962},{"rank":19,"tag":"qQs","name":"$ &","value":293063777},{"rank":20,"tag":"pWm","name":"lA","value":290444884},{"rank":21,"tag":"mmm","name":"vh=<","value":238378327},{"rank":22,"tag":"zoo","name":"tJiL=xERi","value":236496741},{"rank":23,"tag":"","name":"","value":233588793},{"rank":24,"tag":"","name":"","value":225162234},{"rank":25,"tag":"STs","name":"FO Eftt2","value":206593684},{"rank":26,"tag":"xrD","name":"1-FJLAyh","value":206410758},{"rank":27,"tag":"hee","name":"fq","value":194876831},{"rank":28,"tag":"bnrlt","name":"KEYEIo) #Y1","value":183874740},{"rank":29,"tag":"FNG","name":"F","value":181855798},{"rank":30,"tag":"Svd","name":"h =vt_","value":163869881},{"rank":31,"tag":"xwD","name":"at-bOK","value":131920193},{"rank":32,"tag":"","name":"","value":117358948},{"rank":33,"tag":"xyz","name":"xyz","value":111381750},{"rank":34,"tag":"nCm","name":"imbltsli","value":110554958},{"rank":35,"tag":"ALL","name":"ET##RL","value":96657797},{"rank":36,"tag":"auglt","name":"+i","value":59344866},{"rank":37,"tag":"BbNJ","name":"tar;3/J7 F9re","value":42183527},{"rank":38,"tag":"cgz","name":"FLAIR","value":41259719},{"rank":39,"tag":"","name":"AEARAA","value":40390918},{"rank":40,"tag":"nwc","name":"F ->","value":35251787},{"rank":41,"tag":"Nyu","name":"FREEDRIVE","value":17675937},{"rank":42,"tag":"Rm","name":"Tlt #t$","value":16760880},{"rank":43,"tag":"RLS","name":"RedLaelaps","value":16119585},{"rank":44,"tag":"QYc","name":"38n 323","value":13145307},{"rank":45,"tag":"","name":"","value":12706989},{"rank":46,"tag":"","name":"","value":11214351},{"rank":47,"tag":"","name":"","value":9325192},{"rank":48,"tag":"","name":"","value":8134656},{"rank":49,"tag":"UZO","name":"Kraken","value":7383562},{"rank":50,"tag":"UMR","name":"5 &+ 3","value":6596346}],"alliance_kills":[{"rank":1,"tag":"ALC","name":"AlsoCrab","value":1367048796},{"rank":2,"tag":"Tov","name":"R R 0BAE","value":1209441772},{"rank":3,"tag":"zoojo","name":"hunkolaiuizlis-","value":311673437},{"rank":4,"tag":"YMG","name":"TTEyvsttEJtv=","value":267890120},{"rank":5,"tag":"GDC","name":"Gardenciel","value":135346411},{"rank":6,"tag":"BNr","name":"ItKEY","value":130305958},{"rank":7,"tag":"VAN","name":"TF JL?z7-7","value":116208468},{"rank":8,"tag":"AUR","name":"Aurora7 505","value":24849669},{"rank":9,"tag":"Xbp","name":"s ?v'nlt","value":14681094},{"rank":10,"tag":"Frqla","name":"2tnpntuih","value":2985138},{"rank":11,"tag":"Hmk","name":"zn-5t?","value":2153588},{"rank":12,"tag":"UTF","name":"Rakusan","value":2034549},{"rank":13,"tag":"JTFV","name":"> 15","value":2032039},{"rank":14,"tag":"aRpll","name":"luGnbh","value":1831970},{"rank":15,"tag":"FNG","name":"F","value":1700108},{"rank":16,"tag":"Owal","name":"-TLy>","value":1691141},{"rank":17,"tag":"zoo","name":"JhiL #KERi","value":1591867},{"rank":18,"tag":"ZTS","name":"ZeroTrust","value":1263710},{"rank":19,"tag":"Svd","name":"h=vt_","value":961322},{"rank":20,"tag":"svG","name":"A#@","value":751426},{"rank":21,"tag":"xmx","name":"#vbm?< n","value":665400},{"rank":22,"tag":"tov","name":"Khfquiolfld","value":652913},{"rank":23,"tag":"xWD","name":"a# ~b0K","value":493657},{"rank":24,"tag":"CZm","name":"KINGSHOTCLUB","value":393359},{"rank":25,"tag":"PNf","name":"StatueofLibert","value":388831},{"rank":26,"tag":"mmm","name":"v4=h","value":385439},{"rank":27,"tag":"pWm","name":"mlA","value":361492},{"rank":28,"tag":"bnr","name":"VKEYEKO) #RYEI","value":296824},{"rank":29,"tag":"xrD","name":"A-FJLAyk","value":289734},{"rank":30,"tag":"Nyu","name":"FREEDRIVE","value":231312},{"rank":31,"tag":"STS","name":"R0 Effltbz","value":219685},{"rank":32,"tag":"sAd","name":"Mrmichtada","value":169216},{"rank":33,"tag":"ALL","name":"ET##RL","value":163743},{"rank":34,"tag":"hee","name":"fq","value":137181},{"rank":35,"tag":"uky","name":"E9T45","value":128731},{"rank":36,"tag":"RLS","name":"RedLaelaps","value":117079},{"rank":37,"tag":"nCmli","name":"nbtli","value":102558},{"rank":38,"tag":"auglt","name":"i","value":99788},{"rank":39,"tag":"Dmc","name":"zornouou","value":72034},{"rank":40,"tag":"Gtu","name":"ouou","value":56660},{"rank":41,"tag":"xua","name":"Za65+dJP","value":29197},{"rank":42,"tag":"vHE","name":"? IiHILH","value":25729},{"rank":43,"tag":"tpm","name":"+7>3v +","value":18758},{"rank":44,"tag":"nwc","name":"F- >","value":17828},{"rank":45,"tag":"","name":"Alliance Kills","value":0}],"personal_power":[{"rank":1,"tag":"ALc","name":"Guita ALc@ 7 7&;","value":511953020},{"rank":2,"tag":"TOv","name":"C mhlis","value":500074685},{"rank":3,"tag":"ALC","name":"AC LazyCat","value":453586627},{"rank":4,"tag":"ALC","name":"V > J","value":387833240},{"rank":5,"tag":"zoo","name":"5 >AF","value":385079981},{"rank":6,"tag":"ALclh","name":"t b@fItoxh","value":379912326},{"rank":7,"tag":"ALc","name":"Korn0512","value":372279285},{"rank":8,"tag":"ALc","name":"Gerry","value":363129938},{"rank":9,"tag":"YMG","name":"sphSphx","value":360662674},{"rank":10,"tag":"TOV","name":"KID vaN","value":353831973},{"rank":11,"tag":"TOv","name":"s C #hvaN","value":342199279},{"rank":12,"tag":"TOv","name":"--ozo@","value":340565228},{"rank":13,"tag":"GDc","name":"MASAGDc","value":338135316},{"rank":14,"tag":"ALC","name":"Beroncho","value":331789405},{"rank":15,"tag":"","name":"","value":329065460},{"rank":16,"tag":"","name":"","value":325269438},{"rank":17,"tag":"Tov","name":"T = #sph","value":323641782},{"rank":18,"tag":"tov","name":"t F","value":319816717},{"rank":19,"tag":"TOv","name":"hh / JO)rain","value":316641698},{"rank":20,"tag":"ALc","name":"riran777","value":314523719},{"rank":21,"tag":"ALc","name":"li@tItoz","value":314480389},{"rank":22,"tag":"ALclh","name":"T-# 6@ 0 56h7 ) A","value":310180816},{"rank":23,"tag":"YMG","name":"a >VJ <","value":308839888},{"rank":24,"tag":"TOv","name":"o) < 6 <","value":308663966},{"rank":25,"tag":"ALc","name":"tI+ozIla","value":306549822},{"rank":26,"tag":"zoo","name":"Uniqlo","value":304220758},{"rank":27,"tag":"","name":"sphnyJ>-","value":303825509},{"rank":28,"tag":"YMG","name":"bIs7","value":300346667},{"rank":29,"tag":"GDc","name":"SH+o? GDc","value":297517567},{"rank":30,"tag":"ALc","name":"C  <","value":297014459},{"rank":31,"tag":"TOvja","name":"E","value":296101216},{"rank":32,"tag":"","name":"","value":293739846},{"rank":33,"tag":"Tov","name":"ozo","value":291706006},{"rank":34,"tag":"TOv","name":"U ml@LA","value":289414548},{"rank":35,"tag":"ALC","name":"A> 7","value":288119314},{"rank":36,"tag":"","name":"vaN","value":285354916},{"rank":37,"tag":"ALC","name":"EE+AJL","value":284687044},{"rank":38,"tag":"TOV","name":"< 33","value":284651576},{"rank":39,"tag":"","name":"","value":283860487},{"rank":40,"tag":"","name":"","value":283737098},{"rank":41,"tag":"20O","name":"z _tfj","value":283620683},{"rank":42,"tag":"Tov","name":"4(r@u+E","value":282684050},{"rank":43,"tag":"ALc","name":"coffee","value":281505886},{"rank":44,"tag":"GDc","name":"a$5","value":277930407},{"rank":45,"tag":"zoo","name":"s Cald","value":277616523},{"rank":46,"tag":"VAN","name":"kids vaN","value":277590458},{"rank":47,"tag":"BNr","name":"cocoa","value":276611334},{"rank":48,"tag":"zooji","name":"zIFhlh","value":276304639},{"rank":49,"tag":"zoo","name":"+ 5 / EAE","value":274886782},{"rank":50,"tag":"ALc","name":"tItta","value":273042875}],"kill_count":[{"rank":1,"tag":"ALc","name":"Guita ALc@ 7 7&;","value":122180797},{"rank":2,"tag":"ALC","name":"Beroncho","value":95446488},{"rank":3,"tag":"TOv","name":"C mhlis","value":94931881},{"rank":4,"tag":"Tov","name":"z74r@\"+E","value":87844628},{"rank":5,"tag":"Tov","name":"t SvaN","value":83203384},{"rank":6,"tag":"ALC","name":"AC LazyCat","value":67936274},{"rank":7,"tag":"ALC","name":"5 #ho4hottai","value":58498760},{"rank":8,"tag":"ALc","name":"lu@tItoz","value":57584493},{"rank":9,"tag":"ALc","name":"tItta","value":53638421},{"rank":10,"tag":"TOv","name":"h / JO)rain","value":53152875},{"rank":11,"tag":"TOV","name":"< 33","value":50868550},{"rank":12,"tag":"TOv","name":"s C #hvaN","value":44965021},{"rank":13,"tag":"zoo","name":"5 > ANF","value":44572577},{"rank":14,"tag":"ALC","name":"V > J","value":43611112},{"rank":15,"tag":"","name":"DaNna","value":42839925},{"rank":16,"tag":"TOV","name":"hi25 + vaN","value":42579466},{"rank":17,"tag":"TOv","name":"--ozo@","value":39990811},{"rank":18,"tag":"TOv","name":"U mhl@LA","value":38967143},{"rank":19,"tag":"ALc","name":"o3^@402","value":38561925},{"rank":20,"tag":"ALC","name":"ER+AJL","value":38278984},{"rank":21,"tag":"","name":"Jtyta","value":37073516},{"rank":22,"tag":"ALc","name":"Korn0512","value":36811179},{"rank":23,"tag":"ALc","name":"tItozIla","value":35981491},{"rank":24,"tag":"ALC","name":"Juhi","value":35816839},{"rank":25,"tag":"Tov","name":"T =Fsph","value":32481910},{"rank":26,"tag":"ALclh","name":"ts@tI+ozh","value":31634856},{"rank":27,"tag":"","name":"sphnyny-","value":31113217},{"rank":28,"tag":"tov","name":"t +w","value":30771852},{"rank":29,"tag":"VAN","name":"GEL EvaN RE;BORN","value":30266682},{"rank":30,"tag":"ALCIA","name":"6430653676 ) Ji","value":30158900},{"rank":31,"tag":"YMG","name":") - /1=","value":28970899},{"rank":32,"tag":"TOvJ","name":"ICK","value":28476649},{"rank":33,"tag":"tovltI","name":"oziot+-","value":28393042},{"rank":34,"tag":"","name":"","value":26982732},{"rank":35,"tag":"ALC","name":"/>","value":26857134},{"rank":36,"tag":"ALc","name":"IZ & 3U","value":26633996},{"rank":37,"tag":"","name":"","value":25725144},{"rank":38,"tag":"ALc","name":"Jirou","value":25617382},{"rank":39,"tag":"","name":"","value":25240101},{"rank":40,"tag":"YMG","name":"sphSphs","value":25123472},{"rank":41,"tag":"TOV","name":"AceKing21","value":24935900},{"rank":42,"tag":"ALC","name":"MuRo Takenoko","value":24707029},{"rank":43,"tag":"BNr","name":"SRS8k85","value":24572734},{"rank":44,"tag":"TOV","name":"KID vaN","value":24554190},{"rank":45,"tag":"zoo","name":"tJJDw )","value":24530489},{"rank":46,"tag":"TOv","name":"-v\"5 & vaN","value":24400765},{"rank":47,"tag":"ALc","name":"a hSph","value":24379292},{"rank":48,"tag":"ALc","name":"Gerry","value":24034997},{"rank":49,"tag":"BNr","name":"- JTLxiaxfangin","value":23821824},{"rank":50,"tag":"ALc","name":"+ECph","value":23575827}],"hero_power":[{"rank":1,"tag":"ALC","name":"AF %","value":14696046},{"rank":2,"tag":"ALC","name":"Guita ALc@ ' T&","value":13271666},{"rank":3,"tag":"ALC","name":"Beroncho","value":12738309},{"rank":4,"tag":"","name":"DaNna","value":11197805},{"rank":5,"tag":"Tov","name":"C mhl@LA","value":10631414},{"rank":6,"tag":"TOv","name":"C phlis","value":10058319},{"rank":7,"tag":"ALC","name":"AC LazyCat","value":9155635},{"rank":8,"tag":"TOV","name":"s C # hvaN","value":8874122},{"rank":9,"tag":"ALc","name":"lui@tItox","value":8347102},{"rank":10,"tag":"ALC","name":"V > J","value":8132632},{"rank":11,"tag":"ALC","name":"5 #ho4h@zti","value":8047106},{"rank":12,"tag":"TOV","name":"hi35 + vaN","value":7697592},{"rank":13,"tag":"YMG","name":"a >VJ <","value":7169156},{"rank":14,"tag":"zoo","name":"5\" > AF","value":7064265},{"rank":15,"tag":"Tov","name":"7(r@u+E","value":6871955},{"rank":16,"tag":"YMG","name":"sphsphx","value":6775464},{"rank":17,"tag":"Tov","name":"t: SvaN","value":6647914},{"rank":18,"tag":"Xbp","name":"> /1=+ >","value":6160122},{"rank":19,"tag":"GDc","name":"MASAGDc","value":6117740},{"rank":20,"tag":"zoolb","name":"_ #Ch@tEuta","value":6042440},{"rank":21,"tag":"ALc","name":"t-ItozIla","value":5986757},{"rank":22,"tag":"Tov","name":"5 ##th","value":5736813},{"rank":23,"tag":"TOV","name":"o) < 6 <","value":5679059},{"rank":24,"tag":"Tov","name":"t kw","value":5653464},{"rank":25,"tag":"ALclh","name":"ts@tI+ozh","value":5651509},{"rank":26,"tag":"GDc","name":"SH+o? GDc","value":5522695},{"rank":27,"tag":"Tov","name":"T _ Fsph","value":5439067},{"rank":28,"tag":"ALc","name":"tItt&","value":5438114},{"rank":29,"tag":"ALc","name":"C = <","value":5427094},{"rank":30,"tag":"ALC","name":"Hh6#3@853h9T , J","value":5336182},{"rank":31,"tag":"20O","name":"z _tj","value":5251269},{"rank":32,"tag":"Tovi","name":"? >miltjujil","value":5186045},{"rank":33,"tag":"ALc","name":"Gerry","value":5028838},{"rank":34,"tag":"","name":"SphnyJ>-","value":4894485},{"rank":35,"tag":"YMG","name":"GaGa","value":4885645},{"rank":36,"tag":"YMG","name":"- /1=","value":4877085},{"rank":37,"tag":"VAN","name":"Lute","value":4842151},{"rank":38,"tag":"BNr","name":"Rhinoceros","value":4803342},{"rank":39,"tag":"TOV","name":"< 33","value":4780052},{"rank":40,"tag":"ALc","name":"+ECph","value":4739935},{"rank":41,"tag":"TOV","name":"KID vaN","value":4696614},{"rank":42,"tag":"YMG","name":"nIt W","value":4696190},{"rank":43,"tag":"TOvJ","name":"ICK","value":4655695},{"rank":44,"tag":"ALc","name":"iIs5","value":4627394},{"rank":45,"tag":"TOv","name":"o7o","value":4575669},{"rank":46,"tag":"zoolb","name":"&xljrJn","value":4541787},{"rank":47,"tag":"zoo","name":"Uniqlo","value":4529006},{"rank":48,"tag":"TOv","name":"< ?U","value":4511603},{"rank":49,"tag":"","name":"J+yta","value":4454752},{"rank":50,"tag":"ALC","name":"C p &l Ixx","value":4417982}],"heros_total_power":[{"rank":1,"tag":"TOv","name":"U phlis","value":69637559},{"rank":2,"tag":"ALc","name":"Guita ALc@ 'J T%","value":65716107},{"rank":3,"tag":"ALC","name":"Beroncho","value":62572644},{"rank":4,"tag":"ALC","name":"AC LazyCat","value":56515610},{"rank":5,"tag":"TOv","name":"U mhl@LA","value":54598320},{"rank":6,"tag":"GDc","name":"MASAGDc","value":53330599},{"rank":7,"tag":"TOV","name":"s C # hvaN","value":51416936},{"rank":8,"tag":"YMG","name":"a >WJ <","value":48546160},{"rank":9,"tag":"tov","name":"+ kw","value":48065819},{"rank":10,"tag":"ALC","name":"VJ > J","value":47905780},{"rank":11,"tag":"200jo","name":"924","value":45170887},{"rank":12,"tag":"ALc","name":"5 #nioah@#z","value":44645724},{"rank":13,"tag":"MALc","name":"li@TItoz","value":44513534},{"rank":14,"tag":"GDc","name":"SH+o? GDc","value":43638613},{"rank":15,"tag":"TOv","name":"5 #a4h","value":42800610},{"rank":16,"tag":"YMG","name":"bIttw","value":42670736},{"rank":17,"tag":"AL","name":"ClhT s@TIJoxm","value":42273673},{"rank":18,"tag":"BNr","name":"fatboy","value":42162695},{"rank":19,"tag":"TOv","name":"--ozo@","value":41914686},{"rank":20,"tag":"TOvi","name":"? >hiltjwjtl","value":40978426},{"rank":21,"tag":"ALc","name":"Korn0512","value":40562138},{"rank":22,"tag":"YMG","name":"A (#-J","value":39823877},{"rank":23,"tag":"TOV","name":"hi 25 & vaN","value":39636339},{"rank":24,"tag":"Xbp","name":"> /1=+>","value":39567214},{"rank":25,"tag":"","name":"sphnyJy-","value":39399912},{"rank":26,"tag":"zoO","name":"z -tpj","value":38702942},{"rank":27,"tag":"YMG","name":"GaGa","value":38576424},{"rank":28,"tag":"TOv","name":"o) < & <","value":38547624},{"rank":29,"tag":"tovie","name":"_MRMAM4951N#","value":38443757},{"rank":30,"tag":"ALC","name":"Gerry","value":37394075},{"rank":31,"tag":"TOv","name":"h / JOrain","value":37374294},{"rank":32,"tag":"Tov","name":"T _Fsph","value":37285963},{"rank":33,"tag":"Tov","name":"t; 5vaN","value":36797748},{"rank":34,"tag":"ALc","name":"C _ <","value":36649179},{"rank":35,"tag":"TOV","name":"HAKU","value":36245465},{"rank":36,"tag":"ALC","name":"riran777","value":36085675},{"rank":37,"tag":"ALc","name":"steeb","value":35758716},{"rank":38,"tag":"BNr","name":"zaku","value":35745520},{"rank":39,"tag":"TOv","name":"TZEB","value":35721417},{"rank":40,"tag":"ALc","name":"IZ & 3U8","value":35437424},{"rank":41,"tag":"BNr","name":"SR58k85","value":35263152},{"rank":42,"tag":"ALc","name":"MuRo Takenoko","value":34966497},{"rank":43,"tag":"ALc","name":"tItta","value":34758037},{"rank":44,"tag":"","name":"","value":34734243},{"rank":45,"tag":"ALc","name":"IZ < #5","value":34708404},{"rank":46,"tag":"zooln","name":"z # lh@tIuija","value":34680008},{"rank":47,"tag":"ALc","name":"tI+ozIA","value":34643340},{"rank":48,"tag":"zoo","name":"+ 5 / EHB","value":34564740},{"rank":49,"tag":"TOv","name":"< 33","value":34283307},{"rank":50,"tag":"GDc","name":"+65","value":34036867}],"total_pet_power":[{"rank":1,"tag":"ALc","name":"Guita ALc@ 7 7&;","value":21271920},{"rank":2,"tag":"ALC","name":"AC LazyCat","value":20876760},{"rank":3,"tag":"","name":"8 : IJ","value":19841040},{"rank":4,"tag":"TOV","name":"U mhlis","value":19722960},{"rank":5,"tag":"TOv","name":"s C #hvaN","value":19589640},{"rank":6,"tag":"TOv","name":"U mhl@Ln","value":18063960},{"rank":7,"tag":"GDc","name":"MASAGDc","value":17919960},{"rank":8,"tag":"ALC","name":"VJ > 7","value":17887680},{"rank":9,"tag":"","name":"sphnyoy-","value":17715120},{"rank":10,"tag":"tov","name":"+ F","value":17617920},{"rank":11,"tag":"ToV","name":"shinon","value":17599440},{"rank":12,"tag":"zoo","name":"z >A=","value":17451840},{"rank":13,"tag":"GDC","name":"SH+O? GDc","value":17262600},{"rank":14,"tag":"ALc","name":"Gerry","value":17087640},{"rank":15,"tag":"Tov","name":"z74r@\"+E","value":16994760},{"rank":16,"tag":"YMG","name":"sphsphx","value":16987680},{"rank":17,"tag":"TOv","name":"o) < & <","value":16926240},{"rank":18,"tag":"ALc","name":"Korn0512","value":16875600},{"rank":19,"tag":"BNr","name":"SR580n8s","value":16758960},{"rank":20,"tag":"TOv","name":"5 ##th","value":16708920},{"rank":21,"tag":"Tov","name":"zvt.75t","value":16436160},{"rank":22,"tag":"YMG","name":"GaGa","value":16400760},{"rank":23,"tag":"TOv","name":"-vozo@","value":16348080},{"rank":24,"tag":"ALC","name":"AR*3@853h27 ) Ji","value":16321920},{"rank":25,"tag":"ALc","name":"IZ & ?U","value":16314000},{"rank":26,"tag":"Tov","name":"h>+-+","value":16305360},{"rank":27,"tag":"YMG","name":"a >IJ <","value":16253040},{"rank":28,"tag":"TOv","name":"h / JO)rain","value":16232160},{"rank":29,"tag":"zoo","name":"<Jl?Jl","value":16222680},{"rank":30,"tag":"zoo","name":"Kirindo","value":16182720},{"rank":31,"tag":"YMG","name":"s9 4","value":16060200},{"rank":32,"tag":"2o0jo","name":"924","value":16050960},{"rank":33,"tag":"GDC","name":"GGGGDc","value":16029120},{"rank":34,"tag":"TOv","name":"t 5vaN","value":16020240},{"rank":35,"tag":"ALc","name":"+ECph","value":16009560},{"rank":36,"tag":"ALc","name":"coffee","value":16004040},{"rank":37,"tag":"ALc","name":"lui@tItoz","value":16003680},{"rank":38,"tag":"ALC","name":"MuRoTakenoko","value":16003200},{"rank":39,"tag":"BNr","name":"- JiTLtiantin","value":15999120},{"rank":40,"tag":"YMG","name":"l (#-J","value":15961920},{"rank":41,"tag":"zoo","name":"s Cpalst","value":15941280},{"rank":42,"tag":"Tovja","name":"E","value":15907200},{"rank":43,"tag":"ALc","name":"~","value":15906360},{"rank":44,"tag":"zoo","name":"3h < WhereDoWeGo?","value":15904920},{"rank":45,"tag":"ALc","name":"C - <","value":15888360},{"rank":46,"tag":"LTov","name":"T =Fsph","value":15884040},{"rank":47,"tag":"zoo","name":"Tsukajack","value":15848640},{"rank":48,"tag":"GDC","name":"MachaGDc","value":15848400},{"rank":49,"tag":"ALc","name":"tItta","value":15837120},{"rank":50,"tag":"ALc","name":"5wly","value":15822960}],"mystic_trial":[{"rank":1,"tag":"ALC","name":"AF %","value":6846},{"rank":2,"tag":"ALc","name":"Guita ALc@ 7 7&;","value":2410},{"rank":3,"tag":"TOv","name":"C mhlis","value":2315},{"rank":4,"tag":"ALC","name":"Beroncho","value":2284},{"rank":5,"tag":"ALC","name":"AC LazyCat","value":2257},{"rank":6,"tag":"TOV","name":"ss C #hvaN","value":2044},{"rank":7,"tag":"zoo","name":"5 >AF","value":1977},{"rank":8,"tag":"TOv","name":"U mhl@LA","value":1966},{"rank":9,"tag":"YMG","name":"sphSphs","value":1939},{"rank":10,"tag":"ALC","name":"3#bb&h@#ta","value":1905},{"rank":11,"tag":"GDc","name":"MASAGDc","value":1891},{"rank":12,"tag":"Tov","name":"/ (r@u+\u20ac","value":1860},{"rank":13,"tag":"ALc","name":"lui@tItox","value":1831},{"rank":14,"tag":"ALc","name":"Korn0512","value":1805},{"rank":15,"tag":"YMG","name":"a >VJ <","value":1780},{"rank":16,"tag":"ALC","name":"VJ > ?","value":1777},{"rank":17,"tag":"YMG","name":"nIs-","value":1702},{"rank":18,"tag":"ALc","name":"Gerry","value":1699},{"rank":19,"tag":"TOv","name":"t 5vaN","value":1669},{"rank":20,"tag":"z0O","name":"z _tj","value":1668},{"rank":21,"tag":"ALclh","name":"ts@tIJozi","value":1657},{"rank":22,"tag":"YMG","name":"GaGa","value":1655},{"rank":23,"tag":"Xbp","name":"> /=+ >","value":1653},{"rank":24,"tag":"Tovjo","name":") < 6 <","value":1644},{"rank":25,"tag":"BNr","name":"fatboy","value":1642},{"rank":26,"tag":"TOvi","name":"? >hiltjijtl","value":1606},{"rank":27,"tag":"tov","name":"_HSwAMAsAT4RN %","value":1601},{"rank":28,"tag":"TOV","name":"< 33","value":1597},{"rank":29,"tag":"YMG","name":"A (t-J","value":1596},{"rank":30,"tag":"ALc","name":"C - <","value":1590},{"rank":31,"tag":"BNr","name":"SR586n8S","value":1585},{"rank":32,"tag":"TOv","name":"hh / JO)rain","value":1548},{"rank":33,"tag":"TOv","name":"T _ Fsph","value":1534},{"rank":34,"tag":"GDc","name":"SH+o? GDc","value":1533},{"rank":35,"tag":"ALc","name":"tI+ozIla","value":1531},{"rank":36,"tag":"YMG","name":"- /1=","value":1527},{"rank":37,"tag":"","name":"IALCHhE#3065369\" ) Ji","value":1521},{"rank":38,"tag":"ALc","name":"IZ & 3U","value":1512},{"rank":39,"tag":"ALclt","name":"Itta","value":1509},{"rank":40,"tag":"TOv","name":") FWJ","value":1478},{"rank":41,"tag":"TOVJ","name":"ICK","value":1475},{"rank":42,"tag":"zooji","name":"zIFhCh","value":1470},{"rank":43,"tag":"ToV","name":"shinon","value":1459},{"rank":44,"tag":"zoo","name":"Uniqlo","value":1452},{"rank":45,"tag":"","name":"EZA;","value":1439},{"rank":46,"tag":"Toviz","name":"avs.75t F","value":1422},{"rank":47,"tag":"ALc","name":"+ECph","value":1419},{"rank":48,"tag":"ALC","name":"o3^@#03","value":1416},{"rank":49,"tag":"Tov","name":"o7o","value":1414},{"rank":50,"tag":"TOV","name":"Bagoos","value":1413}]}}]};
+
+
+
+
+
+(function() {
+  var ALLIANCE_CATS = [
+    {key: 'alliance_power', label: 'Alliance Power', col: 'Power'},
+    {key: 'alliance_kills', label: 'Alliance Kills', col: 'Kills'}
+  ];
+  var PLAYER_CATS = [
+    {key: 'personal_power', label: 'Personal Power', col: 'Power'},
+    {key: 'kill_count', label: 'Kill Count', col: 'Kills'},
+    {key: 'hero_power', label: 'Hero Power', col: 'Power'},
+    {key: 'heros_total_power', label: "Hero's Total Power", col: 'Power'},
+    {key: 'total_pet_power', label: 'Total Pet Power', col: 'Power'}
+  ];
+  var EVENT_CATS = [
+    {key: 'mystic_trial', label: 'Mystic Trial', col: 'Score'}
+  ];
+
+  var data = null;
+
+  function formatValue(v) {
+    if (v >= 1e9) return (v / 1e9).toFixed(2) + 'B';
+    if (v >= 1e6) return (v / 1e6).toFixed(1) + 'M';
+    if (v >= 1e3) return (v / 1e3).toFixed(0) + 'K';
+    return v.toLocaleString();
+  }
+
+  function renderTable(tbodyId, entries, colLabel, searchFilter) {
+    var tbody = document.getElementById(tbodyId);
+    tbody.innerHTML = '';
+    var maxVal = entries.length > 0 ? entries[0].value : 1;
+
+    entries.forEach(function(e) {
+      if (searchFilter) {
+        var q = searchFilter.toLowerCase();
+        var full = (e.tag ? '[' + e.tag + ']' : '') + e.name;
+        if (full.toLowerCase().indexOf(q) === -1) return;
+      }
+      if (!e.name && e.value === 0) return;
+
+      var tr = document.createElement('tr');
+      var rankClass = e.rank <= 3 ? ' k-rank-' + e.rank : '';
+      var nameHtml = e.name
+        ? (e.tag ? '<span class="k-tag">[' + e.tag + ']</span>' : '') + '<span class="k-name">' + e.name + '</span>'
+        : '<span class="k-unnamed">Unknown</span>';
+      var pct = maxVal > 0 ? (e.value / maxVal * 100).toFixed(1) : 0;
+
+      tr.innerHTML =
+        '<td class="k-rank' + rankClass + '">' + e.rank + '</td>' +
+        '<td>' + nameHtml + '</td>' +
+        '<td class="k-power">' + e.value.toLocaleString() + '</td>' +
+        '<td><div class="k-bar"><div class="k-bar-fill" style="width:' + pct + '%"></div></div></td>';
+      tbody.appendChild(tr);
+    });
+  }
+
+  function setupTabs(containerId, cats, tbodyId, searchId) {
+    var container = document.getElementById(containerId);
+    var searchInput = document.getElementById(searchId);
+    var activeKey = cats[0].key;
+
+    cats.forEach(function(cat) {
+      var btn = document.createElement('button');
+      btn.className = 'k-tab' + (cat.key === activeKey ? ' active' : '');
+      btn.textContent = cat.label;
+      btn.dataset.key = cat.key;
+      btn.addEventListener('click', function() {
+        activeKey = cat.key;
+        container.querySelectorAll('.k-tab').forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+        renderTable(tbodyId, data.categories[activeKey] || [], cat.col, searchInput.value);
+      });
+      container.appendChild(btn);
+    });
+
+    searchInput.addEventListener('input', function() {
+      renderTable(tbodyId, data.categories[activeKey] || [], '', searchInput.value);
+    });
+  }
+
+  // Data is embedded below (KINGDOM_DATA variable)
+  data = KINGDOM_DATA;
+
+  // Update footnote
+  document.getElementById('stat-updated').textContent = 'Last updated ' + data.last_updated;
+
+  // Setup tabs and render defaults
+  // Split alliances into active and inactive based on power threshold
+  // Active = power >= 1% of top alliance, OR top 30 alliances (whichever captures more)
+  // Long-term this should use timeline diff; for now use power threshold
+  function splitActiveInactive(entries) {
+    if (!entries || entries.length === 0) return {active: [], inactive: []};
+    var topPower = entries[0].value;
+    var threshold = Math.max(topPower * 0.01, 50000000); // 1% of top, min 50M
+    var active = [], inactive = [];
+    entries.forEach(function(e) {
+      if (e.value >= threshold) active.push(e);
+      else inactive.push(e);
+    });
+    // Always show at least 10 active even if all small
+    if (active.length < 10 && inactive.length > 0) {
+      var promote = inactive.splice(0, 10 - active.length);
+      active = active.concat(promote);
+    }
+    return {active: active, inactive: inactive};
+  }
+
+  // Override alliance tabs behavior to use active/inactive split
+  function setupAllianceTabs() {
+    var container = document.getElementById('alliance-tabs');
+    var searchInput = document.getElementById('alliance-search');
+    var activeKey = ALLIANCE_CATS[0].key;
+
+    function render(filter) {
+      var entries = data.categories[activeKey] || [];
+      var split = splitActiveInactive(entries);
+      renderTable('alliance-tbody', split.active, '', filter || '');
+      renderTable('alliance-inactive-tbody', split.inactive, '', filter || '');
+
+      // Show/hide inactive section
+      var wrap = document.getElementById('alliance-inactive-wrap');
+      var label = document.getElementById('alliance-inactive-label');
+      if (split.inactive.length > 0) {
+        wrap.style.display = 'block';
+        label.textContent = 'Inactive alliances (' + split.inactive.length + ')';
+      } else {
+        wrap.style.display = 'none';
+      }
+    }
+
+    ALLIANCE_CATS.forEach(function(cat) {
+      var btn = document.createElement('button');
+      btn.className = 'k-tab' + (cat.key === activeKey ? ' active' : '');
+      btn.textContent = cat.label;
+      btn.dataset.key = cat.key;
+      btn.addEventListener('click', function() {
+        activeKey = cat.key;
+        container.querySelectorAll('.k-tab').forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+        render(searchInput.value);
+      });
+      container.appendChild(btn);
+    });
+
+    searchInput.addEventListener('input', function() {
+      render(searchInput.value);
+    });
+
+    // Inactive toggle
+    var toggle = document.getElementById('alliance-inactive-toggle');
+    var content = document.getElementById('alliance-inactive-content');
+    toggle.addEventListener('click', function() {
+      toggle.classList.toggle('expanded');
+      content.classList.toggle('expanded');
+    });
+
+    render('');
+  }
+
+  // Top-level page tab switching (Alliance / Player / Event)
+  function setupPageTabs() {
+    var tabs = document.querySelectorAll('.k-pagetab');
+    var panels = document.querySelectorAll('.k-panel');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = tab.dataset.panel;
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+        // Scroll to top of panels so user sees the content
+        window.scrollTo({top: document.querySelector('.k-pagetabs').offsetTop - 20, behavior: 'smooth'});
+      });
+    });
+  }
+
+  setupPageTabs();
+  setupAllianceTabs();
+  setupTabs('player-tabs', PLAYER_CATS, 'player-tbody', 'player-search');
+  setupTabs('event-tabs', EVENT_CATS, 'event-tbody', 'event-search');
+
+  // Render initial data
+  // Alliance rendering handled by setupAllianceTabs
+  renderTable('player-tbody', data.categories.personal_power || [], 'Power', '');
+  renderTable('event-tbody', data.categories.mystic_trial || [], 'Score', '');
+
+  // ============================================================
+  // TIMELINE / TRENDS
+  // ============================================================
+  // History data injected as KINGDOM_HISTORY (may be undefined or empty)
+  var history = (typeof KINGDOM_HISTORY !== 'undefined') ? KINGDOM_HISTORY : null;
+
+  // Identity key for an entity: tag + name (case-insensitive). Used to match
+  // the same alliance/player across snapshots even if rank changed.
+  function entityKey(e) {
+    return ((e.tag || '') + '|' + (e.name || '')).toLowerCase();
+  }
+  function entityLabel(e) {
+    return (e.tag ? '[' + e.tag + ']' : '') + e.name;
+  }
+
+  // Build series for each entity in a category across all snapshots.
+  // Returns: { entities: [{key, tag, name, points: [{ts, rank, value}, ...]}], timestamps: [...] }
+  function buildSeries(catKey) {
+    if (!history || !history.snapshots || history.snapshots.length === 0) return null;
+    var byEntity = {};
+    var timestamps = [];
+    history.snapshots.forEach(function(snap) {
+      timestamps.push(snap.timestamp);
+      var entries = (snap.categories && snap.categories[catKey]) || [];
+      entries.forEach(function(e) {
+        var k = entityKey(e);
+        if (!byEntity[k]) {
+          byEntity[k] = {key: k, tag: e.tag, name: e.name, points: []};
+        }
+        byEntity[k].points.push({ts: snap.timestamp, rank: e.rank, value: e.value});
+      });
+    });
+    return {
+      entities: Object.values(byEntity),
+      timestamps: timestamps,
+    };
+  }
+
+  // Format timestamp "2026-04-16_175423" -> "Apr 16"
+  function formatTs(ts) {
+    var d = ts.substring(0, 10); // YYYY-MM-DD
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var m = parseInt(d.substring(5, 7), 10) - 1;
+    var day = parseInt(d.substring(8, 10), 10);
+    var hh = ts.substring(11, 13);
+    return months[m] + ' ' + day + ' ' + hh + ':00';
+  }
+
+  // Color palette (gold variations + complementary tones for many lines)
+  var PALETTE = [
+    '#d4af37', '#e6b8d4', '#7dd3fc', '#86efac', '#fda4af',
+    '#fbbf24', '#a78bfa', '#34d399', '#fb923c', '#f472b6',
+    '#60a5fa', '#facc15', '#a3e635', '#f87171', '#c084fc',
+    '#22d3ee', '#fde047', '#4ade80', '#fb7185', '#818cf8',
+  ];
+
+  var trendChart = null;
+  var modalChart = null;
+  var currentTrendCategory = 'alliance_power';
+  var currentTrendTopN = 10;
+
+  function renderTrendChart() {
+    var emptyMsg = document.getElementById('trend-empty');
+    var canvas = document.getElementById('trend-chart');
+
+    if (!history || !history.snapshots || history.snapshots.length < 2) {
+      canvas.style.display = 'none';
+      emptyMsg.style.display = 'block';
+      if (trendChart) { trendChart.destroy(); trendChart = null; }
+      return;
+    }
+
+    var series = buildSeries(currentTrendCategory);
+    if (!series || series.entities.length === 0) {
+      canvas.style.display = 'none';
+      emptyMsg.style.display = 'block';
+      if (trendChart) { trendChart.destroy(); trendChart = null; }
+      return;
+    }
+
+    canvas.style.display = 'block';
+    emptyMsg.style.display = 'none';
+
+    // Pick top N entities by latest value
+    var lastTs = series.timestamps[series.timestamps.length - 1];
+    series.entities.forEach(function(ent) {
+      var lastPoint = ent.points.filter(function(p) { return p.ts === lastTs; })[0];
+      ent._latest = lastPoint ? lastPoint.value : 0;
+    });
+    var top = series.entities.sort(function(a, b) { return b._latest - a._latest; })
+                              .slice(0, currentTrendTopN);
+
+    // Build datasets
+    var labels = series.timestamps.map(formatTs);
+    var datasets = top.map(function(ent, i) {
+      var color = PALETTE[i % PALETTE.length];
+      var data = series.timestamps.map(function(ts) {
+        var p = ent.points.filter(function(pt) { return pt.ts === ts; })[0];
+        return p ? p.value : null;
+      });
+      return {
+        label: entityLabel(ent),
+        data: data,
+        borderColor: color,
+        backgroundColor: color + '33',
+        tension: 0.3,
+        pointRadius: 4,
+        pointHoverRadius: 7,
+        spanGaps: true,
+      };
+    });
+
+    if (trendChart) trendChart.destroy();
+    var ctx = canvas.getContext('2d');
+    trendChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: labels, datasets: datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'nearest', axis: 'x', intersect: false },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: '#e5e5e5', font: {size: 11}, boxWidth: 12, padding: 8 }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(20,20,20,0.95)',
+            titleColor: '#d4af37',
+            bodyColor: '#fff',
+            borderColor: '#d4af37',
+            borderWidth: 1,
+            callbacks: {
+              label: function(ctx) {
+                return ctx.dataset.label + ': ' + formatValue(ctx.parsed.y);
+              }
+            }
+          }
+        },
+        scales: {
+          x: { ticks: { color: '#9ca3af', font: {size: 11} }, grid: { color: 'rgba(255,255,255,0.05)' }},
+          y: {
+            ticks: {
+              color: '#9ca3af', font: {size: 11},
+              callback: function(v) { return formatValue(v); }
+            },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          }
+        }
+      }
+    });
+
+    renderMovers(series, top);
+  }
+
+  function renderMovers(series, topEntities) {
+    var upDiv = document.getElementById('movers-up');
+    var downDiv = document.getElementById('movers-down');
+    upDiv.innerHTML = '';
+    downDiv.innerHTML = '';
+
+    if (series.timestamps.length < 2) {
+      upDiv.innerHTML = '<div style="color:var(--text-muted);font-size:12px;">Need 2+ snapshots</div>';
+      downDiv.innerHTML = '<div style="color:var(--text-muted);font-size:12px;">Need 2+ snapshots</div>';
+      return;
+    }
+
+    // Compute deltas: latest value - previous value for each entity in current top N
+    var latestTs = series.timestamps[series.timestamps.length - 1];
+    var prevTs = series.timestamps[series.timestamps.length - 2];
+
+    var deltas = [];
+    series.entities.forEach(function(ent) {
+      var latest = ent.points.filter(function(p) { return p.ts === latestTs; })[0];
+      var prev = ent.points.filter(function(p) { return p.ts === prevTs; })[0];
+      if (!latest || !prev) return;
+      var delta = latest.value - prev.value;
+      var pct = prev.value > 0 ? (delta / prev.value * 100) : 0;
+      deltas.push({ent: ent, delta: delta, pct: pct, latest: latest.value});
+    });
+
+    var ups = deltas.slice().sort(function(a, b) { return b.delta - a.delta; }).slice(0, 5);
+    var downs = deltas.slice().sort(function(a, b) { return a.delta - b.delta; }).slice(0, 5);
+
+    function rowHtml(d, dirClass) {
+      var sign = d.delta > 0 ? '+' : '';
+      return '<div class="k-movers-row">' +
+        '<span class="k-movers-name">' + entityLabel(d.ent) + '</span>' +
+        '<span class="k-movers-delta ' + dirClass + '">' + sign + formatValue(d.delta) +
+        ' (' + sign + d.pct.toFixed(1) + '%)</span>' +
+        '</div>';
+    }
+
+    upDiv.innerHTML = ups.filter(function(d) { return d.delta > 0; }).map(function(d) { return rowHtml(d, 'up'); }).join('') ||
+      '<div style="color:var(--text-muted);font-size:12px;">No gainers</div>';
+    downDiv.innerHTML = downs.filter(function(d) { return d.delta < 0; }).map(function(d) { return rowHtml(d, 'down'); }).join('') ||
+      '<div style="color:var(--text-muted);font-size:12px;">No droppers</div>';
+  }
+
+  function setupTrendControls() {
+    var catSelect = document.getElementById('trend-category');
+    var topSelect = document.getElementById('trend-topn');
+
+    var allCats = [].concat(ALLIANCE_CATS, PLAYER_CATS, EVENT_CATS);
+    allCats.forEach(function(c) {
+      var opt = document.createElement('option');
+      opt.value = c.key;
+      opt.textContent = c.label;
+      catSelect.appendChild(opt);
+    });
+
+    catSelect.addEventListener('change', function() {
+      currentTrendCategory = catSelect.value;
+      renderTrendChart();
+    });
+    topSelect.addEventListener('change', function() {
+      currentTrendTopN = parseInt(topSelect.value, 10);
+      renderTrendChart();
+    });
+  }
+
+  // ============================================================
+  // ENTITY MODAL — click any row to see its full timeline
+  // ============================================================
+  function showEntityModal(catKey, entry) {
+    var modal = document.getElementById('entity-modal');
+    var title = document.getElementById('modal-title');
+    var stats = document.getElementById('modal-stats');
+    var noHist = document.getElementById('modal-no-history');
+    var canvas = document.getElementById('modal-chart');
+
+    title.innerHTML = (entry.tag ? '<span class="k-modal-tag">[' + entry.tag + ']</span>' : '') + entry.name;
+
+    var series = buildSeries(catKey);
+    var ent = null;
+    if (series) {
+      ent = series.entities.filter(function(e) { return entityKey(e) === entityKey(entry); })[0];
+    }
+
+    if (!ent || ent.points.length < 2) {
+      stats.innerHTML = '<div class="k-modal-stat"><div class="k-modal-stat-label">Current</div>' +
+        '<div class="k-modal-stat-val">' + formatValue(entry.value) + '</div></div>' +
+        '<div class="k-modal-stat"><div class="k-modal-stat-label">Rank</div>' +
+        '<div class="k-modal-stat-val">#' + entry.rank + '</div></div>' +
+        '<div class="k-modal-stat"><div class="k-modal-stat-label">Snapshots</div>' +
+        '<div class="k-modal-stat-val">' + (ent ? ent.points.length : 1) + '</div></div>';
+      canvas.style.display = 'none';
+      noHist.style.display = 'block';
+      if (modalChart) { modalChart.destroy(); modalChart = null; }
+    } else {
+      var first = ent.points[0];
+      var last = ent.points[ent.points.length - 1];
+      var delta = last.value - first.value;
+      var pct = first.value > 0 ? (delta / first.value * 100) : 0;
+      var rankDelta = first.rank - last.rank; // positive = climbed
+      var deltaClass = delta > 0 ? 'up' : (delta < 0 ? 'down' : '');
+      var rankClass = rankDelta > 0 ? 'up' : (rankDelta < 0 ? 'down' : '');
+      var sign = delta > 0 ? '+' : '';
+      var rankSign = rankDelta > 0 ? '+' : '';
+
+      stats.innerHTML = '<div class="k-modal-stat"><div class="k-modal-stat-label">Current</div>' +
+        '<div class="k-modal-stat-val">' + formatValue(last.value) + '</div></div>' +
+        '<div class="k-modal-stat"><div class="k-modal-stat-label">Change</div>' +
+        '<div class="k-modal-stat-val ' + deltaClass + '">' + sign + formatValue(delta) +
+        ' (' + sign + pct.toFixed(1) + '%)</div></div>' +
+        '<div class="k-modal-stat"><div class="k-modal-stat-label">Rank</div>' +
+        '<div class="k-modal-stat-val ' + rankClass + '">#' + last.rank +
+        ' (' + rankSign + rankDelta + ')</div></div>';
+
+      canvas.style.display = 'block';
+      noHist.style.display = 'none';
+
+      var labels = series.timestamps.filter(function(ts) {
+        return ent.points.some(function(p) { return p.ts === ts; });
+      }).map(formatTs);
+      var values = ent.points.map(function(p) { return p.value; });
+
+      if (modalChart) modalChart.destroy();
+      modalChart = new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: entityLabel(entry),
+            data: values,
+            borderColor: '#d4af37',
+            backgroundColor: 'rgba(212, 175, 55, 0.15)',
+            fill: true,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(20,20,20,0.95)',
+              titleColor: '#d4af37',
+              bodyColor: '#fff',
+              callbacks: { label: function(ctx) { return formatValue(ctx.parsed.y); } }
+            }
+          },
+          scales: {
+            x: { ticks: { color: '#9ca3af', font: {size: 11} }, grid: { color: 'rgba(255,255,255,0.05)' }},
+            y: { ticks: { color: '#9ca3af', font: {size: 11},
+                          callback: function(v) { return formatValue(v); } },
+                 grid: { color: 'rgba(255,255,255,0.05)' }}
+          }
+        }
+      });
+    }
+
+    modal.classList.add('active');
+  }
+
+  // Close modal on overlay click or button
+  document.getElementById('modal-close').addEventListener('click', function() {
+    document.getElementById('entity-modal').classList.remove('active');
+  });
+  document.getElementById('entity-modal').addEventListener('click', function(e) {
+    if (e.target.id === 'entity-modal') {
+      document.getElementById('entity-modal').classList.remove('active');
+    }
+  });
+
+  // Make rows clickable. Find the active category key from each panel's tabs.
+  function attachRowClicks() {
+    function bind(panelId, defaultCat) {
+      var panel = document.getElementById(panelId);
+      panel.addEventListener('click', function(e) {
+        var tr = e.target.closest('tr');
+        if (!tr || !tr.parentNode || tr.parentNode.tagName !== 'TBODY') return;
+        // Read entity from row text (we encode rank/tag/name there)
+        var rank = parseInt(tr.children[0].textContent, 10);
+        var tag = tr.querySelector('.k-tag');
+        var name = tr.querySelector('.k-name');
+        if (!name) return;
+        var tagText = tag ? tag.textContent.replace(/[\[\]]/g, '') : '';
+        var nameText = name.textContent;
+        // Find active category from the panel's k-tabs
+        var activeBtn = panel.querySelector('.k-tab.active');
+        var catKey = activeBtn ? activeBtn.dataset.key : defaultCat;
+        // Look up the value from current data
+        var entries = (data.categories[catKey] || []);
+        var entry = entries.filter(function(en) {
+          return (en.name === nameText) && ((en.tag || '') === tagText);
+        })[0];
+        if (!entry) return;
+        showEntityModal(catKey, entry);
+      });
+    }
+    bind('alliance-panel', 'alliance_power');
+    bind('player-panel', 'personal_power');
+    bind('event-panel', 'mystic_trial');
+  }
+
+  // Mark rows clickable visually (renderTable already produces tr elements)
+  // Wrap renderTable to add the clickable class to data rows
+  var _origRenderTable = renderTable;
+  renderTable = function(tbodyId, entries, colLabel, searchFilter) {
+    _origRenderTable(tbodyId, entries, colLabel, searchFilter);
+    var tbody = document.getElementById(tbodyId);
+    Array.prototype.forEach.call(tbody.querySelectorAll('tr'), function(tr) {
+      tr.classList.add('clickable');
+    });
+  };
+
+  // Re-render now that the wrapper is installed
+  if (data.categories.personal_power) renderTable('player-tbody', data.categories.personal_power, 'Power', '');
+  if (data.categories.mystic_trial) renderTable('event-tbody', data.categories.mystic_trial, 'Score', '');
+
+  setupTrendControls();
+  attachRowClicks();
+
+  // Render trend chart when Trends tab is first activated (lazy)
+  document.querySelector('.k-pagetab[data-panel="trend-panel"]').addEventListener('click', function() {
+    setTimeout(renderTrendChart, 50);
+  });
+
+  // Snapshot count badge in footnote
+  if (history && history.snapshot_count > 1) {
+    var foot = document.getElementById('stat-updated');
+    foot.textContent = foot.textContent + ' · ' + history.snapshot_count + ' snapshots';
+  }
+})();
+</script>
+</body>
+</html>

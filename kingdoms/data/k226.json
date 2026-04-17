@@ -1,0 +1,4421 @@
+{
+  "kingdom": 226,
+  "last_updated": "2026-04-17",
+  "source": "ADB screenshot scraper + EasyOCR extraction",
+  "categories": {
+    "alliance_power": [
+      {
+        "rank": 1,
+        "tag": "IMM",
+        "name": "IMMORTALS",
+        "value": 19337300888
+      },
+      {
+        "rank": 2,
+        "tag": "AAA",
+        "name": "AlliedH Apex #Army",
+        "value": 16748277653
+      },
+      {
+        "rank": 3,
+        "tag": "PXI",
+        "name": "PHOENIXIMMORTALS",
+        "value": 7525581567
+      },
+      {
+        "rank": 4,
+        "tag": "KOR",
+        "name": "KOREA",
+        "value": 4495825438
+      },
+      {
+        "rank": 5,
+        "tag": "NRG",
+        "name": "ShinseiRengo",
+        "value": 4197335890
+      },
+      {
+        "rank": 6,
+        "tag": "imm",
+        "name": "IMMORTALSFARM",
+        "value": 2245334905
+      },
+      {
+        "rank": 7,
+        "tag": "IMm",
+        "name": "lmmigration",
+        "value": 1725710173
+      },
+      {
+        "rank": 8,
+        "tag": "Min",
+        "name": "elmino",
+        "value": 1534098120
+      },
+      {
+        "rank": 9,
+        "tag": "LPG",
+        "name": "LesPiresGaulois",
+        "value": 1079887786
+      },
+      {
+        "rank": 10,
+        "tag": "MCW",
+        "name": "MassaCreW",
+        "value": 956924586
+      },
+      {
+        "rank": 11,
+        "tag": "zrc",
+        "name": "STyx",
+        "value": 664722454
+      },
+      {
+        "rank": 12,
+        "tag": "TWT",
+        "name": "TeamTumbleweed",
+        "value": 625873913
+      },
+      {
+        "rank": 13,
+        "tag": "D12",
+        "name": "District12",
+        "value": 568308697
+      },
+      {
+        "rank": 14,
+        "tag": "BOTW",
+        "name": "WeCameFromBots",
+        "value": 508277743
+      },
+      {
+        "rank": 15,
+        "tag": "ALC",
+        "name": "ALCorp",
+        "value": 478262452
+      },
+      {
+        "rank": 16,
+        "tag": "Vhr",
+        "name": "MINE",
+        "value": 350948675
+      },
+      {
+        "rank": 17,
+        "tag": "",
+        "name": "",
+        "value": 336688378
+      },
+      {
+        "rank": 18,
+        "tag": "NXR",
+        "name": "Next-Reign",
+        "value": 178343088
+      },
+      {
+        "rank": 19,
+        "tag": "YYY",
+        "name": "ZDAz",
+        "value": 159053729
+      },
+      {
+        "rank": 20,
+        "tag": "TrY",
+        "name": "Tirkiye",
+        "value": 145553905
+      },
+      {
+        "rank": 21,
+        "tag": "KSTI",
+        "name": "KingShot",
+        "value": 137393937
+      },
+      {
+        "rank": 22,
+        "tag": "",
+        "name": "",
+        "value": 119647817
+      },
+      {
+        "rank": 23,
+        "tag": "",
+        "name": "",
+        "value": 100807624
+      },
+      {
+        "rank": 24,
+        "tag": "",
+        "name": "",
+        "value": 98554405
+      },
+      {
+        "rank": 25,
+        "tag": "",
+        "name": "",
+        "value": 98182887
+      },
+      {
+        "rank": 26,
+        "tag": "",
+        "name": "",
+        "value": 97100589
+      },
+      {
+        "rank": 27,
+        "tag": "Pgk",
+        "name": "wooW",
+        "value": 90895882
+      },
+      {
+        "rank": 28,
+        "tag": "MKG",
+        "name": "kiistan",
+        "value": 84527160
+      },
+      {
+        "rank": 29,
+        "tag": "cfj",
+        "name": "222",
+        "value": 83272718
+      },
+      {
+        "rank": 30,
+        "tag": "ZMX",
+        "name": "special",
+        "value": 81942741
+      },
+      {
+        "rank": 31,
+        "tag": "viv",
+        "name": "VivaLaBanda",
+        "value": 81804291
+      },
+      {
+        "rank": 32,
+        "tag": "Syd",
+        "name": "Td",
+        "value": 74664976
+      },
+      {
+        "rank": 33,
+        "tag": "SUN",
+        "name": "S8",
+        "value": 73696840
+      },
+      {
+        "rank": 34,
+        "tag": "",
+        "name": "",
+        "value": 69551629
+      },
+      {
+        "rank": 35,
+        "tag": "MxD",
+        "name": "SUP1",
+        "value": 64620802
+      },
+      {
+        "rank": 36,
+        "tag": "CKZ",
+        "name": "Mare",
+        "value": 62388881
+      },
+      {
+        "rank": 37,
+        "tag": "ekE",
+        "name": "Yuki",
+        "value": 61120953
+      },
+      {
+        "rank": 38,
+        "tag": "mSh",
+        "name": "LegiondeHierro",
+        "value": 57346083
+      },
+      {
+        "rank": 39,
+        "tag": "AhB",
+        "name": "Power99",
+        "value": 48775547
+      },
+      {
+        "rank": 40,
+        "tag": "",
+        "name": "",
+        "value": 46957552
+      },
+      {
+        "rank": 41,
+        "tag": "",
+        "name": "",
+        "value": 45583008
+      },
+      {
+        "rank": 42,
+        "tag": "GoD",
+        "name": "GrumpyOldDodgers",
+        "value": 36963932
+      },
+      {
+        "rank": 43,
+        "tag": "xCp",
+        "name": "AIPha",
+        "value": 28498856
+      },
+      {
+        "rank": 44,
+        "tag": "Nku",
+        "name": "Sapers",
+        "value": 28448181
+      },
+      {
+        "rank": 45,
+        "tag": "DNX",
+        "name": "GreenDeer",
+        "value": 27812187
+      },
+      {
+        "rank": 46,
+        "tag": "MWR",
+        "name": "ltalianfamily",
+        "value": 26832334
+      },
+      {
+        "rank": 47,
+        "tag": "LTM",
+        "name": "LATAM",
+        "value": 25876676
+      },
+      {
+        "rank": 48,
+        "tag": "SYG",
+        "name": "RoyalKing",
+        "value": 25447990
+      },
+      {
+        "rank": 49,
+        "tag": "",
+        "name": "",
+        "value": 24929004
+      },
+      {
+        "rank": 50,
+        "tag": "yG",
+        "name": "ITURKIYE",
+        "value": 22444460
+      },
+      {
+        "rank": 51,
+        "tag": "eAa",
+        "name": "ney",
+        "value": 19194045
+      },
+      {
+        "rank": 52,
+        "tag": "NDC",
+        "name": "NoDCneeded",
+        "value": 18483301
+      },
+      {
+        "rank": 53,
+        "tag": "jPZ",
+        "name": "KOK",
+        "value": 17526705
+      },
+      {
+        "rank": 54,
+        "tag": "KFC",
+        "name": "whiteHouse",
+        "value": 17435498
+      },
+      {
+        "rank": 55,
+        "tag": "",
+        "name": "",
+        "value": 16728408
+      },
+      {
+        "rank": 56,
+        "tag": "",
+        "name": "",
+        "value": 15948843
+      },
+      {
+        "rank": 57,
+        "tag": "Zzz",
+        "name": "ZKORCat FJE'kk",
+        "value": 14903036
+      },
+      {
+        "rank": 58,
+        "tag": "FDM",
+        "name": "Anarchy",
+        "value": 14446532
+      },
+      {
+        "rank": 59,
+        "tag": "pxr",
+        "name": "PhoenixRising?3",
+        "value": 13303942
+      },
+      {
+        "rank": 60,
+        "tag": "mGr",
+        "name": "Tom",
+        "value": 12610689
+      },
+      {
+        "rank": 61,
+        "tag": "sox",
+        "name": "+HEH##EP",
+        "value": 11878965
+      },
+      {
+        "rank": 62,
+        "tag": "CCh",
+        "name": "#A1@ (2xF>Zm)",
+        "value": 11662564
+      },
+      {
+        "rank": 63,
+        "tag": "PXR",
+        "name": "PhoenixReborn",
+        "value": 10740880
+      },
+      {
+        "rank": 64,
+        "tag": "",
+        "name": "",
+        "value": 10198195
+      },
+      {
+        "rank": 65,
+        "tag": "",
+        "name": "",
+        "value": 9529757
+      },
+      {
+        "rank": 66,
+        "tag": "Mmm",
+        "name": "Mare0907",
+        "value": 9440322
+      },
+      {
+        "rank": 67,
+        "tag": "PBj",
+        "name": "TheAlphas",
+        "value": 8970124
+      },
+      {
+        "rank": 68,
+        "tag": "dHK",
+        "name": "TheOffice",
+        "value": 8553048
+      },
+      {
+        "rank": 69,
+        "tag": "mDD",
+        "name": "ruRKiYE",
+        "value": 8068252
+      },
+      {
+        "rank": 70,
+        "tag": "SUj",
+        "name": "Pnz",
+        "value": 7993871
+      },
+      {
+        "rank": 71,
+        "tag": "bQG",
+        "name": "Foss",
+        "value": 7846680
+      },
+      {
+        "rank": 72,
+        "tag": "yw",
+        "name": "Xlonenagros",
+        "value": 7551158
+      },
+      {
+        "rank": 73,
+        "tag": "",
+        "name": "",
+        "value": 7248539
+      },
+      {
+        "rank": 74,
+        "tag": "juglt",
+        "name": "urkler",
+        "value": 6669245
+      },
+      {
+        "rank": 75,
+        "tag": "hgz",
+        "name": "Jakezbetz",
+        "value": 6232013
+      },
+      {
+        "rank": 76,
+        "tag": "RUS",
+        "name": "WAGNER",
+        "value": 6100591
+      },
+      {
+        "rank": 77,
+        "tag": "J",
+        "name": "T79935",
+        "value": 6004834
+      },
+      {
+        "rank": 78,
+        "tag": "DF",
+        "name": "Aljuln",
+        "value": 5602587
+      },
+      {
+        "rank": 79,
+        "tag": "KVK",
+        "name": "Kvk",
+        "value": 5541606
+      },
+      {
+        "rank": 80,
+        "tag": "",
+        "name": "",
+        "value": 5512075
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "",
+        "value": 4867892
+      },
+      {
+        "rank": 82,
+        "tag": "",
+        "name": "",
+        "value": 4836963
+      },
+      {
+        "rank": 83,
+        "tag": "yyp",
+        "name": "sR Js",
+        "value": 4583452
+      },
+      {
+        "rank": 84,
+        "tag": "KFQ",
+        "name": "Bradralag",
+        "value": 4297724
+      },
+      {
+        "rank": 85,
+        "tag": "Wd",
+        "name": "Qlyesilduvar",
+        "value": 4287829
+      },
+      {
+        "rank": 86,
+        "tag": "eDV",
+        "name": "LABANDAPIRATAAN",
+        "value": 4063334
+      },
+      {
+        "rank": 87,
+        "tag": "shQl",
+        "name": "Alone",
+        "value": 3850692
+      },
+      {
+        "rank": 88,
+        "tag": "FRA",
+        "name": "Pheonix",
+        "value": 3739046
+      },
+      {
+        "rank": 89,
+        "tag": "pwa",
+        "name": "i/44",
+        "value": 3447062
+      },
+      {
+        "rank": 90,
+        "tag": "rdx",
+        "name": "DEPREACTED",
+        "value": 3420850
+      },
+      {
+        "rank": 91,
+        "tag": "Fpr",
+        "name": "mihaky",
+        "value": 3271072
+      },
+      {
+        "rank": 92,
+        "tag": "EMP",
+        "name": "Empire",
+        "value": 916739
+      },
+      {
+        "rank": 93,
+        "tag": "Sub",
+        "name": "Subdomain",
+        "value": 513422
+      },
+      {
+        "rank": 94,
+        "tag": "",
+        "name": "Alliance Power",
+        "value": 0
+      }
+    ],
+    "alliance_kills": [
+      {
+        "rank": 1,
+        "tag": "IMM",
+        "name": "IMMORTALS",
+        "value": 1116418374
+      },
+      {
+        "rank": 2,
+        "tag": "AAA",
+        "name": "AlliedH Apex #Army",
+        "value": 663503726
+      },
+      {
+        "rank": 3,
+        "tag": "PXI",
+        "name": "PHOENIXIMMORTALS",
+        "value": 46278061
+      },
+      {
+        "rank": 4,
+        "tag": "MCW",
+        "name": "MassaCreW",
+        "value": 46261199
+      },
+      {
+        "rank": 5,
+        "tag": "KOR",
+        "name": "KOREA",
+        "value": 34771140
+      },
+      {
+        "rank": 6,
+        "tag": "IMm",
+        "name": "lmmigration",
+        "value": 31123749
+      },
+      {
+        "rank": 7,
+        "tag": "NRG",
+        "name": "ShinseiRengo",
+        "value": 23295833
+      },
+      {
+        "rank": 8,
+        "tag": "LPG",
+        "name": "LesPiresGaulois",
+        "value": 19611551
+      },
+      {
+        "rank": 9,
+        "tag": "Min",
+        "name": "elmino",
+        "value": 17709850
+      },
+      {
+        "rank": 10,
+        "tag": "imm",
+        "name": "IMMORTALSFARM",
+        "value": 9340809
+      },
+      {
+        "rank": 11,
+        "tag": "zrc",
+        "name": "STYX",
+        "value": 3960091
+      },
+      {
+        "rank": 12,
+        "tag": "ALC",
+        "name": "ALCorp",
+        "value": 3396278
+      },
+      {
+        "rank": 13,
+        "tag": "TWT",
+        "name": "TeamTumbleweed",
+        "value": 2642204
+      },
+      {
+        "rank": 14,
+        "tag": "D12",
+        "name": "District12",
+        "value": 2455009
+      },
+      {
+        "rank": 15,
+        "tag": "FOC",
+        "name": "FlockOfCrows",
+        "value": 2319484
+      },
+      {
+        "rank": 16,
+        "tag": "Vhr",
+        "name": "MINE",
+        "value": 2283114
+      },
+      {
+        "rank": 17,
+        "tag": "BOTW",
+        "name": "WeCameFromBots",
+        "value": 2053908
+      },
+      {
+        "rank": 18,
+        "tag": "NXR",
+        "name": "Next-Reign",
+        "value": 1046297
+      },
+      {
+        "rank": 19,
+        "tag": "ctM",
+        "name": "Friday13",
+        "value": 941430
+      },
+      {
+        "rank": 20,
+        "tag": "MKG",
+        "name": "kiistan",
+        "value": 885426
+      },
+      {
+        "rank": 21,
+        "tag": "aaa",
+        "name": "Jiya",
+        "value": 855573
+      },
+      {
+        "rank": 22,
+        "tag": "KSTI",
+        "name": "KingShot",
+        "value": 722370
+      },
+      {
+        "rank": 23,
+        "tag": "Juz",
+        "name": "LGAP",
+        "value": 576377
+      },
+      {
+        "rank": 24,
+        "tag": "CSTI",
+        "name": "CitySaints",
+        "value": 557882
+      },
+      {
+        "rank": 25,
+        "tag": "UPU",
+        "name": "GARUDA",
+        "value": 550496
+      },
+      {
+        "rank": 26,
+        "tag": "YYY",
+        "name": "ZDAz",
+        "value": 413245
+      },
+      {
+        "rank": 27,
+        "tag": "dqQ",
+        "name": "Asgard",
+        "value": 379431
+      },
+      {
+        "rank": 28,
+        "tag": "TrY",
+        "name": "Tirkiye",
+        "value": 333878
+      },
+      {
+        "rank": 29,
+        "tag": "Syd",
+        "name": "Td",
+        "value": 294551
+      },
+      {
+        "rank": 30,
+        "tag": "cfj",
+        "name": "222",
+        "value": 260046
+      },
+      {
+        "rank": 31,
+        "tag": "Xjd",
+        "name": "Pop",
+        "value": 243517
+      },
+      {
+        "rank": 32,
+        "tag": "CKZ",
+        "name": "Mare",
+        "value": 230796
+      },
+      {
+        "rank": 33,
+        "tag": "NoL",
+        "name": "NoNoNoLimit",
+        "value": 219532
+      },
+      {
+        "rank": 34,
+        "tag": "ONU",
+        "name": "ordenVII",
+        "value": 208790
+      },
+      {
+        "rank": 35,
+        "tag": "ZMX",
+        "name": "special",
+        "value": 199848
+      },
+      {
+        "rank": 36,
+        "tag": "viv",
+        "name": "VivaLaBanda",
+        "value": 196542
+      },
+      {
+        "rank": 37,
+        "tag": "MxD",
+        "name": "SUPI",
+        "value": 190235
+      },
+      {
+        "rank": 38,
+        "tag": "Sub",
+        "name": "Subdomain",
+        "value": 132573
+      },
+      {
+        "rank": 39,
+        "tag": "Pgk",
+        "name": "wooW",
+        "value": 126097
+      },
+      {
+        "rank": 40,
+        "tag": "rPjl",
+        "name": "Tafelrunde",
+        "value": 116181
+      },
+      {
+        "rank": 41,
+        "tag": "mSh",
+        "name": "LegiondeHierro",
+        "value": 114013
+      },
+      {
+        "rank": 42,
+        "tag": "anu",
+        "name": "MENA",
+        "value": 98008
+      },
+      {
+        "rank": 43,
+        "tag": "xCp",
+        "name": "AIPha",
+        "value": 88544
+      },
+      {
+        "rank": 44,
+        "tag": "AhB",
+        "name": "Power99",
+        "value": 84932
+      },
+      {
+        "rank": 45,
+        "tag": "DGR",
+        "name": "DragonsReach",
+        "value": 83347
+      },
+      {
+        "rank": 46,
+        "tag": "SYG",
+        "name": "RoyalKing",
+        "value": 76319
+      },
+      {
+        "rank": 47,
+        "tag": "SUN",
+        "name": "53",
+        "value": 76217
+      },
+      {
+        "rank": 48,
+        "tag": "yG",
+        "name": "ITURKIYE",
+        "value": 67848
+      },
+      {
+        "rank": 49,
+        "tag": "FDM",
+        "name": "Anarchy",
+        "value": 64034
+      },
+      {
+        "rank": 50,
+        "tag": "pMG",
+        "name": "italia",
+        "value": 58342
+      },
+      {
+        "rank": 51,
+        "tag": "hgz",
+        "name": "Jakezbetz",
+        "value": 57805
+      },
+      {
+        "rank": 52,
+        "tag": "Nku",
+        "name": "Sapers",
+        "value": 56134
+      },
+      {
+        "rank": 53,
+        "tag": "LTM",
+        "name": "LATAM",
+        "value": 50171
+      },
+      {
+        "rank": 54,
+        "tag": "MWR",
+        "name": "ltalianfamily",
+        "value": 47238
+      },
+      {
+        "rank": 55,
+        "tag": "NDC",
+        "name": "NoDCneeded",
+        "value": 37654
+      },
+      {
+        "rank": 56,
+        "tag": "yypls",
+        "name": "? Js",
+        "value": 33561
+      },
+      {
+        "rank": 57,
+        "tag": "CCh",
+        "name": "#A#@ (x+yZ#m)",
+        "value": 29846
+      },
+      {
+        "rank": 58,
+        "tag": "dHK",
+        "name": "TheOffice",
+        "value": 25325
+      },
+      {
+        "rank": 59,
+        "tag": "Mmm",
+        "name": "Mare0907",
+        "value": 24846
+      },
+      {
+        "rank": 60,
+        "tag": "shQl",
+        "name": "Alone",
+        "value": 20745
+      },
+      {
+        "rank": 61,
+        "tag": "CRS",
+        "name": "Crusades",
+        "value": 20115
+      },
+      {
+        "rank": 62,
+        "tag": "CATI",
+        "name": "Cat",
+        "value": 18970
+      },
+      {
+        "rank": 63,
+        "tag": "Uxs",
+        "name": "Pantamettttt",
+        "value": 18588
+      },
+      {
+        "rank": 64,
+        "tag": "WNA",
+        "name": "Paris",
+        "value": 16248
+      },
+      {
+        "rank": 65,
+        "tag": "EMP",
+        "name": "Empire",
+        "value": 15740
+      },
+      {
+        "rank": 66,
+        "tag": "sox",
+        "name": "+#EHy#El",
+        "value": 14291
+      },
+      {
+        "rank": 67,
+        "tag": "FFu",
+        "name": "AmericanMafia",
+        "value": 13776
+      },
+      {
+        "rank": 68,
+        "tag": "KFC",
+        "name": "whiteHouse",
+        "value": 13198
+      },
+      {
+        "rank": 69,
+        "tag": "eDV",
+        "name": "LABANDAPIRATAAN",
+        "value": 12871
+      },
+      {
+        "rank": 70,
+        "tag": "GEJ",
+        "name": "MATAELANG",
+        "value": 12743
+      },
+      {
+        "rank": 71,
+        "tag": "",
+        "name": "Alliance Kills",
+        "value": 0
+      }
+    ],
+    "personal_power": [
+      {
+        "rank": 1,
+        "tag": "IMM",
+        "name": "GENGAR ##",
+        "value": 504368895
+      },
+      {
+        "rank": 2,
+        "tag": "AAA",
+        "name": "Etcake",
+        "value": 440462088
+      },
+      {
+        "rank": 3,
+        "tag": "IMM",
+        "name": "iauipana",
+        "value": 438092052
+      },
+      {
+        "rank": 4,
+        "tag": "IMM",
+        "name": "17171771",
+        "value": 431041219
+      },
+      {
+        "rank": 5,
+        "tag": "IMM",
+        "name": "ACHILLESTH",
+        "value": 427922952
+      },
+      {
+        "rank": 6,
+        "tag": "AAA",
+        "name": "OHZEihihzPP",
+        "value": 320036105
+      },
+      {
+        "rank": 7,
+        "tag": "IMM",
+        "name": "Nightmare OneTH",
+        "value": 317286311
+      },
+      {
+        "rank": 8,
+        "tag": "IMM",
+        "name": "Pan Wiesio 4",
+        "value": 316766714
+      },
+      {
+        "rank": 9,
+        "tag": "AAA",
+        "name": "JATI ELucy",
+        "value": 302120468
+      },
+      {
+        "rank": 10,
+        "tag": "AAA",
+        "name": "LL42O4R#EPsyduck",
+        "value": 301681413
+      },
+      {
+        "rank": 11,
+        "tag": "",
+        "name": "AMORTALS",
+        "value": 301442312
+      },
+      {
+        "rank": 12,
+        "tag": "IMM",
+        "name": "NewtonTH",
+        "value": 298545853
+      },
+      {
+        "rank": 13,
+        "tag": "IMM",
+        "name": "Thorn2345678",
+        "value": 297923482
+      },
+      {
+        "rank": 14,
+        "tag": "AAA",
+        "name": "Phantom GTR",
+        "value": 296510957
+      },
+      {
+        "rank": 15,
+        "tag": "IMM",
+        "name": "Sergius81",
+        "value": 289677363
+      },
+      {
+        "rank": 16,
+        "tag": "",
+        "name": "",
+        "value": 289443230
+      },
+      {
+        "rank": 17,
+        "tag": "",
+        "name": "",
+        "value": 287232881
+      },
+      {
+        "rank": 18,
+        "tag": "",
+        "name": "",
+        "value": 286591703
+      },
+      {
+        "rank": 19,
+        "tag": "AAA",
+        "name": "JRIETA'Pie",
+        "value": 283439401
+      },
+      {
+        "rank": 20,
+        "tag": "",
+        "name": "HuVEkICT",
+        "value": 282222117
+      },
+      {
+        "rank": 21,
+        "tag": "AAA",
+        "name": "HTte\"RH JJEric",
+        "value": 281546111
+      },
+      {
+        "rank": 22,
+        "tag": "AAA",
+        "name": "E*/ ( 308",
+        "value": 278972854
+      },
+      {
+        "rank": 23,
+        "tag": "IMM",
+        "name": "ShadowHeart",
+        "value": 275618721
+      },
+      {
+        "rank": 24,
+        "tag": "AAA",
+        "name": "ATEZtERed",
+        "value": 274320638
+      },
+      {
+        "rank": 25,
+        "tag": "AAA",
+        "name": "MelongMilk",
+        "value": 273204893
+      },
+      {
+        "rank": 26,
+        "tag": "",
+        "name": "",
+        "value": 272965231
+      },
+      {
+        "rank": 27,
+        "tag": "",
+        "name": "",
+        "value": 271833624
+      },
+      {
+        "rank": 28,
+        "tag": "AAA",
+        "name": "JMAAPAHIT Il",
+        "value": 271796167
+      },
+      {
+        "rank": 29,
+        "tag": "IMM",
+        "name": "Vova",
+        "value": 271655045
+      },
+      {
+        "rank": 30,
+        "tag": "AAA",
+        "name": "TkPhOL",
+        "value": 269543077
+      },
+      {
+        "rank": 31,
+        "tag": "IMM",
+        "name": "NEWSTONE #2",
+        "value": 268273931
+      },
+      {
+        "rank": 32,
+        "tag": "AAA",
+        "name": "KingHicks22",
+        "value": 267950530
+      },
+      {
+        "rank": 33,
+        "tag": "AAA",
+        "name": "zE2",
+        "value": 263843059
+      },
+      {
+        "rank": 34,
+        "tag": "IMM",
+        "name": "BIank",
+        "value": 261202190
+      },
+      {
+        "rank": 35,
+        "tag": "",
+        "name": "",
+        "value": 259861865
+      },
+      {
+        "rank": 36,
+        "tag": "AAA",
+        "name": "Skye",
+        "value": 252518155
+      },
+      {
+        "rank": 37,
+        "tag": "AAA",
+        "name": "gtealtl Habby",
+        "value": 251019898
+      },
+      {
+        "rank": 38,
+        "tag": "IMM",
+        "name": "Pawcia",
+        "value": 250330078
+      },
+      {
+        "rank": 39,
+        "tag": "AAA",
+        "name": "Super",
+        "value": 249456157
+      },
+      {
+        "rank": 40,
+        "tag": "AAA",
+        "name": "HOMERUN A",
+        "value": 248353496
+      },
+      {
+        "rank": 41,
+        "tag": "IMM",
+        "name": "Legend#01",
+        "value": 245888454
+      },
+      {
+        "rank": 42,
+        "tag": "IMM",
+        "name": "VenetoMax",
+        "value": 243807035
+      },
+      {
+        "rank": 43,
+        "tag": "AAA",
+        "name": "JvJi@John",
+        "value": 240965860
+      },
+      {
+        "rank": 44,
+        "tag": "",
+        "name": "",
+        "value": 240465295
+      },
+      {
+        "rank": 45,
+        "tag": "IMM",
+        "name": "Witek",
+        "value": 238442334
+      },
+      {
+        "rank": 46,
+        "tag": "IMM",
+        "name": "Korn 1980 TH",
+        "value": 234489762
+      },
+      {
+        "rank": 47,
+        "tag": "IMM",
+        "name": "Am NutTH",
+        "value": 234380566
+      },
+      {
+        "rank": 48,
+        "tag": "IMM",
+        "name": "GolfA",
+        "value": 233518013
+      },
+      {
+        "rank": 49,
+        "tag": "AAA",
+        "name": "lketR=",
+        "value": 233444683
+      },
+      {
+        "rank": 50,
+        "tag": "IMM",
+        "name": "KyL3",
+        "value": 229892807
+      },
+      {
+        "rank": 51,
+        "tag": "IMM",
+        "name": "2+ZLIZ",
+        "value": 226754079
+      },
+      {
+        "rank": 52,
+        "tag": "IMM",
+        "name": "kulka",
+        "value": 226029171
+      },
+      {
+        "rank": 53,
+        "tag": "AAA",
+        "name": "Jan",
+        "value": 223110707
+      },
+      {
+        "rank": 54,
+        "tag": "AAA",
+        "name": "Jin",
+        "value": 220958078
+      },
+      {
+        "rank": 55,
+        "tag": "IMM",
+        "name": "Mikel996",
+        "value": 220385693
+      },
+      {
+        "rank": 56,
+        "tag": "IMM",
+        "name": "9",
+        "value": 220384988
+      },
+      {
+        "rank": 57,
+        "tag": "IMM",
+        "name": "AdrenalineTH",
+        "value": 220045285
+      },
+      {
+        "rank": 58,
+        "tag": "AAA",
+        "name": "ratarse",
+        "value": 219868493
+      },
+      {
+        "rank": 59,
+        "tag": "AAA",
+        "name": "bongkit",
+        "value": 218584660
+      },
+      {
+        "rank": 60,
+        "tag": "AAA",
+        "name": "miyoung",
+        "value": 217660240
+      },
+      {
+        "rank": 61,
+        "tag": "IMM",
+        "name": "Manu2077",
+        "value": 217243019
+      },
+      {
+        "rank": 62,
+        "tag": "AAA",
+        "name": "Carolus Rex",
+        "value": 216182996
+      },
+      {
+        "rank": 63,
+        "tag": "AAA",
+        "name": "crazyOswald TW",
+        "value": 214199180
+      },
+      {
+        "rank": 64,
+        "tag": "IMM",
+        "name": "lcedLatte 0",
+        "value": 214149724
+      },
+      {
+        "rank": 65,
+        "tag": "IMM",
+        "name": "Jhon Thord",
+        "value": 213787784
+      },
+      {
+        "rank": 66,
+        "tag": "IMM",
+        "name": "Alexandre",
+        "value": 210015715
+      },
+      {
+        "rank": 67,
+        "tag": "IMM",
+        "name": "ooos",
+        "value": 209797427
+      },
+      {
+        "rank": 68,
+        "tag": "",
+        "name": "",
+        "value": 209677062
+      },
+      {
+        "rank": 69,
+        "tag": "AAA",
+        "name": "Princess",
+        "value": 207868658
+      },
+      {
+        "rank": 70,
+        "tag": "IMM",
+        "name": "Seraphine",
+        "value": 207014168
+      },
+      {
+        "rank": 71,
+        "tag": "IMM",
+        "name": "Bear",
+        "value": 206268778
+      },
+      {
+        "rank": 72,
+        "tag": "AAA",
+        "name": "Andy",
+        "value": 205142517
+      },
+      {
+        "rank": 73,
+        "tag": "IMM",
+        "name": "Joshua",
+        "value": 200122620
+      },
+      {
+        "rank": 74,
+        "tag": "",
+        "name": "",
+        "value": 200070289
+      },
+      {
+        "rank": 75,
+        "tag": "",
+        "name": "",
+        "value": 198939853
+      },
+      {
+        "rank": 76,
+        "tag": "",
+        "name": "",
+        "value": 198278163
+      },
+      {
+        "rank": 77,
+        "tag": "AAA",
+        "name": "EI Camino",
+        "value": 196617540
+      },
+      {
+        "rank": 78,
+        "tag": "",
+        "name": "KingNoScope",
+        "value": 196253353
+      },
+      {
+        "rank": 79,
+        "tag": "IMM",
+        "name": "thunderbolt",
+        "value": 195142081
+      },
+      {
+        "rank": 80,
+        "tag": "PXI",
+        "name": "Aurora",
+        "value": 192596981
+      },
+      {
+        "rank": 81,
+        "tag": "IMM",
+        "name": "Traktor65",
+        "value": 192473478
+      },
+      {
+        "rank": 82,
+        "tag": "AAA",
+        "name": "LOGAN",
+        "value": 192403993
+      },
+      {
+        "rank": 83,
+        "tag": "",
+        "name": "",
+        "value": 190853319
+      },
+      {
+        "rank": 84,
+        "tag": "",
+        "name": "",
+        "value": 188078935
+      },
+      {
+        "rank": 85,
+        "tag": "IMM",
+        "name": "Terminal59",
+        "value": 187235982
+      },
+      {
+        "rank": 86,
+        "tag": "AAA",
+        "name": "-JIHUIGoblin",
+        "value": 187111791
+      },
+      {
+        "rank": 87,
+        "tag": "AAA",
+        "name": "King",
+        "value": 187076877
+      },
+      {
+        "rank": 88,
+        "tag": "IMM",
+        "name": "RISAPI2",
+        "value": 186950518
+      },
+      {
+        "rank": 89,
+        "tag": "IMM",
+        "name": "Blackcoffee",
+        "value": 185810987
+      },
+      {
+        "rank": 90,
+        "tag": "KOR",
+        "name": "rhai",
+        "value": 184665293
+      },
+      {
+        "rank": 91,
+        "tag": "IMM",
+        "name": "yaRitac 5*?",
+        "value": 184642004
+      },
+      {
+        "rank": 92,
+        "tag": "AAA",
+        "name": "JMAAAHTEbubble_E",
+        "value": 184185394
+      },
+      {
+        "rank": 93,
+        "tag": "IMM",
+        "name": "SsupakK",
+        "value": 184080675
+      },
+      {
+        "rank": 94,
+        "tag": "IMM",
+        "name": "Pluvi",
+        "value": 183203340
+      },
+      {
+        "rank": 95,
+        "tag": "AAA",
+        "name": "IRRIEMan",
+        "value": 283512
+      },
+      {
+        "rank": 96,
+        "tag": "AAA",
+        "name": "EIHulGoblin",
+        "value": 111791
+      },
+      {
+        "rank": 97,
+        "tag": "IMM",
+        "name": "SsupakK",
+        "value": 80675
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "MonkeyThrowWhat",
+        "value": 64416
+      },
+      {
+        "rank": 99,
+        "tag": "",
+        "name": "MonkeyThrowWhat",
+        "value": 18628
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Personal Power",
+        "value": 0
+      }
+    ],
+    "kill_count": [
+      {
+        "rank": 1,
+        "tag": "IMM",
+        "name": "GENGAR ##",
+        "value": 198520386
+      },
+      {
+        "rank": 2,
+        "tag": "AAA",
+        "name": "Etcake",
+        "value": 83695806
+      },
+      {
+        "rank": 3,
+        "tag": "IMM",
+        "name": "ACHILLESTH",
+        "value": 78534153
+      },
+      {
+        "rank": 4,
+        "tag": "IMM",
+        "name": "17171771",
+        "value": 76407735
+      },
+      {
+        "rank": 5,
+        "tag": "AAA",
+        "name": "Crusader",
+        "value": 70783677
+      },
+      {
+        "rank": 6,
+        "tag": "IMM",
+        "name": "Nightmare OneTH",
+        "value": 59292370
+      },
+      {
+        "rank": 7,
+        "tag": "AAA",
+        "name": "OHZ EuHuhEPP",
+        "value": 57118987
+      },
+      {
+        "rank": 8,
+        "tag": "IMM",
+        "name": "Sergius81",
+        "value": 47046208
+      },
+      {
+        "rank": 9,
+        "tag": "IMM",
+        "name": "MAVERICK",
+        "value": 45576333
+      },
+      {
+        "rank": 10,
+        "tag": "",
+        "name": "sosul8oe/",
+        "value": 38449348
+      },
+      {
+        "rank": 11,
+        "tag": "IMM",
+        "name": "HOMERUN t2",
+        "value": 30918996
+      },
+      {
+        "rank": 12,
+        "tag": "MCW",
+        "name": "Alphie",
+        "value": 30510400
+      },
+      {
+        "rank": 13,
+        "tag": "IMM",
+        "name": "Am NutTH",
+        "value": 30493509
+      },
+      {
+        "rank": 14,
+        "tag": "IMM",
+        "name": "Nightmare TwoTh",
+        "value": 29290107
+      },
+      {
+        "rank": 15,
+        "tag": "IMM",
+        "name": "ec",
+        "value": 28557038
+      },
+      {
+        "rank": 16,
+        "tag": "AAA",
+        "name": "E\"?0jHrHPsyduck",
+        "value": 25624222
+      },
+      {
+        "rank": 17,
+        "tag": "AAA",
+        "name": "Jin",
+        "value": 25123488
+      },
+      {
+        "rank": 18,
+        "tag": "AAA",
+        "name": "MelongMilk",
+        "value": 22401572
+      },
+      {
+        "rank": 19,
+        "tag": "AAA",
+        "name": "King",
+        "value": 21461612
+      },
+      {
+        "rank": 20,
+        "tag": "",
+        "name": "NUNAAA",
+        "value": 21278524
+      },
+      {
+        "rank": 21,
+        "tag": "IMM",
+        "name": "BLACKSHU #2",
+        "value": 20872743
+      },
+      {
+        "rank": 22,
+        "tag": "AAA",
+        "name": "JMAAPAHIT Il",
+        "value": 19708651
+      },
+      {
+        "rank": 23,
+        "tag": "",
+        "name": "Rm93",
+        "value": 18342488
+      },
+      {
+        "rank": 24,
+        "tag": "AAA",
+        "name": "Super",
+        "value": 17872391
+      },
+      {
+        "rank": 25,
+        "tag": "IMM",
+        "name": "VenetoMax",
+        "value": 17499486
+      },
+      {
+        "rank": 26,
+        "tag": "",
+        "name": "ADAMASTH",
+        "value": 15163568
+      },
+      {
+        "rank": 27,
+        "tag": "",
+        "name": "AshbUrn",
+        "value": 14716351
+      },
+      {
+        "rank": 28,
+        "tag": "",
+        "name": "",
+        "value": 14627836
+      },
+      {
+        "rank": 29,
+        "tag": "AAA",
+        "name": "JRTETARPie",
+        "value": 14578620
+      },
+      {
+        "rank": 30,
+        "tag": "",
+        "name": "",
+        "value": 14476678
+      },
+      {
+        "rank": 31,
+        "tag": "",
+        "name": "",
+        "value": 14473585
+      },
+      {
+        "rank": 32,
+        "tag": "",
+        "name": "",
+        "value": 14437109
+      },
+      {
+        "rank": 33,
+        "tag": "IMM",
+        "name": "Legend#01",
+        "value": 14434064
+      },
+      {
+        "rank": 34,
+        "tag": "IMM",
+        "name": "Pan Wiesio !W",
+        "value": 13702406
+      },
+      {
+        "rank": 35,
+        "tag": "",
+        "name": "GreatSergys",
+        "value": 13130648
+      },
+      {
+        "rank": 36,
+        "tag": "IMM",
+        "name": "KCP",
+        "value": 12437778
+      },
+      {
+        "rank": 37,
+        "tag": "",
+        "name": "Vnessa",
+        "value": 12383808
+      },
+      {
+        "rank": 38,
+        "tag": "IMM",
+        "name": "KyL3",
+        "value": 12191424
+      },
+      {
+        "rank": 39,
+        "tag": "IMM",
+        "name": "Thorn2345678",
+        "value": 12103241
+      },
+      {
+        "rank": 40,
+        "tag": "AAA",
+        "name": "JATI ELucy",
+        "value": 12042708
+      },
+      {
+        "rank": 41,
+        "tag": "IMM",
+        "name": "kulka",
+        "value": 11915483
+      },
+      {
+        "rank": 42,
+        "tag": "IMM",
+        "name": "AdrenalineTH",
+        "value": 11577352
+      },
+      {
+        "rank": 43,
+        "tag": "Min",
+        "name": "Amer",
+        "value": 11500581
+      },
+      {
+        "rank": 44,
+        "tag": "AAA",
+        "name": "JvJiiJohn",
+        "value": 11392202
+      },
+      {
+        "rank": 45,
+        "tag": "IMM",
+        "name": "O",
+        "value": 10748723
+      },
+      {
+        "rank": 46,
+        "tag": "IMM",
+        "name": "SsupakK",
+        "value": 10542284
+      },
+      {
+        "rank": 47,
+        "tag": "",
+        "name": "Victor",
+        "value": 10435699
+      },
+      {
+        "rank": 48,
+        "tag": "AAA",
+        "name": "HOMERUN A",
+        "value": 10245158
+      },
+      {
+        "rank": 49,
+        "tag": "AAA",
+        "name": "E E",
+        "value": 10242027
+      },
+      {
+        "rank": 50,
+        "tag": "IMM",
+        "name": "King Yagami TH",
+        "value": 10075388
+      },
+      {
+        "rank": 51,
+        "tag": "IMm",
+        "name": "WaRHaMMeRIIc",
+        "value": 9843581
+      },
+      {
+        "rank": 52,
+        "tag": "",
+        "name": "BangBang ##",
+        "value": 9504858
+      },
+      {
+        "rank": 53,
+        "tag": "IMM",
+        "name": "Tena",
+        "value": 9475718
+      },
+      {
+        "rank": 54,
+        "tag": "IMM",
+        "name": "Chin TH",
+        "value": 9357551
+      },
+      {
+        "rank": 55,
+        "tag": "IMM",
+        "name": "GoIfA",
+        "value": 9333046
+      },
+      {
+        "rank": 56,
+        "tag": "IMM",
+        "name": "Alexandre",
+        "value": 9286469
+      },
+      {
+        "rank": 57,
+        "tag": "AAA",
+        "name": "AMZIE YG",
+        "value": 9269964
+      },
+      {
+        "rank": 58,
+        "tag": "AAA",
+        "name": "HTt\"#H HJEric",
+        "value": 9169648
+      },
+      {
+        "rank": 59,
+        "tag": "",
+        "name": "Emeritus",
+        "value": 8718345
+      },
+      {
+        "rank": 60,
+        "tag": "",
+        "name": "BJM",
+        "value": 8512863
+      },
+      {
+        "rank": 61,
+        "tag": "",
+        "name": "Invictus",
+        "value": 8509548
+      },
+      {
+        "rank": 62,
+        "tag": "AAA",
+        "name": "MY LORD",
+        "value": 8465800
+      },
+      {
+        "rank": 63,
+        "tag": "IMmlj",
+        "name": "jangjjangii",
+        "value": 7859545
+      },
+      {
+        "rank": 64,
+        "tag": "AAA",
+        "name": "jamesSKES",
+        "value": 7848742
+      },
+      {
+        "rank": 65,
+        "tag": "",
+        "name": "",
+        "value": 7827482
+      },
+      {
+        "rank": 66,
+        "tag": "",
+        "name": "Hiraya Manawari",
+        "value": 7780853
+      },
+      {
+        "rank": 67,
+        "tag": "IMM",
+        "name": "Pluvi",
+        "value": 7660505
+      },
+      {
+        "rank": 68,
+        "tag": "IMM",
+        "name": "RISAPI2",
+        "value": 7631969
+      },
+      {
+        "rank": 69,
+        "tag": "IMM",
+        "name": "Witek",
+        "value": 7363990
+      },
+      {
+        "rank": 70,
+        "tag": "",
+        "name": "YOAKIEI9",
+        "value": 7321751
+      },
+      {
+        "rank": 71,
+        "tag": "IMM",
+        "name": "SunGodNika",
+        "value": 7280772
+      },
+      {
+        "rank": 72,
+        "tag": "",
+        "name": "",
+        "value": 7206737
+      },
+      {
+        "rank": 73,
+        "tag": "",
+        "name": "",
+        "value": 7164101
+      },
+      {
+        "rank": 74,
+        "tag": "AAA",
+        "name": "crazyOswald TW",
+        "value": 7055514
+      },
+      {
+        "rank": 75,
+        "tag": "IMM",
+        "name": "lcedLatte 0",
+        "value": 7047372
+      },
+      {
+        "rank": 76,
+        "tag": "IMM",
+        "name": "Korn 1980 TH",
+        "value": 6788615
+      },
+      {
+        "rank": 77,
+        "tag": "",
+        "name": "KingNoScope",
+        "value": 6765567
+      },
+      {
+        "rank": 78,
+        "tag": "",
+        "name": "iAmSoggyotter",
+        "value": 6721371
+      },
+      {
+        "rank": 79,
+        "tag": "",
+        "name": "Jimmycatku",
+        "value": 6649852
+      },
+      {
+        "rank": 80,
+        "tag": "AAA",
+        "name": "Skye",
+        "value": 6600202
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "Aerialninja",
+        "value": 6562203
+      },
+      {
+        "rank": 82,
+        "tag": "",
+        "name": "Jaaaykx",
+        "value": 6537495
+      },
+      {
+        "rank": 83,
+        "tag": "IMM",
+        "name": "thunderbolt",
+        "value": 6398514
+      },
+      {
+        "rank": 84,
+        "tag": "IMM",
+        "name": "RaChan",
+        "value": 6311024
+      },
+      {
+        "rank": 85,
+        "tag": "",
+        "name": "DoTheDrew",
+        "value": 6260464
+      },
+      {
+        "rank": 86,
+        "tag": "",
+        "name": "MonkeyThrowWhat",
+        "value": 35342
+      },
+      {
+        "rank": 87,
+        "tag": "",
+        "name": "iAmSoggyotter",
+        "value": 7213
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "Kill Count",
+        "value": 0
+      }
+    ],
+    "hero_power": [
+      {
+        "rank": 1,
+        "tag": "",
+        "name": "TIMMJGENGAR ##",
+        "value": 13473102
+      },
+      {
+        "rank": 2,
+        "tag": "IMM",
+        "name": "17171771",
+        "value": 10865488
+      },
+      {
+        "rank": 3,
+        "tag": "IMM",
+        "name": "Thorn2345678",
+        "value": 9835380
+      },
+      {
+        "rank": 4,
+        "tag": "AAA",
+        "name": "GIcake",
+        "value": 7292779
+      },
+      {
+        "rank": 5,
+        "tag": "IMM",
+        "name": "ACHILLESTH",
+        "value": 7032928
+      },
+      {
+        "rank": 6,
+        "tag": "AAA",
+        "name": "OHZ EiihzPP",
+        "value": 6215812
+      },
+      {
+        "rank": 7,
+        "tag": "AAA",
+        "name": "L'?0JHr #rPsyduck",
+        "value": 5779456
+      },
+      {
+        "rank": 8,
+        "tag": "IMmW",
+        "name": "WaRHaMMeRIIc",
+        "value": 5694869
+      },
+      {
+        "rank": 9,
+        "tag": "IMM",
+        "name": "Nightmare OneTH",
+        "value": 5535902
+      },
+      {
+        "rank": 10,
+        "tag": "",
+        "name": "tYSakura",
+        "value": 5218668
+      },
+      {
+        "rank": 11,
+        "tag": "",
+        "name": "sosul8oe/",
+        "value": 5122777
+      },
+      {
+        "rank": 12,
+        "tag": "AAA",
+        "name": "Crusader",
+        "value": 5042568
+      },
+      {
+        "rank": 13,
+        "tag": "IMM",
+        "name": "BIank",
+        "value": 4773693
+      },
+      {
+        "rank": 14,
+        "tag": "IMM",
+        "name": "RISAPI2",
+        "value": 4756964
+      },
+      {
+        "rank": 15,
+        "tag": "",
+        "name": "Rexxar",
+        "value": 4754187
+      },
+      {
+        "rank": 16,
+        "tag": "IMM",
+        "name": "Sergius81",
+        "value": 4745319
+      },
+      {
+        "rank": 17,
+        "tag": "IMM",
+        "name": "BLACKSHU #2",
+        "value": 4725352
+      },
+      {
+        "rank": 18,
+        "tag": "",
+        "name": "Tay LKI",
+        "value": 4713447
+      },
+      {
+        "rank": 19,
+        "tag": "IMM",
+        "name": "Vova",
+        "value": 4710397
+      },
+      {
+        "rank": 20,
+        "tag": "AAA",
+        "name": "Phantom GTR",
+        "value": 4652335
+      },
+      {
+        "rank": 21,
+        "tag": "AAA",
+        "name": "HHTtRRF HJEric",
+        "value": 4624335
+      },
+      {
+        "rank": 22,
+        "tag": "IMM",
+        "name": "ijunaku",
+        "value": 4532559
+      },
+      {
+        "rank": 23,
+        "tag": "AAA",
+        "name": "kETFFI Don",
+        "value": 4492417
+      },
+      {
+        "rank": 24,
+        "tag": "AAA",
+        "name": "MelongMilk",
+        "value": 4479887
+      },
+      {
+        "rank": 25,
+        "tag": "IMM",
+        "name": "",
+        "value": 4438075
+      },
+      {
+        "rank": 26,
+        "tag": "AAA",
+        "name": "IEEZHE Yan",
+        "value": 4409160
+      },
+      {
+        "rank": 27,
+        "tag": "AAA",
+        "name": "Jin",
+        "value": 4344213
+      },
+      {
+        "rank": 28,
+        "tag": "IMM",
+        "name": "Korn 1980 TH",
+        "value": 4281703
+      },
+      {
+        "rank": 29,
+        "tag": "IMM",
+        "name": "NewtonTH",
+        "value": 4271102
+      },
+      {
+        "rank": 30,
+        "tag": "IMM",
+        "name": "Am NutTH",
+        "value": 4208769
+      },
+      {
+        "rank": 31,
+        "tag": "IMM",
+        "name": "Legend #01",
+        "value": 4134410
+      },
+      {
+        "rank": 32,
+        "tag": "AAA",
+        "name": "ztelti Habby",
+        "value": 4028082
+      },
+      {
+        "rank": 33,
+        "tag": "",
+        "name": "iAmSoggyotter",
+        "value": 4027669
+      },
+      {
+        "rank": 34,
+        "tag": "IMM",
+        "name": "ooos",
+        "value": 3892200
+      },
+      {
+        "rank": 35,
+        "tag": "AAA",
+        "name": "AMRIE YG",
+        "value": 3875137
+      },
+      {
+        "rank": 36,
+        "tag": "KOR",
+        "name": "o/2E35",
+        "value": 3874850
+      },
+      {
+        "rank": 37,
+        "tag": "IMM",
+        "name": "HOMERUN ##",
+        "value": 3873422
+      },
+      {
+        "rank": 38,
+        "tag": "",
+        "name": "Manawari",
+        "value": 3849290
+      },
+      {
+        "rank": 39,
+        "tag": "imm",
+        "name": "Baby Vova",
+        "value": 3845890
+      },
+      {
+        "rank": 40,
+        "tag": "Min",
+        "name": "Paijo",
+        "value": 3779913
+      },
+      {
+        "rank": 41,
+        "tag": "AAA",
+        "name": "Super",
+        "value": 3775122
+      },
+      {
+        "rank": 42,
+        "tag": "",
+        "name": "NUNAAA",
+        "value": 3766512
+      },
+      {
+        "rank": 43,
+        "tag": "IMM",
+        "name": "Pluvi",
+        "value": 3765600
+      },
+      {
+        "rank": 44,
+        "tag": "AAA",
+        "name": "JHH ELucy",
+        "value": 3755530
+      },
+      {
+        "rank": 45,
+        "tag": "",
+        "name": "MMORTALS",
+        "value": 3749842
+      },
+      {
+        "rank": 46,
+        "tag": "AAA",
+        "name": "?EZ",
+        "value": 3732735
+      },
+      {
+        "rank": 47,
+        "tag": "KOR",
+        "name": "rhai",
+        "value": 3728897
+      },
+      {
+        "rank": 48,
+        "tag": "IMM",
+        "name": "GoIfA",
+        "value": 3660217
+      },
+      {
+        "rank": 49,
+        "tag": "IMM",
+        "name": "Witek",
+        "value": 3653245
+      },
+      {
+        "rank": 50,
+        "tag": "",
+        "name": "malumileu",
+        "value": 3636495
+      },
+      {
+        "rank": 51,
+        "tag": "AAA",
+        "name": "HOMERUN A",
+        "value": 3633724
+      },
+      {
+        "rank": 52,
+        "tag": "IMM",
+        "name": "Alexandre",
+        "value": 3619350
+      },
+      {
+        "rank": 53,
+        "tag": "AAA",
+        "name": "Jan",
+        "value": 3588690
+      },
+      {
+        "rank": 54,
+        "tag": "AAA",
+        "name": "E=/(308",
+        "value": 3560410
+      },
+      {
+        "rank": 55,
+        "tag": "",
+        "name": "Oxygen",
+        "value": 3549985
+      },
+      {
+        "rank": 56,
+        "tag": "AAA",
+        "name": "lketR=",
+        "value": 3544185
+      },
+      {
+        "rank": 57,
+        "tag": "IMM",
+        "name": "SunGodNika",
+        "value": 3495893
+      },
+      {
+        "rank": 58,
+        "tag": "",
+        "name": "Emeritus",
+        "value": 3493556
+      },
+      {
+        "rank": 59,
+        "tag": "AAA",
+        "name": "TEEZttRed",
+        "value": 3468057
+      },
+      {
+        "rank": 60,
+        "tag": "IMM",
+        "name": "Pan Wiesio !W",
+        "value": 3411187
+      },
+      {
+        "rank": 61,
+        "tag": "AAA",
+        "name": "Putri Mandalika",
+        "value": 3372627
+      },
+      {
+        "rank": 62,
+        "tag": "IMM",
+        "name": "King Yagami TH",
+        "value": 3369415
+      },
+      {
+        "rank": 63,
+        "tag": "IMM",
+        "name": "Traktor65",
+        "value": 3356570
+      },
+      {
+        "rank": 64,
+        "tag": "IMM",
+        "name": "Nightmare TwoTh",
+        "value": 3337072
+      },
+      {
+        "rank": 65,
+        "tag": "IMM",
+        "name": "2+3LIZ",
+        "value": 3334872
+      },
+      {
+        "rank": 66,
+        "tag": "AAA",
+        "name": "jaja666",
+        "value": 3329909
+      },
+      {
+        "rank": 67,
+        "tag": "",
+        "name": "Rm93",
+        "value": 3307649
+      },
+      {
+        "rank": 68,
+        "tag": "IMM",
+        "name": "Chin TH",
+        "value": 3252656
+      },
+      {
+        "rank": 69,
+        "tag": "",
+        "name": "ADAMASTH",
+        "value": 3236406
+      },
+      {
+        "rank": 70,
+        "tag": "AAA",
+        "name": "bongkit",
+        "value": 3217902
+      },
+      {
+        "rank": 71,
+        "tag": "IMM",
+        "name": "lcedLatte 0",
+        "value": 3212947
+      },
+      {
+        "rank": 72,
+        "tag": "IMM",
+        "name": "GONY",
+        "value": 3210745
+      },
+      {
+        "rank": 73,
+        "tag": "IMM",
+        "name": "Atrezius",
+        "value": 3207165
+      },
+      {
+        "rank": 74,
+        "tag": "IMM",
+        "name": "Seraphine",
+        "value": 3164197
+      },
+      {
+        "rank": 75,
+        "tag": "AAA",
+        "name": "Eszltom",
+        "value": 3163465
+      },
+      {
+        "rank": 76,
+        "tag": "AAA",
+        "name": "JMAAPAHIT Il",
+        "value": 3140967
+      },
+      {
+        "rank": 77,
+        "tag": "AAA",
+        "name": "Andy",
+        "value": 3139000
+      },
+      {
+        "rank": 78,
+        "tag": "AAA",
+        "name": "JMAHAMTEbubble_E",
+        "value": 3133702
+      },
+      {
+        "rank": 79,
+        "tag": "AAA",
+        "name": "sam8",
+        "value": 3129195
+      },
+      {
+        "rank": 80,
+        "tag": "AAA",
+        "name": "XE'(Nikka",
+        "value": 3119355
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "Hero: Rosa",
+        "value": 3117730
+      },
+      {
+        "rank": 82,
+        "tag": "IMM",
+        "name": "kulkaj",
+        "value": 3102070
+      },
+      {
+        "rank": 83,
+        "tag": "AAA",
+        "name": "King_Julz",
+        "value": 3095710
+      },
+      {
+        "rank": 84,
+        "tag": "KOR",
+        "name": "3o?2H",
+        "value": 3075265
+      },
+      {
+        "rank": 85,
+        "tag": "",
+        "name": "Mauriciog7",
+        "value": 3066290
+      },
+      {
+        "rank": 86,
+        "tag": "AAA",
+        "name": "Double H",
+        "value": 3050295
+      },
+      {
+        "rank": 87,
+        "tag": "IMM",
+        "name": "yuiOo7TH",
+        "value": 3044955
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "Hero: Rosa",
+        "value": 3036950
+      },
+      {
+        "rank": 89,
+        "tag": "",
+        "name": "DOC HOLLIDAY",
+        "value": 3036645
+      },
+      {
+        "rank": 90,
+        "tag": "",
+        "name": "IIMMJNEWSTONE TFL",
+        "value": 3013155
+      },
+      {
+        "rank": 91,
+        "tag": "IMM",
+        "name": "M Nattapong 898",
+        "value": 3001263
+      },
+      {
+        "rank": 92,
+        "tag": "AAA",
+        "name": "EI Camino",
+        "value": 2999185
+      },
+      {
+        "rank": 93,
+        "tag": "IMM",
+        "name": "KyL3",
+        "value": 2956625
+      },
+      {
+        "rank": 94,
+        "tag": "AAA",
+        "name": "TkPhOL",
+        "value": 2950157
+      },
+      {
+        "rank": 95,
+        "tag": "AAA",
+        "name": "jamesSK2 EBS",
+        "value": 2948760
+      },
+      {
+        "rank": 96,
+        "tag": "AAA",
+        "name": "Goh",
+        "value": 2942286
+      },
+      {
+        "rank": 97,
+        "tag": "IMM",
+        "name": "woowakgood",
+        "value": 2891305
+      },
+      {
+        "rank": 98,
+        "tag": "AAA",
+        "name": "JvliiJohn",
+        "value": 2877322
+      },
+      {
+        "rank": 99,
+        "tag": "",
+        "name": "MonkeyThrowWhat",
+        "value": 20720
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "Hero Power",
+        "value": 0
+      }
+    ],
+    "heros_total_power": [
+      {
+        "rank": 1,
+        "tag": "IMM",
+        "name": "GENGAR ##",
+        "value": 61711078
+      },
+      {
+        "rank": 2,
+        "tag": "IMM",
+        "name": "Thorn2345678",
+        "value": 56139839
+      },
+      {
+        "rank": 3,
+        "tag": "IMM",
+        "name": "17171771",
+        "value": 52563328
+      },
+      {
+        "rank": 4,
+        "tag": "AAA",
+        "name": "JElcake",
+        "value": 47629573
+      },
+      {
+        "rank": 5,
+        "tag": "IMM",
+        "name": "ACHILLESTH",
+        "value": 43716230
+      },
+      {
+        "rank": 6,
+        "tag": "",
+        "name": "sosul8oe/",
+        "value": 40258840
+      },
+      {
+        "rank": 7,
+        "tag": "AAA",
+        "name": "OHZ EuHuhEPP",
+        "value": 39702146
+      },
+      {
+        "rank": 8,
+        "tag": "AAA",
+        "name": "E\"?0jHrH Psyduck",
+        "value": 38440307
+      },
+      {
+        "rank": 9,
+        "tag": "IMM",
+        "name": "ShadowHeart",
+        "value": 36966880
+      },
+      {
+        "rank": 10,
+        "tag": "IMM",
+        "name": "Nightmare OneTH",
+        "value": 36925806
+      },
+      {
+        "rank": 11,
+        "tag": "IMM",
+        "name": "Pan Wiesio",
+        "value": 35602390
+      },
+      {
+        "rank": 12,
+        "tag": "AAA",
+        "name": "HHTtRRF HJEric",
+        "value": 35586273
+      },
+      {
+        "rank": 13,
+        "tag": "",
+        "name": "Hay EkicT",
+        "value": 35507852
+      },
+      {
+        "rank": 14,
+        "tag": "AAA",
+        "name": "KingHicks22",
+        "value": 34996148
+      },
+      {
+        "rank": 15,
+        "tag": "IMM",
+        "name": "Sergius81",
+        "value": 34434436
+      },
+      {
+        "rank": 16,
+        "tag": "AAA",
+        "name": "kEfFFtf Don",
+        "value": 34017149
+      },
+      {
+        "rank": 17,
+        "tag": "",
+        "name": "MMORTALS",
+        "value": 33846712
+      },
+      {
+        "rank": 18,
+        "tag": "IMM",
+        "name": "NewtonTH",
+        "value": 33670654
+      },
+      {
+        "rank": 19,
+        "tag": "AAA",
+        "name": "RAIETARPie",
+        "value": 33539187
+      },
+      {
+        "rank": 20,
+        "tag": "IMM",
+        "name": "iauinzars",
+        "value": 33433336
+      },
+      {
+        "rank": 21,
+        "tag": "AAA",
+        "name": "zleloltl Habby",
+        "value": 33306552
+      },
+      {
+        "rank": 22,
+        "tag": "AAA",
+        "name": "JMAAPAHIT II",
+        "value": 33294652
+      },
+      {
+        "rank": 23,
+        "tag": "IMM",
+        "name": "BLACKSHU #2",
+        "value": 33018752
+      },
+      {
+        "rank": 24,
+        "tag": "KOR",
+        "name": "3og2H",
+        "value": 32869319
+      },
+      {
+        "rank": 25,
+        "tag": "AAA",
+        "name": "TkPhOL",
+        "value": 32607030
+      },
+      {
+        "rank": 26,
+        "tag": "AAA",
+        "name": "zEZH",
+        "value": 32313094
+      },
+      {
+        "rank": 27,
+        "tag": "AAA",
+        "name": "MelongMilk",
+        "value": 32207604
+      },
+      {
+        "rank": 28,
+        "tag": "AAA",
+        "name": "LOGAN",
+        "value": 32201884
+      },
+      {
+        "rank": 29,
+        "tag": "AAA",
+        "name": "JI ELucy",
+        "value": 32177090
+      },
+      {
+        "rank": 30,
+        "tag": "AAA",
+        "name": "Carolus Rex",
+        "value": 31947405
+      },
+      {
+        "rank": 31,
+        "tag": "",
+        "name": "#xSakura",
+        "value": 31718097
+      },
+      {
+        "rank": 32,
+        "tag": "IMM",
+        "name": "Witek",
+        "value": 31670377
+      },
+      {
+        "rank": 33,
+        "tag": "IMM",
+        "name": "Korn 1980 TH",
+        "value": 31571913
+      },
+      {
+        "rank": 34,
+        "tag": "IMM",
+        "name": "KyL3",
+        "value": 31504886
+      },
+      {
+        "rank": 35,
+        "tag": "IMM",
+        "name": "Seraphine",
+        "value": 31476544
+      },
+      {
+        "rank": 36,
+        "tag": "IMM",
+        "name": "Jhon Thord",
+        "value": 31460981
+      },
+      {
+        "rank": 37,
+        "tag": "AAA",
+        "name": "Jan",
+        "value": 31347086
+      },
+      {
+        "rank": 38,
+        "tag": "",
+        "name": "ADAMASTH",
+        "value": 31194138
+      },
+      {
+        "rank": 39,
+        "tag": "IMM",
+        "name": "Am NutTH",
+        "value": 31094604
+      },
+      {
+        "rank": 40,
+        "tag": "",
+        "name": "",
+        "value": 31038855
+      },
+      {
+        "rank": 41,
+        "tag": "AAA",
+        "name": "miyoung",
+        "value": 31018880
+      },
+      {
+        "rank": 42,
+        "tag": "AAA",
+        "name": "MMZItE YG",
+        "value": 30999115
+      },
+      {
+        "rank": 43,
+        "tag": "AAA",
+        "name": "Double H",
+        "value": 30986613
+      },
+      {
+        "rank": 44,
+        "tag": "IMM",
+        "name": "Vova",
+        "value": 30979060
+      },
+      {
+        "rank": 45,
+        "tag": "IMM",
+        "name": "Alexandre",
+        "value": 30823174
+      },
+      {
+        "rank": 46,
+        "tag": "",
+        "name": "Rexxar",
+        "value": 30711197
+      },
+      {
+        "rank": 47,
+        "tag": "AAA",
+        "name": "ratarse",
+        "value": 30685372
+      },
+      {
+        "rank": 48,
+        "tag": "AAA",
+        "name": "Phantom GTR",
+        "value": 30663360
+      },
+      {
+        "rank": 49,
+        "tag": "IMM",
+        "name": "NEWSTONE #2",
+        "value": 30618935
+      },
+      {
+        "rank": 50,
+        "tag": "IMM",
+        "name": "King Yagami TH",
+        "value": 30530848
+      },
+      {
+        "rank": 51,
+        "tag": "AAA",
+        "name": "Shannon9454",
+        "value": 30511101
+      },
+      {
+        "rank": 52,
+        "tag": "IMm",
+        "name": "WaRHaMMeRIIc",
+        "value": 30395365
+      },
+      {
+        "rank": 53,
+        "tag": "IMM",
+        "name": "Manu2o77",
+        "value": 30361200
+      },
+      {
+        "rank": 54,
+        "tag": "IMM",
+        "name": "KCP",
+        "value": 30242327
+      },
+      {
+        "rank": 55,
+        "tag": "IMM",
+        "name": "In483f",
+        "value": 30124005
+      },
+      {
+        "rank": 56,
+        "tag": "AAA",
+        "name": "lketRz",
+        "value": 30093607
+      },
+      {
+        "rank": 57,
+        "tag": "IMM",
+        "name": "2++LIZ",
+        "value": 29797275
+      },
+      {
+        "rank": 58,
+        "tag": "AAA",
+        "name": "crazyOswald TW",
+        "value": 29723318
+      },
+      {
+        "rank": 59,
+        "tag": "IMM",
+        "name": "GoIfA",
+        "value": 29682856
+      },
+      {
+        "rank": 60,
+        "tag": "IMM",
+        "name": "thunderbolt",
+        "value": 29615672
+      },
+      {
+        "rank": 61,
+        "tag": "AAA",
+        "name": "E*/ (308",
+        "value": 29584105
+      },
+      {
+        "rank": 62,
+        "tag": "JAAA",
+        "name": "Princess",
+        "value": 29556471
+      },
+      {
+        "rank": 63,
+        "tag": "AAA",
+        "name": "Skye",
+        "value": 29490685
+      },
+      {
+        "rank": 64,
+        "tag": "IMM",
+        "name": "AdrenalineTH",
+        "value": 29489935
+      },
+      {
+        "rank": 65,
+        "tag": "Min",
+        "name": "Paijo",
+        "value": 29288806
+      },
+      {
+        "rank": 66,
+        "tag": "IMM",
+        "name": "Nightmare TwoTh",
+        "value": 29213098
+      },
+      {
+        "rank": 67,
+        "tag": "imm",
+        "name": "Tyger51",
+        "value": 29117403
+      },
+      {
+        "rank": 68,
+        "tag": "IMM",
+        "name": "@=",
+        "value": 29094553
+      },
+      {
+        "rank": 69,
+        "tag": "AAA",
+        "name": "IEEZAE Yan",
+        "value": 29080341
+      },
+      {
+        "rank": 70,
+        "tag": "IMM",
+        "name": "Dark 26",
+        "value": 29032969
+      },
+      {
+        "rank": 71,
+        "tag": "IMM",
+        "name": "SsupakK",
+        "value": 28973100
+      },
+      {
+        "rank": 72,
+        "tag": "IMM",
+        "name": "Joshua",
+        "value": 28950952
+      },
+      {
+        "rank": 73,
+        "tag": "NRG",
+        "name": "JayDotPresents",
+        "value": 28916960
+      },
+      {
+        "rank": 74,
+        "tag": "IMM",
+        "name": "Legend#01",
+        "value": 28841046
+      },
+      {
+        "rank": 75,
+        "tag": "KOR",
+        "name": "Fleetwood",
+        "value": 28792704
+      },
+      {
+        "rank": 76,
+        "tag": "AAA",
+        "name": "vJiiJohn",
+        "value": 28778410
+      },
+      {
+        "rank": 77,
+        "tag": "PXI",
+        "name": "Sothbuy",
+        "value": 28512420
+      },
+      {
+        "rank": 78,
+        "tag": "IMM",
+        "name": "HOMERUN t2",
+        "value": 28373771
+      },
+      {
+        "rank": 79,
+        "tag": "",
+        "name": "trengtl",
+        "value": 28365776
+      },
+      {
+        "rank": 80,
+        "tag": "IMM",
+        "name": "kulkay",
+        "value": 28317030
+      },
+      {
+        "rank": 81,
+        "tag": "IMM",
+        "name": "BIank",
+        "value": 28174614
+      },
+      {
+        "rank": 82,
+        "tag": "KOR",
+        "name": "Chupi",
+        "value": 27999739
+      },
+      {
+        "rank": 83,
+        "tag": "IMM",
+        "name": "Pluvi",
+        "value": 27984067
+      },
+      {
+        "rank": 84,
+        "tag": "IMM",
+        "name": "Phongkung31",
+        "value": 27934301
+      },
+      {
+        "rank": 85,
+        "tag": "NRG",
+        "name": "Vatus",
+        "value": 27849572
+      },
+      {
+        "rank": 86,
+        "tag": "",
+        "name": "~nana~\"\"0",
+        "value": 27769378
+      },
+      {
+        "rank": 87,
+        "tag": "AAA",
+        "name": "bluist2000",
+        "value": 27761580
+      },
+      {
+        "rank": 88,
+        "tag": "IMM",
+        "name": "Pakorn",
+        "value": 27747417
+      },
+      {
+        "rank": 89,
+        "tag": "IMM",
+        "name": "@m;",
+        "value": 27565953
+      },
+      {
+        "rank": 90,
+        "tag": "AAA",
+        "name": "Jin",
+        "value": 27480573
+      },
+      {
+        "rank": 91,
+        "tag": "IMM",
+        "name": "Chin TH",
+        "value": 27474023
+      },
+      {
+        "rank": 92,
+        "tag": "IMM",
+        "name": "Joshua",
+        "value": 950952
+      },
+      {
+        "rank": 93,
+        "tag": "IMM",
+        "name": "Blackcoffee",
+        "value": 822292
+      },
+      {
+        "rank": 94,
+        "tag": "AAA",
+        "name": "IRRI#EMan",
+        "value": 620064
+      },
+      {
+        "rank": 95,
+        "tag": "IMM",
+        "name": "Traktor65",
+        "value": 498280
+      },
+      {
+        "rank": 96,
+        "tag": "AAA",
+        "name": "Jin",
+        "value": 480573
+      },
+      {
+        "rank": 97,
+        "tag": "",
+        "name": "",
+        "value": 396205
+      },
+      {
+        "rank": 98,
+        "tag": "",
+        "name": "NUNAAA:",
+        "value": 265553
+      },
+      {
+        "rank": 99,
+        "tag": "",
+        "name": "MonkeyThrowWhat",
+        "value": 37680
+      },
+      {
+        "rank": 100,
+        "tag": "",
+        "name": "MonkeyThrowWhat",
+        "value": 19398
+      }
+    ],
+    "total_pet_power": [
+      {
+        "rank": 1,
+        "tag": "IMM",
+        "name": "GENGAR ##",
+        "value": 21827880
+      },
+      {
+        "rank": 2,
+        "tag": "IMM",
+        "name": "17171771",
+        "value": 21255840
+      },
+      {
+        "rank": 3,
+        "tag": "IMM",
+        "name": "Thorn2345678",
+        "value": 18226920
+      },
+      {
+        "rank": 4,
+        "tag": "IMM",
+        "name": "ACHILLESTH",
+        "value": 17199720
+      },
+      {
+        "rank": 5,
+        "tag": "IMM",
+        "name": "auinjanu",
+        "value": 16966440
+      },
+      {
+        "rank": 6,
+        "tag": "AAA",
+        "name": "SEIcake",
+        "value": 16798920
+      },
+      {
+        "rank": 7,
+        "tag": "AAA",
+        "name": "etellti Habby",
+        "value": 16547400
+      },
+      {
+        "rank": 8,
+        "tag": "AAA",
+        "name": "TkPhOL",
+        "value": 16515480
+      },
+      {
+        "rank": 9,
+        "tag": "IMM",
+        "name": "NEWSTONE #2",
+        "value": 16455000
+      },
+      {
+        "rank": 10,
+        "tag": "imm",
+        "name": "leo",
+        "value": 16343400
+      },
+      {
+        "rank": 11,
+        "tag": "AAA",
+        "name": "L420JIE#EPsyduck",
+        "value": 16286760
+      },
+      {
+        "rank": 12,
+        "tag": "AAA",
+        "name": "oo8sosulgoe",
+        "value": 16281720
+      },
+      {
+        "rank": 13,
+        "tag": "IMM",
+        "name": "BLACKSHU #2",
+        "value": 16277520
+      },
+      {
+        "rank": 14,
+        "tag": "AAA",
+        "name": "RIIETARPie",
+        "value": 16265640
+      },
+      {
+        "rank": 15,
+        "tag": "AAA",
+        "name": "MMZItE YG",
+        "value": 16179600
+      },
+      {
+        "rank": 16,
+        "tag": "IMM",
+        "name": "NewtonTH",
+        "value": 16176240
+      },
+      {
+        "rank": 17,
+        "tag": "IMM",
+        "name": "Pan Wiesio",
+        "value": 16157880
+      },
+      {
+        "rank": 18,
+        "tag": "IMM",
+        "name": "King Yagami TH",
+        "value": 16148880
+      },
+      {
+        "rank": 19,
+        "tag": "AAA",
+        "name": "HHTtRRP HJEric",
+        "value": 16127160
+      },
+      {
+        "rank": 20,
+        "tag": "AAA",
+        "name": "KingHicks22",
+        "value": 16062960
+      },
+      {
+        "rank": 21,
+        "tag": "AAA",
+        "name": "JMAAPAHIT Il",
+        "value": 15982440
+      },
+      {
+        "rank": 22,
+        "tag": "imm",
+        "name": "Tyger51",
+        "value": 15944160
+      },
+      {
+        "rank": 23,
+        "tag": "",
+        "name": "MMORTAS",
+        "value": 15941040
+      },
+      {
+        "rank": 24,
+        "tag": "AAA",
+        "name": "-JMI ELucy",
+        "value": 15904320
+      },
+      {
+        "rank": 25,
+        "tag": "IMM",
+        "name": "Traktor65",
+        "value": 15803040
+      },
+      {
+        "rank": 26,
+        "tag": "IMM",
+        "name": "Vova",
+        "value": 15799560
+      },
+      {
+        "rank": 27,
+        "tag": "",
+        "name": "#YSakura",
+        "value": 15778200
+      },
+      {
+        "rank": 28,
+        "tag": "IMM",
+        "name": "Sergius81",
+        "value": 15774360
+      },
+      {
+        "rank": 29,
+        "tag": "AAA",
+        "name": "vJiiJohn",
+        "value": 15727680
+      },
+      {
+        "rank": 30,
+        "tag": "AAA",
+        "name": "Andy",
+        "value": 15711120
+      },
+      {
+        "rank": 31,
+        "tag": "IMM",
+        "name": "Joshua",
+        "value": 15671160
+      },
+      {
+        "rank": 32,
+        "tag": "IMM",
+        "name": "ge",
+        "value": 15667440
+      },
+      {
+        "rank": 33,
+        "tag": "IMM",
+        "name": "kulkay",
+        "value": 15663600
+      },
+      {
+        "rank": 34,
+        "tag": "AAA",
+        "name": "miyoung",
+        "value": 15659760
+      },
+      {
+        "rank": 35,
+        "tag": "AAA",
+        "name": "Lb###",
+        "value": 15638160
+      },
+      {
+        "rank": 36,
+        "tag": "AAA",
+        "name": "Carolus Rex",
+        "value": 15617040
+      },
+      {
+        "rank": 37,
+        "tag": "IMM",
+        "name": "Nightmare OneTH",
+        "value": 15601680
+      },
+      {
+        "rank": 38,
+        "tag": "",
+        "name": "",
+        "value": 15589320
+      },
+      {
+        "rank": 39,
+        "tag": "AAA",
+        "name": "JMRAAHTEbubble_E",
+        "value": 15563640
+      },
+      {
+        "rank": 40,
+        "tag": "IMM",
+        "name": "Chin TH",
+        "value": 15549720
+      },
+      {
+        "rank": 41,
+        "tag": "AAA",
+        "name": "bluist2o00",
+        "value": 15540840
+      },
+      {
+        "rank": 42,
+        "tag": "KOR",
+        "name": "Tamedwolf77 =cH",
+        "value": 15499200
+      },
+      {
+        "rank": 43,
+        "tag": "IMM",
+        "name": "Tokman",
+        "value": 15435840
+      },
+      {
+        "rank": 44,
+        "tag": "IMM",
+        "name": "2+#LIE",
+        "value": 15384120
+      },
+      {
+        "rank": 45,
+        "tag": "IMM",
+        "name": "Korn 1980 TH",
+        "value": 15349800
+      },
+      {
+        "rank": 46,
+        "tag": "Min",
+        "name": "Paijo",
+        "value": 15317760
+      },
+      {
+        "rank": 47,
+        "tag": "IMM",
+        "name": "Seraphine",
+        "value": 15280920
+      },
+      {
+        "rank": 48,
+        "tag": "IMM",
+        "name": "KCP",
+        "value": 15243960
+      },
+      {
+        "rank": 49,
+        "tag": "KOR",
+        "name": "Chupi",
+        "value": 15228120
+      },
+      {
+        "rank": 50,
+        "tag": "IMM",
+        "name": "GoIfA",
+        "value": 15142440
+      },
+      {
+        "rank": 51,
+        "tag": "IMM",
+        "name": "ooos",
+        "value": 15128160
+      },
+      {
+        "rank": 52,
+        "tag": "AAA",
+        "name": "King_Julz",
+        "value": 15102000
+      },
+      {
+        "rank": 53,
+        "tag": "KOR",
+        "name": "3o?2H",
+        "value": 15096240
+      },
+      {
+        "rank": 54,
+        "tag": "imm",
+        "name": "Luckystorm",
+        "value": 15085920
+      },
+      {
+        "rank": 55,
+        "tag": "IMM",
+        "name": "RISAPI2",
+        "value": 15079920
+      },
+      {
+        "rank": 56,
+        "tag": "IMM",
+        "name": "Alexandre",
+        "value": 15050400
+      },
+      {
+        "rank": 57,
+        "tag": "PXI",
+        "name": "Sothbuy",
+        "value": 15049680
+      },
+      {
+        "rank": 58,
+        "tag": "AAA",
+        "name": "Wallenstien %",
+        "value": 15048120
+      },
+      {
+        "rank": 59,
+        "tag": "PXI",
+        "name": "BroBeans",
+        "value": 15029760
+      },
+      {
+        "rank": 60,
+        "tag": "KOR",
+        "name": "KingMe22",
+        "value": 15025680
+      },
+      {
+        "rank": 61,
+        "tag": "AAA",
+        "name": "Shannon9454",
+        "value": 15011520
+      },
+      {
+        "rank": 62,
+        "tag": "KOR",
+        "name": "Fleetwood",
+        "value": 14993760
+      },
+      {
+        "rank": 63,
+        "tag": "IMM",
+        "name": "SsupakK",
+        "value": 14989080
+      },
+      {
+        "rank": 64,
+        "tag": "PXI",
+        "name": "Gazisehir",
+        "value": 14967360
+      },
+      {
+        "rank": 65,
+        "tag": "",
+        "name": "",
+        "value": 14959800
+      },
+      {
+        "rank": 66,
+        "tag": "IMM",
+        "name": "yuiOo7TH",
+        "value": 14935200
+      },
+      {
+        "rank": 67,
+        "tag": "KOR",
+        "name": "rhai",
+        "value": 14927520
+      },
+      {
+        "rank": 68,
+        "tag": "PXI",
+        "name": "Chris",
+        "value": 14906160
+      },
+      {
+        "rank": 69,
+        "tag": "AAA",
+        "name": "Albnificent",
+        "value": 14896920
+      },
+      {
+        "rank": 70,
+        "tag": "IMM",
+        "name": "Toey heebud22",
+        "value": 14884680
+      },
+      {
+        "rank": 71,
+        "tag": "IMM",
+        "name": "Witek",
+        "value": 14882160
+      },
+      {
+        "rank": 72,
+        "tag": "AAA",
+        "name": "IRRM#JEMan",
+        "value": 14868120
+      },
+      {
+        "rank": 73,
+        "tag": "AAA",
+        "name": "ratarse",
+        "value": 14839680
+      },
+      {
+        "rank": 74,
+        "tag": "IMM",
+        "name": "Jhon Thord",
+        "value": 14838960
+      },
+      {
+        "rank": 75,
+        "tag": "KOR",
+        "name": "KingMisuki",
+        "value": 14828640
+      },
+      {
+        "rank": 76,
+        "tag": "PXI",
+        "name": "Harsaxopan",
+        "value": 14828160
+      },
+      {
+        "rank": 77,
+        "tag": "",
+        "name": "KingNoScope",
+        "value": 14819280
+      },
+      {
+        "rank": 78,
+        "tag": "Min",
+        "name": "Pumpstarz",
+        "value": 14807880
+      },
+      {
+        "rank": 79,
+        "tag": "AAA",
+        "name": "EI Camino",
+        "value": 14803680
+      },
+      {
+        "rank": 80,
+        "tag": "",
+        "name": "TWVERI",
+        "value": 14745000
+      },
+      {
+        "rank": 81,
+        "tag": "IMM",
+        "name": "Off",
+        "value": 14741760
+      },
+      {
+        "rank": 82,
+        "tag": "IMM",
+        "name": "Ia483",
+        "value": 14730360
+      },
+      {
+        "rank": 83,
+        "tag": "PXI",
+        "name": "Aurora",
+        "value": 14726160
+      },
+      {
+        "rank": 84,
+        "tag": "IMM",
+        "name": "Pakorn",
+        "value": 14719440
+      },
+      {
+        "rank": 85,
+        "tag": "KOR",
+        "name": "Recazzo",
+        "value": 14718600
+      },
+      {
+        "rank": 86,
+        "tag": "zrc",
+        "name": "Bob76",
+        "value": 14710200
+      },
+      {
+        "rank": 87,
+        "tag": "AAA",
+        "name": "EHaniff",
+        "value": 14688480
+      },
+      {
+        "rank": 88,
+        "tag": "AAA",
+        "name": "Black Flower",
+        "value": 14615040
+      },
+      {
+        "rank": 89,
+        "tag": "IMM",
+        "name": "AdrenalineTH",
+        "value": 14585760
+      },
+      {
+        "rank": 90,
+        "tag": "AAA",
+        "name": "Crusader",
+        "value": 14578080
+      },
+      {
+        "rank": 91,
+        "tag": "AAA",
+        "name": "sam8",
+        "value": 14569680
+      },
+      {
+        "rank": 92,
+        "tag": "AAA",
+        "name": "Skye",
+        "value": 14562720
+      },
+      {
+        "rank": 93,
+        "tag": "IMM",
+        "name": "Am NutTH",
+        "value": 14546760
+      },
+      {
+        "rank": 94,
+        "tag": "",
+        "name": "MonkeyThrowWhat",
+        "value": 35342
+      },
+      {
+        "rank": 95,
+        "tag": "IMM",
+        "name": "Legend#01",
+        "value": 16369
+      },
+      {
+        "rank": 96,
+        "tag": "IMM",
+        "name": "ShadowHeart",
+        "value": 7317
+      },
+      {
+        "rank": 97,
+        "tag": "",
+        "name": "Total Pet Power",
+        "value": 0
+      }
+    ],
+    "mystic_trial": [
+      {
+        "rank": 1,
+        "tag": "IMM",
+        "name": "GENGAR ##",
+        "value": 2304
+      },
+      {
+        "rank": 2,
+        "tag": "IMM",
+        "name": "17171771",
+        "value": 2171
+      },
+      {
+        "rank": 3,
+        "tag": "IMM",
+        "name": "Thorn2345678",
+        "value": 2052
+      },
+      {
+        "rank": 4,
+        "tag": "AAA",
+        "name": "JElcake",
+        "value": 1854
+      },
+      {
+        "rank": 5,
+        "tag": "IMM",
+        "name": "ACHILLESTH",
+        "value": 1769
+      },
+      {
+        "rank": 6,
+        "tag": "AAA",
+        "name": "IL\"20J4r#rPsyduck",
+        "value": 1691
+      },
+      {
+        "rank": 7,
+        "tag": "AAA",
+        "name": "OHZ EuHuhEPP",
+        "value": 1682
+      },
+      {
+        "rank": 8,
+        "tag": "IMM",
+        "name": "Nightmare OneTH",
+        "value": 1680
+      },
+      {
+        "rank": 9,
+        "tag": "AAA",
+        "name": "9o8_",
+        "value": 1597
+      },
+      {
+        "rank": 10,
+        "tag": "IMM",
+        "name": "Sergius81",
+        "value": 1527
+      },
+      {
+        "rank": 11,
+        "tag": "",
+        "name": "AV ERic",
+        "value": 1504
+      },
+      {
+        "rank": 12,
+        "tag": "IMM",
+        "name": "BLACKSHU #2",
+        "value": 1490
+      },
+      {
+        "rank": 13,
+        "tag": "AAA",
+        "name": "JIIEWAEPie",
+        "value": 1466
+      },
+      {
+        "rank": 14,
+        "tag": "AAA",
+        "name": "Phantom GTR",
+        "value": 1442
+      },
+      {
+        "rank": 15,
+        "tag": "AAA",
+        "name": "JMAAPAHIT Il",
+        "value": 1435
+      },
+      {
+        "rank": 16,
+        "tag": "IMM",
+        "name": "NewtonTH",
+        "value": 1430
+      },
+      {
+        "rank": 17,
+        "tag": "IMM",
+        "name": "Legend#01",
+        "value": 1420
+      },
+      {
+        "rank": 18,
+        "tag": "IMM",
+        "name": "Korn 1980 TH",
+        "value": 1406
+      },
+      {
+        "rank": 19,
+        "tag": "AAA",
+        "name": "MelongMilk",
+        "value": 1404
+      },
+      {
+        "rank": 20,
+        "tag": "AAA",
+        "name": "EE",
+        "value": 1401
+      },
+      {
+        "rank": 21,
+        "tag": "",
+        "name": "MORTAS",
+        "value": 1398
+      },
+      {
+        "rank": 22,
+        "tag": "IMM",
+        "name": "ShadowHeart",
+        "value": 1396
+      },
+      {
+        "rank": 23,
+        "tag": "IMM",
+        "name": "Pan Wiesio",
+        "value": 1395
+      },
+      {
+        "rank": 24,
+        "tag": "IMM",
+        "name": "Vova",
+        "value": 1382
+      },
+      {
+        "rank": 25,
+        "tag": "IMM",
+        "name": "HOMERUN +2",
+        "value": 1376
+      },
+      {
+        "rank": 26,
+        "tag": "AAA",
+        "name": "-i ELucy",
+        "value": 1373
+      },
+      {
+        "rank": 27,
+        "tag": "AAA",
+        "name": "KATEZtERed",
+        "value": 1372
+      },
+      {
+        "rank": 28,
+        "tag": "IMM",
+        "name": "kilka",
+        "value": 1371
+      },
+      {
+        "rank": 29,
+        "tag": "AAA",
+        "name": "ztellTl Habby",
+        "value": 1370
+      },
+      {
+        "rank": 30,
+        "tag": "IMM",
+        "name": "iauipana",
+        "value": 1362
+      },
+      {
+        "rank": 31,
+        "tag": "AAA",
+        "name": "Crusader",
+        "value": 1352
+      },
+      {
+        "rank": 32,
+        "tag": "IMM",
+        "name": "RISAPI2",
+        "value": 1349
+      },
+      {
+        "rank": 33,
+        "tag": "IMM",
+        "name": "Nightmare TwoTH",
+        "value": 1347
+      },
+      {
+        "rank": 34,
+        "tag": "IMM",
+        "name": "NEWSTONE ##",
+        "value": 1343
+      },
+      {
+        "rank": 35,
+        "tag": "AAA",
+        "name": "TkPhOL",
+        "value": 1329
+      },
+      {
+        "rank": 36,
+        "tag": "",
+        "name": "Hiraya Manawari",
+        "value": 1327
+      },
+      {
+        "rank": 37,
+        "tag": "IMM",
+        "name": "BIank",
+        "value": 1326
+      },
+      {
+        "rank": 38,
+        "tag": "IMM",
+        "name": "Alexandre",
+        "value": 1324
+      },
+      {
+        "rank": 39,
+        "tag": "IMM",
+        "name": "lcedLatte 0",
+        "value": 1307
+      },
+      {
+        "rank": 40,
+        "tag": "AAA",
+        "name": "Super",
+        "value": 1303
+      },
+      {
+        "rank": 41,
+        "tag": "AAA",
+        "name": "KingHicks22",
+        "value": 1296
+      },
+      {
+        "rank": 42,
+        "tag": "AAA",
+        "name": "kEfrhtff Don",
+        "value": 1285
+      },
+      {
+        "rank": 43,
+        "tag": "IM",
+        "name": "Mjz+=LI?",
+        "value": 1276
+      },
+      {
+        "rank": 44,
+        "tag": "AAA",
+        "name": "HOMERUN A",
+        "value": 1273
+      },
+      {
+        "rank": 45,
+        "tag": "KOR",
+        "name": "3ogzh",
+        "value": 1271
+      },
+      {
+        "rank": 46,
+        "tag": "AAA",
+        "name": "HEGTE Yan",
+        "value": 1269
+      },
+      {
+        "rank": 47,
+        "tag": "AAA",
+        "name": "King_Julz",
+        "value": 1264
+      },
+      {
+        "rank": 48,
+        "tag": "IMM",
+        "name": "VenetoMax",
+        "value": 1253
+      },
+      {
+        "rank": 49,
+        "tag": "AAA",
+        "name": "MMZIE YG",
+        "value": 1252
+      },
+      {
+        "rank": 50,
+        "tag": "AAA",
+        "name": "Jan",
+        "value": 1247
+      },
+      {
+        "rank": 51,
+        "tag": "AAA",
+        "name": "sam8",
+        "value": 1227
+      },
+      {
+        "rank": 52,
+        "tag": "IMM",
+        "name": "King Yagami TH",
+        "value": 1216
+      },
+      {
+        "rank": 53,
+        "tag": "AAA",
+        "name": "?EZH",
+        "value": 1215
+      },
+      {
+        "rank": 54,
+        "tag": "IMM",
+        "name": "oOO5",
+        "value": 1208
+      },
+      {
+        "rank": 55,
+        "tag": "AAA",
+        "name": "Carolus Rex",
+        "value": 1206
+      },
+      {
+        "rank": 56,
+        "tag": "AAA",
+        "name": "Jvj ##John",
+        "value": 1195
+      },
+      {
+        "rank": 57,
+        "tag": "imm",
+        "name": "Baby Vova",
+        "value": 1193
+      },
+      {
+        "rank": 58,
+        "tag": "IMM",
+        "name": "Jhon Thord",
+        "value": 1190
+      },
+      {
+        "rank": 59,
+        "tag": "AAA",
+        "name": "Double H",
+        "value": 1180
+      },
+      {
+        "rank": 60,
+        "tag": "IMM",
+        "name": "Chin TH",
+        "value": 1179
+      },
+      {
+        "rank": 61,
+        "tag": "AAA",
+        "name": "HRRTAE",
+        "value": 1178
+      },
+      {
+        "rank": 62,
+        "tag": "AAA",
+        "name": "Skye",
+        "value": 1175
+      },
+      {
+        "rank": 63,
+        "tag": "IMM",
+        "name": "IScunakk",
+        "value": 1171
+      },
+      {
+        "rank": 64,
+        "tag": "AAA",
+        "name": "ratarse",
+        "value": 1169
+      },
+      {
+        "rank": 65,
+        "tag": "IMM",
+        "name": "SunGodNika",
+        "value": 1166
+      },
+      {
+        "rank": 66,
+        "tag": "AAA",
+        "name": "LOGAN",
+        "value": 1161
+      },
+      {
+        "rank": 67,
+        "tag": "",
+        "name": "DOC HOLLIDAY",
+        "value": 1159
+      },
+      {
+        "rank": 68,
+        "tag": "AAA",
+        "name": "Andy",
+        "value": 1158
+      },
+      {
+        "rank": 69,
+        "tag": "IMM",
+        "name": "KyL3",
+        "value": 1151
+      },
+      {
+        "rank": 70,
+        "tag": "IMM",
+        "name": "Manu2077",
+        "value": 1148
+      },
+      {
+        "rank": 71,
+        "tag": "PXI",
+        "name": "Aurora",
+        "value": 1144
+      },
+      {
+        "rank": 72,
+        "tag": "IMM",
+        "name": "Bear",
+        "value": 1140
+      },
+      {
+        "rank": 73,
+        "tag": "AAA",
+        "name": "bluist2000",
+        "value": 1139
+      },
+      {
+        "rank": 74,
+        "tag": "IMM",
+        "name": "Seraphine",
+        "value": 1138
+      },
+      {
+        "rank": 75,
+        "tag": "AAA",
+        "name": "crazyOswald TW",
+        "value": 1134
+      },
+      {
+        "rank": 76,
+        "tag": "PXI",
+        "name": "Sothbuy",
+        "value": 1132
+      },
+      {
+        "rank": 77,
+        "tag": "AAA",
+        "name": "Putri Mandalika",
+        "value": 1129
+      },
+      {
+        "rank": 78,
+        "tag": "IMM",
+        "name": "Joshua",
+        "value": 1121
+      },
+      {
+        "rank": 79,
+        "tag": "IMM",
+        "name": "@m;",
+        "value": 1119
+      },
+      {
+        "rank": 80,
+        "tag": "AAA",
+        "name": "miyoung",
+        "value": 1116
+      },
+      {
+        "rank": 81,
+        "tag": "KOR",
+        "name": "o+2E35",
+        "value": 1112
+      },
+      {
+        "rank": 82,
+        "tag": "AIO",
+        "name": "Induy",
+        "value": 152
+      },
+      {
+        "rank": 83,
+        "tag": "",
+        "name": "Mystic Trial",
+        "value": 0
+      }
+    ]
+  }
+}

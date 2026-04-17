@@ -46,12 +46,15 @@ GLOW_PARAMS = {
     'r_min': 220, 'r_max': 255,
     'g_min': 180, 'g_max': 230,
     'b_min': 0,   'b_max': 140,
-    # Exclude status bar and bottom nav.
-    'y_min': 180,
-    'y_max': 2200,
-    # Minimum and maximum contiguous cluster size in pixels.
-    'min_cluster': 500,   # smaller clusters = stray UI element
-    'max_cluster': 40000, # larger = background, sky, banner, not a glow
+    # Exclude top UI bar (resource counters, timer, coin icon at ~1040,230)
+    # and bottom nav. Tutorial targets are always in the main game area.
+    'y_min': 300,
+    'y_max': 2100,
+    # Minimum cluster area in pixels². The tutorial's glowing ring is
+    # a pulsing circle ~60-140px wide → area ~3000-15000px². Smaller
+    # clusters (coin icons, badges, shine effects) get rejected.
+    'min_cluster': 2500,
+    'max_cluster': 40000,
     # Sample step when scanning (smaller = finer, slower).
     'step': 4,
 }
@@ -179,17 +182,27 @@ class GlowFollower:
         subprocess.run([ADB, "-s", DEVICE_ID, "shell", "input", "tap",
                        str(x), str(y)], capture_output=True, timeout=10)
 
-    def run(self, max_iterations=30, per_tap_delay=2.5, no_glow_timeout=15):
+    def run(self, max_iterations=30, per_tap_delay=2.5, no_glow_timeout=15,
+            same_spot_threshold=30, max_same_spot_taps=3):
         """
         Loop: find glow → tap → wait → repeat.
 
+        CHANGE-DETECTION: if we find a glow at roughly the same position
+        (±same_spot_threshold px) for more than max_same_spot_taps taps in
+        a row, we treat it as a false positive (dead UI element, e.g. a
+        gold icon) and abort.
+
         Exits when:
           - No glow found for `no_glow_timeout` seconds consecutive
+          - Same glow position tapped too many times without progress
           - max_iterations reached
         Returns the number of taps executed.
         """
         taps = 0
         last_glow_time = time.time()
+        last_position = None
+        same_position_count = 0
+
         for i in range(max_iterations):
             xy = self.find_glow()
             if xy is None:
@@ -199,7 +212,24 @@ class GlowFollower:
                     return taps
                 time.sleep(1)
                 continue
+
             x, y = xy
+
+            # Change-detection: is this the same spot as last time?
+            if last_position is not None:
+                dx = abs(x - last_position[0])
+                dy = abs(y - last_position[1])
+                if dx < same_spot_threshold and dy < same_spot_threshold:
+                    same_position_count += 1
+                    if same_position_count >= max_same_spot_taps:
+                        print(f"  same glow position ({x}, {y}) for "
+                              f"{same_position_count} taps — likely false "
+                              f"positive, aborting")
+                        return taps
+                else:
+                    same_position_count = 0
+            last_position = (x, y)
+
             print(f"  [{i+1}] glow at ({x}, {y}) → tap")
             self.tap(x, y)
             taps += 1

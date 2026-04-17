@@ -206,7 +206,7 @@ def extract_category(reader, scrape_dir, category_name):
             _json.dump({
                 "current_category": category_name,
                 "screenshot": f"{i+1}/{len(screenshots)}",
-                "entries_so_far": len(all_entries),
+                "entries_so_far": len(all_readings),
                 "timestamp": datetime.now().isoformat()
             }, _pf)
 
