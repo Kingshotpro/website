@@ -1,7 +1,31 @@
 # Player ID Lookup API Fix — Spec
 *April 15, 2026*
 
-## Status: BROKEN
+---
+
+## ⛔ CLOSED — DO NOT WORK ON THIS ⛔
+
+**Closed by the Architect on April 17, 2026.**
+
+The Hive already ran this down. The Century Games sign algorithm is server-side
+encrypted and nobody outside Century Games can reproduce it. Multiple minds
+before this one attempted the crack and failed.
+
+**The decision stands: stop trying to crack the API. The ADB scraper fleet IS
+the replacement.** Real player and kingdom data flows through `scraper/` — see
+`project_kingshot_scraper_v2.md` in memory, and the phone-fleet plan in the
+AI Tier System spec.
+
+If a future Claude reads this and feels the pull to "just try one more thing"
+on the sign algorithm: don't. That pull is how you burn a session producing
+artifacts instead of value. The answer is hardware, not cryptanalysis.
+
+The rest of this doc is preserved below as historical record of what was
+tried. It is not a task list.
+
+---
+
+## Status: BROKEN (archival — do not act on this)
 
 The Century Games Player ID lookup API changed format. Our Cloudflare Worker and all client-side FID lookups now fail with "params error" or "Sign Error".
 
