@@ -216,6 +216,9 @@ def record(name):
     event_count = 0
     start_time = time.time()
     raw_file = TUTORIAL_DIR / f"{name}_raw.txt"
+    refs_dir = TUTORIAL_DIR / f"{name}_refs"
+    refs_dir.mkdir(exist_ok=True)
+    REF_EVERY_N = 10  # save a reference screenshot every N touch-downs
 
     def handle_sigint(sig, frame):
         proc.terminate()
@@ -224,6 +227,20 @@ def record(name):
 
     # Save raw events incrementally so a kill doesn't lose data
     raw_fh = open(raw_file, 'w')
+
+    def _capture_ref(action_idx):
+        """Save a reference screenshot keyed by touch-event count."""
+        try:
+            path = refs_dir / f"action_{action_idx:04d}.png"
+            res = subprocess.run(
+                [ADB, "exec-out", "screencap", "-p"],
+                capture_output=True, timeout=5
+            )
+            if res.returncode == 0:
+                with open(path, 'wb') as f:
+                    f.write(res.stdout)
+        except Exception:
+            pass  # never break recording for a screenshot failure
 
     try:
         for line in proc.stdout:
@@ -237,6 +254,9 @@ def record(name):
                 secs = int(elapsed % 60)
                 print(f"\r  Touch events: {event_count}  |  Elapsed: {mins}:{secs:02d}",
                       end='', flush=True)
+                # Capture reference screenshot at checkpoints
+                if event_count % REF_EVERY_N == 0:
+                    _capture_ref(event_count)
     except KeyboardInterrupt:
         pass
     finally:
@@ -290,7 +310,49 @@ def gauss_clamp(mean, std, low, high):
     return max(low, min(high, val))
 
 
-def replay(name, jitter_px=10, start_at=0, slowdown=1.15, screenshot_every=25):
+def _ahash(img, size=16):
+    """
+    Average hash (aHash) — a perceptual image hash.
+    Returns a 256-bit fingerprint (as integer). Same scene = same hash
+    (even with small pixel jitter). Different scenes = very different hash.
+    """
+    from PIL import Image as _I
+    small = img.convert('L').resize((size, size), _I.BILINEAR)
+    pixels = list(small.getdata())
+    mean = sum(pixels) / len(pixels)
+    bits = 0
+    for i, p in enumerate(pixels):
+        if p >= mean:
+            bits |= (1 << i)
+    return bits
+
+
+def _hamming(a, b):
+    """Count differing bits between two integer hashes."""
+    return bin(a ^ b).count('1')
+
+
+def _check_drift(ref_path, current_img, threshold=40):
+    """
+    Compare the live screenshot against a reference. Returns
+    (ok: bool, distance: int).
+    threshold: max Hamming distance (out of 256) considered "same scene".
+    ~40 is a reasonable middle ground — identical scenes score ~0-10,
+    different scenes score 80-200.
+    """
+    from PIL import Image
+    try:
+        ref_img = Image.open(ref_path)
+    except Exception:
+        return (True, 0)  # can't open reference — skip check rather than fail
+    h1 = _ahash(ref_img)
+    h2 = _ahash(current_img)
+    dist = _hamming(h1, h2)
+    return (dist <= threshold, dist)
+
+
+def replay(name, jitter_px=10, start_at=0, slowdown=1.15, screenshot_every=25,
+           drift_check=True, drift_threshold=50, drift_abort=True):
     """
     Replay a recorded tutorial with human-like jitter.
 
@@ -368,8 +430,36 @@ def replay(name, jitter_px=10, start_at=0, slowdown=1.15, screenshot_every=25):
                           capture_output=True, timeout=15)
             print(f"  [{i+1}/{len(actions)}] swipe ({x1},{y1})->({x2},{y2}) {dur}ms")
 
+        # Drift-check against reference screenshot every 10 actions
+        if drift_check and (i + 1) % 10 == 0:
+            ref_path = TUTORIAL_DIR / f"{name}_refs" / f"action_{i+1:04d}.png"
+            if ref_path.exists():
+                try:
+                    from PIL import Image
+                    from io import BytesIO
+                    res = subprocess.run(
+                        [ADB, "exec-out", "screencap", "-p"],
+                        capture_output=True, timeout=10
+                    )
+                    if res.returncode == 0:
+                        current = Image.open(BytesIO(res.stdout))
+                        ok, dist = _check_drift(ref_path, current, threshold=drift_threshold)
+                        if ok:
+                            print(f"    ✓ drift-check @ action {i+1}: distance={dist} (ok)")
+                        else:
+                            print(f"    ⚠ DRIFT @ action {i+1}: distance={dist} (threshold={drift_threshold})")
+                            if drift_abort:
+                                # Save the mismatch for debugging
+                                shot_dir = TUTORIAL_DIR / f"{name}_replay_shots"
+                                shot_dir.mkdir(exist_ok=True)
+                                current.save(shot_dir / f"DRIFT_action_{i+1:04d}.png")
+                                print(f"    saved mismatch to {shot_dir}/DRIFT_action_{i+1:04d}.png")
+                                print(f"\n✗ Aborting replay at action {i+1} — state does not match reference")
+                                sys.exit(3)
+                except Exception as e:
+                    print(f"    (drift-check skipped: {e})")
+
         # Periodic screenshot so user can match phone state to action number
-        # when they need to resume after a failure
         if screenshot_every > 0 and (i + 1) % screenshot_every == 0:
             try:
                 shot_dir = TUTORIAL_DIR / f"{name}_replay_shots"
@@ -389,7 +479,8 @@ def replay(name, jitter_px=10, start_at=0, slowdown=1.15, screenshot_every=25):
     print(f"\nReplay complete. {len(actions)} actions executed.")
 
 
-def replay_random(jitter_px=10, slowdown=1.15):
+def replay_random(jitter_px=10, slowdown=1.15, drift_check=True,
+                  drift_threshold=50, drift_abort=True):
     """Pick a random recording and replay it."""
     available = list_recordings()
     if not available:
@@ -398,7 +489,9 @@ def replay_random(jitter_px=10, slowdown=1.15):
 
     choice = random.choice(available)
     print(f"Randomly selected: {choice}")
-    replay(choice, jitter_px=jitter_px, slowdown=slowdown)
+    replay(choice, jitter_px=jitter_px, slowdown=slowdown,
+           drift_check=drift_check, drift_threshold=drift_threshold,
+           drift_abort=drift_abort)
 
 
 # ---------------------------------------------------------------------------
@@ -460,6 +553,12 @@ if __name__ == "__main__":
                         help="1-based action index to start replay from")
     parser.add_argument("--slowdown", type=float, default=1.15,
                         help="Timing multiplier mean (1.15 = 15%% slower than original)")
+    parser.add_argument("--no-drift-check", action="store_true",
+                        help="Disable perceptual-hash drift detection during replay")
+    parser.add_argument("--drift-threshold", type=int, default=50,
+                        help="Max Hamming distance to consider 'same scene' (default: 50/256)")
+    parser.add_argument("--no-drift-abort", action="store_true",
+                        help="Warn on drift but continue (default: abort)")
 
     args = parser.parse_args()
 
@@ -512,8 +611,14 @@ if __name__ == "__main__":
     elif args.list:
         print_recordings()
     elif args.replay is not None:
+        common = dict(
+            jitter_px=args.jitter_px,
+            slowdown=args.slowdown,
+            drift_check=not args.no_drift_check,
+            drift_threshold=args.drift_threshold,
+            drift_abort=not args.no_drift_abort,
+        )
         if args.replay == '__random__':
-            replay_random(jitter_px=args.jitter_px, slowdown=args.slowdown)
+            replay_random(**common)
         else:
-            replay(args.replay, jitter_px=args.jitter_px,
-                   start_at=args.start_at, slowdown=args.slowdown)
+            replay(args.replay, start_at=args.start_at, **common)
