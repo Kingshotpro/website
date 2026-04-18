@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom 1005 — Rankings | KingshotPro</title>
+  <meta name="description" content="Kingdom 1005 rankings — alliance power, personal power, kill count, hero power. Top 100 leaderboard with live data.">
+  <link rel="canonical" href="https://kingshotpro.com/kingdoms/1005/">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .k-page { max-width: 800px; margin: 0 auto; }
+    .k-back { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; font-weight: 600; text-decoration: none; margin-bottom: 16px; transition: border-color 0.2s, background 0.2s; }
+    .k-back:hover { border-color: var(--gold); background: var(--surface); color: var(--gold); }
+    .k-back-arrow { font-size: 18px; }
+    /* Compact header — kingdom number + last updated footnote */
+    .k-header-compact { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; padding: 0 4px; }
+    .k-header-title { font-size: 22px; font-weight: 700; color: var(--text); margin: 0; line-height: 1.1; }
+    .k-header-num { color: var(--gold); }
+    .k-header-footnote { font-size: 11px; color: var(--text-muted); text-align: right; }
+    .k-section { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .k-section h2 { color: var(--gold); font-size: 17px; margin: 0 0 16px; }
+    .k-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+    .k-tab { padding: 7px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .k-tab:hover { border-color: var(--gold); color: var(--text); }
+    .k-tab.active { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+    .k-table { width: 100%; border-collapse: collapse; }
+    .k-table th { text-align: left; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    .k-table td { padding: 10px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .k-table tr:hover { background: var(--surface); }
+    .k-rank { color: var(--text-muted); font-weight: 700; width: 40px; text-align: center; }
+    .k-rank-1 { color: var(--gold); font-size: 15px; }
+    .k-rank-2 { color: #c0c0c0; }
+    .k-rank-3 { color: #cd7f32; }
+    .k-name { color: var(--text); font-weight: 600; }
+    .k-tag { color: var(--gold); font-size: 11px; font-weight: 700; margin-right: 6px; }
+    .k-power { color: var(--text-muted); text-align: right; font-variant-numeric: tabular-nums; }
+    .k-unnamed { color: var(--text-muted); font-style: italic; opacity: 0.6; }
+    .k-bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; min-width: 60px; }
+    .k-bar-fill { height: 100%; background: var(--gold); border-radius: 3px; }
+    .k-search { margin-bottom: 12px; }
+    .k-search input { width: 100%; padding: 8px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; font-family: inherit; box-sizing: border-box; }
+    .k-search input:focus { outline: none; border-color: var(--gold); }
+    .k-crumbs { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .k-crumbs a { color: var(--text-muted); text-decoration: none; }
+    .k-crumbs a:hover { color: var(--gold); }
+    .sources { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 24px; }
+    /* Top-level page tabs — all tabs look like buttons so clickability is obvious */
+    .k-pagetabs { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    /* Timeline charts */
+    .k-trend-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center; }
+    .k-trend-controls select { background: var(--surface-2); color: var(--text); border: 2px solid var(--border); border-radius: 8px; padding: 8px 12px; font-family: inherit; font-size: 14px; cursor: pointer; }
+    .k-trend-controls select:hover, .k-trend-controls select:focus { border-color: var(--gold); outline: none; }
+    .k-chart-wrap { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; position: relative; min-height: 360px; }
+    .k-chart-wrap canvas { max-height: 380px; }
+    .k-trend-empty { text-align: center; color: var(--text-muted); padding: 60px 20px; }
+    .k-movers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .k-movers-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+    .k-movers-card h3 { margin: 0 0 10px 0; font-size: 14px; color: var(--gold); display: flex; align-items: center; gap: 6px; }
+    .k-movers-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .k-movers-row:last-child { border-bottom: none; }
+    .k-movers-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .k-movers-delta { font-weight: 700; margin-left: 8px; }
+    .k-movers-delta.up { color: #4ade80; }
+    .k-movers-delta.down { color: #f87171; }
+    /* Clickable rows */
+    .k-table tr.clickable { cursor: pointer; transition: background 0.15s; }
+    .k-table tr.clickable:hover { background: rgba(212, 175, 55, 0.08); }
+    /* Modal */
+    .k-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.2s; }
+    .k-modal-overlay.active { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .k-modal { background: var(--surface); border: 2px solid var(--gold); border-radius: 16px; max-width: 640px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); animation: slideUp 0.25s; }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .k-modal-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .k-modal-title { margin: 0; font-size: 20px; }
+    .k-modal-tag { color: var(--gold); margin-right: 6px; }
+    .k-modal-close { background: var(--surface-2); border: 1px solid var(--border); color: var(--text); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+    .k-modal-close:hover { background: var(--surface); border-color: var(--gold); }
+    .k-modal-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 14px 0; }
+    .k-modal-stat { background: var(--surface-2); border-radius: 10px; padding: 10px 12px; text-align: center; }
+    .k-modal-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .k-modal-stat-val { font-size: 16px; font-weight: 700; }
+    .k-modal-stat-val.up { color: #4ade80; }
+    .k-modal-stat-val.down { color: #f87171; }
+    .k-modal-chart { height: 240px; margin-top: 12px; }
+    .k-no-history { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 14px; }
+    .k-pagetab { padding: 16px 12px; background: var(--surface-2); border: 2px solid var(--border); color: var(--text); font-size: 15px; font-weight: 700; cursor: pointer; border-radius: 12px; font-family: inherit; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; }
+    .k-pagetab-icon { font-size: 22px; }
+    .k-pagetab:hover { border-color: var(--gold); background: var(--surface); transform: translateY(-1px); }
+    .k-pagetab.active { background: var(--gold); color: var(--bg); border-color: var(--gold); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); }
+    .k-pagetab.active .k-pagetab-sub { color: rgba(0,0,0,0.7); }
+    .k-pagetab-sub { font-size: 11px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .k-panel { display: none; }
+    .k-panel.active { display: block; }
+    /* Collapsible inactive section */
+    .k-inactive-wrap { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .k-inactive-toggle { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 13px; font-weight: 600; width: 100%; font-family: inherit; }
+    .k-inactive-toggle:hover { border-color: var(--gold); color: var(--gold); }
+    .k-inactive-toggle-icon { font-size: 11px; transition: transform 0.2s; }
+    .k-inactive-toggle.expanded .k-inactive-toggle-icon { transform: rotate(180deg); }
+    .k-inactive-content { display: none; margin-top: 12px; }
+    .k-inactive-content.expanded { display: block; }
+    @media (max-width: 640px) {
+      .k-table th:nth-child(4), .k-table td:nth-child(4) { display: none; }
+      .k-tab { padding: 6px 10px; font-size: 11px; }
+      .k-pagetab { padding: 10px 8px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+<div class="k-page">
+
+  <a href="../" class="k-back"><span class="k-back-arrow">&larr;</span> All Kingdoms</a>
+
+  <div class="k-header-compact">
+    <h1 class="k-header-title">Kingdom <span class="k-header-num">#1005</span></h1>
+    <div class="k-header-footnote" id="stat-updated">Loading…</div>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-detail-top">Ad</div>
+
+  <!-- Top-level page tabs -->
+  <div class="k-pagetabs">
+    <button class="k-pagetab active" data-panel="alliance-panel">
+      <span class="k-pagetab-icon">🏰</span>
+      <span>Alliances</span>
+      <span class="k-pagetab-sub">Power · Kills</span>
+    </button>
+    <button class="k-pagetab" data-panel="player-panel">
+      <span class="k-pagetab-icon">⚔️</span>
+      <span>Players</span>
+      <span class="k-pagetab-sub">Power · Kills · Heroes</span>
+    </button>
+    <button class="k-pagetab" data-panel="event-panel">
+      <span class="k-pagetab-icon">🏆</span>
+      <span>Events</span>
+      <span class="k-pagetab-sub">Mystic Trial</span>
+    </button>
+    <button class="k-pagetab" data-panel="trend-panel">
+      <span class="k-pagetab-icon">📈</span>
+      <span>Trends</span>
+      <span class="k-pagetab-sub">Over Time</span>
+    </button>
+  </div>
+
+  <!-- Alliance Panel -->
+  <div class="k-panel active" id="alliance-panel">
+    <div class="k-section">
+      <h2>Alliance Rankings</h2>
+      <div class="k-tabs" id="alliance-tabs"></div>
+      <div class="k-search"><input type="text" id="alliance-search" placeholder="Search alliances..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Alliance</th><th>Value</th><th></th></tr></thead>
+        <tbody id="alliance-tbody"></tbody>
+      </table>
+      <!-- Inactive alliances (collapsible) -->
+      <div class="k-inactive-wrap" id="alliance-inactive-wrap" style="display:none;">
+        <button class="k-inactive-toggle" id="alliance-inactive-toggle">
+          <span id="alliance-inactive-label">Inactive alliances (0)</span>
+          <span class="k-inactive-toggle-icon">▼</span>
+        </button>
+        <div class="k-inactive-content" id="alliance-inactive-content">
+          <table class="k-table">
+            <thead><tr><th>#</th><th>Alliance</th><th>Value</th><th></th></tr></thead>
+            <tbody id="alliance-inactive-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Player Panel -->
+  <div class="k-panel" id="player-panel">
+    <div class="k-section">
+      <h2>Player Rankings</h2>
+      <div class="k-tabs" id="player-tabs"></div>
+      <div class="k-search"><input type="text" id="player-search" placeholder="Search players..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Governor</th><th>Value</th><th></th></tr></thead>
+        <tbody id="player-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Event Panel -->
+  <div class="k-panel" id="event-panel">
+    <div class="k-section">
+      <h2>Event Rankings</h2>
+      <div class="k-tabs" id="event-tabs"></div>
+      <div class="k-search"><input type="text" id="event-search" placeholder="Search players..."></div>
+      <table class="k-table">
+        <thead><tr><th>#</th><th>Governor</th><th>Score</th><th></th></tr></thead>
+        <tbody id="event-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Trends Panel -->
+  <div class="k-panel" id="trend-panel">
+    <div class="k-section">
+      <h2>Trends Over Time</h2>
+      <div class="k-trend-controls">
+        <label style="font-size:13px;color:var(--text-muted);">Category:</label>
+        <select id="trend-category"></select>
+        <label style="font-size:13px;color:var(--text-muted);margin-left:8px;">Show:</label>
+        <select id="trend-topn">
+          <option value="5">Top 5</option>
+          <option value="10" selected>Top 10</option>
+          <option value="20">Top 20</option>
+        </select>
+      </div>
+      <div class="k-chart-wrap">
+        <canvas id="trend-chart"></canvas>
+        <div class="k-trend-empty" id="trend-empty" style="display:none;">
+          Need at least 2 snapshots to show trends. Check back after the next scrape.
+        </div>
+      </div>
+      <div class="k-movers-grid">
+        <div class="k-movers-card">
+          <h3>📈 Top Gainers</h3>
+          <div id="movers-up"></div>
+        </div>
+        <div class="k-movers-card">
+          <h3>📉 Top Droppers</h3>
+          <div id="movers-down"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entity detail modal -->
+  <div class="k-modal-overlay" id="entity-modal">
+    <div class="k-modal">
+      <div class="k-modal-head">
+        <h3 class="k-modal-title" id="modal-title">—</h3>
+        <button class="k-modal-close" id="modal-close" aria-label="Close">×</button>
+      </div>
+      <div class="k-modal-stats" id="modal-stats"></div>
+      <div class="k-modal-chart"><canvas id="modal-chart"></canvas></div>
+      <div class="k-no-history" id="modal-no-history" style="display:none;">
+        Only one snapshot yet. Trend will appear after the next scrape.
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot" data-slot="kingdom-detail-bottom">Ad</div>
+
+  <div class="sources">Data captured via ADB screenshot automation from live game client. Updated April 13, 2026.</div>
+
+</div>
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="../../about.html">About</a>
+    <a href="../../privacy.html">Privacy Policy</a>
+    <a href="../../terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../../js/cookie-consent.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/advisor-names.js"></script>
+<script src="../../js/advisor.js"></script>
+<script src="../../js/advisor-orb.js"></script>
+<script src="../../js/advisor-hooks.js"></script>
+<script src="../../js/advisor-chat.js"></script>
+<script src="../../js/advisor-cta.js"></script>
+<script src="../../js/advisor-lore.js"></script>
+<script src="../../js/advisor-referral.js"></script>
+<script src="../../js/advisor-alliance.js"></script>
+<script src="../../js/advisor-accounts.js"></script>
+<script src="../../js/credits.js"></script>
+<script>
+var KINGDOM_DATA = {"kingdom":1005,"last_updated":"2026-04-18","source":"ADB screenshot scraper + EasyOCR extraction","categories":{"alliance_power":[{"rank":1,"tag":"ONE","name":"OnePiece","value":12892620769},{"rank":2,"tag":"REM","name":"RelaxMode","value":12373019918},{"rank":3,"tag":"KIN","name":"KINGS","value":10451622176},{"rank":4,"tag":"RED","name":"TheRedRoom","value":6823956074},{"rank":5,"tag":"OxU","name":"OnyxUnited","value":5324738418},{"rank":6,"tag":"KNG","name":"Emperor","value":3823861298},{"rank":7,"tag":"ReM","name":"ReMShadows","value":3431084697},{"rank":8,"tag":"TRN","name":"torosnegros","value":2973214148},{"rank":9,"tag":"KiN","name":"Kaamelott","value":2631054225},{"rank":10,"tag":"PHX","name":"PHOENIX","value":2590190768},{"rank":11,"tag":"ONe","name":"TheStrawHats","value":2513240188},{"rank":12,"tag":"KIN","name":"Duke","value":654977151},{"rank":13,"tag":"XXX","name":"Tentacion","value":424987955},{"rank":14,"tag":"EUR","name":"Europa","value":408900742},{"rank":15,"tag":"ZfG","name":"GodsOfWar","value":364416116},{"rank":16,"tag":"FRA","name":"GIPN","value":344430007},{"rank":17,"tag":"Hus","name":"Husaria","value":310031545},{"rank":18,"tag":"APX","name":"ApexPredators","value":201921310},{"rank":19,"tag":"HwF","name":"Familyfun","value":201800286},{"rank":20,"tag":"kFF","name":"katokmapuhh","value":155648588},{"rank":21,"tag":"TOPIT","name":"OP","value":145770900},{"rank":22,"tag":"jsH","name":"AUSSIE","value":140423803},{"rank":23,"tag":"aKD","name":"PlayforFun","value":113710781},{"rank":24,"tag":"nrx","name":"GARRADODESTINO","value":105668165},{"rank":25,"tag":"JXK","name":"theBlackKnights","value":99742529},{"rank":26,"tag":"Gag","name":"Gang","value":89833783},{"rank":27,"tag":"FiN","name":"Sumu","value":77946239},{"rank":28,"tag":"POO","name":"PepePoopers","value":77309855},{"rank":29,"tag":"BLK","name":"BlackKnights","value":69318210},{"rank":30,"tag":"RiP","name":"Richplace","value":64004281},{"rank":31,"tag":"LoL","name":"MisFitsFarm","value":61821319},{"rank":32,"tag":"kJW","name":"SGE","value":60460173},{"rank":33,"tag":"Loc","name":"LegionofChaos","value":56423130},{"rank":34,"tag":"qhc","name":"Helpeachother","value":56421687},{"rank":35,"tag":"ueV","name":"Gardenlovers","value":56197481},{"rank":36,"tag":"ECb","name":"Ranger","value":55539203},{"rank":37,"tag":"KVK","name":"oosClubHouse","value":54404550},{"rank":38,"tag":"SHB","name":"Shadowbound","value":51272434},{"rank":39,"tag":"EhN","name":"Portland","value":49515108},{"rank":40,"tag":"turlt","name":"urkler","value":47480985},{"rank":41,"tag":"geq","name":"SafeTown","value":47249260},{"rank":42,"tag":"UNO","name":"zuyarmy","value":40434793},{"rank":43,"tag":"Kf","name":"Yljoker","value":39322412},{"rank":44,"tag":"NGN","name":"NEGAN","value":31959188},{"rank":45,"tag":"PDS","name":"Poderosos","value":29971465},{"rank":46,"tag":"kuk","name":"foreverybody","value":20884364},{"rank":47,"tag":"Qxalg","name":"oodoldStyria","value":19422586},{"rank":48,"tag":"Zdz","name":"Amintrablsy","value":19241687},{"rank":49,"tag":"poljo","name":"stanibatalion","value":18733644},{"rank":50,"tag":"NVPIT","name":"HESHIELD","value":18100792},{"rank":51,"tag":"zzQ","name":"AppleHouse","value":16148308},{"rank":52,"tag":"SDW","name":"SHADOWREIGN","value":13996682},{"rank":53,"tag":"nQy","name":"SUR","value":13613021},{"rank":54,"tag":"War","name":"Plunderer","value":10770285},{"rank":55,"tag":"WX","name":"JProfosyoneller","value":8016086},{"rank":56,"tag":"Trn","name":"torosnegross","value":6419509},{"rank":57,"tag":"zME","name":"JeromeSky","value":6316901},{"rank":58,"tag":"GWc","name":"German Wolfclaw","value":5723759},{"rank":59,"tag":"gVh","name":"uHD","value":5253374},{"rank":60,"tag":"Wx","name":"Ujo8151005","value":5181754},{"rank":61,"tag":"Em","name":"citadel","value":4850107},{"rank":62,"tag":"Hpa","name":"Allofus","value":4571016},{"rank":63,"tag":"FmW","name":"_4g","value":3695238},{"rank":64,"tag":"wpy","name":"OSMANLIDEVLETi","value":3387600},{"rank":65,"tag":"SF","name":"JJw-unuliqunjn","value":3376561},{"rank":66,"tag":"ejV","name":"PrettyBebBnB","value":3173710},{"rank":67,"tag":"TsH","name":"TSHFarmers","value":3021268},{"rank":68,"tag":"hCnlk","name":"ingofworld","value":2654313},{"rank":69,"tag":"DZL","name":"DZL","value":2603785},{"rank":70,"tag":"Qpt","name":"u>Jll","value":2503662},{"rank":71,"tag":"pke","name":"Reignsquall","value":2397921},{"rank":72,"tag":"wQrlp","name":"olonus","value":2255131},{"rank":73,"tag":"Vigll","name":"osfokinmonitos","value":1973940},{"rank":74,"tag":"SeX","name":"L","value":1749938},{"rank":75,"tag":"EsH","name":"zalezyktopyta","value":1740139},{"rank":76,"tag":"nCf","name":"cooltown","value":1641220},{"rank":77,"tag":"ZvV","name":"Reapersofdeath","value":1561244},{"rank":78,"tag":"nte","name":"BOSSGAN","value":1431558},{"rank":79,"tag":"Amg","name":"OneForAII","value":1417922},{"rank":80,"tag":"MYh","name":"DDR","value":1417211},{"rank":81,"tag":"BLD","name":"Bloodstorm","value":1407778},{"rank":82,"tag":"bHa","name":"EternalVikings","value":1384067},{"rank":83,"tag":"BWvlw","name":"rldclub","value":1372950},{"rank":84,"tag":"NYD","name":"QQw3","value":1357581},{"rank":85,"tag":"hQU","name":"Roro","value":1331115},{"rank":86,"tag":"tTC","name":"Azergarde","value":1297491},{"rank":87,"tag":"bmg","name":"Eve","value":1296232},{"rank":88,"tag":"SLT","name":"SaltMasters","value":1253329},{"rank":89,"tag":"DDY","name":"Corpzzz","value":1246319},{"rank":90,"tag":"","name":"Alliance Power","value":0}],"alliance_kills":[{"rank":1,"tag":"REM","name":"RelaxMode","value":904667954},{"rank":2,"tag":"ONE","name":"OnePiece","value":882232011},{"rank":3,"tag":"KIN","name":"KINGS","value":618380196},{"rank":4,"tag":"RED","name":"TheRedRoom","value":429965225},{"rank":5,"tag":"OxU","name":"OnyxUnited","value":73212629},{"rank":6,"tag":"KiN","name":"Kaamelott","value":38867548},{"rank":7,"tag":"ONe","name":"TheStrawHats","value":29808814},{"rank":8,"tag":"ReM","name":"ReMShadows","value":16943476},{"rank":9,"tag":"KNG","name":"Emperor","value":16743227},{"rank":10,"tag":"TRN","name":"torosnegros","value":14771607},{"rank":11,"tag":"KIN","name":"Duke","value":7704971},{"rank":12,"tag":"FRA","name":"GIPN","value":4759934},{"rank":13,"tag":"EUR","name":"Europa","value":4544756},{"rank":14,"tag":"RiP","name":"Richplace","value":4033006},{"rank":15,"tag":"XXX","name":"Tentacion","value":2222519},{"rank":16,"tag":"hsw","name":"Vkivki","value":1778893},{"rank":17,"tag":"ZfG","name":"GodsOfWar","value":1723402},{"rank":18,"tag":"kFF","name":"katokmapuhh","value":964187},{"rank":19,"tag":"APX","name":"ApexPredators","value":840427},{"rank":20,"tag":"BLE","name":"BlaueLegion","value":732018},{"rank":21,"tag":"stx","name":"stx","value":632171},{"rank":22,"tag":"One","name":"OnePieceAcademy","value":605132},{"rank":23,"tag":"jsH","name":"AUSSIE","value":436871},{"rank":24,"tag":"FiN","name":"Sumu","value":435404},{"rank":25,"tag":"Gagl","name":"Gang","value":430096},{"rank":26,"tag":"aKD","name":"PlayforFun","value":335531},{"rank":27,"tag":"TOP","name":"Top","value":290967},{"rank":28,"tag":"kJW","name":"SGE","value":274203},{"rank":29,"tag":"Loc","name":"LegionofChaos","value":272974},{"rank":30,"tag":"JXK","name":"theBlackKnights","value":186799},{"rank":31,"tag":"qhc","name":"Helpeachother","value":157476},{"rank":32,"tag":"POO","name":"PepePoopers","value":149977},{"rank":33,"tag":"geq","name":"/SafeTown","value":145463},{"rank":34,"tag":"SHB","name":"Shadowbound","value":140004},{"rank":35,"tag":"zzQl","name":"AppleHouse","value":129256},{"rank":36,"tag":"Qxalg","name":"oodoldStyria","value":126492},{"rank":37,"tag":"LoL","name":"MisFitsFarm","value":114071},{"rank":38,"tag":"BLK","name":"BlackKnights","value":112477},{"rank":39,"tag":"EhN","name":"Portland","value":93845},{"rank":40,"tag":"nrx","name":"GARRADODESTINO","value":82437},{"rank":41,"tag":"ueV","name":"Gardenlovers","value":71761},{"rank":42,"tag":"gVh","name":"uHD","value":62074},{"rank":43,"tag":"tur","name":"turkler","value":58217},{"rank":44,"tag":"kmc","name":"_lljiall","value":49158},{"rank":45,"tag":"Kf","name":"Yljoker","value":47314},{"rank":46,"tag":"hCnlk","name":"ingofworld","value":39860},{"rank":47,"tag":"ECb","name":"Ranger","value":38504},{"rank":48,"tag":"NVPIT","name":"HESHIELD","value":36324},{"rank":49,"tag":"PHX","name":"PHOENIX","value":36289},{"rank":50,"tag":"KVK","name":"iOOsClubHouse","value":33685},{"rank":51,"tag":"nEh","name":"Samir","value":22897},{"rank":52,"tag":"SFJ","name":"wunuiiaunmn","value":21256},{"rank":53,"tag":"WxU","name":"o8151005","value":18501},{"rank":54,"tag":"unTJp","name":"l","value":18243},{"rank":55,"tag":"nQy","name":"SUR","value":16333},{"rank":56,"tag":"poljo","name":"stanibatalion","value":11696},{"rank":57,"tag":"FmW","name":"_4g1","value":11099},{"rank":58,"tag":"","name":"Alliance Kills","value":0}],"personal_power":[{"rank":1,"tag":"RED","name":"Nvidus","value":368342872},{"rank":2,"tag":"ONE","name":"Drachilles","value":276903893},{"rank":3,"tag":"ONE","name":"KOREA","value":276420156},{"rank":4,"tag":"ONE","name":"BirdofPrey","value":262637971},{"rank":5,"tag":"REM","name":"Dragon Bob","value":262237405},{"rank":6,"tag":"ONE","name":"Heartwell","value":257178987},{"rank":7,"tag":"REM","name":"Weetcheez","value":236571896},{"rank":8,"tag":"REM","name":"TropicTrainwreck","value":229999687},{"rank":9,"tag":"KIN","name":"YEYO","value":229933862},{"rank":10,"tag":"REM","name":"DragonLee","value":225652061},{"rank":11,"tag":"ONE","name":"Luffy","value":224551788},{"rank":12,"tag":"KIN","name":"Cinos","value":216269136},{"rank":13,"tag":"REM","name":"Trafalgar Law","value":215290049},{"rank":14,"tag":"ONE","name":"es PEGASUS 63","value":214012642},{"rank":15,"tag":"KIN","name":"Erwin","value":209675615},{"rank":16,"tag":"KIN","name":"Arabia","value":208322824},{"rank":17,"tag":"ONE","name":"Surturenzo","value":207701973},{"rank":18,"tag":"REM","name":"es Cat 63","value":205814632},{"rank":19,"tag":"ONE","name":"Z 0 R 0","value":204722247},{"rank":20,"tag":"RED","name":"Braden","value":200962703},{"rank":21,"tag":"ONE","name":"Sunny2019","value":200429953},{"rank":22,"tag":"ONE","name":"Haffi","value":200130976},{"rank":23,"tag":"REM","name":"Jeya ayana","value":196194756},{"rank":24,"tag":"ONE","name":"Yellow uili Power","value":194592134},{"rank":25,"tag":"REM","name":"Drunk dragon","value":193076533},{"rank":26,"tag":"REM","name":"s SAXoN 63","value":192819486},{"rank":27,"tag":"KIN","name":"IOOman","value":192053156},{"rank":28,"tag":"KIN","name":"WallDestroyer","value":192013663},{"rank":29,"tag":"KIN","name":"Wooby","value":190207937},{"rank":30,"tag":"KIN","name":"UIF","value":189953372},{"rank":31,"tag":"REM","name":"Mr Cookies","value":189197115},{"rank":32,"tag":"ONE","name":"e DavioN 2","value":188851716},{"rank":33,"tag":"RED","name":"Amber","value":187658367},{"rank":34,"tag":"RED","name":"z#:T A R 0","value":186732470},{"rank":35,"tag":"REM","name":"manuportugal45","value":185388634},{"rank":36,"tag":"REM","name":"no name","value":184987130},{"rank":37,"tag":"RED","name":"oNUR","value":183356212},{"rank":38,"tag":"REM","name":"Vinni","value":181479979},{"rank":39,"tag":"REM","name":"ThatsODE","value":180419072},{"rank":40,"tag":"RED","name":"LoneShadew","value":180387351},{"rank":41,"tag":"REM","name":"IrishDragon7777","value":178792997},{"rank":42,"tag":"KIN","name":"Lady_of_Darkness","value":178258068},{"rank":43,"tag":"ONE","name":"Mafi","value":177811327},{"rank":44,"tag":"ONE","name":"Silas 46","value":176686793},{"rank":45,"tag":"REM","name":"Ceausescu","value":176250149},{"rank":46,"tag":"REM","name":"Ghost of Lasko","value":176145771},{"rank":47,"tag":"KIN","name":"RachaelsReptiles","value":175355167},{"rank":48,"tag":"ONE","name":"Canpolat","value":172927520},{"rank":49,"tag":"KIN","name":"Crezus","value":171854535},{"rank":50,"tag":"ONE","name":"Cunyaoo","value":170520809},{"rank":51,"tag":"REM","name":"EI Patron","value":170233539},{"rank":52,"tag":"ONE","name":"Orline","value":169536532},{"rank":53,"tag":"REM","name":"CheekyGoddess","value":168748494},{"rank":54,"tag":"KIN","name":"SiSimba","value":168607339},{"rank":55,"tag":"RED","name":"Magnus","value":168412125},{"rank":56,"tag":"","name":"Spooky","value":168395667},{"rank":57,"tag":"RE","name":"Dlyammtar","value":164546603},{"rank":58,"tag":"ONE","name":"Chex","value":163668115},{"rank":59,"tag":"REM","name":"26msone26","value":161405766},{"rank":60,"tag":"ONE","name":"Kenny","value":161260398},{"rank":61,"tag":"RED","name":"Lui","value":160964348},{"rank":62,"tag":"KIN","name":"Kaoswax","value":159603371},{"rank":63,"tag":"RED","name":"MasterWiet","value":159097826},{"rank":64,"tag":"KIN","name":"SEZZ","value":158807775},{"rank":65,"tag":"KIN","name":"onething","value":156542875},{"rank":66,"tag":"RED","name":"Gaybulous","value":156114281},{"rank":67,"tag":"REM","name":"Alecksandra","value":155810971},{"rank":68,"tag":"KIN","name":"Emkayes","value":155750719},{"rank":69,"tag":"KIN","name":"Butt Stuff Betty","value":155374626},{"rank":70,"tag":"KIN","name":"Rhatyel","value":154701871},{"rank":71,"tag":"REM","name":"czarcik","value":153796411},{"rank":72,"tag":"","name":"Haseen","value":153583941},{"rank":73,"tag":"ONE","name":"Jager","value":152934050},{"rank":74,"tag":"REM","name":"Yisussss","value":152321409},{"rank":75,"tag":"ONE","name":"RonSen","value":150729197},{"rank":76,"tag":"KIN","name":"Tezcatlipoca","value":150390594},{"rank":77,"tag":"ONE","name":"Dee","value":149751576},{"rank":78,"tag":"KIN","name":"#943SUKUNA","value":149571407},{"rank":79,"tag":"ONE","name":"Saphira","value":149009744},{"rank":80,"tag":"ONE","name":"Night","value":149007628},{"rank":81,"tag":"RED","name":"Goofried the 3rd","value":147702919},{"rank":82,"tag":"RED","name":"blooded ynot","value":147519987},{"rank":83,"tag":"ON","name":"Elyoyo","value":146469179},{"rank":84,"tag":"ONE","name":"WoOdY","value":143374745},{"rank":85,"tag":"ReM","name":"Don Pablo","value":142872217},{"rank":86,"tag":"REM","name":"XaVi","value":142834696},{"rank":87,"tag":"ONE","name":"Pegasuss","value":142771455},{"rank":88,"tag":"ONE","name":"POH TAY TOz","value":935842},{"rank":89,"tag":"REM","name":"O G","value":248219},{"rank":90,"tag":"RED","name":"TmB","value":222629},{"rank":91,"tag":"","name":"lord302843134","value":47695},{"rank":92,"tag":"","name":"lord302843134","value":15131},{"rank":93,"tag":"","name":"Personal Power","value":0}],"kill_count":[{"rank":1,"tag":"REM","name":"Jeya ayana","value":84452897},{"rank":2,"tag":"REM","name":"es S AXoN 63","value":69386335},{"rank":3,"tag":"ONE","name":"Heartwell","value":65258489},{"rank":4,"tag":"REM","name":"Mr Cookies","value":59379806},{"rank":5,"tag":"REM","name":"IrishDragon7777","value":57541675},{"rank":6,"tag":"RED","name":"Braden","value":46487874},{"rank":7,"tag":"ONE","name":"Drachilles","value":46215458},{"rank":8,"tag":"KIN","name":"Erwin","value":41331816},{"rank":9,"tag":"KIN","name":"Arabia","value":37603426},{"rank":10,"tag":"REM","name":"Ghost of Lasko","value":36018514},{"rank":11,"tag":"REM","name":"TropicTrainwreck","value":35612842},{"rank":12,"tag":"RED","name":"LoneShadew","value":32534901},{"rank":13,"tag":"REM","name":"Dragon Bob","value":32473184},{"rank":14,"tag":"ONE","name":"KOREA","value":31604096},{"rank":15,"tag":"ONE","name":"POH TAY TOz","value":31355980},{"rank":16,"tag":"REM","name":"PICKLE RICK","value":29711293},{"rank":17,"tag":"ONE","name":"Deniz","value":28928735},{"rank":18,"tag":"RED","name":"TmB","value":28511366},{"rank":19,"tag":"RED","name":"Amber","value":27834892},{"rank":20,"tag":"KIN","name":"Feio","value":25395920},{"rank":21,"tag":"KIN","name":"SEZZ","value":25272683},{"rank":22,"tag":"ONE","name":"BirdofPrey","value":24094516},{"rank":23,"tag":"","name":"DavioN 3","value":23971445},{"rank":24,"tag":"KIN","name":"Cinos","value":23692960},{"rank":25,"tag":"ONE","name":"Z 0 R 0","value":23260925},{"rank":26,"tag":"ONE","name":"AvalonFusion","value":22742249},{"rank":27,"tag":"ONE","name":"Mafi","value":22467753},{"rank":28,"tag":"ONE","name":"es PEGASUS 63","value":21853779},{"rank":29,"tag":"REM","name":"DragonLee","value":21449690},{"rank":30,"tag":"","name":"NiceDay","value":20299005},{"rank":31,"tag":"KIN","name":"Lady_of_Darkness","value":20122287},{"rank":32,"tag":"REM","name":"Weetcheez","value":18966473},{"rank":33,"tag":"","name":"Spooky","value":18484239},{"rank":34,"tag":"KIN","name":"YEYO","value":18321850},{"rank":35,"tag":"KIN","name":"iOOman","value":18297651},{"rank":36,"tag":"","name":"Haseen","value":18224809},{"rank":37,"tag":"REM","name":"Fulgiondorf","value":17890464},{"rank":38,"tag":"KIN","name":"ABN963HAMA","value":17443363},{"rank":39,"tag":"KIN","name":"Pookie","value":17277232},{"rank":40,"tag":"KIN","name":"Crezus","value":17233383},{"rank":41,"tag":"REM","name":"O G","value":17171277},{"rank":42,"tag":"KIN","name":"WallDestroyer","value":17096448},{"rank":43,"tag":"REM","name":"Vinni","value":17053724},{"rank":44,"tag":"ONE","name":"AHMED","value":16894840},{"rank":45,"tag":"RED","name":"Magnus","value":15867343},{"rank":46,"tag":"ONE","name":"Iriska","value":15806181},{"rank":47,"tag":"ONE","name":"Orline","value":15688723},{"rank":48,"tag":"REM","name":"DrakoPhantom_115","value":15330115},{"rank":49,"tag":"OxU","name":"Gery","value":15232930},{"rank":50,"tag":"KiN","name":"ForSalelk","value":15001351},{"rank":51,"tag":"","name":"Gone","value":14631491},{"rank":52,"tag":"","name":"Ldate","value":14253545},{"rank":53,"tag":"","name":"Ray","value":13898016},{"rank":54,"tag":"","name":"Cobra","value":13735528},{"rank":55,"tag":"ONE","name":"Dee","value":13702036},{"rank":56,"tag":"ONE","name":"Phil","value":13556618},{"rank":57,"tag":"KIN","name":"Jin","value":13111248},{"rank":58,"tag":"ONE","name":"Night","value":13007037},{"rank":59,"tag":"REM","name":"Myro","value":13003661},{"rank":60,"tag":"RED","name":"Gaybulous","value":12766009},{"rank":61,"tag":"ONE","name":"7rb","value":12643034},{"rank":62,"tag":"ONE","name":"Graaldt","value":12642421},{"rank":63,"tag":"ONE","name":"KRAISNIK","value":12595292},{"rank":64,"tag":"REM","name":"Vlado","value":12503966},{"rank":65,"tag":"RED","name":"blooded ynot","value":12427474},{"rank":66,"tag":"ONE","name":"bader","value":12425986},{"rank":67,"tag":"","name":"HERCULES","value":12035977},{"rank":68,"tag":"REM","name":"manuportugal45","value":11984655},{"rank":69,"tag":"ONE","name":"Canpolat","value":11707930},{"rank":70,"tag":"KIN","name":"Rhatyel","value":11691471},{"rank":71,"tag":"KIN","name":"Novez","value":11584425},{"rank":72,"tag":"RED","name":"Gimli","value":11537151},{"rank":73,"tag":"KIN","name":"Wooby","value":11517571},{"rank":74,"tag":"ONE","name":"Yellow #Et# Power","value":11384804},{"rank":75,"tag":"ONe","name":"BlueMoon2121","value":11244182},{"rank":76,"tag":"KIN","name":"Lucifer","value":11212840},{"rank":77,"tag":"RED","name":"LordinDerWelten","value":11195025},{"rank":78,"tag":"REM","name":"CyraEh","value":11130158},{"rank":79,"tag":"ONE","name":"Saphira","value":11013525},{"rank":80,"tag":"RE","name":"Dlyammtar","value":10968057},{"rank":81,"tag":"ONE","name":"Surturenzo","value":10890065},{"rank":82,"tag":"KIN","name":"RachaelsReptiles","value":10857028},{"rank":83,"tag":"REM","name":"no name","value":10744360},{"rank":84,"tag":"KIN","name":"BARAIII","value":10461230},{"rank":85,"tag":"KIN","name":"Tezcatlipoca","value":10446573},{"rank":86,"tag":"REM","name":"Alecksandra","value":10231640},{"rank":87,"tag":"REM","name":"Lord GO","value":10179044},{"rank":88,"tag":"RED","name":"November","value":10152714},{"rank":89,"tag":"KIN","name":"Kaoswax","value":648071},{"rank":90,"tag":"","name":"lord302843134","value":34270},{"rank":91,"tag":"ONE","name":"Ironk","value":25697},{"rank":92,"tag":"ONE","name":"Cunyaoo","value":6460},{"rank":93,"tag":"","name":"Kill Count","value":0}],"hero_power":[{"rank":1,"tag":"RED","name":"Nvidus","value":15231809},{"rank":2,"tag":"ONE","name":"Heartwell","value":11121595},{"rank":3,"tag":"ONE","name":"KOREA","value":8442596},{"rank":4,"tag":"ONE","name":"BirdofPrey","value":8240535},{"rank":5,"tag":"RED","name":"LeneShadew","value":7893016},{"rank":6,"tag":"ONE","name":"Drachilles","value":7232932},{"rank":7,"tag":"REM","name":"TropicTrainwreck","value":6924357},{"rank":8,"tag":"REM","name":"O G","value":6661547},{"rank":9,"tag":"KIN","name":"Arabia","value":6573205},{"rank":10,"tag":"KIN","name":"WallDestroyer","value":6486194},{"rank":11,"tag":"ONE","name":"Z 0 R 0","value":6243440},{"rank":12,"tag":"REM","name":"PICKLE RICK","value":5948427},{"rank":13,"tag":"","name":"(KINCinos","value":5891385},{"rank":14,"tag":"REM","name":"Dragon Bob","value":5829822},{"rank":15,"tag":"RED","name":"Amber","value":5477580},{"rank":16,"tag":"REM","name":"s SAXoN 63","value":5420224},{"rank":17,"tag":"ONE","name":"AvalonFusion","value":5380407},{"rank":18,"tag":"RED","name":"TmB","value":5270810},{"rank":19,"tag":"RED","name":"Braden","value":5133322},{"rank":20,"tag":"ONE","name":"Mafi","value":5127209},{"rank":21,"tag":"KIN","name":"Erwin","value":4949522},{"rank":22,"tag":"ONE","name":"e","value":4891555},{"rank":23,"tag":"KIN","name":"iOOman","value":4631230},{"rank":24,"tag":"KIN","name":"YEYO","value":4616132},{"rank":25,"tag":"REM","name":"IrishDragon7777","value":4541450},{"rank":26,"tag":"REM","name":"Drunk dragon","value":4483838},{"rank":27,"tag":"ONE","name":"s PEGASUS 63","value":4454062},{"rank":28,"tag":"ONE","name":"POH TAY TOZ","value":4384095},{"rank":29,"tag":"","name":"Haseen","value":4339060},{"rank":30,"tag":"ONE","name":"Luffy","value":4325470},{"rank":31,"tag":"REM","name":"Weetcheez","value":4267629},{"rank":32,"tag":"REM","name":"Ghost of Lasko","value":4263630},{"rank":33,"tag":"REM","name":"ThatsODE","value":4104615},{"rank":34,"tag":"REM","name":"Trafalgar Law","value":4054452},{"rank":35,"tag":"KIN","name":"Kaoswax","value":3864385},{"rank":36,"tag":"ReM","name":"es PZaseUs 63","value":3821862},{"rank":37,"tag":"ONE","name":"Deniz","value":3765732},{"rank":38,"tag":"RED","name":"Magnus","value":3760427},{"rank":39,"tag":"ONE","name":"Surturenzo","value":3686220},{"rank":40,"tag":"REM","name":"Es HZAcULCsTR 63","value":3655660},{"rank":41,"tag":"ONE","name":"Canpolat","value":3591209},{"rank":42,"tag":"ONE","name":"Haffi","value":3547777},{"rank":43,"tag":"KIN","name":"Lady_of_Darkness","value":3376161},{"rank":44,"tag":"ONE","name":"Orline","value":3357437},{"rank":45,"tag":"REM","name":"Jeya ayana","value":3348547},{"rank":46,"tag":"KIN","name":"Crezus","value":3318676},{"rank":47,"tag":"KIN","name":"SiSimba","value":3297605},{"rank":48,"tag":"REM","name":"XaVi","value":3257901},{"rank":49,"tag":"KIN","name":"UIf","value":3256170},{"rank":50,"tag":"RED","name":"Gimli","value":3208160},{"rank":51,"tag":"REM","name":"s Cat 63","value":3173735},{"rank":52,"tag":"KIN","name":"RachaelsReptiles","value":3154167},{"rank":53,"tag":"RED","name":"oNUR","value":3124850},{"rank":54,"tag":"KIN","name":"Butt Stuff","value":3104560},{"rank":55,"tag":"KiN","name":"ForSalelk","value":3078857},{"rank":56,"tag":"KIN","name":"Wooby","value":3075620},{"rank":57,"tag":"KIN","name":"Pookie","value":3042340},{"rank":58,"tag":"REM","name":"no name","value":3031877},{"rank":59,"tag":"REM","name":"Yisussss","value":3000150},{"rank":60,"tag":"REM","name":"CheekyGoddess","value":2993435},{"rank":61,"tag":"ON","name":"Elyoyo","value":2988450},{"rank":62,"tag":"","name":"AK68","value":2982222},{"rank":63,"tag":"REM","name":"DragonLee","value":2977757},{"rank":64,"tag":"RE","name":"Dlyammtar","value":2936812},{"rank":65,"tag":"REM","name":"26msone26","value":2904330},{"rank":66,"tag":"KIN","name":"SEZZ","value":2901670},{"rank":67,"tag":"","name":"Hero: Zoe","value":2884919},{"rank":68,"tag":"","name":"NiceDay","value":2884642},{"rank":69,"tag":"REM","name":"Ceausescu","value":2883420},{"rank":70,"tag":"ONE","name":"Phil","value":2883045},{"rank":71,"tag":"ONE","name":"Ironk","value":2879007},{"rank":72,"tag":"REM","name":"Meow","value":2876070},{"rank":73,"tag":"RED","name":"LENNAO","value":2872117},{"rank":74,"tag":"REM","name":"Vinni","value":2831992},{"rank":75,"tag":"KIN","name":"Emkayes","value":2823320},{"rank":76,"tag":"ONE","name":"Caupuacu:","value":2815620},{"rank":77,"tag":"ONE","name":"Yellow FEt# Power","value":2807465},{"rank":78,"tag":"PHX","name":"King_Cobra","value":2786445},{"rank":79,"tag":"REM","name":"manuportugal45","value":2781269},{"rank":80,"tag":"KIN","name":"KRyStL","value":2758920},{"rank":81,"tag":"ONE","name":"Sunny2019","value":2758850},{"rank":82,"tag":"","name":"Jdic","value":2749407},{"rank":83,"tag":"","name":"egersin","value":2711020},{"rank":84,"tag":"ONE","name":"AHMED","value":2708302},{"rank":85,"tag":"RED","name":"Diaee","value":2695020},{"rank":86,"tag":"ONE","name":"KRAISNIK","value":2687347},{"rank":87,"tag":"KIN","name":"Loopy Loki","value":2683110},{"rank":88,"tag":"KIN","name":"onething","value":2676355},{"rank":89,"tag":"KIN","name":"Penny","value":2676147},{"rank":90,"tag":"ONE","name":"Nabbissimo","value":2673420},{"rank":91,"tag":"KIN","name":"Tezcatlipoca","value":2670147},{"rank":92,"tag":"KIN","name":"RonaR","value":2662657},{"rank":93,"tag":"ONE","name":"7rb","value":2657300},{"rank":94,"tag":"ONE","name":"Silas 46","value":2638635},{"rank":95,"tag":"REM","name":"jasonztraum","value":2638507},{"rank":96,"tag":"","name":"lord302843134","value":16960},{"rank":97,"tag":"","name":"Hero Power","value":0}],"heros_total_power":[{"rank":1,"tag":"RED","name":"Nvidus","value":55797263},{"rank":2,"tag":"ONE","name":"Heartwell","value":48719860},{"rank":3,"tag":"RED","name":"TmB","value":43969612},{"rank":4,"tag":"ONE","name":"Drachilles","value":43609903},{"rank":5,"tag":"ONE","name":"BirdofPrey","value":43577700},{"rank":6,"tag":"ONE","name":"KOREA","value":43187044},{"rank":7,"tag":"REM","name":"Dragon Bob","value":41186708},{"rank":8,"tag":"REM","name":"O G","value":40659308},{"rank":9,"tag":"RED","name":"LoneShadew","value":38646752},{"rank":10,"tag":"ONE","name":"Z 0 R 0","value":36734521},{"rank":11,"tag":"KIN","name":"Erwin","value":36706434},{"rank":12,"tag":"KIN","name":"Cinos","value":33702487},{"rank":13,"tag":"REM","name":"PICKLE RICK","value":33681034},{"rank":14,"tag":"ONE","name":"POH TAY TOz","value":33409881},{"rank":15,"tag":"KIN","name":"UIF","value":32912640},{"rank":16,"tag":"REM","name":"Mr Cookies","value":32294394},{"rank":17,"tag":"KIN","name":"WallDestroyer","value":32072870},{"rank":18,"tag":"RED","name":"Braden","value":31947274},{"rank":19,"tag":"RED","name":"Amber","value":30624294},{"rank":20,"tag":"KIN","name":"Kaoswax","value":30312486},{"rank":21,"tag":"REM","name":"s S AXoN 63","value":30185333},{"rank":22,"tag":"","name":"KINJLady_of_Darkness","value":29581962},{"rank":23,"tag":"REM","name":"Weetcheez","value":28844437},{"rank":24,"tag":"KIN","name":"Emkayes","value":28618565},{"rank":25,"tag":"ONE","name":"Mafi","value":28584342},{"rank":26,"tag":"REM","name":"Jeya ayana","value":28475482},{"rank":27,"tag":"ONE","name":"Haffi","value":28296658},{"rank":28,"tag":"KIN","name":"YEYO","value":28119045},{"rank":29,"tag":"ONE","name":"Luffy","value":27882697},{"rank":30,"tag":"","name":"Eric","value":27737510},{"rank":31,"tag":"ONE","name":"e DavioN 3","value":27661802},{"rank":32,"tag":"","name":"HERCULES","value":27629487},{"rank":33,"tag":"ONE","name":"es PEGASUS 63","value":27497813},{"rank":34,"tag":"REM","name":"manuportugal45","value":27470853},{"rank":35,"tag":"RED","name":"Magnus","value":27263156},{"rank":36,"tag":"KIN","name":"RachaelsReptiles","value":27057500},{"rank":37,"tag":"REM","name":"Es Cat 63","value":27042276},{"rank":38,"tag":"OxU","name":"Kai El Gallo","value":27000254},{"rank":39,"tag":"TRN","name":"Luigy MCMLXIX","value":26862759},{"rank":40,"tag":"ONE","name":"Surturenzo","value":26785437},{"rank":41,"tag":"RED","name":"blooded ynot","value":26568579},{"rank":42,"tag":"ONE","name":"Silas 46","value":26486869},{"rank":43,"tag":"REM","name":"DragonLee","value":26440798},{"rank":44,"tag":"RED","name":"MasterWiet","value":26400497},{"rank":45,"tag":"","name":"Freakinglazers","value":26342059},{"rank":46,"tag":"REM","name":"PitMaster","value":26264467},{"rank":47,"tag":"ONE","name":"Deniz","value":25665820},{"rank":48,"tag":"","name":"LEMMAy;","value":25665282},{"rank":49,"tag":"KIN","name":"Pookie","value":25557689},{"rank":50,"tag":"REM","name":"AZline","value":25551391},{"rank":51,"tag":"REM","name":"IrishDragon7777","value":25540656},{"rank":52,"tag":"RED","name":"Lui","value":25263656},{"rank":53,"tag":"REM","name":"Devil's ynot","value":25257073},{"rank":54,"tag":"KIN","name":"onething","value":25246042},{"rank":55,"tag":"REM","name":"LECHIA","value":25229462},{"rank":56,"tag":"","name":"Spooky","value":25226356},{"rank":57,"tag":"REM","name":"Mira","value":25143401},{"rank":58,"tag":"RED","name":"JoeTown","value":25127410},{"rank":59,"tag":"ONE","name":"Chex","value":24994425},{"rank":60,"tag":"KIN","name":"Rhatyel","value":24926483},{"rank":61,"tag":"","name":"Haseen","value":24835809},{"rank":62,"tag":"REM","name":"Alecksandra","value":24779205},{"rank":63,"tag":"REM","name":"26msone26","value":24652247},{"rank":64,"tag":"KIN","name":"iOOman","value":24604287},{"rank":65,"tag":"","name":"HUNEJUME","value":24543413},{"rank":66,"tag":"ONE","name":"Jager","value":24457265},{"rank":67,"tag":"KIN","name":"Crezus","value":24454806},{"rank":68,"tag":"ONE","name":"Saphira","value":24219456},{"rank":69,"tag":"ONE","name":"Pegasuss","value":24182466},{"rank":70,"tag":"ONE","name":"Yellow FET# Power","value":24178731},{"rank":71,"tag":"RED","name":"Gaybulous","value":24149856},{"rank":72,"tag":"REM","name":"Vinni","value":24132916},{"rank":73,"tag":"ONE","name":"Sunny2019","value":24099692},{"rank":74,"tag":"RED","name":"Kathu","value":24081487},{"rank":75,"tag":"ONE","name":"Night","value":24030389},{"rank":76,"tag":"ONE","name":"Koktele","value":23933300},{"rank":77,"tag":"RED","name":"Horse Beer","value":23786155},{"rank":78,"tag":"REM","name":"Drunk dragon","value":23733288},{"rank":79,"tag":"RED","name":"Goofried the 3rd","value":23673889},{"rank":80,"tag":"REM","name":"lkit Claw","value":23667337},{"rank":81,"tag":"REM","name":"Grace","value":23638119},{"rank":82,"tag":"PHX","name":"King_Cobra","value":23549732},{"rank":83,"tag":"REM","name":"Ceausescu","value":23462814},{"rank":84,"tag":"KIN","name":"Tezcatlipoca","value":23438236},{"rank":85,"tag":"KIN","name":"Mano","value":23377969},{"rank":86,"tag":"ONE","name":"Spiderman44","value":23349549},{"rank":87,"tag":"KIN","name":"Azmodan","value":23338490},{"rank":88,"tag":"REM","name":"Ikit Claw","value":667337},{"rank":89,"tag":"REM","name":"Grace","value":638119},{"rank":90,"tag":"KIN","name":"Tezcatlipoca","value":438236},{"rank":91,"tag":"ONE","name":"Spiderman44","value":349549},{"rank":92,"tag":"ONE","name":"CYRUS","value":54872},{"rank":93,"tag":"","name":"lord302843134","value":30400},{"rank":94,"tag":"KIN","name":"Wooby","value":28681},{"rank":95,"tag":"","name":"Hero's Total Power","value":0}],"total_pet_power":[{"rank":1,"tag":"RED","name":"Nvidus","value":21552240},{"rank":2,"tag":"ONE","name":"Heartwell","value":15804480},{"rank":3,"tag":"REM","name":"Dragon Bob","value":14278320},{"rank":4,"tag":"ONE","name":"KOREA","value":13901040},{"rank":5,"tag":"RED","name":"TmB","value":13872000},{"rank":6,"tag":"ONE","name":"e DavioN 3","value":12833880},{"rank":7,"tag":"RED","name":"Braden","value":12736320},{"rank":8,"tag":"KIN","name":"UIf","value":12734760},{"rank":9,"tag":"ONE","name":"Drachilles","value":12727440},{"rank":10,"tag":"KIN","name":"Arabia","value":12645000},{"rank":11,"tag":"REM","name":"Ghost of Lasko","value":12620640},{"rank":12,"tag":"KIN","name":"Erwin","value":12573600},{"rank":13,"tag":"ONE","name":"BirdofPrey","value":12525600},{"rank":14,"tag":"REM","name":"O G","value":12391560},{"rank":15,"tag":"","name":"HERCULES","value":12335160},{"rank":16,"tag":"REM","name":"es S AXoN 63","value":12189840},{"rank":17,"tag":"ONE","name":"es PEGASUS 63","value":12140160},{"rank":18,"tag":"REM","name":"Jeya ayana","value":12119280},{"rank":19,"tag":"ONE","name":"POH TAY TOz","value":11882400},{"rank":20,"tag":"","name":"KINJCinos","value":11877960},{"rank":21,"tag":"ONE","name":"Surturenzo","value":11866560},{"rank":22,"tag":"KIN","name":"#943SUKUNA","value":11840400},{"rank":23,"tag":"KIN","name":"Emkayes","value":11724840},{"rank":24,"tag":"REM","name":"s Cat 63","value":11700120},{"rank":25,"tag":"REM","name":"Yisussss","value":11612760},{"rank":26,"tag":"KIN","name":"WallDestroyer","value":11574720},{"rank":27,"tag":"REM","name":"ThatsODE","value":11470320},{"rank":28,"tag":"REM","name":"Trafalgar Law","value":11470080},{"rank":29,"tag":"ONE","name":"Canpolat","value":11433600},{"rank":30,"tag":"KIN","name":"Kaoswax","value":11426400},{"rank":31,"tag":"REM","name":"Weetcheez","value":11387400},{"rank":32,"tag":"KIN","name":"YEYO","value":11369280},{"rank":33,"tag":"REM","name":"Mr Cookies","value":11311920},{"rank":34,"tag":"REM","name":"TropicTrainwreck","value":11103480},{"rank":35,"tag":"REM","name":"LECHIA","value":10998480},{"rank":36,"tag":"REM","name":"Drunk dragon","value":10966800},{"rank":37,"tag":"ONE","name":"Z 0 R 0","value":10961280},{"rank":38,"tag":"REM","name":"IrishDragon7777","value":10930440},{"rank":39,"tag":"KIN","name":"Crezus","value":10694280},{"rank":40,"tag":"REM","name":"no name","value":10685640},{"rank":41,"tag":"","name":"PERSEUS","value":10668360},{"rank":42,"tag":"RED","name":"JoeTown","value":10567440},{"rank":43,"tag":"RE","name":"Dlyammtar","value":10557000},{"rank":44,"tag":"KIN","name":"SEZZ","value":10545240},{"rank":45,"tag":"RED","name":"Kathu","value":10523160},{"rank":46,"tag":"RED","name":"Horse Beer","value":10514760},{"rank":47,"tag":"RED","name":"LoneShadew","value":10510920},{"rank":48,"tag":"KIN","name":"Rhatyel","value":10494840},{"rank":49,"tag":"KIN","name":"LordFarquaad","value":10487040},{"rank":50,"tag":"ONE","name":"Luffy","value":10457160},{"rank":51,"tag":"REM","name":"Ceausescu","value":10379760},{"rank":52,"tag":"RED","name":"Amber","value":10379640},{"rank":53,"tag":"KIN","name":"Itachioo7","value":10375560},{"rank":54,"tag":"RED","name":"34#:TA R 0","value":10354800},{"rank":55,"tag":"RED","name":"oNUR","value":10341720},{"rank":56,"tag":"","name":"Ex\"as","value":10326960},{"rank":57,"tag":"RED","name":"Lui","value":10318680},{"rank":58,"tag":"","name":"Freakinglazers","value":10313040},{"rank":59,"tag":"KNG","name":"AMF","value":10256280},{"rank":60,"tag":"KNG","name":"Malle","value":10242480},{"rank":61,"tag":"KIN","name":"Pookie","value":10241400},{"rank":62,"tag":"ONE","name":"Silas 46","value":10217400},{"rank":63,"tag":"RED","name":"blooded ynot","value":10215960},{"rank":64,"tag":"REM","name":"manuportugal45","value":10205640},{"rank":65,"tag":"","name":"","value":10194960},{"rank":66,"tag":"","name":"","value":10177560},{"rank":67,"tag":"ONE","name":"Jager","value":10170960},{"rank":68,"tag":"ONE","name":"Ntraks","value":10144440},{"rank":69,"tag":"ONe","name":"Orel14","value":10123920},{"rank":70,"tag":"TRN","name":"Hammerhart","value":10122120},{"rank":71,"tag":"REM","name":"PICKLE RICK","value":10108920},{"rank":72,"tag":"ONE","name":"Cunyaoo","value":10106400},{"rank":73,"tag":"REM","name":"Vlado","value":10105080},{"rank":74,"tag":"REM","name":"Tower3360","value":10104240},{"rank":75,"tag":"REM","name":"CheekyGoddess","value":10103400},{"rank":76,"tag":"","name":"","value":10098120},{"rank":77,"tag":"PHX","name":"King_Cobra","value":10086000},{"rank":78,"tag":"REM","name":"EFi","value":10066560},{"rank":79,"tag":"ReM","name":"king Wintet","value":10058640},{"rank":80,"tag":"REM","name":"Nashl1","value":10053960},{"rank":81,"tag":"","name":"Eric","value":10049760},{"rank":82,"tag":"RED","name":"memo","value":10048080},{"rank":83,"tag":"ONE","name":"Padrino","value":10039080},{"rank":84,"tag":"ONE","name":"Haffi","value":10003440},{"rank":85,"tag":"KiN","name":"perceval","value":10002360},{"rank":86,"tag":"RED","name":"Manfred Von R","value":10001280},{"rank":87,"tag":"ONelj","name":"cdus","value":9998640},{"rank":88,"tag":"ONE","name":"Mafi","value":9979680},{"rank":89,"tag":"RED","name":"Morris l","value":9978960},{"rank":90,"tag":"KIN","name":"Slinky","value":9974160},{"rank":91,"tag":"REM","name":"Devil's ynot","value":9960000},{"rank":92,"tag":"TRN","name":"Ronbone","value":9958080},{"rank":93,"tag":"KIN","name":"onething","value":9956040},{"rank":94,"tag":"","name":"lord302843134","value":34270},{"rank":95,"tag":"","name":"Total Pet Power","value":0}],"mystic_trial":[{"rank":1,"tag":"RED","name":"Nvidus","value":2144},{"rank":2,"tag":"ONE","name":"Heartwell","value":1805},{"rank":3,"tag":"ONE","name":"KOREA","value":1708},{"rank":4,"tag":"ONE","name":"Drachilles","value":1680},{"rank":5,"tag":"RED","name":"Lone Shadew","value":1672},{"rank":6,"tag":"RED","name":"TmB","value":1633},{"rank":7,"tag":"KIN","name":"Arabia","value":1621},{"rank":8,"tag":"REM","name":"Dragon Bob","value":1619},{"rank":9,"tag":"REM","name":"O G","value":1599},{"rank":10,"tag":"REM","name":"TropicTrainwreck","value":1590},{"rank":11,"tag":"KIN","name":"Erwin","value":1587},{"rank":12,"tag":"","name":"IKINJCinos","value":1566},{"rank":13,"tag":"ONE","name":"BirdofPrey","value":1558},{"rank":14,"tag":"ONE","name":"Z 0 R 0","value":1489},{"rank":15,"tag":"ONE","name":"Mafi","value":1484},{"rank":16,"tag":"ONE","name":"POH TAY TOz","value":1479},{"rank":17,"tag":"RED","name":"Braden","value":1476},{"rank":18,"tag":"REM","name":"s S AXoN 63","value":1454},{"rank":19,"tag":"REM","name":"Jeya ayana","value":1426},{"rank":20,"tag":"KIN","name":"YEYO","value":1413},{"rank":21,"tag":"KIN","name":"UIF","value":1403},{"rank":22,"tag":"RED","name":"Amber","value":1394},{"rank":23,"tag":"REM","name":"Mr Cookies","value":1370},{"rank":24,"tag":"REM","name":"Trafalgar Law","value":1368},{"rank":25,"tag":"","name":"HERCULES","value":1363},{"rank":26,"tag":"KIN","name":"Emkayes","value":1320},{"rank":27,"tag":"REM","name":"Weetcheez","value":1315},{"rank":28,"tag":"ONE","name":"e DavioN 3","value":1310},{"rank":29,"tag":"KIN","name":"iOOman","value":1281},{"rank":30,"tag":"REM","name":"ThatsODE","value":1257},{"rank":31,"tag":"KIN","name":"Lady_of_Darkness","value":1256},{"rank":32,"tag":"ONE","name":"es PEGASUS 63","value":1255},{"rank":33,"tag":"KIN","name":"Wooby","value":1254},{"rank":34,"tag":"ONE","name":"Surturenzo","value":1245},{"rank":35,"tag":"ONE","name":"Haffi","value":1244},{"rank":36,"tag":"KIN","name":"Crezus","value":1236},{"rank":37,"tag":"KIN","name":"Kaoswax","value":1233},{"rank":38,"tag":"REM","name":"IrishDragon7777","value":1210},{"rank":39,"tag":"REM","name":"manuportugal45","value":1186},{"rank":40,"tag":"","name":"Haseen","value":1182},{"rank":41,"tag":"KIN","name":"RachaelsReptiles","value":1172},{"rank":42,"tag":"ONE","name":"yoyo","value":1169},{"rank":43,"tag":"REM","name":"Es Cat 63","value":1159},{"rank":44,"tag":"ONE","name":"Night","value":1149},{"rank":45,"tag":"REM","name":"no name","value":1147},{"rank":46,"tag":"ONE","name":"Orline","value":1146},{"rank":47,"tag":"KIN","name":"Pookie","value":1138},{"rank":48,"tag":"","name":"Freakinglazers","value":1130},{"rank":49,"tag":"REM","name":"CheekyGoddess","value":1125},{"rank":50,"tag":"ONE","name":"Luffy","value":1122},{"rank":51,"tag":"KIN","name":"Feio","value":1121},{"rank":52,"tag":"RED","name":"34#:T A R 0","value":1116},{"rank":53,"tag":"ONE","name":"Sunny2019","value":1115},{"rank":54,"tag":"REM","name":"Drunk dragon","value":1114},{"rank":55,"tag":"ONE","name":"Canpolat","value":1113},{"rank":56,"tag":"ONE","name":"Silas 46","value":1110},{"rank":57,"tag":"ONE","name":"Yellow FETE Power","value":1108},{"rank":58,"tag":"RED","name":"Goofried the 3rd","value":1102},{"rank":59,"tag":"OxU","name":"Gery","value":1096},{"rank":60,"tag":"REM","name":"Yisussss","value":1095},{"rank":61,"tag":"","name":"Spooky","value":1093},{"rank":62,"tag":"ONE","name":"Chex","value":1091},{"rank":63,"tag":"","name":"JONEJKRAJISNIK","value":1090},{"rank":64,"tag":"REM","name":"DragonLee","value":1089},{"rank":65,"tag":"KIN","name":"ABN963HAMA","value":1083},{"rank":66,"tag":"ONE","name":"Caupuacu","value":1081},{"rank":67,"tag":"RED","name":"Gaybulous","value":1077},{"rank":68,"tag":"KIN","name":"#943SUKUNA","value":1075},{"rank":69,"tag":"ONE","name":"HansPeterMayer","value":1074},{"rank":70,"tag":"KIN","name":"Butt Stuff","value":1071},{"rank":71,"tag":"RED","name":"blooded ynot","value":1070},{"rank":72,"tag":"ONE","name":"Phil","value":1068},{"rank":73,"tag":"REM","name":"Ikit Claw","value":1067},{"rank":74,"tag":"KIN","name":"Rhatyel","value":1066},{"rank":75,"tag":"REM","name":"26msone26","value":1064},{"rank":76,"tag":"REM","name":"Baby","value":1060},{"rank":77,"tag":"RE","name":"Dlyammtar","value":1059},{"rank":78,"tag":"REM","name":"czarcik","value":1058},{"rank":79,"tag":"TRN","name":"Luigy MCMLXIX","value":1055},{"rank":80,"tag":"ONE","name":"Kenny","value":1050},{"rank":81,"tag":"REM","name":"LECHIA","value":1049},{"rank":82,"tag":"","name":"lord302843134","value":0}]}};
+
+
+
+
+
+
+(function() {
+  var ALLIANCE_CATS = [
+    {key: 'alliance_power', label: 'Alliance Power', col: 'Power'},
+    {key: 'alliance_kills', label: 'Alliance Kills', col: 'Kills'}
+  ];
+  var PLAYER_CATS = [
+    {key: 'personal_power', label: 'Personal Power', col: 'Power'},
+    {key: 'kill_count', label: 'Kill Count', col: 'Kills'},
+    {key: 'hero_power', label: 'Hero Power', col: 'Power'},
+    {key: 'heros_total_power', label: "Hero's Total Power", col: 'Power'},
+    {key: 'total_pet_power', label: 'Total Pet Power', col: 'Power'}
+  ];
+  var EVENT_CATS = [
+    {key: 'mystic_trial', label: 'Mystic Trial', col: 'Score'}
+  ];
+
+  var data = null;
+
+  function formatValue(v) {
+    if (v >= 1e9) return (v / 1e9).toFixed(2) + 'B';
+    if (v >= 1e6) return (v / 1e6).toFixed(1) + 'M';
+    if (v >= 1e3) return (v / 1e3).toFixed(0) + 'K';
+    return v.toLocaleString();
+  }
+
+  function renderTable(tbodyId, entries, colLabel, searchFilter) {
+    var tbody = document.getElementById(tbodyId);
+    tbody.innerHTML = '';
+    var maxVal = entries.length > 0 ? entries[0].value : 1;
+
+    entries.forEach(function(e) {
+      if (searchFilter) {
+        var q = searchFilter.toLowerCase();
+        var full = (e.tag ? '[' + e.tag + ']' : '') + e.name;
+        if (full.toLowerCase().indexOf(q) === -1) return;
+      }
+      if (!e.name && e.value === 0) return;
+
+      var tr = document.createElement('tr');
+      var rankClass = e.rank <= 3 ? ' k-rank-' + e.rank : '';
+      var nameHtml = e.name
+        ? (e.tag ? '<span class="k-tag">[' + e.tag + ']</span>' : '') + '<span class="k-name">' + e.name + '</span>'
+        : '<span class="k-unnamed">Unknown</span>';
+      var pct = maxVal > 0 ? (e.value / maxVal * 100).toFixed(1) : 0;
+
+      tr.innerHTML =
+        '<td class="k-rank' + rankClass + '">' + e.rank + '</td>' +
+        '<td>' + nameHtml + '</td>' +
+        '<td class="k-power">' + e.value.toLocaleString() + '</td>' +
+        '<td><div class="k-bar"><div class="k-bar-fill" style="width:' + pct + '%"></div></div></td>';
+      tbody.appendChild(tr);
+    });
+  }
+
+  function setupTabs(containerId, cats, tbodyId, searchId) {
+    var container = document.getElementById(containerId);
+    var searchInput = document.getElementById(searchId);
+    var activeKey = cats[0].key;
+
+    cats.forEach(function(cat) {
+      var btn = document.createElement('button');
+      btn.className = 'k-tab' + (cat.key === activeKey ? ' active' : '');
+      btn.textContent = cat.label;
+      btn.dataset.key = cat.key;
+      btn.addEventListener('click', function() {
+        activeKey = cat.key;
+        container.querySelectorAll('.k-tab').forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+        renderTable(tbodyId, data.categories[activeKey] || [], cat.col, searchInput.value);
+      });
+      container.appendChild(btn);
+    });
+
+    searchInput.addEventListener('input', function() {
+      renderTable(tbodyId, data.categories[activeKey] || [], '', searchInput.value);
+    });
+  }
+
+  // Data is embedded below (KINGDOM_DATA variable)
+  data = KINGDOM_DATA;
+
+  // Update footnote
+  document.getElementById('stat-updated').textContent = 'Last updated ' + data.last_updated;
+
+  // Setup tabs and render defaults
+  // Split alliances into active and inactive based on power threshold
+  // Active = power >= 1% of top alliance, OR top 30 alliances (whichever captures more)
+  // Long-term this should use timeline diff; for now use power threshold
+  function splitActiveInactive(entries) {
+    if (!entries || entries.length === 0) return {active: [], inactive: []};
+    var topPower = entries[0].value;
+    var threshold = Math.max(topPower * 0.01, 50000000); // 1% of top, min 50M
+    var active = [], inactive = [];
+    entries.forEach(function(e) {
+      if (e.value >= threshold) active.push(e);
+      else inactive.push(e);
+    });
+    // Always show at least 10 active even if all small
+    if (active.length < 10 && inactive.length > 0) {
+      var promote = inactive.splice(0, 10 - active.length);
+      active = active.concat(promote);
+    }
+    return {active: active, inactive: inactive};
+  }
+
+  // Override alliance tabs behavior to use active/inactive split
+  function setupAllianceTabs() {
+    var container = document.getElementById('alliance-tabs');
+    var searchInput = document.getElementById('alliance-search');
+    var activeKey = ALLIANCE_CATS[0].key;
+
+    function render(filter) {
+      var entries = data.categories[activeKey] || [];
+      var split = splitActiveInactive(entries);
+      renderTable('alliance-tbody', split.active, '', filter || '');
+      renderTable('alliance-inactive-tbody', split.inactive, '', filter || '');
+
+      // Show/hide inactive section
+      var wrap = document.getElementById('alliance-inactive-wrap');
+      var label = document.getElementById('alliance-inactive-label');
+      if (split.inactive.length > 0) {
+        wrap.style.display = 'block';
+        label.textContent = 'Inactive alliances (' + split.inactive.length + ')';
+      } else {
+        wrap.style.display = 'none';
+      }
+    }
+
+    ALLIANCE_CATS.forEach(function(cat) {
+      var btn = document.createElement('button');
+      btn.className = 'k-tab' + (cat.key === activeKey ? ' active' : '');
+      btn.textContent = cat.label;
+      btn.dataset.key = cat.key;
+      btn.addEventListener('click', function() {
+        activeKey = cat.key;
+        container.querySelectorAll('.k-tab').forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+        render(searchInput.value);
+      });
+      container.appendChild(btn);
+    });
+
+    searchInput.addEventListener('input', function() {
+      render(searchInput.value);
+    });
+
+    // Inactive toggle
+    var toggle = document.getElementById('alliance-inactive-toggle');
+    var content = document.getElementById('alliance-inactive-content');
+    toggle.addEventListener('click', function() {
+      toggle.classList.toggle('expanded');
+      content.classList.toggle('expanded');
+    });
+
+    render('');
+  }
+
+  // Top-level page tab switching (Alliance / Player / Event)
+  function setupPageTabs() {
+    var tabs = document.querySelectorAll('.k-pagetab');
+    var panels = document.querySelectorAll('.k-panel');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = tab.dataset.panel;
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+        // Scroll to top of panels so user sees the content
+        window.scrollTo({top: document.querySelector('.k-pagetabs').offsetTop - 20, behavior: 'smooth'});
+      });
+    });
+  }
+
+  setupPageTabs();
+  setupAllianceTabs();
+  setupTabs('player-tabs', PLAYER_CATS, 'player-tbody', 'player-search');
+  setupTabs('event-tabs', EVENT_CATS, 'event-tbody', 'event-search');
+
+  // Render initial data
+  // Alliance rendering handled by setupAllianceTabs
+  renderTable('player-tbody', data.categories.personal_power || [], 'Power', '');
+  renderTable('event-tbody', data.categories.mystic_trial || [], 'Score', '');
+
+  // ============================================================
+  // TIMELINE / TRENDS
+  // ============================================================
+  // History data injected as KINGDOM_HISTORY (may be undefined or empty)
+  var history = (typeof KINGDOM_HISTORY !== 'undefined') ? KINGDOM_HISTORY : null;
+
+  // Identity key for an entity: tag + name (case-insensitive). Used to match
+  // the same alliance/player across snapshots even if rank changed.
+  function entityKey(e) {
+    return ((e.tag || '') + '|' + (e.name || '')).toLowerCase();
+  }
+  function entityLabel(e) {
+    return (e.tag ? '[' + e.tag + ']' : '') + e.name;
+  }
+
+  // Build series for each entity in a category across all snapshots.
+  // Returns: { entities: [{key, tag, name, points: [{ts, rank, value}, ...]}], timestamps: [...] }
+  function buildSeries(catKey) {
+    if (!history || !history.snapshots || history.snapshots.length === 0) return null;
+    var byEntity = {};
+    var timestamps = [];
+    history.snapshots.forEach(function(snap) {
+      timestamps.push(snap.timestamp);
+      var entries = (snap.categories && snap.categories[catKey]) || [];
+      entries.forEach(function(e) {
+        var k = entityKey(e);
+        if (!byEntity[k]) {
+          byEntity[k] = {key: k, tag: e.tag, name: e.name, points: []};
+        }
+        byEntity[k].points.push({ts: snap.timestamp, rank: e.rank, value: e.value});
+      });
+    });
+    return {
+      entities: Object.values(byEntity),
+      timestamps: timestamps,
+    };
+  }
+
+  // Format timestamp "2026-04-16_175423" -> "Apr 16"
+  function formatTs(ts) {
+    var d = ts.substring(0, 10); // YYYY-MM-DD
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var m = parseInt(d.substring(5, 7), 10) - 1;
+    var day = parseInt(d.substring(8, 10), 10);
+    var hh = ts.substring(11, 13);
+    return months[m] + ' ' + day + ' ' + hh + ':00';
+  }
+
+  // Color palette (gold variations + complementary tones for many lines)
+  var PALETTE = [
+    '#d4af37', '#e6b8d4', '#7dd3fc', '#86efac', '#fda4af',
+    '#fbbf24', '#a78bfa', '#34d399', '#fb923c', '#f472b6',
+    '#60a5fa', '#facc15', '#a3e635', '#f87171', '#c084fc',
+    '#22d3ee', '#fde047', '#4ade80', '#fb7185', '#818cf8',
+  ];
+
+  var trendChart = null;
+  var modalChart = null;
+  var currentTrendCategory = 'alliance_power';
+  var currentTrendTopN = 10;
+
+  function renderTrendChart() {
+    var emptyMsg = document.getElementById('trend-empty');
+    var canvas = document.getElementById('trend-chart');
+
+    if (!history || !history.snapshots || history.snapshots.length < 2) {
+      canvas.style.display = 'none';
+      emptyMsg.style.display = 'block';
+      if (trendChart) { trendChart.destroy(); trendChart = null; }
+      return;
+    }
+
+    var series = buildSeries(currentTrendCategory);
+    if (!series || series.entities.length === 0) {
+      canvas.style.display = 'none';
+      emptyMsg.style.display = 'block';
+      if (trendChart) { trendChart.destroy(); trendChart = null; }
+      return;
+    }
+
+    canvas.style.display = 'block';
+    emptyMsg.style.display = 'none';
+
+    // Pick top N entities by latest value
+    var lastTs = series.timestamps[series.timestamps.length - 1];
+    series.entities.forEach(function(ent) {
+      var lastPoint = ent.points.filter(function(p) { return p.ts === lastTs; })[0];
+      ent._latest = lastPoint ? lastPoint.value : 0;
+    });
+    var top = series.entities.sort(function(a, b) { return b._latest - a._latest; })
+                              .slice(0, currentTrendTopN);
+
+    // Build datasets
+    var labels = series.timestamps.map(formatTs);
+    var datasets = top.map(function(ent, i) {
+      var color = PALETTE[i % PALETTE.length];
+      var data = series.timestamps.map(function(ts) {
+        var p = ent.points.filter(function(pt) { return pt.ts === ts; })[0];
+        return p ? p.value : null;
+      });
+      return {
+        label: entityLabel(ent),
+        data: data,
+        borderColor: color,
+        backgroundColor: color + '33',
+        tension: 0.3,
+        pointRadius: 4,
+        pointHoverRadius: 7,
+        spanGaps: true,
+      };
+    });
+
+    if (trendChart) trendChart.destroy();
+    var ctx = canvas.getContext('2d');
+    trendChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: labels, datasets: datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'nearest', axis: 'x', intersect: false },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: '#e5e5e5', font: {size: 11}, boxWidth: 12, padding: 8 }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(20,20,20,0.95)',
+            titleColor: '#d4af37',
+            bodyColor: '#fff',
+            borderColor: '#d4af37',
+            borderWidth: 1,
+            callbacks: {
+              label: function(ctx) {
+                return ctx.dataset.label + ': ' + formatValue(ctx.parsed.y);
+              }
+            }
+          }
+        },
+        scales: {
+          x: { ticks: { color: '#9ca3af', font: {size: 11} }, grid: { color: 'rgba(255,255,255,0.05)' }},
+          y: {
+            ticks: {
+              color: '#9ca3af', font: {size: 11},
+              callback: function(v) { return formatValue(v); }
+            },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          }
+        }
+      }
+    });
+
+    renderMovers(series, top);
+  }
+
+  function renderMovers(series, topEntities) {
+    var upDiv = document.getElementById('movers-up');
+    var downDiv = document.getElementById('movers-down');
+    upDiv.innerHTML = '';
+    downDiv.innerHTML = '';
+
+    if (series.timestamps.length < 2) {
+      upDiv.innerHTML = '<div style="color:var(--text-muted);font-size:12px;">Need 2+ snapshots</div>';
+      downDiv.innerHTML = '<div style="color:var(--text-muted);font-size:12px;">Need 2+ snapshots</div>';
+      return;
+    }
+
+    // Compute deltas: latest value - previous value for each entity in current top N
+    var latestTs = series.timestamps[series.timestamps.length - 1];
+    var prevTs = series.timestamps[series.timestamps.length - 2];
+
+    var deltas = [];
+    series.entities.forEach(function(ent) {
+      var latest = ent.points.filter(function(p) { return p.ts === latestTs; })[0];
+      var prev = ent.points.filter(function(p) { return p.ts === prevTs; })[0];
+      if (!latest || !prev) return;
+      var delta = latest.value - prev.value;
+      var pct = prev.value > 0 ? (delta / prev.value * 100) : 0;
+      deltas.push({ent: ent, delta: delta, pct: pct, latest: latest.value});
+    });
+
+    var ups = deltas.slice().sort(function(a, b) { return b.delta - a.delta; }).slice(0, 5);
+    var downs = deltas.slice().sort(function(a, b) { return a.delta - b.delta; }).slice(0, 5);
+
+    function rowHtml(d, dirClass) {
+      var sign = d.delta > 0 ? '+' : '';
+      return '<div class="k-movers-row">' +
+        '<span class="k-movers-name">' + entityLabel(d.ent) + '</span>' +
+        '<span class="k-movers-delta ' + dirClass + '">' + sign + formatValue(d.delta) +
+        ' (' + sign + d.pct.toFixed(1) + '%)</span>' +
+        '</div>';
+    }
+
+    upDiv.innerHTML = ups.filter(function(d) { return d.delta > 0; }).map(function(d) { return rowHtml(d, 'up'); }).join('') ||
+      '<div style="color:var(--text-muted);font-size:12px;">No gainers</div>';
+    downDiv.innerHTML = downs.filter(function(d) { return d.delta < 0; }).map(function(d) { return rowHtml(d, 'down'); }).join('') ||
+      '<div style="color:var(--text-muted);font-size:12px;">No droppers</div>';
+  }
+
+  function setupTrendControls() {
+    var catSelect = document.getElementById('trend-category');
+    var topSelect = document.getElementById('trend-topn');
+
+    var allCats = [].concat(ALLIANCE_CATS, PLAYER_CATS, EVENT_CATS);
+    allCats.forEach(function(c) {
+      var opt = document.createElement('option');
+      opt.value = c.key;
+      opt.textContent = c.label;
+      catSelect.appendChild(opt);
+    });
+
+    catSelect.addEventListener('change', function() {
+      currentTrendCategory = catSelect.value;
+      renderTrendChart();
+    });
+    topSelect.addEventListener('change', function() {
+      currentTrendTopN = parseInt(topSelect.value, 10);
+      renderTrendChart();
+    });
+  }
+
+  // ============================================================
+  // ENTITY MODAL — click any row to see its full timeline
+  // ============================================================
+  function showEntityModal(catKey, entry) {
+    var modal = document.getElementById('entity-modal');
+    var title = document.getElementById('modal-title');
+    var stats = document.getElementById('modal-stats');
+    var noHist = document.getElementById('modal-no-history');
+    var canvas = document.getElementById('modal-chart');
+
+    title.innerHTML = (entry.tag ? '<span class="k-modal-tag">[' + entry.tag + ']</span>' : '') + entry.name;
+
+    var series = buildSeries(catKey);
+    var ent = null;
+    if (series) {
+      ent = series.entities.filter(function(e) { return entityKey(e) === entityKey(entry); })[0];
+    }
+
+    if (!ent || ent.points.length < 2) {
+      stats.innerHTML = '<div class="k-modal-stat"><div class="k-modal-stat-label">Current</div>' +
+        '<div class="k-modal-stat-val">' + formatValue(entry.value) + '</div></div>' +
+        '<div class="k-modal-stat"><div class="k-modal-stat-label">Rank</div>' +
+        '<div class="k-modal-stat-val">#' + entry.rank + '</div></div>' +
+        '<div class="k-modal-stat"><div class="k-modal-stat-label">Snapshots</div>' +
+        '<div class="k-modal-stat-val">' + (ent ? ent.points.length : 1) + '</div></div>';
+      canvas.style.display = 'none';
+      noHist.style.display = 'block';
+      if (modalChart) { modalChart.destroy(); modalChart = null; }
+    } else {
+      var first = ent.points[0];
+      var last = ent.points[ent.points.length - 1];
+      var delta = last.value - first.value;
+      var pct = first.value > 0 ? (delta / first.value * 100) : 0;
+      var rankDelta = first.rank - last.rank; // positive = climbed
+      var deltaClass = delta > 0 ? 'up' : (delta < 0 ? 'down' : '');
+      var rankClass = rankDelta > 0 ? 'up' : (rankDelta < 0 ? 'down' : '');
+      var sign = delta > 0 ? '+' : '';
+      var rankSign = rankDelta > 0 ? '+' : '';
+
+      stats.innerHTML = '<div class="k-modal-stat"><div class="k-modal-stat-label">Current</div>' +
+        '<div class="k-modal-stat-val">' + formatValue(last.value) + '</div></div>' +
+        '<div class="k-modal-stat"><div class="k-modal-stat-label">Change</div>' +
+        '<div class="k-modal-stat-val ' + deltaClass + '">' + sign + formatValue(delta) +
+        ' (' + sign + pct.toFixed(1) + '%)</div></div>' +
+        '<div class="k-modal-stat"><div class="k-modal-stat-label">Rank</div>' +
+        '<div class="k-modal-stat-val ' + rankClass + '">#' + last.rank +
+        ' (' + rankSign + rankDelta + ')</div></div>';
+
+      canvas.style.display = 'block';
+      noHist.style.display = 'none';
+
+      var labels = series.timestamps.filter(function(ts) {
+        return ent.points.some(function(p) { return p.ts === ts; });
+      }).map(formatTs);
+      var values = ent.points.map(function(p) { return p.value; });
+
+      if (modalChart) modalChart.destroy();
+      modalChart = new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: entityLabel(entry),
+            data: values,
+            borderColor: '#d4af37',
+            backgroundColor: 'rgba(212, 175, 55, 0.15)',
+            fill: true,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(20,20,20,0.95)',
+              titleColor: '#d4af37',
+              bodyColor: '#fff',
+              callbacks: { label: function(ctx) { return formatValue(ctx.parsed.y); } }
+            }
+          },
+          scales: {
+            x: { ticks: { color: '#9ca3af', font: {size: 11} }, grid: { color: 'rgba(255,255,255,0.05)' }},
+            y: { ticks: { color: '#9ca3af', font: {size: 11},
+                          callback: function(v) { return formatValue(v); } },
+                 grid: { color: 'rgba(255,255,255,0.05)' }}
+          }
+        }
+      });
+    }
+
+    modal.classList.add('active');
+  }
+
+  // Close modal on overlay click or button
+  document.getElementById('modal-close').addEventListener('click', function() {
+    document.getElementById('entity-modal').classList.remove('active');
+  });
+  document.getElementById('entity-modal').addEventListener('click', function(e) {
+    if (e.target.id === 'entity-modal') {
+      document.getElementById('entity-modal').classList.remove('active');
+    }
+  });
+
+  // Make rows clickable. Find the active category key from each panel's tabs.
+  function attachRowClicks() {
+    function bind(panelId, defaultCat) {
+      var panel = document.getElementById(panelId);
+      panel.addEventListener('click', function(e) {
+        var tr = e.target.closest('tr');
+        if (!tr || !tr.parentNode || tr.parentNode.tagName !== 'TBODY') return;
+        // Read entity from row text (we encode rank/tag/name there)
+        var rank = parseInt(tr.children[0].textContent, 10);
+        var tag = tr.querySelector('.k-tag');
+        var name = tr.querySelector('.k-name');
+        if (!name) return;
+        var tagText = tag ? tag.textContent.replace(/[\[\]]/g, '') : '';
+        var nameText = name.textContent;
+        // Find active category from the panel's k-tabs
+        var activeBtn = panel.querySelector('.k-tab.active');
+        var catKey = activeBtn ? activeBtn.dataset.key : defaultCat;
+        // Look up the value from current data
+        var entries = (data.categories[catKey] || []);
+        var entry = entries.filter(function(en) {
+          return (en.name === nameText) && ((en.tag || '') === tagText);
+        })[0];
+        if (!entry) return;
+        showEntityModal(catKey, entry);
+      });
+    }
+    bind('alliance-panel', 'alliance_power');
+    bind('player-panel', 'personal_power');
+    bind('event-panel', 'mystic_trial');
+  }
+
+  // Mark rows clickable visually (renderTable already produces tr elements)
+  // Wrap renderTable to add the clickable class to data rows
+  var _origRenderTable = renderTable;
+  renderTable = function(tbodyId, entries, colLabel, searchFilter) {
+    _origRenderTable(tbodyId, entries, colLabel, searchFilter);
+    var tbody = document.getElementById(tbodyId);
+    Array.prototype.forEach.call(tbody.querySelectorAll('tr'), function(tr) {
+      tr.classList.add('clickable');
+    });
+  };
+
+  // Re-render now that the wrapper is installed
+  if (data.categories.personal_power) renderTable('player-tbody', data.categories.personal_power, 'Power', '');
+  if (data.categories.mystic_trial) renderTable('event-tbody', data.categories.mystic_trial, 'Score', '');
+
+  setupTrendControls();
+  attachRowClicks();
+
+  // Render trend chart when Trends tab is first activated (lazy)
+  document.querySelector('.k-pagetab[data-panel="trend-panel"]').addEventListener('click', function() {
+    setTimeout(renderTrendChart, 50);
+  });
+
+  // Snapshot count badge in footnote
+  if (history && history.snapshot_count > 1) {
+    var foot = document.getElementById('stat-updated');
+    foot.textContent = foot.textContent + ' · ' + history.snapshot_count + ' snapshots';
+  }
+})();
+</script>
+</body>
+</html>
