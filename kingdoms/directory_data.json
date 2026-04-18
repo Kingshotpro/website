@@ -1,7 +1,7 @@
 {
-  "generated": "2026-04-18T05:03:02.777486",
+  "generated": "2026-04-18T09:24:32.106477",
   "generator": "kingdoms/build_directory.py",
-  "kingdom_count": 31,
+  "kingdom_count": 32,
   "kingdoms": [
     {
       "id": 1,
@@ -268,6 +268,18 @@
       "rank": 22
     },
     {
+      "id": 1006,
+      "topAlliance": "Hunterzzz",
+      "topTag": "HUN",
+      "topPower": 14058674146,
+      "totalPower": 64630128724,
+      "alliances": 95,
+      "categories": 10,
+      "updated": "2026-04-18",
+      "source": "scraper/data/kingdoms/k1006/2026-04-18_055300/alliance_power_extracted.csv",
+      "rank": 23
+    },
+    {
       "id": 1004,
       "topAlliance": "IOO4Harmony",
       "topTag": "HAR",
@@ -277,7 +289,7 @@
       "categories": 10,
       "updated": "2026-04-18",
       "source": "scraper/data/kingdoms/k1004/2026-04-18_003732/alliance_power_extracted.csv",
-      "rank": 23
+      "rank": 24
     },
     {
       "id": 350,
@@ -289,7 +301,7 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k350/2026-04-16_175423/alliance_power_extracted.csv",
-      "rank": 24
+      "rank": 25
     },
     {
       "id": 300,
@@ -301,7 +313,7 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k300/2026-04-16_061736/alliance_power_extracted.csv",
-      "rank": 25
+      "rank": 26
     },
     {
       "id": 1001,
@@ -313,7 +325,7 @@
       "categories": 10,
       "updated": "2026-04-17",
       "source": "scraper/data/kingdoms/k1001/2026-04-17_223135/alliance_power_extracted.csv",
-      "rank": 26
+      "rank": 27
     },
     {
       "id": 1008,
@@ -325,7 +337,7 @@
       "categories": 10,
       "updated": "2026-04-18",
       "source": "scraper/data/kingdoms/k1008/2026-04-18_025111/alliance_power_extracted.csv",
-      "rank": 27
+      "rank": 28
     },
     {
       "id": 1908,
@@ -337,7 +349,7 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k1908/2026-04-16_183118/alliance_power_extracted.csv",
-      "rank": 28
+      "rank": 29
     },
     {
       "id": 1916,
@@ -349,7 +361,7 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k1916/2026-04-14_220953/alliance_power_extracted.csv",
-      "rank": 29
+      "rank": 30
     },
     {
       "id": 1944,
@@ -361,7 +373,7 @@
       "categories": 10,
       "updated": "2026-04-18",
       "source": "scraper/data/kingdoms/k1944/2026-04-18_035847/alliance_power_extracted.csv",
-      "rank": 30
+      "rank": 31
     },
     {
       "id": 1945,
@@ -373,7 +385,7 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k1945/2026-04-16_040406/alliance_power_extracted.csv",
-      "rank": 31
+      "rank": 32
     }
   ]
 }
