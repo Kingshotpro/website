@@ -216,11 +216,27 @@
       if (raw) {
         var p = JSON.parse(raw);
         var ch = (p.nickname || '?').charAt(0).toUpperCase();
+        var nickSafe = String(p.nickname || 'Player').replace(/[<>&"']/g, '');
+        var kidSafe  = String(p.kid || '?').replace(/[^0-9]/g, '');
+        var fidSafe  = String(p.fid || lastFid || '').replace(/[^0-9]/g, '');
         profileBit =
-          '<div class="tb-profile">' +
+          '<div class="tb-profile" id="tb-profile" role="button" tabindex="0" aria-haspopup="menu" aria-expanded="false" title="Account menu">' +
             '<span class="tb-av">' + ch + '</span>' +
-            '<span class="tb-nick">' + (p.nickname || 'Player') + '</span>' +
-            '<span class="tb-kid">K' + (p.kid || '?') + '</span>' +
+            '<span class="tb-nick">' + nickSafe + '</span>' +
+            '<span class="tb-kid">K' + kidSafe + '</span>' +
+            '<span class="tb-caret" aria-hidden="true">\u25BE</span>' +
+          '</div>' +
+          '<div class="tb-menu-pop" id="tb-menu-pop" role="menu" aria-hidden="true">' +
+            '<div class="tb-menu-header">' +
+              '<div class="tb-menu-nick">' + nickSafe + '</div>' +
+              '<div class="tb-menu-sub">Player ID ' + (fidSafe || '?') + ' \u00B7 Kingdom ' + (kidSafe || '?') + '</div>' +
+            '</div>' +
+            '<a href="' + B + 'profile.html" class="tb-menu-item" role="menuitem">' +
+              '<span class="tb-menu-icon">\u{1F464}</span> View Profile</a>' +
+            '<a href="' + B + 'index.html#fid-form" class="tb-menu-item" role="menuitem" data-action="switch">' +
+              '<span class="tb-menu-icon">\u{1F504}</span> Switch Player</a>' +
+            '<button type="button" class="tb-menu-item tb-menu-signout" role="menuitem" data-action="signout">' +
+              '<span class="tb-menu-icon">\u{1F6AA}</span> Sign Out</button>' +
           '</div>';
       }
     } catch (e) { /* private mode */ }
@@ -306,6 +322,9 @@
       });
     }
 
+    // ── Profile dropdown (account menu) ──────
+    wireProfileMenu();
+
     // ── Funding transparency footer line ─────
     injectFundingNote();
 
@@ -313,6 +332,92 @@
     // Dynamically injected so no individual HTML file needs to be touched.
     // The tour checks its own state and only activates when appropriate.
     injectTourScript();
+  }
+
+  // Expose the computed path prefix so other scripts (fid.js signOut redirect,
+  // etc.) can build URLs that work from any depth in the site.
+  window.KSP_BASE = B;
+
+  // Wire the topbar profile chip → dropdown with View Profile / Switch Player
+  // / Sign Out. Signed-out state shows "Enter Player ID" link instead (no menu).
+  function wireProfileMenu() {
+    var chip = document.getElementById('tb-profile');
+    var pop  = document.getElementById('tb-menu-pop');
+    if (!chip || !pop) return;
+
+    function openMenu() {
+      pop.classList.add('open');
+      chip.setAttribute('aria-expanded', 'true');
+      pop.setAttribute('aria-hidden', 'false');
+    }
+    function closeMenu() {
+      pop.classList.remove('open');
+      chip.setAttribute('aria-expanded', 'false');
+      pop.setAttribute('aria-hidden', 'true');
+    }
+    function toggleMenu(e) {
+      if (e) { e.stopPropagation(); e.preventDefault(); }
+      if (pop.classList.contains('open')) closeMenu(); else openMenu();
+    }
+
+    chip.addEventListener('click', toggleMenu);
+    chip.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') toggleMenu(e);
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Click-outside to close
+    document.addEventListener('click', function (e) {
+      if (!pop.classList.contains('open')) return;
+      if (chip.contains(e.target) || pop.contains(e.target)) return;
+      closeMenu();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Sign Out handler — confirms, then calls window.KSP.signOut()
+    var signOutBtn = pop.querySelector('[data-action="signout"]');
+    if (signOutBtn) {
+      signOutBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var msg = 'Sign out and forget this Player ID on this device?\n\n' +
+                  'This will clear your profile, advisor progress, tier, alliance link, ' +
+                  'tour state, saved calendar events, and roster. You can re-enter ' +
+                  'your Player ID anytime.';
+        if (!confirm(msg)) return;
+        closeMenu();
+        if (window.KSP && typeof window.KSP.signOut === 'function') {
+          window.KSP.signOut();
+        } else {
+          // Fallback if fid.js didn't load (shouldn't happen in normal flow)
+          try {
+            var keep = { 'ksp_cookie_consent': 1, 'ksp_sb_collapsed': 1 };
+            var rm = [];
+            for (var i = 0; i < localStorage.length; i++) {
+              var k = localStorage.key(i);
+              if (k && k.indexOf('ksp_') === 0 && !keep[k]) rm.push(k);
+            }
+            for (var j = 0; j < rm.length; j++) localStorage.removeItem(rm[j]);
+          } catch (err) { /* ignore */ }
+          window.location.href = B + 'index.html';
+        }
+      });
+    }
+
+    // "Switch Player" — same destructive clear as Sign Out, but lands at FID
+    // form so the user immediately sees where to enter a new ID.
+    var switchLink = pop.querySelector('[data-action="switch"]');
+    if (switchLink) {
+      switchLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!confirm('Switch to a different Player ID?\n\nYour current profile, progress, and tier on this device will be cleared so the new player starts fresh.')) return;
+        if (window.KSP && typeof window.KSP.signOut === 'function') {
+          window.KSP.signOut({ redirect: false });
+        }
+        window.location.href = B + 'index.html#fid-form';
+      });
+    }
   }
 
   // Dynamically load advisor-tour.js. Idempotent — never double-loads.

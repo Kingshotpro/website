@@ -182,11 +182,56 @@ function clearProfile() {
   try { sessionStorage.removeItem(PROFILE_KEY); } catch (e) {}
 }
 
+/**
+ * signOut — "Forget me on this device."
+ *
+ * Wipes every ksp_* key in localStorage and sessionStorage EXCEPT:
+ *   - ksp_cookie_consent  (legal — user already chose)
+ *   - ksp_sb_collapsed    (pure UI preference, not identity)
+ *
+ * This deletes: Player ID, profile, tier, avatar, advisor state, XP,
+ * tour progress, alliance, CTA counters, calendar events, roster,
+ * streaks — everything tied to the account identity. Device
+ * preferences that aren't personal (sidebar collapse state, cookie
+ * consent) stay so the UI doesn't re-trigger its welcome flows.
+ *
+ * After this runs, reloading the page looks like a first-time visit.
+ */
+function signOut(opts) {
+  opts = opts || {};
+  var KEEP = { 'ksp_cookie_consent': 1, 'ksp_sb_collapsed': 1 };
+
+  try {
+    var toRemove = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var k = localStorage.key(i);
+      if (k && k.indexOf('ksp_') === 0 && !KEEP[k]) toRemove.push(k);
+    }
+    for (var j = 0; j < toRemove.length; j++) localStorage.removeItem(toRemove[j]);
+  } catch (e) { /* private mode or storage disabled */ }
+
+  try {
+    var sRemove = [];
+    for (var m = 0; m < sessionStorage.length; m++) {
+      var sk = sessionStorage.key(m);
+      if (sk && sk.indexOf('ksp_') === 0) sRemove.push(sk);
+    }
+    for (var n = 0; n < sRemove.length; n++) sessionStorage.removeItem(sRemove[n]);
+  } catch (e) { /* ignore */ }
+
+  if (opts.redirect !== false) {
+    // Send to homepage — the Player ID lookup form lives there.
+    var base = (window.KSP_BASE || '');
+    window.location.href = base + 'index.html';
+  }
+}
+
 // Export for other pages
 window.KSP = window.KSP || {};
 window.KSP.loadProfile    = loadProfile;
 window.KSP.loadProfileByFid = loadProfileByFid;
 window.KSP.getLastFid     = getLastFid;
+window.KSP.signOut        = signOut;
 
 // ─────────────────────────────────────────
 // PROFILE CARD RENDERER
