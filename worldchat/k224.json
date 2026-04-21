@@ -1,0 +1,373 @@
+{
+  "kingdom": 224,
+  "snapshot_count": 1,
+  "image_count": 4,
+  "message_count": 27,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-17_032517",
+      "captured": "2026-04-17 03:25 UTC",
+      "captured_iso": "2026-04-17T03:25:17",
+      "image_count": 4,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 39,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "Xt+tLstin? WW"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "sL+",
+              "vip": null,
+              "lines": [
+                "@n =",
+                "535350 (SfJst+? w)",
+                "7=+TLadyie (5w) (EBLl)"
+              ],
+              "y": 486
+            },
+            {
+              "kind": "time",
+              "time": "03:08"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[zoojo)n <",
+                "(J-WLJm)"
+              ],
+              "y": 909
+            },
+            {
+              "kind": "time",
+              "time": "03:20"
+            },
+            {
+              "kind": "message",
+              "alliance": "ZOO",
+              "speaker": "++ 5 / EFE",
+              "vip": null,
+              "lines": [
+                "hthist!",
+                "##-(Oun )-!"
+              ],
+              "y": 1346
+            },
+            {
+              "kind": "time",
+              "time": "03:50"
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "YUl@ # 0 Zi",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1722
+            },
+            {
+              "kind": "message",
+              "alliance": "ZOO",
+              "speaker": "+ 5 / EFE",
+              "vip": null,
+              "lines": [
+                "W ^ = ^ W ^ ) 538353"
+              ],
+              "y": 2008
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 38,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "sLp",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 467
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "sLP",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 690
+            },
+            {
+              "kind": "message",
+              "alliance": "ZOO",
+              "speaker": "+ 5 / EFE",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 975
+            },
+            {
+              "kind": "time",
+              "time": "00:19"
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "sLp",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1352
+            },
+            {
+              "kind": "time",
+              "time": "00:37"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[zoojo)n <",
+                "@SL+",
+                "5353530 (Zfslptlij",
+                "? w)",
+                "Xs+tLstin? WW"
+              ],
+              "y": 1664
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "s L+",
+              "vip": null,
+              "lines": [
+                "535350 (SfJstc? W )"
+              ],
+              "y": 1998
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh",
+                "' J >WXiau)) _xi #Va )"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "23:13"
+            },
+            {
+              "kind": "message",
+              "alliance": "ZOO",
+              "speaker": "+ 5 / EFE",
+              "vip": null,
+              "lines": [
+                "@tdj ns#@! W"
+              ],
+              "y": 610
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "sL+",
+              "vip": null,
+              "lines": [
+                "#Ei_7yi"
+              ],
+              "y": 834
+            },
+            {
+              "kind": "message",
+              "alliance": "ZOO",
+              "speaker": "+ 5 / EFE",
+              "vip": null,
+              "lines": [
+                "@SL+",
+                "slt+5"
+              ],
+              "y": 1136
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "sL p",
+              "vip": null,
+              "lines": [
+                "R+ 5h178"
+              ],
+              "y": 1426
+            },
+            {
+              "kind": "message",
+              "alliance": "ZOO",
+              "speaker": "+} 5 / 'FE",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1729
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "slp",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1972
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "20:31"
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "sL+",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 486
+            },
+            {
+              "kind": "time",
+              "time": "20:49"
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "gUpi",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 798
+            },
+            {
+              "kind": "time",
+              "time": "21:34"
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "+ECh",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1111
+            },
+            {
+              "kind": "time",
+              "time": "21:55"
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "+ECh",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1423
+            },
+            {
+              "kind": "time",
+              "time": "22:10"
+            },
+            {
+              "kind": "message",
+              "alliance": "ALC",
+              "speaker": "Yul@# OC5",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1736
+            },
+            {
+              "kind": "time",
+              "time": "23:07"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[zoojo)n _"
+              ],
+              "y": 2048
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

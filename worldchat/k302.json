@@ -1,0 +1,199 @@
+{
+  "kingdom": 302,
+  "snapshot_count": 1,
+  "image_count": 3,
+  "message_count": 13,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-16_073510",
+      "captured": "2026-04-16 07:35 UTC",
+      "captured_iso": "2026-04-16T07:35:10",
+      "image_count": 3,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "\"Forgot to shield?",
+                "(L [)_I)",
+                "[ 0 1: 0}",
+                "05. 21"
+              ],
+              "y": 360
+            },
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Mrs THOR",
+              "vip": null,
+              "lines": [
+                "Finally got the frame"
+              ],
+              "y": 753
+            },
+            {
+              "kind": "message",
+              "alliance": "302",
+              "speaker": "444*2049J5",
+              "vip": null,
+              "lines": [
+                "Congrats'"
+              ],
+              "y": 976
+            },
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Mrs THOR",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1203
+            },
+            {
+              "kind": "time",
+              "time": "07:04"
+            },
+            {
+              "kind": "message",
+              "alliance": "302",
+              "speaker": "Deadboy",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1550
+            },
+            {
+              "kind": "time",
+              "time": "07:50"
+            },
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Shion",
+              "vip": 8,
+              "lines": [
+                "Share layout",
+                "Shion",
+                "Kingdom # 302"
+              ],
+              "y": 1861
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Mrs THOR",
+              "vip": null,
+              "lines": [
+                "when u cant beat them get new",
+                "market that they not touch",
+                "thats how Puma saved from",
+                "bankruptcy against Nike and Adidas",
+                "Wardog",
+                "Bro this is kingshot",
+                "Wardog",
+                "miss STOICK",
+                "Wardog",
+                "miss Alita"
+              ],
+              "y": 384
+            },
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Mrs THOR",
+              "vip": null,
+              "lines": [
+                "miss George Washington"
+              ],
+              "y": 1393
+            },
+            {
+              "kind": "time",
+              "time": "04:59"
+            },
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Mrs THOR",
+              "vip": null,
+              "lines": [
+                "\"Forgot to shield?",
+                "(L( 1)P)"
+              ],
+              "y": 1705
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 34,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "047415",
+                "Wardog",
+                "Wardog"
+              ],
+              "y": 341
+            },
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Mrs THOR",
+              "vip": null,
+              "lines": [
+                "0 3020 562 4 0",
+                "L-J",
+                "Wardog",
+                "When you can't beat them join",
+                "them"
+              ],
+              "y": 871
+            },
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Mrs THOR",
+              "vip": null,
+              "lines": [
+                "nah that $ wrong",
+                "Wardog"
+              ],
+              "y": 1587
+            },
+            {
+              "kind": "message",
+              "alliance": "TKI",
+              "speaker": "Mrs THOR",
+              "vip": null,
+              "lines": [
+                "when u cant beat them get new",
+                "market that theunot touch"
+              ],
+              "y": 2036
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

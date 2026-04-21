@@ -1,0 +1,265 @@
+{
+  "kingdom": 230,
+  "snapshot_count": 1,
+  "image_count": 3,
+  "message_count": 21,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-14_182333",
+      "captured": "2026-04-14 18:23 UTC",
+      "captured_iso": "2026-04-14T18:23:33",
+      "image_count": 3,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 38,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "IEON] - 9og; SpecTrezoe EUIV",
+                "Agreed"
+              ],
+              "y": 349
+            },
+            {
+              "kind": "message",
+              "alliance": "PNX",
+              "speaker": "Pola",
+              "vip": null,
+              "lines": [
+                "Share Coordinates",
+                "[PNXFPola",
+                "Kingdom # 230 2",
+                "[474Y643]",
+                "Mon then bishes"
+              ],
+              "y": 570
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "19c8Spec Tre8oe EON",
+              "vip": null,
+              "lines": [
+                "Lame"
+              ],
+              "y": 1024
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "9o8SpecTre8oe EON",
+              "vip": null,
+              "lines": [
+                "Poessy"
+              ],
+              "y": 1249
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "Tu",
+              "vip": null,
+              "lines": [
+                "TITTUS'"
+              ],
+              "y": 1473
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "98Spec Tre8oe EON",
+              "vip": null,
+              "lines": [
+                "The roman general right"
+              ],
+              "y": 1699
+            },
+            {
+              "kind": "time",
+              "time": "18:39"
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "Tu",
+              "vip": 12,
+              "lines": [
+                "No, that was his wife. Biggus Tittus"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 36,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "iIl be here for castle battle"
+              ],
+              "y": 417
+            },
+            {
+              "kind": "message",
+              "alliance": "THE",
+              "speaker": "Mighty Simeon",
+              "vip": 12,
+              "lines": [
+                "Where you going Swilm. Maybe III",
+                "join you to get away from Pola'"
+              ],
+              "y": 556
+            },
+            {
+              "kind": "message",
+              "alliance": "PNX",
+              "speaker": "Crazy",
+              "vip": null,
+              "lines": [
+                "@Aladeen"
+              ],
+              "y": 799
+            },
+            {
+              "kind": "message",
+              "alliance": "PNX",
+              "speaker": "Pola",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1023
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "9o8SpecTre8e EON",
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "Swilm told me he's leaving because",
+                "spec annoys him:",
+                "Fake news\"",
+                "One day Polly will tell the truth and",
+                "nothing but the truth inshallah"
+              ],
+              "y": 1249
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "Rengaw EON",
+              "vip": null,
+              "lines": [
+                "Swilm left because Pola is annoying'",
+                "Burn Pola?"
+              ],
+              "y": 1755
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "98SpecTre8oe EON",
+              "vip": null,
+              "lines": [
+                "Agreed"
+              ],
+              "y": 2046
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "TOP",
+              "speaker": "Dagda",
+              "vip": 9,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 462
+            },
+            {
+              "kind": "message",
+              "alliance": "PNX",
+              "speaker": "Pola",
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "Swilm told me he'$ leaving because",
+                "spec annoys him."
+              ],
+              "y": 791
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "Gecata",
+              "vip": null,
+              "lines": [
+                "@Aladeen Take care man' Hope to",
+                "see you soon again"
+              ],
+              "y": 1114
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "Tu",
+              "vip": null,
+              "lines": [
+                "Im trying so hard not to make",
+                "another discussion crash and burn",
+                "right now"
+              ],
+              "y": 1357
+            },
+            {
+              "kind": "message",
+              "alliance": "EON",
+              "speaker": "98Spec Tre8oe EON",
+              "vip": null,
+              "lines": [
+                "whistles'"
+              ],
+              "y": 1646
+            },
+            {
+              "kind": "message",
+              "alliance": "PNX",
+              "speaker": "CRAZZY",
+              "vip": null,
+              "lines": [
+                "@Pola"
+              ],
+              "y": 1870
+            },
+            {
+              "kind": "message",
+              "alliance": "PNX",
+              "speaker": "CRAZZY",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2094
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

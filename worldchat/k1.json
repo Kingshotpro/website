@@ -1,0 +1,688 @@
+{
+  "kingdom": 1,
+  "snapshot_count": 2,
+  "image_count": 9,
+  "message_count": 53,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-16_205725",
+      "captured": "2026-04-16 20:57 UTC",
+      "captured_iso": "2026-04-16T20:57:25",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "time",
+              "time": "21:12"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "God2",
+                "Hi"
+              ],
+              "y": 502
+            },
+            {
+              "kind": "time",
+              "time": "21:18"
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "ismail",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 815
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "ismail",
+              "vip": null,
+              "lines": [
+                "912 Allell &2l"
+              ],
+              "y": 1039
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "ismail",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "iJsmail",
+                "Kingdom # I734"
+              ],
+              "y": 1263
+            },
+            {
+              "kind": "message",
+              "alliance": "MDR",
+              "speaker": "Vnz Alejandro",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Alejandio",
+                "Kingdom # 1804"
+              ],
+              "y": 1638
+            },
+            {
+              "kind": "message",
+              "alliance": "GRU",
+              "speaker": "PUGGER",
+              "vip": null,
+              "lines": [
+                "10 days till tc 25_"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 36,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "your island s0 wonderful now"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "GRD",
+              "speaker": "Go8Sterling Rose8e",
+              "vip": 8,
+              "lines": [
+                "@ALSAFFAZisDANGER it absolutely",
+                "is. you gave it your magic dust'"
+              ],
+              "y": 522
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER recalled a mess",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 794
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "if you edited something in",
+                "9o8= Sterling Rose8e"
+              ],
+              "y": 936
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "@ALSAFFAZisDANGER it absolutely",
+                "is. you gave it your magic dust'",
+                "So8Sterling RoseBer"
+              ],
+              "y": 1178
+            },
+            {
+              "kind": "message",
+              "alliance": "GRD",
+              "speaker": "oo8 Sterling RoseBe",
+              "vip": 8,
+              "lines": [
+                "@ALSAFFAZisDANGER"
+              ],
+              "y": 1601
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1831
+            },
+            {
+              "kind": "time",
+              "time": "21:12"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "God2"
+              ],
+              "y": 2137
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "EVL",
+              "speaker": "IBRAHIM",
+              "vip": null,
+              "lines": [
+                "thanks"
+              ],
+              "y": 449
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "with pleasure"
+              ],
+              "y": 678
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "Go8Sterling RoseBer liked"
+              ],
+              "y": 903
+            },
+            {
+              "kind": "message",
+              "alliance": "GRD",
+              "speaker": "oo8 'Sterling RoseBe",
+              "vip": 8,
+              "lines": [
+                "@ALSAFFAZisDANGER"
+              ],
+              "y": 1122
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "So8Sterling Rose8e"
+              ],
+              "y": 1353
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "ohh heart O8Sterling Rose8e/"
+              ],
+              "y": 1576
+            },
+            {
+              "kind": "message",
+              "alliance": "GRD",
+              "speaker": "o8Sterling Rosede/",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1795
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "your island s0 wonderful now"
+              ],
+              "y": 2059
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "Patoo",
+                "Kingdom # 1"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "EOR",
+              "speaker": "IAKI",
+              "vip": null,
+              "lines": [
+                "2026-04-16 19.21"
+              ],
+              "y": 583
+            },
+            {
+              "kind": "message",
+              "alliance": "EVL",
+              "speaker": "WestWest",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "WestWest",
+                "Kingdom # 1"
+              ],
+              "y": 999
+            },
+            {
+              "kind": "time",
+              "time": "20:30"
+            },
+            {
+              "kind": "message",
+              "alliance": "TIT",
+              "speaker": "Patoo",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Patoo",
+                "Kiigdom # ]"
+              ],
+              "y": 1461
+            },
+            {
+              "kind": "time",
+              "time": "20:41"
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "ALSAFFAZisDANGER",
+              "vip": null,
+              "lines": [
+                "@Joud crazy B 0 Y @IBRAHIM @U",
+                "ceDuce @ GovernoRA @Patoo",
+                "WestWest @Patoo liked"
+              ],
+              "y": 1925
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 33,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "EVL",
+              "speaker": "IBRAHIM",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "BBRAHMM",
+                "Kingdom # 1",
+                "2026-04-16 18.33"
+              ],
+              "y": 473
+            },
+            {
+              "kind": "message",
+              "alliance": "TIT",
+              "speaker": "UceDuce",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "UceDuce",
+                "Kingdom # 1",
+                "2026-04-16 19.06"
+              ],
+              "y": 939
+            },
+            {
+              "kind": "message",
+              "alliance": "WLF",
+              "speaker": "Aimee",
+              "vip": null,
+              "lines": [
+                "drops sign",
+                "2 //",
+                "\"Idont get paid enough for dis shit'"
+              ],
+              "y": 1394
+            },
+            {
+              "kind": "message",
+              "alliance": "GRU",
+              "speaker": "A-GovernoR -^",
+              "vip": 6,
+              "lines": [
+                "Share layout",
+                "MC GovernoRA",
+                "Kingdom # 1"
+              ],
+              "y": 1868
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "2026-04-16 17.40"
+              ],
+              "y": 450
+            },
+            {
+              "kind": "message",
+              "alliance": "WLF",
+              "speaker": "crazy/ B 0 Y",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "QaTaN 76",
+                "2026-04-16 17.52"
+              ],
+              "y": 533
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Mohaned",
+              "vip": null,
+              "lines": [
+                "@Edward Kenway L"
+              ],
+              "y": 993
+            },
+            {
+              "kind": "message",
+              "alliance": "EVL",
+              "speaker": "Joud",
+              "vip": 9,
+              "lines": [
+                "Share layout",
+                "Joud",
+                "Kigdom # 1",
+                "2026-04-16 18.14"
+              ],
+              "y": 1218
+            },
+            {
+              "kind": "message",
+              "alliance": "810",
+              "speaker": "TestaKura",
+              "vip": null,
+              "lines": [
+                "@Joud @crazy B 0 Y"
+              ],
+              "y": 1679
+            },
+            {
+              "kind": "message",
+              "alliance": "810",
+              "speaker": "TestaKura",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "HasaKura",
+                "Kingdom #447"
+              ],
+              "y": 1903
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "2026-04-14_074136",
+      "captured": "2026-04-14 07:41 UTC",
+      "captured_iso": "2026-04-14T07:41:36",
+      "image_count": 3,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 24,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "@lord300590617 yalan atma",
+                "VIPI lord300590617",
+                "Mlost my account; | want my",
+                "belongings:",
+                "VIPI lord300590617",
+                "VIPI lord300590617",
+                "0800t* ye"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "07:51"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[Exelbeautiful",
+                "mini pika",
+                "Share layout",
+                "pibachuu",
+                "Kigdom # 109",
+                "mini pika"
+              ],
+              "y": 1345
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "Share Coordinates",
+                "Hackers Troops",
+                "Kingdom # 1"
+              ],
+              "y": 392
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "Like this"
+              ],
+              "y": 764
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "But he attacked on tc as well as",
+                "troops"
+              ],
+              "y": 990
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "But my infirmary is not upgraded",
+                "that'sy | lost almost troops"
+              ],
+              "y": 1232
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "@9e shield",
+                "VIPI lord300590617",
+                "Iam an idiot"
+              ],
+              "y": 1474
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "ELTURCO",
+              "vip": null,
+              "lines": [
+                "@lord300590617 yalan atma"
+              ],
+              "y": 1985
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 34,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[Uknjnacker",
+                "lost almost all my troops"
+              ],
+              "y": 342
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "9e",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 562
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "Just stay here"
+              ],
+              "y": 787
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "don't want to attack"
+              ],
+              "y": 1011
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "On anyone"
+              ],
+              "y": 1236
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "9e",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1460
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "Hacker",
+              "vip": null,
+              "lines": [
+                "I sent all my out but he attacked on",
+                "both tc and troops but | don't care"
+              ],
+              "y": 1685
+            },
+            {
+              "kind": "message",
+              "alliance": "DRX",
+              "speaker": "%e",
+              "vip": null,
+              "lines": [
+                "@Hacker _objl Ja &j dll Y",
+                "[DRXHHacker"
+              ],
+              "y": 1927
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

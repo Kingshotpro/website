@@ -1,0 +1,307 @@
+{
+  "kingdom": 1004,
+  "snapshot_count": 1,
+  "image_count": 4,
+  "message_count": 21,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-18_003732",
+      "captured": "2026-04-18 00:37 UTC",
+      "captured_iso": "2026-04-18T00:37:32",
+      "image_count": 4,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "probably my parents called",
+                "[MxM]",
+                "Share Coordinates",
+                "[TePMMuth Has",
+                "Kingdom # 882 0)",
+                "[K592Y592]",
+                "[MxM]",
+                "Indian gave me ptsd having name"
+              ],
+              "y": 353
+            },
+            {
+              "kind": "message",
+              "alliance": "FAN",
+              "speaker": "Seestern",
+              "vip": null,
+              "lines": [
+                "Cause of the name Or cause of what",
+                "you did then?"
+              ],
+              "y": 1089
+            },
+            {
+              "kind": "time",
+              "time": "00:49"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[MxM]",
+                "Just attacking tc29-30 as tg2",
+                "[MxM]",
+                "And zeroing people just usual stuff"
+              ],
+              "y": 1421
+            },
+            {
+              "kind": "time",
+              "time": "01:08"
+            },
+            {
+              "kind": "message",
+              "alliance": "HAR",
+              "speaker": "ciYAGER",
+              "vip": 6,
+              "lines": [
+                "Megaphone",
+                "iyi ki dogdun juju"
+              ],
+              "y": 1955
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 38,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[IXII]",
+                "it'$s a secret"
+              ],
+              "y": 343
+            },
+            {
+              "kind": "message",
+              "alliance": "FAN",
+              "speaker": "Seestern",
+              "vip": null,
+              "lines": [
+                "How bout a cool alias. Cover name?"
+              ],
+              "y": 562
+            },
+            {
+              "kind": "message",
+              "alliance": "FAN",
+              "speaker": "Seestern",
+              "vip": null,
+              "lines": [
+                "Every week someone who cares",
+                "bout you can give you a new one:",
+                "You Il be incognito with thousands",
+                "of names",
+                "[MxM]",
+                "Share Coordinates"
+              ],
+              "y": 786
+            },
+            {
+              "kind": "message",
+              "alliance": "BFS",
+              "speaker": "FrankiesWalker",
+              "vip": null,
+              "lines": [
+                "Kingdom # 777",
+                "[X484Y541",
+                "[MxM]",
+                "@Seestern bro in kvk if | meet a",
+                "Indian you will know why Ihave",
+                "namelss account"
+              ],
+              "y": 1253
+            },
+            {
+              "kind": "message",
+              "alliance": "FAN",
+              "speaker": "Seestern",
+              "vip": null,
+              "lines": [
+                "whyyyy: had a pup whose name",
+                "was lodahlasun",
+                "[MxM]",
+                "When | was attacking in battle time",
+                "tc a guy called my name more than"
+              ],
+              "y": 1783
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 25,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "MXM",
+              "speaker": "es 4A+63 ANGEL",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 406
+            },
+            {
+              "kind": "time",
+              "time": "23:42"
+            },
+            {
+              "kind": "message",
+              "alliance": "HAR",
+              "speaker": "R 0 $ E",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 719
+            },
+            {
+              "kind": "time",
+              "time": "00:19"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[MxM]",
+                "Share layout",
+                "Kingdom # I004"
+              ],
+              "y": 1065
+            },
+            {
+              "kind": "message",
+              "alliance": "FAN",
+              "speaker": "Seestern",
+              "vip": null,
+              "lines": [
+                "do you want to be",
+                "gifted with a pretty name?",
+                "[MxM]",
+                "have a name it $ just too thin to see"
+              ],
+              "y": 1437
+            },
+            {
+              "kind": "message",
+              "alliance": "FAN",
+              "speaker": "Seestern",
+              "vip": null,
+              "lines": [
+                "What a shame, let'$ see your name",
+                "[MxM]"
+              ],
+              "y": 1904
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 26,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "1"
+              ],
+              "y": 396
+            },
+            {
+              "kind": "time",
+              "time": "21:45"
+            },
+            {
+              "kind": "message",
+              "alliance": "HAR",
+              "speaker": "DEMON =R=n",
+              "vip": 9,
+              "lines": [
+                "Megaphone",
+                "KOR's alliance name has been",
+                "changed. Please support HAR as we",
+                "begin under our new name"
+              ],
+              "y": 619
+            },
+            {
+              "kind": "message",
+              "alliance": "HAR",
+              "speaker": "oc8 KCHASC 8e",
+              "vip": null,
+              "lines": [
+                "[MxM]",
+                "Congratulations on new name"
+              ],
+              "y": 988
+            },
+            {
+              "kind": "message",
+              "alliance": "HAR",
+              "speaker": "9o8 KCHASC 8e",
+              "vip": null,
+              "lines": [
+                "Gungdi Pang Pang"
+              ],
+              "y": 1437
+            },
+            {
+              "kind": "message",
+              "alliance": "HAR",
+              "speaker": "Miyao !3",
+              "vip": null,
+              "lines": [
+                "Pang Pang\"!"
+              ],
+              "y": 1662
+            },
+            {
+              "kind": "message",
+              "alliance": "MXM",
+              "speaker": "es NA/6} ANGEL",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1885
+            },
+            {
+              "kind": "message",
+              "alliance": "MXM",
+              "speaker": "es 4At63 ANGEL",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2109
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

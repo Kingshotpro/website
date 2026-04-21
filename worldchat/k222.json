@@ -1,0 +1,801 @@
+{
+  "kingdom": 222,
+  "snapshot_count": 2,
+  "image_count": 10,
+  "message_count": 61,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-17_025115",
+      "captured": "2026-04-17 02:51 UTC",
+      "captured_iso": "2026-04-17T02:51:15",
+      "image_count": 4,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 19,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "WTF",
+              "speaker": "Mini Moonwitch",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 573
+            },
+            {
+              "kind": "message",
+              "alliance": "BLT",
+              "speaker": "SiV",
+              "vip": null,
+              "lines": [
+                "Hmm"
+              ],
+              "y": 902
+            },
+            {
+              "kind": "message",
+              "alliance": "WTF",
+              "speaker": "Mini Moonwitch",
+              "vip": null,
+              "lines": [
+                "hmm?"
+              ],
+              "y": 1127
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "Lordyschmordy",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1353
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "Lordyschmordy",
+              "vip": null,
+              "lines": [
+                "AAYYYY"
+              ],
+              "y": 1683
+            },
+            {
+              "kind": "message",
+              "alliance": "WTF",
+              "speaker": "Mini Moonwitch",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1905
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 19,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "[BL TJbawka"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "GLF",
+              "speaker": "Dimi3tri",
+              "vip": null,
+              "lines": [
+                "[BLTISiV"
+              ],
+              "y": 704
+            },
+            {
+              "kind": "message",
+              "alliance": "BLT",
+              "speaker": "SiV",
+              "vip": null,
+              "lines": [
+                "Oof"
+              ],
+              "y": 1363
+            },
+            {
+              "kind": "message",
+              "alliance": "BLT",
+              "speaker": "Quilly",
+              "vip": 9,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1587
+            },
+            {
+              "kind": "message",
+              "alliance": "BLT",
+              "speaker": "Quilly",
+              "vip": 9,
+              "lines": [
+                "Barely"
+              ],
+              "y": 1917
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "Lordyschmordy",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2143
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 34,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "@Hecate thanks"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "Welcome"
+              ],
+              "y": 503
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "Hecate",
+              "vip": null,
+              "lines": [
+                "@s Coach ducky youre not new",
+                "here"
+              ],
+              "y": 727
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "a MARI LEGEND",
+              "vip": null,
+              "lines": [
+                "@s Coach"
+              ],
+              "y": 971
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "s Coach",
+              "vip": null,
+              "lines": [
+                "Huh My transfer request never",
+                "processed"
+              ],
+              "y": 1195
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "4p KHALID",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1438
+            },
+            {
+              "kind": "time",
+              "time": "02:09"
+            },
+            {
+              "kind": "message",
+              "alliance": "HVN",
+              "speaker": "Lianna",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Lianna",
+                "Kiingdom # 222"
+              ],
+              "y": 1750
+            },
+            {
+              "kind": "time",
+              "time": "02:31"
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 22,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "BLT",
+              "speaker": "Ynot",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 496
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "Moonwitch",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 721
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "Moonwitch",
+              "vip": null,
+              "lines": [
+                "congrats"
+              ],
+              "y": 1049
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "Hecate",
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "welcome new friends"
+              ],
+              "y": 1274
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "lil frankie\"",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1550
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1809
+            },
+            {
+              "kind": "time",
+              "time": "01:57"
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "s Coach",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2121
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "2026-04-14_054311",
+      "captured": "2026-04-14 05:43 UTC",
+      "captured_iso": "2026-04-14T05:43:11",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 35,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "05:31"
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "npMBMA",
+              "vip": null,
+              "lines": [
+                "havent read many books for a few",
+                "years since my ex stole my collection",
+                "they werent stories though",
+                "except the bosch series"
+              ],
+              "y": 471
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "npBnn",
+              "vip": null,
+              "lines": [
+                "Surprisingly only watched the first 2",
+                "episodes on Amazon. Not a big TV or",
+                "movie person any more"
+              ],
+              "y": 806
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "npMBMA",
+              "vip": null,
+              "lines": [
+                "Wrong chat lol",
+                "9oo= 8o",
+                "@pMBMA hii",
+                "9oo: 8o",
+                "@Moonwitch can u pls look in ur dm",
+                "6o",
+                "@Moonwitch also plss can u tell to",
+                "the RAs pls"
+              ],
+              "y": 1094
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "npuBwA",
+              "vip": null,
+              "lines": [
+                "Hello."
+              ],
+              "y": 2011
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "REB",
+              "speaker": "Frieren TheSlayer",
+              "vip": null,
+              "lines": [
+                "someone got the popcorn big emoji ?",
+                "00i think i will need it"
+              ],
+              "y": 465
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "Moonwitch",
+              "vip": null,
+              "lines": [
+                "Don't mInd me",
+                "Im just watching"
+              ],
+              "y": 705
+            },
+            {
+              "kind": "message",
+              "alliance": "REB",
+              "speaker": "Frieren TheSlayer",
+              "vip": null,
+              "lines": [
+                "thanks alot@Moonwitch"
+              ],
+              "y": 1365
+            },
+            {
+              "kind": "time",
+              "time": "05:25"
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "Moonwitch",
+              "vip": null,
+              "lines": [
+                "Share Coordinates"
+              ],
+              "y": 1677
+            },
+            {
+              "kind": "message",
+              "alliance": "AQU",
+              "speaker": "Moonwitchs Ttoops",
+              "vip": null,
+              "lines": [
+                "Kiingdom # 222 9",
+                "[X435 Yizo]",
+                "Please attack"
+              ],
+              "y": 1810
+            },
+            {
+              "kind": "time",
+              "time": "05:31"
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 23,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh",
+                "(e",
+                "LIKE 4 LIKE !",
+                "100% will like your",
+                "island back",
+                "Thx"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "time",
+              "time": "03:35"
+            },
+            {
+              "kind": "message",
+              "alliance": "REB",
+              "speaker": "Frieren TheSlayer",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1444
+            },
+            {
+              "kind": "time",
+              "time": "04:29"
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "Lordyschmordy",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1757
+            },
+            {
+              "kind": "time",
+              "time": "04:51"
+            },
+            {
+              "kind": "message",
+              "alliance": "REB",
+              "speaker": "Frieren TheSlayer",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2069
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "GLF",
+              "speaker": "Dimitri",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 398
+            },
+            {
+              "kind": "time",
+              "time": "02:29"
+            },
+            {
+              "kind": "message",
+              "alliance": "WIN",
+              "speaker": "Gabby",
+              "vip": null,
+              "lines": [
+                "Share Coordinates"
+              ],
+              "y": 815
+            },
+            {
+              "kind": "message",
+              "alliance": "WIN",
+              "speaker": "Gabbyls Troops",
+              "vip": null,
+              "lines": [
+                "Kingdom # 222",
+                "[747Y568]",
+                "only 1OOk, hit pls"
+              ],
+              "y": 950
+            },
+            {
+              "kind": "time",
+              "time": "02:37"
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "Babi Terbang",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Babi Terbang",
+                "Kiigdom # 222"
+              ],
+              "y": 1356
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "Babi Terbang",
+              "vip": null,
+              "lines": [
+                "@Gabby oNIY",
+                "03*11",
+                "@Babi Terbang +1"
+              ],
+              "y": 1729
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 37,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "01:32"
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 487
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "a MARI LEGEND",
+              "vip": 9,
+              "lines": [
+                "@AP KHALID just say it was storm",
+                "on your island"
+              ],
+              "y": 773
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Ron 07",
+                "Kingdom # 225"
+              ],
+              "y": 1014
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1389
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "MARI LEGEND",
+              "vip": 9,
+              "lines": [
+                "That' s not bad island"
+              ],
+              "y": 1673
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "Layl 14 (ar;"
+              ],
+              "y": 1897
+            },
+            {
+              "kind": "time",
+              "time": "02:12"
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 33,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "Tam Sam",
+                "9oo- 8o",
+                "@AP KHALID oke"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "Okay Sam"
+              ],
+              "y": 1001
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1223
+            },
+            {
+              "kind": "message",
+              "alliance": "GOD",
+              "speaker": "a MARI LEGEND",
+              "vip": 9,
+              "lines": [
+                "@4P KHALID ohhh | saw now",
+                "maybe to lil redecorate it"
+              ],
+              "y": 1510
+            },
+            {
+              "kind": "time",
+              "time": "01:32"
+            },
+            {
+              "kind": "message",
+              "alliance": "TCF",
+              "speaker": "AP KHALID",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2111
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

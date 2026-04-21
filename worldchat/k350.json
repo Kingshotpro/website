@@ -1,0 +1,427 @@
+{
+  "kingdom": 350,
+  "snapshot_count": 1,
+  "image_count": 6,
+  "message_count": 32,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-16_175423",
+      "captured": "2026-04-16 17:54 UTC",
+      "captured_iso": "2026-04-16T17:54:23",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "@BAlieve Nos amamos voce!!!!",
+                "BAlieve",
+                "koti bir ayrilik :(",
+                "BAlieve",
+                "Share Coordinates"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "OUR",
+              "speaker": "URintihask",
+              "vip": null,
+              "lines": [
+                "Kiingdom # 340"
+              ],
+              "y": 901
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "eu tambem vou visitar voces::.. vou",
+                "fazer uma supresa",
+                "BAlieve",
+                "haha, beni bulamazsan bile seni",
+                "orada gizel karsilayacak bir siirii",
+                "insan olacak, devami icin sizi arada",
+                "ziyaret edecegim, umarim bundan",
+                "sonra daha fazla eglenirsiniz",
+                "BAlieve",
+                "simdilik gitmeliyim, yine de daha",
+                "sonra donecegim, iyi geceler"
+              ],
+              "y": 1142
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2008
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "time",
+              "time": "17:28"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "BAlieve",
+                "@Polls Hammer PoL yeni eviniz",
+                "hayirl olsun",
+                "BAlieve",
+                "PoL umarim daha sonrasi icin iyi",
+                "olursunuz, sizi seviyorum cocuklar"
+              ],
+              "y": 453
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol' s Hammer PoL",
+              "vip": null,
+              "lines": [
+                "@BAlieve"
+              ],
+              "y": 937
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "onde voce esta?",
+                "BAlieve",
+                "340"
+              ],
+              "y": 1163
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "voce veio ter conosco"
+              ],
+              "y": 1610
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "@BAlieve Nos amamos voce!!!!",
+                "BAlieve"
+              ],
+              "y": 1851
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 25,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "tive uma avaliacao positiva000g"
+              ],
+              "y": 409
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "Starting an alliance for shirtless",
+                "hunks in 350. Who s with me"
+              ],
+              "y": 607
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "ViP9 [DPPlkewelo",
+                "@Badboi Namz how the hell did you",
+                "figure out who [am ?"
+              ],
+              "y": 848
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "espera ate @KrishnaPoL voltar"
+              ],
+              "y": 1376
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "@kewelO [ stole your picture from",
+                "Linkedln",
+                "ViIP9 [DPPlkewelo"
+              ],
+              "y": 1663
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 28,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "IMRTBBarbie c4m",
+                "@Badboi Namz B886"
+              ],
+              "y": 348
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "@Barbie cAm woman in men",
+                "dominated field"
+              ],
+              "y": 633
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "350 Ladies private message me for",
+                "Full length pic"
+              ],
+              "y": 937
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1258
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Barbie c4m",
+              "vip": null,
+              "lines": [
+                "holy shit"
+              ],
+              "y": 1545
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "eu ja coloquei uma foto no",
+                "discord:.. sem camisola 0000"
+              ],
+              "y": 1768
+            },
+            {
+              "kind": "time",
+              "time": "17:13"
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol's Hammer PoL",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2098
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 26,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "@Lady Tiramisu ich werde das bild",
+                "niemals andern"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "Well shit guess Im stuck as Lady T",
+                "forever then"
+              ],
+              "y": 610
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "Sike",
+                "#IBvibes",
+                "ktos z Polski jest tu teraz?"
+              ],
+              "y": 912
+            },
+            {
+              "kind": "message",
+              "alliance": "341",
+              "speaker": "Pol s Hammer PoL",
+              "vip": null,
+              "lines": [
+                "@#IBvibes tem varios jogadores",
+                "polacos que chegaram hoje"
+              ],
+              "y": 1359
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "Wouldn't you like to know, little",
+                "birdie @#IBvibes"
+              ],
+              "y": 1664
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Barbie c4m",
+              "vip": null,
+              "lines": [
+                "@Badboi Namz"
+              ],
+              "y": 1967
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Barbie c4m",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 515
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Barbie c4m",
+              "vip": null,
+              "lines": [
+                "jizzbutz kewe"
+              ],
+              "y": 801
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "Freaking children, both of you are.",
+                "Im gonna need Freya to come and",
+                "keep you two in check",
+                "VIP9 [DPPlkewelo",
+                "@Lady Tiramisu why did you change",
+                "your name"
+              ],
+              "y": 1084
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Badboi Namz",
+              "vip": null,
+              "lines": [
+                "For fun, IIl go back to Namz when",
+                "c4m stops catfishing people with",
+                "gag profile picture"
+              ],
+              "y": 1739
+            },
+            {
+              "kind": "message",
+              "alliance": "MRT",
+              "speaker": "Barbie c4m",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2088
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

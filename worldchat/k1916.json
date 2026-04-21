@@ -1,0 +1,355 @@
+{
+  "kingdom": 1916,
+  "snapshot_count": 1,
+  "image_count": 5,
+  "message_count": 24,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-14_220953",
+      "captured": "2026-04-14 22:09 UTC",
+      "captured_iso": "2026-04-14T22:09:53",
+      "image_count": 5,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "CCCCCCCCCC~",
+                "vvvv| Come on in",
+                "Aa the",
+                "water",
+                "is fine .."
+              ],
+              "y": 410
+            },
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "Ecel lol"
+              ],
+              "y": 763
+            },
+            {
+              "kind": "time",
+              "time": "22:30"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "VIPI [ATL JMavrick",
+                "what happened to no poaching from",
+                "NAPI2 alliances"
+              ],
+              "y": 1076
+            },
+            {
+              "kind": "message",
+              "alliance": "ATL",
+              "speaker": "Mavrick",
+              "vip": null,
+              "lines": [
+                "nvm"
+              ],
+              "y": 1318
+            },
+            {
+              "kind": "message",
+              "alliance": "BAD",
+              "speaker": "Glaudraug",
+              "vip": null,
+              "lines": [
+                "lol what did you think happened?"
+              ],
+              "y": 1544
+            },
+            {
+              "kind": "message",
+              "alliance": "ATL",
+              "speaker": "Mavrick",
+              "vip": null,
+              "lines": [
+                "nothing"
+              ],
+              "y": 1767
+            },
+            {
+              "kind": "message",
+              "alliance": "ATL",
+              "speaker": "BuckShot",
+              "vip": null,
+              "lines": [
+                "Thought he went swimming",
+                "without us"
+              ],
+              "y": 1991
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 43,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "RVL",
+              "speaker": "Marcus",
+              "vip": null,
+              "lines": [
+                "(RVL) REVELLION is recruiting active",
+                "and cooperative members:",
+                "We are looking for players who are",
+                "active daily, join events, follow",
+                "alliance commands, and grow their",
+                "power consistently:",
+                "Join RVL and grow with us.",
+                "If you want to join, just message",
+                "me"
+              ],
+              "y": 433
+            },
+            {
+              "kind": "time",
+              "time": "22:13"
+            },
+            {
+              "kind": "message",
+              "alliance": "ATL",
+              "speaker": "EceL",
+              "vip": 3,
+              "lines": [
+                "merhaba dinya"
+              ],
+              "y": 1224
+            },
+            {
+              "kind": "message",
+              "alliance": "BAD",
+              "speaker": "Glaudraug",
+              "vip": null,
+              "lines": [
+                "So has the the chief coward made a",
+                "fuss today about how much he has",
+                "to spend to keep teleporting away",
+                "and rebuilding his troops?"
+              ],
+              "y": 1450
+            },
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "Hello Eecl",
+                "vvvv| Come on in",
+                "AAA A the",
+                "water"
+              ],
+              "y": 1783
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 24,
+          "messages": [
+            {
+              "kind": "time",
+              "time": "21:40"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Brunocalleb28"
+              ],
+              "y": 471
+            },
+            {
+              "kind": "time",
+              "time": "21:52"
+            },
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "0",
+                "@ ))))"
+              ],
+              "y": 783
+            },
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "0",
+                "@ )))) (("
+              ],
+              "y": 1257
+            },
+            {
+              "kind": "time",
+              "time": "22:03"
+            },
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "J1 / 0 |"
+              ],
+              "y": 1817
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 25,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 628
+            },
+            {
+              "kind": "time",
+              "time": "21:27"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[PHWllord293807590",
+                "Open Recruitment [PHW_PHIL",
+                "WARRIORS] Active every day?",
+                "Looking for a place to grow and",
+                "relax? Come join us?",
+                "ACTIVE IN EVENT/RALLY",
+                "HUNTING TRAP UTC TIME 8.00 /",
+                "LOCAL TIME 4:00 pm in PH",
+                "RA/RS Friendly PM in-game or",
+                "join directly' Let s have fun",
+                "together!'"
+              ],
+              "y": 1142
+            },
+            {
+              "kind": "message",
+              "alliance": "SS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "oo("
+              ],
+              "y": 1801
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 28,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "ATL",
+              "speaker": "nio",
+              "vip": null,
+              "lines": [
+                "always welcome here"
+              ],
+              "y": 433
+            },
+            {
+              "kind": "time",
+              "time": "21:04"
+            },
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "Does anyone else have the game",
+                "music n sound effects on? have",
+                "mine on, wonderimg if yall are sick",
+                "of it:.."
+              ],
+              "y": 745
+            },
+            {
+              "kind": "message",
+              "alliance": "ATL",
+              "speaker": "EceL",
+              "vip": 3,
+              "lines": [
+                "merhaba"
+              ],
+              "y": 1079
+            },
+            {
+              "kind": "time",
+              "time": "21:17"
+            },
+            {
+              "kind": "message",
+              "alliance": "SQM",
+              "speaker": "Night wolf",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1392
+            },
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "0",
+                ">)"
+              ],
+              "y": 1617
+            },
+            {
+              "kind": "message",
+              "alliance": "SIS",
+              "speaker": "Tarion Vexen",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2043
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

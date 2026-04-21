@@ -1,0 +1,549 @@
+{
+  "kingdom": 1944,
+  "snapshot_count": 2,
+  "image_count": 9,
+  "message_count": 35,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-18_035847",
+      "captured": "2026-04-18 03:58 UTC",
+      "captured_iso": "2026-04-18T03:58:47",
+      "image_count": 5,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 39,
+          "messages": [
+            {
+              "kind": "time",
+              "time": "03:53"
+            },
+            {
+              "kind": "message",
+              "alliance": "IDC",
+              "speaker": "King Kira",
+              "vip": null,
+              "lines": [
+                "Ineed to join active alliance"
+              ],
+              "y": 473
+            },
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "Child of Dead",
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "SKY Has 3 empty places you can join"
+              ],
+              "y": 696
+            },
+            {
+              "kind": "message",
+              "alliance": "IDC",
+              "speaker": "King Kira",
+              "vip": null,
+              "lines": [
+                "need active alliance who can",
+                "invite me"
+              ],
+              "y": 975
+            },
+            {
+              "kind": "time",
+              "time": "04:08"
+            },
+            {
+              "kind": "message",
+              "alliance": "ICE",
+              "speaker": "BERKAY",
+              "vip": 2,
+              "lines": [
+                "kim nereden kovuluyor ?"
+              ],
+              "y": 1305
+            },
+            {
+              "kind": "message",
+              "alliance": "DRK",
+              "speaker": "Dusk",
+              "vip": null,
+              "lines": [
+                "JOIN ECLIPSE",
+                "Join Eclipse where strength,",
+                "loyalty, and strategy rule:",
+                "We are looking for active, dedicated",
+                "players who are ready to grow,",
+                "Fight, and dominate together.",
+                "Whether you[ re a seasoned warrior",
+                "or still building your empire, there s",
+                "a place for you here"
+              ],
+              "y": 1530
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 41,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Are you looking for a new home, an",
+                "awesome crew and a place to",
+                "develop?",
+                "Join SGD'"
+              ],
+              "y": 449
+            },
+            {
+              "kind": "time",
+              "time": "03:39"
+            },
+            {
+              "kind": "message",
+              "alliance": "CTN",
+              "speaker": "Costa Nemesis",
+              "vip": null,
+              "lines": [
+                "JOIN FILIPINO ALLIANCE",
+                "CostaNostra Recruitment",
+                "Join CostaNostra where strength,",
+                "loyalty, and strategy rule:",
+                "We are looking for active, dedicated",
+                "players who are ready to grow,",
+                "Fight, and dominate together.",
+                "Whether youre a seasoned warrior",
+                "or still building your empire, there'$",
+                "a place for you here:"
+              ],
+              "y": 812
+            },
+            {
+              "kind": "time",
+              "time": "03:47"
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "Sinan 34",
+              "vip": null,
+              "lines": [
+                "Bu nasil bir oyun anlamadim"
+              ],
+              "y": 1589
+            },
+            {
+              "kind": "message",
+              "alliance": "ONE",
+              "speaker": "Sinan 34",
+              "vip": null,
+              "lines": [
+                "Sebepsiz yere insanlar neden",
+                "kovuluyor?"
+              ],
+              "y": 1813
+            },
+            {
+              "kind": "time",
+              "time": "03:53"
+            },
+            {
+              "kind": "message",
+              "alliance": "IDC",
+              "speaker": "King Kira",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2143
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 20,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "SGD",
+              "speaker": "zhi",
+              "vip": null,
+              "lines": [
+                "SGD",
+                "Are you looking for a new home, an",
+                "awesome crew and a place to",
+                "develop?",
+                "Join SGD'"
+              ],
+              "y": 366
+            },
+            {
+              "kind": "message",
+              "alliance": "KBS",
+              "speaker": "Miller 2026",
+              "vip": null,
+              "lines": [
+                "depende"
+              ],
+              "y": 1209
+            },
+            {
+              "kind": "message",
+              "alliance": "KBS",
+              "speaker": "Miller 2026",
+              "vip": null,
+              "lines": [
+                "Help somebore me manda um pix"
+              ],
+              "y": 1434
+            },
+            {
+              "kind": "message",
+              "alliance": "SGD",
+              "speaker": "zhi",
+              "vip": null,
+              "lines": [
+                "SGD"
+              ],
+              "y": 1658
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 23,
+          "messages": [
+            {
+              "kind": "time",
+              "time": "03:20"
+            },
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "rorolebiscoto",
+              "vip": 3,
+              "lines": [
+                "ou voit-on Iheure utc"
+              ],
+              "y": 539
+            },
+            {
+              "kind": "message",
+              "alliance": "SGD",
+              "speaker": "zhi",
+              "vip": null,
+              "lines": [
+                "SGD",
+                "Are you looking for a new home, an",
+                "awesome crew and a place to",
+                "develop?",
+                "Join SGD'"
+              ],
+              "y": 763
+            },
+            {
+              "kind": "message",
+              "alliance": "KBS",
+              "speaker": "Miller 2026",
+              "vip": null,
+              "lines": [
+                "hello"
+              ],
+              "y": 1606
+            },
+            {
+              "kind": "message",
+              "alliance": "KBS",
+              "speaker": "Miller 2026",
+              "vip": null,
+              "lines": [
+                "somebore"
+              ],
+              "y": 1831
+            },
+            {
+              "kind": "message",
+              "alliance": "KBS",
+              "speaker": "Miller 2026",
+              "vip": null,
+              "lines": [
+                "speak portuguese?"
+              ],
+              "y": 2055
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 22,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "VIPI [SKYhharamuGam",
+                "mencari aliansi lv5"
+              ],
+              "y": 402
+            },
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "x199",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 627
+            },
+            {
+              "kind": "message",
+              "alliance": "IDS",
+              "speaker": "Remilia",
+              "vip": 2,
+              "lines": [
+                "sini"
+              ],
+              "y": 885
+            },
+            {
+              "kind": "time",
+              "time": "03:14"
+            },
+            {
+              "kind": "message",
+              "alliance": "ZPE",
+              "speaker": "Kocuul3",
+              "vip": null,
+              "lines": [
+                "P"
+              ],
+              "y": 1198
+            },
+            {
+              "kind": "message",
+              "alliance": "SGD",
+              "speaker": "zhi",
+              "vip": null,
+              "lines": [
+                "SGD",
+                "Are you looking for a new home; an",
+                "awesome crew and a place to",
+                "develop?",
+                "Join SGD'"
+              ],
+              "y": 1421
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "2026-04-16_050354",
+      "captured": "2026-04-16 05:03 UTC",
+      "captured_iso": "2026-04-16T05:03:54",
+      "image_count": 4,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "SGD",
+              "speaker": "zhi",
+              "vip": null,
+              "lines": [
+                "SGD",
+                "Are you looking for a new home; an",
+                "awesome crew and a place to",
+                "develop?",
+                "Join SGD'"
+              ],
+              "y": 371
+            },
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "D E ATH",
+              "vip": null,
+              "lines": [
+                "JOIN SKY LORDS",
+                "ACTIVE ALLIANCE",
+                "BEGINNERS FIRIENDLY",
+                "STRONG",
+                "JOIN US IF YOU ARE SEEKING FAST",
+                "GROWTH, COMPANIONSHIP &",
+                "HELP IN LEVELING UP YOUR GAME",
+                "If you are interested in joining but",
+                "sky lords is full",
+                "contact alliance leader DEATH",
+                "lord299627072",
+                "siapa dari indo atau malaysia?"
+              ],
+              "y": 1213
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "SGD",
+              "speaker": "zhi",
+              "vip": null,
+              "lines": [
+                "SGD",
+                "Are you looking for a new home; an",
+                "awesome crew anda place to",
+                "develop?",
+                "Join SGD'"
+              ],
+              "y": 382
+            },
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "D E ATH",
+              "vip": null,
+              "lines": [
+                "JOIN SKY LORDS",
+                "ACTIVE ALLIANCE",
+                "BEGINNERS FIRIENDLY",
+                "STRONG",
+                "JOIN US IF YOU ARE SEEKING FAST",
+                "GROWTH, COMPANIONSHIP &",
+                "HELP IN LEVELING UP YOUR GAME",
+                "IF you are interested in joining but",
+                "sky lords is full",
+                "contact alliance leader DEATH"
+              ],
+              "y": 1224
+            },
+            {
+              "kind": "message",
+              "alliance": "SGD",
+              "speaker": "zhi",
+              "vip": null,
+              "lines": [
+                "SGD"
+              ],
+              "y": 2021
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "D E ATH",
+              "vip": null,
+              "lines": [
+                "@Rudhy Oey you interested in",
+                "joining ?"
+              ],
+              "y": 402
+            },
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "Pretty Kei",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 645
+            },
+            {
+              "kind": "message",
+              "alliance": "ICE",
+              "speaker": "bobinko",
+              "vip": null,
+              "lines": [
+                "[SKYID E ATH",
+                "@Pretty Kei you interested in joining",
+                "uS"
+              ],
+              "y": 904
+            },
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "D E ATH",
+              "vip": null,
+              "lines": [
+                "JOIN SKY LORDS",
+                "ACTIVE ALLIANCE",
+                "BEGINNERS FIRIENDLY",
+                "STRONG",
+                "JOIN US IF YOU ARE SEEKING FAST",
+                "GROWTH, COMPANIONSHIP &",
+                "HELP IN LEVELING UP YOUR GAME",
+                "If you are interested in joining but",
+                "sky lords is full",
+                "contact alliance leader DEATH"
+              ],
+              "y": 1404
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 33,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "D E ATH",
+              "vip": null,
+              "lines": [
+                "JOIN SKY LORDS",
+                "ACTIVE ALLIANCE",
+                "BEGINNERS FIRIENDLY",
+                "STRONG",
+                "JOIN US IF YOU ARE SEEKING FAST",
+                "GROWTH, COMPANIONSHIP &",
+                "HELP IN LEVELING UP YOUR GAME",
+                "IF you are interested in joining but",
+                "sky lords is full",
+                "contact alliance leader DEATH",
+                "VIPI Rudhy Oey"
+              ],
+              "y": 523
+            },
+            {
+              "kind": "message",
+              "alliance": "SKY",
+              "speaker": "D E ATH",
+              "vip": null,
+              "lines": [
+                "JOIN SKY LORDS",
+                "ACTIVE ALLIANCE",
+                "BEGINNERS FIRIENDLY",
+                "STRONG",
+                "JOIN US IF YOU ARE SEEKING FAST",
+                "GROWTH, COMPANIONSHIP &",
+                "HELP IN LEVELING UP YOUR GAME",
+                "IF you are interested in joining but"
+              ],
+              "y": 1544
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

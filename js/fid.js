@@ -391,16 +391,25 @@ async function handleFidSubmit(e) {
       window.AccountSwitcher.addAccount(fid, profile.nickname);
     }
 
-    // Advisor system: load or trigger selection
+    // Advisor system: load existing, or auto-assign the single available advisor.
+    //
+    // Archetype selection is temporarily bypassed — we only ship one advisor
+    // right now and forcing a choice between one option is dead flow. When
+    // additional advisors ship, restore the selection call by replacing the
+    // Advisor.create() line with `window.KSP.showAdvisorSelection(profile)`.
+    // The selection overlay code in advisor-select.js is left intact for that.
+    const DEFAULT_ADVISOR_ARCHETYPE = 'sage';
     if (window.Advisor) {
       const hasAdvisor = window.Advisor.load(fid);
       if (hasAdvisor) {
         // Returning player — process visit + grant lookup XP
         window.Advisor.processDailyVisit();
         window.Advisor.grantXP('fid_lookup', 25);
-      } else if (window.KSP?.showAdvisorSelection) {
-        // New player — show archetype selection overlay
-        window.KSP.showAdvisorSelection(profile);
+      } else {
+        // New player — silently assign the default advisor. The orb appears
+        // on screen and greets the player via the normal advisory-hooks flow.
+        window.Advisor.create(DEFAULT_ADVISOR_ARCHETYPE);
+        window.Advisor.grantXP('fid_lookup', 25);
       }
     }
 

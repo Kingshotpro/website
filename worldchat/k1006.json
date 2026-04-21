@@ -1,0 +1,414 @@
+{
+  "kingdom": 1006,
+  "snapshot_count": 1,
+  "image_count": 5,
+  "message_count": 31,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-18_055300",
+      "captured": "2026-04-18 05:53 UTC",
+      "captured_iso": "2026-04-18T05:53:00",
+      "image_count": 5,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 34,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Weeeeel !",
+                "Slide in a new Day in KS"
+              ],
+              "y": 492
+            },
+            {
+              "kind": "time",
+              "time": "06:05"
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "MiniKronos",
+              "vip": null,
+              "lines": [
+                "FPO @Rose"
+              ],
+              "y": 935
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "MiniKronos",
+              "vip": null,
+              "lines": [
+                "^_^ $",
+                "0o",
+                "Oh yeahhhhh a Song for U",
+                "Feel the Kickdrum"
+              ],
+              "y": 1159
+            },
+            {
+              "kind": "time",
+              "time": "06:12"
+            },
+            {
+              "kind": "message",
+              "alliance": "BOM",
+              "speaker": "Rose",
+              "vip": null,
+              "lines": [
+                "@MiniKronos ich Fuhle denn Bass"
+              ],
+              "y": 1767
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "MiniKronos",
+              "vip": null,
+              "lines": [
+                "das ist gut"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 24,
+          "messages": [
+            {
+              "kind": "time",
+              "time": "05:19"
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "MiniKronos",
+              "vip": null,
+              "lines": [
+                "AII sleep"
+              ],
+              "y": 445
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "MiniKronos",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 687
+            },
+            {
+              "kind": "time",
+              "time": "05:35"
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "ee CELINE oo",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "OOOOCELINEOOOO",
+                "Kingdom # 1006"
+              ],
+              "y": 1033
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "MiniKronos",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1407
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "MiniKronos",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1631
+            },
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "ee CELINE'o",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1889
+            },
+            {
+              "kind": "time",
+              "time": "05:50"
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 28,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "Cervi",
+              "vip": null,
+              "lines": [
+                "thank you"
+              ],
+              "y": 354
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "henny",
+              "vip": null,
+              "lines": [
+                "1 just realized it now LMAO"
+              ],
+              "y": 579
+            },
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "Cervi",
+              "vip": null,
+              "lines": [
+                "cider was confusing to some"
+              ],
+              "y": 803
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "henny",
+              "vip": null,
+              "lines": [
+                "why"
+              ],
+              "y": 1027
+            },
+            {
+              "kind": "time",
+              "time": "05:02"
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "MrsBobbyBee",
+              "vip": null,
+              "lines": [
+                "omfg'!!"
+              ],
+              "y": 1340
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "MrsBobbyBee",
+              "vip": null,
+              "lines": [
+                "cervix smasher"
+              ],
+              "y": 1564
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "MrsBobbyBee",
+              "vip": null,
+              "lines": [
+                "thats class"
+              ],
+              "y": 1789
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "MrsBobbyBee",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2014
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "time",
+              "time": "04:40"
+            },
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "GhOsTFAcE",
+              "vip": null,
+              "lines": [
+                "invite anyone/everyone to hit me:",
+                "makes wanna get better",
+                "Ghostface Jr",
+                "tru dat brother"
+              ],
+              "y": 488
+            },
+            {
+              "kind": "time",
+              "time": "04:48"
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "henny",
+              "vip": null,
+              "lines": [
+                "@Cervix Smasher if its you yes"
+              ],
+              "y": 1043
+            },
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "Cervi",
+              "vip": 12,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1266
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "Sviske",
+              "vip": null,
+              "lines": [
+                "@Cervix Smasher love the name btw"
+              ],
+              "y": 1491
+            },
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "Cervi",
+              "vip": null,
+              "lines": [
+                "thank you"
+              ],
+              "y": 1716
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "henny",
+              "vip": null,
+              "lines": [
+                "i just realized it now LMAO"
+              ],
+              "y": 1941
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "FRQ",
+              "speaker": "Babarfrw",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Babar Ffrq",
+                "Kiigdom # 1006"
+              ],
+              "y": 406
+            },
+            {
+              "kind": "time",
+              "time": "04:24"
+            },
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "GhOsTFAcE",
+              "vip": null,
+              "lines": [
+                "our coworker just won a million",
+                "dollars on scratch off"
+              ],
+              "y": 869
+            },
+            {
+              "kind": "time",
+              "time": "04:37"
+            },
+            {
+              "kind": "message",
+              "alliance": "HUN",
+              "speaker": "MrsBobbyBee",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1200
+            },
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "GhOsTFAcE",
+              "vip": null,
+              "lines": [
+                "he's a real nice guy: glad to see a",
+                "hard worker win"
+              ],
+              "y": 1424
+            },
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "GhOsTFAcE",
+              "vip": null,
+              "lines": [
+                "it $ on fox 6 news on FB"
+              ],
+              "y": 1667
+            },
+            {
+              "kind": "message",
+              "alliance": "ABF",
+              "speaker": "Cervi",
+              "vip": null,
+              "lines": [
+                "Question . do you guys hit people",
+                "From our server in arena?"
+              ],
+              "y": 1891
+            },
+            {
+              "kind": "time",
+              "time": "04:40"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

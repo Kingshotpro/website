@@ -1,0 +1,526 @@
+{
+  "kingdom": 1000,
+  "snapshot_count": 1,
+  "image_count": 6,
+  "message_count": 43,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-17_214258",
+      "captured": "2026-04-17 21:42 UTC",
+      "captured_iso": "2026-04-17T21:42:58",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Think mine was top war"
+              ],
+              "y": 398
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Sully",
+              "vip": null,
+              "lines": [
+                "Ijust play them all on TikTok",
+                "without installing them now"
+              ],
+              "y": 597
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "15s unskipable ads?"
+              ],
+              "y": 839
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Sully",
+              "vip": null,
+              "lines": [
+                "Ijust click out of em; Idon't want",
+                "the x2"
+              ],
+              "y": 1125
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1366
+            },
+            {
+              "kind": "time",
+              "time": "22:00"
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "Xotz",
+              "vip": null,
+              "lines": [
+                "@Danemark metro? like the Samus",
+                "game?"
+              ],
+              "y": 1680
+            },
+            {
+              "kind": "time",
+              "time": "22:11"
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "hhhhhhhhhhhh",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2008
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "ShadowsArmCandy",
+              "vip": null,
+              "lines": [
+                "But it actually has what's in the add"
+              ],
+              "y": 438
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "xotz",
+              "vip": null,
+              "lines": [
+                "wait it does?"
+              ],
+              "y": 660
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "xXotz",
+              "vip": null,
+              "lines": [
+                "whats the name? | Zant to try"
+              ],
+              "y": 906
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "ShadowsArmCandy",
+              "vip": null,
+              "lines": [
+                "Lemme go grab my tablet and see"
+              ],
+              "y": 1111
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1334
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "ShadowsArmCandy",
+              "vip": null,
+              "lines": [
+                "Last war"
+              ],
+              "y": 1594
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "Danemark",
+              "vip": 9,
+              "lines": [
+                "anyone seen the new ad for Metro",
+                "2039 yet?"
+              ],
+              "y": 1817
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "Think mine was top war"
+              ],
+              "y": 2059
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 37,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "sometimes i regret stumbling upon",
+                "this game haha"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "blame the ads"
+              ],
+              "y": 556
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "Xotz",
+              "vip": null,
+              "lines": [
+                "this game is totally not pZw"
+              ],
+              "y": 782
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "xotz",
+              "vip": null,
+              "lines": [
+                "@Hahaha should have gone with the",
+                "dude shooting from left to right",
+                "with the +1 going kkkkk"
+              ],
+              "y": 1007
+            },
+            {
+              "kind": "time",
+              "time": "20:31"
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "ShadowSiren",
+              "vip": null,
+              "lines": [
+                "@Star sLoverBoy wut then you",
+                "wouldn t know us"
+              ],
+              "y": 1382
+            },
+            {
+              "kind": "time",
+              "time": "21:18"
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "@Kotz tried that game too but",
+                "that' $ even further from the ad",
+                "even the one in heli shooting at",
+                "zombiese"
+              ],
+              "y": 1713
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "ShadowsArmCandy",
+              "vip": null,
+              "lines": [
+                "Nahhh tried the +1it' s boring"
+              ],
+              "y": 2049
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "Ah hate pay to win games"
+              ],
+              "y": 459
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "Oxih",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 685
+            },
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "Im going to see how far | get",
+                "without spending money"
+              ],
+              "y": 909
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "All da best",
+                "[LGcjSully",
+                "@Solomor said that once"
+              ],
+              "y": 1150
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Sully",
+              "vip": null,
+              "lines": [
+                "hope you re more disciplined than",
+                "me"
+              ],
+              "y": 1721
+            },
+            {
+              "kind": "time",
+              "time": "20:18"
+            },
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "lol /Il try"
+              ],
+              "y": 2052
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 26,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "How do | unlock those things",
+                "because | only have 3 lol"
+              ],
+              "y": 596
+            },
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 839
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "Qxih",
+              "vip": null,
+              "lines": [
+                "what things? @Solomor"
+              ],
+              "y": 1167
+            },
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "The animation things"
+              ],
+              "y": 1391
+            },
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "Under the little star button page"
+              ],
+              "y": 1616
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "Events and stuff"
+              ],
+              "y": 1841
+            },
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "Ah ok"
+              ],
+              "y": 2065
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "maybe thats how it works?"
+              ],
+              "y": 389
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "Qxih",
+              "vip": null,
+              "lines": [
+                "thats what im talkin about",
+                "@Hahaha"
+              ],
+              "y": 523
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "one way to find out"
+              ],
+              "y": 765
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "Oxih",
+              "vip": null,
+              "lines": [
+                "otherwise | wont have them until",
+                "next yeare"
+              ],
+              "y": 991
+            },
+            {
+              "kind": "time",
+              "time": "20:09"
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "Same @Oxih by my calculations it",
+                "would take a year tooj"
+              ],
+              "y": 1321
+            },
+            {
+              "kind": "message",
+              "alliance": "ARK",
+              "speaker": "Qxih",
+              "vip": null,
+              "lines": [
+                "we in this for the long run"
+              ],
+              "y": 1563
+            },
+            {
+              "kind": "message",
+              "alliance": "LGC",
+              "speaker": "Hahaha",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1787
+            },
+            {
+              "kind": "message",
+              "alliance": "IRL",
+              "speaker": "Solomor",
+              "vip": null,
+              "lines": [
+                "How' $ everyone doing"
+              ],
+              "y": 2012
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

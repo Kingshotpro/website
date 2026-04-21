@@ -1,0 +1,360 @@
+{
+  "kingdom": 232,
+  "snapshot_count": 1,
+  "image_count": 5,
+  "message_count": 29,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-14_143459",
+      "captured": "2026-04-14 14:34 UTC",
+      "captured_iso": "2026-04-14T14:34:59",
+      "image_count": 5,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 24,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "m;Wf _",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 500
+            },
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "Tommy",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 759
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "KIM",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1088
+            },
+            {
+              "kind": "time",
+              "time": "13:36"
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "KIM",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "KIM",
+                "Kiingdom # 232"
+              ],
+              "y": 1432
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "KIM",
+              "vip": null,
+              "lines": [
+                "Like Da Island",
+                "2",
+                "For A Like Back"
+              ],
+              "y": 1806
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 22,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "n5lff _",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 480
+            },
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "Tommy",
+              "vip": 8,
+              "lines": [
+                "nice in purple KIM"
+              ],
+              "y": 740
+            },
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "Tommy",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 964
+            },
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "Tommy",
+              "vip": 8,
+              "lines": [
+                "nah"
+              ],
+              "y": 1294
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "KIM",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1516
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "KIM",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1846
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 24,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "Tommy",
+              "vip": 8,
+              "lines": [
+                "pink is life"
+              ],
+              "y": 358
+            },
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "Tommy",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 582
+            },
+            {
+              "kind": "message",
+              "alliance": "LLT",
+              "speaker": "Tommy",
+              "vip": 8,
+              "lines": [
+                "For one year of dice"
+              ],
+              "y": 912
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "KIM",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1134
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "KIM",
+              "vip": null,
+              "lines": [
+                "VIP8 [LLTITommy",
+                "Hi Kim"
+              ],
+              "y": 1462
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "< KIM",
+              "vip": null,
+              "lines": [
+                "Hi Tommy"
+              ],
+              "y": 1913
+            },
+            {
+              "kind": "time",
+              "time": "12:12"
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 24,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "ICRBJKevin"
+              ],
+              "y": 349
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "FreedomBelle",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 676
+            },
+            {
+              "kind": "time",
+              "time": "11:38"
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "Onii",
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "Pink Pony Club For Life"
+              ],
+              "y": 1153
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "Lord Nolo",
+              "vip": 9,
+              "lines": [
+                "my Iil bronii"
+              ],
+              "y": 1430
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "Onii",
+              "vip": null,
+              "lines": [
+                "All this time and I never thought of",
+                "this"
+              ],
+              "y": 1716
+            },
+            {
+              "kind": "time",
+              "time": "11:40"
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "Lord Nolo",
+              "vip": 9,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2046
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 18,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "2026-04-13 14.20"
+              ],
+              "y": 402
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "Onii",
+              "vip": null,
+              "lines": [
+                "That part",
+                "2026-04-13 16.05"
+              ],
+              "y": 547
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "Kevin",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 859
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "FreedomBelle",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1189
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "FreedomBelle",
+              "vip": 8,
+              "lines": [
+                "2026-04-13 16.10"
+              ],
+              "y": 1517
+            },
+            {
+              "kind": "message",
+              "alliance": "CRB",
+              "speaker": "Kevin",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1934
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

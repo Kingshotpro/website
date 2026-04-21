@@ -1,0 +1,440 @@
+{
+  "kingdom": 233,
+  "snapshot_count": 1,
+  "image_count": 6,
+  "message_count": 36,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-14_133222",
+      "captured": "2026-04-14 13:32 UTC",
+      "captured_iso": "2026-04-14T13:32:22",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 33,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "(( 'W'), T\" Ft\" $",
+                "2026-04-13 I1:11"
+              ],
+              "y": 388
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "zs nro",
+              "vip": null,
+              "lines": [
+                "2026-04-13 17.33"
+              ],
+              "y": 610
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "S; < ^; < #./Chagama",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 925
+            },
+            {
+              "kind": "time",
+              "time": "12:21"
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "z 0 %o",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1236
+            },
+            {
+              "kind": "time",
+              "time": "13:12"
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "Jyon/ ) 1)JPI",
+              "vip": null,
+              "lines": [
+                "Share Mail",
+                "Wewona stunningwictory"
+              ],
+              "y": 1551
+            },
+            {
+              "kind": "time",
+              "time": "13:21"
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "z n%o",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 28,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "0J 7 Uf L UJ",
+                "2026-04-12 16.21"
+              ],
+              "y": 340
+            },
+            {
+              "kind": "message",
+              "alliance": "KRM",
+              "speaker": "z 7 #FH",
+              "vip": 9,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 556
+            },
+            {
+              "kind": "message",
+              "alliance": "KRM",
+              "speaker": "z73 #Pd",
+              "vip": 9,
+              "lines": [
+                "WEEKENDPLAN",
+                "2026-04-12 19,00"
+              ],
+              "y": 782
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "S < 3\" < %iz /Chagama",
+              "vip": null,
+              "lines": [
+                "2026-04-13 00.30"
+              ],
+              "y": 1096
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "Salmon Light",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Salmon Light"
+              ],
+              "y": 1409
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "Salmon Light",
+              "vip": null,
+              "lines": [
+                "Fizzt(; V; )",
+                "2026-04-13 00.49"
+              ],
+              "y": 1782
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "s nro",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2090
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 27,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "JP1",
+              "speaker": "s5 6 + #/grandpa",
+              "vip": null,
+              "lines": [
+                "2026-04-11 13,49"
+              ],
+              "y": 464
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "zn %o",
+              "vip": null,
+              "lines": [
+                "2026-04-1120.57"
+              ],
+              "y": 791
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "S; < >; < :./Chagama",
+              "vip": null,
+              "lines": [
+                "2026-04-1122.30"
+              ],
+              "y": 1104
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "Aquiles recalled a message",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1447
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "esnoamaro6} vIP",
+              "vip": null,
+              "lines": [
+                "2026-04-12 11.54"
+              ],
+              "y": 1582
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "s nzo",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2005
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "2026-04-11 10.41",
+                "[JPil+x)xt"
+              ],
+              "y": 442
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "z n%o",
+              "vip": null,
+              "lines": [
+                "sn#l+5",
+                "2026-04-11 10.54"
+              ],
+              "y": 751
+            },
+            {
+              "kind": "message",
+              "alliance": "JP1",
+              "speaker": "s 6 + m/grandpa",
+              "vip": null,
+              "lines": [
+                "74#t( V^) >",
+                "2026-04-11 13.49"
+              ],
+              "y": 1507
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "z nro",
+              "vip": null,
+              "lines": [
+                "2026-04-11 20.57"
+              ],
+              "y": 1834
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "S < 4 < 4/Chagama",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2146
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "2026-04-10 20.13"
+              ],
+              "y": 342
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "S; < ; < F./Chagama",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 549
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "S; < 3; < Kzk/Chagama",
+              "vip": null,
+              "lines": [
+                "Chalic",
+                "2026-04-11 10.37"
+              ],
+              "y": 773
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "S; < >; < #43/Chagama",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1328
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "S; < ~; < %4z/Chagama",
+              "vip": null,
+              "lines": [
+                "[kRmlfUukRm",
+                "swht}vlt",
+                "2026-04-11 10.41"
+              ],
+              "y": 1551
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "+",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2088
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "2026-04-10 07.07"
+              ],
+              "y": 426
+            },
+            {
+              "kind": "message",
+              "alliance": "JP1",
+              "speaker": "s5 + H/grandpa",
+              "vip": null,
+              "lines": [
+                "2026-04-10 08.56"
+              ],
+              "y": 572
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "+A5 TeA",
+              "vip": 9,
+              "lines": [
+                "2026-04-10 09.26"
+              ],
+              "y": 882
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "PANPYJANJPI",
+              "vip": null,
+              "lines": [
+                "Share Coordinates",
+                "Kingdom # 233 0)",
+                "[X597 YB72]",
+                "Meal is ready for rewards'!!",
+                "2026-04-10 13.21"
+              ],
+              "y": 1194
+            },
+            {
+              "kind": "message",
+              "alliance": "TEA",
+              "speaker": "zsn %o",
+              "vip": null,
+              "lines": [
+                "2026-04-10 16.52"
+              ],
+              "y": 1735
+            },
+            {
+              "kind": "message",
+              "alliance": "JPI",
+              "speaker": "v+1 = Mimikyu",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2048
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

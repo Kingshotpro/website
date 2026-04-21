@@ -1,0 +1,331 @@
+{
+  "kingdom": 1008,
+  "snapshot_count": 1,
+  "image_count": 4,
+  "message_count": 25,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-18_025111",
+      "captured": "2026-04-18 02:51 UTC",
+      "captured_iso": "2026-04-18T02:51:11",
+      "image_count": 4,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 35,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "KON",
+              "speaker": "Jonny baby",
+              "vip": null,
+              "lines": [
+                "me vas aceptar en tu alianza"
+              ],
+              "y": 468
+            },
+            {
+              "kind": "message",
+              "alliance": "ATHJE",
+              "speaker": "u@Gy",
+              "vip": 8,
+              "lines": [
+                "mEt+-ATHo?"
+              ],
+              "y": 690
+            },
+            {
+              "kind": "message",
+              "alliance": "ALM",
+              "speaker": "SEZ",
+              "vip": null,
+              "lines": [
+                "[)) (( Jhts 7",
+                "(<RL< ! !",
+                "C",
+                "JA +31SALMA"
+              ],
+              "y": 932
+            },
+            {
+              "kind": "time",
+              "time": "01:18"
+            },
+            {
+              "kind": "message",
+              "alliance": "ATHJE",
+              "speaker": "u@Gy",
+              "vip": 8,
+              "lines": [
+                "@Jonny baby Konltlil FBt &"
+              ],
+              "y": 1678
+            },
+            {
+              "kind": "time",
+              "time": "02:00"
+            },
+            {
+              "kind": "message",
+              "alliance": "GDG",
+              "speaker": "JAMs€#h",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1990
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 33,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "6"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "00:12"
+            },
+            {
+              "kind": "message",
+              "alliance": "ATHJE",
+              "speaker": "U@Gy",
+              "vip": 8,
+              "lines": [
+                "90?"
+              ],
+              "y": 632
+            },
+            {
+              "kind": "message",
+              "alliance": "ATH",
+              "speaker": "7+/1",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 945
+            },
+            {
+              "kind": "message",
+              "alliance": "KONJ",
+              "speaker": "onny baby",
+              "vip": null,
+              "lines": [
+                "hola"
+              ],
+              "y": 1188
+            },
+            {
+              "kind": "message",
+              "alliance": "KONJ",
+              "speaker": "onny baby",
+              "vip": null,
+              "lines": [
+                "quien me resibe en su alianza"
+              ],
+              "y": 1413
+            },
+            {
+              "kind": "message",
+              "alliance": "KONJ",
+              "speaker": "onny baby",
+              "vip": null,
+              "lines": [
+                "@AKEY"
+              ],
+              "y": 1638
+            },
+            {
+              "kind": "message",
+              "alliance": "ATHJE",
+              "speaker": "U@Gy",
+              "vip": 8,
+              "lines": [
+                "00? 2",
+                "2"
+              ],
+              "y": 1860
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 38,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "21:42"
+            },
+            {
+              "kind": "message",
+              "alliance": "ATH",
+              "speaker": "Enu@Gy",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 687
+            },
+            {
+              "kind": "time",
+              "time": "22:07"
+            },
+            {
+              "kind": "message",
+              "alliance": "ATH",
+              "speaker": "FL bNorio3",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1018
+            },
+            {
+              "kind": "message",
+              "alliance": "ATH",
+              "speaker": "F\" L bNorio3",
+              "vip": null,
+              "lines": [
+                "7 < 399"
+              ],
+              "y": 1352
+            },
+            {
+              "kind": "time",
+              "time": "22:17"
+            },
+            {
+              "kind": "message",
+              "alliance": "KON",
+              "speaker": "AKEY",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1961
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 33,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "21:25"
+            },
+            {
+              "kind": "message",
+              "alliance": "UNI",
+              "speaker": "?Lilly?",
+              "vip": null,
+              "lines": [
+                "@EJU@GY obrigada"
+              ],
+              "y": 523
+            },
+            {
+              "kind": "message",
+              "alliance": "ATHJE",
+              "speaker": "U@Gy",
+              "vip": 8,
+              "lines": [
+                "@Lilly?"
+              ],
+              "y": 744
+            },
+            {
+              "kind": "message",
+              "alliance": "KON",
+              "speaker": "AKEY",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 970
+            },
+            {
+              "kind": "message",
+              "alliance": "KON",
+              "speaker": "AKEY",
+              "vip": null,
+              "lines": [
+                "2142"
+              ],
+              "y": 1350
+            },
+            {
+              "kind": "message",
+              "alliance": "ATH",
+              "speaker": "Enu@Gy",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1727
+            },
+            {
+              "kind": "time",
+              "time": "22:07"
+            },
+            {
+              "kind": "message",
+              "alliance": "ATH",
+              "speaker": "F\"L bNorio3",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2058
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

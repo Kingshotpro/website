@@ -1,0 +1,276 @@
+{
+  "kingdom": 1003,
+  "snapshot_count": 1,
+  "image_count": 3,
+  "message_count": 22,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-17_234140",
+      "captured": "2026-04-17 23:41 UTC",
+      "captured_iso": "2026-04-17T23:41:40",
+      "image_count": 3,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 25,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Y\"Y"
+              ],
+              "y": 345
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "Lady Jenna",
+              "vip": null,
+              "lines": [
+                "iam terrific thanks"
+              ],
+              "y": 476
+            },
+            {
+              "kind": "message",
+              "alliance": "RBL",
+              "speaker": "AnOn",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 701
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "Lady Jenna",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 925
+            },
+            {
+              "kind": "time",
+              "time": "22:27"
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "Baby Rose LgINd)",
+              "vip": 7,
+              "lines": [
+                "Share layout",
+                "Kingdom # 100B"
+              ],
+              "y": 1236
+            },
+            {
+              "kind": "time",
+              "time": "23:07"
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "ELNiNo",
+              "vip": null,
+              "lines": [
+                "2346"
+              ],
+              "y": 1697
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "KUCHAI",
+              "vip": null,
+              "lines": [
+                "@Baby Rose gINd) +lkak rose"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 33,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "AnOn' Heyyyy how you doing?"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "Lady Jenna",
+              "vip": null,
+              "lines": [
+                "settling in ok?"
+              ],
+              "y": 532
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "Lady Jenna",
+              "vip": null,
+              "lines": [
+                "need me to send around a gift basket",
+                "to say welcome?? hehehe",
+                "2026-04-17 19.48"
+              ],
+              "y": 756
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "xenomzero",
+              "vip": 7,
+              "lines": [
+                "hahahahah"
+              ],
+              "y": 1084
+            },
+            {
+              "kind": "time",
+              "time": "20:14"
+            },
+            {
+              "kind": "message",
+              "alliance": "RBL",
+              "speaker": "AnOn",
+              "vip": null,
+              "lines": [
+                "@Lady Jenna why yes please"
+              ],
+              "y": 1399
+            },
+            {
+              "kind": "message",
+              "alliance": "RBL",
+              "speaker": "AnOn",
+              "vip": null,
+              "lines": [
+                "Can't say no to gifts"
+              ],
+              "y": 1623
+            },
+            {
+              "kind": "message",
+              "alliance": "RBL",
+              "speaker": "AnOn",
+              "vip": null,
+              "lines": [
+                "Im doing well; how are you?"
+              ],
+              "y": 1847
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "Lady Jenna",
+              "vip": null,
+              "lines": [
+                "arinnina"
+              ],
+              "y": 2072
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 35,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "2026-04-17 18.10"
+              ],
+              "y": 460
+            },
+            {
+              "kind": "message",
+              "alliance": "RBL",
+              "speaker": "ahmad shreef",
+              "vip": 8,
+              "lines": [
+                "Share layout",
+                "ahmad shreef",
+                "Kigdom # 1003"
+              ],
+              "y": 543
+            },
+            {
+              "kind": "message",
+              "alliance": "RBL",
+              "speaker": "ahmad shreef",
+              "vip": 8,
+              "lines": [
+                "@KEshAV @CoRYsWIFEARG",
+                "2026-04-17 19.17"
+              ],
+              "y": 917
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "Lady Jenna",
+              "vip": null,
+              "lines": [
+                "Helloooo 1003 people' Hope you [ re",
+                "all fantastic!"
+              ],
+              "y": 1248
+            },
+            {
+              "kind": "message",
+              "alliance": "RBL",
+              "speaker": "Azheela",
+              "vip": null,
+              "lines": [
+                "@Lady Jenna cest toi qui est",
+                "fantastique Lady J bonjour"
+              ],
+              "y": 1488
+            },
+            {
+              "kind": "message",
+              "alliance": "SIN",
+              "speaker": "Lady Jenna",
+              "vip": null,
+              "lines": [
+                "Bonjour Azheela",
+                "2026-04-17 19.29"
+              ],
+              "y": 1733
+            },
+            {
+              "kind": "message",
+              "alliance": "RBL",
+              "speaker": "AnOn",
+              "vip": null,
+              "lines": [
+                "@Lady Jenna heyyyy"
+              ],
+              "y": 2045
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

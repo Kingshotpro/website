@@ -1,0 +1,796 @@
+{
+  "kingdom": 300,
+  "snapshot_count": 3,
+  "image_count": 13,
+  "message_count": 57,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-16_061736",
+      "captured": "2026-04-16 06:17 UTC",
+      "captured_iso": "2026-04-16T06:17:36",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 36,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Luuniy TUI yvaiu LU \"IY' dijny YULi",
+                "side |b"
+              ],
+              "y": 341
+            },
+            {
+              "kind": "time",
+              "time": "01:32"
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "GinapHx",
+              "vip": null,
+              "lines": [
+                "@Zenith 007 we can kick",
+                "@Gragas Azz together with",
+                "@eOShadow~S7Oe",
+                "Gragas give us your credit card or",
+                "we will join you"
+              ],
+              "y": 590
+            },
+            {
+              "kind": "time",
+              "time": "01:43"
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "CaspHx",
+              "vip": null,
+              "lines": [
+                "Give her your credit card: You don't",
+                "want her on your side 6666"
+              ],
+              "y": 1106
+            },
+            {
+              "kind": "time",
+              "time": "02:01"
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "OShadow-S7Oe",
+              "vip": null,
+              "lines": [
+                "@Zenith_007 welcome to 300",
+                "0244"
+              ],
+              "y": 1437
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "GinapHx",
+              "vip": null,
+              "lines": [
+                "@CaspPHX what? Next time | kick you",
+                "azz"
+              ],
+              "y": 1748
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "Queen~",
+              "vip": 7,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1992
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 36,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "VIP9 [WLFHHafiz",
+                "Megaphone",
+                "will miss all of you too",
+                "[TSFllmkapisscat",
+                "2026-04-15 19.53",
+                "VIP7 [TSFlzmeter",
+                "Megaphone",
+                "Sure my king"
+              ],
+              "y": 410
+            },
+            {
+              "kind": "message",
+              "alliance": "AVB",
+              "speaker": "Chris",
+              "vip": 8,
+              "lines": [
+                "Oops, Iwas trying to update the",
+                "message_ now it'$ on cooldown",
+                "until reset"
+              ],
+              "y": 1443
+            },
+            {
+              "kind": "time",
+              "time": "01:21"
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "Zenith 007",
+              "vip": null,
+              "lines": [
+                "Hello kingdom 300_ .Happy to be",
+                "here and thanks for having me'",
+                "Looking forward to fight along your",
+                "side",
+                "012"
+              ],
+              "y": 1819
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Red dots everywhere",
+                "2026-04-15 15.33"
+              ],
+              "y": 407
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Rhino",
+              "vip": null,
+              "lines": [
+                "Shadow is very popular",
+                "2026-04-15 15.39"
+              ],
+              "y": 633
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "CaspHx",
+              "vip": null,
+              "lines": [
+                "wait he make me to a star"
+              ],
+              "y": 945
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "OShadow-S7Oe",
+              "vip": null,
+              "lines": [
+                "2026-04-15 16.06"
+              ],
+              "y": 1169
+            },
+            {
+              "kind": "message",
+              "alliance": "WLF",
+              "speaker": "Hafiz",
+              "vip": 9,
+              "lines": [
+                "Guys, due to some reasons | have to",
+                "transfer. | love you all_take care of",
+                "yourselves"
+              ],
+              "y": 1481
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "OShadow-S7Oe",
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "We will miss you brother"
+              ],
+              "y": 1771
+            },
+            {
+              "kind": "message",
+              "alliance": "AVB",
+              "speaker": "Selkerus Re",
+              "vip": 8,
+              "lines": [
+                "Ah man, was a pleasure playing"
+              ],
+              "y": 2048
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 24,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Inzane",
+              "vip": 9,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 693
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "CasPHx",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1021
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "OShadow-S7Oe",
+              "vip": null,
+              "lines": [
+                "was busy typing and saw s0 many",
+                "people @ing me",
+                "2026-04-15 15.18"
+              ],
+              "y": 1351
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "GinapHX",
+              "vip": null,
+              "lines": [
+                "So many? It was only me. Dont",
+                "climb to high"
+              ],
+              "y": 1681
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "OShadow-S7Oe",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1925
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "OShadow-S7O.",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2148
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 26,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "@Inzane HELP"
+              ],
+              "y": 374
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Inzane",
+              "vip": 9,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 628
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "GinapHx",
+              "vip": null,
+              "lines": [
+                "@eOShadow~S7Oe can we Burn",
+                "Cas"
+              ],
+              "y": 852
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Inzane recalled a message",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1126
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Inzane",
+              "vip": 9,
+              "lines": [
+                "Whatchu want me to do? he and",
+                "lare about equal"
+              ],
+              "y": 1324
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Inzane",
+              "vip": 9,
+              "lines": [
+                "Yeah Shadow is the guy for burning",
+                "stuff"
+              ],
+              "y": 1627
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Inzane",
+              "vip": 9,
+              "lines": [
+                "Big Fire"
+              ],
+              "y": 1930
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "2026-04-15 15,04"
+              ],
+              "y": 404
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "CaspHx",
+              "vip": null,
+              "lines": [
+                "It' s nurse Gina with luck sometimes",
+                "it $ nurse John or Gino"
+              ],
+              "y": 487
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Inzane",
+              "vip": 9,
+              "lines": [
+                "Im close"
+              ],
+              "y": 791
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "GinapHX",
+              "vip": null,
+              "lines": [
+                "@CaspHx will talk to your boss that",
+                "he give it to you asap"
+              ],
+              "y": 1015
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "CaspHx",
+              "vip": null,
+              "lines": [
+                "You all know the story about John?",
+                "Or why all the dinosaurs are death",
+                "now?"
+              ],
+              "y": 1256
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "GinapHx",
+              "vip": null,
+              "lines": [
+                "Noooooo not again"
+              ],
+              "y": 1546
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "CaspHx",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1770
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "GinapHx",
+              "vip": null,
+              "lines": [
+                "Megaphone"
+              ],
+              "y": 2028
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "2026-04-13_172822",
+      "captured": "2026-04-13 17:28 UTC",
+      "captured_iso": "2026-04-13T17:28:22",
+      "image_count": 3,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Joao Il recalled a message",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 479
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Joao II",
+              "vip": null,
+              "lines": [
+                "i wonder how many months it will",
+                "take for me to obtain that skin\"!",
+                "VIP7 [TSFlzmeter",
+                "@Gragas | sent him a message Can /",
+                "buy it for $100?",
+                "VIP7 [TSFlzmeter"
+              ],
+              "y": 615
+            },
+            {
+              "kind": "time",
+              "time": "16:37"
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Gragas",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1474
+            },
+            {
+              "kind": "time",
+              "time": "16:53"
+            },
+            {
+              "kind": "message",
+              "alliance": "AVB",
+              "speaker": "LVST",
+              "vip": 8,
+              "lines": [
+                "LVS <",
+                "@zmeter will top u 100.99"
+              ],
+              "y": 1784
+            },
+            {
+              "kind": "message",
+              "alliance": "TSF",
+              "speaker": "zmeter",
+              "vip": 7,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 27,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "VIP7 [TSFlzmeter",
+                "@CasPHX plz no",
+                "VIP7 [TSFlzmeter"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "TSF",
+              "speaker": "zmeter",
+              "vip": 7,
+              "lines": [
+                "Share Coordinates"
+              ],
+              "y": 823
+            },
+            {
+              "kind": "message",
+              "alliance": "YK",
+              "speaker": "sale",
+              "vip": null,
+              "lines": [
+                "Kingdom # 258",
+                "[K982 Y256]",
+                "VIP7 [TSFlzmeter",
+                "Megaphone",
+                "4 sale"
+              ],
+              "y": 956
+            },
+            {
+              "kind": "time",
+              "time": "16:10"
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Gragas",
+              "vip": null,
+              "lines": [
+                "IIl give you 52.50"
+              ],
+              "y": 1623
+            },
+            {
+              "kind": "time",
+              "time": "16:16"
+            },
+            {
+              "kind": "message",
+              "alliance": "AVB",
+              "speaker": "lordjith",
+              "vip": null,
+              "lines": [
+                "5 from me"
+              ],
+              "y": 1934
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 22,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "13:57"
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Gragas",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1034
+            },
+            {
+              "kind": "time",
+              "time": "14:16"
+            },
+            {
+              "kind": "message",
+              "alliance": "PHX",
+              "speaker": "CaspHX",
+              "vip": null,
+              "lines": [
+                "Im almost done with one piece live",
+                "action after that we can talk and",
+                "spoiler everyone",
+                "15*11"
+              ],
+              "y": 1346
+            },
+            {
+              "kind": "message",
+              "alliance": "AWK",
+              "speaker": "Gragas",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1784
+            },
+            {
+              "kind": "time",
+              "time": "15:48"
+            },
+            {
+              "kind": "message",
+              "alliance": "TSF",
+              "speaker": "zmeter",
+              "vip": 7,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2095
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "2026-04-13_145015",
+      "captured": "2026-04-13 14:50 UTC",
+      "captured_iso": "2026-04-13T14:50:15",
+      "image_count": 4,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 14,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh",
+                "You haven't joined an Alliance yet: Join to chat to allies!",
+                "Join Now",
+                "[Alliance] - Tap \" to enter Send"
+              ],
+              "y": 281
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 14,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh",
+                "You haven't joined an Alliance yet: Join to chat to allies!",
+                "Join Now",
+                "[Alliance] - Tap \" to enter Send"
+              ],
+              "y": 281
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 14,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh",
+                "You haven't joined an Alliance yet: Join to chat to allies!",
+                "Join Now",
+                "[Alliance] - Tap \" to enter Send"
+              ],
+              "y": 281
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 14,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata Tansfer-",
+                "Englkh",
+                "You haven't joined an Alliance yet: Join to chat to allies!",
+                "Join Now",
+                "[Alliance] - Tap \" to enter Send"
+              ],
+              "y": 281
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

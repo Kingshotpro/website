@@ -1,0 +1,872 @@
+{
+  "kingdom": 1908,
+  "snapshot_count": 2,
+  "image_count": 11,
+  "message_count": 67,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-16_183118",
+      "captured": "2026-04-16 18:31 UTC",
+      "captured_iso": "2026-04-16T18:31:18",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 43,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata",
+                "bien organizada?",
+                "Bienvenido a Tropic.",
+                "Buscamos jugadores que:",
+                "Sean activos todos los dias",
+                "Participen en guerras y eventos",
+                "Se comuniquen constantemente",
+                "por el chat",
+                "Tengan mentalidad de equipo",
+                "En Tropic encontraras: - Apoyo y",
+                "cooperacion real- Estrategias",
+                "organizadas- Buen ambiente +",
+                "competitividad- Crecimiento",
+                "rapidol Si no hablas 0 no eres",
+                "activo, no es tu sitio. Unete a",
+                "Tropic y crezcamos juntos",
+                "dominando"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "FIX",
+              "speaker": "Wuxen",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Wuxen",
+                "Kingdom # 1908"
+              ],
+              "y": 1291
+            },
+            {
+              "kind": "message",
+              "alliance": "FIX",
+              "speaker": "Wuxen",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1663
+            },
+            {
+              "kind": "time",
+              "time": "19:05"
+            },
+            {
+              "kind": "message",
+              "alliance": "BRA",
+              "speaker": "L 0 RE D 0",
+              "vip": 4,
+              "lines": [
+                "Hi"
+              ],
+              "y": 2008
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata",
+                "Como assim?"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "YCZR-DEATHY",
+              "vip": 3,
+              "lines": [
+                "Se vc fFoi atacado provavelmente foi",
+                "para pegarem 05 seus recursos"
+              ],
+              "y": 493
+            },
+            {
+              "kind": "message",
+              "alliance": "KKK",
+              "speaker": "LALAGT",
+              "vip": null,
+              "lines": [
+                "si a eso me refiero"
+              ],
+              "y": 735
+            },
+            {
+              "kind": "message",
+              "alliance": "KKK",
+              "speaker": "LALAGT",
+              "vip": null,
+              "lines": [
+                "me dieron por el 388* jajajaja"
+              ],
+              "y": 961
+            },
+            {
+              "kind": "message",
+              "alliance": "KGS",
+              "speaker": "Joe",
+              "vip": null,
+              "lines": [
+                "atacalo pe"
+              ],
+              "y": 1185
+            },
+            {
+              "kind": "message",
+              "alliance": "KKK",
+              "speaker": "LALAGT",
+              "vip": null,
+              "lines": [
+                "solo soy un nuevo jugador con dudas",
+                "imaginaba que habian reglas al",
+                "respecto"
+              ],
+              "y": 1409
+            },
+            {
+              "kind": "time",
+              "time": "18:49"
+            },
+            {
+              "kind": "message",
+              "alliance": "TPC",
+              "speaker": "Wuxen2",
+              "vip": null,
+              "lines": [
+                "TROPIC RECLUTA",
+                "iBuscas una alianza activa, fuerte y",
+                "bien organizada?",
+                "Bienvenido a Tropic.",
+                "Buscamos jugadores que:"
+              ],
+              "y": 1789
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 26,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata",
+                "ropic y crezcamos juntos",
+                "dominando"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "BRA",
+              "speaker": "DemineeX",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 513
+            },
+            {
+              "kind": "time",
+              "time": "18:19"
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "Denzel Knight",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 931
+            },
+            {
+              "kind": "time",
+              "time": "18:33"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "lord296702203",
+                "Mmm"
+              ],
+              "y": 1344
+            },
+            {
+              "kind": "time",
+              "time": "18:38"
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "YCZR-DEATHY",
+              "vip": 3,
+              "lines": [
+                "Ola"
+              ],
+              "y": 1659
+            },
+            {
+              "kind": "message",
+              "alliance": "KKK",
+              "speaker": "LALAGT",
+              "vip": null,
+              "lines": [
+                "una pregunta se puede atacar a",
+                "cualquier jugador solo por que si ??"
+              ],
+              "y": 1883
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "YCZR-DEATHY",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2126
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 34,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata",
+                "@Loki"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "BRA",
+              "speaker": "r Nina ]",
+              "vip": null,
+              "lines": [
+                "VIPI [VZqllord296308528",
+                "holaa"
+              ],
+              "y": 556
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "Denzel Knight",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1007
+            },
+            {
+              "kind": "message",
+              "alliance": "TPC",
+              "speaker": "Wuxen2",
+              "vip": null,
+              "lines": [
+                "TROPIC RECLUTA",
+                "iBuscas una alianza activa, fuerte y",
+                "bien organizada?",
+                "Bienvenido a Tropic.",
+                "Buscamos jugadores que:",
+                "Sean activos todos los dias",
+                "Participen en guerras y eventos",
+                "Se comuniquen constantemente",
+                "por el chat",
+                "Tengan mentalidad de equipo",
+                "En Tropic encontraras: - Apoyo y",
+                "cooperacion real- Estrategias",
+                "organizadas- Buen ambiente +",
+                "competitividad- Crecimiento"
+              ],
+              "y": 1335
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 38,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata",
+                "Buscamos jugadores que:",
+                "Sean activos todos los dias",
+                "Participen en guerras y eventos",
+                "Se comuniquen constantemente",
+                "por el chat",
+                "Tengan mentalidad de equipo",
+                "En Tropic encontraras: - Apoyo y",
+                "cooperacion real- Estrategias",
+                "organizadas- Buen ambiente +",
+                "competitividad- Crecimiento",
+                "rapidol Si no hablas 0 no eres",
+                "activo, no es tu sitio.c Unete a",
+                "Tropic y crezcamos juntos",
+                "dominando"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "FIX",
+              "speaker": "ELENA recalled a message",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1186
+            },
+            {
+              "kind": "message",
+              "alliance": "FIX",
+              "speaker": "ELENA 9",
+              "vip": null,
+              "lines": [
+                "Megaphone",
+                "A ( > <o) | |",
+                "31",
+                "()",
+                "LISTEN TO ME AND JOIN FIX"
+              ],
+              "y": 1321
+            },
+            {
+              "kind": "message",
+              "alliance": "CCC",
+              "speaker": "BARON MHD",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1921
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata",
+                "Ukay we deal @@Ghostozin"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "BRA",
+              "speaker": "Ghostozin",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 484
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "Loki",
+              "vip": null,
+              "lines": [
+                "Give me G wagon"
+              ],
+              "y": 708
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "Loki",
+              "vip": null,
+              "lines": [
+                "Maybe i send you invite"
+              ],
+              "y": 933
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "Loki",
+              "vip": null,
+              "lines": [
+                "My wedding cake from moon"
+              ],
+              "y": 1157
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "Loki",
+              "vip": null,
+              "lines": [
+                "Topen bakary in moon"
+              ],
+              "y": 1382
+            },
+            {
+              "kind": "message",
+              "alliance": "BRA",
+              "speaker": "[ Nina]",
+              "vip": null,
+              "lines": [
+                "kkkkkkkkkkk prefere uma carroca?"
+              ],
+              "y": 1606
+            },
+            {
+              "kind": "message",
+              "alliance": "TPC",
+              "speaker": "Wuxen2",
+              "vip": null,
+              "lines": [
+                "TROPIC RECLUTA",
+                "iBuscas una alianza activa, fuerte y",
+                "bien organizada?",
+                "Bienvenido a Tropic."
+              ],
+              "y": 1833
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "2026-04-14_104011",
+      "captured": "2026-04-14 10:40 UTC",
+      "captured_iso": "2026-04-14T10:40:11",
+      "image_count": 5,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata",
+                "11;10"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "SUP",
+              "speaker": "ROCKYY",
+              "vip": null,
+              "lines": [
+                "Hi SUP[SUPRIMEJ",
+                "Silent chat?",
+                "Dead rallies?",
+                "The Fire is calling' !!!",
+                "Fight SMART not just hard",
+                "Friendly vibes",
+                "No stress No forcing No toxicity",
+                "Only teamwork & growth",
+                "Active players_Ready to level up?",
+                "JOIN [SUP ] #"
+              ],
+              "y": 599
+            },
+            {
+              "kind": "message",
+              "alliance": "GIA",
+              "speaker": "Yo #/",
+              "vip": 7,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1301
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "Eza)",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1526
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "Loki",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1785
+            },
+            {
+              "kind": "message",
+              "alliance": "RIP",
+              "speaker": "Loki",
+              "vip": null,
+              "lines": [
+                "Same one miss me maybe"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 28,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata",
+                "@ICELhasaApple ye envio una",
+                "invitacion"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": ": HANi:",
+              "vip": 3,
+              "lines": [
+                "@DAR V5 aulx] JaJl Jh"
+              ],
+              "y": 737
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "HANi:",
+              "vip": 3,
+              "lines": [
+                "@ HANi enviare a nuestro",
+                "porta aviones"
+              ],
+              "y": 980
+            },
+            {
+              "kind": "message",
+              "alliance": "FIX",
+              "speaker": "DAR | V5",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1444
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": ":HANi:",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1671
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "PTK",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1894
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 37,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "HANi:",
+              "vip": 3,
+              "lines": [
+                "J LL"
+              ],
+              "y": 481
+            },
+            {
+              "kind": "message",
+              "alliance": "FIX",
+              "speaker": "DAR | V5",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 720
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": ": HANi:",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 947
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "HANi:",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1172
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "HANi:",
+              "vip": 3,
+              "lines": [
+                "tramp"
+              ],
+              "y": 1396
+            },
+            {
+              "kind": "message",
+              "alliance": "FIX",
+              "speaker": "DAR | V5",
+              "vip": 3,
+              "lines": [
+                "@ HANi que vengan aqui",
+                "tenemos a Donald Trump"
+              ],
+              "y": 1618
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "Eza)",
+              "vip": null,
+              "lines": [
+                "@Yo 1/ tell Lilly lasked someone to",
+                "send you some good players."
+              ],
+              "y": 1863
+            },
+            {
+              "kind": "message",
+              "alliance": "CNY",
+              "speaker": "ICELhasaApple",
+              "vip": 2,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2106
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 22,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "GIA",
+              "speaker": "Yo #",
+              "vip": 7,
+              "lines": [
+                "+1",
+                "VIP3 [FIXIDAR | V5",
+                "vengan con nosotros",
+                "tengo lugares para los 3 en nuestra",
+                "alianza"
+              ],
+              "y": 606
+            },
+            {
+              "kind": "message",
+              "alliance": "FIX",
+              "speaker": "DAR | V5",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1314
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": ":HANi:",
+              "vip": 3,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1575
+            },
+            {
+              "kind": "message",
+              "alliance": "GIA",
+              "speaker": "Yo #",
+              "vip": 7,
+              "lines": [
+                "VIP3 [FIXIDAR | V5"
+              ],
+              "y": 1798
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 26,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alliance Privata"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "TOP",
+              "speaker": "Cookie",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 661
+            },
+            {
+              "kind": "message",
+              "alliance": "TOP",
+              "speaker": "Bozkurt Systems",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 886
+            },
+            {
+              "kind": "time",
+              "time": "10:54"
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "HANi:",
+              "vip": 3,
+              "lines": [
+                "Share layout",
+                "Kigdom # 1908"
+              ],
+              "y": 1199
+            },
+            {
+              "kind": "message",
+              "alliance": "VIP",
+              "speaker": "Eza)",
+              "vip": null,
+              "lines": [
+                "@:HANi; don't block your",
+                "reservoir. Put them beside the cacti"
+              ],
+              "y": 1571
+            },
+            {
+              "kind": "message",
+              "alliance": "YDG",
+              "speaker": "\"GDEE",
+              "vip": 3,
+              "lines": [
+                "Megaphone"
+              ],
+              "y": 1812
+            },
+            {
+              "kind": "message",
+              "alliance": "CNY",
+              "speaker": "ICELhasaApple",
+              "vip": 2,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2092
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

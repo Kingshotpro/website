@@ -1,0 +1,391 @@
+{
+  "kingdom": 227,
+  "snapshot_count": 1,
+  "image_count": 6,
+  "message_count": 29,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-14_212422",
+      "captured": "2026-04-14 21:24 UTC",
+      "captured_iso": "2026-04-14T21:24:22",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 27,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer",
+                "@Strider to silniejsze odemnie_-.",
+                "przepraszam"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "time",
+              "time": "20:02"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Gayspy",
+                "Hey . you guys",
+                "recalled a message"
+              ],
+              "y": 625
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Strider",
+              "vip": 8,
+              "lines": [
+                "Hi"
+              ],
+              "y": 1072
+            },
+            {
+              "kind": "time",
+              "time": "20:15"
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "WaszaZajebistosc",
+              "vip": null,
+              "lines": [
+                "Hi"
+              ],
+              "y": 1386
+            },
+            {
+              "kind": "time",
+              "time": "21:33"
+            },
+            {
+              "kind": "message",
+              "alliance": "NWR",
+              "speaker": "Mr D F",
+              "vip": null,
+              "lines": [
+                "halo halo"
+              ],
+              "y": 1697
+            },
+            {
+              "kind": "time",
+              "time": "21:49"
+            },
+            {
+              "kind": "message",
+              "alliance": "NWR",
+              "speaker": "Mr D J",
+              "vip": 7,
+              "lines": [
+                "hy"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 14,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Banan",
+              "vip": null,
+              "lines": [
+                "pikaa"
+              ],
+              "y": 874
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Banan",
+              "vip": null,
+              "lines": [
+                "Y so serious' Tis a game'"
+              ],
+              "y": 1099
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 27,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "t-t-t-t-t-t-t3o8",
+                "W)",
+                "( (:"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Banan",
+              "vip": null,
+              "lines": [
+                "transfer chat is evil"
+              ],
+              "y": 629
+            },
+            {
+              "kind": "message",
+              "alliance": "TFC",
+              "speaker": "Kilgharrahe aus",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Kilgharrahaus",
+                "Kiigdom # 227",
+                "2026-04-14 17.49"
+              ],
+              "y": 855
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Strider",
+              "vip": 8,
+              "lines": [
+                "Banan behave pls lol",
+                "2026-04-14 18.15"
+              ],
+              "y": 1374
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Banan",
+              "vip": null,
+              "lines": [
+                "sorry",
+                "2026-04-14 18.41"
+              ],
+              "y": 1687
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Banan",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1999
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 27,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "C=",
+                "(`0, ) uffffff Im so bored ~",
+                "V\"V",
+                "2026-04-14 17.12"
+              ],
+              "y": 484
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Banan",
+              "vip": null,
+              "lines": [
+                "8 /",
+                "c/ love balloons",
+                "L- J",
+                "2026-04-14 17.27"
+              ],
+              "y": 787
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Banan",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1441
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Banan",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2098
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 39,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "2026-04-1414.14"
+              ],
+              "y": 424
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Perun",
+              "vip": 9,
+              "lines": [
+                "HUT guess it $ about us being dangerous",
+                "D"
+              ],
+              "y": 509
+            },
+            {
+              "kind": "message",
+              "alliance": "HRS",
+              "speaker": "Moon",
+              "vip": null,
+              "lines": [
+                "jak tunczyk?",
+                "2026-04-14 16.15"
+              ],
+              "y": 750
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Bibcia",
+              "vip": null,
+              "lines": [
+                "This pig didn t save on kvk, dont be",
+                "like a pig: Save rss.",
+                ")) ))",
+                "0-(",
+                "L =J Lw- L-J"
+              ],
+              "y": 1063
+            },
+            {
+              "kind": "message",
+              "alliance": "HRS",
+              "speaker": "Moon",
+              "vip": null,
+              "lines": [
+                "0 O",
+                "C= Z3",
+                "(`0, ) uffffff Im so bored ~",
+                "V\"V",
+                "2026-04-14 17.12"
+              ],
+              "y": 1629
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "[TFcHHoDx",
+                "2026-04-14 12.22"
+              ],
+              "y": 355
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Perun",
+              "vip": null,
+              "lines": [
+                "HUT"
+              ],
+              "y": 772
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Perun",
+              "vip": 9,
+              "lines": [
+                "HUTI It doesnt matter how they say it, as",
+                "long as they say it: It means were",
+                "doing well :D",
+                "2026-04-14 1344"
+              ],
+              "y": 1100
+            },
+            {
+              "kind": "message",
+              "alliance": "TFC",
+              "speaker": "KingTom",
+              "vip": null,
+              "lines": [
+                "What s a free tuna server?",
+                "2026-04-14 13.53"
+              ],
+              "y": 1480
+            },
+            {
+              "kind": "message",
+              "alliance": "TFC",
+              "speaker": "Cap\"",
+              "vip": null,
+              "lines": [
+                "2026-04-14 14.14"
+              ],
+              "y": 1790
+            },
+            {
+              "kind": "message",
+              "alliance": "HUT",
+              "speaker": "Perun",
+              "vip": 9,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2103
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

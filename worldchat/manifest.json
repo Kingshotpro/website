@@ -1,0 +1,265 @@
+{
+  "generated": "2026-04-20T14:51:26.881478",
+  "generator": "worldchat/extract_worldchat.py",
+  "kingdom_count": 32,
+  "total_images": 189,
+  "total_messages": 1102,
+  "kingdoms": [
+    {
+      "kingdom": 1,
+      "snapshot_count": 2,
+      "image_count": 9,
+      "message_count": 53,
+      "latest": "2026-04-16 20:57 UTC",
+      "oldest": "2026-04-14 07:41 UTC"
+    },
+    {
+      "kingdom": 221,
+      "snapshot_count": 2,
+      "image_count": 11,
+      "message_count": 84,
+      "latest": "2026-04-16 21:36 UTC",
+      "oldest": "2026-04-14 06:24 UTC"
+    },
+    {
+      "kingdom": 222,
+      "snapshot_count": 2,
+      "image_count": 10,
+      "message_count": 61,
+      "latest": "2026-04-17 02:51 UTC",
+      "oldest": "2026-04-14 05:43 UTC"
+    },
+    {
+      "kingdom": 223,
+      "snapshot_count": 2,
+      "image_count": 12,
+      "message_count": 64,
+      "latest": "2026-04-16 19:11 UTC",
+      "oldest": "2026-04-13 18:43 UTC"
+    },
+    {
+      "kingdom": 224,
+      "snapshot_count": 1,
+      "image_count": 4,
+      "message_count": 27,
+      "latest": "2026-04-17 03:25 UTC",
+      "oldest": "2026-04-17 03:25 UTC"
+    },
+    {
+      "kingdom": 225,
+      "snapshot_count": 1,
+      "image_count": 6,
+      "message_count": 42,
+      "latest": "2026-04-16 22:19 UTC",
+      "oldest": "2026-04-16 22:19 UTC"
+    },
+    {
+      "kingdom": 226,
+      "snapshot_count": 1,
+      "image_count": 6,
+      "message_count": 35,
+      "latest": "2026-04-17 02:10 UTC",
+      "oldest": "2026-04-17 02:10 UTC"
+    },
+    {
+      "kingdom": 227,
+      "snapshot_count": 1,
+      "image_count": 6,
+      "message_count": 29,
+      "latest": "2026-04-14 21:24 UTC",
+      "oldest": "2026-04-14 21:24 UTC"
+    },
+    {
+      "kingdom": 228,
+      "snapshot_count": 2,
+      "image_count": 7,
+      "message_count": 39,
+      "latest": "2026-04-14 20:44 UTC",
+      "oldest": "2026-04-14 19:44 UTC"
+    },
+    {
+      "kingdom": 229,
+      "snapshot_count": 1,
+      "image_count": 3,
+      "message_count": 23,
+      "latest": "2026-04-14 19:01 UTC",
+      "oldest": "2026-04-14 19:01 UTC"
+    },
+    {
+      "kingdom": 230,
+      "snapshot_count": 1,
+      "image_count": 3,
+      "message_count": 21,
+      "latest": "2026-04-14 18:23 UTC",
+      "oldest": "2026-04-14 18:23 UTC"
+    },
+    {
+      "kingdom": 231,
+      "snapshot_count": 1,
+      "image_count": 6,
+      "message_count": 35,
+      "latest": "2026-04-14 17:37 UTC",
+      "oldest": "2026-04-14 17:37 UTC"
+    },
+    {
+      "kingdom": 232,
+      "snapshot_count": 1,
+      "image_count": 5,
+      "message_count": 29,
+      "latest": "2026-04-14 14:34 UTC",
+      "oldest": "2026-04-14 14:34 UTC"
+    },
+    {
+      "kingdom": 233,
+      "snapshot_count": 1,
+      "image_count": 6,
+      "message_count": 36,
+      "latest": "2026-04-14 13:32 UTC",
+      "oldest": "2026-04-14 13:32 UTC"
+    },
+    {
+      "kingdom": 300,
+      "snapshot_count": 3,
+      "image_count": 13,
+      "message_count": 57,
+      "latest": "2026-04-16 06:17 UTC",
+      "oldest": "2026-04-13 14:50 UTC"
+    },
+    {
+      "kingdom": 301,
+      "snapshot_count": 1,
+      "image_count": 5,
+      "message_count": 25,
+      "latest": "2026-04-16 07:00 UTC",
+      "oldest": "2026-04-16 07:00 UTC"
+    },
+    {
+      "kingdom": 302,
+      "snapshot_count": 1,
+      "image_count": 3,
+      "message_count": 13,
+      "latest": "2026-04-16 07:35 UTC",
+      "oldest": "2026-04-16 07:35 UTC"
+    },
+    {
+      "kingdom": 303,
+      "snapshot_count": 1,
+      "image_count": 4,
+      "message_count": 21,
+      "latest": "2026-04-16 03:18 UTC",
+      "oldest": "2026-04-16 03:18 UTC"
+    },
+    {
+      "kingdom": 350,
+      "snapshot_count": 1,
+      "image_count": 6,
+      "message_count": 32,
+      "latest": "2026-04-16 17:54 UTC",
+      "oldest": "2026-04-16 17:54 UTC"
+    },
+    {
+      "kingdom": 1000,
+      "snapshot_count": 1,
+      "image_count": 6,
+      "message_count": 43,
+      "latest": "2026-04-17 21:42 UTC",
+      "oldest": "2026-04-17 21:42 UTC"
+    },
+    {
+      "kingdom": 1001,
+      "snapshot_count": 1,
+      "image_count": 3,
+      "message_count": 18,
+      "latest": "2026-04-17 22:31 UTC",
+      "oldest": "2026-04-17 22:31 UTC"
+    },
+    {
+      "kingdom": 1002,
+      "snapshot_count": 1,
+      "image_count": 3,
+      "message_count": 20,
+      "latest": "2026-04-17 23:05 UTC",
+      "oldest": "2026-04-17 23:05 UTC"
+    },
+    {
+      "kingdom": 1003,
+      "snapshot_count": 1,
+      "image_count": 3,
+      "message_count": 22,
+      "latest": "2026-04-17 23:41 UTC",
+      "oldest": "2026-04-17 23:41 UTC"
+    },
+    {
+      "kingdom": 1004,
+      "snapshot_count": 1,
+      "image_count": 4,
+      "message_count": 21,
+      "latest": "2026-04-18 00:37 UTC",
+      "oldest": "2026-04-18 00:37 UTC"
+    },
+    {
+      "kingdom": 1005,
+      "snapshot_count": 1,
+      "image_count": 5,
+      "message_count": 33,
+      "latest": "2026-04-18 01:39 UTC",
+      "oldest": "2026-04-18 01:39 UTC"
+    },
+    {
+      "kingdom": 1006,
+      "snapshot_count": 1,
+      "image_count": 5,
+      "message_count": 31,
+      "latest": "2026-04-18 05:53 UTC",
+      "oldest": "2026-04-18 05:53 UTC"
+    },
+    {
+      "kingdom": 1007,
+      "snapshot_count": 1,
+      "image_count": 3,
+      "message_count": 18,
+      "latest": "2026-04-18 02:18 UTC",
+      "oldest": "2026-04-18 02:18 UTC"
+    },
+    {
+      "kingdom": 1008,
+      "snapshot_count": 1,
+      "image_count": 4,
+      "message_count": 25,
+      "latest": "2026-04-18 02:51 UTC",
+      "oldest": "2026-04-18 02:51 UTC"
+    },
+    {
+      "kingdom": 1908,
+      "snapshot_count": 2,
+      "image_count": 11,
+      "message_count": 67,
+      "latest": "2026-04-16 18:31 UTC",
+      "oldest": "2026-04-14 10:40 UTC"
+    },
+    {
+      "kingdom": 1916,
+      "snapshot_count": 1,
+      "image_count": 5,
+      "message_count": 24,
+      "latest": "2026-04-14 22:09 UTC",
+      "oldest": "2026-04-14 22:09 UTC"
+    },
+    {
+      "kingdom": 1944,
+      "snapshot_count": 2,
+      "image_count": 9,
+      "message_count": 35,
+      "latest": "2026-04-18 03:58 UTC",
+      "oldest": "2026-04-16 05:03 UTC"
+    },
+    {
+      "kingdom": 1945,
+      "snapshot_count": 1,
+      "image_count": 3,
+      "message_count": 19,
+      "latest": "2026-04-16 04:04 UTC",
+      "oldest": "2026-04-16 04:04 UTC"
+    }
+  ]
+}

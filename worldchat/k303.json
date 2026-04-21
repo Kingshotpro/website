@@ -1,0 +1,316 @@
+{
+  "kingdom": 303,
+  "snapshot_count": 1,
+  "image_count": 4,
+  "message_count": 21,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-16_031830",
+      "captured": "2026-04-16 03:18 UTC",
+      "captured_iso": "2026-04-16T03:18:30",
+      "image_count": 4,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 37,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "@Twinklez welcome! ! the rest of",
+                "the HKL people who came over",
+                "went to NUT",
+                "Twinklez",
+                "Hkl vkg abcedf poor brain getting all",
+                "scrambled: Thanks"
+              ],
+              "y": 368
+            },
+            {
+              "kind": "time",
+              "time": "22:38"
+            },
+            {
+              "kind": "message",
+              "alliance": "RSE",
+              "speaker": "o Cat of War o",
+              "vip": null,
+              "lines": [
+                "@Twinklez se precisar de ajuda, so",
+                "chamar"
+              ],
+              "y": 915
+            },
+            {
+              "kind": "time",
+              "time": "01:35"
+            },
+            {
+              "kind": "message",
+              "alliance": "BEE",
+              "speaker": "Mistress Yaya",
+              "vip": null,
+              "lines": [
+                "@ Cat of Waro how 3 sembra",
+                "proprio cosi"
+              ],
+              "y": 1307
+            },
+            {
+              "kind": "time",
+              "time": "02:56"
+            },
+            {
+              "kind": "message",
+              "alliance": "AVEJ",
+              "speaker": "UNIORZ",
+              "vip": 8,
+              "lines": [
+                "Dzien dobry wszystkim"
+              ],
+              "y": 1697
+            },
+            {
+              "kind": "time",
+              "time": "03:05"
+            },
+            {
+              "kind": "message",
+              "alliance": "ASH",
+              "speaker": "Nadia",
+              "vip": null,
+              "lines": [
+                "Dzien dobry wszystkim"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 39,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "FULL alliance",
+                "No minimum power",
+                "No stress",
+                "No egos",
+                "Just good vibes, active players, and a",
+                "kingdom that actually gets along",
+                "IF your alliance wants a fresh start",
+                "without the nonsense this is it"
+              ],
+              "y": 343
+            },
+            {
+              "kind": "time",
+              "time": "20:59"
+            },
+            {
+              "kind": "message",
+              "alliance": "RSE",
+              "speaker": "o Cat of War o",
+              "vip": null,
+              "lines": [
+                "@Mistress Yaya a ausencia da",
+                "resposta dele fez voce entender que",
+                "ele esta de ferias"
+              ],
+              "y": 1048
+            },
+            {
+              "kind": "time",
+              "time": "21:17"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Twinklez",
+                "This ain't Kansas"
+              ],
+              "y": 1425
+            },
+            {
+              "kind": "time",
+              "time": "21:24"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Twinklez",
+                "Anyone seen where [ suppose to be?"
+              ],
+              "y": 1737
+            },
+            {
+              "kind": "time",
+              "time": "22:16"
+            },
+            {
+              "kind": "message",
+              "alliance": "BEE",
+              "speaker": "Lady Hades",
+              "vip": 8,
+              "lines": [
+                "@Twinklez welcomel ! the rest of"
+              ],
+              "y": 2050
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 26,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "BEE",
+              "speaker": "Mythical\"Mezo'",
+              "vip": null,
+              "lines": [
+                "Welcome to 303 my fellow 236",
+                "Friends'",
+                "2026-04-15 14,46"
+              ],
+              "y": 416
+            },
+            {
+              "kind": "message",
+              "alliance": "AVEJ",
+              "speaker": "UNIORI",
+              "vip": 8,
+              "lines": [
+                "2026-04-15 15.58"
+              ],
+              "y": 807
+            },
+            {
+              "kind": "message",
+              "alliance": "RSE",
+              "speaker": "GPOO7",
+              "vip": null,
+              "lines": [
+                "2026-04-15 16.12"
+              ],
+              "y": 1117
+            },
+            {
+              "kind": "message",
+              "alliance": "BEE",
+              "speaker": "Mistress Yaya",
+              "vip": null,
+              "lines": [
+                "@GPOO7 buonasera' Non eri in",
+                "vacanza?"
+              ],
+              "y": 1493
+            },
+            {
+              "kind": "time",
+              "time": "20:17"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Darling",
+                "Tired of the drama? Come",
+                "through",
+                "Kingdom 262 is opening spots for a",
+                "FULL alliance"
+              ],
+              "y": 1823
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "NUT",
+              "speaker": "Farfilicious",
+              "vip": null,
+              "lines": [
+                "Helloo all' New here and hoping we",
+                "enjoy the game together, thanks for",
+                "the inv",
+                "2026-04-15 09.21"
+              ],
+              "y": 377
+            },
+            {
+              "kind": "message",
+              "alliance": "ASH",
+              "speaker": "Ghazi Yamani",
+              "vip": 7,
+              "lines": [
+                "@Farfilicious S 1>X"
+              ],
+              "y": 753
+            },
+            {
+              "kind": "message",
+              "alliance": "ASH",
+              "speaker": "Ghazi Yamani",
+              "vip": 7,
+              "lines": [
+                "2026-04-15 09.33"
+              ],
+              "y": 977
+            },
+            {
+              "kind": "message",
+              "alliance": "ASH",
+              "speaker": "Nadia",
+              "vip": null,
+              "lines": [
+                "@Farfilicious welcome'",
+                "2026-04-15 09.51"
+              ],
+              "y": 1291
+            },
+            {
+              "kind": "message",
+              "alliance": "BEE",
+              "speaker": "Lady Hades",
+              "vip": 8,
+              "lines": [
+                "Im so happy you guys made it'!!",
+                "2026-04-15 11.28"
+              ],
+              "y": 1603
+            },
+            {
+              "kind": "message",
+              "alliance": "BEE",
+              "speaker": "Mistress Yaya",
+              "vip": null,
+              "lines": [
+                "@Farfilicious benarrivatol!!"
+              ],
+              "y": 1975
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

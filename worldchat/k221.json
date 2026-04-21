@@ -1,0 +1,1019 @@
+{
+  "kingdom": 221,
+  "snapshot_count": 2,
+  "image_count": 11,
+  "message_count": 84,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-16_213604",
+      "captured": "2026-04-16 21:36 UTC",
+      "captured_iso": "2026-04-16T21:36:04",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 359
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Purple cat"
+              ],
+              "y": 583
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Purple cat might get yall some crazy",
+                "matchups"
+              ],
+              "y": 805
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "100%"
+              ],
+              "y": 1050
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Yall might need a ringer"
+              ],
+              "y": 1271
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Basically we have Beerus and",
+                "amsvik same size then 10 ish around",
+                "2600-2700 mystic"
+              ],
+              "y": 1499
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Damn we gonna have a hard prep"
+              ],
+              "y": 1787
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Oh Im aware trust meee"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "240 would run through 401e"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Yeah actually tbh"
+              ],
+              "y": 524
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "240 need that 199 matchup only",
+                "server who might beat them"
+              ],
+              "y": 746
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Tve talked to sr on discord pretty",
+                "humble dude"
+              ],
+              "y": 991
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Damn fr"
+              ],
+              "y": 1232
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "234 gets brought into convos a lot",
+                "now"
+              ],
+              "y": 1458
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Yea | wonder why"
+              ],
+              "y": 1698
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1925
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2148
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 34,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "21:19"
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 489
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "234 gonna f around and get 240 or",
+                "255"
+              ],
+              "y": 713
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Nahhhh we aint got that many",
+                "people yet"
+              ],
+              "y": 959
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Idk yall close"
+              ],
+              "y": 1199
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "That' $ 401 matches right there"
+              ],
+              "y": 1425
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "240 would run through 4O1e"
+              ],
+              "y": 1648
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Yeah actually tbh"
+              ],
+              "y": 1874
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2095
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 34,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "It'$ gonna be a fun watch that castle",
+                "ima make an alt"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "lol | just wanna see Clyde get",
+                "matched with 199"
+              ],
+              "y": 534
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Idk who else went to 162"
+              ],
+              "y": 779
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "have no idea"
+              ],
+              "y": 1001
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "This game changing so much now.",
+                "Mergers will likely happen sooner",
+                "than later"
+              ],
+              "y": 1227
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "They got 3 1 billion players in that",
+                "alliance"
+              ],
+              "y": 1514
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "And bonnie"
+              ],
+              "y": 1757
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "don't wanna match now"
+              ],
+              "y": 1983
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 39,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "without leading Imao"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "lol yall better hope so leading is",
+                "ass"
+              ],
+              "y": 507
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "When you got 5 whales killing off",
+                "800m in troops to join yeah 401",
+                "stacked"
+              ],
+              "y": 752
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Lmaooo true that"
+              ],
+              "y": 1039
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "199 shit right there"
+              ],
+              "y": 1263
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "Throwing away 2k to join that s",
+                "some loyalty"
+              ],
+              "y": 1489
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Yea honestly tbh"
+              ],
+              "y": 1730
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Anything to win | guess"
+              ],
+              "y": 1954
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 45,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "time",
+              "time": "21:14"
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "The group over there is solid",
+                "everyone a team everyone saves",
+                "nobody scores in shyt events unless",
+                "they recoup backpack"
+              ],
+              "y": 509
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "Yea yall good lol. Ive seen ite)"
+              ],
+              "y": 841
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "We may not get leading tho. Since",
+                "this transfer was s0 crazy like 401"
+              ],
+              "y": 1068
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "401 massive af now"
+              ],
+              "y": 1308
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "III take a couple more transfers",
+                "without leading Imao"
+              ],
+              "y": 1535
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "SNOOPY",
+              "vip": null,
+              "lines": [
+                "lol yall better hope so leading is",
+                "ass"
+              ],
+              "y": 1775
+            },
+            {
+              "kind": "message",
+              "alliance": "LOD",
+              "speaker": "SpootFrom234",
+              "vip": null,
+              "lines": [
+                "When you got 5 whales killing off",
+                "800m in troops to join yeah 401"
+              ],
+              "y": 2019
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "2026-04-14_062431",
+      "captured": "2026-04-14 06:24 UTC",
+      "captured_iso": "2026-04-14T06:24:31",
+      "image_count": 5,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 28,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "Yea ik"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "Still rich though"
+              ],
+              "y": 517
+            },
+            {
+              "kind": "time",
+              "time": "02:15"
+            },
+            {
+              "kind": "message",
+              "alliance": "GLO",
+              "speaker": "ZPanDaZ",
+              "vip": 7,
+              "lines": [
+                "Share layout",
+                "\"PanDa",
+                "Kingdom # 221"
+              ],
+              "y": 828
+            },
+            {
+              "kind": "time",
+              "time": "06:00"
+            },
+            {
+              "kind": "message",
+              "alliance": "SXY",
+              "speaker": "Dkdaddy",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1290
+            },
+            {
+              "kind": "message",
+              "alliance": "SXY",
+              "speaker": "Dkdaddy",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1514
+            },
+            {
+              "kind": "time",
+              "time": "06:56"
+            },
+            {
+              "kind": "message",
+              "alliance": "SXY",
+              "speaker": "ButtercupKat",
+              "vip": null,
+              "lines": [
+                "Good morning 221' Anyone need to",
+                "go to prison?!"
+              ],
+              "y": 1992
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "Share Mail",
+                "We scouted",
+                "BBLDMMassacels City"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 661
+            },
+            {
+              "kind": "message",
+              "alliance": "CAD",
+              "speaker": "Queen Mermaid",
+              "vip": null,
+              "lines": [
+                "Yall got way too many rss"
+              ],
+              "y": 920
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "Share Coordinates",
+                "[HvkicodyAlt",
+                "Kiigdom # 221",
+                "[X430Y502]"
+              ],
+              "y": 1144
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "Check out this one",
+                "[CadjQueen Mermaid",
+                "Your main got more"
+              ],
+              "y": 1517
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "Yea ik"
+              ],
+              "y": 1966
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "tne same rating Dut (nree amigos",
+                "a bit more enjoyable imo"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "Havok",
+              "vip": null,
+              "lines": [
+                "What?! Are gringos falling from the",
+                "sky?!"
+              ],
+              "y": 569
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "Havok",
+              "vip": null,
+              "lines": [
+                "Yes el guapo",
+                "[CadjQueen Mermaid",
+                "@Massacre you always have too",
+                "many rss"
+              ],
+              "y": 873
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "@Queen Mermaid | gather"
+              ],
+              "y": 1339
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "Scout me mermaid"
+              ],
+              "y": 1565
+            },
+            {
+              "kind": "message",
+              "alliance": "CAD",
+              "speaker": "Queen Mermaid",
+              "vip": null,
+              "lines": [
+                "Send location"
+              ],
+              "y": 1789
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "Share Coordinates",
+                "[BLDMMassacre"
+              ],
+              "y": 2013
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer",
+                "Englkh",
+                "plethora is?"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "Noooo wtffff",
+                "[SXYIBeans",
+                "An abundance of?"
+              ],
+              "y": 469
+            },
+            {
+              "kind": "message",
+              "alliance": "SXY",
+              "speaker": "Beans",
+              "vip": null,
+              "lines": [
+                "A large number of?"
+              ],
+              "y": 918
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "Havok",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1203
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "Havok",
+              "vip": null,
+              "lines": [
+                "Gotta watch the three amigos,",
+                "another classic",
+                "[SXYIBeans",
+                "From Monty Python to Three",
+                "Amigos"
+              ],
+              "y": 1488
+            },
+            {
+              "kind": "time",
+              "time": "01:37"
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "Havok",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2121
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 27,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "SXY",
+              "speaker": "Beans",
+              "vip": null,
+              "lines": [
+                "HAMI YOU F ING HERO"
+              ],
+              "y": 404
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "@Havok Hu papi"
+              ],
+              "y": 629
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "hi"
+              ],
+              "y": 853
+            },
+            {
+              "kind": "message",
+              "alliance": "BLD",
+              "speaker": "Massacre",
+              "vip": 9,
+              "lines": [
+                "Papa Havok"
+              ],
+              "y": 1078
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "Havok",
+              "vip": null,
+              "lines": [
+                "Oy it'$ good to see you"
+              ],
+              "y": 1362
+            },
+            {
+              "kind": "message",
+              "alliance": "SXY",
+              "speaker": "Beans",
+              "vip": null,
+              "lines": [
+                "Oy vay"
+              ],
+              "y": 1587
+            },
+            {
+              "kind": "message",
+              "alliance": "HVK",
+              "speaker": "Havok",
+              "vip": null,
+              "lines": [
+                "Indeed",
+                "[HuklHavok"
+              ],
+              "y": 1873
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

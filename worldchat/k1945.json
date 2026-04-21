@@ -1,0 +1,243 @@
+{
+  "kingdom": 1945,
+  "snapshot_count": 1,
+  "image_count": 3,
+  "message_count": 19,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-16_040406",
+      "captured": "2026-04-16 04:04 UTC",
+      "captured_iso": "2026-04-16T04:04:06",
+      "image_count": 3,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 24,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Daffa",
+              "vip": 2,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 391
+            },
+            {
+              "kind": "message",
+              "alliance": "DVL",
+              "speaker": "idlanir",
+              "vip": null,
+              "lines": [
+                "MY MEDQOSA= halo kak"
+              ],
+              "y": 720
+            },
+            {
+              "kind": "message",
+              "alliance": "DVL",
+              "speaker": "9SO Ken kaneki",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Ken Kaneki",
+                "Kingdom # 950"
+              ],
+              "y": 945
+            },
+            {
+              "kind": "message",
+              "alliance": "GRA",
+              "speaker": "Eirene",
+              "vip": null,
+              "lines": [
+                "Deris"
+              ],
+              "y": 1319
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "RhyxIDN",
+              "vip": null,
+              "lines": [
+                "@OMPRENG MBG oiya kah bang?"
+              ],
+              "y": 1543
+            },
+            {
+              "kind": "message",
+              "alliance": "DVL",
+              "speaker": "95O Ken kaneki",
+              "vip": null,
+              "lines": [
+                "like gaes"
+              ],
+              "y": 1766
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Daffa",
+              "vip": 2,
+              "lines": [
+                "@OMPRENG MBG ntar sisa pemain",
+                "inti"
+              ],
+              "y": 1991
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 28,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "ViFZinkipcammers",
+                "coba tebak ada berapa medusa di",
+                "server ini"
+              ],
+              "y": 343
+            },
+            {
+              "kind": "message",
+              "alliance": "KID",
+              "speaker": "Pemberantas pedo",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 581
+            },
+            {
+              "kind": "message",
+              "alliance": "HDS",
+              "speaker": "clyde",
+              "vip": null,
+              "lines": [
+                "MY MEDQISA\" med",
+                "@Scammers loh emang ada nama",
+                "Medusa lain?"
+              ],
+              "y": 805
+            },
+            {
+              "kind": "message",
+              "alliance": "PRO",
+              "speaker": "OMPRENG MBG",
+              "vip": 2,
+              "lines": [
+                "nih server buat fomo aja kek nya",
+                "ntar juga lama kelamaan banyak yg",
+                "pensi",
+                "My MEDQSA",
+                "@clyde ya, siapa?"
+              ],
+              "y": 1272
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Daffa",
+              "vip": 2,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1785
+            },
+            {
+              "kind": "message",
+              "alliance": "DVL",
+              "speaker": "idlanir",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2114
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 36,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "@Pemberantas pedo ko gk ada",
+                "Klosetnya bng cuma pasir"
+              ],
+              "y": 358
+            },
+            {
+              "kind": "message",
+              "alliance": "GAR",
+              "speaker": "jnr",
+              "vip": null,
+              "lines": [
+                "iyaa lagii, si aplha & antekZnya",
+                "nyebelin bgt emg: Tiap saat ada aja",
+                "dramanya @idlanir",
+                "My MEDQISA",
+                "keknya cocok jualan kopi"
+              ],
+              "y": 529
+            },
+            {
+              "kind": "message",
+              "alliance": "MBG",
+              "speaker": "Snow Manggila",
+              "vip": null,
+              "lines": [
+                "Jualan cakep ni bener",
+                "VIPI MakanBergizi_IDN",
+                "cangcimen"
+              ],
+              "y": 1043
+            },
+            {
+              "kind": "message",
+              "alliance": "MBG",
+              "speaker": "Kiboyyy MENGGILA",
+              "vip": 2,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1492
+            },
+            {
+              "kind": "message",
+              "alliance": "KID",
+              "speaker": "Pemberantas pedo",
+              "vip": null,
+              "lines": [
+                "@bapakkau njir litter box"
+              ],
+              "y": 1748
+            },
+            {
+              "kind": "message",
+              "alliance": "KRI",
+              "speaker": "Scammers",
+              "vip": 2,
+              "lines": [
+                "coba tebak ada berapa medusa di",
+                "server ini 5"
+              ],
+              "y": 1973
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "kingdom": 231,
+  "snapshot_count": 1,
+  "image_count": 6,
+  "message_count": 35,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-14_173719",
+      "captured": "2026-04-14 17:37 UTC",
+      "captured_iso": "2026-04-14T17:37:19",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 28,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Kang Supreme",
+              "vip": null,
+              "lines": [
+                "now"
+              ],
+              "y": 473
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "mofo",
+              "vip": 8,
+              "lines": [
+                "thank you"
+              ],
+              "y": 695
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Kang Supreme",
+              "vip": null,
+              "lines": [
+                "good job"
+              ],
+              "y": 922
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Kang Supreme",
+              "vip": null,
+              "lines": [
+                "(this is world chat)"
+              ],
+              "y": 1144
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "mofo",
+              "vip": 8,
+              "lines": [
+                "lol"
+              ],
+              "y": 1367
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "mofo",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1593
+            },
+            {
+              "kind": "time",
+              "time": "15:51"
+            },
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "VIPI2 [VxRjCosmos"
+              ],
+              "y": 1905
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Private Ttansfer-",
+                "IKNGJLMLO",
+                "Share layout",
+                "LMLO",
+                "Kingdom # 231"
+              ],
+              "y": 273
+            },
+            {
+              "kind": "time",
+              "time": "12:45"
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Duck",
+              "vip": null,
+              "lines": [
+                "@AndrexF9 exist"
+              ],
+              "y": 805
+            },
+            {
+              "kind": "time",
+              "time": "13:02"
+            },
+            {
+              "kind": "message",
+              "alliance": "VXR",
+              "speaker": "Deboe",
+              "vip": null,
+              "lines": [
+                "@Kang Supreme | always misspell it",
+                "an my results are very different than",
+                "what | expect"
+              ],
+              "y": 1117
+            },
+            {
+              "kind": "time",
+              "time": "13:46"
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Pizza Durian",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Pizza Durian",
+                "Kingdom # 231"
+              ],
+              "y": 1493
+            },
+            {
+              "kind": "time",
+              "time": "15:01"
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "mofo",
+              "vip": 8,
+              "lines": [
+                "secret signal kang dont forget"
+              ],
+              "y": 1953
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 32,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "accurate tho?",
+                "VIP2 [CATldoggo",
+                "we should give him a duck bath",
+                "VIP2 [CATldoggo",
+                "in fire",
+                "VIP2 [CATldoggo",
+                "he would smell better as a roasted",
+                "duck"
+              ],
+              "y": 412
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Lady Waters",
+              "vip": null,
+              "lines": [
+                "Sheesh"
+              ],
+              "y": 1242
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "AndrexF9",
+              "vip": null,
+              "lines": [
+                "@Duck cosa hai fatto per Farti",
+                "trattare cosi?",
+                "VIP2 [CATldoggo",
+                "who put king debuff during bear",
+                "that'$ just RUDE"
+              ],
+              "y": 1465
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Kang Supreme",
+              "vip": null,
+              "lines": [
+                "@AndrexF9 Have you ever googled",
+                "ducks? Because , man there' s a list."
+              ],
+              "y": 1954
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 30,
+          "messages": [
+            {
+              "kind": "message",
+              "alliance": "VXR",
+              "speaker": "Jdp",
+              "vip": null,
+              "lines": [
+                "@Miwa what iF | want less damage"
+              ],
+              "y": 384
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Duck",
+              "vip": 12,
+              "lines": [
+                "#EndBearViolence"
+              ],
+              "y": 605
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Lady Waters",
+              "vip": null,
+              "lines": [
+                "You want to end bear violence bc",
+                "you hate the bear?"
+              ],
+              "y": 829
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Lady Waters",
+              "vip": null,
+              "lines": [
+                "Maybe a new event teaching the",
+                "bear to do tricks"
+              ],
+              "y": 1073
+            },
+            {
+              "kind": "message",
+              "alliance": "VXR",
+              "speaker": "Miwa",
+              "vip": null,
+              "lines": [
+                "@Jdp then you like 3 times",
+                "VIP2 [CATldoggo",
+                "Megaphone",
+                "Duck smells like old pond water"
+              ],
+              "y": 1315
+            },
+            {
+              "kind": "message",
+              "alliance": "VXR",
+              "speaker": "Miwa",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1817
+            },
+            {
+              "kind": "message",
+              "alliance": "VAL",
+              "speaker": "Duke Green",
+              "vip": null,
+              "lines": [
+                "ok"
+              ],
+              "y": 2041
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 29,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "Alu VIKIYS"
+              ],
+              "y": 345
+            },
+            {
+              "kind": "time",
+              "time": "11:34"
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Kang Supreme",
+              "vip": null,
+              "lines": [
+                "Yeah, Andrex, do it?"
+              ],
+              "y": 565
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "Kang Supreme",
+              "vip": null,
+              "lines": [
+                "(Bear:",
+                "12, 14, 19, 00)"
+              ],
+              "y": 788
+            },
+            {
+              "kind": "time",
+              "time": "12:03"
+            },
+            {
+              "kind": "message",
+              "alliance": "VXR",
+              "speaker": "LiBry",
+              "vip": 7,
+              "lines": [
+                "32, 49,54,69"
+              ],
+              "y": 1118
+            },
+            {
+              "kind": "time",
+              "time": "12:09"
+            },
+            {
+              "kind": "message",
+              "alliance": "VXR",
+              "speaker": "Miwa",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Miwa",
+                "Kiingdom # 23]"
+              ],
+              "y": 1429
+            },
+            {
+              "kind": "message",
+              "alliance": "VXR",
+              "speaker": "Miwa",
+              "vip": null,
+              "lines": [
+                "like it for more bear damage"
+              ],
+              "y": 1803
+            },
+            {
+              "kind": "time",
+              "time": "12:29"
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Duck",
+              "vip": 12,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2115
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 33,
+          "messages": [
+            {
+              "kind": "time",
+              "time": "07:53"
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "BrownBear",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "BrownBear",
+                "Kigdom # 231"
+              ],
+              "y": 516
+            },
+            {
+              "kind": "time",
+              "time": "08:59"
+            },
+            {
+              "kind": "message",
+              "alliance": "IDM",
+              "speaker": "AndrexF9",
+              "vip": null,
+              "lines": [
+                "@RamenTooCold @ONE @Anna @A",
+                "mniat @BrownBear +16"
+              ],
+              "y": 976
+            },
+            {
+              "kind": "time",
+              "time": "11:12"
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Lady Waters",
+              "vip": null,
+              "lines": [
+                "@AndrexF9 can you send me IDM",
+                "event times please?"
+              ],
+              "y": 1306
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Lady Waters",
+              "vip": null,
+              "lines": [
+                "Bear",
+                "SS",
+                "Tri"
+              ],
+              "y": 1549
+            },
+            {
+              "kind": "message",
+              "alliance": "KNG",
+              "speaker": "Lady Waters",
+              "vip": null,
+              "lines": [
+                "And Vikings"
+              ],
+              "y": 1883
+            },
+            {
+              "kind": "time",
+              "time": "11:34"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

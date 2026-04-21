@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Chat Archive — KingshotPro</title>
+  <meta name="description" content="Kingshot world chat archive — OCR-extracted text logs from every tracked kingdom. Browse by timestamp, search players and alliances. Unlock a snapshot with credits.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/advisor-orb.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .wc-header { text-align: center; margin-bottom: 18px; }
+    .wc-header h1 { color: var(--gold); margin-bottom: 6px; }
+
+    .wc-stats-row { display: flex; gap: 12px; justify-content: center; margin-bottom: 18px; flex-wrap: wrap; }
+    .wc-stat-pill { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; text-align: center; }
+    .wc-stat-pill-val { font-size: 18px; font-weight: 800; color: var(--gold); }
+    .wc-stat-pill-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .wc-kingdom-filter { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-bottom: 14px; font-size: 11px; }
+    .wc-kf-chip { padding: 4px 10px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; color: var(--text-muted); cursor: pointer; font-weight: 600; }
+    .wc-kf-chip.active { background: rgba(240, 192, 64, 0.15); color: var(--gold); border-color: var(--gold); }
+
+    .wc-search { max-width: 420px; margin: 0 auto 16px; }
+    .wc-search input {
+      width: 100%; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-size: 14px; font-family: inherit; box-sizing: border-box;
+    }
+    .wc-search input:focus { outline: none; border-color: var(--gold); }
+    .wc-search-note { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 4px; }
+
+    .wc-disclaimer {
+      background: rgba(96, 165, 250, 0.08); border: 1px solid rgba(96, 165, 250, 0.25); border-radius: 8px;
+      padding: 10px 14px; margin-bottom: 14px; font-size: 12px; color: var(--text-muted); line-height: 1.6;
+    }
+    .wc-disclaimer strong { color: var(--text); }
+
+    /* Snapshot card grid */
+    .wc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .wc-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+      padding: 14px; display: flex; flex-direction: column; gap: 8px; position: relative; overflow: hidden;
+    }
+    .wc-card-head { display: flex; justify-content: space-between; align-items: flex-start; }
+    .wc-card-kingdom { font-size: 20px; font-weight: 800; color: var(--gold); }
+    .wc-card-count { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .wc-card-date { font-size: 13px; color: var(--text); font-weight: 600; }
+    .wc-card-age { font-size: 11px; color: var(--text-muted); }
+    .wc-card-actions { margin-top: 4px; display: flex; gap: 6px; }
+    .wc-btn {
+      flex: 1; padding: 8px 12px; font-size: 12px; font-weight: 700; font-family: inherit;
+      background: var(--gold); color: var(--bg); border: none; border-radius: 6px; cursor: pointer;
+    }
+    .wc-btn:hover { opacity: 0.9; }
+    .wc-btn-unlocked { background: #4ade80; }
+    .wc-card-badge { position: absolute; top: 10px; right: 10px; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+    .wc-card-badge.locked   { background: rgba(240, 192, 64, 0.15); color: var(--gold); border: 1px solid rgba(240, 192, 64, 0.4); }
+    .wc-card-badge.unlocked { background: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.4); }
+
+    /* Transcript viewer modal */
+    .wc-viewer {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); z-index: 9500;
+      display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .wc-viewer.open { display: flex; }
+    .wc-viewer-inner {
+      max-width: 760px; width: 100%; max-height: 92vh; display: flex; flex-direction: column;
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    }
+    .wc-viewer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px; border-bottom: 1px solid var(--border); gap: 12px;
+    }
+    .wc-viewer-title { font-size: 15px; font-weight: 700; color: var(--text); }
+    .wc-viewer-title .wc-kid { color: var(--gold); }
+    .wc-viewer-close { background: none; border: 1px solid var(--border); color: var(--text); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 16px; }
+    .wc-viewer-close:hover { border-color: var(--gold); color: var(--gold); }
+    .wc-viewer-body { flex: 1; overflow-y: auto; padding: 14px 20px; }
+
+    /* Chat-log styling */
+    .wc-img-sep {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text-muted); margin: 24px 0 12px; opacity: 0.7;
+    }
+    .wc-img-sep::before, .wc-img-sep::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+    .wc-img-sep:first-child { margin-top: 0; }
+    .wc-time {
+      text-align: center; font-size: 11px; color: var(--text-muted);
+      background: rgba(255,255,255,0.04); padding: 3px 12px;
+      border-radius: 10px; display: inline-block; margin: 14px auto 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .wc-time-wrap { text-align: center; }
+    .wc-msg { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .wc-msg:last-child { border-bottom: none; }
+    .wc-msg-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 2px; flex-wrap: wrap; }
+    .wc-msg-tag {
+      display: inline-block; padding: 1px 6px; font-size: 10px; font-weight: 800;
+      background: rgba(240, 192, 64, 0.15); color: var(--gold);
+      border: 1px solid rgba(240, 192, 64, 0.35); border-radius: 3px;
+    }
+    .wc-msg-speaker { font-size: 13px; font-weight: 700; color: var(--text); }
+    .wc-msg-vip {
+      font-size: 10px; font-weight: 700; padding: 1px 6px;
+      background: linear-gradient(90deg, #f0c040, #ff8c42);
+      color: var(--bg); border-radius: 3px;
+    }
+    .wc-msg-body { font-size: 14px; color: var(--text); line-height: 1.5; padding-left: 2px; }
+    .wc-msg-body-line { display: block; }
+    .wc-msg-body .wc-sticker { color: var(--text-muted); font-style: italic; opacity: 0.7; }
+
+    .wc-viewer-foot {
+      padding: 10px 18px; border-top: 1px solid var(--border);
+      font-size: 11px; color: var(--text-muted); text-align: center;
+    }
+    .wc-hit { background: rgba(240,192,64,0.25); color: var(--text); padding: 0 2px; border-radius: 2px; }
+
+    .wc-status { display: none; padding: 10px 14px; border-radius: 8px; margin: 10px 0; font-size: 13px; }
+    .wc-status.ok   { display: block; background: rgba(74, 222, 128, 0.1); border: 1px solid #4ade80; color: #4ade80; }
+    .wc-status.err  { display: block; background: rgba(248, 113, 113, 0.1); border: 1px solid #f87171; color: #f87171; }
+    .wc-status.info { display: block; background: rgba(240, 192, 64, 0.1); border: 1px solid var(--gold); color: var(--gold); }
+
+    @media (max-width: 640px) {
+      .wc-grid { grid-template-columns: 1fr; }
+      .wc-viewer { padding: 8px; }
+      .wc-viewer-body { padding: 10px 14px; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container" style="max-width:1000px;">
+
+  <div class="wc-header">
+    <h1>World Chat Archive</h1>
+    <p class="text-muted">OCR-extracted text logs from every tracked kingdom. Browse by timestamp, search across every unlocked snapshot.</p>
+  </div>
+
+  <div class="wc-stats-row" id="wc-stats"></div>
+
+  <div class="wc-disclaimer">
+    <strong>Heads up.</strong> These transcripts are automatically extracted from in-game public chat screenshots using OCR. Names and messages appear as-posted. Expect occasional garbled text, stickers rendered as <em>(sticker/image)</em>, and limited accuracy on non-English messages. <strong>1 credit</strong> unlocks a full snapshot permanently on this device.
+  </div>
+
+  <div class="ad-slot" data-slot="worldchat-top">Ad</div>
+
+  <div id="wc-status" class="wc-status"></div>
+
+  <div class="wc-search">
+    <input type="text" id="wc-search" placeholder="Search messages, players, alliances... (unlocked snapshots only)">
+    <div class="wc-search-note">Search runs across every snapshot you've unlocked on this device.</div>
+  </div>
+
+  <div class="wc-kingdom-filter" id="wc-kfilter"></div>
+
+  <div class="wc-grid" id="wc-grid"></div>
+
+  <div class="ad-slot" data-slot="worldchat-bottom">Ad</div>
+
+</div></div>
+
+<!-- Transcript viewer modal -->
+<div class="wc-viewer" id="wc-viewer" role="dialog" aria-modal="true" aria-label="World chat transcript viewer">
+  <div class="wc-viewer-inner">
+    <div class="wc-viewer-head">
+      <div class="wc-viewer-title" id="wc-viewer-title"></div>
+      <button type="button" class="wc-viewer-close" id="wc-viewer-close" aria-label="Close">\u00D7</button>
+    </div>
+    <div class="wc-viewer-body" id="wc-viewer-body"></div>
+    <div class="wc-viewer-foot">Automatically extracted via OCR. Not every message parses cleanly — this is raw machine-read text.</div>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+  <div class="footer-links">
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Service</a>
+  </div>
+</div></footer>
+
+<script src="../js/cookie-consent.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/advisor-names.js"></script>
+<script src="../js/advisor.js"></script>
+<script src="../js/advisor-orb.js"></script>
+<script src="../js/advisor-hooks.js"></script>
+<script src="../js/advisor-chat.js"></script>
+<script src="../js/advisor-cta.js"></script>
+<script src="../js/advisor-lore.js"></script>
+<script src="../js/advisor-referral.js"></script>
+<script src="../js/advisor-alliance.js"></script>
+<script src="../js/advisor-accounts.js"></script>
+<script>
+// World chat directory — text transcripts from OCR.
+// Data generated by: python3 worldchat/extract_worldchat.py
+// Never hand-edit the JSONs.
+
+var MANIFEST = null;
+var KINGDOM_DATA = {};       // kid -> per-kingdom JSON
+var kingdomFilter = null;
+var searchQuery = '';
+var UNLOCK_KEY_PREFIX = 'ksp_wc_unlocked_';
+
+// ── Unlock state ───────────────────────────────────────────────
+function isUnlocked(kid, snapshotId) {
+  try { return localStorage.getItem(UNLOCK_KEY_PREFIX + kid + '_' + snapshotId) === '1'; }
+  catch (e) { return false; }
+}
+function markUnlocked(kid, snapshotId) {
+  try { localStorage.setItem(UNLOCK_KEY_PREFIX + kid + '_' + snapshotId, '1'); } catch (e) {}
+}
+
+function showStatus(msg, type) {
+  var el = document.getElementById('wc-status');
+  el.textContent = msg;
+  el.className = 'wc-status ' + (type || 'info');
+  setTimeout(function () {
+    if (el.textContent === msg) el.className = 'wc-status';
+  }, 6000);
+}
+
+function escHtml(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
+
+function timeAgo(iso) {
+  try {
+    var diff = Math.max(0, Date.now() - new Date(iso).getTime());
+    var h = Math.floor(diff / 3_600_000);
+    if (h < 1)  return 'just now';
+    if (h < 24) return h + 'h ago';
+    var d = Math.floor(h / 24);
+    if (d < 14) return d + 'd ago';
+    return Math.floor(d / 7) + 'w ago';
+  } catch (e) { return ''; }
+}
+
+// ── Grid rendering ─────────────────────────────────────────────
+function renderKingdomFilter() {
+  var el = document.getElementById('wc-kfilter');
+  el.innerHTML = '';
+  var all = document.createElement('span');
+  all.className = 'wc-kf-chip' + (kingdomFilter === null ? ' active' : '');
+  all.textContent = 'All Kingdoms';
+  all.onclick = function () { kingdomFilter = null; renderKingdomFilter(); renderGrid(); };
+  el.appendChild(all);
+  MANIFEST.kingdoms.forEach(function (k) {
+    var c = document.createElement('span');
+    c.className = 'wc-kf-chip' + (kingdomFilter === k.kingdom ? ' active' : '');
+    c.textContent = 'K' + k.kingdom + ' (' + k.snapshot_count + ')';
+    c.onclick = function () { kingdomFilter = k.kingdom; renderKingdomFilter(); renderGrid(); };
+    el.appendChild(c);
+  });
+}
+
+function renderGrid() {
+  var grid = document.getElementById('wc-grid');
+  grid.innerHTML = '';
+
+  // Flat snapshot list across all kingdoms, newest first
+  var snapshots = [];
+  var kingdoms = kingdomFilter !== null ? [kingdomFilter] : MANIFEST.kingdoms.map(function (k) { return k.kingdom; });
+  kingdoms.forEach(function (kid) {
+    var data = KINGDOM_DATA[kid];
+    if (!data) return;
+    data.snapshots.forEach(function (s) { snapshots.push({ kid: kid, snapshot: s }); });
+  });
+  snapshots.sort(function (a, b) {
+    return a.snapshot.captured_iso < b.snapshot.captured_iso ? 1 : -1;
+  });
+
+  // Apply search (only matches against unlocked snapshots)
+  if (searchQuery) {
+    var q = searchQuery.toLowerCase();
+    snapshots = snapshots.filter(function (e) {
+      if (!isUnlocked(e.kid, e.snapshot.snapshot_id)) return false;
+      return snapshotHasMatch(e.snapshot, q);
+    });
+  }
+
+  if (snapshots.length === 0) {
+    grid.innerHTML = searchQuery
+      ? '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">No matches in your unlocked snapshots. Unlock more to widen the search.</div>'
+      : '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">No snapshots available yet.</div>';
+    return;
+  }
+
+  snapshots.forEach(function (entry) {
+    var kid = entry.kid;
+    var s   = entry.snapshot;
+    var unlocked = isUnlocked(kid, s.snapshot_id);
+
+    // Total message count (speakers only, not time markers) across images
+    var totalMsgs = 0;
+    s.images.forEach(function (img) {
+      img.messages.forEach(function (m) { if (m.kind === 'message') totalMsgs++; });
+    });
+
+    var card = document.createElement('div');
+    card.className = 'wc-card';
+    card.innerHTML =
+      '<div class="wc-card-badge ' + (unlocked ? 'unlocked' : 'locked') + '">' +
+        (unlocked ? '\u2713 UNLOCKED' : '\u{1F512} LOCKED') + '</div>' +
+      '<div class="wc-card-head">' +
+        '<div class="wc-card-kingdom">K' + kid + '</div>' +
+        '<div class="wc-card-count">' + totalMsgs + ' msgs \u00B7 ' + s.image_count + ' shots</div>' +
+      '</div>' +
+      '<div class="wc-card-date">' + escHtml(s.captured) + '</div>' +
+      '<div class="wc-card-age">' + timeAgo(s.captured_iso) + '</div>' +
+      '<div class="wc-card-actions">' +
+        (unlocked
+          ? '<button class="wc-btn wc-btn-unlocked" data-view="1">\u{1F4AC} Read Chat Log</button>'
+          : '<button class="wc-btn" data-unlock="1">Unlock for 1 credit</button>') +
+      '</div>';
+
+    var unlockBtn = card.querySelector('[data-unlock]');
+    var viewBtn   = card.querySelector('[data-view]');
+    if (unlockBtn) unlockBtn.onclick = function () { handleUnlock(kid, s); };
+    if (viewBtn)   viewBtn.onclick   = function () { openViewer(kid, s); };
+    grid.appendChild(card);
+  });
+}
+
+// Search helpers — only applied to unlocked snapshots
+function snapshotHasMatch(snapshot, q) {
+  for (var i = 0; i < snapshot.images.length; i++) {
+    var msgs = snapshot.images[i].messages;
+    for (var j = 0; j < msgs.length; j++) {
+      var m = msgs[j];
+      if (m.kind !== 'message') continue;
+      if ((m.speaker  || '').toLowerCase().indexOf(q) !== -1) return true;
+      if ((m.alliance || '').toLowerCase().indexOf(q) !== -1) return true;
+      for (var k = 0; k < (m.lines || []).length; k++) {
+        if (String(m.lines[k]).toLowerCase().indexOf(q) !== -1) return true;
+      }
+    }
+  }
+  return false;
+}
+
+function renderStats() {
+  var el = document.getElementById('wc-stats');
+  var totalMsgs = MANIFEST.kingdoms.reduce(function (n, k) { return n + (k.message_count || 0); }, 0);
+  el.innerHTML =
+    '<div class="wc-stat-pill"><div class="wc-stat-pill-val">' + MANIFEST.kingdom_count + '</div><div class="wc-stat-pill-lbl">Kingdoms</div></div>' +
+    '<div class="wc-stat-pill"><div class="wc-stat-pill-val">' + MANIFEST.kingdoms.reduce(function (n, k) { return n + k.snapshot_count; }, 0) + '</div><div class="wc-stat-pill-lbl">Snapshots</div></div>' +
+    '<div class="wc-stat-pill"><div class="wc-stat-pill-val">' + totalMsgs.toLocaleString() + '</div><div class="wc-stat-pill-lbl">Messages OCR\'d</div></div>' +
+    '<div class="wc-stat-pill"><div class="wc-stat-pill-val">1\u26A1</div><div class="wc-stat-pill-lbl">Per Snapshot</div></div>';
+}
+
+// ── Credits unlock ────────────────────────────────────────────
+function handleUnlock(kid, snapshot) {
+  if (!window.KSP_CREDITS || !window.KSP_CREDITS.unlockWorldChat) {
+    showStatus('Credits system not loaded. Try refreshing the page.', 'err');
+    return;
+  }
+  window.KSP_CREDITS.unlockWorldChat(kid, snapshot.snapshot_id, function (res) {
+    if (res.ok) {
+      markUnlocked(kid, snapshot.snapshot_id);
+      showStatus('Unlocked! Balance: ' + res.balance + ' credits.', 'ok');
+      renderGrid();
+      openViewer(kid, snapshot);
+    } else if (res.error === 'insufficient_credits') {
+      showStatus('Not enough credits. You need ' + res.cost + ' but have ' + res.balance + '. Visit the pricing page.', 'info');
+    } else if (res.error === 'not_loaded' || res.error === 'not_logged_in') {
+      showStatus('Please enter your Player ID on the homepage first.', 'info');
+    } else {
+      showStatus(res.message || 'Unlock failed. Try again.', 'err');
+    }
+  });
+}
+
+// ── Transcript viewer ─────────────────────────────────────────
+function openViewer(kid, snapshot) {
+  document.getElementById('wc-viewer-title').innerHTML =
+    '<span class="wc-kid">K' + kid + '</span> \u00B7 ' + escHtml(snapshot.captured);
+  document.getElementById('wc-viewer-body').innerHTML = renderTranscript(snapshot);
+  document.getElementById('wc-viewer').classList.add('open');
+  document.getElementById('wc-viewer-body').scrollTop = 0;
+}
+function closeViewer() {
+  document.getElementById('wc-viewer').classList.remove('open');
+}
+
+function renderMsg(m) {
+  var tag     = m.alliance ? '<span class="wc-msg-tag">[' + escHtml(m.alliance) + ']</span>' : '';
+  var speaker = '<span class="wc-msg-speaker">' + escHtml(m.speaker || '(unknown)') + '</span>';
+  var vip     = m.vip ? '<span class="wc-msg-vip">VIP' + m.vip + '</span>' : '';
+  var lines   = (m.lines || []).map(function (l) {
+    var s = escHtml(l);
+    if (s === '(sticker/image)') return '<span class="wc-msg-body-line wc-sticker">(sticker / image)</span>';
+    return '<span class="wc-msg-body-line">' + s + '</span>';
+  }).join('');
+  if (!lines) lines = '<span class="wc-msg-body-line wc-sticker">(no text extracted)</span>';
+  return '<div class="wc-msg">' +
+           '<div class="wc-msg-head">' + tag + speaker + vip + '</div>' +
+           '<div class="wc-msg-body">' + lines + '</div>' +
+         '</div>';
+}
+
+function renderTranscript(snapshot) {
+  var html = '';
+  snapshot.images.forEach(function (img, i) {
+    html += '<div class="wc-img-sep">Screenshot ' + (i + 1) + ' of ' + snapshot.image_count + '</div>';
+    img.messages.forEach(function (m) {
+      if (m.kind === 'time') {
+        html += '<div class="wc-time-wrap"><div class="wc-time">' + escHtml(m.time) + '</div></div>';
+      } else {
+        html += renderMsg(m);
+      }
+    });
+  });
+  return html || '<div style="text-align:center;color:var(--text-muted);padding:40px;">No messages extracted from this snapshot.</div>';
+}
+
+// ── Wiring ────────────────────────────────────────────────────
+document.getElementById('wc-viewer-close').onclick = closeViewer;
+document.getElementById('wc-viewer').addEventListener('click', function (e) {
+  if (e.target === this) closeViewer();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeViewer();
+});
+document.getElementById('wc-search').addEventListener('input', function (e) {
+  searchQuery = e.target.value.trim();
+  renderGrid();
+});
+
+// ── Boot ──────────────────────────────────────────────────────
+fetch('manifest.json')
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    MANIFEST = data;
+    var kingdoms = data.kingdoms.map(function (k) { return k.kingdom; });
+    return Promise.all(kingdoms.map(function (kid) {
+      return fetch('k' + kid + '.json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (kd) { if (kd) KINGDOM_DATA[kid] = kd; });
+    }));
+  })
+  .then(function () {
+    renderStats();
+    renderKingdomFilter();
+    renderGrid();
+  })
+  .catch(function (err) {
+    document.getElementById('wc-grid').innerHTML =
+      '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#f87171;">' +
+      'Failed to load world chat archive. Try refreshing.</div>';
+    console.error(err);
+  });
+</script>
+<script src="../js/credits.js"></script>
+</body>
+</html>

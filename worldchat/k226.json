@@ -1,0 +1,448 @@
+{
+  "kingdom": 226,
+  "snapshot_count": 1,
+  "image_count": 6,
+  "message_count": 35,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-04-17_021038",
+      "captured": "2026-04-17 02:10 UTC",
+      "captured_iso": "2026-04-17T02:10:38",
+      "image_count": 6,
+      "images": [
+        {
+          "image_index": 0,
+          "box_count": 31,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "NUNAAA:",
+              "vip": null,
+              "lines": [
+                "@AdrenalineTH",
+                "2026-04-16 19.56"
+              ],
+              "y": 464
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "Luna Puff",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Luna Puff",
+                "Kingdom # 226"
+              ],
+              "y": 776
+            },
+            {
+              "kind": "time",
+              "time": "20:14"
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "ACHILLESTH",
+              "vip": null,
+              "lines": [
+                "Likede"
+              ],
+              "y": 1235
+            },
+            {
+              "kind": "time",
+              "time": "23:10"
+            },
+            {
+              "kind": "message",
+              "alliance": "KOR",
+              "speaker": "King Julz Farm",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Kiing Juzfarm",
+                "Kingdom # 226"
+              ],
+              "y": 1549
+            },
+            {
+              "kind": "time",
+              "time": "23:16"
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "NUNAAA.",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2009
+            }
+          ]
+        },
+        {
+          "image_index": 1,
+          "box_count": 27,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "ACHILEESTH",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "ACHILLESTH",
+                "Kiigdom # 226"
+              ],
+              "y": 412
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "NUNAAA",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 787
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "ACHILEESTH",
+              "vip": null,
+              "lines": [
+                "2026-04-16 14,47"
+              ],
+              "y": 1010
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "AdrenalineTH",
+              "vip": 8,
+              "lines": [
+                "Share layout",
+                "Adrenalinelih",
+                "Kingdom # 226",
+                "2026-04-16 18.08"
+              ],
+              "y": 1356
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "oo8sosul8oe",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "G-8sosu[8@",
+                "Kiigdom # 226"
+              ],
+              "y": 1818
+            }
+          ]
+        },
+        {
+          "image_index": 2,
+          "box_count": 27,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "2026-04-16 08.48"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "Luna Puff",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Luna Puff",
+                "Kingdom # 226"
+              ],
+              "y": 489
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "NUNAAA",
+              "vip": null,
+              "lines": [
+                "2026-04-16 09.02"
+              ],
+              "y": 863
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "GENGAR [Q#]",
+              "vip": null,
+              "lines": [
+                "2026-04-16 09.07"
+              ],
+              "y": 1235
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "King_Julz",
+              "vip": 7,
+              "lines": [
+                "Share layout",
+                "King Juz",
+                "Kigdom # 226"
+              ],
+              "y": 1582
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "NUNAAA",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1955
+            }
+          ]
+        },
+        {
+          "image_index": 3,
+          "box_count": 26,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "2026-04-16 05.45"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "floryn",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 492
+            },
+            {
+              "kind": "message",
+              "alliance": "KOR",
+              "speaker": "Lily",
+              "vip": null,
+              "lines": [
+                "2026-04-16 07.06"
+              ],
+              "y": 819
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "9o8= sosul8oc",
+              "vip": null,
+              "lines": [
+                "Share layout",
+                "Ge8sosul8e@",
+                "Kingdom # 226",
+                "2026-04-16 08.36",
+                "General Vi",
+                "helo"
+              ],
+              "y": 1237
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "NUNAAA",
+              "vip": null,
+              "lines": [
+                "Hi",
+                "2026-04-16 08.48"
+              ],
+              "y": 1922
+            }
+          ]
+        },
+        {
+          "image_index": 4,
+          "box_count": 23,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Englkh",
+                "82014 ~~",
+                "2026-04-15 18.53"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "oK?EihihzPP",
+              "vip": null,
+              "lines": [
+                "2026-04-15 19.52"
+              ],
+              "y": 572
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "9o8= sosul8o",
+              "vip": null,
+              "lines": [
+                "2026-04-16 04.16"
+              ],
+              "y": 991
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "9o8sosul8o",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1302
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "oo8sosul8o",
+              "vip": null,
+              "lines": [
+                "2026-04-16 05.45"
+              ],
+              "y": 1632
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "floryn",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2049
+            }
+          ]
+        },
+        {
+          "image_index": 5,
+          "box_count": 19,
+          "messages": [
+            {
+              "kind": "message",
+              "speaker": null,
+              "alliance": null,
+              "vip": null,
+              "lines": [
+                "World Alllance Privata Tansfer-",
+                "Luna Puff",
+                "Kingdom # 226",
+                "2026-04-15 17.44"
+              ],
+              "y": 272
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "N ichi Sauvage",
+              "vip": 8,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 671
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "N ichi Sauvage",
+              "vip": 8,
+              "lines": [
+                "2026-04-15 18.13"
+              ],
+              "y": 999
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "9o8sosul8o",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1414
+            },
+            {
+              "kind": "message",
+              "alliance": "AAA",
+              "speaker": "oc8sosul8o",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 1743
+            },
+            {
+              "kind": "message",
+              "alliance": "IMM",
+              "speaker": "GENGAR [#7]",
+              "vip": null,
+              "lines": [
+                "(sticker/image)"
+              ],
+              "y": 2133
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
