@@ -11,6 +11,17 @@
 // away from Century Games' origin and centralises any future signing logic.
 // See worker/worker.js + worker/wrangler.toml for deployment.
 const FID_API        = 'https://kingshotpro-api.kingshotpro.workers.dev/player';
+
+// Player-lookup bot — Playwright service that loads the CG giftcode page
+// in real Chrome, lets their obfuscated JS compute the sign, and returns
+// the resulting profile. Deployed separately via bot/ directory.
+//
+// Override at runtime: set window.KSP_LOOKUP_URL before fid.js runs
+// (useful for local dev / cloudflared tunnels / staging deployments).
+const LOOKUP_BOT_URL = (typeof window !== 'undefined' && window.KSP_LOOKUP_URL)
+  ? window.KSP_LOOKUP_URL
+  : 'https://kingshotpro-bot.fly.dev/lookup';
+
 const PROFILE_KEY    = 'ksp_profile';       // sessionStorage fallback key
 const LAST_FID_KEY   = 'ksp_last_fid';      // localStorage — last looked-up FID
 
@@ -46,34 +57,81 @@ async function fetchFromRegistry(fid) {
   }
 }
 
+async function fetchFromLookupBot(fid) {
+  // Call the Playwright bot service. This is the path that fires for any
+  // player not yet in the registry. The bot drives headless Chrome through
+  // CG's own giftcode page, so sign-field computation happens on their JS,
+  // not ours. Takes ~5-15s — show the user a "looking up your profile"
+  // state via the optional statusCallback while we wait.
+  const statusEl = document.getElementById('fid-lookup-status');
+  if (statusEl) {
+    statusEl.textContent = 'Looking up your profile… (this can take up to 20 seconds the first time)';
+    statusEl.style.display = 'block';
+  }
+  try {
+    const res = await fetch(LOOKUP_BOT_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ fid: String(fid).trim() }),
+      // Explicit timeout via AbortController — the bot can take ~15s on a
+      // cold start, we give it up to 30s before giving up.
+      signal:  AbortSignal.timeout(30_000),
+    });
+    if (res.status === 404) {
+      throw new Error('Player ID not found. Double-check the number — Kingshot Player IDs are usually 7-8 digits.');
+    }
+    if (res.status === 429) {
+      throw new Error('Too many lookups right now. Wait a few seconds and try again.');
+    }
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(`Lookup service returned ${res.status}. ${text.slice(0, 120)}`);
+    }
+    const profile = await res.json();
+    // Bot returns normalized shape. Re-wrap to match what classifyProfile expects.
+    return {
+      fid:          profile.fid,
+      nickname:     profile.nickname,
+      kid:          profile.kid,
+      stove_lv:     profile.stove_lv,
+      pay_amt:      (profile.total_recharge || 0) * 100,   // dollars → cents
+      avatar_image: profile.avatar_image,
+      _source:      'lookup_bot',
+    };
+  } finally {
+    if (statusEl) statusEl.style.display = 'none';
+  }
+}
+
 async function fetchPlayerProfile(fid) {
-  // 1) Try the registry first. It's a static JSON on GitHub Pages —
-  //    fast, no API auth, no sign algorithm. Populated by the Playwright
-  //    bot in bot/lookup_player.py for any player who has been looked up.
+  // 1) Registry first. Instant, static JSON, works offline after first load.
+  //    Populated by admin-run `python3 bot/lookup_player.py {fid} --save`.
   const fromRegistry = await fetchFromRegistry(fid);
   if (fromRegistry) return fromRegistry;
 
-  // 2) Fall back to the Cloudflare Worker proxy → CG API. This path
-  //    currently fails with "Sign Error" on new FIDs because CG's sign
-  //    algorithm is uncrackable. When the bot has populated the registry
-  //    for this FID, path 1 wins and this never runs.
-  const res = await fetch(FID_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ fid: String(fid).trim(), cdkey: '' }),
-  });
-
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`API returned ${res.status}: ${text.slice(0, 120)}`);
+  // 2) Try the direct API proxy. This WORKS for FIDs whose sign the old
+  //    path can still handle (legacy cache etc). Most new FIDs fail here
+  //    with Sign Error — that's fine, we fall through to the bot.
+  try {
+    const res = await fetch(FID_API, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ fid: String(fid).trim(), cdkey: '' }),
+      signal:  AbortSignal.timeout(6_000),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.data)                   return data.data;
+      if (data && data.nickname !== undefined) return data;
+    }
+    // Non-OK or unexpected shape → fall through to bot
+  } catch (_e) {
+    // Timeout or network error → fall through to bot
   }
 
-  const data = await res.json();
-
-  // Century Games API returns { code, data: { ... } } or similar
-  if (data && data.data)                     return data.data;
-  if (data && data.nickname !== undefined)   return data;
-  throw new Error('Unexpected API response shape');
+  // 3) Bot. Always works as long as the Fly.io (or equivalent) service
+  //    is up and Century Games hasn't changed their page layout.
+  return await fetchFromLookupBot(fid);
 }
 
 // ─────────────────────────────────────────
