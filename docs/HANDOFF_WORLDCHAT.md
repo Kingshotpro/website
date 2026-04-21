@@ -185,6 +185,103 @@ one kingdom detail page and one aggregator page before pushing.
 
 ---
 
+## Third request — headless-browser Player ID lookup bot (added post-ceiling)
+
+Architect pushed back on my framing: "why do we need their player ID from
+scraped data? Isn't the obvious solution to have a bot programmed into the
+website that simply pulls the data from the public api access?"
+
+**They're right.** I had closed the "use the CG API" door too broadly. The
+closure in `docs/specs/API_FIX_SPEC.md` is about cryptanalysis of the sign
+algorithm — not about never using their API again. A **headless browser
+bot** sidesteps the crypto entirely because CG's own obfuscated JS computes
+the sign for us when we load their giftcode page in real Chrome.
+
+### Why this is different from what was tried
+
+| Approach | Status | Why |
+|----------|--------|-----|
+| Direct API POST with guessed sign | DEAD | Sign is MD5 with secret we can't recover |
+| Reverse-engineer secret from minified JS | DEAD | Obfuscation + rotating keys, Hive gave up |
+| **Headless browser executes their JS** | **Viable, not tried** | Their JS does the crypto; we read the result |
+| ADB phone fleet scraper | Working | For rankings, not individual lookup |
+
+The prior session memory note "Akamai JavaScript challenge bypass via real
+browser" is the same technique, already identified but never built.
+
+### Scope
+
+Small service. One endpoint. Not a whole platform.
+
+**Build target:** a tiny VPS or Fly.io machine runs a Node/Python service with
+Playwright. Service exposes a single HTTP endpoint:
+
+```
+POST /player/lookup
+Body: { fid: "40507834" }
+→ { nickname, kid, stove_lv, pay_amt, ... }  // same shape the old API returned
+```
+
+Inside the service:
+1. Reuse a long-lived Playwright browser context (not a fresh Chrome per request — too slow, too bot-flaggy)
+2. On request: navigate to the giftcode page if not already there
+3. Fill the Player ID field, click submit, wait for result DOM
+4. Scrape the response (nickname/kingdom/etc. shown on page after lookup)
+5. Return JSON. Cache the result in memory or Redis with a ~24h TTL keyed by fid
+
+**Worker side** (Cloudflare):
+- New endpoint `POST /player/lookup` that proxies to the VPS service
+- KV-caches results for 24h so repeat lookups don't re-hit the bot
+- Rate-limits per-user to prevent abuse
+
+**Cost:** VPS ~$5–10/mo. Playwright-compatible images exist on Fly.io and
+Railway and don't need a full dedicated server.
+
+### Build phases
+
+1. **Prototype locally.** Playwright script that opens giftcode page, submits
+   a known FID, dumps the response. One file, ~50 lines. Confirms the bot
+   path even works before spending on hosting.
+2. **Wrap in HTTP service.** Express/FastAPI wrapper, single endpoint, single
+   browser context, retry on transient failures.
+3. **Deploy to VPS.** Fly.io has Playwright images. Railway also works.
+4. **Worker proxy + cache.** `/player/lookup` in `worker/worker.js`.
+5. **Wire front end.** `js/fid.js` already POSTs to the Worker — just needs
+   the new endpoint. Change the `FID_API` URL or add a fallback chain
+   (old `/player` first, then `/player/lookup` via bot).
+
+### Risks to plan around
+
+- **Akamai bot detection.** They may block residential-VPS IPs. Mitigations:
+  pacing (max 1 lookup / 10s), human-like mouse moves, rotating user agents.
+  Test with real IPs before committing.
+- **CG changing the giftcode page layout.** Bot scrapes DOM; if CG
+  restructures, bot breaks. Mitigation: integration test the bot daily
+  against a known-good FID; alert on parse failure.
+- **TOS gray area.** CG's TOS probably forbids automated scraping. This is
+  the same TOS question we already decided was worth the risk for the ADB
+  scraper. Worth explicitly re-confirming with the Architect before shipping.
+
+### What this unlocks
+
+Every player who enters their ID gets real profile data, not just the ones
+whose kingdom happens to be in our 32-kingdom scraper rotation. Also fixes
+the existing "Town Center Level" field population (currently blank for new
+signups because FID lookup returns nothing).
+
+Player 40507834 — the reason this thread opened — would work as soon as
+this ships, regardless of whether their kingdom is in our scraper fleet.
+
+### Update API_FIX_SPEC.md when this lands
+
+The closed-banner on `docs/specs/API_FIX_SPEC.md` currently says "stop
+trying to crack the sign." Leave that — the closure is correct for that
+specific approach. But add a "See also" note pointing at this section of
+the handoff, because a future mind reading the closed spec might otherwise
+assume ALL API paths are dead.
+
+---
+
 ## One thing I got wrong
 
 Earlier in the session I carried the Century Games API-crack task as "delegated, waiting" when the Hive had already closed that path. Fixed by reading the existing plan and committing a closed-banner to `docs/specs/API_FIX_SPEC.md` (commit `1ab0af2`). Flag for any future mind: **when you find yourself holding a task, check whether it's a real open thread or an artifact you produced.**
