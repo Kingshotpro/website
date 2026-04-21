@@ -9,8 +9,18 @@
       "total_recharge": 0,
       "looked_up": 1776796879,
       "source": "giftcode_bot"
+    },
+    "38982714": {
+      "fid": 38982714,
+      "nickname": "caffeinatedmochi",
+      "kid": 202,
+      "stove_lv": 51,
+      "avatar_image": "https://got-global-avatar.akamaized.net/avatar/2026/04/15/NxrAvN_1776226524.png",
+      "total_recharge": 0,
+      "looked_up": 1776807150,
+      "source": "giftcode_bot"
     }
   },
-  "generated": 1776796879,
+  "generated": 1776807150,
   "source": "bot/lookup_player.py"
 }
