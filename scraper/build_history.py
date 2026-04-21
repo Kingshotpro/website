@@ -34,7 +34,8 @@ RELIABLE = ['alliance_power', 'alliance_kills', 'personal_power', 'kill_count',
             'hero_power', 'heros_total_power', 'total_pet_power', 'mystic_trial']
 
 KINGDOM_IDS = [1, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233,
-               300, 301, 302, 303, 350, 1908, 1916, 1944, 1945]
+               300, 301, 302, 303, 350, 1000, 1001, 1002, 1003, 1004, 1005, 1006,
+               1007, 1008, 1908, 1916, 1944, 1945]
 
 
 def clean_tag_name(raw):

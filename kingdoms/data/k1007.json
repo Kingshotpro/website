@@ -1,6 +1,6 @@
 {
   "kingdom": 1007,
-  "last_updated": "2026-04-18",
+  "last_updated": "2026-04-20",
   "source": "ADB screenshot scraper + EasyOCR extraction",
   "categories": {
     "alliance_power": [
@@ -8,432 +8,432 @@
         "rank": 1,
         "tag": "FPX",
         "name": "FieryPhoenix",
-        "value": 15015773457
+        "value": 15194966247
       },
       {
         "rank": 2,
         "tag": "ReV",
         "name": "REVOLUTION",
-        "value": 13768972058
+        "value": 14485653827
       },
       {
         "rank": 3,
         "tag": "DTD",
         "name": "DeathToDishonour",
-        "value": 12941772946
+        "value": 13096437104
       },
       {
         "rank": 4,
         "tag": "ReA",
         "name": "MiniRevolution",
-        "value": 5195749828
+        "value": 5600259634
       },
       {
         "rank": 5,
         "tag": "DtD",
         "name": "DTDAcademy",
-        "value": 3948645679
+        "value": 4189684704
       },
       {
         "rank": 6,
         "tag": "RPX",
         "name": "RisingPhoenix",
-        "value": 3798322444
+        "value": 3736402863
       },
       {
         "rank": 7,
         "tag": "TWR",
         "name": "TogetherWeRise",
-        "value": 3549131063
+        "value": 3613099705
       },
       {
         "rank": 8,
         "tag": "GGR",
         "name": "GRR",
-        "value": 1925354334
+        "value": 1961497949
       },
       {
         "rank": 9,
         "tag": "Brz",
         "name": "Brazuca",
-        "value": 1071438083
+        "value": 840700414
       },
       {
         "rank": 10,
-        "tag": "ReF",
-        "name": "Minirevolution",
-        "value": 977410398
+        "tag": "NEW",
+        "name": "NewBeginnings",
+        "value": 788745794
       },
       {
         "rank": 11,
-        "tag": "NEWI",
-        "name": "NewBeginnings",
-        "value": 746910543
+        "tag": "usz",
+        "name": "Manu",
+        "value": 565739327
       },
       {
         "rank": 12,
         "tag": "ESP",
         "name": "ESPANAandFriends",
-        "value": 544362013
+        "value": 554273975
       },
       {
         "rank": 13,
-        "tag": "72B",
-        "name": "Kobre",
-        "value": 492063892
+        "tag": "ReF",
+        "name": "Minirevolution",
+        "value": 553247915
       },
       {
         "rank": 14,
         "tag": "HAL",
         "name": "Horsemen4Life",
-        "value": 486862272
+        "value": 496921827
       },
       {
         "rank": 15,
-        "tag": "uNa",
-        "name": "Warriors",
-        "value": 450874827
+        "tag": "72B",
+        "name": "Kobre",
+        "value": 494672592
       },
       {
         "rank": 16,
-        "tag": "usz",
-        "name": "Manu",
-        "value": 417243384
+        "tag": "uNa",
+        "name": "Warriors",
+        "value": 397801901
       },
       {
         "rank": 17,
         "tag": "sym",
         "name": "FigliDelVesuvio",
-        "value": 228798297
+        "value": 223371573
       },
       {
         "rank": 18,
         "tag": "tpm",
         "name": "LiuEmpire",
-        "value": 219051098
+        "value": 222302259
       },
       {
         "rank": 19,
-        "tag": "TNT",
-        "name": "KNOX",
-        "value": 199628129
+        "tag": "OmP",
+        "name": "OmegaPop",
+        "value": 198761107
       },
       {
         "rank": 20,
-        "tag": "OmP",
-        "name": "OmegaPop",
-        "value": 198183261
-      },
-      {
-        "rank": 21,
         "tag": "ELA",
         "name": "AkinciElara",
         "value": 181986950
       },
       {
-        "rank": 22,
+        "rank": 21,
         "tag": "Dtd",
         "name": "Noobsandboobs",
         "value": 173249950
       },
       {
-        "rank": 23,
+        "rank": 22,
         "tag": "Wuc",
         "name": "Henry",
-        "value": 163896646
+        "value": 166928394
+      },
+      {
+        "rank": 23,
+        "tag": "PDc",
+        "name": "PiratesofTheC",
+        "value": 158319896
       },
       {
         "rank": 24,
-        "tag": "PDc",
-        "name": "PiratesofTheC",
-        "value": 157962931
+        "tag": "PIs",
+        "name": "GHost",
+        "value": 157236709
       },
       {
         "rank": 25,
-        "tag": "",
-        "name": "",
-        "value": 156088314
+        "tag": "xJD",
+        "name": "H",
+        "value": 152124393
       },
       {
         "rank": 26,
-        "tag": "MdK",
-        "name": "Blackout",
-        "value": 141383337
+        "tag": "",
+        "name": "",
+        "value": 145163278
       },
       {
         "rank": 27,
         "tag": "ymG",
         "name": "Mundonovo",
-        "value": 134623747
+        "value": 134881078
       },
       {
         "rank": 28,
         "tag": "Frm",
         "name": "Formidable",
-        "value": 113347031
+        "value": 116083256
       },
       {
         "rank": 29,
-        "tag": "PDS",
-        "name": "PaktoDeSangre",
-        "value": 111866632
+        "tag": "TRI",
+        "name": "TURKiYE",
+        "value": 109612840
       },
       {
         "rank": 30,
-        "tag": "",
-        "name": "",
-        "value": 108286071
+        "tag": "SUP",
+        "name": "Supernova",
+        "value": 108973470
       },
       {
         "rank": 31,
-        "tag": "",
-        "name": "",
-        "value": 92967233
+        "tag": "PDS",
+        "name": "PaktoDeSangre",
+        "value": 108545369
       },
       {
         "rank": 32,
-        "tag": "",
-        "name": "",
-        "value": 81988665
+        "tag": "GND",
+        "name": "Gondor",
+        "value": 95633886
       },
       {
         "rank": 33,
-        "tag": "",
-        "name": "",
-        "value": 72880649
+        "tag": "HBT",
+        "name": "Tander",
+        "value": 81988665
       },
       {
         "rank": 34,
         "tag": "Xzz",
-        "name": "zetas",
+        "name": "Zetas",
         "value": 69440198
       },
       {
         "rank": 35,
-        "tag": "Mrc",
-        "name": "lagranalianza",
-        "value": 66233000
+        "tag": "aWt",
+        "name": "HoodAllianz",
+        "value": 53861149
       },
       {
         "rank": 36,
-        "tag": "Rhn",
-        "name": "Rohan",
-        "value": 61271669
-      },
-      {
-        "rank": 37,
-        "tag": "NaP",
-        "name": "NaplesInTheWar",
-        "value": 60239009
-      },
-      {
-        "rank": 38,
-        "tag": "BmP",
-        "name": "Lonewolf",
-        "value": 57180991
-      },
-      {
-        "rank": 39,
-        "tag": "aWt",
-        "name": "HoodAllianz",
-        "value": 53285225
-      },
-      {
-        "rank": 40,
         "tag": "TRP",
         "name": "carlospapa",
         "value": 46034340
       },
       {
-        "rank": 41,
+        "rank": 37,
         "tag": "XFc",
         "name": "Outcasts",
-        "value": 42827805
+        "value": 43946827
+      },
+      {
+        "rank": 38,
+        "tag": "ATFIT",
+        "name": "RAD3R",
+        "value": 42559980
+      },
+      {
+        "rank": 39,
+        "tag": "UZN",
+        "name": "Safe",
+        "value": 42522199
+      },
+      {
+        "rank": 40,
+        "tag": "kAy",
+        "name": "ITFC",
+        "value": 40084761
+      },
+      {
+        "rank": 41,
+        "tag": "RBG",
+        "name": "Res Judicata",
+        "value": 36005189
       },
       {
         "rank": 42,
-        "tag": "ATF",
-        "name": "TRAD3R",
-        "value": 42403170
-      },
-      {
-        "rank": 43,
-        "tag": "UZN",
-        "name": "Safe",
-        "value": 41817104
-      },
-      {
-        "rank": 44,
-        "tag": "kAy",
-        "name": "ITFC",
-        "value": 39723072
-      },
-      {
-        "rank": 45,
-        "tag": "TwR",
-        "name": "TwRTransition",
+        "tag": "",
+        "name": "",
         "value": 35358488
       },
       {
-        "rank": 46,
-        "tag": "RBG",
-        "name": "Resudicata",
-        "value": 34694580
-      },
-      {
-        "rank": 47,
+        "rank": 43,
         "tag": "StA",
         "name": "SciUstA",
         "value": 32663881
       },
       {
-        "rank": 48,
+        "rank": 44,
         "tag": "ERA",
         "name": "Thuglife",
         "value": 30546657
       },
       {
-        "rank": 49,
+        "rank": 45,
         "tag": "vVflm",
         "name": "onsterslayer",
-        "value": 26214444
+        "value": 26825081
       },
       {
-        "rank": 50,
-        "tag": "",
-        "name": "",
+        "rank": 46,
+        "tag": "USA",
+        "name": "PinkPonyClub",
+        "value": 24269392
+      },
+      {
+        "rank": 47,
+        "tag": "twr",
+        "name": "TransitionTeam",
         "value": 24228968
       },
       {
-        "rank": 51,
+        "rank": 48,
         "tag": "cFK",
         "name": "SOOSIALIIANCE",
         "value": 20671478
       },
       {
-        "rank": 52,
+        "rank": 49,
         "tag": "BRR",
         "name": "BloodRedRoses",
         "value": 15714816
       },
       {
-        "rank": 53,
+        "rank": 50,
         "tag": "NMe",
         "name": "Freedomia",
         "value": 14407549
       },
       {
-        "rank": 54,
+        "rank": 51,
         "tag": "RYk",
         "name": "Foresterie2427",
-        "value": 14048690
+        "value": 14045964
       },
       {
-        "rank": 55,
-        "tag": "PUG",
-        "name": "Purgatorio",
-        "value": 12851540
-      },
-      {
-        "rank": 56,
+        "rank": 52,
         "tag": "uWw",
         "name": "Pulenm",
         "value": 11906797
       },
       {
-        "rank": 57,
-        "tag": "",
-        "name": "",
+        "rank": 53,
+        "tag": "wQn",
+        "name": "wscfy",
         "value": 11826628
       },
       {
-        "rank": 58,
-        "tag": "",
-        "name": "",
+        "rank": 54,
+        "tag": "tbf",
+        "name": "Foxes",
         "value": 10948796
       },
       {
-        "rank": 59,
+        "rank": 55,
         "tag": "XSV",
         "name": "Bayern",
         "value": 10571106
       },
       {
-        "rank": 60,
+        "rank": 56,
         "tag": "PNx",
         "name": "Nirellik",
         "value": 8359101
       },
       {
-        "rank": 61,
+        "rank": 57,
         "tag": "SOB",
         "name": "BlueKnights",
         "value": 7988269
       },
       {
-        "rank": 62,
+        "rank": 58,
         "tag": "McD",
         "name": "Maccies",
         "value": 7836714
       },
       {
-        "rank": 63,
-        "tag": "Hpg",
-        "name": "sbsyl",
+        "rank": 59,
+        "tag": "",
+        "name": "",
         "value": 6171832
       },
       {
-        "rank": 64,
+        "rank": 60,
         "tag": "s",
         "name": "PClub99",
         "value": 6157923
       },
       {
-        "rank": 65,
+        "rank": 61,
         "tag": "EKD",
         "name": "EItonsDaddy",
         "value": 5736425
       },
       {
-        "rank": 66,
-        "tag": "",
-        "name": "",
+        "rank": 62,
+        "tag": "YHt",
+        "name": "relativepeace",
         "value": 5327078
       },
       {
-        "rank": 67,
+        "rank": 63,
+        "tag": "zRS",
+        "name": "TheRanch",
+        "value": 5037437
+      },
+      {
+        "rank": 64,
+        "tag": "tXx",
+        "name": "TopShOttaz",
+        "value": 4929309
+      },
+      {
+        "rank": 65,
+        "tag": "qD",
+        "name": "Rljustthetip",
+        "value": 4842865
+      },
+      {
+        "rank": 66,
         "tag": "XMx",
         "name": "WARWINNERS",
         "value": 4817226
       },
       {
-        "rank": 68,
+        "rank": 67,
         "tag": "Qya",
         "name": "TMoneyl",
         "value": 4709984
       },
       {
-        "rank": 69,
+        "rank": 68,
         "tag": "ckE",
         "name": "LordsotheeLan",
         "value": 4677370
       },
       {
-        "rank": 70,
+        "rank": 69,
         "tag": "EWx",
         "name": "kTdbigboss",
         "value": 4460912
       },
       {
-        "rank": 71,
+        "rank": 70,
         "tag": "CsX",
-        "name": "AllianzVon Weiss",
+        "name": "AllianzVonWeiss",
         "value": 4356181
       },
       {
+        "rank": 71,
+        "tag": "LBG",
+        "name": "LBG",
+        "value": 4077139
+      },
+      {
         "rank": 72,
-        "tag": "Yrsjo",
-        "name": "+=E8014LH7gt",
+        "tag": "YrS",
+        "name": "o+?E8014Lh?+?t",
         "value": 3520836
       },
       {
@@ -456,15 +456,15 @@
       },
       {
         "rank": 76,
-        "tag": "DPT",
-        "name": "Wurst",
-        "value": 2805296
+        "tag": "BAT",
+        "name": "BATLOVE",
+        "value": 2830986
       },
       {
         "rank": 77,
-        "tag": "BAT",
-        "name": "BATLOVE",
-        "value": 2790586
+        "tag": "DPT",
+        "name": "Wurst",
+        "value": 2805296
       },
       {
         "rank": 78,
@@ -486,20 +486,20 @@
       },
       {
         "rank": 81,
-        "tag": "",
-        "name": "",
+        "tag": "BXG",
+        "name": "g",
         "value": 2264373
       },
       {
         "rank": 82,
-        "tag": "",
-        "name": "",
+        "tag": "Www",
+        "name": "LOSTOROSNEGRO",
         "value": 2260794
       },
       {
         "rank": 83,
-        "tag": "",
-        "name": "",
+        "tag": "VmJ",
+        "name": "Flamengocampeao",
         "value": 2203429
       },
       {
@@ -510,8 +510,8 @@
       },
       {
         "rank": 85,
-        "tag": "FUT",
-        "name": "hiddenleaf",
+        "tag": "FU",
+        "name": "Thhiddenleaf",
         "value": 2195424
       },
       {
@@ -540,48 +540,42 @@
       },
       {
         "rank": 90,
-        "tag": "LBG",
-        "name": "LBG",
-        "value": 1995490
-      },
-      {
-        "rank": 91,
         "tag": "LOL",
         "name": "LOL",
         "value": 1911369
       },
       {
-        "rank": 92,
+        "rank": 91,
         "tag": "VBj",
         "name": "Bigdaddy",
         "value": 1801597
       },
       {
-        "rank": 93,
+        "rank": 92,
         "tag": "eRn",
         "name": "Dopeboyz420",
         "value": 1776756
       },
       {
-        "rank": 94,
+        "rank": 93,
         "tag": "UeB",
         "name": "ISTANBUL",
         "value": 1752810
       },
       {
-        "rank": 95,
+        "rank": 94,
         "tag": "Aw",
         "name": "Qlloki",
         "value": 1745606
       },
       {
-        "rank": 96,
-        "tag": "USA",
-        "name": "PinkPonyClub",
-        "value": 640609
+        "rank": 95,
+        "tag": "qbt",
+        "name": "RagingTanko'$",
+        "value": 1725326
       },
       {
-        "rank": 97,
+        "rank": 96,
         "tag": "",
         "name": "Alliance Power",
         "value": 0
@@ -592,346 +586,328 @@
         "rank": 1,
         "tag": "FPX",
         "name": "FieryPhoenix",
-        "value": 1286318555
+        "value": 1261348126
       },
       {
         "rank": 2,
         "tag": "ReV",
         "name": "REVOLUTION",
-        "value": 933483909
+        "value": 993796832
       },
       {
         "rank": 3,
         "tag": "DTD",
         "name": "DeathToDishonour",
-        "value": 407340613
+        "value": 406951096
       },
       {
         "rank": 4,
         "tag": "ReA",
         "name": "MiniRevolution",
-        "value": 55417989
+        "value": 56951139
       },
       {
         "rank": 5,
+        "tag": "RPX",
+        "name": "RisingPhoenix",
+        "value": 37480014
+      },
+      {
+        "rank": 6,
         "tag": "ELA",
         "name": "AkinciElara",
         "value": 37266447
       },
       {
-        "rank": 6,
-        "tag": "ReF",
-        "name": "Minirevolution",
-        "value": 34395814
-      },
-      {
         "rank": 7,
         "tag": "DtD",
         "name": "DTDAcademy",
-        "value": 32288789
+        "value": 33319015
       },
       {
         "rank": 8,
-        "tag": "RPX",
-        "name": "RisingPhoenix",
-        "value": 30137043
+        "tag": "GGR",
+        "name": "GRR",
+        "value": 26160092
       },
       {
         "rank": 9,
-        "tag": "GGR",
-        "name": "GRR",
-        "value": 26118784
+        "tag": "TWR",
+        "name": "TogetherWeRise",
+        "value": 15169333
       },
       {
         "rank": 10,
-        "tag": "VVR",
-        "name": "ogethervverise",
-        "value": 15169333
+        "tag": "usz",
+        "name": "Manu",
+        "value": 11759291
       },
       {
         "rank": 11,
         "tag": "Brz",
         "name": "Brazuca",
-        "value": 8612448
+        "value": 8307238
       },
       {
         "rank": 12,
         "tag": "NEW",
         "name": "NewBeginnings",
-        "value": 4902221
+        "value": 4902222
       },
       {
         "rank": 13,
+        "tag": "ReF",
+        "name": "Minirevolution",
+        "value": 3897357
+      },
+      {
+        "rank": 14,
         "tag": "ESP",
         "name": "ESPANAandFriends",
         "value": 3260107
       },
       {
-        "rank": 14,
+        "rank": 15,
         "tag": "72B",
         "name": "Kobre",
         "value": 2377489
       },
       {
-        "rank": 15,
-        "tag": "usz",
-        "name": "Manu",
-        "value": 1817255
-      },
-      {
         "rank": 16,
-        "tag": "uNa",
-        "name": "Warriors",
-        "value": 1750212
-      },
-      {
-        "rank": 17,
         "tag": "HAL",
         "name": "Horsemen4Life",
         "value": 1747487
       },
       {
-        "rank": 18,
+        "rank": 17,
         "tag": "OmP",
         "name": "OmegaPop",
         "value": 1449949
       },
       {
+        "rank": 18,
+        "tag": "uNa",
+        "name": "Warriors",
+        "value": 1164574
+      },
+      {
         "rank": 19,
-        "tag": "PDS",
-        "name": "PaktoDeSangre",
-        "value": 1190120
-      },
-      {
-        "rank": 20,
-        "tag": "NaP",
-        "name": "NaplesInTheWar",
-        "value": 1142005
-      },
-      {
-        "rank": 21,
         "tag": "BmP",
         "name": "Lonewolf",
         "value": 1051917
       },
       {
-        "rank": 22,
+        "rank": 20,
         "tag": "GND",
         "name": "Gondor",
         "value": 945468
       },
       {
-        "rank": 23,
-        "tag": "Frm",
-        "name": "Formidable",
-        "value": 900771
-      },
-      {
-        "rank": 24,
-        "tag": "TNT",
-        "name": "KNOX",
+        "rank": 21,
+        "tag": "TNTIK",
+        "name": "NOX",
         "value": 778839
       },
       {
-        "rank": 25,
+        "rank": 22,
         "tag": "MdK",
         "name": "Blackout",
         "value": 664600
       },
       {
+        "rank": 23,
+        "tag": "Dtd",
+        "name": "Noobsandboobs",
+        "value": 502993
+      },
+      {
+        "rank": 24,
+        "tag": "PIs",
+        "name": "GHOST",
+        "value": 467686
+      },
+      {
+        "rank": 25,
+        "tag": "Wuc",
+        "name": "Henry",
+        "value": 464148
+      },
+      {
         "rank": 26,
-        "tag": "qDR",
-        "name": "justthetip",
-        "value": 518590
-      },
-      {
-        "rank": 27,
-        "tag": "tpm",
-        "name": "LiuEmpire",
-        "value": 425870
-      },
-      {
-        "rank": 28,
-        "tag": "aWt",
-        "name": "HoodAllianz",
-        "value": 373016
-      },
-      {
-        "rank": 29,
-        "tag": "sym",
-        "name": "FigliDelVesuvio",
-        "value": 370042
-      },
-      {
-        "rank": 30,
-        "tag": "PDC",
-        "name": "PiratesofTheC",
-        "value": 351667
-      },
-      {
-        "rank": 31,
         "tag": "StA",
         "name": "SciUstA",
         "value": 342483
       },
       {
-        "rank": 32,
+        "rank": 27,
         "tag": "HBT",
         "name": "Tander",
         "value": 284356
       },
       {
-        "rank": 33,
+        "rank": 28,
         "tag": "xJD",
         "name": "H",
         "value": 241615
       },
       {
-        "rank": 34,
-        "tag": "SUP",
-        "name": "Supernova",
-        "value": 239597
+        "rank": 29,
+        "tag": "ymG",
+        "name": "Mundonovo",
+        "value": 236409
       },
       {
-        "rank": 35,
+        "rank": 30,
         "tag": "TRI",
-        "name": "TURKiYE",
+        "name": "TURKIYE",
         "value": 232358
       },
       {
-        "rank": 36,
+        "rank": 31,
         "tag": "Mrc",
         "name": "lagranalianza",
         "value": 224278
       },
       {
-        "rank": 37,
+        "rank": 32,
         "tag": "USA",
         "name": "PinkPonyClub",
         "value": 163946
       },
       {
-        "rank": 38,
+        "rank": 33,
         "tag": "Xzz",
-        "name": "zetas",
+        "name": "etas",
         "value": 157365
       },
       {
-        "rank": 39,
+        "rank": 34,
         "tag": "TwR",
         "name": "TwRTransition",
         "value": 149145
       },
       {
-        "rank": 40,
+        "rank": 35,
+        "tag": "Rhn",
+        "name": "Rohan",
+        "value": 127201
+      },
+      {
+        "rank": 36,
         "tag": "kAy",
         "name": "ITFC",
         "value": 109785
       },
       {
-        "rank": 41,
+        "rank": 37,
         "tag": "twr",
         "name": "TransitionTeam",
         "value": 106683
       },
       {
-        "rank": 42,
+        "rank": 38,
         "tag": "XFc",
         "name": "Outcasts",
         "value": 93812
       },
       {
-        "rank": 43,
-        "tag": "ATF",
-        "name": "TRAD3R",
+        "rank": 39,
+        "tag": "ATFIT",
+        "name": "RAD3R",
         "value": 89477
       },
       {
-        "rank": 44,
+        "rank": 40,
+        "tag": "qD",
+        "name": "Rljustthetip",
+        "value": 83788
+      },
+      {
+        "rank": 41,
         "tag": "s",
         "name": "Pclub99",
         "value": 76870
       },
       {
-        "rank": 45,
+        "rank": 42,
         "tag": "RYk",
         "name": "Foresterie2427",
-        "value": 67650
+        "value": 67651
       },
       {
-        "rank": 46,
+        "rank": 43,
         "tag": "UZN",
         "name": "Safe",
         "value": 59596
       },
       {
-        "rank": 47,
+        "rank": 44,
         "tag": "vVflm",
         "name": "onsterslayer",
         "value": 58934
       },
       {
-        "rank": 48,
+        "rank": 45,
         "tag": "cFK",
         "name": "SOOSIALIIANCE",
         "value": 54966
       },
       {
-        "rank": 49,
+        "rank": 46,
+        "tag": "RBG",
+        "name": "Res Judicata",
+        "value": 53189
+      },
+      {
+        "rank": 47,
         "tag": "NMe",
         "name": "Freedomia",
         "value": 50885
       },
       {
-        "rank": 50,
+        "rank": 48,
         "tag": "PNx",
         "name": "Nirellik",
         "value": 44305
       },
       {
-        "rank": 51,
+        "rank": 49,
         "tag": "Hpg",
-        "name": "sbsyi",
+        "name": "sLsi",
         "value": 39235
       },
       {
-        "rank": 52,
-        "tag": "TRP",
-        "name": "carlospapa",
-        "value": 36491
-      },
-      {
-        "rank": 53,
+        "rank": 50,
         "tag": "ERA",
         "name": "Thuglife",
         "value": 29072
       },
       {
-        "rank": 54,
+        "rank": 51,
         "tag": "XMx",
         "name": "WARWINNERS",
         "value": 26713
       },
       {
-        "rank": 55,
+        "rank": 52,
         "tag": "XSV",
         "name": "Bayern",
         "value": 19165
       },
       {
-        "rank": 56,
+        "rank": 53,
         "tag": "uWw",
         "name": "Pulenm",
         "value": 14623
       },
       {
-        "rank": 57,
+        "rank": 54,
         "tag": "Fq",
         "name": "Nlgregar",
         "value": 13590
       },
       {
-        "rank": 58,
+        "rank": 55,
         "tag": "",
         "name": "Alliance Kills",
         "value": 0
@@ -942,67 +918,67 @@
         "rank": 1,
         "tag": "FPX",
         "name": "Lizi",
-        "value": 509192056
+        "value": 536263228
       },
       {
         "rank": 2,
-        "tag": "DTD",
-        "name": "Lanzy",
-        "value": 458888337
+        "tag": "ReV",
+        "name": "ELTON_KNAUL",
+        "value": 403701813
       },
       {
         "rank": 3,
-        "tag": "ReV",
-        "name": "ELTON_KNAUL",
-        "value": 391602020
+        "tag": "FPX",
+        "name": "NovaLuna",
+        "value": 392438556
       },
       {
         "rank": 4,
         "tag": "FPX",
-        "name": "NovaLuna",
-        "value": 389707778
+        "name": "Lord Fiya 8",
+        "value": 324095949
       },
       {
         "rank": 5,
         "tag": "FPX",
-        "name": "Lord Fiya 8",
-        "value": 316305425
+        "name": "Defiant",
+        "value": 273662676
       },
       {
         "rank": 6,
-        "tag": "FPX",
-        "name": "Defiant",
-        "value": 270015788
+        "tag": "DTD",
+        "name": "Kazl",
+        "value": 262406456
       },
       {
         "rank": 7,
-        "tag": "DTD",
-        "name": "Kazl",
-        "value": 257908096
+        "tag": "",
+        "name": "ReV",
+        "value": 256322685
       },
       {
         "rank": 8,
         "tag": "ReV",
-        "name": "SugarPuffiesRev",
-        "value": 252513033
+        "name": "KravenRev",
+        "value": 254353995
       },
       {
         "rank": 9,
-        "tag": "ReV",
-        "name": "KravenRev",
-        "value": 247765909
+        "tag": "FPX",
+        "name": "e TrueFiya 3",
+        "value": 247547913
       },
       {
         "rank": 10,
-        "tag": "FPX",
-        "name": "e TrueFiya 3",
-        "value": 246195039
+        "tag": "ReV",
+        "name": "xerxes2620",
+        "value": 246164873
       },
       {
         "rank": 11,
-        "tag": "ReV",
-        "name": "xerxes2620",
-        "value": 243381374
+        "tag": "FPX",
+        "name": "Gigi Penguino",
+        "value": 241579044
       },
       {
         "rank": 12,
@@ -1012,510 +988,492 @@
       },
       {
         "rank": 13,
-        "tag": "FPX",
-        "name": "Matsu de Oni",
-        "value": 238956683
+        "tag": "",
+        "name": "",
+        "value": 228421083
       },
       {
         "rank": 14,
         "tag": "",
-        "name": "O6TR",
-        "value": 238825524
+        "name": "",
+        "value": 225701168
       },
       {
         "rank": 15,
         "tag": "FPX",
-        "name": "Gigi Penguino",
-        "value": 238745694
+        "name": "Lady Fiya 1",
+        "value": 216145526
       },
       {
         "rank": 16,
-        "tag": "",
-        "name": "",
-        "value": 225946853
+        "tag": "ReV",
+        "name": "Buckk",
+        "value": 215123259
       },
       {
         "rank": 17,
-        "tag": "",
-        "name": "",
-        "value": 224048509
+        "tag": "FPX",
+        "name": "Tired Chicken",
+        "value": 213533751
       },
       {
         "rank": 18,
-        "tag": "FPX",
-        "name": "RedrumSlayer",
-        "value": 212736338
+        "tag": "ReV",
+        "name": "ROMEOTR",
+        "value": 212526943
       },
       {
         "rank": 19,
         "tag": "ReV",
-        "name": "Buckk",
-        "value": 212308554
+        "name": "ZAGY",
+        "value": 211206831
       },
       {
         "rank": 20,
-        "tag": "FPX",
-        "name": "Tired Chicken",
-        "value": 212197645
+        "tag": "",
+        "name": "ReVJMonkey DJ Paure",
+        "value": 210125421
       },
       {
         "rank": 21,
         "tag": "",
         "name": "",
-        "value": 211658338
+        "value": 209455311
       },
       {
         "rank": 22,
-        "tag": "",
-        "name": "",
-        "value": 211015348
+        "tag": "DTD",
+        "name": "Mistress",
+        "value": 205248588
       },
       {
         "rank": 23,
-        "tag": "",
-        "name": "",
-        "value": 209609968
+        "tag": "ReV",
+        "name": "Bakas",
+        "value": 203881794
       },
       {
         "rank": 24,
-        "tag": "",
-        "name": "",
-        "value": 207493013
+        "tag": "DTD",
+        "name": "Maximus Gsus",
+        "value": 202604493
       },
       {
         "rank": 25,
-        "tag": "",
-        "name": "",
-        "value": 205935618
+        "tag": "ReV",
+        "name": "TeuffeLTR",
+        "value": 202376646
       },
       {
         "rank": 26,
-        "tag": "",
-        "name": "",
-        "value": 205837135
+        "tag": "FPX",
+        "name": "Alpha Gov",
+        "value": 200243299
       },
       {
         "rank": 27,
-        "tag": "DTD",
-        "name": "Mistress",
-        "value": 200180832
+        "tag": "FPX",
+        "name": "General Brizzo",
+        "value": 198107621
       },
       {
         "rank": 28,
-        "tag": "ReV",
-        "name": "Bakas",
-        "value": 198947087
+        "tag": "FPX",
+        "name": "Swarm",
+        "value": 196973354
       },
       {
         "rank": 29,
-        "tag": "FPX",
-        "name": "Alpha Gov",
-        "value": 198323674
+        "tag": "",
+        "name": "",
+        "value": 196457612
       },
       {
         "rank": 30,
         "tag": "FPX",
-        "name": "Moemacita",
-        "value": 196457612
+        "name": "Atsiz GRs",
+        "value": 196384485
       },
       {
         "rank": 31,
         "tag": "FPX",
-        "name": "Swarm",
-        "value": 195850894
+        "name": "Luna",
+        "value": 196238617
       },
       {
         "rank": 32,
-        "tag": "",
-        "name": "BRIZ",
-        "value": 195518191
+        "tag": "DTD",
+        "name": "SMinions",
+        "value": 194791319
       },
       {
         "rank": 33,
-        "tag": "ReV",
-        "name": "TeuffeL TR",
-        "value": 194507495
+        "tag": "",
+        "name": "Skash",
+        "value": 194101813
       },
       {
         "rank": 34,
         "tag": "ReV",
-        "name": "Skash",
-        "value": 192580067
+        "name": "QuinStar Rev",
+        "value": 193534365
       },
       {
         "rank": 35,
-        "tag": "DTD",
-        "name": "SMinions",
-        "value": 190920698
+        "tag": "ReV",
+        "name": "Angorwrack",
+        "value": 193128794
       },
       {
         "rank": 36,
         "tag": "FPX",
-        "name": "Luna",
-        "value": 190856521
+        "name": "MASTERsyr",
+        "value": 191498947
       },
       {
         "rank": 37,
-        "tag": "FPX",
-        "name": "Atsiz GRs",
-        "value": 190374340
+        "tag": "ReV",
+        "name": "zolaft",
+        "value": 189629566
       },
       {
         "rank": 38,
-        "tag": "ReV",
-        "name": "IKBECA",
-        "value": 189637343
+        "tag": "DTD",
+        "name": "Dunc",
+        "value": 188936236
       },
       {
         "rank": 39,
-        "tag": "FPX",
-        "name": "MASTERsyr",
-        "value": 189513334
+        "tag": "ReV",
+        "name": "Andersonbr",
+        "value": 187017901
       },
       {
         "rank": 40,
-        "tag": "ReV",
-        "name": "Angorwrack",
-        "value": 188805471
+        "tag": "",
+        "name": "FPXPrincess Fiya",
+        "value": 186307316
       },
       {
         "rank": 41,
-        "tag": "DTD",
-        "name": "Dunc",
-        "value": 186370682
+        "tag": "ReV",
+        "name": "Lord Jander",
+        "value": 186105591
       },
       {
         "rank": 42,
-        "tag": "",
-        "name": "",
-        "value": 186267598
+        "tag": "ReV",
+        "name": "Lord LeinesRev",
+        "value": 186070339
       },
       {
         "rank": 43,
-        "tag": "",
-        "name": "",
-        "value": 185429022
+        "tag": "FPX",
+        "name": "Prince_Farmer",
+        "value": 185929114
       },
       {
         "rank": 44,
-        "tag": "ReV",
-        "name": "zolaft",
-        "value": 184991364
+        "tag": "FPX",
+        "name": "Equinsu Ocha",
+        "value": 185915767
       },
       {
         "rank": 45,
-        "tag": "FPX",
-        "name": "Equinsu Ocha",
-        "value": 184944129
+        "tag": "ReV",
+        "name": "abu nur",
+        "value": 185540505
       },
       {
         "rank": 46,
         "tag": "ReV",
-        "name": "QuinStar Rev",
-        "value": 184349634
+        "name": "SunnyShadow",
+        "value": 184400121
       },
       {
         "rank": 47,
-        "tag": "ReV",
-        "name": "abu nur",
-        "value": 184304469
+        "tag": "FPX",
+        "name": "Facade",
+        "value": 183918152
       },
       {
         "rank": 48,
-        "tag": "ReV",
-        "name": "Lord Jander",
-        "value": 184286465
+        "tag": "FPX",
+        "name": "sarcasticamor",
+        "value": 183802807
       },
       {
         "rank": 49,
         "tag": "ReV",
-        "name": "SunnyShadow",
-        "value": 184000057
+        "name": "Lobo IbericoRev",
+        "value": 183256718
       },
       {
         "rank": 50,
-        "tag": "",
-        "name": "",
-        "value": 182365789
+        "tag": "ReV",
+        "name": "LeoAlvesRev",
+        "value": 181552514
       },
       {
         "rank": 51,
-        "tag": "",
-        "name": "",
-        "value": 182009893
+        "tag": "FPX",
+        "name": "FALCON",
+        "value": 180631732
       },
       {
         "rank": 52,
-        "tag": "",
-        "name": "",
-        "value": 179422524
+        "tag": "FPX",
+        "name": "Abod",
+        "value": 180266473
       },
       {
         "rank": 53,
-        "tag": "FPX",
-        "name": "Prince_Farmer",
-        "value": 178536328
+        "tag": "ReV",
+        "name": "Gabita",
+        "value": 180012768
       },
       {
         "rank": 54,
-        "tag": "FPX",
-        "name": "Princess Fiya",
-        "value": 178178349
+        "tag": "DTD",
+        "name": "Davel",
+        "value": 179676485
       },
       {
         "rank": 55,
-        "tag": "FPX",
-        "name": "Abod",
-        "value": 177800781
+        "tag": "DTD",
+        "name": "narak555",
+        "value": 178984169
       },
       {
         "rank": 56,
         "tag": "ReV",
-        "name": "Gaby",
-        "value": 177550700
+        "name": "LDS",
+        "value": 178376654
       },
       {
         "rank": 57,
         "tag": "ReV",
-        "name": "Lord LeinesRev",
-        "value": 177309687
+        "name": "Mido #",
+        "value": 177508304
       },
       {
         "rank": 58,
         "tag": "DTD",
-        "name": "narak555",
-        "value": 176781407
+        "name": "Kempaz",
+        "value": 177347985
       },
       {
         "rank": 59,
         "tag": "ReV",
-        "name": "LDS",
-        "value": 176748563
+        "name": "9o8PROOFSTRIKER8se/",
+        "value": 177282964
       },
       {
         "rank": 60,
-        "tag": "",
-        "name": "",
-        "value": 175635167
+        "tag": "FPX",
+        "name": "Anubis",
+        "value": 175382311
       },
       {
         "rank": 61,
         "tag": "ReV",
-        "name": "Mido #",
-        "value": 175477232
+        "name": "Y BaronBY",
+        "value": 174352419
       },
       {
         "rank": 62,
-        "tag": "DTD",
-        "name": "Kempaz",
-        "value": 175196092
+        "tag": "FPX",
+        "name": "xzxo",
+        "value": 174235245
       },
       {
         "rank": 63,
         "tag": "DTD",
-        "name": "Davel",
-        "value": 174874782
+        "name": "Roundtrail",
+        "value": 173583369
       },
       {
         "rank": 64,
-        "tag": "FPX",
-        "name": "sarcasticamor",
-        "value": 173689963
-      },
-      {
-        "rank": 65,
         "tag": "",
         "name": "Al Bundy",
         "value": 173513175
       },
       {
+        "rank": 65,
+        "tag": "FPX",
+        "name": "DarkSunParallax",
+        "value": 170930050
+      },
+      {
         "rank": 66,
-        "tag": "ReV",
-        "name": "Y BaronBY",
-        "value": 172624985
+        "tag": "FPX",
+        "name": "Marcus",
+        "value": 169541366
       },
       {
         "rank": 67,
-        "tag": "DTD",
-        "name": "Roundtrail",
-        "value": 171726465
+        "tag": "ReV",
+        "name": "Leall",
+        "value": 167283101
       },
       {
         "rank": 68,
-        "tag": "",
-        "name": "",
-        "value": 171304764
+        "tag": "DTD",
+        "name": "lbra",
+        "value": 166872679
       },
       {
         "rank": 69,
         "tag": "",
         "name": "",
-        "value": 170891478
+        "value": 165642347
       },
       {
         "rank": 70,
-        "tag": "FPX",
-        "name": "DarkSunParallax",
-        "value": 169276502
+        "tag": "JJFPX",
+        "name": "Tropic Ice Bear",
+        "value": 165287623
       },
       {
         "rank": 71,
-        "tag": "FPX",
-        "name": "Marcus",
-        "value": 167457024
+        "tag": "ReA",
+        "name": "BlackWidowReA",
+        "value": 164027115
       },
       {
         "rank": 72,
-        "tag": "Re",
-        "name": "Vlaall",
-        "value": 165434661
+        "tag": "FPX",
+        "name": "MalQuerido",
+        "value": 163639243
       },
       {
         "rank": 73,
         "tag": "FPX",
-        "name": "Tropic Ice Bear",
-        "value": 163657087
+        "name": "Wallis",
+        "value": 163114432
       },
       {
         "rank": 74,
-        "tag": "DTD",
-        "name": "Gunnut",
-        "value": 163451320
+        "tag": "FPX",
+        "name": "Shutz",
+        "value": 162847976
       },
       {
         "rank": 75,
         "tag": "FPX",
-        "name": "Anubis",
-        "value": 162983436
+        "name": "Mars Fiya 3",
+        "value": 162658311
       },
       {
         "rank": 76,
-        "tag": "ReA",
-        "name": "BlackWidowReA",
-        "value": 162958703
+        "tag": "ReV",
+        "name": "LIONFLARE",
+        "value": 161591934
       },
       {
         "rank": 77,
         "tag": "",
         "name": "",
-        "value": 162503559
+        "value": 160996943
       },
       {
         "rank": 78,
-        "tag": "FPX",
-        "name": "vvallis",
-        "value": 161147277
+        "tag": "DTD",
+        "name": "RACDAT",
+        "value": 160629928
       },
       {
         "rank": 79,
         "tag": "FPX",
-        "name": "MalQuerido",
-        "value": 161054005
+        "name": "PLN",
+        "value": 160024961
       },
       {
         "rank": 80,
         "tag": "FPX",
-        "name": "Mars Fiya 18",
-        "value": 160952246
+        "name": "TheMyuh",
+        "value": 159312296
       },
       {
         "rank": 81,
-        "tag": "FPX",
-        "name": "Shutz",
-        "value": 160486741
+        "tag": "DTD",
+        "name": "Kezza",
+        "value": 159306030
       },
       {
         "rank": 82,
-        "tag": "DTD",
-        "name": "RACDAT",
-        "value": 159878832
+        "tag": "ReV",
+        "name": "Veldora",
+        "value": 158972126
       },
       {
         "rank": 83,
-        "tag": "ReV",
-        "name": "LIONFLARE",
-        "value": 159018927
+        "tag": "DTD",
+        "name": "Zeo",
+        "value": 158556370
       },
       {
         "rank": 84,
-        "tag": "",
-        "name": "",
-        "value": 158176074
+        "tag": "FPX",
+        "name": "Godmother",
+        "value": 157815538
       },
       {
         "rank": 85,
-        "tag": "",
-        "name": "",
-        "value": 158070519
+        "tag": "DTD",
+        "name": "Failblaze",
+        "value": 157487063
       },
       {
         "rank": 86,
-        "tag": "FPX",
-        "name": "Yes lad?",
-        "value": 157839701
+        "tag": "ReV",
+        "name": "xBatmanx",
+        "value": 156140663
       },
       {
         "rank": 87,
         "tag": "DTD",
-        "name": "Zeo",
-        "value": 156742025
+        "name": "Malevola",
+        "value": 155773091
       },
       {
         "rank": 88,
-        "tag": "DTD",
-        "name": "Failblaze",
-        "value": 156738084
+        "tag": "FPX",
+        "name": "Scary",
+        "value": 154786532
       },
       {
         "rank": 89,
-        "tag": "FPX",
-        "name": "TheMyuh",
-        "value": 156357664
+        "tag": "DTD",
+        "name": "Lanzy",
+        "value": 331831
       },
       {
         "rank": 90,
-        "tag": "DTD",
-        "name": "Kezza",
-        "value": 154595481
+        "tag": "ReV",
+        "name": "HBDA 06TR",
+        "value": 202108
       },
       {
         "rank": 91,
-        "tag": "DTD",
-        "name": "759117",
-        "value": 152455150
+        "tag": "",
+        "name": "",
+        "value": 85970
       },
       {
         "rank": 92,
-        "tag": "FPX",
-        "name": "Scary",
-        "value": 152361900
-      },
-      {
-        "rank": 93,
-        "tag": "DTD",
-        "name": "Phantom",
-        "value": 152242078
-      },
-      {
-        "rank": 94,
-        "tag": "",
-        "name": "revileuhives",
-        "value": 15500250
-      },
-      {
-        "rank": 95,
         "tag": "",
         "name": "lord304743834",
         "value": 47647
       },
       {
-        "rank": 96,
+        "rank": 93,
         "tag": "",
         "name": "lord304743834",
-        "value": 16012
+        "value": 16028
       },
       {
-        "rank": 97,
+        "rank": 94,
         "tag": "",
         "name": "Personal Power",
         "value": 0
@@ -1526,7 +1484,7 @@
         "rank": 1,
         "tag": "DTD",
         "name": "Lanzy",
-        "value": 114182281
+        "value": 114182366
       },
       {
         "rank": 2,
@@ -1562,13 +1520,13 @@
         "rank": 7,
         "tag": "FPX",
         "name": "Defiant",
-        "value": 67475701
+        "value": 67745583
       },
       {
         "rank": 8,
-        "tag": "",
-        "name": "ReVJMonkey DJ Paure",
-        "value": 60191017
+        "tag": "ReV",
+        "name": "Monkey DJ Paure",
+        "value": 60247443
       },
       {
         "rank": 9,
@@ -1591,19 +1549,19 @@
       {
         "rank": 12,
         "tag": "FPX",
-        "name": "Lord Fiya 3",
+        "name": "Lord Fiya 13",
         "value": 43438454
       },
       {
         "rank": 13,
         "tag": "ReV",
-        "name": "9o8PROOFSTRIKER8oe/",
+        "name": "8o8PROOFSTRIKER8oe/",
         "value": 43360641
       },
       {
         "rank": 14,
         "tag": "ReV",
-        "name": "SugarPuffiesRev",
+        "name": "SugarMujitsuRev",
         "value": 40056404
       },
       {
@@ -1615,80 +1573,80 @@
       {
         "rank": 16,
         "tag": "ReV",
-        "name": "LIONFLARE 1",
+        "name": "LIONFLARE",
         "value": 36956200
       },
       {
         "rank": 17,
-        "tag": "ReV",
-        "name": "Skash",
-        "value": 36152217
+        "tag": "",
+        "name": "O6TR",
+        "value": 33087866
       },
       {
         "rank": 18,
         "tag": "ReV",
-        "name": "HBDA O6TR",
-        "value": 33087866
+        "name": "KravenRev",
+        "value": 33079524
       },
       {
         "rank": 19,
-        "tag": "ReV",
-        "name": "KravenRev",
-        "value": 32932086
-      },
-      {
-        "rank": 20,
         "tag": "FPX",
         "name": "Swarm",
         "value": 31243436
       },
       {
-        "rank": 21,
-        "tag": "FPX",
-        "name": "e TrueFiya 3",
+        "rank": 20,
+        "tag": "",
+        "name": "OFPXJe TrueFiya 3",
         "value": 29613136
       },
       {
-        "rank": 22,
+        "rank": 21,
         "tag": "FPX",
         "name": "MASTERsyr",
         "value": 29597603
       },
       {
-        "rank": 23,
+        "rank": 22,
         "tag": "FPX",
         "name": "Princess Fiya",
         "value": 29387660
       },
       {
-        "rank": 24,
-        "tag": "",
-        "name": "",
+        "rank": 23,
+        "tag": "ReV",
+        "name": "PatoStar Rev",
         "value": 28965307
       },
       {
-        "rank": 25,
+        "rank": 24,
         "tag": "FPX",
         "name": "Wallis",
         "value": 28525570
       },
       {
-        "rank": 26,
+        "rank": 25,
         "tag": "ReV",
         "name": "LDS",
         "value": 26658433
       },
       {
-        "rank": 27,
-        "tag": "FPX",
+        "rank": 26,
+        "tag": "ReV",
         "name": "Kratoos",
         "value": 25588023
       },
       {
-        "rank": 28,
+        "rank": 27,
         "tag": "FPX",
         "name": "YL7",
         "value": 25042357
+      },
+      {
+        "rank": 28,
+        "tag": "",
+        "name": "Al Bundy",
+        "value": 23175807
       },
       {
         "rank": 29,
@@ -1711,79 +1669,79 @@
       {
         "rank": 32,
         "tag": "ReV",
-        "name": "Gaby",
+        "name": "Gabita",
         "value": 18053689
       },
       {
         "rank": 33,
         "tag": "FPX",
-        "name": "Luna",
-        "value": 18031615
+        "name": "Dutchess U",
+        "value": 17967206
       },
       {
         "rank": 34,
-        "tag": "FPX",
-        "name": "Dutchess U",
-        "value": 17661835
-      },
-      {
-        "rank": 35,
         "tag": "ReA",
         "name": "BlackWidowReA",
         "value": 17096859
       },
       {
-        "rank": 36,
+        "rank": 35,
         "tag": "FPX",
         "name": "PLN",
         "value": 17079674
       },
       {
-        "rank": 37,
+        "rank": 36,
         "tag": "ReV",
         "name": "Veldora",
         "value": 17079173
       },
       {
-        "rank": 38,
+        "rank": 37,
         "tag": "FPX",
         "name": "Abod",
         "value": 16305583
       },
       {
-        "rank": 39,
+        "rank": 38,
         "tag": "ReV",
         "name": "Lady Denarion",
         "value": 16190611
       },
       {
-        "rank": 40,
+        "rank": 39,
         "tag": "DTD",
         "name": "Txomin",
         "value": 16050979
       },
       {
-        "rank": 41,
+        "rank": 40,
         "tag": "ReV",
-        "name": "Vittorioo8",
+        "name": "Vittorio08",
         "value": 15655757
       },
       {
-        "rank": 42,
+        "rank": 41,
         "tag": "ReV",
         "name": "QuinStar Rev",
         "value": 15577611
       },
       {
-        "rank": 43,
+        "rank": 42,
         "tag": "FPX",
         "name": "Moemacita",
         "value": 15515537
       },
       {
+        "rank": 43,
+        "tag": "ReV",
+        "name": "Laall",
+        "value": 15346174
+      },
+      {
         "rank": 44,
-        "tag": "",
-        "name": "TDTDJGuardian",
+        "tag": "DTD",
+        "name": "Guardian",
         "value": 14938590
       },
       {
@@ -1795,7 +1753,7 @@
       {
         "rank": 46,
         "tag": "",
-        "name": "BRIZs",
+        "name": "BRIZA",
         "value": 14178766
       },
       {
@@ -1837,7 +1795,7 @@
       {
         "rank": 53,
         "tag": "FPX",
-        "name": "xzxo",
+        "name": "XEXO",
         "value": 12961935
       },
       {
@@ -1868,133 +1826,133 @@
         "rank": 58,
         "tag": "DTD",
         "name": "Mistress",
-        "value": 12506631
+        "value": 12507434
       },
       {
         "rank": 59,
-        "tag": "ReV",
-        "name": "abu nur",
-        "value": 12286606
-      },
-      {
-        "rank": 60,
-        "tag": "",
-        "name": "",
+        "tag": "Re",
+        "name": "Vlzlax Jg",
         "value": 12039197
       },
       {
-        "rank": 61,
+        "rank": 60,
         "tag": "FPX",
         "name": "Shutz",
         "value": 11922644
       },
       {
-        "rank": 62,
+        "rank": 61,
         "tag": "FPX",
-        "name": "IBRAVE HEART",
+        "name": "BRAVE HEART",
         "value": 11830014
       },
       {
-        "rank": 63,
+        "rank": 62,
         "tag": "DTD",
         "name": "Gunnut",
         "value": 11829049
       },
       {
-        "rank": 64,
+        "rank": 63,
         "tag": "DTD",
         "name": "Daantje0805",
         "value": 11733349
       },
       {
-        "rank": 65,
+        "rank": 64,
         "tag": "GGR",
         "name": "maxitis2",
-        "value": 11477459
+        "value": 11482227
       },
       {
-        "rank": 66,
+        "rank": 65,
         "tag": "ReV",
         "name": "TeuffeL TR",
         "value": 11282721
       },
       {
-        "rank": 67,
-        "tag": "ReV",
-        "name": "chams_TN",
+        "rank": 66,
+        "tag": "",
+        "name": "",
         "value": 11079097
       },
       {
-        "rank": 68,
-        "tag": "FPX",
-        "name": "Yes lad?",
-        "value": 10915051
-      },
-      {
-        "rank": 69,
+        "rank": 67,
         "tag": "FPX",
         "name": "Matsu de Oni",
         "value": 10552768
       },
       {
-        "rank": 70,
-        "tag": "",
+        "rank": 68,
+        "tag": "RPx",
         "name": "StellaArabella",
         "value": 10444984
       },
       {
-        "rank": 71,
+        "rank": 69,
         "tag": "FPX",
-        "name": "ILeo 1",
+        "name": "Leo 1",
         "value": 10310406
       },
       {
-        "rank": 72,
+        "rank": 70,
         "tag": "FPX",
         "name": "Slashlilystar",
         "value": 10309624
       },
       {
-        "rank": 73,
+        "rank": 71,
         "tag": "FPX",
         "name": "Scary",
         "value": 10270055
       },
       {
-        "rank": 74,
+        "rank": 72,
         "tag": "ReV",
-        "name": "GJLKRev",
+        "name": "JGL JKRev",
         "value": 9991746
       },
       {
-        "rank": 75,
+        "rank": 73,
         "tag": "",
-        "name": "Darth Darful",
+        "name": "",
         "value": 9991334
       },
       {
-        "rank": 76,
+        "rank": 74,
         "tag": "",
         "name": "",
         "value": 9942036
       },
       {
-        "rank": 77,
+        "rank": 75,
         "tag": "DTD",
         "name": "Kempaz",
         "value": 9723020
       },
       {
-        "rank": 78,
+        "rank": 76,
         "tag": "FPX",
         "name": "Equinsu Ocha",
         "value": 9571452
       },
       {
-        "rank": 79,
+        "rank": 77,
         "tag": "FPX",
         "name": "Teeebone",
         "value": 9444053
+      },
+      {
+        "rank": 78,
+        "tag": "FPX",
+        "name": "Godmother",
+        "value": 9427981
+      },
+      {
+        "rank": 79,
+        "tag": "ReV",
+        "name": "ROMEOTR",
+        "value": 9343301
       },
       {
         "rank": 80,
@@ -2005,7 +1963,7 @@
       {
         "rank": 81,
         "tag": "ReV",
-        "name": "Tegin",
+        "name": "TEGINTR",
         "value": 9201695
       },
       {
@@ -2018,94 +1976,82 @@
         "rank": 83,
         "tag": "DTD",
         "name": "Roundtrail",
-        "value": 8850240
+        "value": 8850242
       },
       {
         "rank": 84,
-        "tag": "FPX",
-        "name": "TheMyuh",
-        "value": 8735977
-      },
-      {
-        "rank": 85,
         "tag": "ReV",
         "name": "Angorwrack",
         "value": 8579613
       },
       {
-        "rank": 86,
+        "rank": 85,
         "tag": "FPX",
         "name": "HangryAndy",
         "value": 8487632
       },
       {
-        "rank": 87,
+        "rank": 86,
         "tag": "ReV",
         "name": "xBatmanx",
         "value": 8279450
       },
       {
-        "rank": 88,
+        "rank": 87,
         "tag": "FPX",
         "name": "Rei Lexus",
         "value": 8254182
       },
       {
-        "rank": 89,
+        "rank": 88,
         "tag": "FPX",
         "name": "QuickMaverick",
         "value": 8101009
       },
       {
-        "rank": 90,
+        "rank": 89,
         "tag": "ReV",
         "name": "zolaft",
         "value": 7941619
       },
       {
-        "rank": 91,
+        "rank": 90,
         "tag": "ReV",
         "name": "Furkan27TR",
         "value": 7728348
       },
       {
-        "rank": 92,
+        "rank": 91,
         "tag": "ReV",
         "name": "Andersonbr",
         "value": 7644609
       },
       {
-        "rank": 93,
+        "rank": 92,
         "tag": "GGR",
         "name": "Lord",
         "value": 7632109
       },
       {
-        "rank": 94,
+        "rank": 93,
         "tag": "FPX",
         "name": "Der kleine Lord",
         "value": 7548404
       },
       {
-        "rank": 95,
+        "rank": 94,
         "tag": "FPX",
         "name": "FALCON",
         "value": 7454483
       },
       {
-        "rank": 96,
-        "tag": "",
-        "name": "Bundy",
-        "value": 175807
-      },
-      {
-        "rank": 97,
+        "rank": 95,
         "tag": "",
         "name": "lord304743834",
-        "value": 34559
+        "value": 34555
       },
       {
-        "rank": 98,
+        "rank": 96,
         "tag": "",
         "name": "Kill Count",
         "value": 0
@@ -2122,7 +2068,7 @@
         "rank": 2,
         "tag": "FPX",
         "name": "Lizi",
-        "value": 15265322
+        "value": 15927362
       },
       {
         "rank": 3,
@@ -2134,7 +2080,7 @@
         "rank": 4,
         "tag": "FPX",
         "name": "NovaLuna",
-        "value": 11794652
+        "value": 11902637
       },
       {
         "rank": 5,
@@ -2144,21 +2090,21 @@
       },
       {
         "rank": 6,
-        "tag": "FPX",
-        "name": "BigBent12",
-        "value": 8689170
+        "tag": "ReV",
+        "name": "KravenRev",
+        "value": 8859848
       },
       {
         "rank": 7,
-        "tag": "ReV",
-        "name": "HBDA 06TR",
-        "value": 8606775
+        "tag": "FPX",
+        "name": "BigBent12",
+        "value": 8801850
       },
       {
         "rank": 8,
-        "tag": "ReV",
-        "name": "KravenRev",
-        "value": 8546848
+        "tag": "",
+        "name": "O6TR",
+        "value": 8067965
       },
       {
         "rank": 9,
@@ -2169,8 +2115,8 @@
       {
         "rank": 10,
         "tag": "FPX",
-        "name": "JvJ gf",
-        "value": 5914769
+        "name": "JvJ g F",
+        "value": 5919569
       },
       {
         "rank": 11,
@@ -2180,69 +2126,69 @@
       },
       {
         "rank": 12,
-        "tag": "",
-        "name": "(FPXPrincess Fiya",
-        "value": 5420939
+        "tag": "FPX",
+        "name": "Princess Fiya",
+        "value": 5556312
       },
       {
         "rank": 13,
-        "tag": "",
-        "name": "(ReVJMonkey DJ Paure",
-        "value": 5420352
+        "tag": "FPX",
+        "name": "RedrumSlayer",
+        "value": 5492934
       },
       {
         "rank": 14,
+        "tag": "",
+        "name": "(ReVJMonkey DJ Paure",
+        "value": 5462594
+      },
+      {
+        "rank": 15,
         "tag": "FPX",
         "name": "Atsiz GRs",
         "value": 5415864
       },
       {
-        "rank": 15,
-        "tag": "FPX",
-        "name": "RedrumSlayer",
-        "value": 5399034
-      },
-      {
         "rank": 16,
-        "tag": "FPX",
-        "name": "e TrueFiya 3",
+        "tag": "",
+        "name": "(FPXJe TrueFiya 3",
         "value": 5279770
       },
       {
         "rank": 17,
-        "tag": "ReV",
-        "name": "xerxes2620",
-        "value": 4960145
+        "tag": "FPX",
+        "name": "Swarm",
+        "value": 5109317
       },
       {
         "rank": 18,
         "tag": "ReV",
-        "name": "SugarPuffiesRev",
-        "value": 4819889
+        "name": "SugarMujitsuRev",
+        "value": 4907579
       },
       {
         "rank": 19,
         "tag": "FPX",
-        "name": "Lady Fiya 1",
+        "name": "Lady Fiya 8",
         "value": 4738630
       },
       {
         "rank": 20,
         "tag": "FPX",
         "name": "Jekballs",
-        "value": 4668467
+        "value": 4715417
       },
       {
         "rank": 21,
-        "tag": "ReV",
-        "name": "Bakas",
-        "value": 4455239
+        "tag": "DTD",
+        "name": "Big Ben",
+        "value": 4579379
       },
       {
         "rank": 22,
         "tag": "DTD",
-        "name": "Big Ben",
-        "value": 4452839
+        "name": "Guardian",
+        "value": 4471195
       },
       {
         "rank": 23,
@@ -2258,105 +2204,105 @@
       },
       {
         "rank": 25,
+        "tag": "ReV",
+        "name": "Bakas",
+        "value": 4324900
+      },
+      {
+        "rank": 26,
+        "tag": "FPX",
+        "name": "Prince_Farmer",
+        "value": 4212400
+      },
+      {
+        "rank": 27,
+        "tag": "ReV",
+        "name": "TeuffeLTR",
+        "value": 4204592
+      },
+      {
+        "rank": 28,
+        "tag": "FPX",
+        "name": "Scary",
+        "value": 4203520
+      },
+      {
+        "rank": 29,
         "tag": "FPX",
         "name": "Gigi Penguino",
         "value": 4183334
       },
       {
-        "rank": 26,
-        "tag": "DTD",
-        "name": "Guardian",
-        "value": 4181640
-      },
-      {
-        "rank": 27,
+        "rank": 30,
         "tag": "DTD",
         "name": "Jolloki",
         "value": 4128879
       },
       {
-        "rank": 28,
+        "rank": 31,
         "tag": "ReV",
         "name": "Lady Denarion",
         "value": 4014130
       },
       {
-        "rank": 29,
+        "rank": 32,
         "tag": "DTD",
         "name": "Txomin",
         "value": 3997360
       },
       {
-        "rank": 30,
-        "tag": "FPX",
-        "name": "Scary",
-        "value": 3947155
-      },
-      {
-        "rank": 31,
+        "rank": 33,
         "tag": "FPX",
         "name": "Wallis",
         "value": 3914817
       },
       {
-        "rank": 32,
-        "tag": "ReV",
-        "name": "Buckk",
-        "value": 3898042
-      },
-      {
-        "rank": 33,
-        "tag": "ReV",
-        "name": "LeoAlvesRev",
-        "value": 3846449
-      },
-      {
         "rank": 34,
         "tag": "ReV",
-        "name": "TeuffeLTR",
-        "value": 3757994
+        "name": "Buckk",
+        "value": 3902487
       },
       {
         "rank": 35,
         "tag": "ReV",
         "name": "LDS",
-        "value": 3691695
+        "value": 3757920
       },
       {
         "rank": 36,
         "tag": "DTD",
         "name": "Roundtrail",
-        "value": 3628232
+        "value": 3654070
       },
       {
         "rank": 37,
         "tag": "ReV",
-        "name": "LIONFLARE Y",
-        "value": 3599300
+        "name": "LIONFLARE",
+        "value": 3614950
       },
       {
         "rank": 38,
-        "tag": "ReV",
-        "name": "Vittorio08",
-        "value": 3582000
+        "tag": "FPX",
+        "name": "Yes lad?",
+        "value": 3612897
       },
       {
         "rank": 39,
         "tag": "FPX",
-        "name": "Yes lad:",
-        "value": 3557600
+        "name": "BRAVE HEART",
+        "value": 3517750
       },
       {
         "rank": 40,
-        "tag": "ReV",
-        "name": "Skash",
-        "value": 3511982
+        "tag": "ELA",
+        "name": "Zookeeper",
+        "value": 3439170
       },
       {
         "rank": 41,
         "tag": "FPX",
-        "name": "BRAVE HEART",
-        "value": 3491150
+        "name": "Zoso",
+        "value": 3431452
       },
       {
         "rank": 42,
@@ -2366,7 +2312,7 @@
       },
       {
         "rank": 43,
-        "tag": "FPX",
+        "tag": "ReV",
         "name": "Kratoos",
         "value": 3370572
       },
@@ -2378,9 +2324,9 @@
       },
       {
         "rank": 45,
-        "tag": "FPX",
-        "name": "Equinsu Ocha",
-        "value": 3348695
+        "tag": "DTD",
+        "name": "Dunc",
+        "value": 3316852
       },
       {
         "rank": 46,
@@ -2392,193 +2338,193 @@
         "rank": 47,
         "tag": "DTD",
         "name": "lord galahad",
-        "value": 3248890
+        "value": 3259170
       },
       {
         "rank": 48,
-        "tag": "FPX",
-        "name": "Mike",
+        "tag": "",
+        "name": "Hero: Petra",
         "value": 3246570
       },
       {
         "rank": 49,
-        "tag": "DTD",
-        "name": "Dunc",
-        "value": 3225125
-      },
-      {
-        "rank": 50,
         "tag": "ReV",
         "name": "xBatmanx",
         "value": 3173982
       },
       {
+        "rank": 50,
+        "tag": "",
+        "name": "BRIZ",
+        "value": 3173597
+      },
+      {
         "rank": 51,
         "tag": "ReV",
         "name": "Y BaronBY",
-        "value": 3141562
+        "value": 3156707
       },
       {
         "rank": 52,
-        "tag": "FPX",
-        "name": "zoso",
-        "value": 3139912
+        "tag": "ReV",
+        "name": "KBECA",
+        "value": 3148620
       },
       {
         "rank": 53,
-        "tag": "",
-        "name": "BRIZ",
-        "value": 3136362
-      },
-      {
-        "rank": 54,
         "tag": "FPX",
         "name": "Moemacita",
         "value": 3133820
       },
       {
-        "rank": 55,
-        "tag": "ReV",
-        "name": "zolaft",
-        "value": 3105674
-      },
-      {
-        "rank": 56,
+        "rank": 54,
         "tag": "FPX",
         "name": "Alpha Gov",
-        "value": 3087439
+        "value": 3110320
       },
       {
-        "rank": 57,
+        "rank": 55,
         "tag": "ReV",
         "name": "GoL D RANDE",
         "value": 3075875
       },
       {
-        "rank": 58,
+        "rank": 56,
         "tag": "FPX",
         "name": "Facade",
         "value": 3057995
       },
       {
-        "rank": 59,
+        "rank": 57,
         "tag": "DTD",
         "name": "RACDAT",
         "value": 3034207
       },
       {
-        "rank": 60,
+        "rank": 58,
         "tag": "ReV",
-        "name": "ZAGY",
-        "value": 3032170
+        "name": "Lord Jander",
+        "value": 2975954
       },
       {
-        "rank": 61,
-        "tag": "ReV",
-        "name": "Remouth",
-        "value": 2993150
-      },
-      {
-        "rank": 62,
+        "rank": 59,
         "tag": "FPX",
         "name": "w avy",
         "value": 2960189
       },
       {
+        "rank": 60,
+        "tag": "DTD",
+        "name": "Failblaze",
+        "value": 2953200
+      },
+      {
+        "rank": 61,
+        "tag": "ReV",
+        "name": "Andersonbr",
+        "value": 2939945
+      },
+      {
+        "rank": 62,
+        "tag": "FPX",
+        "name": "Anubis",
+        "value": 2935570
+      },
+      {
         "rank": 63,
-        "tag": "ReA",
-        "name": "SyRiaN",
+        "tag": "",
+        "name": "Hero: Jabel",
         "value": 2929599
       },
       {
         "rank": 64,
-        "tag": "FPX",
-        "name": "MASTERsyr",
-        "value": 2923382
+        "tag": "Re",
+        "name": "Vlzls,Jg",
+        "value": 2927482
       },
       {
         "rank": 65,
-        "tag": "Re",
-        "name": "Vlzlax Jg",
-        "value": 2918805
+        "tag": "FPX",
+        "name": "Shutz",
+        "value": 2926184
       },
       {
         "rank": 66,
-        "tag": "",
-        "name": "SAUTz",
-        "value": 2896784
+        "tag": "ReA",
+        "name": "Lord UNH",
+        "value": 2905057
       },
       {
         "rank": 67,
-        "tag": "Re",
-        "name": "Vlyeall",
-        "value": 2895965
+        "tag": "ReV",
+        "name": "Casius",
+        "value": 2896492
       },
       {
         "rank": 68,
+        "tag": "ReV",
+        "name": "Leall",
+        "value": 2895965
+      },
+      {
+        "rank": 69,
+        "tag": "FPX",
+        "name": "Dutchess U",
+        "value": 2892305
+      },
+      {
+        "rank": 70,
         "tag": "FPX",
         "name": "PLN",
         "value": 2890404
       },
       {
-        "rank": 69,
-        "tag": "ReA",
-        "name": "Lord UNH",
-        "value": 2889407
-      },
-      {
-        "rank": 70,
-        "tag": "DTD",
-        "name": "Failblaze",
-        "value": 2889350
-      },
-      {
         "rank": 71,
         "tag": "ReV",
-        "name": "SSPROOFSTRIKER8e/",
-        "value": 2879502
+        "name": "QuinStar Rev",
+        "value": 2887025
       },
       {
         "rank": 72,
-        "tag": "FPX",
-        "name": "Anubis",
-        "value": 2875690
+        "tag": "ReV",
+        "name": "Go8PROOFSTRIKER8oe /",
+        "value": 2879502
       },
       {
         "rank": 73,
+        "tag": "FPX",
+        "name": "XEXO",
+        "value": 2876384
+      },
+      {
+        "rank": 74,
+        "tag": "Viuiz",
+        "name": "ews",
+        "value": 2869715
+      },
+      {
+        "rank": 75,
+        "tag": "DTD",
+        "name": "Davel",
+        "value": 2867810
+      },
+      {
+        "rank": 76,
         "tag": "",
         "name": "Bundy",
         "value": 2865099
       },
       {
-        "rank": 74,
-        "tag": "DTD",
-        "name": "Dave",
-        "value": 2852160
-      },
-      {
-        "rank": 75,
+        "rank": 77,
         "tag": "ReV",
         "name": "Veldora",
         "value": 2830445
       },
       {
-        "rank": 76,
-        "tag": "Kevju",
-        "name": "uinstar",
-        "value": 2805100
-      },
-      {
-        "rank": 77,
-        "tag": "ReV",
-        "name": "Lord Jander",
-        "value": 2799245
-      },
-      {
         "rank": 78,
-        "tag": "ReV",
-        "name": "Andersonbr",
-        "value": 2799095
+        "tag": "DTD",
+        "name": "Gunnut",
+        "value": 2818195
       },
       {
         "rank": 79,
@@ -2594,27 +2540,27 @@
       },
       {
         "rank": 81,
-        "tag": "DTD",
-        "name": "Gunnut",
-        "value": 2771245
-      },
-      {
-        "rank": 82,
         "tag": "ReV",
         "name": "SunnyShadow",
         "value": 2759705
       },
       {
-        "rank": 83,
+        "rank": 82,
         "tag": "DTD",
         "name": "Pink Panda",
         "value": 2759470
       },
       {
-        "rank": 84,
+        "rank": 83,
         "tag": "FPX",
         "name": "sarcasticamor",
         "value": 2754875
+      },
+      {
+        "rank": 84,
+        "tag": "FPX",
+        "name": "Captain Mariahca",
+        "value": 2750020
       },
       {
         "rank": 85,
@@ -2631,53 +2577,47 @@
       {
         "rank": 87,
         "tag": "FPX",
-        "name": "Dutchess U",
-        "value": 2729099
-      },
-      {
-        "rank": 88,
-        "tag": "FPX",
         "name": "Luna",
         "value": 2725362
       },
       {
-        "rank": 89,
+        "rank": 88,
         "tag": "FPX",
         "name": "Teeebone",
         "value": 2718750
       },
       {
-        "rank": 90,
+        "rank": 89,
         "tag": "FPX",
-        "name": "Captain Mariahca",
-        "value": 2717650
+        "name": "Abod",
+        "value": 2703665
+      },
+      {
+        "rank": 90,
+        "tag": "ReV",
+        "name": "Lord LeinesRev",
+        "value": 2697997
       },
       {
         "rank": 91,
-        "tag": "ReV",
-        "name": "abu nur",
-        "value": 2711945
-      },
-      {
-        "rank": 92,
-        "tag": "",
-        "name": "ponk",
-        "value": 2684212
-      },
-      {
-        "rank": 93,
-        "tag": "ReV",
-        "name": "Lord LeinesRev",
-        "value": 2681564
-      },
-      {
-        "rank": 94,
         "tag": "",
         "name": "lord304743834",
         "value": 16960
       },
       {
-        "rank": 95,
+        "rank": 92,
+        "tag": "ReV",
+        "name": "zolaft",
+        "value": 1213
+      },
+      {
+        "rank": 93,
+        "tag": "ReV",
+        "name": "Skash",
+        "value": 1007
+      },
+      {
+        "rank": 94,
         "tag": "",
         "name": "Hero Power",
         "value": 0
@@ -2694,556 +2634,496 @@
         "rank": 2,
         "tag": "ReV",
         "name": "ELTON_KNAUL",
-        "value": 62517153
+        "value": 62548614
       },
       {
         "rank": 3,
         "tag": "DTD",
         "name": "Lanzy",
-        "value": 60582921
+        "value": 60913136
       },
       {
         "rank": 4,
         "tag": "FPX",
         "name": "NovaLuna",
-        "value": 56033273
+        "value": 56591195
       },
       {
         "rank": 5,
-        "tag": "FPX",
-        "name": "BigBent12",
-        "value": 47817211
+        "tag": "ReV",
+        "name": "KravenRev",
+        "value": 49056843
       },
       {
         "rank": 6,
         "tag": "FPX",
-        "name": "Defiant",
-        "value": 46807567
+        "name": "BigBent12",
+        "value": 48274853
       },
       {
         "rank": 7,
-        "tag": "ReV",
-        "name": "HBDA O6TR",
-        "value": 46076600
+        "tag": "FPX",
+        "name": "Defiant",
+        "value": 47255782
       },
       {
         "rank": 8,
         "tag": "ReV",
-        "name": "KravenRev",
-        "value": 45709090
+        "name": "HBDA O6TR",
+        "value": 46328155
       },
       {
         "rank": 9,
         "tag": "ReV",
         "name": "xerxes2620",
-        "value": 40848958
+        "value": 41375008
       },
       {
         "rank": 10,
         "tag": "FPX",
-        "name": "e TrueFiya 3",
-        "value": 36601002
+        "name": "Lord Fiya 13",
+        "value": 40477730
       },
       {
         "rank": 11,
-        "tag": "",
-        "name": "ReVJMonkey DJ Paure",
-        "value": 36307153
+        "tag": "ReV",
+        "name": "Monkey DJ Paure",
+        "value": 37932824
       },
       {
         "rank": 12,
-        "tag": "ReV",
-        "name": "Lord Jander",
-        "value": 36155025
+        "tag": "FPX",
+        "name": "e TrueFiya 3",
+        "value": 36643244
       },
       {
         "rank": 13,
-        "tag": "FPX",
-        "name": "Lord Fiya 8",
-        "value": 35399292
+        "tag": "ReV",
+        "name": "Lord Jander",
+        "value": 36427224
       },
       {
         "rank": 14,
         "tag": "FPX",
         "name": "Princess Fiya",
-        "value": 35266636
+        "value": 35408219
       },
       {
         "rank": 15,
-        "tag": "",
-        "name": "ReV",
-        "value": 33957190
+        "tag": "ReV",
+        "name": "Lady Denarion",
+        "value": 35209400
       },
       {
         "rank": 16,
-        "tag": "DTD",
-        "name": "Kazl",
-        "value": 33034754
+        "tag": "ReV",
+        "name": "SugarMujitsuRev",
+        "value": 34505030
       },
       {
         "rank": 17,
         "tag": "DTD",
-        "name": "Maximus Gsus",
-        "value": 32786944
+        "name": "Jolloki",
+        "value": 33883391
       },
       {
         "rank": 18,
         "tag": "FPX",
-        "name": "Tired Chicken",
-        "value": 32777429
+        "name": "Swarm",
+        "value": 33579251
       },
       {
         "rank": 19,
-        "tag": "FPX",
-        "name": "Jv g F",
-        "value": 32575052
+        "tag": "DTD",
+        "name": "Kazl",
+        "value": 33350962
       },
       {
         "rank": 20,
-        "tag": "DTD",
-        "name": "Mistress",
-        "value": 32406727
+        "tag": "ReV",
+        "name": "Vittorio08",
+        "value": 33294966
       },
       {
         "rank": 21,
-        "tag": "ReV",
-        "name": "Vittorio08",
-        "value": 32373833
+        "tag": "DTD",
+        "name": "Txomin",
+        "value": 33120336
       },
       {
         "rank": 22,
         "tag": "DTD",
-        "name": "Txomin",
-        "value": 32342476
+        "name": "Maximus Gsus",
+        "value": 32981064
       },
       {
         "rank": 23,
-        "tag": "DTD",
-        "name": "Guardian",
-        "value": 32018697
+        "tag": "FPX",
+        "name": "Tired Chicken",
+        "value": 32820085
       },
       {
         "rank": 24,
         "tag": "FPX",
-        "name": "Lady Fiya 1",
-        "value": 30588141
+        "name": "RedrumSlayer",
+        "value": 32788876
       },
       {
         "rank": 25,
-        "tag": "ReV",
-        "name": "QuinStar Rev",
-        "value": 29954013
+        "tag": "DTD",
+        "name": "Guardian",
+        "value": 32750082
       },
       {
         "rank": 26,
-        "tag": "FPX",
-        "name": "Alpha Gov",
-        "value": 29911424
+        "tag": "FPx",
+        "name": "Jv gF",
+        "value": 32587602
       },
       {
         "rank": 27,
-        "tag": "DTD",
-        "name": "Kempaz",
-        "value": 29667661
+        "tag": "FPX",
+        "name": "Dutchess U",
+        "value": 32513118
       },
       {
         "rank": 28,
-        "tag": "ReV",
-        "name": "SunnyShadow",
-        "value": 29612406
+        "tag": "FPX",
+        "name": "Marcus",
+        "value": 32197942
       },
       {
         "rank": 29,
-        "tag": "ReV",
-        "name": "Mido #",
-        "value": 29244371
+        "tag": "DTD",
+        "name": "Big Ben",
+        "value": 31545923
       },
       {
         "rank": 30,
         "tag": "FPX",
-        "name": "Atsiz GRs",
-        "value": 29241141
+        "name": "Lady Fiya 1",
+        "value": 31506093
       },
       {
         "rank": 31,
         "tag": "ReV",
-        "name": "LDS",
-        "value": 28866348
+        "name": "Cliffhanger",
+        "value": 30876247
       },
       {
         "rank": 32,
+        "tag": "FPX",
+        "name": "Alpha Gov",
+        "value": 30208075
+      },
+      {
+        "rank": 33,
+        "tag": "",
+        "name": "GRs",
+        "value": 30061706
+      },
+      {
+        "rank": 34,
+        "tag": "DTD",
+        "name": "Kempaz",
+        "value": 29876086
+      },
+      {
+        "rank": 35,
+        "tag": "ReV",
+        "name": "SunnyShadow",
+        "value": 29626566
+      },
+      {
+        "rank": 36,
+        "tag": "ReV",
+        "name": "Mido #",
+        "value": 29454343
+      },
+      {
+        "rank": 37,
+        "tag": "ReV",
+        "name": "LDS",
+        "value": 29103705
+      },
+      {
+        "rank": 38,
         "tag": "FPX",
         "name": "DarkSunParallax",
         "value": 28744831
       },
       {
-        "rank": 33,
-        "tag": "FPX",
-        "name": "Jekballs",
-        "value": 28193617
-      },
-      {
-        "rank": 34,
-        "tag": "DTD",
-        "name": "RACDAT",
-        "value": 28185010
-      },
-      {
-        "rank": 35,
+        "rank": 39,
         "tag": "ReA",
         "name": "Lord UNH",
-        "value": 28131227
-      },
-      {
-        "rank": 36,
-        "tag": "ReV",
-        "name": "ROMEOTR",
-        "value": 27954235
-      },
-      {
-        "rank": 37,
-        "tag": "DTD",
-        "name": "lord galahad",
-        "value": 27730568
-      },
-      {
-        "rank": 38,
-        "tag": "FPX",
-        "name": "Shorty#",
-        "value": 27523554
-      },
-      {
-        "rank": 39,
-        "tag": "DTD",
-        "name": "Malevola",
-        "value": 27445378
+        "value": 28570747
       },
       {
         "rank": 40,
         "tag": "ReV",
-        "name": "LIONFLARE",
-        "value": 27410386
+        "name": "Bakas",
+        "value": 28539685
       },
       {
         "rank": 41,
-        "tag": "FPX",
-        "name": "sarcasticamor",
-        "value": 27394220
+        "tag": "ReV",
+        "name": "ROMEOTR",
+        "value": 28066540
       },
       {
         "rank": 42,
-        "tag": "ReV",
-        "name": "Bakas",
-        "value": 27279496
+        "tag": "DTD",
+        "name": "Malevola",
+        "value": 27823011
       },
       {
         "rank": 43,
         "tag": "ReV",
-        "name": "Buckk",
-        "value": 27141941
+        "name": "Angorwrack",
+        "value": 27794374
       },
       {
         "rank": 44,
-        "tag": "FPX",
-        "name": "Prince_Farmer",
-        "value": 27055049
+        "tag": "ReV",
+        "name": "Buckk",
+        "value": 27674894
       },
       {
         "rank": 45,
         "tag": "FPX",
-        "name": "Moemacita",
-        "value": 27051426
+        "name": "Shorty#",
+        "value": 27548928
       },
       {
         "rank": 46,
-        "tag": "FPX",
-        "name": "Gigi Penguino",
-        "value": 27050413
+        "tag": "ReV",
+        "name": "TeuffeLTR",
+        "value": 27535308
       },
       {
         "rank": 47,
         "tag": "ReV",
-        "name": "TeuffeLTR",
-        "value": 27048248
+        "name": "LIONFLARE Y",
+        "value": 27459293
       },
       {
         "rank": 48,
-        "tag": "FPX",
-        "name": "QuickMaverick",
-        "value": 26898944
+        "tag": "ReV",
+        "name": "LeoAlvesRev",
+        "value": 27370050
       },
       {
         "rank": 49,
-        "tag": "FP",
-        "name": "Shutz",
-        "value": 26705289
+        "tag": "FPX",
+        "name": "Teeebone",
+        "value": 27363428
       },
       {
         "rank": 50,
         "tag": "FPX",
         "name": "BRAVE HEART",
-        "value": 26602324
+        "value": 26652992
       },
       {
         "rank": 51,
-        "tag": "FPX",
-        "name": "Teeebone",
-        "value": 26571493
+        "tag": "DTD",
+        "name": "Davel",
+        "value": 26608944
       },
       {
         "rank": 52,
-        "tag": "ReV",
-        "name": "LeoAlvesRev",
-        "value": 26507450
+        "tag": "",
+        "name": "",
+        "value": 26591796
       },
       {
         "rank": 53,
         "tag": "FPX",
-        "name": "Anubis",
-        "value": 26502526
+        "name": "Equinsu Ocha",
+        "value": 26577200
       },
       {
         "rank": 54,
-        "tag": "",
-        "name": "ZAGY",
-        "value": 26349111
+        "tag": "DTD",
+        "name": "SMinions",
+        "value": 26503661
       },
       {
         "rank": 55,
-        "tag": "FPX",
-        "name": "LightBearer",
-        "value": 26281811
+        "tag": "",
+        "name": "ZAGY",
+        "value": 26406126
       },
       {
         "rank": 56,
         "tag": "DTD",
-        "name": "SMinions",
-        "value": 26259782
+        "name": "Roundtrail",
+        "value": 26188107
       },
       {
         "rank": 57,
-        "tag": "DTD",
-        "name": "Dave",
-        "value": 26148179
+        "tag": "FPX",
+        "name": "Leo 1",
+        "value": 26073025
       },
       {
         "rank": 58,
         "tag": "FPX",
-        "name": "Equinsu Ocha",
-        "value": 26074675
+        "name": "Facade",
+        "value": 25993172
       },
       {
         "rank": 59,
-        "tag": "DTD",
-        "name": "Kezza",
-        "value": 25939907
+        "tag": "ReV",
+        "name": "EfetheolivemanTR",
+        "value": 25985235
       },
       {
         "rank": 60,
-        "tag": "",
-        "name": "Bundy",
-        "value": 25909904
+        "tag": "DTD",
+        "name": "Failblaze",
+        "value": 25979118
       },
       {
         "rank": 61,
-        "tag": "DTD",
-        "name": "Failblaze",
-        "value": 25899005
+        "tag": "",
+        "name": "Al Bundy",
+        "value": 25909904
       },
       {
         "rank": 62,
-        "tag": "",
-        "name": "",
-        "value": 25890723
+        "tag": "ReV",
+        "name": "Cosmo Spacely",
+        "value": 25874569
       },
       {
         "rank": 63,
-        "tag": "FPX",
-        "name": "Facade",
-        "value": 25837140
+        "tag": "ReV",
+        "name": "8o8PROOFSTRIKER8oe/",
+        "value": 25856804
       },
       {
         "rank": 64,
-        "tag": "FPX",
-        "name": "Luna",
-        "value": 25741939
+        "tag": "ReV",
+        "name": "Andersonbr",
+        "value": 25845129
       },
       {
         "rank": 65,
-        "tag": "ReV",
-        "name": "IKBECA",
-        "value": 25724763
+        "tag": "FPX",
+        "name": "Luna",
+        "value": 25839566
       },
       {
         "rank": 66,
-        "tag": "FPX",
-        "name": "Leo 1",
-        "value": 25724173
+        "tag": "ReV",
+        "name": "Cornishmac",
+        "value": 25490540
       },
       {
         "rank": 67,
-        "tag": "ReV",
-        "name": "Go8PROOFSTRIKER8e/",
-        "value": 25701399
+        "tag": "DTD",
+        "name": "Zeo",
+        "value": 25474291
       },
       {
         "rank": 68,
-        "tag": "ReV",
-        "name": "Andersonbr",
-        "value": 25675464
+        "tag": "FPX",
+        "name": "TheMyuh",
+        "value": 25375014
       },
       {
         "rank": 69,
-        "tag": "ReV",
-        "name": "Skash",
-        "value": 25664080
+        "tag": "FPX",
+        "name": "Tropic Ice Bear",
+        "value": 25287539
       },
       {
         "rank": 70,
         "tag": "DTD",
-        "name": "Zeo",
-        "value": 25391917
+        "name": "Pink Panda",
+        "value": 25184764
       },
       {
         "rank": 71,
-        "tag": "ReV",
-        "name": "abu nur",
-        "value": 25334925
+        "tag": "",
+        "name": "",
+        "value": 25153212
       },
       {
         "rank": 72,
-        "tag": "FPX",
-        "name": "Yes lad:",
-        "value": 25321321
+        "tag": "ReV",
+        "name": "Lord LeinesRev",
+        "value": 25151313
       },
       {
         "rank": 73,
         "tag": "FPX",
-        "name": "TheMyuh",
-        "value": 25314834
+        "name": "Mars Fiya 3",
+        "value": 24990178
       },
       {
         "rank": 74,
-        "tag": "DTD",
-        "name": "Roundtrail",
-        "value": 25219904
+        "tag": "FPX",
+        "name": "Abod",
+        "value": 24968808
       },
       {
         "rank": 75,
-        "tag": "DTD",
-        "name": "Pink Panda",
-        "value": 25179174
+        "tag": "FPX",
+        "name": "Vito",
+        "value": 24966538
       },
       {
         "rank": 76,
-        "tag": "ReV",
-        "name": "Cornishmac",
-        "value": 25164378
+        "tag": "DTD",
+        "name": "narak555",
+        "value": 24906779
       },
       {
         "rank": 77,
         "tag": "FPX",
-        "name": "Tropic Ice Bear",
-        "value": 25135237
+        "name": "xzXO",
+        "value": 24885463
       },
       {
         "rank": 78,
-        "tag": "NEW",
-        "name": "AtlantaDreamGirl",
-        "value": 25059576
-      },
-      {
-        "rank": 79,
-        "tag": "ReV",
-        "name": "Lord LeinesRev",
-        "value": 25052380
-      },
-      {
-        "rank": 80,
         "tag": "ReV",
         "name": "Veldora",
         "value": 24876670
       },
       {
+        "rank": 79,
+        "tag": "FPX",
+        "name": "Scary",
+        "value": 24787011
+      },
+      {
+        "rank": 80,
+        "tag": "FPX",
+        "name": "Arvid Fiya",
+        "value": 24784958
+      },
+      {
         "rank": 81,
-        "tag": "DTD",
-        "name": "narak555",
-        "value": 24812187
+        "tag": "FPX",
+        "name": "Jekballs",
+        "value": 255567
       },
       {
         "rank": 82,
-        "tag": "FPX",
-        "name": "Mars Fiya 3",
-        "value": 24649090
-      },
-      {
-        "rank": 83,
-        "tag": "FPX",
-        "name": "Abod",
-        "value": 24581033
-      },
-      {
-        "rank": 84,
-        "tag": "ReA",
-        "name": "BlackWidowReA",
-        "value": 24482633
-      },
-      {
-        "rank": 85,
-        "tag": "",
-        "name": "Poonjow",
-        "value": 24454727
-      },
-      {
-        "rank": 86,
-        "tag": "DTD",
-        "name": "DRACULA",
-        "value": 24398681
-      },
-      {
-        "rank": 87,
-        "tag": "FPX",
-        "name": "Arvid Fiya",
-        "value": 24395678
-      },
-      {
-        "rank": 88,
-        "tag": "DTD",
-        "name": "Josi",
-        "value": 24366121
-      },
-      {
-        "rank": 89,
-        "tag": "ReV",
-        "name": "LDS",
-        "value": 866348
-      },
-      {
-        "rank": 90,
-        "tag": "ReV",
-        "name": "Angorwrack",
-        "value": 706229
-      },
-      {
-        "rank": 91,
-        "tag": "ReV",
-        "name": "Lady Denarion",
-        "value": 35209
-      },
-      {
-        "rank": 92,
         "tag": "",
         "name": "lord304743834",
         "value": 30400
       },
       {
-        "rank": 93,
+        "rank": 83,
         "tag": "",
-        "name": "lord304743834",
-        "value": 16845
+        "name": "Wes",
+        "value": 24529
       },
       {
-        "rank": 94,
+        "rank": 84,
         "tag": "",
         "name": "Hero's Total Power",
         "value": 0
@@ -3260,7 +3140,7 @@
         "rank": 2,
         "tag": "DTD",
         "name": "Lanzy",
-        "value": 17333640
+        "value": 17454600
       },
       {
         "rank": 3,
@@ -3282,21 +3162,21 @@
       },
       {
         "rank": 6,
-        "tag": "FPX",
-        "name": "e TrueFiya 3",
+        "tag": "",
+        "name": "XFPXJe TrueFiya 3",
         "value": 14340360
       },
       {
         "rank": 7,
         "tag": "ReV",
         "name": "KravenRev",
-        "value": 14055480
+        "value": 14115960
       },
       {
         "rank": 8,
         "tag": "ReV",
         "name": "HBDA O6TR",
-        "value": 14038320
+        "value": 14062080
       },
       {
         "rank": 9,
@@ -3319,44 +3199,44 @@
       {
         "rank": 12,
         "tag": "FPX",
-        "name": "Lady Fiya 13",
+        "name": "Lady Fiya 1",
         "value": 12931680
       },
       {
         "rank": 13,
+        "tag": "ReV",
+        "name": "Lady Denarion",
+        "value": 12701760
+      },
+      {
+        "rank": 14,
         "tag": "FPX",
         "name": "Princess Fiya",
         "value": 12648720
       },
       {
-        "rank": 14,
+        "rank": 15,
         "tag": "ReV",
-        "name": "Vittorio08",
+        "name": "Vittorioo8",
         "value": 12385080
       },
       {
-        "rank": 15,
+        "rank": 16,
         "tag": "ReV",
         "name": "Monkey DJ Paure",
-        "value": 12089040
-      },
-      {
-        "rank": 16,
-        "tag": "DTD",
-        "name": "Txomin",
-        "value": 11941080
+        "value": 12125760
       },
       {
         "rank": 17,
-        "tag": "FPX",
-        "name": "RedrumSlayer",
-        "value": 11736840
+        "tag": "ReV",
+        "name": "Buckk",
+        "value": 11768400
       },
       {
         "rank": 18,
-        "tag": "ReV",
-        "name": "Buckk",
-        "value": 11732400
+        "tag": "FPX",
+        "name": "RedrumSlayer",
+        "value": 11736840
       },
       {
         "rank": 19,
@@ -3373,13 +3253,13 @@
       {
         "rank": 21,
         "tag": "ReV",
-        "name": "SugarPuffiesRev",
+        "name": "SugarMujitsuRev",
         "value": 11555640
       },
       {
         "rank": 22,
         "tag": "FPX",
-        "name": "Prince",
+        "name": "Prince_Farmer",
         "value": 11497080
       },
       {
@@ -3391,26 +3271,26 @@
       {
         "rank": 24,
         "tag": "ReV",
-        "name": "Cornishmac",
-        "value": 11448840
-      },
-      {
-        "rank": 25,
-        "tag": "ReV",
         "name": "Andersonbr",
         "value": 11426760
       },
       {
-        "rank": 26,
+        "rank": 25,
         "tag": "ReV",
-        "name": "LIONFLARE",
-        "value": 11413680
+        "name": "LIONFLARE Y",
+        "value": 11421240
       },
       {
-        "rank": 27,
+        "rank": 26,
         "tag": "FPX",
         "name": "Shorty#",
         "value": 11391600
+      },
+      {
+        "rank": 27,
+        "tag": "TWR",
+        "name": "Lord Steve",
+        "value": 11389320
       },
       {
         "rank": 28,
@@ -3420,69 +3300,69 @@
       },
       {
         "rank": 29,
-        "tag": "TWR",
-        "name": "Lord Steve",
-        "value": 11336400
-      },
-      {
-        "rank": 30,
         "tag": "ReV",
         "name": "QuinStar Rev",
         "value": 11250480
       },
       {
-        "rank": 31,
+        "rank": 30,
         "tag": "DTD",
         "name": "Mistress",
-        "value": 11185200
+        "value": 11208960
+      },
+      {
+        "rank": 31,
+        "tag": "ReV",
+        "name": "Cliffhanger",
+        "value": 11153640
       },
       {
         "rank": 32,
-        "tag": "FPx",
-        "name": "Iv gF",
-        "value": 11120040
+        "tag": "DTD",
+        "name": "Guardian",
+        "value": 11122920
       },
       {
         "rank": 33,
-        "tag": "DTD",
-        "name": "Guardian",
-        "value": 11074680
+        "tag": "FPX",
+        "name": "JvJ gF",
+        "value": 11120040
       },
       {
         "rank": 34,
+        "tag": "ReV",
+        "name": "9o8PROOFSTRIKER8oe/",
+        "value": 11108640
+      },
+      {
+        "rank": 35,
+        "tag": "ReV",
+        "name": "KBECA",
+        "value": 11070240
+      },
+      {
+        "rank": 36,
         "tag": "ReV",
         "name": "ROMEOTR",
         "value": 11065920
       },
       {
-        "rank": 35,
+        "rank": 37,
         "tag": "FPX",
         "name": "Alpha Gov",
         "value": 11051160
       },
       {
-        "rank": 36,
-        "tag": "ReV",
-        "name": "xerxes2620",
-        "value": 10988880
-      },
-      {
-        "rank": 37,
-        "tag": "ReV",
-        "name": "KBECA",
-        "value": 10984560
-      },
-      {
         "rank": 38,
-        "tag": "ReV",
-        "name": "Cliffhanger",
-        "value": 10953480
+        "tag": "FPX",
+        "name": "Yes lad?",
+        "value": 11040600
       },
       {
         "rank": 39,
-        "tag": "DTD",
-        "name": "lord galahad",
-        "value": 10866240
+        "tag": "ReV",
+        "name": "xerxes2620",
+        "value": 11024880
       },
       {
         "rank": 40,
@@ -3504,336 +3384,312 @@
       },
       {
         "rank": 43,
+        "tag": "ReV",
+        "name": "TANO D LEON",
+        "value": 10797720
+      },
+      {
+        "rank": 44,
         "tag": "DTD",
         "name": "Jolloki",
         "value": 10794720
       },
       {
-        "rank": 44,
+        "rank": 45,
+        "tag": "FPX",
+        "name": "FALCON",
+        "value": 10792920
+      },
+      {
+        "rank": 46,
+        "tag": "",
+        "name": "",
+        "value": 10780920
+      },
+      {
+        "rank": 47,
         "tag": "DTD",
         "name": "Kempaz",
         "value": 10755240
       },
       {
-        "rank": 45,
-        "tag": "ReV",
-        "name": "TANO D LEON",
-        "value": 10751640
+        "rank": 48,
+        "tag": "ReA",
+        "name": "Lord UNH",
+        "value": 10710480
       },
       {
-        "rank": 46,
-        "tag": "FPX",
-        "name": "ITLR927",
-        "value": 10713120
-      },
-      {
-        "rank": 47,
+        "rank": 49,
         "tag": "",
         "name": "ZAGY",
         "value": 10690800
       },
       {
-        "rank": 48,
+        "rank": 50,
         "tag": "FPX",
         "name": "Slashlilystar",
         "value": 10683240
       },
       {
-        "rank": 49,
-        "tag": "FPX",
-        "name": "FALCON",
-        "value": 10663200
-      },
-      {
-        "rank": 50,
-        "tag": "ReA",
-        "name": "Lord UNH",
-        "value": 10662240
-      },
-      {
         "rank": 51,
+        "tag": "ReA",
+        "name": "MS4578",
+        "value": 10680720
+      },
+      {
+        "rank": 52,
+        "tag": "DTD",
+        "name": "Shap_NZ",
+        "value": 10665720
+      },
+      {
+        "rank": 53,
         "tag": "ReV",
         "name": "GoL D RANDE",
         "value": 10625520
       },
       {
-        "rank": 52,
-        "tag": "",
-        "name": "",
-        "value": 10611240
+        "rank": 54,
+        "tag": "GGR",
+        "name": "maxitis2",
+        "value": 10591680
       },
       {
-        "rank": 53,
+        "rank": 55,
         "tag": "",
         "name": "Marvin Martian",
         "value": 10528800
       },
       {
-        "rank": 54,
+        "rank": 56,
         "tag": "ReV",
         "name": "LDS",
         "value": 10520160
       },
       {
-        "rank": 55,
-        "tag": "ReA",
-        "name": "MS4578",
-        "value": 10504320
-      },
-      {
-        "rank": 56,
+        "rank": 57,
         "tag": "DTD",
         "name": "Redrum",
-        "value": 10489920
-      },
-      {
-        "rank": 57,
-        "tag": "",
-        "name": "Love",
-        "value": 10486680
+        "value": 10502160
       },
       {
         "rank": 58,
+        "tag": "ReV",
+        "name": "TeuffeLTR",
+        "value": 10500480
+      },
+      {
+        "rank": 59,
+        "tag": "ReV",
+        "name": "Bakas",
+        "value": 10487760
+      },
+      {
+        "rank": 60,
+        "tag": "DTD",
+        "name": "Aro Mighty F2P",
+        "value": 10486680
+      },
+      {
+        "rank": 61,
+        "tag": "FPX",
+        "name": "Abod",
+        "value": 10477680
+      },
+      {
+        "rank": 62,
         "tag": "FPX",
         "name": "Gigi Penguino",
         "value": 10476840
       },
       {
-        "rank": 59,
-        "tag": "FPX",
-        "name": "Abod",
-        "value": 10465440
-      },
-      {
-        "rank": 60,
-        "tag": "ReV",
-        "name": "TeuffeLTR",
-        "value": 10464480
-      },
-      {
-        "rank": 61,
-        "tag": "ReV",
-        "name": "Bakas",
-        "value": 10448160
-      },
-      {
-        "rank": 62,
-        "tag": "GGR",
-        "name": "maxitis2",
-        "value": 10439760
-      },
-      {
         "rank": 63,
+        "tag": "DTD",
+        "name": "#945Nick",
+        "value": 10462920
+      },
+      {
+        "rank": 64,
+        "tag": "ReV",
+        "name": "EfetheolivemanTR",
+        "value": 10456080
+      },
+      {
+        "rank": 65,
+        "tag": "FPX",
+        "name": "DarkSunParallax",
+        "value": 10450800
+      },
+      {
+        "rank": 66,
+        "tag": "RPX",
+        "name": "Lil Dutchess",
+        "value": 10450200
+      },
+      {
+        "rank": 67,
+        "tag": "TWR",
+        "name": "KEREMiKO",
+        "value": 10443720
+      },
+      {
+        "rank": 68,
         "tag": "FPX",
         "name": "Zoso",
         "value": 10437600
       },
       {
-        "rank": 64,
-        "tag": "RPX",
-        "name": "Lil Dutchess",
-        "value": 10426440
+        "rank": 69,
+        "tag": "DTD",
+        "name": "Kezza",
+        "value": 10427400
       },
       {
-        "rank": 65,
+        "rank": 70,
         "tag": "DTD",
         "name": "Big Ben",
         "value": 10426200
       },
       {
-        "rank": 66,
+        "rank": 71,
         "tag": "FPX",
         "name": "LordSpacepeppers",
         "value": 10425840
       },
       {
-        "rank": 67,
+        "rank": 72,
         "tag": "DTD",
         "name": "Davel",
         "value": 10415280
       },
       {
-        "rank": 68,
-        "tag": "",
-        "name": "",
-        "value": 10413600
-      },
-      {
-        "rank": 69,
-        "tag": "DTD",
-        "name": "Kezza",
-        "value": 10403640
-      },
-      {
-        "rank": 70,
-        "tag": "TWR",
-        "name": "KEREMiKO",
-        "value": 10401720
-      },
-      {
-        "rank": 71,
-        "tag": "TWR",
-        "name": "lord147868288",
-        "value": 10360800
-      },
-      {
-        "rank": 72,
-        "tag": "DTD",
-        "name": "#945Nick",
-        "value": 10353120
-      },
-      {
         "rank": 73,
-        "tag": "DTD",
-        "name": "narak555",
-        "value": 10347120
+        "tag": "ReV",
+        "name": "lordkor",
+        "value": 10413600
       },
       {
         "rank": 74,
         "tag": "FPX",
         "name": "Mmmm",
-        "value": 10346160
+        "value": 10411200
       },
       {
         "rank": 75,
-        "tag": "ReV",
-        "name": "MIO",
-        "value": 10342440
+        "tag": "DTD",
+        "name": "narak555",
+        "value": 10395360
       },
       {
         "rank": 76,
-        "tag": "",
-        "name": "",
-        "value": 10311000
+        "tag": "RPX",
+        "name": "peppiniello",
+        "value": 10363680
       },
       {
         "rank": 77,
-        "tag": "",
-        "name": "BRIZA",
-        "value": 10301760
+        "tag": "TWR",
+        "name": "lord147868288",
+        "value": 10360800
       },
       {
         "rank": 78,
-        "tag": "DTD",
-        "name": "Josi",
-        "value": 10300200
+        "tag": "GGR",
+        "name": "Lord Goose",
+        "value": 10351320
       },
       {
         "rank": 79,
-        "tag": "FPX",
-        "name": "Godmother",
-        "value": 10296120
+        "tag": "ReV",
+        "name": "Lord LeinesRev",
+        "value": 10339680
       },
       {
         "rank": 80,
-        "tag": "DTD",
-        "name": "Tzeentch",
-        "value": 10279680
+        "tag": "",
+        "name": "",
+        "value": 10335480
       },
       {
         "rank": 81,
+        "tag": "DTD",
+        "name": "Josi",
+        "value": 10312440
+      },
+      {
+        "rank": 82,
+        "tag": "RPX",
+        "name": "Abod 2",
+        "value": 10261080
+      },
+      {
+        "rank": 83,
+        "tag": "DTD",
+        "name": "The Bacon F",
+        "value": 10251840
+      },
+      {
+        "rank": 84,
         "tag": "DTD",
         "name": "Failblaze",
         "value": 10247040
       },
       {
-        "rank": 82,
+        "rank": 85,
         "tag": "FPX",
         "name": "Captain Mariahca",
         "value": 10245240
       },
       {
-        "rank": 83,
-        "tag": "",
-        "name": "",
-        "value": 10238160
+        "rank": 86,
+        "tag": "DTD",
+        "name": "Ingrate",
+        "value": 10230960
       },
       {
-        "rank": 84,
+        "rank": 87,
         "tag": "",
         "name": "",
         "value": 10227480
       },
       {
-        "rank": 85,
+        "rank": 88,
+        "tag": "ReA",
+        "name": "hadaLzone_anbRa",
+        "value": 10225320
+      },
+      {
+        "rank": 89,
         "tag": "ReV",
         "name": "Veldora",
         "value": 10223160
       },
       {
-        "rank": 86,
+        "rank": 90,
         "tag": "FPX",
         "name": "Atsiz GRs",
         "value": 10222320
       },
       {
-        "rank": 87,
+        "rank": 91,
+        "tag": "ReV",
+        "name": "Aksi61",
+        "value": 10221840
+      },
+      {
+        "rank": 92,
         "tag": "DTD",
         "name": "Malevola",
         "value": 10220040
       },
       {
-        "rank": 88,
-        "tag": "RPX",
-        "name": "Abod 2",
-        "value": 10212120
-      },
-      {
-        "rank": 89,
-        "tag": "RPX",
-        "name": "peppiniello",
-        "value": 10203120
-      },
-      {
-        "rank": 90,
-        "tag": "DTD",
-        "name": "Philos",
-        "value": 10194120
-      },
-      {
-        "rank": 91,
-        "tag": "FPX",
-        "name": "MalQuerido",
-        "value": 10191120
-      },
-      {
-        "rank": 92,
-        "tag": "DTD",
-        "name": "Dunc",
-        "value": 10179360
-      },
-      {
         "rank": 93,
-        "tag": "DTO",
-        "name": "Rt5",
-        "value": 10173000
+        "tag": "",
+        "name": "lord304743834",
+        "value": 34555
       },
       {
         "rank": 94,
-        "tag": "ReV",
-        "name": "Aksi61",
-        "value": 10149120
-      },
-      {
-        "rank": 95,
-        "tag": "",
-        "name": "lord304743834",
-        "value": 34559
-      },
-      {
-        "rank": 96,
-        "tag": "DTD",
-        "name": "Dunc",
-        "value": 10179
-      },
-      {
-        "rank": 97,
-        "tag": "ReV",
-        "name": "Lady Denarion",
-        "value": 7017
-      },
-      {
-        "rank": 98,
         "tag": "",
         "name": "Total Pet Power",
         "value": 0
@@ -3850,7 +3706,7 @@
         "rank": 2,
         "tag": "DTD",
         "name": "Lanzy",
-        "value": 2223
+        "value": 2227
       },
       {
         "rank": 3,
@@ -3862,433 +3718,433 @@
         "rank": 4,
         "tag": "ReV",
         "name": "ELTON_KNAUL",
-        "value": 2113
+        "value": 2136
       },
       {
         "rank": 5,
         "tag": "FPX",
         "name": "BigBent12",
-        "value": 1865
+        "value": 1876
       },
       {
         "rank": 6,
         "tag": "FPX",
         "name": "Defiant",
-        "value": 1854
+        "value": 1870
       },
       {
         "rank": 7,
         "tag": "ReV",
         "name": "KravenRev",
-        "value": 1785
+        "value": 1788
       },
       {
         "rank": 8,
-        "tag": "FPX",
-        "name": "e TrueFiya 3",
-        "value": 1689
+        "tag": "ReV",
+        "name": "HBDA O6TR",
+        "value": 1714
       },
       {
         "rank": 9,
-        "tag": "",
-        "name": "ICFAJc Trueriya >",
-        "value": 1685
+        "tag": "FPX",
+        "name": "e TrueFiya 3",
+        "value": 1696
       },
       {
         "rank": 10,
-        "tag": "",
-        "name": "ReVJMonkey DJ Paure",
-        "value": 1655
+        "tag": "ReV",
+        "name": "Monkey DJ Paure",
+        "value": 1677
       },
       {
         "rank": 11,
         "tag": "FPX",
         "name": "Lord Fiya 1",
-        "value": 1610
+        "value": 1612
       },
       {
         "rank": 12,
-        "tag": "FPX",
-        "name": "RedrumSlayer",
-        "value": 1566
+        "tag": "ReV",
+        "name": "xerxes2620",
+        "value": 1571
       },
       {
         "rank": 13,
-        "tag": "ReV",
-        "name": "xerxes2620",
-        "value": 1564
+        "tag": "FPX",
+        "name": "RedrumSlayer",
+        "value": 1567
       },
       {
         "rank": 14,
         "tag": "ReV",
-        "name": "SugarPuffiesRev",
-        "value": 1542
+        "name": "SugarMujitsuRev",
+        "value": 1555
       },
       {
         "rank": 15,
         "tag": "FPX",
-        "name": "Princess Fiya",
-        "value": 1538
+        "name": "Princess",
+        "value": 1544
       },
       {
         "rank": 16,
         "tag": "ReV",
-        "name": "Vittorioo8",
-        "value": 1452
+        "name": "Lady Denarion",
+        "value": 1542
       },
       {
         "rank": 17,
-        "tag": "DTD",
-        "name": "Jolloki",
-        "value": 1403
+        "tag": "FPX",
+        "name": "Tired Chicken",
+        "value": 1486
       },
       {
         "rank": 18,
-        "tag": "FPX",
-        "name": "Swarm",
-        "value": 1399
+        "tag": "ReV",
+        "name": "Vittorioo8",
+        "value": 1482
       },
       {
         "rank": 19,
         "tag": "FPX",
-        "name": "Lady Fiya 3",
-        "value": 1387
+        "name": "Swarm",
+        "value": 1411
       },
       {
         "rank": 20,
         "tag": "ReV",
         "name": "Lord Jander",
-        "value": 1363
+        "value": 1410
       },
       {
         "rank": 21,
-        "tag": "FPX",
-        "name": "Dutchess U",
-        "value": 1358
+        "tag": "DTD",
+        "name": "Jolloki",
+        "value": 1405
       },
       {
         "rank": 22,
-        "tag": "DTD",
-        "name": "Guardian",
-        "value": 1350
+        "tag": "FPX",
+        "name": "Lady Fiya 1",
+        "value": 1397
       },
       {
         "rank": 23,
-        "tag": "ReV",
-        "name": "ROMEOTR",
-        "value": 1348
+        "tag": "FPX",
+        "name": "Dutchess U",
+        "value": 1388
       },
       {
         "rank": 24,
-        "tag": "FPx",
-        "name": "Iv gF",
-        "value": 1346
+        "tag": "ReV",
+        "name": "ROMEOTR",
+        "value": 1371
       },
       {
         "rank": 25,
         "tag": "DTD",
-        "name": "Maximus Gsus",
-        "value": 1328
+        "name": "Guardian",
+        "value": 1355
       },
       {
         "rank": 26,
         "tag": "DTD",
-        "name": "Kazl",
-        "value": 1311
+        "name": "Txomin",
+        "value": 1349
       },
       {
         "rank": 27,
-        "tag": "ReV",
-        "name": "LDS",
-        "value": 1309
+        "tag": "FPX",
+        "name": "JvJ g F",
+        "value": 1346
       },
       {
         "rank": 28,
+        "tag": "DTD",
+        "name": "Maximus Gsus",
+        "value": 1332
+      },
+      {
+        "rank": 29,
+        "tag": "ReV",
+        "name": "LDS",
+        "value": 1318
+      },
+      {
+        "rank": 30,
+        "tag": "DTD",
+        "name": "Kazl",
+        "value": 1314
+      },
+      {
+        "rank": 31,
         "tag": "FPX",
         "name": "Gigi Penguino",
         "value": 1303
       },
       {
-        "rank": 29,
-        "tag": "FPX",
-        "name": "Atsiz GRs",
-        "value": 1290
-      },
-      {
-        "rank": 30,
-        "tag": "FPX",
-        "name": "Alpha Gov",
-        "value": 1278
-      },
-      {
-        "rank": 31,
+        "rank": 32,
         "tag": "ReV",
         "name": "Buckk",
-        "value": 1277
-      },
-      {
-        "rank": 32,
-        "tag": "ReA",
-        "name": "BlackWidowReA",
-        "value": 1269
+        "value": 1293
       },
       {
         "rank": 33,
         "tag": "FPX",
-        "name": "IPrince_Farmer",
-        "value": 1257
+        "name": "Atsiz GRs",
+        "value": 1291
       },
       {
         "rank": 34,
-        "tag": "ReV",
-        "name": "LeoAlvesRev",
-        "value": 1254
+        "tag": "ReA",
+        "name": "BlackWidowReA",
+        "value": 1276
       },
       {
         "rank": 35,
-        "tag": "ReV",
-        "name": "QuinStar Rev",
-        "value": 1253
+        "tag": "FPX",
+        "name": "Prince_Farmer",
+        "value": 1274
       },
       {
         "rank": 36,
         "tag": "ReV",
-        "name": "LIONFLARE Y",
-        "value": 1246
+        "name": "LeoAlvesRev",
+        "value": 1271
       },
       {
         "rank": 37,
         "tag": "ReV",
-        "name": "TeuffeL TR",
-        "value": 1244
+        "name": "QuinStar Rev",
+        "value": 1266
       },
       {
         "rank": 38,
-        "tag": "FPX",
-        "name": "Jekballs",
-        "value": 1230
+        "tag": "ReV",
+        "name": "TeuffeLTR",
+        "value": 1259
       },
       {
         "rank": 39,
-        "tag": "FPX",
-        "name": "Scary",
-        "value": 1216
+        "tag": "ReV",
+        "name": "LIONFLARE",
+        "value": 1246
       },
       {
         "rank": 40,
-        "tag": "ELA",
-        "name": "Zookeeper",
-        "value": 1214
+        "tag": "FPX",
+        "name": "Jekballs",
+        "value": 1241
       },
       {
         "rank": 41,
+        "tag": "DTD",
+        "name": "Big Ben",
+        "value": 1237
+      },
+      {
+        "rank": 42,
         "tag": "FPX",
         "name": "Moemacita",
         "value": 1209
       },
       {
-        "rank": 42,
+        "rank": 43,
         "tag": "",
         "name": "Bundy",
         "value": 1208
       },
       {
-        "rank": 43,
+        "rank": 44,
         "tag": "FPX",
         "name": "Yes lad?",
-        "value": 1202
-      },
-      {
-        "rank": 44,
-        "tag": "DTD",
-        "name": "lord galahad",
-        "value": 1194
+        "value": 1205
       },
       {
         "rank": 45,
         "tag": "ReV",
         "name": "Veldora",
-        "value": 1192
+        "value": 1199
       },
       {
         "rank": 46,
         "tag": "ReV",
-        "name": "KBECA",
+        "name": "IKBECA",
         "value": 1190
       },
       {
         "rank": 47,
         "tag": "DTD",
-        "name": "RACDAT",
+        "name": "Mistress",
         "value": 1189
       },
       {
         "rank": 48,
-        "tag": "FPX",
-        "name": "FALCON",
+        "tag": "ReV",
+        "name": "Andersonbr",
         "value": 1184
       },
       {
         "rank": 49,
-        "tag": "DTD",
-        "name": "Mistress",
-        "value": 1178
+        "tag": "FPX",
+        "name": "Matsu de Oni",
+        "value": 1177
       },
       {
         "rank": 50,
-        "tag": "FPX",
-        "name": "Matsu de Oni",
-        "value": 1173
+        "tag": "ReV",
+        "name": "8o8PROOFSTRIKER8oe/",
+        "value": 1172
       },
       {
         "rank": 51,
+        "tag": "",
+        "name": "Skash",
+        "value": 1166
+      },
+      {
+        "rank": 52,
         "tag": "ReV",
         "name": "SunnyShadow",
         "value": 1164
       },
       {
-        "rank": 52,
-        "tag": "ReV",
-        "name": "Skash",
-        "value": 1162
-      },
-      {
         "rank": 53,
-        "tag": "",
-        "name": "ZAGY",
-        "value": 1159
+        "tag": "ReV",
+        "name": "EfetheolivemanTR",
+        "value": 1160
       },
       {
         "rank": 54,
-        "tag": "ReV",
-        "name": "G8PROOFSTRIKER8e/",
-        "value": 1157
+        "tag": "",
+        "name": "BRIZ",
+        "value": 1159
       },
       {
         "rank": 55,
         "tag": "FPX",
-        "name": "DarkSunParallax",
-        "value": 1153
+        "name": "Facade",
+        "value": 1152
       },
       {
         "rank": 56,
-        "tag": "",
-        "name": "BRIZ",
-        "value": 1150
-      },
-      {
-        "rank": 57,
         "tag": "RPX",
         "name": "Lil Dutchess",
         "value": 1146
       },
       {
-        "rank": 58,
-        "tag": "FPX",
-        "name": "Facade",
-        "value": 1139
+        "rank": 57,
+        "tag": "ReV",
+        "name": "xBatmanx",
+        "value": 1138
       },
       {
-        "rank": 59,
+        "rank": 58,
         "tag": "FPX",
         "name": "BRAVE HEART",
         "value": 1136
       },
       {
-        "rank": 60,
+        "rank": 59,
         "tag": "ReV",
-        "name": "EfetheolivemanTR",
-        "value": 1133
+        "name": "abu nur",
+        "value": 1134
+      },
+      {
+        "rank": 60,
+        "tag": "FPX",
+        "name": "Luna",
+        "value": 1128
       },
       {
         "rank": 61,
-        "tag": "ReV",
-        "name": "abu nur",
-        "value": 1126
+        "tag": "DTD",
+        "name": "Gunnut",
+        "value": 1124
       },
       {
         "rank": 62,
-        "tag": "FPX",
-        "name": "Luna",
-        "value": 1125
+        "tag": "ReV",
+        "name": "Mido #",
+        "value": 1117
       },
       {
         "rank": 63,
         "tag": "ReV",
-        "name": "xBatmanx",
-        "value": 1115
+        "name": "Angorwrack",
+        "value": 1116
       },
       {
         "rank": 64,
-        "tag": "ReV",
-        "name": "Angorwrack",
-        "value": 1114
-      },
-      {
-        "rank": 65,
         "tag": "ReV",
         "name": "Lord LeinesRev",
         "value": 1113
       },
       {
-        "rank": 66,
-        "tag": "FPX",
-        "name": "Wallis",
+        "rank": 65,
+        "tag": "ReV",
+        "name": "Cornishmac",
         "value": 1108
+      },
+      {
+        "rank": 66,
+        "tag": "ReA",
+        "name": "Lord UNH",
+        "value": 1101
       },
       {
         "rank": 67,
         "tag": "DTD",
-        "name": "Gunnut",
-        "value": 1105
+        "name": "Davel",
+        "value": 1087
       },
       {
         "rank": 68,
-        "tag": "ReV",
-        "name": "Cornishmac",
-        "value": 1095
+        "tag": "FPX",
+        "name": "PLN",
+        "value": 1086
       },
       {
         "rank": 69,
-        "tag": "ReA",
-        "name": "Lord UNH",
-        "value": 1083
+        "tag": "FPX",
+        "name": "Abod",
+        "value": 1081
       },
       {
         "rank": 70,
-        "tag": "FPX",
-        "name": "LightBearer",
+        "tag": "DTD",
+        "name": "Kempaz",
         "value": 1080
       },
       {
         "rank": 71,
         "tag": "FPX",
-        "name": "IAnubis",
+        "name": "Anubis",
         "value": 1079
       },
       {
         "rank": 72,
-        "tag": "DTD",
-        "name": "Kempaz",
-        "value": 1077
-      },
-      {
-        "rank": 73,
         "tag": "FPX",
-        "name": "YL7",
+        "name": "XEXO",
         "value": 1075
       },
       {
-        "rank": 74,
-        "tag": "FPX",
-        "name": "Abod",
+        "rank": 73,
+        "tag": "ReV",
+        "name": "Lyaall",
         "value": 1072
+      },
+      {
+        "rank": 74,
+        "tag": "ReV",
+        "name": "Malhajery",
+        "value": 1071
       },
       {
         "rank": 75,
         "tag": "ReV",
-        "name": "Malhajery",
-        "value": 1071
+        "name": "Casius",
+        "value": 1070
       },
       {
         "rank": 76,
@@ -4299,47 +4155,29 @@
       {
         "rank": 77,
         "tag": "ReV",
-        "name": "zolaft",
+        "name": "Y BaronBY",
         "value": 1066
       },
       {
         "rank": 78,
-        "tag": "ReV",
-        "name": "Casius",
+        "tag": "FPX",
+        "name": "Teeebone",
         "value": 1065
       },
       {
         "rank": 79,
         "tag": "FPX",
-        "name": "Teeebone",
-        "value": 1063
-      },
-      {
-        "rank": 80,
-        "tag": "FPX",
         "name": "Mars Fiya 3",
         "value": 1062
       },
       {
-        "rank": 81,
+        "rank": 80,
         "tag": "FPX",
-        "name": "Shorty#",
-        "value": 1061
+        "name": "Wallis",
+        "value": 111
       },
       {
-        "rank": 82,
-        "tag": "Re",
-        "name": "Vl_all",
-        "value": 1060
-      },
-      {
-        "rank": 83,
-        "tag": "ReV",
-        "name": "Y BaronBY",
-        "value": 1059
-      },
-      {
-        "rank": 84,
+        "rank": 81,
         "tag": "",
         "name": "lord304743834",
         "value": 0

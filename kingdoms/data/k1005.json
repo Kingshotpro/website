@@ -1,6 +1,6 @@
 {
   "kingdom": 1005,
-  "last_updated": "2026-04-18",
+  "last_updated": "2026-04-20",
   "source": "ADB screenshot scraper + EasyOCR extraction",
   "categories": {
     "alliance_power": [
@@ -8,229 +8,229 @@
         "rank": 1,
         "tag": "ONE",
         "name": "OnePiece",
-        "value": 12892620769
+        "value": 13710615649
       },
       {
         "rank": 2,
         "tag": "REM",
         "name": "RelaxMode",
-        "value": 12373019918
+        "value": 12382857402
       },
       {
         "rank": 3,
         "tag": "KIN",
         "name": "KINGS",
-        "value": 10451622176
+        "value": 11136928548
       },
       {
         "rank": 4,
         "tag": "RED",
         "name": "TheRedRoom",
-        "value": 6823956074
+        "value": 6949199986
       },
       {
         "rank": 5,
         "tag": "OxU",
         "name": "OnyxUnited",
-        "value": 5324738418
+        "value": 5406553512
       },
       {
         "rank": 6,
         "tag": "KNG",
         "name": "Emperor",
-        "value": 3823861298
+        "value": 3855443918
       },
       {
         "rank": 7,
         "tag": "ReM",
         "name": "ReMShadows",
-        "value": 3431084697
+        "value": 3491609081
       },
       {
         "rank": 8,
         "tag": "TRN",
         "name": "torosnegros",
-        "value": 2973214148
+        "value": 3013090049
       },
       {
         "rank": 9,
-        "tag": "KiN",
-        "name": "Kaamelott",
-        "value": 2631054225
+        "tag": "PHX",
+        "name": "PHOENIX",
+        "value": 2683998285
       },
       {
         "rank": 10,
-        "tag": "PHX",
-        "name": "PHOENIX",
-        "value": 2590190768
+        "tag": "KiN",
+        "name": "Kaamelott",
+        "value": 2675935098
       },
       {
         "rank": 11,
         "tag": "ONe",
         "name": "TheStrawHats",
-        "value": 2513240188
+        "value": 2454951218
       },
       {
         "rank": 12,
         "tag": "KIN",
         "name": "Duke",
-        "value": 654977151
+        "value": 661531673
       },
       {
         "rank": 13,
         "tag": "XXX",
         "name": "Tentacion",
-        "value": 424987955
+        "value": 425643857
       },
       {
         "rank": 14,
         "tag": "EUR",
         "name": "Europa",
-        "value": 408900742
+        "value": 412878282
       },
       {
         "rank": 15,
         "tag": "ZfG",
         "name": "GodsOfWar",
-        "value": 364416116
+        "value": 366333107
       },
       {
         "rank": 16,
         "tag": "FRA",
         "name": "GIPN",
-        "value": 344430007
+        "value": 345229304
       },
       {
         "rank": 17,
         "tag": "Hus",
         "name": "Husaria",
-        "value": 310031545
+        "value": 313085100
       },
       {
         "rank": 18,
-        "tag": "APX",
-        "name": "ApexPredators",
-        "value": 201921310
+        "tag": "One",
+        "name": "OnePieceAcademy",
+        "value": 251063905
       },
       {
         "rank": 19,
-        "tag": "HwF",
-        "name": "Familyfun",
-        "value": 201800286
+        "tag": "SxU",
+        "name": "skyUnited",
+        "value": 216377309
       },
       {
         "rank": 20,
-        "tag": "kFF",
-        "name": "katokmapuhh",
-        "value": 155648588
+        "tag": "HwF",
+        "name": "Familyfun",
+        "value": 213305560
       },
       {
         "rank": 21,
-        "tag": "TOPIT",
-        "name": "OP",
-        "value": 145770900
+        "tag": "stx",
+        "name": "stx",
+        "value": 209463589
       },
       {
         "rank": 22,
-        "tag": "jsH",
-        "name": "AUSSIE",
-        "value": 140423803
+        "tag": "kFF",
+        "name": "katokmapuhh",
+        "value": 156408375
       },
       {
         "rank": 23,
-        "tag": "aKD",
-        "name": "PlayforFun",
-        "value": 113710781
+        "tag": "TOP",
+        "name": "Top",
+        "value": 147014242
       },
       {
         "rank": 24,
+        "tag": "jsH",
+        "name": "AUSSIE",
+        "value": 141203310
+      },
+      {
+        "rank": 25,
         "tag": "nrx",
         "name": "GARRADODESTINO",
         "value": 105668165
       },
       {
-        "rank": 25,
+        "rank": 26,
         "tag": "JXK",
         "name": "theBlackKnights",
-        "value": 99742529
-      },
-      {
-        "rank": 26,
-        "tag": "Gag",
-        "name": "Gang",
-        "value": 89833783
+        "value": 100947096
       },
       {
         "rank": 27,
-        "tag": "FiN",
-        "name": "Sumu",
-        "value": 77946239
+        "tag": "Gagl",
+        "name": "Gang",
+        "value": 91496787
       },
       {
         "rank": 28,
-        "tag": "POO",
-        "name": "PepePoopers",
-        "value": 77309855
+        "tag": "hsw",
+        "name": "Vkivki",
+        "value": 88654420
       },
       {
         "rank": 29,
+        "tag": "FiN",
+        "name": "Sumu",
+        "value": 78878646
+      },
+      {
+        "rank": 30,
+        "tag": "POO",
+        "name": "PepePoopers",
+        "value": 77487095
+      },
+      {
+        "rank": 31,
         "tag": "BLK",
         "name": "BlackKnights",
         "value": 69318210
       },
       {
-        "rank": 30,
+        "rank": 32,
         "tag": "RiP",
         "name": "Richplace",
-        "value": 64004281
-      },
-      {
-        "rank": 31,
-        "tag": "LoL",
-        "name": "MisFitsFarm",
-        "value": 61821319
-      },
-      {
-        "rank": 32,
-        "tag": "kJW",
-        "name": "SGE",
-        "value": 60460173
+        "value": 67553253
       },
       {
         "rank": 33,
-        "tag": "Loc",
-        "name": "LegionofChaos",
-        "value": 56423130
+        "tag": "kJW",
+        "name": "SGE",
+        "value": 60803075
       },
       {
         "rank": 34,
-        "tag": "qhc",
-        "name": "Helpeachother",
-        "value": 56421687
+        "tag": "ueV",
+        "name": "Gardenlovers",
+        "value": 57043014
       },
       {
         "rank": 35,
-        "tag": "ueV",
-        "name": "Gardenlovers",
-        "value": 56197481
+        "tag": "YHW",
+        "name": "Gera",
+        "value": 56877145
       },
       {
         "rank": 36,
-        "tag": "ECb",
-        "name": "Ranger",
-        "value": 55539203
+        "tag": "qhc",
+        "name": "Helpeachother",
+        "value": 56868635
       },
       {
         "rank": 37,
-        "tag": "KVK",
-        "name": "oosClubHouse",
-        "value": 54404550
+        "tag": "ECb",
+        "name": "Ranger",
+        "value": 55836331
       },
       {
         "rank": 38,
-        "tag": "SHB",
-        "name": "Shadowbound",
-        "value": 51272434
+        "tag": "KV",
+        "name": "KhoosClubHouse",
+        "value": 54404550
       },
       {
         "rank": 39,
@@ -240,27 +240,27 @@
       },
       {
         "rank": 40,
-        "tag": "turlt",
-        "name": "urkler",
-        "value": 47480985
-      },
-      {
-        "rank": 41,
-        "tag": "geq",
+        "tag": "geql",
         "name": "SafeTown",
         "value": 47249260
       },
       {
-        "rank": 42,
+        "rank": 41,
         "tag": "UNO",
         "name": "zuyarmy",
-        "value": 40434793
+        "value": 41038681
+      },
+      {
+        "rank": 42,
+        "tag": "Kfylj",
+        "name": "oker",
+        "value": 39621357
       },
       {
         "rank": 43,
-        "tag": "Kf",
-        "name": "Yljoker",
-        "value": 39322412
+        "tag": "kmc",
+        "name": "_elljiall",
+        "value": 33836013
       },
       {
         "rank": 44,
@@ -272,7 +272,7 @@
         "rank": 45,
         "tag": "PDS",
         "name": "Poderosos",
-        "value": 29971465
+        "value": 30631662
       },
       {
         "rank": 46,
@@ -282,264 +282,270 @@
       },
       {
         "rank": 47,
-        "tag": "Qxalg",
-        "name": "oodoldStyria",
-        "value": 19422586
+        "tag": "Zdz",
+        "name": "Amintrablsy",
+        "value": 20849478
       },
       {
         "rank": 48,
-        "tag": "Zdz",
-        "name": "Amintrablsy",
-        "value": 19241687
-      },
-      {
-        "rank": 49,
         "tag": "poljo",
         "name": "stanibatalion",
         "value": 18733644
       },
       {
-        "rank": 50,
+        "rank": 49,
         "tag": "NVPIT",
         "name": "HESHIELD",
         "value": 18100792
       },
       {
-        "rank": 51,
-        "tag": "zzQ",
+        "rank": 50,
+        "tag": "zzQl",
         "name": "AppleHouse",
         "value": 16148308
       },
       {
-        "rank": 52,
+        "rank": 51,
         "tag": "SDW",
         "name": "SHADOWREIGN",
         "value": 13996682
       },
       {
-        "rank": 53,
-        "tag": "nQy",
-        "name": "SUR",
-        "value": 13613021
-      },
-      {
-        "rank": 54,
+        "rank": 52,
         "tag": "War",
         "name": "Plunderer",
         "value": 10770285
       },
       {
-        "rank": 55,
+        "rank": 53,
         "tag": "WX",
         "name": "JProfosyoneller",
         "value": 8016086
       },
       {
-        "rank": 56,
+        "rank": 54,
         "tag": "Trn",
         "name": "torosnegross",
         "value": 6419509
       },
       {
-        "rank": 57,
-        "tag": "zME",
-        "name": "JeromeSky",
-        "value": 6316901
-      },
-      {
-        "rank": 58,
+        "rank": 55,
         "tag": "GWc",
         "name": "German Wolfclaw",
         "value": 5723759
       },
       {
-        "rank": 59,
+        "rank": 56,
         "tag": "gVh",
         "name": "uHD",
         "value": 5253374
       },
       {
-        "rank": 60,
-        "tag": "Wx",
-        "name": "Ujo8151005",
+        "rank": 57,
+        "tag": "WxU",
+        "name": "o8151005",
         "value": 5181754
       },
       {
-        "rank": 61,
+        "rank": 58,
         "tag": "Em",
-        "name": "citadel",
+        "name": "jCitadel",
         "value": 4850107
       },
       {
-        "rank": 62,
+        "rank": 59,
         "tag": "Hpa",
         "name": "Allofus",
         "value": 4571016
       },
       {
-        "rank": 63,
+        "rank": 60,
         "tag": "FmW",
-        "name": "_4g",
+        "name": "_*g0",
         "value": 3695238
       },
       {
-        "rank": 64,
+        "rank": 61,
         "tag": "wpy",
         "name": "OSMANLIDEVLETi",
         "value": 3387600
       },
       {
-        "rank": 65,
+        "rank": 62,
         "tag": "SF",
-        "name": "JJw-unuliqunjn",
+        "name": "JJwhunuiiaunm",
         "value": 3376561
       },
       {
-        "rank": 66,
-        "tag": "ejV",
-        "name": "PrettyBebBnB",
-        "value": 3173710
-      },
-      {
-        "rank": 67,
+        "rank": 63,
         "tag": "TsH",
         "name": "TSHFarmers",
         "value": 3021268
       },
       {
-        "rank": 68,
-        "tag": "hCnlk",
-        "name": "ingofworld",
+        "rank": 64,
+        "tag": "hCn",
+        "name": "kingofworld",
         "value": 2654313
       },
       {
-        "rank": 69,
+        "rank": 65,
         "tag": "DZL",
         "name": "DZL",
         "value": 2603785
       },
       {
-        "rank": 70,
+        "rank": 66,
+        "tag": "jxn",
+        "name": "angelface",
+        "value": 2515401
+      },
+      {
+        "rank": 67,
         "tag": "Qpt",
-        "name": "u>Jll",
+        "name": "->JI",
         "value": 2503662
       },
       {
-        "rank": 71,
+        "rank": 68,
         "tag": "pke",
         "name": "Reignsquall",
         "value": 2397921
       },
       {
-        "rank": 72,
+        "rank": 69,
         "tag": "wQrlp",
         "name": "olonus",
         "value": 2255131
       },
       {
-        "rank": 73,
-        "tag": "Vigll",
+        "rank": 70,
+        "tag": "Vjgll",
         "name": "osfokinmonitos",
         "value": 1973940
       },
       {
-        "rank": 74,
-        "tag": "SeX",
-        "name": "L",
-        "value": 1749938
-      },
-      {
-        "rank": 75,
-        "tag": "EsH",
-        "name": "zalezyktopyta",
+        "rank": 71,
+        "tag": "Es",
+        "name": "Hjzalezyktopyta",
         "value": 1740139
       },
       {
-        "rank": 76,
+        "rank": 72,
         "tag": "nCf",
         "name": "cooltown",
         "value": 1641220
       },
       {
-        "rank": 77,
+        "rank": 73,
         "tag": "ZvV",
         "name": "Reapersofdeath",
         "value": 1561244
       },
       {
-        "rank": 78,
+        "rank": 74,
+        "tag": "hr",
+        "name": "Ulbsslsy",
+        "value": 1555477
+      },
+      {
+        "rank": 75,
+        "tag": "nEh",
+        "name": "Samir",
+        "value": 1512551
+      },
+      {
+        "rank": 76,
+        "tag": "t",
+        "name": "nlyt",
+        "value": 1443976
+      },
+      {
+        "rank": 77,
         "tag": "nte",
         "name": "BOSSGAN",
         "value": 1431558
       },
       {
-        "rank": 79,
+        "rank": 78,
         "tag": "Amg",
         "name": "OneForAII",
         "value": 1417922
       },
       {
-        "rank": 80,
+        "rank": 79,
         "tag": "MYh",
         "name": "DDR",
         "value": 1417211
       },
       {
-        "rank": 81,
+        "rank": 80,
         "tag": "BLD",
         "name": "Bloodstorm",
         "value": 1407778
       },
       {
-        "rank": 82,
+        "rank": 81,
         "tag": "bHa",
         "name": "EternalVikings",
         "value": 1384067
       },
       {
-        "rank": 83,
+        "rank": 82,
         "tag": "BWvlw",
         "name": "rldclub",
         "value": 1372950
       },
       {
-        "rank": 84,
+        "rank": 83,
         "tag": "NYD",
         "name": "QQw3",
         "value": 1357581
       },
       {
-        "rank": 85,
+        "rank": 84,
         "tag": "hQU",
         "name": "Roro",
         "value": 1331115
       },
       {
-        "rank": 86,
+        "rank": 85,
         "tag": "tTC",
         "name": "Azergarde",
         "value": 1297491
       },
       {
-        "rank": 87,
+        "rank": 86,
         "tag": "bmg",
         "name": "Eve",
         "value": 1296232
       },
       {
-        "rank": 88,
+        "rank": 87,
         "tag": "SLT",
         "name": "SaltMasters",
         "value": 1253329
       },
       {
-        "rank": 89,
+        "rank": 88,
         "tag": "DDY",
         "name": "Corpzzz",
         "value": 1246319
       },
       {
+        "rank": 89,
+        "tag": "Loc",
+        "name": "LegionofChaos",
+        "value": 423130
+      },
+      {
         "rank": 90,
+        "tag": "SHB",
+        "name": "Shadowbound",
+        "value": 272434
+      },
+      {
+        "rank": 91,
         "tag": "",
         "name": "Alliance Power",
         "value": 0
@@ -548,348 +554,354 @@
     "alliance_kills": [
       {
         "rank": 1,
-        "tag": "REM",
-        "name": "RelaxMode",
-        "value": 904667954
+        "tag": "ONE",
+        "name": "OnePiece",
+        "value": 1021326329
       },
       {
         "rank": 2,
-        "tag": "ONE",
-        "name": "OnePiece",
-        "value": 882232011
+        "tag": "REM",
+        "name": "RelaxMode",
+        "value": 878794115
       },
       {
         "rank": 3,
         "tag": "KIN",
         "name": "KINGS",
-        "value": 618380196
+        "value": 664368531
       },
       {
         "rank": 4,
         "tag": "RED",
         "name": "TheRedRoom",
-        "value": 429965225
+        "value": 436765708
       },
       {
         "rank": 5,
         "tag": "OxU",
         "name": "OnyxUnited",
-        "value": 73212629
+        "value": 73221321
       },
       {
         "rank": 6,
-        "tag": "KiN",
-        "name": "Kaamelott",
-        "value": 38867548
+        "tag": "PHX",
+        "name": "PHOENIX",
+        "value": 40857490
       },
       {
         "rank": 7,
-        "tag": "ONe",
-        "name": "TheStrawHats",
-        "value": 29808814
+        "tag": "KiN",
+        "name": "Kaamelott",
+        "value": 38886383
       },
       {
         "rank": 8,
+        "tag": "ONe",
+        "name": "TheStrawHats",
+        "value": 29023512
+      },
+      {
+        "rank": 9,
         "tag": "ReM",
         "name": "ReMShadows",
         "value": 16943476
       },
       {
-        "rank": 9,
+        "rank": 10,
         "tag": "KNG",
         "name": "Emperor",
         "value": 16743227
       },
       {
-        "rank": 10,
+        "rank": 11,
         "tag": "TRN",
         "name": "torosnegros",
-        "value": 14771607
+        "value": 14772198
       },
       {
-        "rank": 11,
+        "rank": 12,
         "tag": "KIN",
         "name": "Duke",
         "value": 7704971
       },
       {
-        "rank": 12,
+        "rank": 13,
         "tag": "FRA",
         "name": "GIPN",
         "value": 4759934
       },
       {
-        "rank": 13,
+        "rank": 14,
         "tag": "EUR",
         "name": "Europa",
         "value": 4544756
       },
       {
-        "rank": 14,
+        "rank": 15,
         "tag": "RiP",
         "name": "Richplace",
         "value": 4033006
       },
       {
-        "rank": 15,
+        "rank": 16,
         "tag": "XXX",
         "name": "Tentacion",
         "value": 2222519
       },
       {
-        "rank": 16,
+        "rank": 17,
         "tag": "hsw",
         "name": "Vkivki",
         "value": 1778893
       },
       {
-        "rank": 17,
+        "rank": 18,
         "tag": "ZfG",
         "name": "GodsOfWar",
         "value": 1723402
       },
       {
-        "rank": 18,
+        "rank": 19,
+        "tag": "YHW",
+        "name": "Gera",
+        "value": 1499023
+      },
+      {
+        "rank": 20,
+        "tag": "Hus",
+        "name": "Husaria",
+        "value": 1474058
+      },
+      {
+        "rank": 21,
+        "tag": "HwF",
+        "name": "Familyfun",
+        "value": 1238157
+      },
+      {
+        "rank": 22,
         "tag": "kFF",
         "name": "katokmapuhh",
         "value": 964187
       },
       {
-        "rank": 19,
+        "rank": 23,
         "tag": "APX",
         "name": "ApexPredators",
         "value": 840427
       },
       {
-        "rank": 20,
+        "rank": 24,
         "tag": "BLE",
         "name": "BlaueLegion",
         "value": 732018
       },
       {
-        "rank": 21,
+        "rank": 25,
         "tag": "stx",
         "name": "stx",
         "value": 632171
       },
       {
-        "rank": 22,
-        "tag": "One",
-        "name": "OnePieceAcademy",
-        "value": 605132
-      },
-      {
-        "rank": 23,
+        "rank": 26,
         "tag": "jsH",
         "name": "AUSSIE",
         "value": 436871
       },
       {
-        "rank": 24,
+        "rank": 27,
         "tag": "FiN",
         "name": "Sumu",
         "value": 435404
       },
       {
-        "rank": 25,
-        "tag": "Gagl",
+        "rank": 28,
+        "tag": "Gag",
         "name": "Gang",
         "value": 430096
       },
       {
-        "rank": 26,
+        "rank": 29,
+        "tag": "SxU",
+        "name": "skyUnited",
+        "value": 388425
+      },
+      {
+        "rank": 30,
+        "tag": "NGN",
+        "name": "NEGAN",
+        "value": 386693
+      },
+      {
+        "rank": 31,
         "tag": "aKD",
         "name": "PlayforFun",
         "value": 335531
       },
       {
-        "rank": 27,
+        "rank": 32,
         "tag": "TOP",
-        "name": "Top",
+        "name": "TOp",
         "value": 290967
       },
       {
-        "rank": 28,
+        "rank": 33,
         "tag": "kJW",
         "name": "SGE",
         "value": 274203
       },
       {
-        "rank": 29,
+        "rank": 34,
         "tag": "Loc",
         "name": "LegionofChaos",
         "value": 272974
       },
       {
-        "rank": 30,
+        "rank": 35,
+        "tag": "UNO",
+        "name": "zuyarmy",
+        "value": 189270
+      },
+      {
+        "rank": 36,
         "tag": "JXK",
         "name": "theBlackKnights",
         "value": 186799
       },
       {
-        "rank": 31,
+        "rank": 37,
         "tag": "qhc",
         "name": "Helpeachother",
         "value": 157476
       },
       {
-        "rank": 32,
+        "rank": 38,
         "tag": "POO",
         "name": "PepePoopers",
         "value": 149977
       },
       {
-        "rank": 33,
+        "rank": 39,
         "tag": "geq",
-        "name": "/SafeTown",
+        "name": "SafeTown",
         "value": 145463
       },
       {
-        "rank": 34,
+        "rank": 40,
         "tag": "SHB",
         "name": "Shadowbound",
         "value": 140004
       },
       {
-        "rank": 35,
-        "tag": "zzQl",
+        "rank": 41,
+        "tag": "zzQ",
         "name": "AppleHouse",
         "value": 129256
       },
       {
-        "rank": 36,
-        "tag": "Qxalg",
+        "rank": 42,
+        "tag": "Qxqlg",
         "name": "oodoldStyria",
         "value": 126492
       },
       {
-        "rank": 37,
+        "rank": 43,
         "tag": "LoL",
         "name": "MisFitsFarm",
         "value": 114071
       },
       {
-        "rank": 38,
+        "rank": 44,
         "tag": "BLK",
         "name": "BlackKnights",
         "value": 112477
       },
       {
-        "rank": 39,
+        "rank": 45,
         "tag": "EhN",
         "name": "Portland",
         "value": 93845
       },
       {
-        "rank": 40,
+        "rank": 46,
         "tag": "nrx",
         "name": "GARRADODESTINO",
         "value": 82437
       },
       {
-        "rank": 41,
+        "rank": 47,
         "tag": "ueV",
         "name": "Gardenlovers",
         "value": 71761
       },
       {
-        "rank": 42,
+        "rank": 48,
+        "tag": "PDS",
+        "name": "Poderosos",
+        "value": 66940
+      },
+      {
+        "rank": 49,
         "tag": "gVh",
         "name": "uHD",
         "value": 62074
       },
       {
-        "rank": 43,
-        "tag": "tur",
-        "name": "turkler",
+        "rank": 50,
+        "tag": "turlt",
+        "name": "urkler",
         "value": 58217
       },
       {
-        "rank": 44,
-        "tag": "kmc",
-        "name": "_lljiall",
-        "value": 49158
-      },
-      {
-        "rank": 45,
-        "tag": "Kf",
-        "name": "Yljoker",
-        "value": 47314
-      },
-      {
-        "rank": 46,
-        "tag": "hCnlk",
-        "name": "ingofworld",
+        "rank": 51,
+        "tag": "hCn",
+        "name": "kingofworld",
         "value": 39860
       },
       {
-        "rank": 47,
+        "rank": 52,
         "tag": "ECb",
         "name": "Ranger",
         "value": 38504
       },
       {
-        "rank": 48,
+        "rank": 53,
         "tag": "NVPIT",
         "name": "HESHIELD",
         "value": 36324
       },
       {
-        "rank": 49,
-        "tag": "PHX",
-        "name": "PHOENIX",
-        "value": 36289
-      },
-      {
-        "rank": 50,
+        "rank": 54,
         "tag": "KVK",
-        "name": "iOOsClubHouse",
+        "name": "oosClubHouse",
         "value": 33685
       },
       {
-        "rank": 51,
+        "rank": 55,
+        "tag": "SDWIS",
+        "name": "HADOWREIGN",
+        "value": 30937
+      },
+      {
+        "rank": 56,
         "tag": "nEh",
         "name": "Samir",
         "value": 22897
       },
       {
-        "rank": 52,
-        "tag": "SFJ",
-        "name": "wunuiiaunmn",
-        "value": 21256
-      },
-      {
-        "rank": 53,
+        "rank": 57,
         "tag": "WxU",
         "name": "o8151005",
         "value": 18501
       },
       {
-        "rank": 54,
-        "tag": "unTJp",
-        "name": "l",
-        "value": 18243
-      },
-      {
-        "rank": 55,
-        "tag": "nQy",
-        "name": "SUR",
-        "value": 16333
-      },
-      {
-        "rank": 56,
-        "tag": "poljo",
-        "name": "stanibatalion",
-        "value": 11696
-      },
-      {
-        "rank": 57,
+        "rank": 58,
         "tag": "FmW",
-        "name": "_4g1",
+        "name": "Age",
         "value": 11099
       },
       {
-        "rank": 58,
+        "rank": 59,
         "tag": "",
         "name": "Alliance Kills",
         "value": 0
@@ -900,556 +912,580 @@
         "rank": 1,
         "tag": "RED",
         "name": "Nvidus",
-        "value": 368342872
+        "value": 383090372
       },
       {
         "rank": 2,
         "tag": "ONE",
-        "name": "Drachilles",
-        "value": 276903893
+        "name": "YOU ARE WELCOME",
+        "value": 365545028
       },
       {
         "rank": 3,
         "tag": "ONE",
-        "name": "KOREA",
-        "value": 276420156
+        "name": "Mr",
+        "value": 282376484
       },
       {
         "rank": 4,
         "tag": "ONE",
-        "name": "BirdofPrey",
-        "value": 262637971
+        "name": "KOR",
+        "value": 282067207
       },
       {
         "rank": 5,
-        "tag": "REM",
-        "name": "Dragon Bob",
-        "value": 262237405
+        "tag": "ONE",
+        "name": "warbird z",
+        "value": 265609551
       },
       {
         "rank": 6,
-        "tag": "ONE",
-        "name": "Heartwell",
-        "value": 257178987
+        "tag": "REM",
+        "name": "Orca",
+        "value": 265340877
       },
       {
         "rank": 7,
-        "tag": "REM",
-        "name": "Weetcheez",
-        "value": 236571896
+        "tag": "ONE",
+        "name": "Heartwell",
+        "value": 260884103
       },
       {
         "rank": 8,
         "tag": "REM",
-        "name": "TropicTrainwreck",
-        "value": 229999687
+        "name": "The Whale",
+        "value": 254222523
       },
       {
         "rank": 9,
-        "tag": "KIN",
-        "name": "YEYO",
-        "value": 229933862
+        "tag": "REM",
+        "name": "HULLO NAMEsBRUCE",
+        "value": 247410379
       },
       {
         "rank": 10,
+        "tag": "ONE",
+        "name": "PIH KUH Low",
+        "value": 243633761
+      },
+      {
+        "rank": 11,
+        "tag": "KIN",
+        "name": "YEYO",
+        "value": 233396893
+      },
+      {
+        "rank": 12,
+        "tag": "REM",
+        "name": "Catfish",
+        "value": 227396068
+      },
+      {
+        "rank": 13,
+        "tag": "RED",
+        "name": "PrincessTmBianca",
+        "value": 225841385
+      },
+      {
+        "rank": 14,
+        "tag": "ONE",
+        "name": "Buu",
+        "value": 225810172
+      },
+      {
+        "rank": 15,
         "tag": "REM",
         "name": "DragonLee",
         "value": 225652061
       },
       {
-        "rank": 11,
-        "tag": "ONE",
-        "name": "Luffy",
-        "value": 224551788
-      },
-      {
-        "rank": 12,
-        "tag": "KIN",
-        "name": "Cinos",
-        "value": 216269136
-      },
-      {
-        "rank": 13,
-        "tag": "REM",
-        "name": "Trafalgar Law",
-        "value": 215290049
-      },
-      {
-        "rank": 14,
-        "tag": "ONE",
-        "name": "es PEGASUS 63",
-        "value": 214012642
-      },
-      {
-        "rank": 15,
-        "tag": "KIN",
-        "name": "Erwin",
-        "value": 209675615
-      },
-      {
         "rank": 16,
-        "tag": "KIN",
-        "name": "Arabia",
-        "value": 208322824
+        "tag": "ONE",
+        "name": "Majin Lorenzo",
+        "value": 220180015
       },
       {
         "rank": 17,
-        "tag": "ONE",
-        "name": "Surturenzo",
-        "value": 207701973
+        "tag": "KIN",
+        "name": "Cinos",
+        "value": 217900009
       },
       {
         "rank": 18,
         "tag": "REM",
-        "name": "es Cat 63",
-        "value": 205814632
+        "name": "Koi Fish",
+        "value": 216742219
       },
       {
         "rank": 19,
         "tag": "ONE",
-        "name": "Z 0 R 0",
-        "value": 204722247
+        "name": "es PEGASUS 63",
+        "value": 215864401
       },
       {
         "rank": 20,
-        "tag": "RED",
-        "name": "Braden",
-        "value": 200962703
+        "tag": "REM",
+        "name": "The Anchovy",
+        "value": 215102097
       },
       {
         "rank": 21,
-        "tag": "ONE",
-        "name": "Sunny2019",
-        "value": 200429953
+        "tag": "KIN",
+        "name": "Arabia",
+        "value": 213174694
       },
       {
         "rank": 22,
-        "tag": "ONE",
-        "name": "Haffi",
-        "value": 200130976
+        "tag": "REM",
+        "name": "es Cat 63",
+        "value": 212535098
       },
       {
         "rank": 23,
-        "tag": "REM",
-        "name": "Jeya ayana",
-        "value": 196194756
+        "tag": "KIN",
+        "name": "Erwin",
+        "value": 210569048
       },
       {
         "rank": 24,
         "tag": "ONE",
-        "name": "Yellow uili Power",
-        "value": 194592134
+        "name": "VEGETA",
+        "value": 207743464
       },
       {
         "rank": 25,
-        "tag": "REM",
-        "name": "Drunk dragon",
-        "value": 193076533
+        "tag": "RED",
+        "name": "Belle Braden",
+        "value": 207592733
       },
       {
         "rank": 26,
-        "tag": "REM",
-        "name": "s SAXoN 63",
-        "value": 192819486
+        "tag": "ONE",
+        "name": "Hybis",
+        "value": 202837306
       },
       {
         "rank": 27,
-        "tag": "KIN",
-        "name": "IOOman",
-        "value": 192053156
+        "tag": "ONE",
+        "name": "Sunny2019",
+        "value": 201331179
       },
       {
         "rank": 28,
-        "tag": "KIN",
-        "name": "WallDestroyer",
-        "value": 192013663
+        "tag": "REM",
+        "name": "Little Kraken",
+        "value": 198006014
       },
       {
         "rank": 29,
-        "tag": "KIN",
-        "name": "Wooby",
-        "value": 190207937
+        "tag": "ONE",
+        "name": "Yellow TM# Power",
+        "value": 196834735
       },
       {
         "rank": 30,
-        "tag": "KIN",
-        "name": "UIF",
-        "value": 189953372
+        "tag": "REM",
+        "name": "Parrot fish",
+        "value": 194766771
       },
       {
         "rank": 31,
-        "tag": "REM",
-        "name": "Mr Cookies",
-        "value": 189197115
+        "tag": "KIN",
+        "name": "WallDestroyer",
+        "value": 194754362
       },
       {
         "rank": 32,
-        "tag": "ONE",
-        "name": "e DavioN 2",
-        "value": 188851716
+        "tag": "REM",
+        "name": "GoldyMcGoldfish",
+        "value": 194218334
       },
       {
         "rank": 33,
-        "tag": "RED",
-        "name": "Amber",
-        "value": 187658367
+        "tag": "KIN",
+        "name": "UIf",
+        "value": 194023777
       },
       {
         "rank": 34,
-        "tag": "RED",
-        "name": "z#:T A R 0",
-        "value": 186732470
+        "tag": "",
+        "name": "DavioN >",
+        "value": 192331028
       },
       {
         "rank": 35,
-        "tag": "REM",
-        "name": "manuportugal45",
-        "value": 185388634
+        "tag": "RED",
+        "name": "Amber Organa",
+        "value": 190723982
       },
       {
         "rank": 36,
         "tag": "REM",
-        "name": "no name",
-        "value": 184987130
+        "name": "Mr Cookies",
+        "value": 190403437
       },
       {
         "rank": 37,
-        "tag": "RED",
-        "name": "oNUR",
-        "value": 183356212
+        "tag": "KIN",
+        "name": "Wooby",
+        "value": 190271137
       },
       {
         "rank": 38,
-        "tag": "REM",
-        "name": "Vinni",
-        "value": 181479979
+        "tag": "RED",
+        "name": "ZF: TA R OANA",
+        "value": 188696840
       },
       {
         "rank": 39,
         "tag": "REM",
-        "name": "ThatsODE",
-        "value": 180419072
+        "name": "manuportugal45",
+        "value": 187174508
       },
       {
         "rank": 40,
         "tag": "RED",
-        "name": "LoneShadew",
-        "value": 180387351
+        "name": "Lone Shadew",
+        "value": 187036843
       },
       {
         "rank": 41,
         "tag": "REM",
-        "name": "IrishDragon7777",
-        "value": 178792997
+        "name": "Vinni",
+        "value": 186514471
       },
       {
         "rank": 42,
         "tag": "KIN",
         "name": "Lady_of_Darkness",
-        "value": 178258068
+        "value": 186164985
       },
       {
         "rank": 43,
-        "tag": "ONE",
-        "name": "Mafi",
-        "value": 177811327
+        "tag": "TKIN",
+        "name": "Pookie",
+        "value": 186122153
       },
       {
         "rank": 44,
-        "tag": "ONE",
-        "name": "Silas 46",
-        "value": 176686793
+        "tag": "REM",
+        "name": "no name",
+        "value": 186002882
       },
       {
         "rank": 45,
-        "tag": "REM",
-        "name": "Ceausescu",
-        "value": 176250149
+        "tag": "RED",
+        "name": "oNUR",
+        "value": 185391978
       },
       {
         "rank": 46,
         "tag": "REM",
-        "name": "Ghost of Lasko",
-        "value": 176145771
+        "name": "FreemyWilly",
+        "value": 184706772
       },
       {
         "rank": 47,
-        "tag": "KIN",
-        "name": "RachaelsReptiles",
-        "value": 175355167
+        "tag": "REM",
+        "name": "Leviathan",
+        "value": 180683357
       },
       {
         "rank": 48,
-        "tag": "ONE",
-        "name": "Canpolat",
-        "value": 172927520
+        "tag": "REM",
+        "name": "Ceausescu",
+        "value": 180175148
       },
       {
         "rank": 49,
-        "tag": "KIN",
-        "name": "Crezus",
-        "value": 171854535
+        "tag": "ONE",
+        "name": "Son Silas 46",
+        "value": 179296172
       },
       {
         "rank": 50,
-        "tag": "ONE",
-        "name": "Cunyaoo",
-        "value": 170520809
+        "tag": "KIN",
+        "name": "RachaelsReptiles",
+        "value": 179053268
       },
       {
         "rank": 51,
         "tag": "REM",
-        "name": "EI Patron",
-        "value": 170233539
+        "name": "Ghost of Lasko",
+        "value": 177641497
       },
       {
         "rank": 52,
-        "tag": "ONE",
-        "name": "Orline",
-        "value": 169536532
+        "tag": "RED",
+        "name": "Alison Wonderland",
+        "value": 177479968
       },
       {
         "rank": 53,
-        "tag": "REM",
-        "name": "CheekyGoddess",
-        "value": 168748494
+        "tag": "ONE",
+        "name": "Cunyaoo",
+        "value": 176658413
       },
       {
         "rank": 54,
-        "tag": "KIN",
-        "name": "SiSimba",
-        "value": 168607339
+        "tag": "ONE",
+        "name": "Oren",
+        "value": 176139868
       },
       {
         "rank": 55,
         "tag": "RED",
-        "name": "Magnus",
-        "value": 168412125
+        "name": "LENNUNZEL",
+        "value": 176059402
       },
       {
         "rank": 56,
-        "tag": "",
-        "name": "Spooky",
-        "value": 168395667
+        "tag": "REM",
+        "name": "Makaveli",
+        "value": 175558317
       },
       {
         "rank": 57,
-        "tag": "RE",
-        "name": "Dlyammtar",
-        "value": 164546603
+        "tag": "ONE",
+        "name": "Canpolat",
+        "value": 174451811
       },
       {
         "rank": 58,
-        "tag": "ONE",
-        "name": "Chex",
-        "value": 163668115
+        "tag": "REM",
+        "name": "LECHIA",
+        "value": 173848126
       },
       {
         "rank": 59,
-        "tag": "REM",
-        "name": "26msone26",
-        "value": 161405766
+        "tag": "RED",
+        "name": "MEGARA",
+        "value": 172930356
       },
       {
         "rank": 60,
-        "tag": "ONE",
-        "name": "Kenny",
-        "value": 161260398
+        "tag": "KIN",
+        "name": "Crezus",
+        "value": 172733040
       },
       {
         "rank": 61,
-        "tag": "RED",
-        "name": "Lui",
-        "value": 160964348
+        "tag": "REM",
+        "name": "Starfish",
+        "value": 170431500
       },
       {
         "rank": 62,
-        "tag": "KIN",
-        "name": "Kaoswax",
-        "value": 159603371
+        "tag": "ONE",
+        "name": "Puar",
+        "value": 169335231
       },
       {
         "rank": 63,
-        "tag": "RED",
-        "name": "MasterWiet",
-        "value": 159097826
+        "tag": "ONE",
+        "name": "Phil",
+        "value": 168676180
       },
       {
         "rank": 64,
         "tag": "KIN",
-        "name": "SEZZ",
-        "value": 158807775
+        "name": "PICKLE RICK",
+        "value": 168645761
       },
       {
         "rank": 65,
         "tag": "KIN",
-        "name": "onething",
-        "value": 156542875
+        "name": "SiSimba",
+        "value": 168619967
       },
       {
         "rank": 66,
-        "tag": "RED",
-        "name": "Gaybulous",
-        "value": 156114281
+        "tag": "PHX",
+        "name": "King_Cobra",
+        "value": 168181798
       },
       {
         "rank": 67,
-        "tag": "REM",
-        "name": "Alecksandra",
-        "value": 155810971
+        "tag": "KIN",
+        "name": "Eric",
+        "value": 168158272
       },
       {
         "rank": 68,
-        "tag": "KIN",
-        "name": "Emkayes",
-        "value": 155750719
+        "tag": "RED",
+        "name": "RAYAmmtar",
+        "value": 167505786
       },
       {
         "rank": 69,
         "tag": "KIN",
-        "name": "Butt Stuff Betty",
-        "value": 155374626
+        "name": "SEZZ",
+        "value": 163194282
       },
       {
         "rank": 70,
-        "tag": "KIN",
-        "name": "Rhatyel",
-        "value": 154701871
+        "tag": "REM",
+        "name": "26msone26",
+        "value": 162905677
       },
       {
         "rank": 71,
-        "tag": "REM",
-        "name": "czarcik",
-        "value": 153796411
+        "tag": "KIN",
+        "name": "Kaoswax",
+        "value": 162247313
       },
       {
         "rank": 72,
+        "tag": "RED",
+        "name": "MasterWiet",
+        "value": 162206627
+      },
+      {
+        "rank": 73,
+        "tag": "RED",
+        "name": "Lui",
+        "value": 161916312
+      },
+      {
+        "rank": 74,
+        "tag": "ONE",
+        "name": "muten RoShi",
+        "value": 161671081
+      },
+      {
+        "rank": 75,
+        "tag": "REM",
+        "name": "The Angelfish",
+        "value": 160493442
+      },
+      {
+        "rank": 76,
+        "tag": "REM",
+        "name": "Tower3360",
+        "value": 160172360
+      },
+      {
+        "rank": 77,
+        "tag": "ONE",
+        "name": "Vados",
+        "value": 157485697
+      },
+      {
+        "rank": 78,
+        "tag": "KIN",
+        "name": "Rhatyel",
+        "value": 156536865
+      },
+      {
+        "rank": 79,
+        "tag": "ONE",
+        "name": "Night",
+        "value": 156485328
+      },
+      {
+        "rank": 80,
+        "tag": "KIN",
+        "name": "Butt Stuff Betty",
+        "value": 155861670
+      },
+      {
+        "rank": 81,
+        "tag": "KIN",
+        "name": "Tezcatlipoca",
+        "value": 154991676
+      },
+      {
+        "rank": 82,
+        "tag": "ONE",
+        "name": "Jager",
+        "value": 154858660
+      },
+      {
+        "rank": 83,
+        "tag": "REM",
+        "name": "VIlado",
+        "value": 154818816
+      },
+      {
+        "rank": 84,
         "tag": "",
         "name": "Haseen",
         "value": 153583941
       },
       {
-        "rank": 73,
-        "tag": "ONE",
-        "name": "Jager",
-        "value": 152934050
-      },
-      {
-        "rank": 74,
-        "tag": "REM",
-        "name": "Yisussss",
-        "value": 152321409
-      },
-      {
-        "rank": 75,
-        "tag": "ONE",
-        "name": "RonSen",
-        "value": 150729197
-      },
-      {
-        "rank": 76,
-        "tag": "KIN",
-        "name": "Tezcatlipoca",
-        "value": 150390594
-      },
-      {
-        "rank": 77,
-        "tag": "ONE",
-        "name": "Dee",
-        "value": 149751576
-      },
-      {
-        "rank": 78,
-        "tag": "KIN",
-        "name": "#943SUKUNA",
-        "value": 149571407
-      },
-      {
-        "rank": 79,
-        "tag": "ONE",
-        "name": "Saphira",
-        "value": 149009744
-      },
-      {
-        "rank": 80,
-        "tag": "ONE",
-        "name": "Night",
-        "value": 149007628
-      },
-      {
-        "rank": 81,
-        "tag": "RED",
-        "name": "Goofried the 3rd",
-        "value": 147702919
-      },
-      {
-        "rank": 82,
-        "tag": "RED",
-        "name": "blooded ynot",
-        "value": 147519987
-      },
-      {
-        "rank": 83,
-        "tag": "ON",
-        "name": "Elyoyo",
-        "value": 146469179
-      },
-      {
-        "rank": 84,
-        "tag": "ONE",
-        "name": "WoOdY",
-        "value": 143374745
-      },
-      {
         "rank": 85,
-        "tag": "ReM",
-        "name": "Don Pablo",
-        "value": 142872217
+        "tag": "REM",
+        "name": "McPato",
+        "value": 153504873
       },
       {
         "rank": 86,
-        "tag": "REM",
-        "name": "XaVi",
-        "value": 142834696
+        "tag": "ONE",
+        "name": "7rb",
+        "value": 152658168
       },
       {
         "rank": 87,
         "tag": "ONE",
-        "name": "Pegasuss",
-        "value": 142771455
+        "name": "Son yoyo",
+        "value": 152018789
       },
       {
         "rank": 88,
         "tag": "ONE",
-        "name": "POH TAY TOz",
-        "value": 935842
+        "name": "Deniz Z",
+        "value": 151914813
       },
       {
         "rank": 89,
-        "tag": "REM",
-        "name": "O G",
-        "value": 248219
+        "tag": "KIN",
+        "name": "#943SUKUNA",
+        "value": 150967202
       },
       {
         "rank": 90,
-        "tag": "RED",
-        "name": "TmB",
-        "value": 222629
+        "tag": "ONE",
+        "name": "Saphiron",
+        "value": 150806481
       },
       {
         "rank": 91,
+        "tag": "KIN",
+        "name": "Emkayes",
+        "value": 150765302
+      },
+      {
+        "rank": 92,
+        "tag": "RED",
+        "name": "Gooriel",
+        "value": 150689928
+      },
+      {
+        "rank": 93,
+        "tag": "RED",
+        "name": "blooded ynot",
+        "value": 150085165
+      },
+      {
+        "rank": 94,
+        "tag": "ONE",
+        "name": "Hammerhead",
+        "value": 149830494
+      },
+      {
+        "rank": 95,
+        "tag": "KIN",
+        "name": "iOOman",
+        "value": 193689
+      },
+      {
+        "rank": 96,
         "tag": "",
         "name": "lord302843134",
         "value": 47695
       },
       {
-        "rank": 92,
-        "tag": "",
-        "name": "lord302843134",
-        "value": 15131
-      },
-      {
-        "rank": 93,
+        "rank": 97,
         "tag": "",
         "name": "Personal Power",
         "value": 0
@@ -1458,558 +1494,582 @@
     "kill_count": [
       {
         "rank": 1,
-        "tag": "REM",
-        "name": "Jeya ayana",
-        "value": 84452897
+        "tag": "ONE",
+        "name": "YOU ARE WELCOME",
+        "value": 131217562
       },
       {
         "rank": 2,
         "tag": "REM",
-        "name": "es S AXoN 63",
-        "value": 69386335
+        "name": "Little Kraken",
+        "value": 84452897
       },
       {
         "rank": 3,
+        "tag": "RED",
+        "name": "Nvidus",
+        "value": 77215301
+      },
+      {
+        "rank": 4,
+        "tag": "REM",
+        "name": "GoldyMcGoldfish",
+        "value": 69399343
+      },
+      {
+        "rank": 5,
         "tag": "ONE",
         "name": "Heartwell",
         "value": 65258489
       },
       {
-        "rank": 4,
+        "rank": 6,
         "tag": "REM",
         "name": "Mr Cookies",
         "value": 59379806
       },
       {
-        "rank": 5,
-        "tag": "REM",
-        "name": "IrishDragon7777",
-        "value": 57541675
-      },
-      {
-        "rank": 6,
-        "tag": "RED",
-        "name": "Braden",
-        "value": 46487874
-      },
-      {
         "rank": 7,
-        "tag": "ONE",
-        "name": "Drachilles",
-        "value": 46215458
+        "tag": "REM",
+        "name": "Leviathan",
+        "value": 58029895
       },
       {
         "rank": 8,
+        "tag": "RED",
+        "name": "Belle Braden",
+        "value": 46487874
+      },
+      {
+        "rank": 9,
+        "tag": "ONE",
+        "name": "Mr Dropo",
+        "value": 46215458
+      },
+      {
+        "rank": 10,
         "tag": "KIN",
         "name": "Erwin",
         "value": 41331816
       },
       {
-        "rank": 9,
+        "rank": 11,
+        "tag": "REM",
+        "name": "Koi Fish",
+        "value": 39446597
+      },
+      {
+        "rank": 12,
         "tag": "KIN",
         "name": "Arabia",
         "value": 37603426
       },
       {
-        "rank": 10,
-        "tag": "REM",
-        "name": "Ghost of Lasko",
-        "value": 36018514
-      },
-      {
-        "rank": 11,
-        "tag": "REM",
-        "name": "TropicTrainwreck",
-        "value": 35612842
-      },
-      {
-        "rank": 12,
-        "tag": "RED",
-        "name": "LoneShadew",
-        "value": 32534901
-      },
-      {
         "rank": 13,
         "tag": "REM",
-        "name": "Dragon Bob",
-        "value": 32473184
+        "name": "Catfish",
+        "value": 36314088
       },
       {
         "rank": 14,
-        "tag": "ONE",
-        "name": "KOREA",
-        "value": 31604096
+        "tag": "REM",
+        "name": "Ghost of Lasko",
+        "value": 36109567
       },
       {
         "rank": 15,
-        "tag": "ONE",
-        "name": "POH TAY TOz",
-        "value": 31355980
+        "tag": "REM",
+        "name": "Orca",
+        "value": 32819115
       },
       {
         "rank": 16,
-        "tag": "REM",
-        "name": "PICKLE RICK",
-        "value": 29711293
+        "tag": "RED",
+        "name": "Lone Shadow",
+        "value": 32534901
       },
       {
         "rank": 17,
         "tag": "ONE",
-        "name": "Deniz",
-        "value": 28928735
+        "name": "PIH KUH Low",
+        "value": 31355981
       },
       {
         "rank": 18,
-        "tag": "RED",
-        "name": "TmB",
-        "value": 28511366
+        "tag": "KIN",
+        "name": "PICKLE RICK",
+        "value": 29726562
       },
       {
         "rank": 19,
-        "tag": "RED",
-        "name": "Amber",
-        "value": 27834892
+        "tag": "ONE",
+        "name": "Buu",
+        "value": 29028779
       },
       {
         "rank": 20,
-        "tag": "KIN",
-        "name": "Feio",
-        "value": 25395920
+        "tag": "RED",
+        "name": "PrincessTmBianca",
+        "value": 28544229
       },
       {
         "rank": 21,
+        "tag": "ONE",
+        "name": "Jironk",
+        "value": 28030715
+      },
+      {
+        "rank": 22,
+        "tag": "RED",
+        "name": "Amber Organa",
+        "value": 27834892
+      },
+      {
+        "rank": 23,
+        "tag": "ONE",
+        "name": "Cunyaoo",
+        "value": 26646075
+      },
+      {
+        "rank": 24,
+        "tag": "KIN",
+        "name": "Ugly",
+        "value": 25818849
+      },
+      {
+        "rank": 25,
         "tag": "KIN",
         "name": "SEZZ",
         "value": 25272683
       },
       {
-        "rank": 22,
+        "rank": 26,
+        "tag": "KIN",
+        "name": "UIF",
+        "value": 24293126
+      },
+      {
+        "rank": 27,
+        "tag": "",
+        "name": "KINJCinos",
+        "value": 24259312
+      },
+      {
+        "rank": 28,
         "tag": "ONE",
-        "name": "BirdofPrey",
+        "name": "warbird z",
         "value": 24094516
       },
       {
-        "rank": 23,
-        "tag": "",
-        "name": "DavioN 3",
-        "value": 23971445
-      },
-      {
-        "rank": 24,
+        "rank": 29,
         "tag": "KIN",
-        "name": "Cinos",
-        "value": 23692960
+        "name": "Kaoswax",
+        "value": 23665946
       },
       {
-        "rank": 25,
+        "rank": 30,
         "tag": "ONE",
-        "name": "Z 0 R 0",
+        "name": "VEGETA",
         "value": 23260925
       },
       {
-        "rank": 26,
+        "rank": 31,
         "tag": "ONE",
         "name": "AvalonFusion",
         "value": 22742249
       },
       {
-        "rank": 27,
+        "rank": 32,
         "tag": "ONE",
-        "name": "Mafi",
+        "name": "Mafibidi",
         "value": 22467753
       },
       {
-        "rank": 28,
+        "rank": 33,
         "tag": "ONE",
         "name": "es PEGASUS 63",
         "value": 21853779
       },
       {
-        "rank": 29,
+        "rank": 34,
         "tag": "REM",
         "name": "DragonLee",
         "value": 21449690
       },
       {
-        "rank": 30,
+        "rank": 35,
         "tag": "",
         "name": "NiceDay",
         "value": 20299005
       },
       {
-        "rank": 31,
+        "rank": 36,
         "tag": "KIN",
         "name": "Lady_of_Darkness",
-        "value": 20122287
+        "value": 20173900
       },
       {
-        "rank": 32,
+        "rank": 37,
+        "tag": "ONE",
+        "name": "Son Silas 46",
+        "value": 19761855
+      },
+      {
+        "rank": 38,
         "tag": "REM",
-        "name": "Weetcheez",
-        "value": 18966473
+        "name": "HULLO NAMEsBRUCE",
+        "value": 19392217
       },
       {
-        "rank": 33,
-        "tag": "",
-        "name": "Spooky",
+        "rank": 39,
+        "tag": "REM",
+        "name": "Sea Bear",
+        "value": 19232836
+      },
+      {
+        "rank": 40,
+        "tag": "RED",
+        "name": "Alison Wonderland",
         "value": 18484239
       },
       {
-        "rank": 34,
+        "rank": 41,
+        "tag": "KIN",
+        "name": "IOOman",
+        "value": 18386491
+      },
+      {
+        "rank": 42,
         "tag": "KIN",
         "name": "YEYO",
         "value": 18321850
       },
       {
-        "rank": 35,
-        "tag": "KIN",
-        "name": "iOOman",
-        "value": 18297651
-      },
-      {
-        "rank": 36,
+        "rank": 43,
         "tag": "",
         "name": "Haseen",
         "value": 18224809
       },
       {
-        "rank": 37,
+        "rank": 44,
         "tag": "REM",
-        "name": "Fulgiondorf",
-        "value": 17890464
+        "name": "SeaCucumber",
+        "value": 17923970
       },
       {
-        "rank": 38,
+        "rank": 45,
+        "tag": "KIN",
+        "name": "Pookie",
+        "value": 17776989
+      },
+      {
+        "rank": 46,
         "tag": "KIN",
         "name": "ABN963HAMA",
         "value": 17443363
       },
       {
-        "rank": 39,
-        "tag": "KIN",
-        "name": "Pookie",
-        "value": 17277232
-      },
-      {
-        "rank": 40,
+        "rank": 47,
         "tag": "KIN",
         "name": "Crezus",
-        "value": 17233383
+        "value": 17437345
       },
       {
-        "rank": 41,
+        "rank": 48,
         "tag": "REM",
-        "name": "O G",
-        "value": 17171277
+        "name": "The Whale",
+        "value": 17347631
       },
       {
-        "rank": 42,
-        "tag": "KIN",
-        "name": "WallDestroyer",
-        "value": 17096448
-      },
-      {
-        "rank": 43,
-        "tag": "REM",
-        "name": "Vinni",
-        "value": 17053724
-      },
-      {
-        "rank": 44,
+        "rank": 49,
         "tag": "ONE",
         "name": "AHMED",
         "value": 16894840
       },
       {
-        "rank": 45,
+        "rank": 50,
         "tag": "RED",
-        "name": "Magnus",
+        "name": "MEGARA",
         "value": 15867343
       },
       {
-        "rank": 46,
-        "tag": "ONE",
-        "name": "Iriska",
-        "value": 15806181
+        "rank": 51,
+        "tag": "KIN",
+        "name": "Emkayes",
+        "value": 15826452
       },
       {
-        "rank": 47,
+        "rank": 52,
         "tag": "ONE",
-        "name": "Orline",
+        "name": "oc8Launch8e",
+        "value": 15809688
+      },
+      {
+        "rank": 53,
+        "tag": "ONE",
+        "name": "Oren",
         "value": 15688723
       },
       {
-        "rank": 48,
+        "rank": 54,
         "tag": "REM",
-        "name": "DrakoPhantom_115",
+        "name": "DrakoPhantom",
         "value": 15330115
       },
       {
-        "rank": 49,
+        "rank": 55,
         "tag": "OxU",
         "name": "Gery",
         "value": 15232930
       },
       {
-        "rank": 50,
+        "rank": 56,
         "tag": "KiN",
         "name": "ForSalelk",
         "value": 15001351
       },
       {
-        "rank": 51,
+        "rank": 57,
         "tag": "",
         "name": "Gone",
         "value": 14631491
       },
       {
-        "rank": 52,
+        "rank": 58,
         "tag": "",
-        "name": "Ldate",
+        "name": "Lhut",
         "value": 14253545
       },
       {
-        "rank": 53,
+        "rank": 59,
         "tag": "",
         "name": "Ray",
         "value": 13898016
       },
       {
-        "rank": 54,
-        "tag": "",
-        "name": "Cobra",
+        "rank": 60,
+        "tag": "PHX",
+        "name": "King_Cobra",
         "value": 13735528
       },
       {
-        "rank": 55,
+        "rank": 61,
         "tag": "ONE",
-        "name": "Dee",
+        "name": "Vados",
         "value": 13702036
       },
       {
-        "rank": 56,
+        "rank": 62,
         "tag": "ONE",
         "name": "Phil",
-        "value": 13556618
+        "value": 13559878
       },
       {
-        "rank": 57,
+        "rank": 63,
         "tag": "KIN",
         "name": "Jin",
-        "value": 13111248
+        "value": 13508058
       },
       {
-        "rank": 58,
+        "rank": 64,
+        "tag": "",
+        "name": "Mansen Loordi",
+        "value": 13401600
+      },
+      {
+        "rank": 65,
         "tag": "ONE",
         "name": "Night",
         "value": 13007037
       },
       {
-        "rank": 59,
+        "rank": 66,
         "tag": "REM",
         "name": "Myro",
         "value": 13003661
       },
       {
-        "rank": 60,
+        "rank": 67,
         "tag": "RED",
         "name": "Gaybulous",
         "value": 12766009
       },
       {
-        "rank": 61,
+        "rank": 68,
         "tag": "ONE",
         "name": "7rb",
         "value": 12643034
       },
       {
-        "rank": 62,
+        "rank": 69,
         "tag": "ONE",
-        "name": "Graaldt",
+        "name": "Freeza",
         "value": 12642421
       },
       {
-        "rank": 63,
+        "rank": 70,
         "tag": "ONE",
         "name": "KRAISNIK",
         "value": 12595292
       },
       {
-        "rank": 64,
+        "rank": 71,
         "tag": "REM",
-        "name": "Vlado",
+        "name": "VIado",
         "value": 12503966
       },
       {
-        "rank": 65,
-        "tag": "RED",
-        "name": "blooded ynot",
-        "value": 12427474
+        "rank": 72,
+        "tag": "",
+        "name": "JREDJblooded ynot",
+        "value": 12465226
       },
       {
-        "rank": 66,
+        "rank": 73,
         "tag": "ONE",
         "name": "bader",
         "value": 12425986
       },
       {
-        "rank": 67,
-        "tag": "",
-        "name": "HERCULES",
-        "value": 12035977
+        "rank": 74,
+        "tag": "REM",
+        "name": "The Anchovy",
+        "value": 12301602
       },
       {
-        "rank": 68,
+        "rank": 75,
         "tag": "REM",
         "name": "manuportugal45",
         "value": 11984655
       },
       {
-        "rank": 69,
+        "rank": 76,
         "tag": "ONE",
         "name": "Canpolat",
         "value": 11707930
       },
       {
-        "rank": 70,
+        "rank": 77,
         "tag": "KIN",
         "name": "Rhatyel",
         "value": 11691471
       },
       {
-        "rank": 71,
+        "rank": 78,
         "tag": "KIN",
         "name": "Novez",
         "value": 11584425
       },
       {
-        "rank": 72,
+        "rank": 79,
         "tag": "RED",
         "name": "Gimli",
         "value": 11537151
       },
       {
-        "rank": 73,
+        "rank": 80,
         "tag": "KIN",
         "name": "Wooby",
         "value": 11517571
       },
       {
-        "rank": 74,
-        "tag": "ONE",
-        "name": "Yellow #Et# Power",
-        "value": 11384804
+        "rank": 81,
+        "tag": "RED",
+        "name": "LENNUNZEL",
+        "value": 11450252
       },
       {
-        "rank": 75,
+        "rank": 82,
         "tag": "ONe",
         "name": "BlueMoon2121",
         "value": 11244182
       },
       {
-        "rank": 76,
+        "rank": 83,
         "tag": "KIN",
         "name": "Lucifer",
         "value": 11212840
       },
       {
-        "rank": 77,
+        "rank": 84,
         "tag": "RED",
-        "name": "LordinDerWelten",
+        "name": "Lordinella",
         "value": 11195025
       },
       {
-        "rank": 78,
+        "rank": 85,
         "tag": "REM",
-        "name": "CyraEh",
+        "name": "The Pufferfish",
         "value": 11130158
       },
       {
-        "rank": 79,
+        "rank": 86,
         "tag": "ONE",
-        "name": "Saphira",
+        "name": "Saphiron",
         "value": 11013525
       },
       {
-        "rank": 80,
-        "tag": "RE",
-        "name": "Dlyammtar",
+        "rank": 87,
+        "tag": "RED",
+        "name": "RAYAmmtar",
         "value": 10968057
       },
       {
-        "rank": 81,
+        "rank": 88,
         "tag": "ONE",
-        "name": "Surturenzo",
+        "name": "Majin Lorenzo",
         "value": 10890065
       },
       {
-        "rank": 82,
+        "rank": 89,
         "tag": "KIN",
         "name": "RachaelsReptiles",
         "value": 10857028
       },
       {
-        "rank": 83,
+        "rank": 90,
         "tag": "REM",
         "name": "no name",
         "value": 10744360
       },
       {
-        "rank": 84,
+        "rank": 91,
         "tag": "KIN",
         "name": "BARAIII",
         "value": 10461230
       },
       {
-        "rank": 85,
+        "rank": 92,
         "tag": "KIN",
         "name": "Tezcatlipoca",
         "value": 10446573
       },
       {
-        "rank": 86,
+        "rank": 93,
         "tag": "REM",
-        "name": "Alecksandra",
-        "value": 10231640
+        "name": "The Angelfish",
+        "value": 10428085
       },
       {
-        "rank": 87,
+        "rank": 94,
         "tag": "REM",
         "name": "Lord GO",
         "value": 10179044
       },
       {
-        "rank": 88,
-        "tag": "RED",
-        "name": "November",
-        "value": 10152714
+        "rank": 95,
+        "tag": "ONE",
+        "name": "Deniz 2",
+        "value": 936550
       },
       {
-        "rank": 89,
-        "tag": "KIN",
-        "name": "Kaoswax",
-        "value": 648071
-      },
-      {
-        "rank": 90,
+        "rank": 96,
         "tag": "",
         "name": "lord302843134",
-        "value": 34270
+        "value": 34267
       },
       {
-        "rank": 91,
-        "tag": "ONE",
-        "name": "Ironk",
-        "value": 25697
-      },
-      {
-        "rank": 92,
-        "tag": "ONE",
-        "name": "Cunyaoo",
-        "value": 6460
-      },
-      {
-        "rank": 93,
+        "rank": 97,
         "tag": "",
         "name": "Kill Count",
         "value": 0
@@ -2018,57 +2078,57 @@
     "hero_power": [
       {
         "rank": 1,
+        "tag": "ONE",
+        "name": "YOU ARE WELCOME",
+        "value": 16650305
+      },
+      {
+        "rank": 2,
         "tag": "RED",
         "name": "Nvidus",
         "value": 15231809
       },
       {
-        "rank": 2,
-        "tag": "ONE",
-        "name": "Heartwell",
-        "value": 11121595
-      },
-      {
         "rank": 3,
         "tag": "ONE",
-        "name": "KOREA",
-        "value": 8442596
+        "name": "Heartwell",
+        "value": 11760897
       },
       {
         "rank": 4,
         "tag": "ONE",
-        "name": "BirdofPrey",
-        "value": 8240535
+        "name": "KOR",
+        "value": 8442596
       },
       {
         "rank": 5,
+        "tag": "ONE",
+        "name": "warbird z",
+        "value": 8240535
+      },
+      {
+        "rank": 6,
         "tag": "RED",
         "name": "LeneShadew",
         "value": 7893016
       },
       {
-        "rank": 6,
-        "tag": "ONE",
-        "name": "Drachilles",
-        "value": 7232932
-      },
-      {
         "rank": 7,
-        "tag": "REM",
-        "name": "TropicTrainwreck",
-        "value": 6924357
+        "tag": "ONE",
+        "name": "Mr",
+        "value": 7232932
       },
       {
         "rank": 8,
         "tag": "REM",
-        "name": "O G",
-        "value": 6661547
+        "name": "The Whale",
+        "value": 7095834
       },
       {
         "rank": 9,
-        "tag": "KIN",
-        "name": "Arabia",
-        "value": 6573205
+        "tag": "REM",
+        "name": "Catfish",
+        "value": 6924357
       },
       {
         "rank": 10,
@@ -2079,62 +2139,62 @@
       {
         "rank": 11,
         "tag": "ONE",
-        "name": "Z 0 R 0",
+        "name": "VEGETA",
         "value": 6243440
       },
       {
         "rank": 12,
-        "tag": "REM",
+        "tag": "KIN",
         "name": "PICKLE RICK",
-        "value": 5948427
+        "value": 6099017
       },
       {
         "rank": 13,
-        "tag": "",
-        "name": "(KINCinos",
-        "value": 5891385
+        "tag": "REM",
+        "name": "Orca",
+        "value": 5967542
       },
       {
         "rank": 14,
-        "tag": "REM",
-        "name": "Dragon Bob",
-        "value": 5829822
+        "tag": "KIN",
+        "name": "Cinos",
+        "value": 5891385
       },
       {
         "rank": 15,
         "tag": "RED",
-        "name": "Amber",
-        "value": 5477580
+        "name": "Belle Braden",
+        "value": 5568802
       },
       {
         "rank": 16,
-        "tag": "REM",
-        "name": "s SAXoN 63",
-        "value": 5420224
+        "tag": "RED",
+        "name": "Amber Organa",
+        "value": 5510580
       },
       {
         "rank": 17,
+        "tag": "REM",
+        "name": "GoldyMcGoldfish",
+        "value": 5449507
+      },
+      {
+        "rank": 18,
         "tag": "ONE",
         "name": "AvalonFusion",
         "value": 5380407
       },
       {
-        "rank": 18,
-        "tag": "RED",
-        "name": "TmB",
-        "value": 5270810
-      },
-      {
         "rank": 19,
-        "tag": "RED",
-        "name": "Braden",
-        "value": 5133322
+        "tag": "ONE",
+        "name": "Mafibidi",
+        "value": 5299359
       },
       {
         "rank": 20,
-        "tag": "ONE",
-        "name": "Mafi",
-        "value": 5127209
+        "tag": "RED",
+        "name": "PrincessTmBianca",
+        "value": 5270810
       },
       {
         "rank": 21,
@@ -2146,43 +2206,43 @@
         "rank": 22,
         "tag": "ONE",
         "name": "e",
-        "value": 4891555
+        "value": 4913330
       },
       {
         "rank": 23,
         "tag": "KIN",
         "name": "iOOman",
-        "value": 4631230
+        "value": 4659977
       },
       {
         "rank": 24,
         "tag": "KIN",
         "name": "YEYO",
-        "value": 4616132
+        "value": 4621457
       },
       {
         "rank": 25,
         "tag": "REM",
-        "name": "IrishDragon7777",
+        "name": "Leviathan",
         "value": 4541450
       },
       {
         "rank": 26,
-        "tag": "REM",
-        "name": "Drunk dragon",
-        "value": 4483838
+        "tag": "ONE",
+        "name": "es PEGASUS 63",
+        "value": 4454062
       },
       {
         "rank": 27,
         "tag": "ONE",
-        "name": "s PEGASUS 63",
-        "value": 4454062
+        "name": "PIH KUH LOW",
+        "value": 4384095
       },
       {
         "rank": 28,
-        "tag": "ONE",
-        "name": "POH TAY TOZ",
-        "value": 4384095
+        "tag": "REM",
+        "name": "Ghost of Lasko",
+        "value": 4345792
       },
       {
         "rank": 29,
@@ -2193,146 +2253,146 @@
       {
         "rank": 30,
         "tag": "ONE",
-        "name": "Luffy",
+        "name": "Buu",
         "value": 4325470
       },
       {
         "rank": 31,
         "tag": "REM",
-        "name": "Weetcheez",
+        "name": "HULLO NAMEsBRUCE",
         "value": 4267629
       },
       {
         "rank": 32,
         "tag": "REM",
-        "name": "Ghost of Lasko",
-        "value": 4263630
+        "name": "Koi Fish",
+        "value": 4150302
       },
       {
         "rank": 33,
         "tag": "REM",
-        "name": "ThatsODE",
+        "name": "FreemyWilly",
         "value": 4104615
       },
       {
         "rank": 34,
-        "tag": "REM",
-        "name": "Trafalgar Law",
-        "value": 4054452
+        "tag": "ONE",
+        "name": "Deniz Z",
+        "value": 3863412
       },
       {
         "rank": 35,
-        "tag": "KIN",
-        "name": "Kaoswax",
-        "value": 3864385
+        "tag": "ONE",
+        "name": "Hybis",
+        "value": 3760295
       },
       {
         "rank": 36,
-        "tag": "ReM",
-        "name": "es PZaseUs 63",
-        "value": 3821862
+        "tag": "REM",
+        "name": "The Anchovy",
+        "value": 3719042
       },
       {
         "rank": 37,
         "tag": "ONE",
-        "name": "Deniz",
-        "value": 3765732
+        "name": "Majin Lorenzo",
+        "value": 3686220
       },
       {
         "rank": 38,
         "tag": "RED",
-        "name": "Magnus",
-        "value": 3760427
+        "name": "MEGARA",
+        "value": 3677547
       },
       {
         "rank": 39,
-        "tag": "ONE",
-        "name": "Surturenzo",
-        "value": 3686220
-      },
-      {
-        "rank": 40,
-        "tag": "REM",
-        "name": "Es HZAcULCsTR 63",
-        "value": 3655660
-      },
-      {
-        "rank": 41,
         "tag": "ONE",
         "name": "Canpolat",
         "value": 3591209
       },
       {
-        "rank": 42,
-        "tag": "ONE",
-        "name": "Haffi",
-        "value": 3547777
+        "rank": 40,
+        "tag": "REM",
+        "name": "Mr Cookies",
+        "value": 3528975
       },
       {
-        "rank": 43,
+        "rank": 41,
+        "tag": "REM",
+        "name": "Little Kraken",
+        "value": 3411147
+      },
+      {
+        "rank": 42,
         "tag": "KIN",
         "name": "Lady_of_Darkness",
         "value": 3376161
       },
       {
-        "rank": 44,
+        "rank": 43,
         "tag": "ONE",
-        "name": "Orline",
+        "name": "Oren",
         "value": 3357437
       },
       {
-        "rank": 45,
-        "tag": "REM",
-        "name": "Jeya ayana",
-        "value": 3348547
+        "rank": 44,
+        "tag": "RED",
+        "name": "oNUR",
+        "value": 3340025
       },
       {
-        "rank": 46,
+        "rank": 45,
         "tag": "KIN",
         "name": "Crezus",
         "value": 3318676
       },
       {
-        "rank": 47,
+        "rank": 46,
         "tag": "KIN",
         "name": "SiSimba",
         "value": 3297605
       },
       {
+        "rank": 47,
+        "tag": "KIN",
+        "name": "UIF",
+        "value": 3271820
+      },
+      {
         "rank": 48,
         "tag": "REM",
-        "name": "XaVi",
+        "name": "Sea Bear",
         "value": 3257901
       },
       {
         "rank": 49,
-        "tag": "KIN",
-        "name": "UIf",
-        "value": 3256170
+        "tag": "RED",
+        "name": "Gimli",
+        "value": 3235535
       },
       {
         "rank": 50,
-        "tag": "RED",
-        "name": "Gimli",
-        "value": 3208160
+        "tag": "REM",
+        "name": "s Cat 63",
+        "value": 3220685
       },
       {
         "rank": 51,
-        "tag": "REM",
-        "name": "s Cat 63",
-        "value": 3173735
+        "tag": "KIN",
+        "name": "RachaelsReptiles",
+        "value": 3212405
       },
       {
         "rank": 52,
-        "tag": "KIN",
-        "name": "RachaelsReptiles",
-        "value": 3154167
+        "tag": "RED",
+        "name": "LENNUNZEL",
+        "value": 3193617
       },
       {
         "rank": 53,
-        "tag": "RED",
-        "name": "oNUR",
-        "value": 3124850
+        "tag": "TRN",
+        "name": "Luigy MCMLXIX",
+        "value": 3175870
       },
       {
         "rank": 54,
@@ -2354,246 +2414,228 @@
       },
       {
         "rank": 57,
+        "tag": "RED",
+        "name": "Gooriel",
+        "value": 3045472
+      },
+      {
+        "rank": 58,
         "tag": "KIN",
         "name": "Pookie",
         "value": 3042340
       },
       {
-        "rank": 58,
+        "rank": 59,
         "tag": "REM",
         "name": "no name",
         "value": 3031877
       },
       {
-        "rank": 59,
+        "rank": 60,
         "tag": "REM",
-        "name": "Yisussss",
+        "name": "McPato",
         "value": 3000150
       },
       {
-        "rank": 60,
-        "tag": "REM",
-        "name": "CheekyGoddess",
-        "value": 2993435
-      },
-      {
         "rank": 61,
-        "tag": "ON",
-        "name": "Elyoyo",
-        "value": 2988450
+        "tag": "REM",
+        "name": "Meow",
+        "value": 2998170
       },
       {
         "rank": 62,
+        "tag": "REM",
+        "name": "Starfish",
+        "value": 2993435
+      },
+      {
+        "rank": 63,
+        "tag": "ONE",
+        "name": "Son yoyo",
+        "value": 2988450
+      },
+      {
+        "rank": 64,
         "tag": "",
         "name": "AK68",
         "value": 2982222
       },
       {
-        "rank": 63,
+        "rank": 65,
         "tag": "REM",
         "name": "DragonLee",
         "value": 2977757
       },
       {
-        "rank": 64,
-        "tag": "RE",
-        "name": "Dlyammtar",
-        "value": 2936812
+        "rank": 66,
+        "tag": "RED",
+        "name": "RAYAmmtar",
+        "value": 2958112
       },
       {
-        "rank": 65,
+        "rank": 67,
+        "tag": "ONE",
+        "name": "Yellow #Etf Power",
+        "value": 2957525
+      },
+      {
+        "rank": 68,
         "tag": "REM",
         "name": "26msone26",
         "value": 2904330
       },
       {
-        "rank": 66,
+        "rank": 69,
         "tag": "KIN",
         "name": "SEZZ",
         "value": 2901670
       },
       {
-        "rank": 67,
-        "tag": "",
-        "name": "Hero: Zoe",
-        "value": 2884919
+        "rank": 70,
+        "tag": "REM",
+        "name": "The Angelfish",
+        "value": 2898862
       },
       {
-        "rank": 68,
+        "rank": 71,
+        "tag": "ONE",
+        "name": "Kenny",
+        "value": 2891387
+      },
+      {
+        "rank": 72,
         "tag": "",
         "name": "NiceDay",
         "value": 2884642
       },
       {
-        "rank": 69,
+        "rank": 73,
         "tag": "REM",
         "name": "Ceausescu",
         "value": 2883420
       },
       {
-        "rank": 70,
+        "rank": 74,
         "tag": "ONE",
         "name": "Phil",
         "value": 2883045
       },
       {
-        "rank": 71,
+        "rank": 75,
         "tag": "ONE",
-        "name": "Ironk",
-        "value": 2879007
+        "name": "7rb",
+        "value": 2840975
       },
       {
-        "rank": 72,
-        "tag": "REM",
-        "name": "Meow",
-        "value": 2876070
-      },
-      {
-        "rank": 73,
-        "tag": "RED",
-        "name": "LENNAO",
-        "value": 2872117
-      },
-      {
-        "rank": 74,
+        "rank": 76,
         "tag": "REM",
         "name": "Vinni",
         "value": 2831992
       },
       {
-        "rank": 75,
-        "tag": "KIN",
-        "name": "Emkayes",
-        "value": 2823320
-      },
-      {
-        "rank": 76,
-        "tag": "ONE",
-        "name": "Caupuacu:",
-        "value": 2815620
-      },
-      {
         "rank": 77,
         "tag": "ONE",
-        "name": "Yellow FEt# Power",
-        "value": 2807465
+        "name": "Chiaotzu",
+        "value": 2830020
       },
       {
         "rank": 78,
+        "tag": "REM",
+        "name": "Nemo",
+        "value": 2818217
+      },
+      {
+        "rank": 79,
+        "tag": "RED",
+        "name": "Motionbabyyy",
+        "value": 2791369
+      },
+      {
+        "rank": 80,
         "tag": "PHX",
         "name": "King_Cobra",
         "value": 2786445
       },
       {
-        "rank": 79,
+        "rank": 81,
         "tag": "REM",
         "name": "manuportugal45",
-        "value": 2781269
+        "value": 2786106
       },
       {
-        "rank": 80,
+        "rank": 82,
         "tag": "KIN",
         "name": "KRyStL",
         "value": 2758920
       },
       {
-        "rank": 81,
+        "rank": 83,
         "tag": "ONE",
         "name": "Sunny2019",
         "value": 2758850
       },
       {
-        "rank": 82,
+        "rank": 84,
         "tag": "",
-        "name": "Jdic",
+        "name": "FIKINJUgly",
+        "value": 2752375
+      },
+      {
+        "rank": 85,
+        "tag": "KIN",
+        "name": "ABN963HAMA",
         "value": 2749407
       },
       {
-        "rank": 83,
+        "rank": 86,
+        "tag": "ONE",
+        "name": "AHMED",
+        "value": 2724735
+      },
+      {
+        "rank": 87,
         "tag": "",
         "name": "egersin",
         "value": 2711020
       },
       {
-        "rank": 84,
-        "tag": "ONE",
-        "name": "AHMED",
-        "value": 2708302
-      },
-      {
-        "rank": 85,
+        "rank": 88,
         "tag": "RED",
         "name": "Diaee",
         "value": 2695020
       },
       {
-        "rank": 86,
+        "rank": 89,
+        "tag": "KIN",
+        "name": "onething",
+        "value": 2692945
+      },
+      {
+        "rank": 90,
         "tag": "ONE",
         "name": "KRAISNIK",
         "value": 2687347
       },
       {
-        "rank": 87,
+        "rank": 91,
         "tag": "KIN",
         "name": "Loopy Loki",
         "value": 2683110
       },
       {
-        "rank": 88,
-        "tag": "KIN",
-        "name": "onething",
-        "value": 2676355
-      },
-      {
-        "rank": 89,
-        "tag": "KIN",
-        "name": "Penny",
-        "value": 2676147
-      },
-      {
-        "rank": 90,
-        "tag": "ONE",
-        "name": "Nabbissimo",
-        "value": 2673420
-      },
-      {
-        "rank": 91,
-        "tag": "KIN",
-        "name": "Tezcatlipoca",
-        "value": 2670147
-      },
-      {
         "rank": 92,
         "tag": "KIN",
-        "name": "RonaR",
-        "value": 2662657
+        "name": "Tezcatlipoca",
+        "value": 2674312
       },
       {
         "rank": 93,
-        "tag": "ONE",
-        "name": "7rb",
-        "value": 2657300
-      },
-      {
-        "rank": 94,
-        "tag": "ONE",
-        "name": "Silas 46",
-        "value": 2638635
-      },
-      {
-        "rank": 95,
-        "tag": "REM",
-        "name": "jasonztraum",
-        "value": 2638507
-      },
-      {
-        "rank": 96,
         "tag": "",
         "name": "lord302843134",
         "value": 16960
       },
       {
-        "rank": 97,
+        "rank": 94,
         "tag": "",
         "name": "Hero Power",
         "value": 0
@@ -2602,570 +2644,594 @@
     "heros_total_power": [
       {
         "rank": 1,
-        "tag": "RED",
-        "name": "Nvidus",
-        "value": 55797263
+        "tag": "ONE",
+        "name": "YOU ARE WELCOME",
+        "value": 73126153
       },
       {
         "rank": 2,
-        "tag": "ONE",
-        "name": "Heartwell",
-        "value": 48719860
+        "tag": "RED",
+        "name": "Nvidus",
+        "value": 56939011
       },
       {
         "rank": 3,
-        "tag": "RED",
-        "name": "TmB",
-        "value": 43969612
+        "tag": "ONE",
+        "name": "Heartwell",
+        "value": 49572784
       },
       {
         "rank": 4,
         "tag": "ONE",
-        "name": "Drachilles",
-        "value": 43609903
+        "name": "Mr",
+        "value": 45277350
       },
       {
         "rank": 5,
         "tag": "ONE",
-        "name": "BirdofPrey",
-        "value": 43577700
+        "name": "warbird z",
+        "value": 43952700
       },
       {
         "rank": 6,
         "tag": "ONE",
-        "name": "KOREA",
-        "value": 43187044
+        "name": "KOR_DraGonball",
+        "value": 43651439
       },
       {
         "rank": 7,
         "tag": "REM",
-        "name": "Dragon Bob",
-        "value": 41186708
+        "name": "Orca",
+        "value": 41802666
       },
       {
         "rank": 8,
-        "tag": "REM",
-        "name": "O G",
-        "value": 40659308
+        "tag": "RED",
+        "name": "PrincessTmBianca",
+        "value": 41229031
       },
       {
         "rank": 9,
         "tag": "RED",
-        "name": "LoneShadew",
-        "value": 38646752
+        "name": "LoneShadow",
+        "value": 38755652
       },
       {
         "rank": 10,
-        "tag": "ONE",
-        "name": "Z 0 R 0",
-        "value": 36734521
+        "tag": "REM",
+        "name": "Catfish",
+        "value": 37609220
       },
       {
         "rank": 11,
         "tag": "KIN",
-        "name": "Erwin",
-        "value": 36706434
+        "name": "Arabia",
+        "value": 37442973
       },
       {
         "rank": 12,
-        "tag": "KIN",
-        "name": "Cinos",
-        "value": 33702487
+        "tag": "ONE",
+        "name": "VEGETA",
+        "value": 36892021
       },
       {
         "rank": 13,
-        "tag": "REM",
-        "name": "PICKLE RICK",
-        "value": 33681034
+        "tag": "KIN",
+        "name": "Erwin",
+        "value": 36855809
       },
       {
         "rank": 14,
-        "tag": "ONE",
-        "name": "POH TAY TOz",
-        "value": 33409881
+        "tag": "KIN",
+        "name": "PICKLE RICK",
+        "value": 34070392
       },
       {
         "rank": 15,
         "tag": "KIN",
-        "name": "UIF",
-        "value": 32912640
+        "name": "Cinos",
+        "value": 33808112
       },
       {
         "rank": 16,
-        "tag": "REM",
-        "name": "Mr Cookies",
-        "value": 32294394
+        "tag": "ONE",
+        "name": "PIH KUH LOW",
+        "value": 33451906
       },
       {
         "rank": 17,
-        "tag": "KIN",
-        "name": "WallDestroyer",
-        "value": 32072870
+        "tag": "",
+        "name": "Draaen",
+        "value": 32401442
       },
       {
         "rank": 18,
-        "tag": "RED",
-        "name": "Braden",
-        "value": 31947274
+        "tag": "KIN",
+        "name": "WallDestroyer",
+        "value": 32390830
       },
       {
         "rank": 19,
-        "tag": "RED",
-        "name": "Amber",
-        "value": 30624294
+        "tag": "REM",
+        "name": "Mr Cookies",
+        "value": 32319924
       },
       {
         "rank": 20,
-        "tag": "KIN",
-        "name": "Kaoswax",
-        "value": 30312486
+        "tag": "REM",
+        "name": "FreemyWilly",
+        "value": 31720749
       },
       {
         "rank": 21,
         "tag": "REM",
-        "name": "s S AXoN 63",
-        "value": 30185333
+        "name": "Koi Fish",
+        "value": 31412672
       },
       {
         "rank": 22,
-        "tag": "",
-        "name": "KINJLady_of_Darkness",
-        "value": 29581962
+        "tag": "RED",
+        "name": "Amber Organa",
+        "value": 31239352
       },
       {
         "rank": 23,
-        "tag": "REM",
-        "name": "Weetcheez",
-        "value": 28844437
+        "tag": "KIN",
+        "name": "Kaoswax",
+        "value": 30606276
       },
       {
         "rank": 24,
         "tag": "KIN",
-        "name": "Emkayes",
-        "value": 28618565
+        "name": "Lady_of_Darkness",
+        "value": 30355768
       },
       {
         "rank": 25,
-        "tag": "ONE",
-        "name": "Mafi",
-        "value": 28584342
+        "tag": "REM",
+        "name": "GoldyMcGoldFish",
+        "value": 30245123
       },
       {
         "rank": 26,
-        "tag": "REM",
-        "name": "Jeya ayana",
-        "value": 28475482
+        "tag": "ONE",
+        "name": "Mafibidi",
+        "value": 28904384
       },
       {
         "rank": 27,
-        "tag": "ONE",
-        "name": "Haffi",
-        "value": 28296658
+        "tag": "REM",
+        "name": "HULLO NAMEsBRUCE",
+        "value": 28866012
       },
       {
         "rank": 28,
         "tag": "KIN",
-        "name": "YEYO",
-        "value": 28119045
+        "name": "Wooby",
+        "value": 28681477
       },
       {
         "rank": 29,
-        "tag": "ONE",
-        "name": "Luffy",
-        "value": 27882697
+        "tag": "REM",
+        "name": "Ghost of Lasko",
+        "value": 28648654
       },
       {
         "rank": 30,
-        "tag": "",
-        "name": "Eric",
-        "value": 27737510
+        "tag": "ONE",
+        "name": "Hybis",
+        "value": 28598598
       },
       {
         "rank": 31,
-        "tag": "ONE",
-        "name": "e DavioN 3",
-        "value": 27661802
+        "tag": "KIN",
+        "name": "YEYO",
+        "value": 28468600
       },
       {
         "rank": 32,
-        "tag": "",
-        "name": "HERCULES",
-        "value": 27629487
+        "tag": "ONE",
+        "name": "BLACK GOKU",
+        "value": 28260500
       },
       {
         "rank": 33,
         "tag": "ONE",
-        "name": "es PEGASUS 63",
-        "value": 27497813
+        "name": "e DavioN 3",
+        "value": 27761277
       },
       {
         "rank": 34,
-        "tag": "REM",
-        "name": "manuportugal45",
-        "value": 27470853
+        "tag": "KIN",
+        "name": "Eric",
+        "value": 27737510
       },
       {
         "rank": 35,
-        "tag": "RED",
-        "name": "Magnus",
-        "value": 27263156
+        "tag": "REM",
+        "name": "The Anchovy",
+        "value": 27735244
       },
       {
         "rank": 36,
-        "tag": "KIN",
-        "name": "RachaelsReptiles",
-        "value": 27057500
+        "tag": "ONE",
+        "name": "es PEGASUS 63",
+        "value": 27626698
       },
       {
         "rank": 37,
         "tag": "REM",
-        "name": "Es Cat 63",
-        "value": 27042276
+        "name": "manuportugal45",
+        "value": 27610103
       },
       {
         "rank": 38,
+        "tag": "ONE",
+        "name": "Phil",
+        "value": 27597889
+      },
+      {
+        "rank": 39,
+        "tag": "RED",
+        "name": "MEGARA",
+        "value": 27542014
+      },
+      {
+        "rank": 40,
+        "tag": "KIN",
+        "name": "RachaelsReptiles",
+        "value": 27516437
+      },
+      {
+        "rank": 41,
+        "tag": "REM",
+        "name": "s Cat 63",
+        "value": 27282276
+      },
+      {
+        "rank": 42,
         "tag": "OxU",
         "name": "Kai El Gallo",
         "value": 27000254
       },
       {
-        "rank": 39,
+        "rank": 43,
+        "tag": "ONE",
+        "name": "Majin Lorenzo",
+        "value": 26977087
+      },
+      {
+        "rank": 44,
         "tag": "TRN",
         "name": "Luigy MCMLXIX",
-        "value": 26862759
+        "value": 26957155
       },
       {
-        "rank": 40,
-        "tag": "ONE",
-        "name": "Surturenzo",
-        "value": 26785437
-      },
-      {
-        "rank": 41,
+        "rank": 45,
         "tag": "RED",
         "name": "blooded ynot",
-        "value": 26568579
+        "value": 26757613
       },
       {
-        "rank": 42,
+        "rank": 46,
         "tag": "ONE",
-        "name": "Silas 46",
-        "value": 26486869
+        "name": "Deniz Z",
+        "value": 26711500
       },
       {
-        "rank": 43,
+        "rank": 47,
+        "tag": "ONE",
+        "name": "Son Silas 46",
+        "value": 26540247
+      },
+      {
+        "rank": 48,
+        "tag": "RED",
+        "name": "MasterWiet",
+        "value": 26521124
+      },
+      {
+        "rank": 49,
         "tag": "REM",
         "name": "DragonLee",
         "value": 26440798
       },
       {
-        "rank": 44,
-        "tag": "RED",
-        "name": "MasterWiet",
-        "value": 26400497
-      },
-      {
-        "rank": 45,
+        "rank": 50,
         "tag": "",
         "name": "Freakinglazers",
         "value": 26342059
       },
       {
-        "rank": 46,
-        "tag": "REM",
-        "name": "PitMaster",
-        "value": 26264467
-      },
-      {
-        "rank": 47,
-        "tag": "ONE",
-        "name": "Deniz",
-        "value": 25665820
-      },
-      {
-        "rank": 48,
-        "tag": "",
-        "name": "LEMMAy;",
-        "value": 25665282
-      },
-      {
-        "rank": 49,
-        "tag": "KIN",
-        "name": "Pookie",
-        "value": 25557689
-      },
-      {
-        "rank": 50,
-        "tag": "REM",
-        "name": "AZline",
-        "value": 25551391
-      },
-      {
         "rank": 51,
         "tag": "REM",
-        "name": "IrishDragon7777",
-        "value": 25540656
+        "name": "PitMaster",
+        "value": 26275052
       },
       {
         "rank": 52,
         "tag": "RED",
-        "name": "Lui",
-        "value": 25263656
+        "name": "LENNUNZEL",
+        "value": 26271157
       },
       {
         "rank": 53,
-        "tag": "REM",
-        "name": "Devil's ynot",
-        "value": 25257073
+        "tag": "RED",
+        "name": "Alison Wonderland",
+        "value": 26071231
       },
       {
         "rank": 54,
         "tag": "KIN",
-        "name": "onething",
-        "value": 25246042
+        "name": "Pookie",
+        "value": 26030414
       },
       {
         "rank": 55,
-        "tag": "REM",
-        "name": "LECHIA",
-        "value": 25229462
+        "tag": "RED",
+        "name": "lcyFe",
+        "value": 25940670
       },
       {
         "rank": 56,
-        "tag": "",
-        "name": "Spooky",
-        "value": 25226356
+        "tag": "ONE",
+        "name": "Puar",
+        "value": 25772385
       },
       {
         "rank": 57,
         "tag": "REM",
-        "name": "Mira",
-        "value": 25143401
+        "name": "AZline",
+        "value": 25622426
       },
       {
         "rank": 58,
-        "tag": "RED",
-        "name": "JoeTown",
-        "value": 25127410
+        "tag": "REM",
+        "name": "Leviathan",
+        "value": 25615018
       },
       {
         "rank": 59,
-        "tag": "ONE",
-        "name": "Chex",
-        "value": 24994425
+        "tag": "KIN",
+        "name": "ChiefDGAF74",
+        "value": 25394456
       },
       {
         "rank": 60,
-        "tag": "KIN",
-        "name": "Rhatyel",
-        "value": 24926483
+        "tag": "REM",
+        "name": "LECHIA",
+        "value": 25393605
       },
       {
         "rank": 61,
+        "tag": "KIN",
+        "name": "onething",
+        "value": 25373504
+      },
+      {
+        "rank": 62,
+        "tag": "RED",
+        "name": "Lui",
+        "value": 25359831
+      },
+      {
+        "rank": 63,
+        "tag": "ONE",
+        "name": "Canpolat",
+        "value": 25337060
+      },
+      {
+        "rank": 64,
+        "tag": "REM",
+        "name": "cookiecutterynot",
+        "value": 25265369
+      },
+      {
+        "rank": 65,
+        "tag": "REM",
+        "name": "Mira",
+        "value": 25241244
+      },
+      {
+        "rank": 66,
+        "tag": "KIN",
+        "name": "Ugly",
+        "value": 25233826
+      },
+      {
+        "rank": 67,
+        "tag": "ONE",
+        "name": "Yellow Tt# Power",
+        "value": 25198048
+      },
+      {
+        "rank": 68,
+        "tag": "REM",
+        "name": "no name",
+        "value": 25066897
+      },
+      {
+        "rank": 69,
+        "tag": "KIN",
+        "name": "Rhatyel",
+        "value": 24993078
+      },
+      {
+        "rank": 70,
+        "tag": "REM",
+        "name": "The Angelfish",
+        "value": 24978458
+      },
+      {
+        "rank": 71,
+        "tag": "REM",
+        "name": "26msone26",
+        "value": 24932832
+      },
+      {
+        "rank": 72,
         "tag": "",
         "name": "Haseen",
         "value": 24835809
       },
       {
-        "rank": 62,
-        "tag": "REM",
-        "name": "Alecksandra",
-        "value": 24779205
-      },
-      {
-        "rank": 63,
-        "tag": "REM",
-        "name": "26msone26",
-        "value": 24652247
-      },
-      {
-        "rank": 64,
-        "tag": "KIN",
-        "name": "iOOman",
-        "value": 24604287
-      },
-      {
-        "rank": 65,
-        "tag": "",
-        "name": "HUNEJUME",
-        "value": 24543413
-      },
-      {
-        "rank": 66,
+        "rank": 73,
         "tag": "ONE",
         "name": "Jager",
-        "value": 24457265
+        "value": 24703207
       },
       {
-        "rank": 67,
+        "rank": 74,
         "tag": "KIN",
-        "name": "Crezus",
-        "value": 24454806
+        "name": "iOOman",
+        "value": 24633034
       },
       {
-        "rank": 68,
+        "rank": 75,
         "tag": "ONE",
-        "name": "Saphira",
-        "value": 24219456
+        "name": "Chiaotzu",
+        "value": 24608399
       },
       {
-        "rank": 69,
-        "tag": "ONE",
-        "name": "Pegasuss",
-        "value": 24182466
-      },
-      {
-        "rank": 70,
-        "tag": "ONE",
-        "name": "Yellow FET# Power",
-        "value": 24178731
-      },
-      {
-        "rank": 71,
+        "rank": 76,
         "tag": "RED",
         "name": "Gaybulous",
-        "value": 24149856
+        "value": 24420466
       },
       {
-        "rank": 72,
+        "rank": 77,
+        "tag": "ONE",
+        "name": "Oren",
+        "value": 24273073
+      },
+      {
+        "rank": 78,
         "tag": "REM",
         "name": "Vinni",
-        "value": 24132916
+        "value": 24268746
       },
       {
-        "rank": 73,
+        "rank": 79,
+        "tag": "ONE",
+        "name": "Cunyaoo",
+        "value": 24255991
+      },
+      {
+        "rank": 80,
+        "tag": "ONE",
+        "name": "Saphiron",
+        "value": 24224424
+      },
+      {
+        "rank": 81,
+        "tag": "",
+        "name": "",
+        "value": 24170311
+      },
+      {
+        "rank": 82,
+        "tag": "ONE",
+        "name": "Night",
+        "value": 24155654
+      },
+      {
+        "rank": 83,
         "tag": "ONE",
         "name": "Sunny2019",
         "value": 24099692
       },
       {
-        "rank": 74,
-        "tag": "RED",
-        "name": "Kathu",
-        "value": 24081487
-      },
-      {
-        "rank": 75,
-        "tag": "ONE",
-        "name": "Night",
-        "value": 24030389
-      },
-      {
-        "rank": 76,
-        "tag": "ONE",
-        "name": "Koktele",
-        "value": 23933300
-      },
-      {
-        "rank": 77,
-        "tag": "RED",
-        "name": "Horse Beer",
-        "value": 23786155
-      },
-      {
-        "rank": 78,
-        "tag": "REM",
-        "name": "Drunk dragon",
-        "value": 23733288
-      },
-      {
-        "rank": 79,
-        "tag": "RED",
-        "name": "Goofried the 3rd",
-        "value": 23673889
-      },
-      {
-        "rank": 80,
-        "tag": "REM",
-        "name": "lkit Claw",
-        "value": 23667337
-      },
-      {
-        "rank": 81,
-        "tag": "REM",
-        "name": "Grace",
-        "value": 23638119
-      },
-      {
-        "rank": 82,
-        "tag": "PHX",
-        "name": "King_Cobra",
-        "value": 23549732
-      },
-      {
-        "rank": 83,
-        "tag": "REM",
-        "name": "Ceausescu",
-        "value": 23462814
-      },
-      {
         "rank": 84,
-        "tag": "KIN",
-        "name": "Tezcatlipoca",
-        "value": 23438236
+        "tag": "RED",
+        "name": "Princess Sara",
+        "value": 24019693
       },
       {
         "rank": 85,
-        "tag": "KIN",
-        "name": "Mano",
-        "value": 23377969
+        "tag": "ONE",
+        "name": "Koktele",
+        "value": 23961235
       },
       {
         "rank": 86,
-        "tag": "ONE",
-        "name": "Spiderman44",
-        "value": 23349549
+        "tag": "PHX",
+        "name": "King_Cobra",
+        "value": 23861617
       },
       {
         "rank": 87,
-        "tag": "KIN",
-        "name": "Azmodan",
-        "value": 23338490
+        "tag": "REM",
+        "name": "Parrot Fish",
+        "value": 23851134
       },
       {
         "rank": 88,
         "tag": "REM",
-        "name": "Ikit Claw",
-        "value": 667337
+        "name": "lkit Claw",
+        "value": 23759822
       },
       {
         "rank": 89,
-        "tag": "REM",
-        "name": "Grace",
-        "value": 638119
+        "tag": "ONE",
+        "name": "king nothing",
+        "value": 23754484
       },
       {
         "rank": 90,
-        "tag": "KIN",
-        "name": "Tezcatlipoca",
-        "value": 438236
+        "tag": "RED",
+        "name": "Gooriel",
+        "value": 23750352
       },
       {
         "rank": 91,
-        "tag": "ONE",
-        "name": "Spiderman44",
-        "value": 349549
+        "tag": "REM",
+        "name": "Ceausescu",
+        "value": 23673752
       },
       {
         "rank": 92,
-        "tag": "ONE",
-        "name": "CYRUS",
-        "value": 54872
+        "tag": "RED",
+        "name": "zt: TA R OANA",
+        "value": 23642886
       },
       {
         "rank": 93,
+        "tag": "ONE",
+        "name": "Koktele",
+        "value": 961235
+      },
+      {
+        "rank": 94,
+        "tag": "ONE",
+        "name": "king nothing",
+        "value": 754484
+      },
+      {
+        "rank": 95,
+        "tag": "RED",
+        "name": "Gooriel",
+        "value": 750352
+      },
+      {
+        "rank": 96,
+        "tag": "REM",
+        "name": "The Whale",
+        "value": 676332
+      },
+      {
+        "rank": 97,
         "tag": "",
         "name": "lord302843134",
         "value": 30400
       },
       {
-        "rank": 94,
-        "tag": "KIN",
-        "name": "Wooby",
-        "value": 28681
+        "rank": 98,
+        "tag": "ONE",
+        "name": "Hammerhead",
+        "value": 24219
       },
       {
-        "rank": 95,
+        "rank": 99,
         "tag": "",
         "name": "Hero's Total Power",
         "value": 0
@@ -3187,19 +3253,19 @@
       {
         "rank": 3,
         "tag": "REM",
-        "name": "Dragon Bob",
+        "name": "Orca",
         "value": 14278320
       },
       {
         "rank": 4,
         "tag": "ONE",
-        "name": "KOREA",
+        "name": "KOR_DraGonball",
         "value": 13901040
       },
       {
         "rank": 5,
         "tag": "RED",
-        "name": "TmB",
+        "name": "PrincessTmBianca",
         "value": 13872000
       },
       {
@@ -3211,32 +3277,32 @@
       {
         "rank": 7,
         "tag": "RED",
-        "name": "Braden",
-        "value": 12736320
+        "name": "Belle Braden",
+        "value": 12773760
       },
       {
         "rank": 8,
         "tag": "KIN",
-        "name": "UIf",
+        "name": "UIF",
         "value": 12734760
       },
       {
         "rank": 9,
         "tag": "ONE",
-        "name": "Drachilles",
+        "name": "Mr",
         "value": 12727440
       },
       {
         "rank": 10,
         "tag": "KIN",
         "name": "Arabia",
-        "value": 12645000
+        "value": 12672360
       },
       {
         "rank": 11,
         "tag": "REM",
         "name": "Ghost of Lasko",
-        "value": 12620640
+        "value": 12644400
       },
       {
         "rank": 12,
@@ -3247,25 +3313,25 @@
       {
         "rank": 13,
         "tag": "ONE",
-        "name": "BirdofPrey",
+        "name": "warbird z",
         "value": 12525600
       },
       {
         "rank": 14,
         "tag": "REM",
-        "name": "O G",
+        "name": "The Whale",
         "value": 12391560
       },
       {
         "rank": 15,
-        "tag": "",
-        "name": "HERCULES",
-        "value": 12335160
+        "tag": "REM",
+        "name": "The Anchovy",
+        "value": 12363960
       },
       {
         "rank": 16,
         "tag": "REM",
-        "name": "es S AXoN 63",
+        "name": "GoldyMcGoldFish",
         "value": 12189840
       },
       {
@@ -3277,175 +3343,175 @@
       {
         "rank": 18,
         "tag": "REM",
-        "name": "Jeya ayana",
+        "name": "Little Kraken",
         "value": 12119280
       },
       {
         "rank": 19,
-        "tag": "ONE",
-        "name": "POH TAY TOz",
-        "value": 11882400
+        "tag": "KIN",
+        "name": "Emkayes",
+        "value": 11924280
       },
       {
         "rank": 20,
-        "tag": "",
-        "name": "KINJCinos",
-        "value": 11877960
+        "tag": "ONE",
+        "name": "PIH KUH LOW",
+        "value": 11882400
       },
       {
         "rank": 21,
-        "tag": "ONE",
-        "name": "Surturenzo",
-        "value": 11866560
+        "tag": "KIN",
+        "name": "Cinos",
+        "value": 11877960
       },
       {
         "rank": 22,
         "tag": "KIN",
         "name": "#943SUKUNA",
-        "value": 11840400
+        "value": 11877120
       },
       {
         "rank": 23,
-        "tag": "KIN",
-        "name": "Emkayes",
-        "value": 11724840
+        "tag": "ONE",
+        "name": "Majin Lorenzo",
+        "value": 11866560
       },
       {
         "rank": 24,
         "tag": "REM",
-        "name": "s Cat 63",
+        "name": "es Cat 63",
         "value": 11700120
       },
       {
         "rank": 25,
         "tag": "REM",
-        "name": "Yisussss",
+        "name": "McPato",
         "value": 11612760
       },
       {
         "rank": 26,
-        "tag": "KIN",
-        "name": "WallDestroyer",
-        "value": 11574720
-      },
-      {
-        "rank": 27,
         "tag": "REM",
-        "name": "ThatsODE",
-        "value": 11470320
-      },
-      {
-        "rank": 28,
-        "tag": "REM",
-        "name": "Trafalgar Law",
+        "name": "Koi Fish",
         "value": 11470080
       },
       {
-        "rank": 29,
+        "rank": 27,
         "tag": "ONE",
         "name": "Canpolat",
         "value": 11433600
       },
       {
-        "rank": 30,
-        "tag": "KIN",
-        "name": "Kaoswax",
-        "value": 11426400
-      },
-      {
-        "rank": 31,
+        "rank": 28,
         "tag": "REM",
-        "name": "Weetcheez",
+        "name": "HULLO NAMEsBRUCE",
         "value": 11387400
       },
       {
-        "rank": 32,
+        "rank": 29,
         "tag": "KIN",
         "name": "YEYO",
         "value": 11369280
       },
       {
-        "rank": 33,
+        "rank": 30,
         "tag": "REM",
         "name": "Mr Cookies",
         "value": 11311920
       },
       {
-        "rank": 34,
+        "rank": 31,
+        "tag": "KIN",
+        "name": "iOOman",
+        "value": 11154960
+      },
+      {
+        "rank": 32,
         "tag": "REM",
-        "name": "TropicTrainwreck",
-        "value": 11103480
+        "name": "Catfish",
+        "value": 11151720
+      },
+      {
+        "rank": 33,
+        "tag": "REM",
+        "name": "Parrot Fish",
+        "value": 11002800
+      },
+      {
+        "rank": 34,
+        "tag": "ONE",
+        "name": "VEGETA",
+        "value": 10961280
       },
       {
         "rank": 35,
         "tag": "REM",
-        "name": "LECHIA",
-        "value": 10998480
-      },
-      {
-        "rank": 36,
-        "tag": "REM",
-        "name": "Drunk dragon",
-        "value": 10966800
-      },
-      {
-        "rank": 37,
-        "tag": "ONE",
-        "name": "Z 0 R 0",
-        "value": 10961280
-      },
-      {
-        "rank": 38,
-        "tag": "REM",
-        "name": "IrishDragon7777",
+        "name": "Leviathan",
         "value": 10930440
       },
       {
-        "rank": 39,
+        "rank": 36,
         "tag": "KIN",
         "name": "Crezus",
         "value": 10694280
       },
       {
-        "rank": 40,
+        "rank": 37,
         "tag": "REM",
         "name": "no name",
         "value": 10685640
       },
       {
-        "rank": 41,
+        "rank": 38,
         "tag": "",
         "name": "PERSEUS",
-        "value": 10668360
+        "value": 10680600
+      },
+      {
+        "rank": 39,
+        "tag": "RED",
+        "name": "JoeTown",
+        "value": 10674000
+      },
+      {
+        "rank": 40,
+        "tag": "KIN",
+        "name": "Wooby",
+        "value": 10667280
+      },
+      {
+        "rank": 41,
+        "tag": "KIN",
+        "name": "SEZZ",
+        "value": 10569000
       },
       {
         "rank": 42,
-        "tag": "RED",
-        "name": "JoeTown",
-        "value": 10567440
+        "tag": "REM",
+        "name": "Ceausescu",
+        "value": 10555440
       },
       {
         "rank": 43,
-        "tag": "RE",
-        "name": "Dlyammtar",
-        "value": 10557000
+        "tag": "RED",
+        "name": "Kathu",
+        "value": 10546920
       },
       {
         "rank": 44,
         "tag": "KIN",
-        "name": "SEZZ",
-        "value": 10545240
+        "name": "Itachioo7",
+        "value": 10536000
       },
       {
         "rank": 45,
-        "tag": "RED",
-        "name": "Kathu",
-        "value": 10523160
+        "tag": "KIN",
+        "name": "Rhatyel",
+        "value": 10530840
       },
       {
         "rank": 46,
         "tag": "RED",
-        "name": "Horse Beer",
+        "name": "Princess Sara",
         "value": 10514760
       },
       {
@@ -3456,285 +3522,285 @@
       },
       {
         "rank": 48,
-        "tag": "KIN",
-        "name": "Rhatyel",
-        "value": 10494840
-      },
-      {
-        "rank": 49,
-        "tag": "KIN",
-        "name": "LordFarquaad",
+        "tag": "",
+        "name": "",
         "value": 10487040
       },
       {
-        "rank": 50,
+        "rank": 49,
         "tag": "ONE",
-        "name": "Luffy",
+        "name": "Buu",
         "value": 10457160
       },
       {
+        "rank": 50,
+        "tag": "",
+        "name": "",
+        "value": 10437960
+      },
+      {
         "rank": 51,
-        "tag": "REM",
-        "name": "Ceausescu",
-        "value": 10379760
+        "tag": "RED",
+        "name": "Lui",
+        "value": 10422240
       },
       {
         "rank": 52,
-        "tag": "RED",
-        "name": "Amber",
-        "value": 10379640
+        "tag": "REM",
+        "name": "Barracuda",
+        "value": 10395360
       },
       {
         "rank": 53,
-        "tag": "KIN",
-        "name": "Itachioo7",
-        "value": 10375560
+        "tag": "RED",
+        "name": "Amber Organa",
+        "value": 10379640
       },
       {
         "rank": 54,
         "tag": "RED",
-        "name": "34#:TA R 0",
+        "name": "ZF: TA R OANA",
         "value": 10354800
       },
       {
         "rank": 55,
         "tag": "RED",
         "name": "oNUR",
-        "value": 10341720
+        "value": 10344600
       },
       {
         "rank": 56,
-        "tag": "",
-        "name": "Ex\"as",
-        "value": 10326960
+        "tag": "KNG",
+        "name": "Malle",
+        "value": 10339680
       },
       {
         "rank": 57,
-        "tag": "RED",
-        "name": "Lui",
-        "value": 10318680
+        "tag": "REM",
+        "name": "manuportugal45",
+        "value": 10338840
       },
       {
         "rank": 58,
+        "tag": "RED",
+        "name": "LENNUNZEL",
+        "value": 10326960
+      },
+      {
+        "rank": 59,
         "tag": "",
         "name": "Freakinglazers",
         "value": 10313040
       },
       {
-        "rank": 59,
+        "rank": 60,
+        "tag": "TRN",
+        "name": "Hammerhart",
+        "value": 10296360
+      },
+      {
+        "rank": 61,
+        "tag": "REM",
+        "name": "26msone26",
+        "value": 10295880
+      },
+      {
+        "rank": 62,
+        "tag": "",
+        "name": "REDJblooded ynot",
+        "value": 10293720
+      },
+      {
+        "rank": 63,
         "tag": "KNG",
         "name": "AMF",
         "value": 10256280
       },
       {
-        "rank": 60,
-        "tag": "KNG",
-        "name": "Malle",
-        "value": 10242480
-      },
-      {
-        "rank": 61,
+        "rank": 64,
         "tag": "KIN",
         "name": "Pookie",
         "value": 10241400
       },
       {
-        "rank": 62,
-        "tag": "ONE",
-        "name": "Silas 46",
-        "value": 10217400
-      },
-      {
-        "rank": 63,
-        "tag": "RED",
-        "name": "blooded ynot",
-        "value": 10215960
-      },
-      {
-        "rank": 64,
-        "tag": "REM",
-        "name": "manuportugal45",
-        "value": 10205640
-      },
-      {
         "rank": 65,
-        "tag": "",
-        "name": "",
-        "value": 10194960
+        "tag": "ONE",
+        "name": "Son Silas 46",
+        "value": 10217400
       },
       {
         "rank": 66,
         "tag": "",
         "name": "",
-        "value": 10177560
+        "value": 10194960
       },
       {
         "rank": 67,
+        "tag": "",
+        "name": "",
+        "value": 10188600
+      },
+      {
+        "rank": 68,
+        "tag": "",
+        "name": "",
+        "value": 10180080
+      },
+      {
+        "rank": 69,
+        "tag": "RED",
+        "name": "ChiChinderella",
+        "value": 10177560
+      },
+      {
+        "rank": 70,
         "tag": "ONE",
         "name": "Jager",
         "value": 10170960
       },
       {
-        "rank": 68,
-        "tag": "ONE",
-        "name": "Ntraks",
-        "value": 10144440
-      },
-      {
-        "rank": 69,
-        "tag": "ONe",
-        "name": "Orel14",
-        "value": 10123920
-      },
-      {
-        "rank": 70,
-        "tag": "TRN",
-        "name": "Hammerhart",
-        "value": 10122120
-      },
-      {
         "rank": 71,
-        "tag": "REM",
-        "name": "PICKLE RICK",
-        "value": 10108920
+        "tag": "ONe",
+        "name": "orel1a",
+        "value": 10163880
       },
       {
         "rank": 72,
-        "tag": "ONE",
-        "name": "Cunyaoo",
-        "value": 10106400
+        "tag": "REM",
+        "name": "Starfish",
+        "value": 10163160
       },
       {
         "rank": 73,
         "tag": "REM",
         "name": "Vlado",
-        "value": 10105080
+        "value": 10156920
       },
       {
         "rank": 74,
+        "tag": "ONE",
+        "name": "Ntraks",
+        "value": 10144440
+      },
+      {
+        "rank": 75,
+        "tag": "PHX",
+        "name": "King",
+        "value": 10122720
+      },
+      {
+        "rank": 76,
+        "tag": "KIN",
+        "name": "PICKLE RICK",
+        "value": 10108920
+      },
+      {
+        "rank": 77,
+        "tag": "ONE",
+        "name": "Cunyaoo",
+        "value": 10106400
+      },
+      {
+        "rank": 78,
+        "tag": "ReM",
+        "name": "king Wintet",
+        "value": 10106040
+      },
+      {
+        "rank": 79,
         "tag": "REM",
         "name": "Tower3360",
         "value": 10104240
       },
       {
-        "rank": 75,
-        "tag": "REM",
-        "name": "CheekyGoddess",
-        "value": 10103400
-      },
-      {
-        "rank": 76,
-        "tag": "",
-        "name": "",
-        "value": 10098120
-      },
-      {
-        "rank": 77,
-        "tag": "PHX",
-        "name": "King_Cobra",
-        "value": 10086000
-      },
-      {
-        "rank": 78,
-        "tag": "REM",
-        "name": "EFi",
-        "value": 10066560
-      },
-      {
-        "rank": 79,
-        "tag": "ReM",
-        "name": "king Wintet",
-        "value": 10058640
-      },
-      {
         "rank": 80,
         "tag": "REM",
-        "name": "Nashl1",
-        "value": 10053960
+        "name": "EFi",
+        "value": 10098240
       },
       {
         "rank": 81,
-        "tag": "",
-        "name": "Eric",
-        "value": 10049760
+        "tag": "REM",
+        "name": "jasonztraum",
+        "value": 10092480
       },
       {
         "rank": 82,
-        "tag": "RED",
-        "name": "memo",
-        "value": 10048080
+        "tag": "REM",
+        "name": "SeaRobins",
+        "value": 10089960
       },
       {
         "rank": 83,
-        "tag": "ONE",
-        "name": "Padrino",
-        "value": 10039080
+        "tag": "REM",
+        "name": "Meow",
+        "value": 10075920
       },
       {
         "rank": 84,
         "tag": "ONE",
-        "name": "Haffi",
-        "value": 10003440
+        "name": "Padrino",
+        "value": 10051320
       },
       {
         "rank": 85,
+        "tag": "KIN",
+        "name": "Eric",
+        "value": 10049760
+      },
+      {
+        "rank": 86,
+        "tag": "REM",
+        "name": "cookiecutterynot",
+        "value": 10045200
+      },
+      {
+        "rank": 87,
+        "tag": "RED",
+        "name": "Gimli",
+        "value": 10021200
+      },
+      {
+        "rank": 88,
+        "tag": "PHX",
+        "name": "artur",
+        "value": 10021080
+      },
+      {
+        "rank": 89,
+        "tag": "TRN",
+        "name": "Ronbone",
+        "value": 10020120
+      },
+      {
+        "rank": 90,
+        "tag": "ONE",
+        "name": "Hybis",
+        "value": 10019280
+      },
+      {
+        "rank": 91,
         "tag": "KiN",
         "name": "perceval",
         "value": 10002360
       },
       {
-        "rank": 86,
-        "tag": "RED",
-        "name": "Manfred Von R",
-        "value": 10001280
-      },
-      {
-        "rank": 87,
-        "tag": "ONelj",
-        "name": "cdus",
-        "value": 9998640
-      },
-      {
-        "rank": 88,
-        "tag": "ONE",
-        "name": "Mafi",
-        "value": 9979680
-      },
-      {
-        "rank": 89,
-        "tag": "RED",
-        "name": "Morris l",
-        "value": 9978960
-      },
-      {
-        "rank": 90,
-        "tag": "KIN",
-        "name": "Slinky",
-        "value": 9974160
-      },
-      {
-        "rank": 91,
-        "tag": "REM",
-        "name": "Devil's ynot",
-        "value": 9960000
-      },
-      {
         "rank": 92,
-        "tag": "TRN",
-        "name": "Ronbone",
-        "value": 9958080
+        "tag": "REM",
+        "name": "LECHIA",
+        "value": 998480
       },
       {
         "rank": 93,
-        "tag": "KIN",
-        "name": "onething",
-        "value": 9956040
+        "tag": "ONE",
+        "name": "YOU ARE WELCOME",
+        "value": 140760
       },
       {
         "rank": 94,
         "tag": "",
         "name": "lord302843134",
-        "value": 34270
+        "value": 34267
       },
       {
         "rank": 95,
@@ -3746,285 +3812,285 @@
     "mystic_trial": [
       {
         "rank": 1,
-        "tag": "RED",
-        "name": "Nvidus",
-        "value": 2144
+        "tag": "ONE",
+        "name": "YOU ARE WELCOME",
+        "value": 2379
       },
       {
         "rank": 2,
-        "tag": "ONE",
-        "name": "Heartwell",
-        "value": 1805
+        "tag": "RED",
+        "name": "Nvidus",
+        "value": 2154
       },
       {
         "rank": 3,
         "tag": "ONE",
-        "name": "KOREA",
-        "value": 1708
+        "name": "Heartwell",
+        "value": 1809
       },
       {
         "rank": 4,
         "tag": "ONE",
-        "name": "Drachilles",
-        "value": 1680
+        "name": "KOR",
+        "value": 1749
       },
       {
         "rank": 5,
-        "tag": "RED",
-        "name": "Lone Shadew",
-        "value": 1672
+        "tag": "ONE",
+        "name": "Mr Dropo",
+        "value": 1688
       },
       {
         "rank": 6,
         "tag": "RED",
-        "name": "TmB",
-        "value": 1633
+        "name": "LoneShadew",
+        "value": 1674
       },
       {
         "rank": 7,
-        "tag": "KIN",
-        "name": "Arabia",
-        "value": 1621
+        "tag": "RED",
+        "name": "Princess TmBianca",
+        "value": 1656
       },
       {
         "rank": 8,
         "tag": "REM",
-        "name": "Dragon Bob",
-        "value": 1619
+        "name": "The Whale",
+        "value": 1637
       },
       {
         "rank": 9,
-        "tag": "REM",
-        "name": "O G",
-        "value": 1599
+        "tag": "KIN",
+        "name": "Arabia",
+        "value": 1630
       },
       {
         "rank": 10,
         "tag": "REM",
-        "name": "TropicTrainwreck",
-        "value": 1590
+        "name": "Orca",
+        "value": 1624
       },
       {
         "rank": 11,
         "tag": "KIN",
         "name": "Erwin",
-        "value": 1587
+        "value": 1598
       },
       {
         "rank": 12,
-        "tag": "",
-        "name": "IKINJCinos",
-        "value": 1566
+        "tag": "KIN",
+        "name": "WallDestroyer",
+        "value": 1595
       },
       {
         "rank": 13,
-        "tag": "ONE",
-        "name": "BirdofPrey",
-        "value": 1558
+        "tag": "REM",
+        "name": "Catfish",
+        "value": 1591
       },
       {
         "rank": 14,
-        "tag": "ONE",
-        "name": "Z 0 R 0",
-        "value": 1489
+        "tag": "KIN",
+        "name": "Cinos",
+        "value": 1583
       },
       {
         "rank": 15,
         "tag": "ONE",
-        "name": "Mafi",
-        "value": 1484
+        "name": "warbird z",
+        "value": 1563
       },
       {
         "rank": 16,
         "tag": "ONE",
-        "name": "POH TAY TOz",
-        "value": 1479
+        "name": "VEGETA",
+        "value": 1546
       },
       {
         "rank": 17,
-        "tag": "RED",
-        "name": "Braden",
-        "value": 1476
+        "tag": "ONE",
+        "name": "Mafibidi",
+        "value": 1492
       },
       {
         "rank": 18,
-        "tag": "REM",
-        "name": "s S AXoN 63",
-        "value": 1454
+        "tag": "RED",
+        "name": "Belle Braden",
+        "value": 1487
       },
       {
         "rank": 19,
-        "tag": "REM",
-        "name": "Jeya ayana",
-        "value": 1426
+        "tag": "ONE",
+        "name": "PIH KUH Low",
+        "value": 1484
       },
       {
         "rank": 20,
-        "tag": "KIN",
-        "name": "YEYO",
-        "value": 1413
+        "tag": "REM",
+        "name": "GoldyMcGoldFish",
+        "value": 1457
       },
       {
         "rank": 21,
-        "tag": "KIN",
-        "name": "UIF",
-        "value": 1403
+        "tag": "REM",
+        "name": "Little Kraken",
+        "value": 1431
       },
       {
         "rank": 22,
-        "tag": "RED",
-        "name": "Amber",
-        "value": 1394
+        "tag": "KIN",
+        "name": "YEYO",
+        "value": 1418
       },
       {
         "rank": 23,
-        "tag": "REM",
-        "name": "Mr Cookies",
-        "value": 1370
+        "tag": "KIN",
+        "name": "UIF",
+        "value": 1407
       },
       {
         "rank": 24,
-        "tag": "REM",
-        "name": "Trafalgar Law",
-        "value": 1368
+        "tag": "RED",
+        "name": "Amber Organa",
+        "value": 1396
       },
       {
         "rank": 25,
-        "tag": "",
-        "name": "HERCULES",
-        "value": 1363
+        "tag": "REM",
+        "name": "Koi Fish",
+        "value": 1383
       },
       {
         "rank": 26,
-        "tag": "KIN",
-        "name": "Emkayes",
-        "value": 1320
+        "tag": "REM",
+        "name": "The Anchovy",
+        "value": 1370
       },
       {
         "rank": 27,
         "tag": "REM",
-        "name": "Weetcheez",
-        "value": 1315
+        "name": "Ghost of Lasko",
+        "value": 1338
       },
       {
         "rank": 28,
-        "tag": "ONE",
-        "name": "e DavioN 3",
-        "value": 1310
+        "tag": "REM",
+        "name": "HULLO NAMEsBRUCE",
+        "value": 1332
       },
       {
         "rank": 29,
         "tag": "KIN",
-        "name": "iOOman",
-        "value": 1281
+        "name": "PICKLE RICK",
+        "value": 1331
       },
       {
         "rank": 30,
-        "tag": "REM",
-        "name": "ThatsODE",
-        "value": 1257
+        "tag": "KIN",
+        "name": "Emkayes",
+        "value": 1326
       },
       {
         "rank": 31,
-        "tag": "KIN",
-        "name": "Lady_of_Darkness",
-        "value": 1256
+        "tag": "ONE",
+        "name": "e",
+        "value": 1314
       },
       {
         "rank": 32,
-        "tag": "ONE",
-        "name": "es PEGASUS 63",
-        "value": 1255
+        "tag": "KIN",
+        "name": "iOOman",
+        "value": 1297
       },
       {
         "rank": 33,
+        "tag": "ONE",
+        "name": "es PEGASUS 63",
+        "value": 1265
+      },
+      {
+        "rank": 34,
+        "tag": "REM",
+        "name": "FreemyWilly",
+        "value": 1257
+      },
+      {
+        "rank": 35,
         "tag": "KIN",
         "name": "Wooby",
         "value": 1254
       },
       {
-        "rank": 34,
-        "tag": "ONE",
-        "name": "Surturenzo",
-        "value": 1245
-      },
-      {
-        "rank": 35,
-        "tag": "ONE",
-        "name": "Haffi",
-        "value": 1244
-      },
-      {
         "rank": 36,
-        "tag": "KIN",
-        "name": "Crezus",
-        "value": 1236
+        "tag": "ONE",
+        "name": "Majin Lorenzo",
+        "value": 1247
       },
       {
         "rank": 37,
         "tag": "KIN",
         "name": "Kaoswax",
-        "value": 1233
+        "value": 1238
       },
       {
         "rank": 38,
-        "tag": "REM",
-        "name": "IrishDragon7777",
-        "value": 1210
+        "tag": "KIN",
+        "name": "Crezus",
+        "value": 1236
       },
       {
         "rank": 39,
         "tag": "REM",
-        "name": "manuportugal45",
-        "value": 1186
+        "name": "Leviathan",
+        "value": 1210
       },
       {
         "rank": 40,
-        "tag": "",
-        "name": "Haseen",
-        "value": 1182
+        "tag": "REM",
+        "name": "manuportugal45",
+        "value": 1199
       },
       {
         "rank": 41,
         "tag": "KIN",
         "name": "RachaelsReptiles",
-        "value": 1172
+        "value": 1176
       },
       {
         "rank": 42,
         "tag": "ONE",
-        "name": "yoyo",
-        "value": 1169
+        "name": "Son yoyo",
+        "value": 1170
       },
       {
         "rank": 43,
         "tag": "REM",
-        "name": "Es Cat 63",
-        "value": 1159
+        "name": "no name",
+        "value": 1155
       },
       {
         "rank": 44,
-        "tag": "ONE",
-        "name": "Night",
-        "value": 1149
+        "tag": "RED",
+        "name": "oNUR",
+        "value": 1152
       },
       {
         "rank": 45,
-        "tag": "REM",
-        "name": "no name",
-        "value": 1147
+        "tag": "ONE",
+        "name": "Night",
+        "value": 1150
       },
       {
         "rank": 46,
-        "tag": "ONE",
-        "name": "Orline",
-        "value": 1146
+        "tag": "KIN",
+        "name": "Pookie",
+        "value": 1147
       },
       {
         "rank": 47,
-        "tag": "KIN",
-        "name": "Pookie",
-        "value": 1138
+        "tag": "ONE",
+        "name": "Oren",
+        "value": 1146
       },
       {
         "rank": 48,
@@ -4034,99 +4100,99 @@
       },
       {
         "rank": 49,
-        "tag": "REM",
-        "name": "CheekyGoddess",
-        "value": 1125
+        "tag": "ONE",
+        "name": "Deniz Z",
+        "value": 1127
       },
       {
         "rank": 50,
-        "tag": "ONE",
-        "name": "Luffy",
-        "value": 1122
+        "tag": "REM",
+        "name": "Starfish",
+        "value": 1125
       },
       {
         "rank": 51,
         "tag": "KIN",
-        "name": "Feio",
-        "value": 1121
+        "name": "SEZZ",
+        "value": 1123
       },
       {
         "rank": 52,
-        "tag": "RED",
-        "name": "34#:T A R 0",
-        "value": 1116
+        "tag": "ONE",
+        "name": "Yellow FETF Power",
+        "value": 1122
       },
       {
         "rank": 53,
-        "tag": "ONE",
-        "name": "Sunny2019",
-        "value": 1115
+        "tag": "RED",
+        "name": "zt: TA R OANA",
+        "value": 1119
       },
       {
         "rank": 54,
-        "tag": "REM",
-        "name": "Drunk dragon",
-        "value": 1114
+        "tag": "ONE",
+        "name": "Sunny2019",
+        "value": 1117
       },
       {
         "rank": 55,
         "tag": "ONE",
         "name": "Canpolat",
-        "value": 1113
+        "value": 1114
       },
       {
         "rank": 56,
         "tag": "ONE",
-        "name": "Silas 46",
+        "name": "Son Silas 46",
         "value": 1110
       },
       {
         "rank": 57,
-        "tag": "ONE",
-        "name": "Yellow FETE Power",
+        "tag": "RED",
+        "name": "Gooriel",
         "value": 1108
       },
       {
         "rank": 58,
-        "tag": "RED",
-        "name": "Goofried the 3rd",
-        "value": 1102
+        "tag": "REM",
+        "name": "McPato",
+        "value": 1105
       },
       {
         "rank": 59,
-        "tag": "OxU",
-        "name": "Gery",
+        "tag": "",
+        "name": "JONEJKRAJISNIK",
         "value": 1096
       },
       {
         "rank": 60,
-        "tag": "REM",
-        "name": "Yisussss",
-        "value": 1095
+        "tag": "RED",
+        "name": "Alison Wonderland",
+        "value": 1093
       },
       {
         "rank": 61,
-        "tag": "",
-        "name": "Spooky",
-        "value": 1093
+        "tag": "RED",
+        "name": "blooded ynot",
+        "value": 1092
       },
       {
         "rank": 62,
         "tag": "ONE",
-        "name": "Chex",
+        "name": "Puar",
         "value": 1091
       },
       {
         "rank": 63,
-        "tag": "",
-        "name": "JONEJKRAJISNIK",
-        "value": 1090
-      },
-      {
-        "rank": 64,
         "tag": "REM",
         "name": "DragonLee",
         "value": 1089
+      },
+      {
+        "rank": 64,
+        "tag": "KIN",
+        "name": "#943SUKUNA",
+        "value": 1084
       },
       {
         "rank": 65,
@@ -4137,26 +4203,26 @@
       {
         "rank": 66,
         "tag": "ONE",
-        "name": "Caupuacu",
-        "value": 1081
+        "name": "muten RoShi",
+        "value": 1082
       },
       {
         "rank": 67,
         "tag": "RED",
         "name": "Gaybulous",
-        "value": 1077
+        "value": 1078
       },
       {
         "rank": 68,
-        "tag": "KIN",
-        "name": "#943SUKUNA",
-        "value": 1075
+        "tag": "RED",
+        "name": "MasterWiet",
+        "value": 1077
       },
       {
         "rank": 69,
         "tag": "ONE",
-        "name": "HansPeterMayer",
-        "value": 1074
+        "name": "Jironk",
+        "value": 1072
       },
       {
         "rank": 70,
@@ -4166,72 +4232,66 @@
       },
       {
         "rank": 71,
-        "tag": "RED",
-        "name": "blooded ynot",
+        "tag": "TRN",
+        "name": "Luigy MCMLXIX",
         "value": 1070
       },
       {
         "rank": 72,
         "tag": "ONE",
         "name": "Phil",
-        "value": 1068
+        "value": 1069
       },
       {
         "rank": 73,
-        "tag": "REM",
-        "name": "Ikit Claw",
+        "tag": "ONe",
+        "name": "Exotic",
         "value": 1067
       },
       {
         "rank": 74,
-        "tag": "KIN",
-        "name": "Rhatyel",
-        "value": 1066
+        "tag": "",
+        "name": "PERSEUS",
+        "value": 1065
       },
       {
         "rank": 75,
-        "tag": "REM",
-        "name": "26msone26",
-        "value": 1064
+        "tag": "RED",
+        "name": "RAYAmmtar",
+        "value": 1062
       },
       {
         "rank": 76,
         "tag": "REM",
         "name": "Baby",
-        "value": 1060
+        "value": 1061
       },
       {
         "rank": 77,
-        "tag": "RE",
-        "name": "Dlyammtar",
-        "value": 1059
+        "tag": "REM",
+        "name": "Lord Abhimanyu",
+        "value": 1060
       },
       {
         "rank": 78,
-        "tag": "REM",
-        "name": "czarcik",
+        "tag": "ONE",
+        "name": "AvalonFusion",
         "value": 1058
       },
       {
         "rank": 79,
-        "tag": "TRN",
-        "name": "Luigy MCMLXIX",
-        "value": 1055
+        "tag": "KIN",
+        "name": "onething",
+        "value": 1056
       },
       {
         "rank": 80,
-        "tag": "ONE",
-        "name": "Kenny",
-        "value": 1050
+        "tag": "RED",
+        "name": "Motionbabyyy",
+        "value": 1055
       },
       {
         "rank": 81,
-        "tag": "REM",
-        "name": "LECHIA",
-        "value": 1049
-      },
-      {
-        "rank": 82,
         "tag": "",
         "name": "lord302843134",
         "value": 0
