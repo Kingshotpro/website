@@ -20,7 +20,11 @@ const FID_API        = 'https://kingshotpro-api.kingshotpro.workers.dev/player';
 // (useful for local dev / cloudflared tunnels / staging deployments).
 const LOOKUP_BOT_URL = (typeof window !== 'undefined' && window.KSP_LOOKUP_URL)
   ? window.KSP_LOOKUP_URL
-  : 'https://kingshotpro-bot.fly.dev/lookup';
+  // EPHEMERAL quick-tunnel on Architect's Mac. URL changes on every
+  // cloudflared restart. Replace with a permanent Fly.io or named-
+  // tunnel URL as soon as one is provisioned — see docs/DECISIONS.md
+  // entry "2026-04-21 — Bot deployed via quick-tunnel".
+  : 'https://feeds-modify-aerospace-brown.trycloudflare.com/lookup';
 
 const PROFILE_KEY    = 'ksp_profile';       // sessionStorage fallback key
 const LAST_FID_KEY   = 'ksp_last_fid';      // localStorage — last looked-up FID
