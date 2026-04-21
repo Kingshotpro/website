@@ -18,13 +18,13 @@ const FID_API        = 'https://kingshotpro-api.kingshotpro.workers.dev/player';
 //
 // Override at runtime: set window.KSP_LOOKUP_URL before fid.js runs
 // (useful for local dev / cloudflared tunnels / staging deployments).
+// TODO: set to the real cloud-deployed bot URL once hosting is picked.
+// Candidates (Architect to confirm): Cloudflare Worker + Browser Rendering,
+// Fly.io, Railway, Render. The Mac-side quick-tunnel approach was the wrong
+// direction — killed 2026-04-21.
 const LOOKUP_BOT_URL = (typeof window !== 'undefined' && window.KSP_LOOKUP_URL)
   ? window.KSP_LOOKUP_URL
-  // EPHEMERAL quick-tunnel on Architect's Mac. URL changes on every
-  // cloudflared restart. Replace with a permanent Fly.io or named-
-  // tunnel URL as soon as one is provisioned — see docs/DECISIONS.md
-  // entry "2026-04-21 — Bot deployed via quick-tunnel".
-  : 'https://feeds-modify-aerospace-brown.trycloudflare.com/lookup';
+  : null;   // null = skip the bot call entirely until we have a real URL
 
 const PROFILE_KEY    = 'ksp_profile';       // sessionStorage fallback key
 const LAST_FID_KEY   = 'ksp_last_fid';      // localStorage — last looked-up FID
@@ -133,8 +133,15 @@ async function fetchPlayerProfile(fid) {
     // Timeout or network error → fall through to bot
   }
 
-  // 3) Bot. Always works as long as the Fly.io (or equivalent) service
-  //    is up and Century Games hasn't changed their page layout.
+  // 3) Bot. Always works as long as the cloud service is deployed.
+  //    If LOOKUP_BOT_URL is null (no cloud service picked yet), throw
+  //    a clean error rather than hitting a dead host.
+  if (!LOOKUP_BOT_URL) {
+    throw new Error(
+      'Player lookup service not deployed yet. Ask the admin to complete ' +
+      'the cloud deployment step — see docs/DECISIONS.md.'
+    );
+  }
   return await fetchFromLookupBot(fid);
 }
 

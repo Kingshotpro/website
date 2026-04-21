@@ -13,6 +13,76 @@
 
 ---
 
+## 2026-04-21 — Architecture doc written; surfaced 5 production bugs
+
+**Verdict:** `docs/ARCHITECTURE.md` now records what the system IS in
+production. Writing it (via a careful audit of `worker/worker.js` and
+every `fetch()` call in `js/`) surfaced five bugs that were previously
+invisible or documented only in a never-implemented spec.
+
+**Bugs surfaced:**
+
+1. `worker/AUDIT_SPEC.md` describes a 4-tier → 2-tier pricing rewrite
+   that was **never implemented**. The spec is aspirational;
+   `worker.js` still uses the 4-tier price-ID map (lines 1014-1029)
+   and stale tier constants (`TIER_MODELS`, `TIER_REVENUE_USD`,
+   `TIER_CONTEXT_WINDOW`).
+2. Stripe webhook uses `session.line_items` on
+   `checkout.session.completed` (line 1048) — Stripe doesn't populate
+   this field by default. Every payment defaults to
+   `tier = 'pro'`. Users paying for War Council or Elite get Pro only.
+3. Subscription cancellation reads `sub.customer_email` (line 1071) —
+   this field doesn't exist on Stripe subscription objects. **All
+   cancellations silently no-op.** Users stay Pro after cancelling.
+4. Four client-side endpoints 404 in production: `/credits/balance`,
+   `/kingdom/request`, `/intel/unlock-kingdom`, `/worldchat/unlock`,
+   `/advisor/history`. The entire credit-gated feature set is broken.
+5. Magic-link email auth is fully built server-side
+   (`/auth/send`, `/auth/verify`) but **no frontend page ever calls
+   it**. Users auth by typing Player ID, which the Worker then
+   proxies to the broken CG `/api/player` endpoint.
+
+**Status of the architecture doc itself:** Live as source of truth for
+the system shape. Every claim backed by a `file:line`. Gets updated
+whenever reality changes.
+
+**Not fixing the bugs in this commit** — the Architect asked for the
+doc, not a fix pass. Bugs are documented so the next work session
+picks them up with full context.
+
+---
+
+## 2026-04-21 — Bot deployment: quick-tunnel shipped, REVERTED same-day
+
+**Verdict:** Reverted. Player-lookup bot is not deployed. Mac-side
+hosting was the wrong architectural choice — a public website's API
+cannot depend on someone's laptop being on.
+
+**Context:** First attempt: started `bot/server.py` on the Architect's
+Mac, exposed it via a cloudflared quick-tunnel. Worked end-to-end
+(verified against Player 38982714 / caffeinatedmochi / K202). Committed
+the tunnel URL into `js/fid.js`.
+
+Architect immediately pushed back: "This is NOT meant to be MAC side,
+why would it be? This has to be on the website." Correct. Killed the
+processes, reverted `LOOKUP_BOT_URL` to `null` (fid.js throws a clean
+error when the bot path is hit without a deployed service).
+
+**Lesson:** "What can I deploy from this session" is the wrong frame.
+"Where does this architecturally belong" is the right frame. The bot
+belongs on the same cloud infrastructure as the rest of the backend
+(Cloudflare Worker with Browser Rendering) or on a parallel cloud
+host (Fly.io). Not on a laptop.
+
+**Status:** Reverted. Bot code remains (`bot/lookup_player.py`,
+`bot/server.py`, `bot/Dockerfile`, `bot/fly.toml`). Waiting on an
+architectural decision about cloud deployment (Cloudflare Workers
+Paid + Browser Rendering OR Fly.io deploy).
+
+**See:** `docs/ARCHITECTURE.md` § "Open architectural questions."
+
+---
+
 ## 2026-04-21 — Pricing structure rebuilt: Free + Credits + Pro $4.99 + Pro+ $9.99
 
 **Verdict:** Four lanes to pay: Free, one-off credit packs, Pro $4.99/mo
