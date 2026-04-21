@@ -18,13 +18,49 @@ const LAST_FID_KEY   = 'ksp_last_fid';      // localStorage — last looked-up F
 // API CALL
 // ─────────────────────────────────────────
 
+// Registry path — populated offline by `python3 bot/lookup_player.py {fid} --save`.
+// Lives in /players/registry.json so it's served by GitHub Pages.
+// Depth-aware so pages inside /kingdoms/, /players/, /worldchat/ etc. still resolve it.
+const REGISTRY_URL = (window.KSP_BASE || '') + 'players/registry.json';
+
+async function fetchFromRegistry(fid) {
+  try {
+    const res = await fetch(REGISTRY_URL, { cache: 'no-cache' });
+    if (!res.ok) return null;
+    const reg = await res.json();
+    const hit = reg && reg.players && reg.players[String(fid)];
+    if (!hit) return null;
+    // Shape match to what the CG API would have returned, so the rest of
+    // the profile classifier doesn't need to know about the bot source.
+    return {
+      fid:       hit.fid,
+      nickname:  hit.nickname,
+      kid:       hit.kid,
+      stove_lv:  hit.stove_lv,
+      pay_amt:   (hit.total_recharge || 0) * 100,   // CG reports cents, registry stores dollars
+      avatar_image: hit.avatar_image,
+      _source:   'registry',
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
 async function fetchPlayerProfile(fid) {
+  // 1) Try the registry first. It's a static JSON on GitHub Pages —
+  //    fast, no API auth, no sign algorithm. Populated by the Playwright
+  //    bot in bot/lookup_player.py for any player who has been looked up.
+  const fromRegistry = await fetchFromRegistry(fid);
+  if (fromRegistry) return fromRegistry;
+
+  // 2) Fall back to the Cloudflare Worker proxy → CG API. This path
+  //    currently fails with "Sign Error" on new FIDs because CG's sign
+  //    algorithm is uncrackable. When the bot has populated the registry
+  //    for this FID, path 1 wins and this never runs.
   const res = await fetch(FID_API, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ fid: String(fid).trim(), cdkey: '' }),
-    // NOTE: If CORS blocks this, a Netlify proxy function at
-    // /api/fid-lookup will be added in Phase 1.1
   });
 
   if (!res.ok) {
@@ -35,9 +71,8 @@ async function fetchPlayerProfile(fid) {
   const data = await res.json();
 
   // Century Games API returns { code, data: { ... } } or similar
-  // Normalise: if the payload is wrapped, unwrap it
-  if (data && data.data) return data.data;
-  if (data && data.nickname !== undefined) return data;
+  if (data && data.data)                     return data.data;
+  if (data && data.nickname !== undefined)   return data;
   throw new Error('Unexpected API response shape');
 }
 

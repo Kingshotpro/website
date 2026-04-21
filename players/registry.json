@@ -1,0 +1,16 @@
+{
+  "players": {
+    "40507834": {
+      "fid": 40507834,
+      "nickname": "Jetrix メ",
+      "kid": 223,
+      "stove_lv": 55,
+      "avatar_image": "https://got-global-avatar.akamaized.net/avatar/2026/04/15/r0r3Mk_1776294558.png",
+      "total_recharge": 0,
+      "looked_up": 1776796879,
+      "source": "giftcode_bot"
+    }
+  },
+  "generated": 1776796879,
+  "source": "bot/lookup_player.py"
+}
