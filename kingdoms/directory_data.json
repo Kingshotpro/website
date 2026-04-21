@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-21T04:14:52.546364",
+  "generated": "2026-04-21T13:16:37.802526",
   "generator": "kingdoms/build_directory.py",
   "kingdom_count": 32,
   "kingdoms": [
@@ -7,24 +7,24 @@
       "id": 1,
       "topAlliance": "Titans",
       "topTag": "TiT",
-      "topPower": 28196297621,
-      "totalPower": 190610870494,
-      "alliances": 98,
+      "topPower": 29376874241,
+      "totalPower": 209724523190,
+      "alliances": 99,
       "categories": 10,
-      "updated": "2026-04-16",
-      "source": "scraper/data/kingdoms/k1/2026-04-16_205725/alliance_power_extracted.csv",
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k1/2026-04-21_080952/alliance_power_extracted.csv",
       "rank": 1
     },
     {
       "id": 222,
       "topAlliance": "WINTER",
       "topTag": "WIN",
-      "topPower": 23558771760,
-      "totalPower": 144864822496,
-      "alliances": 94,
+      "topPower": 24315312861,
+      "totalPower": 147020170729,
+      "alliances": 96,
       "categories": 10,
-      "updated": "2026-04-17",
-      "source": "scraper/data/kingdoms/k222/2026-04-17_025115/alliance_power_extracted.csv",
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k222/2026-04-21_092320/alliance_power_extracted.csv",
       "rank": 2
     },
     {
@@ -40,6 +40,18 @@
       "rank": 3
     },
     {
+      "id": 225,
+      "topAlliance": "TheBlackPearl",
+      "topTag": "TBP",
+      "topPower": 22539848162,
+      "totalPower": 109151185990,
+      "alliances": 91,
+      "categories": 10,
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k225/2026-04-21_062014/alliance_power_extracted.csv",
+      "rank": 4
+    },
+    {
       "id": 303,
       "topAlliance": "BerserkerBees",
       "topTag": "BEE",
@@ -49,7 +61,7 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k303/2026-04-16_031830/alliance_power_extracted.csv",
-      "rank": 4
+      "rank": 5
     },
     {
       "id": 232,
@@ -61,18 +73,6 @@
       "categories": 10,
       "updated": "2026-04-14",
       "source": "scraper/data/kingdoms/k232/2026-04-14_143459/alliance_power_extracted.csv",
-      "rank": 5
-    },
-    {
-      "id": 225,
-      "topAlliance": "TheBlackPearl",
-      "topTag": "TBP",
-      "topPower": 21392866388,
-      "totalPower": 107193577757,
-      "alliances": 102,
-      "categories": 10,
-      "updated": "2026-04-16",
-      "source": "scraper/data/kingdoms/k225/2026-04-16_221902/alliance_power_extracted.csv",
       "rank": 6
     },
     {
@@ -160,40 +160,28 @@
       "rank": 13
     },
     {
-      "id": 223,
-      "topAlliance": "TheNakedPenguins",
-      "topTag": "TNP",
-      "topPower": 21181374033,
-      "totalPower": 80070136336,
-      "alliances": 98,
-      "categories": 10,
-      "updated": "2026-04-16",
-      "source": "scraper/data/kingdoms/k223/2026-04-16_191112/alliance_power_extracted.csv",
-      "rank": 14
-    },
-    {
       "id": 224,
       "topAlliance": "AlsoCrab",
       "topTag": "ALC",
-      "topPower": 16983496683,
-      "totalPower": 78269242999,
-      "alliances": 90,
+      "topPower": 16489929905,
+      "totalPower": 79343565654,
+      "alliances": 95,
       "categories": 10,
-      "updated": "2026-04-17",
-      "source": "scraper/data/kingdoms/k224/2026-04-17_032517/alliance_power_extracted.csv",
-      "rank": 15
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k224/2026-04-21_054543/alliance_power_extracted.csv",
+      "rank": 14
     },
     {
-      "id": 221,
-      "topAlliance": "Peacemakers",
-      "topTag": "TPM",
-      "topPower": 17829932612,
-      "totalPower": 76424998931,
-      "alliances": 99,
+      "id": 223,
+      "topAlliance": "TheNakedPenguins",
+      "topTag": "TNP",
+      "topPower": 21288822042,
+      "totalPower": 77989792058,
+      "alliances": 91,
       "categories": 10,
-      "updated": "2026-04-16",
-      "source": "scraper/data/kingdoms/k221/2026-04-16_213604/alliance_power_extracted.csv",
-      "rank": 16
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k223/2026-04-21_065605/alliance_power_extracted.csv",
+      "rank": 15
     },
     {
       "id": 1000,
@@ -205,7 +193,7 @@
       "categories": 10,
       "updated": "2026-04-20",
       "source": "scraper/data/kingdoms/k1000/2026-04-20_190715/alliance_power_extracted.csv",
-      "rank": 17
+      "rank": 16
     },
     {
       "id": 1002,
@@ -217,6 +205,18 @@
       "categories": 10,
       "updated": "2026-04-20",
       "source": "scraper/data/kingdoms/k1002/2026-04-20_201710/alliance_power_extracted.csv",
+      "rank": 17
+    },
+    {
+      "id": 221,
+      "topAlliance": "Peacemakers",
+      "topTag": "TPM",
+      "topPower": 17369537361,
+      "totalPower": 75265246717,
+      "alliances": 94,
+      "categories": 10,
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k221/2026-04-21_084629/alliance_power_extracted.csv",
       "rank": 18
     },
     {
@@ -271,12 +271,12 @@
       "id": 226,
       "topAlliance": "IMMORTALS",
       "topTag": "IMM",
-      "topPower": 19337300888,
-      "totalPower": 66156422364,
-      "alliances": 93,
+      "topPower": 20379704823,
+      "totalPower": 67451466060,
+      "alliances": 92,
       "categories": 10,
-      "updated": "2026-04-17",
-      "source": "scraper/data/kingdoms/k226/2026-04-17_021038/alliance_power_extracted.csv",
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k226/2026-04-21_073415/alliance_power_extracted.csv",
       "rank": 23
     },
     {
@@ -304,18 +304,6 @@
       "rank": 25
     },
     {
-      "id": 350,
-      "topAlliance": "IMMORTALS",
-      "topTag": "MRT",
-      "topPower": 12228735617,
-      "totalPower": 56487621679,
-      "alliances": 95,
-      "categories": 10,
-      "updated": "2026-04-16",
-      "source": "scraper/data/kingdoms/k350/2026-04-16_175423/alliance_power_extracted.csv",
-      "rank": 26
-    },
-    {
       "id": 300,
       "topAlliance": "AWAKENS",
       "topTag": "AWK",
@@ -325,6 +313,18 @@
       "categories": 10,
       "updated": "2026-04-16",
       "source": "scraper/data/kingdoms/k300/2026-04-16_061736/alliance_power_extracted.csv",
+      "rank": 26
+    },
+    {
+      "id": 350,
+      "topAlliance": "IMMORTALS",
+      "topTag": "MRT",
+      "topPower": 13245381650,
+      "totalPower": 55707389690,
+      "alliances": 91,
+      "categories": 10,
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k350/2026-04-21_095721/alliance_power_extracted.csv",
       "rank": 27
     },
     {
@@ -343,12 +343,12 @@
       "id": 1908,
       "topAlliance": "BLACK",
       "topTag": "VIP",
-      "topPower": 713514671,
-      "totalPower": 10345273791,
-      "alliances": 91,
+      "topPower": 947358185,
+      "totalPower": 12601646332,
+      "alliances": 100,
       "categories": 10,
-      "updated": "2026-04-16",
-      "source": "scraper/data/kingdoms/k1908/2026-04-16_183118/alliance_power_extracted.csv",
+      "updated": "2026-04-21",
+      "source": "scraper/data/kingdoms/k1908/2026-04-21_103222/alliance_power_extracted.csv",
       "rank": 29
     },
     {

@@ -72,6 +72,13 @@ If any match, you must understand it before proceeding.
 
 **C4.** The `extract_loop.sh` (if present) polls every 60s and extracts any 2026-MM-DD snapshot dir with ≥100 pngs and no `alliance_power_extracted.csv`. If it's running, you do NOT need to launch manual extractions — just wait. Kill the loop only when the specific kingdoms it waits on will never appear (e.g., K1003/K1004 on an account that doesn't have them).
 
+**C5. Max 1 concurrent extraction on this hardware.** Calibrated 2026-04-21: two simultaneous EasyOCR processes make the phone/host noticeably slow even when the scraper is not running. Earlier guidance ("max 2") proved too loose. New rule: **one extraction at a time, strictly sequential.** Before launching `extract_data.py`:
+```
+ps -eo pid,command | awk '$2 ~ /Python$/ && /extract_data.py/' | wc -l
+# must be 0 before launching
+```
+Queue subsequent extractions and wait for the current one to exit (`run_in_background` auto-notifies). A scrape running on the phone does NOT count toward this cap — phone work and OCR work are independent.
+
 ---
 
 ## P — Popup dismissal rules

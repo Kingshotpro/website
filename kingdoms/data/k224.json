@@ -1,6 +1,6 @@
 {
   "kingdom": 224,
-  "last_updated": "2026-04-17",
+  "last_updated": "2026-04-21",
   "source": "ADB screenshot scraper + EasyOCR extraction",
   "categories": {
     "alliance_power": [
@@ -8,133 +8,133 @@
         "rank": 1,
         "tag": "ALC",
         "name": "AlsoCrab",
-        "value": 16983496683
+        "value": 16489929905
       },
       {
         "rank": 2,
         "tag": "Tov",
         "name": "R R 0BAE",
-        "value": 16018619702
+        "value": 13267436187
       },
       {
         "rank": 3,
         "tag": "YMG",
         "name": "Ft Eyvstf/zn4  +",
-        "value": 9420744589
+        "value": 9244390998
       },
       {
         "rank": 4,
         "tag": "zoo",
         "name": "johunto<zuizuis-",
-        "value": 7930778061
+        "value": 7827806873
       },
       {
         "rank": 5,
         "tag": "GDC",
         "name": "Gardenciel",
-        "value": 6741503356
+        "value": 7380467275
       },
       {
         "rank": 6,
-        "tag": "BNr",
-        "name": "ItKEY",
-        "value": 5390129109
+        "tag": "VAN",
+        "name": "l F J?zn-X",
+        "value": 7274372045
       },
       {
         "rank": 7,
-        "tag": "VAN",
-        "name": "TF JL?z7-7",
-        "value": 3685789636
+        "tag": "BNr",
+        "name": "ItKEYI",
+        "value": 5468092254
       },
       {
         "rank": 8,
         "tag": "AUR",
         "name": "Aurora7 505",
-        "value": 2886569468
+        "value": 2930816359
       },
       {
         "rank": 9,
         "tag": "Frala",
         "name": "2tnpntlin",
-        "value": 1046145399
+        "value": 1052270751
       },
       {
         "rank": 10,
         "tag": "UTF",
         "name": "Rakusan",
-        "value": 822825252
+        "value": 830505493
       },
       {
         "rank": 11,
         "tag": "Hmk",
-        "name": "zn-57",
-        "value": 574555968
+        "name": "zn-5t?",
+        "value": 583664486
       },
       {
         "rank": 12,
         "tag": "Owal",
-        "name": "-tly>:ntyo-",
-        "value": 568721866
+        "name": "-TLy>",
+        "value": 571805274
       },
       {
         "rank": 13,
         "tag": "ZTS",
         "name": "Zero Trust",
-        "value": 514968504
+        "value": 516527947
       },
       {
         "rank": 14,
-        "tag": "aRpll",
-        "name": "lOGnbh",
-        "value": 467678551
+        "tag": "aRp",
+        "name": "lliLEnibh",
+        "value": 470595381
       },
       {
         "rank": 15,
         "tag": "JTF",
         "name": "> 15",
-        "value": 427041902
+        "value": 432366347
       },
       {
         "rank": 16,
         "tag": "",
         "name": "",
-        "value": 413962014
+        "value": 414161523
       },
       {
         "rank": 17,
-        "tag": "svG",
-        "name": "E#E",
-        "value": 371725545
+        "tag": "PNf",
+        "name": "StatueofLibert",
+        "value": 380387364
       },
       {
         "rank": 18,
-        "tag": "PKM",
-        "name": "EhSyF",
-        "value": 360792962
+        "tag": "svG",
+        "name": "JE#B",
+        "value": 372023554
       },
       {
         "rank": 19,
-        "tag": "qQs",
-        "name": "$ &",
-        "value": 293063777
+        "tag": "Sky",
+        "name": "FA->",
+        "value": 368992310
       },
       {
         "rank": 20,
         "tag": "pWm",
-        "name": "lA",
-        "value": 290444884
+        "name": "mlA",
+        "value": 291551682
       },
       {
         "rank": 21,
         "tag": "mmm",
-        "name": "vh=<",
-        "value": 238378327
+        "name": "v4f4",
+        "value": 240816389
       },
       {
         "rank": 22,
-        "tag": "zoo",
-        "name": "tJiL=xERi",
-        "value": 236496741
+        "tag": "",
+        "name": "",
+        "value": 236496241
       },
       {
         "rank": 23,
@@ -146,102 +146,102 @@
         "rank": 24,
         "tag": "",
         "name": "",
-        "value": 225162234
+        "value": 225977944
       },
       {
         "rank": 25,
-        "tag": "STs",
-        "name": "FO Eftt2",
-        "value": 206593684
+        "tag": "xmx",
+        "name": "af -b13 < n",
+        "value": 211074783
       },
       {
         "rank": 26,
-        "tag": "xrD",
-        "name": "1-FJLAyh",
-        "value": 206410758
+        "tag": "STS",
+        "name": "EO Eftt2",
+        "value": 207519426
       },
       {
         "rank": 27,
-        "tag": "hee",
-        "name": "fq",
-        "value": 194876831
+        "tag": "xrD",
+        "name": "1-FWLAyh",
+        "value": 206410758
       },
       {
         "rank": 28,
-        "tag": "bnrlt",
-        "name": "KEYEIo) #Y1",
-        "value": 183874740
+        "tag": "hee",
+        "name": "fq",
+        "value": 196531391
       },
       {
         "rank": 29,
-        "tag": "FNG",
-        "name": "F",
-        "value": 181855798
+        "tag": "bnrlt",
+        "name": "KEYEIO) #YEI",
+        "value": 184476083
       },
       {
         "rank": 30,
-        "tag": "Svd",
-        "name": "h =vt_",
-        "value": 163869881
+        "tag": "FNG",
+        "name": "F",
+        "value": 182420370
       },
       {
         "rank": 31,
-        "tag": "xwD",
-        "name": "at-bOK",
-        "value": 131920193
+        "tag": "",
+        "name": "",
+        "value": 165676627
       },
       {
         "rank": 32,
         "tag": "",
         "name": "",
-        "value": 117358948
+        "value": 133666898
       },
       {
         "rank": 33,
         "tag": "xyz",
         "name": "xyz",
-        "value": 111381750
+        "value": 111382452
       },
       {
         "rank": 34,
         "tag": "nCm",
-        "name": "imbltsli",
-        "value": 110554958
+        "name": "nbltrli",
+        "value": 111030443
       },
       {
         "rank": 35,
         "tag": "ALL",
-        "name": "ET##RL",
+        "name": "ES TI#RL",
         "value": 96657797
       },
       {
         "rank": 36,
-        "tag": "auglt",
+        "tag": "augl",
         "name": "+i",
-        "value": 59344866
+        "value": 60110206
       },
       {
         "rank": 37,
         "tag": "BbNJ",
-        "name": "tar;3/J7 F9re",
-        "value": 42183527
+        "name": "itar;3/J7 F9re",
+        "value": 43398382
       },
       {
         "rank": 38,
         "tag": "cgz",
         "name": "FLAIR",
-        "value": 41259719
+        "value": 41785309
       },
       {
         "rank": 39,
         "tag": "",
-        "name": "AEARAA",
+        "name": "",
         "value": 40390918
       },
       {
         "rank": 40,
-        "tag": "nwc",
-        "name": "F ->",
+        "tag": "",
+        "name": "",
         "value": 35251787
       },
       {
@@ -253,7 +253,7 @@
       {
         "rank": 42,
         "tag": "Rm",
-        "name": "Tlt #t$",
+        "name": "Tlt #ta",
         "value": 16760880
       },
       {
@@ -265,19 +265,19 @@
       {
         "rank": 44,
         "tag": "QYc",
-        "name": "38n 323",
+        "name": "30 243",
         "value": 13145307
       },
       {
         "rank": 45,
-        "tag": "",
-        "name": "",
+        "tag": "MGA",
+        "name": "Ttst5",
         "value": 12706989
       },
       {
         "rank": 46,
-        "tag": "",
-        "name": "",
+        "tag": "KWD",
+        "name": "Queen",
         "value": 11214351
       },
       {
@@ -294,44 +294,44 @@
       },
       {
         "rank": 49,
-        "tag": "UZO",
+        "tag": "uUzo",
         "name": "Kraken",
         "value": 7383562
       },
       {
         "rank": 50,
         "tag": "UMR",
-        "name": "5 &+ 3",
+        "name": "5 #+3",
         "value": 6596346
       },
       {
         "rank": 51,
-        "tag": "hh",
-        "name": "Blt < 45",
-        "value": 5222392
+        "tag": "vHE",
+        "name": "J I;ILH",
+        "value": 6247777
       },
       {
         "rank": 52,
-        "tag": "mCF",
-        "name": "iKB",
-        "value": 4999136
+        "tag": "hhB",
+        "name": "tz < 45",
+        "value": 5222392
       },
       {
         "rank": 53,
-        "tag": "tpm",
-        "name": "+7>3v +",
-        "value": 4739991
+        "tag": "mCF",
+        "name": "tB",
+        "value": 4999136
       },
       {
         "rank": 54,
-        "tag": "Bac",
-        "name": "-t?v#hih",
+        "tag": "",
+        "name": "",
         "value": 4689975
       },
       {
         "rank": 55,
-        "tag": "gkU",
-        "name": "t~uxn",
+        "tag": "",
+        "name": "",
         "value": 4652613
       },
       {
@@ -343,7 +343,7 @@
       {
         "rank": 57,
         "tag": "bRuj",
-        "name": "--JFy+D-",
+        "name": "--ilFy+n-",
         "value": 3917814
       },
       {
@@ -355,7 +355,7 @@
       {
         "rank": 59,
         "tag": "KuX",
-        "name": "eg",
+        "name": "erk",
         "value": 3430717
       },
       {
@@ -367,185 +367,215 @@
       {
         "rank": 61,
         "tag": "ZvF",
-        "name": "a 5+5+",
+        "name": "a Sp5+",
         "value": 2728941
       },
       {
         "rank": 62,
         "tag": "",
-        "name": "(jjuli6g7>7371)-ilr0",
+        "name": "(jjuli6#7y7971)-Jilrm",
         "value": 2693487
       },
       {
         "rank": 63,
         "tag": "BCT",
-        "name": "FJE",
+        "name": "5J",
         "value": 2579189
       },
       {
         "rank": 64,
-        "tag": "",
-        "name": "",
+        "tag": "aZ",
+        "name": "lpj64",
         "value": 2103738
       },
       {
         "rank": 65,
-        "tag": "jJNHHI",
-        "name": "+ OFel",
-        "value": 1876361
+        "tag": "ZEN",
+        "name": "5+0F5t)",
+        "value": 2085882
       },
       {
         "rank": 66,
-        "tag": "WEK",
-        "name": "LF+vb@w",
-        "value": 1836471
+        "tag": "xua",
+        "name": "?  =9269+dJP",
+        "value": 2043661
       },
       {
         "rank": 67,
+        "tag": "jJN",
+        "name": "HI+ OFel",
+        "value": 1876361
+      },
+      {
+        "rank": 68,
+        "tag": "WEKI",
+        "name": "-L#+v JFB",
+        "value": 1836471
+      },
+      {
+        "rank": 69,
         "tag": "Qav",
         "name": "= +Ly>FB",
         "value": 1807360
       },
       {
-        "rank": 68,
-        "tag": "wUqlI",
-        "name": "+H#Ftt",
-        "value": 1592920
-      },
-      {
-        "rank": 69,
-        "tag": "",
-        "name": "",
-        "value": 1482058
-      },
-      {
         "rank": 70,
-        "tag": "",
-        "name": "",
-        "value": 1475322
+        "tag": "wUqlH",
+        "name": "EHYTtt",
+        "value": 1592920
       },
       {
         "rank": 71,
         "tag": "",
         "name": "",
-        "value": 1351771
+        "value": 1482058
       },
       {
         "rank": 72,
-        "tag": "",
-        "name": "",
-        "value": 1332216
+        "tag": "DCV",
+        "name": "356",
+        "value": 1475322
       },
       {
         "rank": 73,
-        "tag": "",
-        "name": "",
-        "value": 1248577
+        "tag": "DcX",
+        "name": "E < JAF3 5",
+        "value": 1351771
       },
       {
         "rank": 74,
-        "tag": "Scx",
-        "name": "m 3++ >",
-        "value": 1194966
+        "tag": "JaN",
+        "name": "&",
+        "value": 1332216
       },
       {
         "rank": 75,
+        "tag": "psb",
+        "name": "*82681",
+        "value": 1326464
+      },
+      {
+        "rank": 76,
+        "tag": "pKJ",
+        "name": "tco",
+        "value": 1248577
+      },
+      {
+        "rank": 77,
+        "tag": "Scx",
+        "name": "ib 3++ >",
+        "value": 1194966
+      },
+      {
+        "rank": 78,
         "tag": "DGJ",
         "name": "Aaa",
         "value": 1183654
       },
       {
-        "rank": 76,
+        "rank": 79,
         "tag": "EbK",
-        "name": "TF#E",
+        "name": "TFTE",
         "value": 1171020
       },
       {
-        "rank": 77,
-        "tag": "yYY",
-        "name": "IchocolateRabbit",
+        "rank": 80,
+        "tag": "yYYI",
+        "name": "ChocolateRabbit",
         "value": 1127090
       },
       {
-        "rank": 78,
-        "tag": "ZqD",
-        "name": "s255",
+        "rank": 81,
+        "tag": "Zq",
+        "name": "Dls255",
         "value": 1071790
       },
       {
-        "rank": 79,
+        "rank": 82,
         "tag": "ugg",
         "name": "147564",
         "value": 1067098
       },
       {
-        "rank": 80,
+        "rank": 83,
         "tag": "Hvr",
-        "name": "/La-X",
+        "name": "ALF-X",
         "value": 1051500
       },
       {
-        "rank": 81,
+        "rank": 84,
         "tag": "eWE",
-        "name": "kb &kb 3 k SnowWorld",
+        "name": "kb &Kp 3 x SnowWorld",
         "value": 1005931
       },
       {
-        "rank": 82,
+        "rank": 85,
+        "tag": "xAc",
+        "name": "> >+5-",
+        "value": 971346
+      },
+      {
+        "rank": 86,
+        "tag": "xJH",
+        "name": "EIZA",
+        "value": 924594
+      },
+      {
+        "rank": 87,
         "tag": "Fy",
-        "name": "Plmbboxs&11",
+        "name": "Plmbboxsw11",
         "value": 912542
       },
       {
-        "rank": 83,
-        "tag": "Uzh",
-        "name": "th^L",
+        "rank": 88,
+        "tag": "Uzhlt",
+        "name": "h^l",
         "value": 910364
       },
       {
-        "rank": 84,
-        "tag": "W",
-        "name": "CTREX",
+        "rank": 89,
+        "tag": "WJC",
+        "name": "TREX",
         "value": 798797
       },
       {
-        "rank": 85,
+        "rank": 90,
         "tag": "nzql",
         "name": "CottonCandy",
         "value": 774105
       },
       {
-        "rank": 86,
+        "rank": 91,
         "tag": "UWR",
         "name": "X TlisxhE",
         "value": 754787
       },
       {
-        "rank": 87,
+        "rank": 92,
         "tag": "w",
-        "name": "K  I)L",
+        "name": "K  IJlG",
         "value": 735990
       },
       {
-        "rank": 88,
+        "rank": 93,
         "tag": "Epc",
         "name": "#Zok",
         "value": 735892
       },
       {
-        "rank": 89,
+        "rank": 94,
         "tag": "Qvg",
-        "name": "v m",
+        "name": "< /",
         "value": 693348
       },
       {
-        "rank": 90,
-        "tag": "UHv",
-        "name": "h'thiklkplt",
-        "value": 690072
+        "rank": 95,
+        "tag": "qQs",
+        "name": "$ &",
+        "value": 295467
       },
       {
-        "rank": 91,
+        "rank": 96,
         "tag": "",
         "name": "Alliance Power",
         "value": 0
@@ -556,49 +586,49 @@
         "rank": 1,
         "tag": "ALC",
         "name": "AlsoCrab",
-        "value": 1367048796
+        "value": 1301130254
       },
       {
         "rank": 2,
         "tag": "Tov",
         "name": "R R 0BAE",
-        "value": 1209441772
+        "value": 873601960
       },
       {
         "rank": 3,
-        "tag": "zoo",
-        "name": "johunkolaiuizlis-",
-        "value": 311673437
+        "tag": "VAN",
+        "name": "F JL?z7-7",
+        "value": 500121335
       },
       {
         "rank": 4,
-        "tag": "YMG",
-        "name": "TTEyvsttEJtv=",
-        "value": 267890120
+        "tag": "zoo",
+        "name": "johunto<zuizuis-",
+        "value": 294998893
       },
       {
         "rank": 5,
-        "tag": "GDC",
-        "name": "Gardenciel",
-        "value": 135346411
+        "tag": "YMG",
+        "name": "FT EyvsOKJA\" =",
+        "value": 247753509
       },
       {
         "rank": 6,
-        "tag": "BNr",
-        "name": "ItKEY",
-        "value": 130305958
+        "tag": "GDc",
+        "name": "Gardenciel",
+        "value": 158154109
       },
       {
         "rank": 7,
-        "tag": "VAN",
-        "name": "TF JL?z7-7",
-        "value": 116208468
+        "tag": "BNr",
+        "name": "ItKEYI",
+        "value": 130336700
       },
       {
         "rank": 8,
         "tag": "AUR",
         "name": "Aurora7 505",
-        "value": 24849669
+        "value": 24921199
       },
       {
         "rank": 9,
@@ -608,216 +638,258 @@
       },
       {
         "rank": 10,
-        "tag": "Frqla",
-        "name": "2tnpntuih",
-        "value": 2985138
+        "tag": "One",
+        "name": "ItKEE",
+        "value": 4601987
       },
       {
         "rank": 11,
-        "tag": "Hmk",
-        "name": "zn-5t?",
-        "value": 2153588
+        "tag": "Sky",
+        "name": "FA->",
+        "value": 4170079
       },
       {
         "rank": 12,
+        "tag": "xyz",
+        "name": "xyz",
+        "value": 3511217
+      },
+      {
+        "rank": 13,
+        "tag": "Frqla",
+        "name": "?Tbpntlin",
+        "value": 2985138
+      },
+      {
+        "rank": 14,
+        "tag": "Hmk",
+        "name": "zn-5t)",
+        "value": 2153588
+      },
+      {
+        "rank": 15,
         "tag": "UTF",
         "name": "Rakusan",
         "value": 2034549
       },
       {
-        "rank": 13,
+        "rank": 16,
         "tag": "JTFV",
-        "name": "> 15",
+        "name": "> 15.TVAxFiLHM",
         "value": 2032039
       },
       {
-        "rank": 14,
-        "tag": "aRpll",
-        "name": "luGnbh",
+        "rank": 17,
+        "tag": "aRp",
+        "name": "JLEnibh",
         "value": 1831970
       },
       {
-        "rank": 15,
+        "rank": 18,
         "tag": "FNG",
         "name": "F",
         "value": 1700108
       },
       {
-        "rank": 16,
-        "tag": "Owal",
-        "name": "-TLy>",
+        "rank": 19,
+        "tag": "",
+        "name": "Jtyo-",
         "value": 1691141
       },
       {
-        "rank": 17,
+        "rank": 20,
         "tag": "zoo",
-        "name": "JhiL #KERi",
+        "name": "tJiL =xEKI",
         "value": 1591867
       },
       {
-        "rank": 18,
+        "rank": 21,
         "tag": "ZTS",
-        "name": "ZeroTrust",
+        "name": "Zero Trust",
         "value": 1263710
       },
       {
-        "rank": 19,
+        "rank": 22,
         "tag": "Svd",
-        "name": "h=vt_",
+        "name": "h =vt_",
         "value": 961322
       },
       {
-        "rank": 20,
+        "rank": 23,
         "tag": "svG",
-        "name": "A#@",
+        "name": "JFE",
         "value": 751426
       },
       {
-        "rank": 21,
+        "rank": 24,
         "tag": "xmx",
-        "name": "#vbm?< n",
+        "name": "alvbm3 < n",
         "value": 665400
       },
       {
-        "rank": 22,
+        "rank": 25,
         "tag": "tov",
-        "name": "Khfquiolfld",
+        "name": "eKRkEquiolfud",
         "value": 652913
       },
       {
-        "rank": 23,
-        "tag": "xWD",
-        "name": "a# ~b0K",
+        "rank": 26,
+        "tag": "xwD",
+        "name": "t -b0K",
         "value": 493657
       },
       {
-        "rank": 24,
+        "rank": 27,
         "tag": "CZm",
         "name": "KINGSHOTCLUB",
         "value": 393359
       },
       {
-        "rank": 25,
+        "rank": 28,
+        "tag": "qQs",
+        "name": "$ &",
+        "value": 391772
+      },
+      {
+        "rank": 29,
         "tag": "PNf",
         "name": "StatueofLibert",
         "value": 388831
       },
       {
-        "rank": 26,
+        "rank": 30,
         "tag": "mmm",
-        "name": "v4=h",
+        "name": "rh=h",
         "value": 385439
       },
       {
-        "rank": 27,
+        "rank": 31,
         "tag": "pWm",
-        "name": "mlA",
+        "name": "lA",
         "value": 361492
       },
       {
-        "rank": 28,
+        "rank": 32,
         "tag": "bnr",
-        "name": "VKEYEKO) #RYEI",
+        "name": "NLEYAK 0) #YA1",
         "value": 296824
       },
       {
-        "rank": 29,
-        "tag": "xrD",
-        "name": "A-FJLAyk",
-        "value": 289734
-      },
-      {
-        "rank": 30,
+        "rank": 33,
         "tag": "Nyu",
         "name": "FREEDRIVE",
         "value": 231312
       },
       {
-        "rank": 31,
+        "rank": 34,
         "tag": "STS",
-        "name": "R0 Effltbz",
+        "name": "RO Hftt2",
         "value": 219685
       },
       {
-        "rank": 32,
+        "rank": 35,
         "tag": "sAd",
         "name": "Mrmichtada",
         "value": 169216
       },
       {
-        "rank": 33,
+        "rank": 36,
         "tag": "ALL",
-        "name": "ET##RL",
+        "name": "ETA#RL",
         "value": 163743
       },
       {
-        "rank": 34,
+        "rank": 37,
+        "tag": "Rm",
+        "name": "Tlt a+a",
+        "value": 163448
+      },
+      {
+        "rank": 38,
+        "tag": "MGA",
+        "name": "Ttst5",
+        "value": 158712
+      },
+      {
+        "rank": 39,
         "tag": "hee",
-        "name": "fq",
+        "name": "tq",
         "value": 137181
       },
       {
-        "rank": 35,
+        "rank": 40,
         "tag": "uky",
-        "name": "E9T45",
+        "name": "E9T845",
         "value": 128731
       },
       {
-        "rank": 36,
+        "rank": 41,
         "tag": "RLS",
         "name": "RedLaelaps",
         "value": 117079
       },
       {
-        "rank": 37,
-        "tag": "nCmli",
-        "name": "nbtli",
+        "rank": 42,
+        "tag": "nCm",
+        "name": "imbltli",
         "value": 102558
       },
       {
-        "rank": 38,
+        "rank": 43,
         "tag": "auglt",
-        "name": "i",
+        "name": "z",
         "value": 99788
       },
       {
-        "rank": 39,
+        "rank": 44,
         "tag": "Dmc",
-        "name": "zornouou",
+        "name": "zornouoU",
         "value": 72034
       },
       {
-        "rank": 40,
+        "rank": 45,
         "tag": "Gtu",
         "name": "ouou",
         "value": 56660
       },
       {
-        "rank": 41,
+        "rank": 46,
+        "tag": "UMR",
+        "name": "5 #+3",
+        "value": 49258
+      },
+      {
+        "rank": 47,
         "tag": "xua",
-        "name": "Za65+dJP",
+        "name": "Zar6+mJP",
         "value": 29197
       },
       {
-        "rank": 42,
+        "rank": 48,
         "tag": "vHE",
-        "name": "? IiHILH",
+        "name": "? IHHILH",
         "value": 25729
       },
       {
-        "rank": 43,
+        "rank": 49,
         "tag": "tpm",
-        "name": "+7>3v +",
+        "name": "+z>av +",
         "value": 18758
       },
       {
-        "rank": 44,
+        "rank": 50,
         "tag": "nwc",
-        "name": "F- >",
+        "name": "F->",
         "value": 17828
       },
       {
-        "rank": 45,
+        "rank": 51,
+        "tag": "BbN",
+        "name": "Jiir;3/+ 7 Fire",
+        "value": 13201
+      },
+      {
+        "rank": 52,
         "tag": "",
         "name": "Alliance Kills",
         "value": 0
@@ -828,586 +900,592 @@
         "rank": 1,
         "tag": "ALc",
         "name": "Guita ALc@ 7 7&;",
-        "value": 511953020
+        "value": 560686404
       },
       {
         "rank": 2,
         "tag": "TOv",
         "name": "C mhlis",
-        "value": 500074685
+        "value": 516053366
       },
       {
         "rank": 3,
         "tag": "ALC",
         "name": "AC LazyCat",
-        "value": 453586627
+        "value": 465942598
       },
       {
         "rank": 4,
-        "tag": "ALC",
-        "name": "V > J",
-        "value": 387833240
+        "tag": "zoo",
+        "name": "= > AF",
+        "value": 399637942
       },
       {
         "rank": 5,
-        "tag": "zoo",
-        "name": "5 >AF",
-        "value": 385079981
+        "tag": "ALC",
+        "name": "AF %",
+        "value": 390657167
       },
       {
         "rank": 6,
-        "tag": "ALc",
-        "name": "lht b@fItoxh",
-        "value": 379912326
+        "tag": "ALC",
+        "name": "VJ >",
+        "value": 390580485
       },
       {
         "rank": 7,
         "tag": "ALc",
-        "name": "Korn0512",
-        "value": 372279285
+        "name": "hk6@040",
+        "value": 386573480
       },
       {
         "rank": 8,
-        "tag": "ALc",
+        "tag": "ALC",
         "name": "Gerry",
-        "value": 363129938
+        "value": 376073820
       },
       {
         "rank": 9,
-        "tag": "YMG",
-        "name": "sphSphx",
-        "value": 360662674
+        "tag": "ALc",
+        "name": "Korn0512",
+        "value": 374098218
       },
       {
         "rank": 10,
-        "tag": "TOV",
+        "tag": "VAN",
         "name": "KID vaN",
-        "value": 353831973
+        "value": 370915973
       },
       {
         "rank": 11,
-        "tag": "TOv",
-        "name": "s C #hvaN",
-        "value": 342199279
+        "tag": "VAN",
+        "name": "-vs+ vaN",
+        "value": 370659230
       },
       {
         "rank": 12,
-        "tag": "TOv",
-        "name": "--ozo@",
-        "value": 340565228
+        "tag": "YMG",
+        "name": "sphspkx",
+        "value": 360662674
       },
       {
         "rank": 13,
-        "tag": "GDc",
-        "name": "MASAGDc",
-        "value": 338135316
+        "tag": "TOv",
+        "name": "--ozo@",
+        "value": 350807525
       },
       {
         "rank": 14,
-        "tag": "ALC",
-        "name": "Beroncho",
-        "value": 331789405
+        "tag": "GDc",
+        "name": "MASAGDc",
+        "value": 341556608
       },
       {
         "rank": 15,
-        "tag": "",
-        "name": "",
-        "value": 329065460
+        "tag": "ALC",
+        "name": "Beroncho",
+        "value": 337373467
       },
       {
         "rank": 16,
         "tag": "",
         "name": "",
-        "value": 325269438
+        "value": 331847412
       },
       {
         "rank": 17,
-        "tag": "Tov",
-        "name": "T = #sph",
-        "value": 323641782
+        "tag": "",
+        "name": "",
+        "value": 328547876
       },
       {
         "rank": 18,
-        "tag": "tov",
-        "name": "t F",
-        "value": 319816717
+        "tag": "",
+        "name": "",
+        "value": 324847058
       },
       {
         "rank": 19,
-        "tag": "TOv",
-        "name": "hh / JO)rain",
-        "value": 316641698
+        "tag": "ALc",
+        "name": "riran777",
+        "value": 323472371
       },
       {
         "rank": 20,
-        "tag": "ALc",
-        "name": "riran777",
-        "value": 314523719
+        "tag": "TOv",
+        "name": "h / JO)rain",
+        "value": 323006449
       },
       {
         "rank": 21,
         "tag": "ALc",
-        "name": "li@tItoz",
-        "value": 314480389
+        "name": "L@TItoz",
+        "value": 316924509
       },
       {
         "rank": 22,
-        "tag": "ALc",
-        "name": "lhT-# 6@ 0 56h7 ) A",
-        "value": 310180816
+        "tag": "zoo",
+        "name": "Uniqlo",
+        "value": 315475481
       },
       {
         "rank": 23,
         "tag": "YMG",
-        "name": "a >VJ <",
-        "value": 308839888
+        "name": "a >WJ <",
+        "value": 314899973
       },
       {
         "rank": 24,
-        "tag": "TOv",
-        "name": "o) < 6 <",
-        "value": 308663966
+        "tag": "ALc",
+        "name": "lt-I+ozfha",
+        "value": 313239993
       },
       {
         "rank": 25,
-        "tag": "ALc",
-        "name": "tI+ozIla",
-        "value": 306549822
+        "tag": "ALC",
+        "name": "IA6430653677 ) J",
+        "value": 311806753
       },
       {
         "rank": 26,
-        "tag": "zoo",
-        "name": "Uniqlo",
-        "value": 304220758
+        "tag": "TOv",
+        "name": "o) < 6 <",
+        "value": 310942306
       },
       {
         "rank": 27,
-        "tag": "",
-        "name": "sphnyJ>-",
-        "value": 303825509
+        "tag": "VAN",
+        "name": "< 33",
+        "value": 310776965
       },
       {
         "rank": 28,
-        "tag": "YMG",
-        "name": "bIs7",
-        "value": 300346667
+        "tag": "VAN",
+        "name": "ro_35 &",
+        "value": 309088598
       },
       {
         "rank": 29,
-        "tag": "GDc",
-        "name": "SH+o? GDc",
-        "value": 297517567
+        "tag": "TOV",
+        "name": "U phl@LA",
+        "value": 305351936
       },
       {
         "rank": 30,
-        "tag": "ALc",
-        "name": "C  <",
-        "value": 297014459
+        "tag": "GDC",
+        "name": "SH+o? GDc",
+        "value": 305276387
       },
       {
         "rank": 31,
         "tag": "TOv",
         "name": "jaE",
-        "value": 296101216
+        "value": 303456283
       },
       {
         "rank": 32,
-        "tag": "",
-        "name": "",
-        "value": 293739846
+        "tag": "GDc",
+        "name": "nIttw",
+        "value": 303183171
       },
       {
         "rank": 33,
-        "tag": "Tov",
-        "name": "ozo",
-        "value": 291706006
+        "tag": "",
+        "name": "",
+        "value": 302056884
       },
       {
         "rank": 34,
-        "tag": "TOv",
-        "name": "U ml@LA",
-        "value": 289414548
+        "tag": "",
+        "name": "",
+        "value": 300087933
       },
       {
         "rank": 35,
-        "tag": "ALC",
-        "name": "A> 7",
-        "value": 288119314
+        "tag": "",
+        "name": "",
+        "value": 298820604
       },
       {
         "rank": 36,
-        "tag": "",
-        "name": "vaN",
-        "value": 285354916
+        "tag": "ALC",
+        "name": "/> 7",
+        "value": 297968048
       },
       {
         "rank": 37,
-        "tag": "ALC",
-        "name": "EE+AJL",
-        "value": 284687044
+        "tag": "Tov",
+        "name": "z 7/r@V+E",
+        "value": 297238717
       },
       {
         "rank": 38,
-        "tag": "TOV",
-        "name": "< 33",
-        "value": 284651576
+        "tag": "BNr",
+        "name": "SR580n85",
+        "value": 296180144
       },
       {
         "rank": 39,
-        "tag": "",
-        "name": "",
-        "value": 283860487
+        "tag": "zoo",
+        "name": "Wall Sina",
+        "value": 291356476
       },
       {
         "rank": 40,
-        "tag": "",
-        "name": "",
-        "value": 283737098
+        "tag": "VAN",
+        "name": "+vs+t",
+        "value": 290640550
       },
       {
         "rank": 41,
-        "tag": "20O",
-        "name": "z _tfj",
-        "value": 283620683
+        "tag": "VAN",
+        "name": "kids vaN",
+        "value": 288363860
       },
       {
         "rank": 42,
-        "tag": "Tov",
-        "name": "4(r@u+E",
-        "value": 282684050
+        "tag": "VAN",
+        "name": "-3s+@JF4M",
+        "value": 287341838
       },
       {
         "rank": 43,
-        "tag": "ALc",
-        "name": "coffee",
-        "value": 281505886
+        "tag": "",
+        "name": "",
+        "value": 287160223
       },
       {
         "rank": 44,
-        "tag": "GDc",
-        "name": "a$5",
-        "value": 277930407
+        "tag": "zoO",
+        "name": "-1j",
+        "value": 286105648
       },
       {
         "rank": 45,
-        "tag": "zoo",
-        "name": "s Cald",
-        "value": 277616523
+        "tag": "ALC",
+        "name": "YUI",
+        "value": 285369011
       },
       {
         "rank": 46,
-        "tag": "VAN",
-        "name": "kids vaN",
-        "value": 277590458
+        "tag": "ALc",
+        "name": "coffee",
+        "value": 284691688
       },
       {
         "rank": 47,
-        "tag": "BNr",
-        "name": "cocoa",
-        "value": 276611334
+        "tag": "GDc",
+        "name": "a$5",
+        "value": 284385128
       },
       {
         "rank": 48,
-        "tag": "zoo",
-        "name": "jizIFhlh",
-        "value": 276304639
+        "tag": "2o0jo",
+        "name": "924",
+        "value": 281793258
       },
       {
         "rank": 49,
-        "tag": "zoo",
-        "name": "+ 5 / EAE",
-        "value": 274886782
+        "tag": "BNr",
+        "name": "cocoa",
+        "value": 280283022
       },
       {
         "rank": 50,
-        "tag": "ALc",
-        "name": "tItta",
-        "value": 273042875
+        "tag": "zoo",
+        "name": "s Cp#l#t",
+        "value": 279761530
       },
       {
         "rank": 51,
-        "tag": "TOv",
-        "name": "h\" 25 & vaN",
-        "value": 268690138
+        "tag": "zoo",
+        "name": "jizishlh",
+        "value": 279277942
       },
       {
         "rank": 52,
-        "tag": "Tov",
-        "name": "ltIozot+-",
-        "value": 268618007
+        "tag": "ALc",
+        "name": "+ 5Z E1E",
+        "value": 277916835
       },
       {
         "rank": 53,
         "tag": "ALc",
-        "name": "steeb",
-        "value": 267796911
+        "name": "amuro0123",
+        "value": 277264196
       },
       {
         "rank": 54,
-        "tag": "",
-        "name": "",
-        "value": 267526044
+        "tag": "VAN",
+        "name": "hi 35 & vaN",
+        "value": 276336464
       },
       {
         "rank": 55,
-        "tag": "",
-        "name": "",
-        "value": 267000324
+        "tag": "ALc",
+        "name": "t-Itt&",
+        "value": 276256418
       },
       {
         "rank": 56,
         "tag": "",
-        "name": "",
-        "value": 266802943
+        "name": "steeb",
+        "value": 275231675
       },
       {
         "rank": 57,
-        "tag": "ALc",
-        "name": "+ECph",
-        "value": 266332755
+        "tag": "YMG",
+        "name": "z #BR @7=x",
+        "value": 272096966
       },
       {
         "rank": 58,
-        "tag": "",
-        "name": "DaNna",
-        "value": 263968693
+        "tag": "ALC",
+        "name": "o3^@#03",
+        "value": 271486980
       },
       {
         "rank": 59,
-        "tag": "YMG",
-        "name": "@7=x",
-        "value": 263791150
+        "tag": "",
+        "name": "",
+        "value": 270689080
       },
       {
         "rank": 60,
-        "tag": "Tov",
-        "name": "shinon",
-        "value": 261586455
+        "tag": "",
+        "name": "",
+        "value": 269918630
       },
       {
         "rank": 61,
         "tag": "ALC",
-        "name": "o3^@#03",
-        "value": 261468966
+        "name": "MIOSKY",
+        "value": 269414114
       },
       {
         "rank": 62,
-        "tag": "TOV",
-        "name": "JICK",
-        "value": 261293265
+        "tag": "ALC",
+        "name": "MuRoTakenoko",
+        "value": 269302247
       },
       {
         "rank": 63,
-        "tag": "",
-        "name": "",
-        "value": 260659063
+        "tag": "TOv",
+        "name": "PHYZ",
+        "value": 269170264
       },
       {
         "rank": 64,
-        "tag": "",
-        "name": "",
-        "value": 257139472
+        "tag": "ALc",
+        "name": "+ECph",
+        "value": 267452918
       },
       {
         "rank": 65,
-        "tag": "",
-        "name": "",
-        "value": 256906143
+        "tag": "TOV",
+        "name": "shinon",
+        "value": 264434436
       },
       {
         "rank": 66,
-        "tag": "ALC",
-        "name": "shibuyas",
-        "value": 255673440
+        "tag": "TOv",
+        "name": "JICK",
+        "value": 264012557
       },
       {
         "rank": 67,
-        "tag": "ALc",
-        "name": "FUhi",
-        "value": 255609927
+        "tag": "",
+        "name": "",
+        "value": 263968693
       },
       {
         "rank": 68,
-        "tag": "ALC",
-        "name": "amuro0123",
-        "value": 252997688
+        "tag": "",
+        "name": "",
+        "value": 261678944
       },
       {
         "rank": 69,
-        "tag": "TOv",
-        "name": "TZEB",
-        "value": 250017202
+        "tag": "ALC",
+        "name": "Juhi",
+        "value": 257206544
       },
       {
         "rank": 70,
-        "tag": "ALc",
-        "name": "-",
-        "value": 249253431
+        "tag": "ALC",
+        "name": "shibuyas",
+        "value": 257008284
       },
       {
         "rank": 71,
-        "tag": "ALC",
-        "name": "C p &l Ixx",
-        "value": 245757850
+        "tag": "VAN",
+        "name": "TTEB",
+        "value": 252223339
       },
       {
         "rank": 72,
-        "tag": "",
-        "name": "",
-        "value": 245317372
+        "tag": "ALc",
+        "name": "-",
+        "value": 250633437
       },
       {
         "rank": 73,
-        "tag": "",
-        "name": "",
-        "value": 244850541
+        "tag": "GDc",
+        "name": "s_LiZE?e TItoz;k",
+        "value": 250327748
       },
       {
         "rank": 74,
-        "tag": "",
-        "name": "",
-        "value": 243718289
+        "tag": "ALC",
+        "name": "C + &l Ixx",
+        "value": 247330935
       },
       {
         "rank": 75,
-        "tag": "BNr",
-        "name": "fatboy",
-        "value": 242294703
+        "tag": "",
+        "name": "",
+        "value": 246930664
       },
       {
         "rank": 76,
-        "tag": "ALC",
-        "name": "IZ < 45",
-        "value": 241465748
+        "tag": "",
+        "name": "",
+        "value": 246171413
       },
       {
         "rank": 77,
-        "tag": "ALc",
-        "name": "5U3",
-        "value": 238477434
+        "tag": "",
+        "name": "",
+        "value": 244224904
       },
       {
         "rank": 78,
-        "tag": "ALC",
-        "name": "unidy",
-        "value": 238179579
+        "tag": "VAN",
+        "name": "AAEt3s + vaN",
+        "value": 243932967
       },
       {
         "rank": 79,
-        "tag": "Tov",
-        "name": "imtzorsv-t",
-        "value": 236607502
+        "tag": "",
+        "name": "JrvaN",
+        "value": 241054872
       },
       {
         "rank": 80,
-        "tag": "",
-        "name": "",
-        "value": 236313110
+        "tag": "ALC",
+        "name": "unidy",
+        "value": 240422730
       },
       {
         "rank": 81,
-        "tag": "",
-        "name": "",
-        "value": 236152998
+        "tag": "ALc",
+        "name": "sU3",
+        "value": 239782560
       },
       {
         "rank": 82,
-        "tag": "",
-        "name": "",
-        "value": 234412948
+        "tag": "AUR",
+        "name": "5 J4h",
+        "value": 239496686
       },
       {
         "rank": 83,
-        "tag": "ALc",
-        "name": "Jirou",
-        "value": 233365998
+        "tag": "YMG",
+        "name": "s+#",
+        "value": 239380166
       },
       {
         "rank": 84,
-        "tag": "YMG",
-        "name": "s 74",
-        "value": 232724835
+        "tag": "",
+        "name": "",
+        "value": 236607502
       },
       {
         "rank": 85,
-        "tag": "ALc",
-        "name": "nhxeo",
-        "value": 230784834
+        "tag": "",
+        "name": "",
+        "value": 236427061
       },
       {
         "rank": 86,
-        "tag": "",
-        "name": "GOCOl",
-        "value": 230184729
+        "tag": "ALC",
+        "name": "MTERRRER",
+        "value": 235506648
       },
       {
         "rank": 87,
-        "tag": "ALc",
-        "name": "+301b",
-        "value": 230176545
+        "tag": "",
+        "name": "GOCOl",
+        "value": 233210749
       },
       {
         "rank": 88,
         "tag": "ALc",
-        "name": "h2Kmz",
-        "value": 229340528
+        "name": "n hzso",
+        "value": 232560883
       },
       {
         "rank": 89,
-        "tag": "Tov",
-        "name": "m >AwF",
-        "value": 229148928
+        "tag": "ALc",
+        "name": "p+01b",
+        "value": 232225236
       },
       {
         "rank": 90,
-        "tag": "ALc",
-        "name": "bIs 5",
-        "value": 228850504
+        "tag": "BNr",
+        "name": "Nuts",
+        "value": 231270520
       },
       {
         "rank": 91,
-        "tag": "BNr",
-        "name": "Nuts",
-        "value": 227771915
+        "tag": "Tov",
+        "name": "# V^v F",
+        "value": 231052692
       },
       {
         "rank": 92,
-        "tag": "TOv",
-        "name": "W) -7xt",
-        "value": 226355560
+        "tag": "ALc",
+        "name": "ibIj5",
+        "value": 230947574
       },
       {
         "rank": 93,
-        "tag": "ALC",
-        "name": "5&h)",
-        "value": 225190069
+        "tag": "BNr",
+        "name": "choco",
+        "value": 230099625
       },
       {
         "rank": 94,
-        "tag": "tov",
-        "name": "ie-#amAW e5Rn#",
-        "value": 224947330
+        "tag": "zoo",
+        "name": "55 &h)",
+        "value": 229468026
       },
       {
         "rank": 95,
         "tag": "ALC",
-        "name": "Gerry",
-        "value": 363129
+        "name": "Bad",
+        "value": 228376359
       },
       {
         "rank": 96,
         "tag": "TOv",
-        "name": "-vs & vaN",
-        "value": 233769
+        "name": "W) -zxt",
+        "value": 227611814
       },
       {
         "rank": 97,
         "tag": "",
         "name": "Fermented Syrup",
-        "value": 75758
+        "value": 92558
       },
       {
         "rank": 98,
+        "tag": "TOv",
+        "name": "m YAvF",
+        "value": 52692
+      },
+      {
+        "rank": 99,
         "tag": "",
         "name": "Personal Power",
         "value": 0
@@ -1418,7 +1496,7 @@
         "rank": 1,
         "tag": "ALc",
         "name": "Guita ALc@ 7 7&;",
-        "value": 122180797
+        "value": 122538406
       },
       {
         "rank": 2,
@@ -1440,579 +1518,513 @@
       },
       {
         "rank": 5,
-        "tag": "Tov",
-        "name": "t SvaN",
-        "value": 83203384
+        "tag": "ALC",
+        "name": "M %",
+        "value": 85239945
       },
       {
         "rank": 6,
+        "tag": "VAN",
+        "name": "-:s+@JFAM",
+        "value": 83203384
+      },
+      {
+        "rank": 7,
         "tag": "ALC",
         "name": "AC LazyCat",
         "value": 67936274
       },
       {
-        "rank": 7,
+        "rank": 8,
         "tag": "ALC",
-        "name": "5 #ho4hottai",
+        "name": "5 #ho&hottu",
         "value": 58498760
       },
       {
-        "rank": 8,
-        "tag": "ALc",
-        "name": "lu@tItoz",
+        "rank": 9,
+        "tag": "ALC",
+        "name": "ICUV@TItox",
         "value": 57584493
       },
       {
-        "rank": 9,
-        "tag": "ALc",
-        "name": "tItta",
-        "value": 53638421
-      },
-      {
         "rank": 10,
-        "tag": "TOv",
-        "name": "h / JO)rain",
-        "value": 53152875
+        "tag": "ALc",
+        "name": "ltItka",
+        "value": 53656858
       },
       {
         "rank": 11,
-        "tag": "TOV",
+        "tag": "TOv",
+        "name": "h / JOrain",
+        "value": 53152875
+      },
+      {
+        "rank": 12,
+        "tag": "VAN",
         "name": "< 33",
         "value": 50868550
       },
       {
-        "rank": 12,
-        "tag": "TOv",
-        "name": "s C #hvaN",
-        "value": 44965021
-      },
-      {
         "rank": 13,
-        "tag": "zoo",
-        "name": "5 > ANF",
-        "value": 44572577
+        "tag": "VAN",
+        "name": "-3s+ vaN",
+        "value": 44996218
       },
       {
         "rank": 14,
-        "tag": "ALC",
-        "name": "V > J",
-        "value": 43611112
+        "tag": "zoo",
+        "name": "-\" > AF",
+        "value": 44572577
       },
       {
         "rank": 15,
+        "tag": "ALC",
+        "name": "VJ >",
+        "value": 43611112
+      },
+      {
+        "rank": 16,
         "tag": "",
         "name": "DaNna",
         "value": 42839925
       },
       {
-        "rank": 16,
-        "tag": "TOV",
-        "name": "hi25 + vaN",
+        "rank": 17,
+        "tag": "VAN",
+        "name": "25 & vaN",
         "value": 42579466
       },
       {
-        "rank": 17,
-        "tag": "TOv",
-        "name": "--ozo@",
-        "value": 39990811
-      },
-      {
         "rank": 18,
-        "tag": "TOv",
-        "name": "U mhl@LA",
-        "value": 38967143
-      },
-      {
-        "rank": 19,
-        "tag": "ALc",
-        "name": "o3^@402",
-        "value": 38561925
-      },
-      {
-        "rank": 20,
-        "tag": "ALC",
-        "name": "ER+AJL",
-        "value": 38278984
-      },
-      {
-        "rank": 21,
         "tag": "",
         "name": "Jtyta",
         "value": 37073516
       },
       {
-        "rank": 22,
-        "tag": "ALc",
-        "name": "Korn0512",
+        "rank": 19,
+        "tag": "ALC",
+        "name": "cKorn0512",
         "value": 36811179
       },
       {
-        "rank": 23,
+        "rank": 20,
         "tag": "ALc",
-        "name": "tItozIla",
+        "name": "tI+ozIa",
         "value": 35981491
       },
       {
-        "rank": 24,
-        "tag": "ALC",
-        "name": "Juhi",
+        "rank": 21,
+        "tag": "ALc",
+        "name": "$Uhi",
         "value": 35816839
       },
       {
-        "rank": 25,
+        "rank": 22,
         "tag": "Tov",
-        "name": "T =Fsph",
+        "name": "T =#sph",
         "value": 32481910
+      },
+      {
+        "rank": 23,
+        "tag": "VAN",
+        "name": "ro",
+        "value": 31113217
+      },
+      {
+        "rank": 24,
+        "tag": "tov",
+        "name": "t F",
+        "value": 30771852
+      },
+      {
+        "rank": 25,
+        "tag": "VAN",
+        "name": "$v5+t\"3",
+        "value": 30266682
       },
       {
         "rank": 26,
         "tag": "ALc",
-        "name": "lhts@tI+ozh",
-        "value": 31634856
-      },
-      {
-        "rank": 27,
-        "tag": "",
-        "name": "sphnyny-",
-        "value": 31113217
-      },
-      {
-        "rank": 28,
-        "tag": "tov",
-        "name": "t +w",
-        "value": 30771852
-      },
-      {
-        "rank": 29,
-        "tag": "VAN",
-        "name": "GEL EvaN RE;BORN",
-        "value": 30266682
-      },
-      {
-        "rank": 30,
-        "tag": "ALC",
-        "name": "IA6430653676 ) Ji",
+        "name": "lhT-#60056h4\" ) Fim",
         "value": 30158900
       },
       {
-        "rank": 31,
+        "rank": 27,
         "tag": "YMG",
-        "name": ") - /1=",
-        "value": 28970899
+        "name": "? -n1=",
+        "value": 29009866
       },
       {
-        "rank": 32,
+        "rank": 28,
+        "tag": "ALC",
+        "name": "unidy",
+        "value": 28730412
+      },
+      {
+        "rank": 29,
         "tag": "TOv",
         "name": "JICK",
         "value": 28476649
       },
       {
-        "rank": 33,
-        "tag": "tovltI",
-        "name": "oziot+-",
-        "value": 28393042
+        "rank": 30,
+        "tag": "tov",
+        "name": "lkIoxot+-",
+        "value": 28399850
       },
       {
-        "rank": 34,
+        "rank": 31,
         "tag": "",
         "name": "",
         "value": 26982732
       },
       {
-        "rank": 35,
+        "rank": 32,
         "tag": "ALC",
-        "name": "/>",
+        "name": "/> 7",
         "value": 26857134
       },
       {
-        "rank": 36,
+        "rank": 33,
         "tag": "ALc",
         "name": "IZ & 3U",
         "value": 26633996
       },
       {
-        "rank": 37,
+        "rank": 34,
         "tag": "",
         "name": "",
         "value": 25725144
       },
       {
-        "rank": 38,
-        "tag": "ALc",
-        "name": "Jirou",
-        "value": 25617382
-      },
-      {
-        "rank": 39,
-        "tag": "",
-        "name": "",
+        "rank": 35,
+        "tag": "zoo",
+        "name": "ln_#lh@tEunsa",
         "value": 25240101
       },
       {
-        "rank": 40,
+        "rank": 36,
         "tag": "YMG",
-        "name": "sphSphs",
+        "name": "sphSphx",
         "value": 25123472
       },
       {
-        "rank": 41,
+        "rank": 37,
         "tag": "TOV",
         "name": "AceKing21",
         "value": 24935900
       },
       {
-        "rank": 42,
+        "rank": 38,
         "tag": "ALC",
-        "name": "MuRo Takenoko",
+        "name": "MuRoTakenoko",
         "value": 24707029
       },
       {
-        "rank": 43,
+        "rank": 39,
         "tag": "BNr",
-        "name": "SRS8k85",
+        "name": "SR5868S",
         "value": 24572734
       },
       {
-        "rank": 44,
-        "tag": "TOV",
+        "rank": 40,
+        "tag": "VAN",
         "name": "KID vaN",
         "value": 24554190
       },
       {
-        "rank": 45,
+        "rank": 41,
         "tag": "zoo",
-        "name": "tJJDw )",
+        "name": "t_nw )",
         "value": 24530489
       },
       {
-        "rank": 46,
+        "rank": 42,
+        "tag": "VAN",
+        "name": "AEt9s & vaN",
+        "value": 24413262
+      },
+      {
+        "rank": 43,
         "tag": "TOv",
-        "name": "-v\"5 & vaN",
-        "value": 24400765
+        "name": "o7o",
+        "value": 23989230
       },
       {
-        "rank": 47,
-        "tag": "ALc",
-        "name": "a hSph",
-        "value": 24379292
-      },
-      {
-        "rank": 48,
-        "tag": "ALc",
-        "name": "Gerry",
-        "value": 24034997
-      },
-      {
-        "rank": 49,
-        "tag": "BNr",
-        "name": "- JTLxiaxfangin",
-        "value": 23821824
-      },
-      {
-        "rank": 50,
+        "rank": 44,
         "tag": "ALc",
         "name": "+ECph",
         "value": 23575827
       },
       {
-        "rank": 51,
+        "rank": 45,
         "tag": "GDc",
         "name": "MASAGDc",
         "value": 23353202
       },
       {
-        "rank": 52,
+        "rank": 46,
         "tag": "",
-        "name": "~GOGO:",
+        "name": "GOGOl",
         "value": 23135216
       },
       {
-        "rank": 53,
+        "rank": 47,
         "tag": "TOv",
-        "name": "5 ##4h",
+        "name": "5 ##th",
         "value": 22398893
       },
       {
-        "rank": 54,
+        "rank": 48,
         "tag": "GDC",
         "name": "RaiKey GDc",
-        "value": 22338332
+        "value": 22387682
       },
       {
-        "rank": 55,
+        "rank": 49,
         "tag": "TOv",
-        "name": "WJ -7xt",
+        "name": "W) -3x1",
         "value": 20333087
       },
       {
-        "rank": 56,
-        "tag": "YMG",
-        "name": "nIs-",
+        "rank": 50,
+        "tag": "GDc",
+        "name": "b It W",
         "value": 20326662
       },
       {
-        "rank": 57,
-        "tag": "ALc",
-        "name": "C = <",
-        "value": 19563262
-      },
-      {
-        "rank": 58,
-        "tag": "TOv",
-        "name": "i) >hiltjwjil",
+        "rank": 51,
+        "tag": "Tov",
+        "name": "I> hLtjjil",
         "value": 19545701
       },
       {
-        "rank": 59,
+        "rank": 52,
         "tag": "ALc",
-        "name": "bIs5",
+        "name": "bI35",
         "value": 19279968
       },
       {
-        "rank": 60,
-        "tag": "TOV",
-        "name": "THa BKT",
-        "value": 18871595
+        "rank": 53,
+        "tag": "Tov",
+        "name": "svo @#O30",
+        "value": 18796380
       },
       {
-        "rank": 61,
-        "tag": "TOV",
+        "rank": 54,
+        "tag": "Tov",
         "name": "o) < 6 <",
         "value": 18425755
       },
       {
-        "rank": 62,
+        "rank": 55,
         "tag": "zoo",
-        "name": "-tfj",
+        "name": "z _t",
         "value": 17813867
       },
       {
-        "rank": 63,
+        "rank": 56,
         "tag": "ALC",
         "name": "shibuyas",
         "value": 17727647
       },
       {
-        "rank": 64,
-        "tag": "TOV",
+        "rank": 57,
+        "tag": "ToV",
         "name": "shinon",
         "value": 17704425
       },
       {
-        "rank": 65,
+        "rank": 58,
         "tag": "ALc",
-        "name": "n hzeo",
+        "name": "n hzso",
         "value": 17612912
       },
       {
-        "rank": 66,
+        "rank": 59,
         "tag": "YMG",
-        "name": "oz-x",
-        "value": 17523584
+        "name": "6z' EBJ @7=x",
+        "value": 17572594
       },
       {
-        "rank": 67,
-        "tag": "ALC",
-        "name": "MIOSKY",
-        "value": 17434991
-      },
-      {
-        "rank": 68,
-        "tag": "TOv",
-        "name": "b #zU",
-        "value": 17414552
-      },
-      {
-        "rank": 69,
+        "rank": 60,
         "tag": "YMG",
-        "name": "(#-JL",
+        "name": "(#-J",
         "value": 17067376
       },
       {
-        "rank": 70,
-        "tag": "",
-        "name": "",
+        "rank": 61,
+        "tag": "zoo",
+        "name": "lsh - WhereDoWeGo?",
         "value": 17043317
       },
       {
-        "rank": 71,
-        "tag": "zoo",
-        "name": "+ 5 / EFE",
+        "rank": 62,
+        "tag": "ALc",
+        "name": "+ 5 YEAE",
         "value": 15837531
       },
       {
-        "rank": 72,
-        "tag": "",
-        "name": "TJivaN RE;BORN",
+        "rank": 63,
+        "tag": "VAN",
+        "name": "+ 5 +/\" /\" /1",
         "value": 15625942
       },
       {
-        "rank": 73,
+        "rank": 64,
         "tag": "Tov",
-        "name": "mt\"70115 ) -(",
+        "name": "mt4701s )-t",
         "value": 15587428
       },
       {
-        "rank": 74,
-        "tag": "Tov",
-        "name": "h>+-k",
-        "value": 15095495
+        "rank": 65,
+        "tag": "",
+        "name": "",
+        "value": 15106406
       },
       {
-        "rank": 75,
-        "tag": "TOV",
-        "name": "E m#h",
+        "rank": 66,
+        "tag": "VAN",
+        "name": "E m&h",
         "value": 14956384
       },
       {
-        "rank": 76,
+        "rank": 67,
         "tag": "ALc",
         "name": "riran777",
         "value": 14923362
       },
       {
-        "rank": 77,
-        "tag": "YMG",
-        "name": "GaGa",
-        "value": 14890541
-      },
-      {
-        "rank": 78,
+        "rank": 68,
         "tag": "Xbp",
-        "name": "> AZ+ >",
+        "name": "> A=+ >",
         "value": 14680136
       },
       {
-        "rank": 79,
+        "rank": 69,
         "tag": "zoo",
-        "name": "ju1 28",
+        "name": "ju1 2&",
         "value": 14616657
       },
       {
-        "rank": 80,
+        "rank": 70,
         "tag": "TOV",
         "name": "KucingBobok",
         "value": 14347464
       },
       {
-        "rank": 81,
+        "rank": 71,
         "tag": "",
-        "name": "7oUh",
+        "name": "7ouh",
         "value": 14302529
       },
       {
-        "rank": 82,
+        "rank": 72,
         "tag": "",
-        "name": "AALhz5(@FE",
+        "name": "AALhz5@FH",
         "value": 13923632
       },
       {
-        "rank": 83,
+        "rank": 73,
         "tag": "",
-        "name": "jhenju AVENGERS",
+        "name": "",
         "value": 13624519
       },
       {
-        "rank": 84,
-        "tag": "YMG",
-        "name": "a >VJ <",
-        "value": 13540230
-      },
-      {
-        "rank": 85,
-        "tag": "ALc",
-        "name": "sL p",
+        "rank": 74,
+        "tag": "",
+        "name": "",
         "value": 13261178
       },
       {
-        "rank": 86,
-        "tag": "GDC",
-        "name": "SH+o? GDc",
-        "value": 13045555
-      },
-      {
-        "rank": 87,
-        "tag": "ALC",
-        "name": "coffee",
-        "value": 13001329
-      },
-      {
-        "rank": 88,
+        "rank": 75,
         "tag": "",
         "name": "Mlkuri83",
         "value": 12905064
       },
       {
-        "rank": 89,
+        "rank": 76,
         "tag": "zoo",
-        "name": "lh#xIfrmn",
+        "name": "ln&xIfrJn",
         "value": 12881726
       },
       {
-        "rank": 90,
+        "rank": 77,
         "tag": "zoo",
-        "name": "lt> +Kiss SHOT Fw =",
+        "name": "lt> lKiss SHOT ) w =",
         "value": 12872090
       },
       {
-        "rank": 91,
+        "rank": 78,
         "tag": "ALc",
-        "name": "Yul@a O Z",
-        "value": 12724244
+        "name": "YUI",
+        "value": 12751196
       },
       {
-        "rank": 92,
+        "rank": 79,
         "tag": "Tov",
-        "name": "zJv=.751F",
+        "name": "izvt.751 F",
         "value": 12602521
       },
       {
-        "rank": 93,
-        "tag": "",
-        "name": "~TOVIn",
+        "rank": 80,
+        "tag": "TOV",
+        "name": "II",
         "value": 12561573
       },
       {
-        "rank": 94,
+        "rank": 81,
         "tag": "YMG",
-        "name": "3 vE-",
+        "name": "a vE-",
         "value": 12474592
       },
       {
-        "rank": 95,
+        "rank": 82,
         "tag": "TOV",
         "name": "PHYZ",
-        "value": 11952504
+        "value": 11965033
       },
       {
-        "rank": 96,
+        "rank": 83,
         "tag": "zoo",
-        "name": "jizIfhlh",
+        "name": "jizIFhCh",
         "value": 11893944
       },
       {
-        "rank": 97,
-        "tag": "Tov",
-        "name": "o7o",
-        "value": 976441
+        "rank": 84,
+        "tag": "GDc",
+        "name": "yAS GDcts Ot2",
+        "value": 11706393
       },
       {
-        "rank": 98,
-        "tag": "Tov",
-        "name": "my. @#02i9",
-        "value": 796380
+        "rank": 85,
+        "tag": "",
+        "name": "Vuvwa ^U",
+        "value": 1414332
       },
       {
-        "rank": 99,
+        "rank": 86,
+        "tag": "BNr",
+        "name": "b30agm",
+        "value": 824281
+      },
+      {
+        "rank": 87,
+        "tag": "YMG",
+        "name": "a >V <",
+        "value": 628773
+      },
+      {
+        "rank": 88,
         "tag": "",
         "name": "Fermented",
-        "value": 20124
+        "value": 20121
       },
       {
-        "rank": 100,
-        "tag": "ALC",
-        "name": "MF %",
-        "value": 4464
+        "rank": 89,
+        "tag": "",
+        "name": "Kill Count",
+        "value": 0
       }
     ],
     "hero_power": [
@@ -2024,7 +2036,7 @@
       },
       {
         "rank": 2,
-        "tag": "ALC",
+        "tag": "ALc",
         "name": "Guita ALc@ ' T&",
         "value": 13271666
       },
@@ -2044,7 +2056,7 @@
         "rank": 5,
         "tag": "Tov",
         "name": "C mhl@LA",
-        "value": 10631414
+        "value": 10685406
       },
       {
         "rank": 6,
@@ -2056,55 +2068,55 @@
         "rank": 7,
         "tag": "ALC",
         "name": "AC LazyCat",
-        "value": 9155635
+        "value": 9482720
       },
       {
         "rank": 8,
-        "tag": "TOV",
-        "name": "s C # hvaN",
+        "tag": "",
+        "name": "Hero: Long Fei",
         "value": 8874122
       },
       {
         "rank": 9,
-        "tag": "ALc",
-        "name": "lui@tItox",
-        "value": 8347102
+        "tag": "MALc",
+        "name": "Lli@tItoz",
+        "value": 8393722
       },
       {
         "rank": 10,
         "tag": "ALC",
-        "name": "V > J",
-        "value": 8132632
+        "name": "W) > ^",
+        "value": 8181930
       },
       {
         "rank": 11,
         "tag": "ALC",
-        "name": "5 #ho4h@zti",
+        "name": "s#hoah@xa",
         "value": 8047106
       },
       {
         "rank": 12,
-        "tag": "TOV",
-        "name": "hi35 + vaN",
+        "tag": "VAN",
+        "name": "6' 325 + vaN",
         "value": 7697592
       },
       {
         "rank": 13,
-        "tag": "YMG",
-        "name": "a >VJ <",
-        "value": 7169156
+        "tag": "zoo",
+        "name": "5\" > AF",
+        "value": 7367269
       },
       {
         "rank": 14,
-        "tag": "zoo",
-        "name": "5\" > AF",
-        "value": 7064265
+        "tag": "Tov",
+        "name": "7 4Tr@u+E",
+        "value": 7246913
       },
       {
         "rank": 15,
-        "tag": "Tov",
-        "name": "7(r@u+E",
-        "value": 6871955
+        "tag": "YMG",
+        "name": "a >IJ <",
+        "value": 7234886
       },
       {
         "rank": 16,
@@ -2114,474 +2126,498 @@
       },
       {
         "rank": 17,
-        "tag": "Tov",
-        "name": "t: SvaN",
-        "value": 6647914
+        "tag": "VAN",
+        "name": "-:s+@JFAM",
+        "value": 6694864
       },
       {
         "rank": 18,
-        "tag": "Xbp",
-        "name": "> /1=+ >",
-        "value": 6160122
+        "tag": "ALc",
+        "name": "Korn0512",
+        "value": 6652055
       },
       {
         "rank": 19,
-        "tag": "GDc",
+        "tag": "Xbp",
+        "name": "> AZ+>",
+        "value": 6160122
+      },
+      {
+        "rank": 20,
+        "tag": "GDC",
         "name": "MASAGDc",
         "value": 6117740
       },
       {
-        "rank": 20,
-        "tag": "zoo",
-        "name": "lb_ #Ch@tEuta",
-        "value": 6042440
-      },
-      {
         "rank": 21,
         "tag": "ALc",
-        "name": "t-ItozIla",
-        "value": 5986757
+        "name": "lh/ 6040",
+        "value": 6048223
       },
       {
         "rank": 22,
-        "tag": "Tov",
-        "name": "5 ##th",
-        "value": 5736813
+        "tag": "zoo",
+        "name": "l- # Ch@ LEuiita",
+        "value": 6042440
       },
       {
         "rank": 23,
-        "tag": "TOV",
-        "name": "o) < 6 <",
-        "value": 5679059
+        "tag": "ALc",
+        "name": "ltI+ozIha",
+        "value": 6033232
       },
       {
         "rank": 24,
-        "tag": "Tov",
-        "name": "t kw",
-        "value": 5653464
+        "tag": "TOv",
+        "name": "5 ##4h",
+        "value": 5779055
       },
       {
         "rank": 25,
-        "tag": "ALc",
-        "name": "lhts@tI+ozh",
-        "value": 5651509
+        "tag": "Tov",
+        "name": "+ kw",
+        "value": 5717612
       },
       {
         "rank": 26,
-        "tag": "GDc",
-        "name": "SH+o? GDc",
-        "value": 5522695
+        "tag": "TOV",
+        "name": "o) < 6 <",
+        "value": 5715054
       },
       {
         "rank": 27,
-        "tag": "Tov",
-        "name": "T _ Fsph",
-        "value": 5439067
+        "tag": "TOv",
+        "name": "--ozo@",
+        "value": 5684552
       },
       {
         "rank": 28,
-        "tag": "ALc",
-        "name": "tItt&",
-        "value": 5438114
+        "tag": "GDc",
+        "name": "SH+o? GDc",
+        "value": 5625985
       },
       {
         "rank": 29,
+        "tag": "TOv",
+        "name": "T _ Fsph",
+        "value": 5486017
+      },
+      {
+        "rank": 30,
         "tag": "ALc",
         "name": "C = <",
         "value": 5427094
       },
       {
-        "rank": 30,
+        "rank": 31,
         "tag": "ALC",
-        "name": "Hh6#3@853h9T , J",
+        "name": "T-330053h7T J 7",
         "value": 5336182
       },
       {
-        "rank": 31,
-        "tag": "20O",
-        "name": "z _tj",
-        "value": 5251269
-      },
-      {
         "rank": 32,
-        "tag": "Tov",
-        "name": "i? >miltjujil",
-        "value": 5186045
+        "tag": "zoo",
+        "name": "-thj",
+        "value": 5299274
       },
       {
         "rank": 33,
-        "tag": "ALc",
-        "name": "Gerry",
-        "value": 5028838
+        "tag": "Tov",
+        "name": "i) >miltjujil",
+        "value": 5232995
       },
       {
         "rank": 34,
-        "tag": "",
-        "name": "SphnyJ>-",
-        "value": 4894485
+        "tag": "ALC",
+        "name": "Gerry",
+        "value": 5138338
       },
       {
         "rank": 35,
         "tag": "YMG",
         "name": "GaGa",
-        "value": 4885645
+        "value": 5066353
       },
       {
         "rank": 36,
-        "tag": "YMG",
-        "name": "- /1=",
-        "value": 4877085
+        "tag": "BNr",
+        "name": "fatboy",
+        "value": 5050650
       },
       {
         "rank": 37,
-        "tag": "VAN",
-        "name": "Lute",
-        "value": 4842151
+        "tag": "YMG",
+        "name": "A (#-J",
+        "value": 5041155
       },
       {
         "rank": 38,
-        "tag": "BNr",
-        "name": "Rhinoceros",
-        "value": 4803342
+        "tag": "TOv",
+        "name": "b #zU",
+        "value": 5021318
       },
       {
         "rank": 39,
-        "tag": "TOV",
-        "name": "< 33",
-        "value": 4780052
+        "tag": "VAN",
+        "name": "Lute",
+        "value": 4999024
       },
       {
         "rank": 40,
         "tag": "ALc",
         "name": "+ECph",
-        "value": 4739935
+        "value": 4967593
       },
       {
         "rank": 41,
-        "tag": "TOV",
-        "name": "KID vaN",
-        "value": 4696614
+        "tag": "VAN",
+        "name": "ro_36 &",
+        "value": 4894485
       },
       {
         "rank": 42,
-        "tag": "YMG",
-        "name": "nIt W",
-        "value": 4696190
+        "tag": "VAN",
+        "name": "",
+        "value": 4894160
       },
       {
         "rank": 43,
         "tag": "TOv",
-        "name": "JICK",
-        "value": 4655695
+        "name": "o7o",
+        "value": 4867155
       },
       {
         "rank": 44,
-        "tag": "ALc",
-        "name": "iIs5",
-        "value": 4627394
+        "tag": "BNr",
+        "name": "Rhinoceros",
+        "value": 4852639
       },
       {
         "rank": 45,
-        "tag": "TOv",
-        "name": "o7o",
-        "value": 4575669
+        "tag": "zoo",
+        "name": "Uniqlo",
+        "value": 4758955
       },
       {
         "rank": 46,
-        "tag": "zoo",
-        "name": "lb&xljrJn",
-        "value": 4541787
+        "tag": "Tov",
+        "name": "CBFA",
+        "value": 4713862
       },
       {
         "rank": 47,
-        "tag": "zoo",
-        "name": "Uniqlo",
-        "value": 4529006
+        "tag": "VAN",
+        "name": "KID vaN",
+        "value": 4696614
       },
       {
         "rank": 48,
-        "tag": "TOv",
-        "name": "< ?U",
-        "value": 4511603
+        "tag": "GDc",
+        "name": "nIs-",
+        "value": 4696190
       },
       {
         "rank": 49,
-        "tag": "",
-        "name": "J+yta",
-        "value": 4454752
+        "tag": "ALC",
+        "name": "YUl",
+        "value": 4656185
       },
       {
         "rank": 50,
-        "tag": "ALC",
-        "name": "C p &l Ixx",
-        "value": 4417982
+        "tag": "",
+        "name": "Hero: Rosa",
+        "value": 4655695
       },
       {
         "rank": 51,
-        "tag": "ALC",
-        "name": "MuRoTakenoko",
-        "value": 4416335
+        "tag": "ALc",
+        "name": "ibIss5",
+        "value": 4627394
       },
       {
         "rank": 52,
-        "tag": "Tov",
-        "name": "zJv=.751 F",
-        "value": 4350214
+        "tag": "ALC",
+        "name": "MuRoTakenoko",
+        "value": 4580176
       },
       {
         "rank": 53,
-        "tag": "Tov",
-        "name": "# -20f",
-        "value": 4333437
+        "tag": "TOV",
+        "name": "< 3U",
+        "value": 4560958
       },
       {
         "rank": 54,
-        "tag": "ALC",
-        "name": "EE+AJL",
-        "value": 4323861
+        "tag": "zoo",
+        "name": "ln#xlfrin",
+        "value": 4541787
       },
       {
         "rank": 55,
-        "tag": "ALC",
-        "name": "o3^@#02",
-        "value": 4275242
+        "tag": "VAN",
+        "name": "+vs+m\"3",
+        "value": 4483157
       },
       {
         "rank": 56,
+        "tag": "",
+        "name": "Jtyta",
+        "value": 4454752
+      },
+      {
+        "rank": 57,
+        "tag": "ALc",
+        "name": "C p &l Ixx",
+        "value": 4449282
+      },
+      {
+        "rank": 58,
+        "tag": "TBNr",
+        "name": "Zaku",
+        "value": 4421035
+      },
+      {
+        "rank": 59,
+        "tag": "2o0jo",
+        "name": "924",
+        "value": 4350260
+      },
+      {
+        "rank": 60,
+        "tag": "Tov",
+        "name": "izavs.75t F",
+        "value": 4350214
+      },
+      {
+        "rank": 61,
+        "tag": "ALC",
+        "name": "ERTLJL",
+        "value": 4323861
+      },
+      {
+        "rank": 62,
+        "tag": "ALC",
+        "name": "o 3^@#03",
+        "value": 4275242
+      },
+      {
+        "rank": 63,
+        "tag": "GDc",
+        "name": "+65",
+        "value": 4272053
+      },
+      {
+        "rank": 64,
         "tag": "ALC",
         "name": "shibuyas",
         "value": 4270007
       },
       {
-        "rank": 57,
-        "tag": "GDc",
-        "name": "+55",
-        "value": 4229028
-      },
-      {
-        "rank": 58,
+        "rank": 65,
         "tag": "BNr",
-        "name": "SR58n8S",
-        "value": 4181164
+        "name": "SR5868S",
+        "value": 4241114
       },
       {
-        "rank": 59,
-        "tag": "zoo",
-        "name": "+ 5 / EAB",
+        "rank": 66,
+        "tag": "ALC",
+        "name": "amuro0123",
+        "value": 4201653
+      },
+      {
+        "rank": 67,
+        "tag": "ALc",
+        "name": "+ 5 / EAE",
         "value": 4168887
       },
       {
-        "rank": 60,
+        "rank": 68,
+        "tag": "Tov",
+        "name": "#h? 413#3 <",
+        "value": 4161209
+      },
+      {
+        "rank": 69,
         "tag": "YMG",
         "name": "cooper",
         "value": 4137014
       },
       {
-        "rank": 61,
-        "tag": "2o0jo",
-        "name": "924",
-        "value": 4117087
+        "rank": 70,
+        "tag": "GDc",
+        "name": "s+6&",
+        "value": 4112561
       },
       {
-        "rank": 62,
+        "rank": 71,
         "tag": "TOv",
         "name": "hh / JOrain",
         "value": 4109902
       },
       {
-        "rank": 63,
+        "rank": 72,
         "tag": "",
         "name": "Arrivederci",
         "value": 4081682
       },
       {
-        "rank": 64,
-        "tag": "VAN",
-        "name": "EL!HvaN RE;BORN",
-        "value": 4066907
-      },
-      {
-        "rank": 65,
+        "rank": 73,
         "tag": "TOV",
-        "name": "II",
+        "name": "I",
         "value": 4060613
       },
       {
-        "rank": 66,
-        "tag": "ToVI",
-        "name": "shinon",
+        "rank": 74,
+        "tag": "TOV",
+        "name": "Ishinon",
         "value": 4055537
       },
       {
-        "rank": 67,
-        "tag": "ALC",
-        "name": "IZ & 3U",
-        "value": 4052620
-      },
-      {
-        "rank": 68,
-        "tag": "zoo",
-        "name": "jizIFhlh",
-        "value": 4036234
-      },
-      {
-        "rank": 69,
-        "tag": "ALc",
-        "name": "+Uh",
-        "value": 4024718
-      },
-      {
-        "rank": 70,
-        "tag": "",
-        "name": "zzZz",
-        "value": 3977316
-      },
-      {
-        "rank": 71,
-        "tag": "YMG",
-        "name": "@7 =x",
-        "value": 3946318
-      },
-      {
-        "rank": 72,
-        "tag": "GDc",
-        "name": "g LiZESe/GDc",
-        "value": 3906216
-      },
-      {
-        "rank": 73,
-        "tag": "",
-        "name": "NANJEEL !jEvaN RE:BORN",
-        "value": 3901116
-      },
-      {
-        "rank": 74,
-        "tag": "BNr",
-        "name": "Zaku",
-        "value": 3873322
-      },
-      {
         "rank": 75,
-        "tag": "TOv",
-        "name": "I+ ,Jkesntt?t",
-        "value": 3865197
+        "tag": "ALc",
+        "name": "JUhi",
+        "value": 4053455
       },
       {
         "rank": 76,
         "tag": "ALc",
-        "name": "lPS5hrr",
-        "value": 3857437
+        "name": "IZ & 3U8",
+        "value": 4052620
       },
       {
         "rank": 77,
-        "tag": "TOv",
-        "name": "PHYZ",
-        "value": 3846428
+        "tag": "ALC",
+        "name": "VANPS",
+        "value": 4037403
       },
       {
         "rank": 78,
-        "tag": "Tov",
-        "name": "svo @#O30",
-        "value": 3838993
+        "tag": "zoo",
+        "name": "li-Ifhlh",
+        "value": 4036234
       },
       {
         "rank": 79,
-        "tag": "BNr",
-        "name": "cocoa",
-        "value": 3837783
+        "tag": "GDc",
+        "name": "Is LiZE8e  TI+o ZiR",
+        "value": 4011444
       },
       {
         "rank": 80,
-        "tag": "ALC",
-        "name": "VANPS",
-        "value": 3829320
+        "tag": "YMG",
+        "name": "z EBR @J-x",
+        "value": 3972448
       },
       {
         "rank": 81,
-        "tag": "YMG",
-        "name": "? <v+JIT",
-        "value": 3813881
+        "tag": "VAN",
+        "name": "+v5+/\" /\" /1",
+        "value": 3972081
       },
       {
         "rank": 82,
-        "tag": "ALC",
-        "name": "",
-        "value": 3811235
+        "tag": "TOV",
+        "name": "PHYZ",
+        "value": 3962678
       },
       {
         "rank": 83,
-        "tag": "TOV",
-        "name": "IBagoos",
-        "value": 3759093
+        "tag": "BNr",
+        "name": "cocoa",
+        "value": 3922138
       },
       {
         "rank": 84,
-        "tag": "YMG",
-        "name": "dh'h63",
-        "value": 3752483
+        "tag": "",
+        "name": "Hero: Rosa",
+        "value": 3865197
       },
       {
         "rank": 85,
+        "tag": "",
+        "name": "",
+        "value": 3857437
+      },
+      {
+        "rank": 86,
+        "tag": "Tov",
+        "name": "svo @#O3Q",
+        "value": 3838993
+      },
+      {
+        "rank": 87,
+        "tag": "YMG",
+        "name": "#h'h63",
+        "value": 3826478
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "ALCIZ",
+        "value": 3811235
+      },
+      {
+        "rank": 89,
+        "tag": "ALC",
+        "name": "MIOSKY",
+        "value": 3781422
+      },
+      {
+        "rank": 90,
+        "tag": "TOV",
+        "name": "Bagoos",
+        "value": 3769219
+      },
+      {
+        "rank": 91,
+        "tag": "BNr",
+        "name": "v!j7",
+        "value": 3768383
+      },
+      {
+        "rank": 92,
         "tag": "",
         "name": "Hero: Eric",
         "value": 3748070
       },
       {
-        "rank": 86,
-        "tag": "BNr",
-        "name": "< !) 7",
-        "value": 3741008
+        "rank": 93,
+        "tag": "GDC",
+        "name": "MachaGDc",
+        "value": 3730494
       },
       {
-        "rank": 87,
+        "rank": 94,
         "tag": "zoo",
-        "name": "lt> +Kiss SHOTT v =",
+        "name": "s Cpalat",
+        "value": 3718584
+      },
+      {
+        "rank": 95,
+        "tag": "zoo",
+        "name": "lt> lKiss SHOTT v =",
         "value": 3692085
       },
       {
-        "rank": 88,
-        "tag": "zoo",
-        "name": "s Up#l*t",
-        "value": 3687284
+        "rank": 96,
+        "tag": "TOV",
+        "name": "IKYYD",
+        "value": 3689460
       },
       {
-        "rank": 89,
-        "tag": "BNr",
-        "name": "choco",
-        "value": 3668643
-      },
-      {
-        "rank": 90,
-        "tag": "AUR",
-        "name": "L ! p?",
-        "value": 3663738
-      },
-      {
-        "rank": 91,
-        "tag": "ALC",
-        "name": "MIOSKY",
-        "value": 3648819
-      },
-      {
-        "rank": 92,
-        "tag": "ALC",
-        "name": "IZ < 45",
-        "value": 3629045
-      },
-      {
-        "rank": 93,
+        "rank": 97,
         "tag": "",
         "name": "Fermented",
         "value": 18800
       },
       {
-        "rank": 94,
-        "tag": "",
-        "name": "Hero: Eric",
-        "value": 7480
+        "rank": 98,
+        "tag": "ALC",
+        "name": "MIOSKY",
+        "value": 7814
       },
       {
-        "rank": 95,
+        "rank": 99,
         "tag": "",
         "name": "Hero Power",
         "value": 0
@@ -2590,576 +2626,564 @@
     "heros_total_power": [
       {
         "rank": 1,
-        "tag": "TOv",
+        "tag": "TOV",
         "name": "U phlis",
-        "value": 69637559
+        "value": 70366122
       },
       {
         "rank": 2,
-        "tag": "ALc",
-        "name": "Guita ALc@ 'J T%",
-        "value": 65716107
+        "tag": "ALC",
+        "name": "AF %",
+        "value": 66606452
       },
       {
         "rank": 3,
-        "tag": "ALC",
-        "name": "Beroncho",
-        "value": 62572644
+        "tag": "ALc",
+        "name": "Guita ALc@ 'J T%",
+        "value": 66456593
       },
       {
         "rank": 4,
         "tag": "ALC",
-        "name": "AC LazyCat",
-        "value": 56515610
+        "name": "Beroncho",
+        "value": 63515638
       },
       {
         "rank": 5,
-        "tag": "TOv",
-        "name": "U mhl@LA",
-        "value": 54598320
+        "tag": "ALC",
+        "name": "AC LazyCat",
+        "value": 57075513
       },
       {
         "rank": 6,
-        "tag": "GDc",
-        "name": "MASAGDc",
-        "value": 53330599
+        "tag": "TOv",
+        "name": "U mhl@LA",
+        "value": 54895222
       },
       {
         "rank": 7,
-        "tag": "TOV",
-        "name": "s C # hvaN",
-        "value": 51416936
+        "tag": "GDc",
+        "name": "MASAGDc",
+        "value": 53626675
       },
       {
         "rank": 8,
-        "tag": "YMG",
-        "name": "a >WJ <",
-        "value": 48546160
+        "tag": "VAN",
+        "name": "jv5 + vaN",
+        "value": 52415342
       },
       {
         "rank": 9,
-        "tag": "tov",
-        "name": "+ kw",
-        "value": 48065819
+        "tag": "zoo",
+        "name": "= > /N=",
+        "value": 51714603
       },
       {
         "rank": 10,
-        "tag": "ALC",
-        "name": "VJ > J",
-        "value": 47905780
+        "tag": "YMG",
+        "name": "sphsphx",
+        "value": 51300743
       },
       {
         "rank": 11,
-        "tag": "200jo",
-        "name": "924",
-        "value": 45170887
+        "tag": "",
+        "name": "DaNna",
+        "value": 50302796
       },
       {
         "rank": 12,
-        "tag": "ALc",
-        "name": "5 #nioah@#z",
-        "value": 44645724
+        "tag": "YMG",
+        "name": "a >VJ <",
+        "value": 48732821
       },
       {
         "rank": 13,
-        "tag": "MALc",
-        "name": "li@TItoz",
-        "value": 44513534
+        "tag": "tov",
+        "name": "t +w",
+        "value": 48617285
       },
       {
         "rank": 14,
-        "tag": "GDc",
-        "name": "SH+o? GDc",
-        "value": 43638613
+        "tag": "ALC",
+        "name": "VJ >",
+        "value": 47962578
       },
       {
         "rank": 15,
-        "tag": "TOv",
-        "name": "5 #a4h",
-        "value": 42800610
+        "tag": "200jo",
+        "name": "924",
+        "value": 45677817
       },
       {
         "rank": 16,
-        "tag": "YMG",
-        "name": "bIttw",
-        "value": 42670736
+        "tag": "ALc",
+        "name": "lii@#Itoz",
+        "value": 44939809
       },
       {
         "rank": 17,
-        "tag": "AL",
-        "name": "ClhT s@TIJoxm",
-        "value": 42273673
+        "tag": "ALC",
+        "name": "5 #no4h@itu",
+        "value": 44645724
       },
       {
         "rank": 18,
-        "tag": "BNr",
-        "name": "fatboy",
-        "value": 42162695
+        "tag": "",
+        "name": "KIto",
+        "value": 42830542
       },
       {
         "rank": 19,
-        "tag": "TOv",
-        "name": "--ozo@",
-        "value": 41914686
+        "tag": "BNr",
+        "name": "fatboy",
+        "value": 42282385
       },
       {
         "rank": 20,
         "tag": "TOv",
-        "name": "i? >hiltjwjtl",
-        "value": 40978426
+        "name": "--ozo@",
+        "value": 42146599
       },
       {
         "rank": 21,
-        "tag": "ALc",
-        "name": "Korn0512",
-        "value": 40562138
+        "tag": "Tov",
+        "name": "/Tr@\")+E",
+        "value": 41757339
       },
       {
         "rank": 22,
-        "tag": "YMG",
-        "name": "A (#-J",
-        "value": 39823877
+        "tag": "ALc",
+        "name": "Korn0512",
+        "value": 40628063
       },
       {
         "rank": 23,
-        "tag": "TOV",
-        "name": "hi 25 & vaN",
-        "value": 39636339
+        "tag": "VAN",
+        "name": "hi 256 + vaN",
+        "value": 40023383
       },
       {
         "rank": 24,
-        "tag": "Xbp",
-        "name": "> /1=+>",
-        "value": 39567214
+        "tag": "YMG",
+        "name": "(#-J",
+        "value": 39930155
       },
       {
         "rank": 25,
-        "tag": "",
-        "name": "sphnyJy-",
-        "value": 39399912
+        "tag": "Xbp",
+        "name": "> /=+>",
+        "value": 39567214
       },
       {
         "rank": 26,
-        "tag": "zoO",
-        "name": "z -tpj",
-        "value": 38702942
+        "tag": "zoo",
+        "name": "-t5",
+        "value": 39092984
       },
       {
         "rank": 27,
-        "tag": "YMG",
-        "name": "GaGa",
-        "value": 38576424
+        "tag": "VAN",
+        "name": "< 33",
+        "value": 38953221
       },
       {
         "rank": 28,
-        "tag": "TOv",
-        "name": "o) < & <",
-        "value": 38547624
+        "tag": "YMG",
+        "name": "GaGa",
+        "value": 38840532
       },
       {
         "rank": 29,
-        "tag": "tov",
-        "name": "ie_MRMAM4951N#",
-        "value": 38443757
+        "tag": "TOV",
+        "name": "o < 6 <",
+        "value": 38596826
       },
       {
         "rank": 30,
-        "tag": "ALC",
-        "name": "Gerry",
-        "value": 37394075
+        "tag": "tov",
+        "name": "A=IISwAMS.TRN &",
+        "value": 38475520
       },
       {
         "rank": 31,
+        "tag": "ALc",
+        "name": "Gerry",
+        "value": 37810068
+      },
+      {
+        "rank": 32,
         "tag": "TOv",
         "name": "h / JOrain",
         "value": 37374294
       },
       {
-        "rank": 32,
-        "tag": "Tov",
-        "name": "T _Fsph",
-        "value": 37285963
-      },
-      {
         "rank": 33,
-        "tag": "Tov",
-        "name": "t; 5vaN",
-        "value": 36797748
+        "tag": "VAN",
+        "name": "$v5+@JFAM",
+        "value": 37033690
       },
       {
         "rank": 34,
         "tag": "ALc",
-        "name": "C _ <",
-        "value": 36649179
+        "name": "C - <",
+        "value": 36941752
       },
       {
         "rank": 35,
-        "tag": "TOV",
-        "name": "HAKU",
-        "value": 36245465
+        "tag": "ALc",
+        "name": "riran777",
+        "value": 36658663
       },
       {
         "rank": 36,
-        "tag": "ALC",
-        "name": "riran777",
-        "value": 36085675
+        "tag": "TOV",
+        "name": "HAKU",
+        "value": 36289242
       },
       {
         "rank": 37,
-        "tag": "ALc",
+        "tag": "",
         "name": "steeb",
-        "value": 35758716
+        "value": 35942310
       },
       {
         "rank": 38,
-        "tag": "BNr",
-        "name": "zaku",
-        "value": 35745520
+        "tag": "VAN",
+        "name": "TTEE",
+        "value": 35866715
       },
       {
         "rank": 39,
-        "tag": "TOv",
-        "name": "TZEB",
-        "value": 35721417
+        "tag": "ALc",
+        "name": "IZ & 3U",
+        "value": 35789823
       },
       {
         "rank": 40,
         "tag": "ALc",
-        "name": "IZ & 3U8",
-        "value": 35437424
+        "name": "ltItka",
+        "value": 35770182
       },
       {
         "rank": 41,
         "tag": "BNr",
-        "name": "SR58k85",
-        "value": 35263152
+        "name": "SR58c85",
+        "value": 35597512
       },
       {
         "rank": 42,
-        "tag": "ALc",
-        "name": "MuRo Takenoko",
-        "value": 34966497
+        "tag": "GDC",
+        "name": "MachaGDc",
+        "value": 35589952
       },
       {
         "rank": 43,
-        "tag": "ALc",
-        "name": "tItta",
-        "value": 34758037
+        "tag": "BNr",
+        "name": "cocoa",
+        "value": 35507842
       },
       {
         "rank": 44,
-        "tag": "",
-        "name": "",
-        "value": 34734243
+        "tag": "ALc",
+        "name": "MuRo Takenoko",
+        "value": 35250620
       },
       {
         "rank": 45,
-        "tag": "ALc",
-        "name": "IZ < #5",
-        "value": 34708404
+        "tag": "BNr",
+        "name": "zaku",
+        "value": 35188884
       },
       {
         "rank": 46,
-        "tag": "zoo",
-        "name": "lnz # lh@tIuija",
-        "value": 34680008
+        "tag": "ALc",
+        "name": "+ 5 / EME",
+        "value": 35158011
       },
       {
         "rank": 47,
-        "tag": "ALc",
-        "name": "tI+ozIA",
-        "value": 34643340
+        "tag": "VAN",
+        "name": "+vs+t\" 3",
+        "value": 35049240
       },
       {
         "rank": 48,
-        "tag": "zoo",
-        "name": "+ 5 / EHB",
-        "value": 34564740
+        "tag": "ALc",
+        "name": "tI+ozfla",
+        "value": 34926428
       },
       {
         "rank": 49,
-        "tag": "TOv",
-        "name": "< 33",
-        "value": 34283307
+        "tag": "ALc",
+        "name": "IZ < #5",
+        "value": 34888311
       },
       {
         "rank": 50,
-        "tag": "GDc",
-        "name": "+65",
-        "value": 34036867
+        "tag": "zoo",
+        "name": "ln-#lh@tIuisa",
+        "value": 34680008
       },
       {
         "rank": 51,
-        "tag": "TOv",
-        "name": "jAE",
-        "value": 34017520
+        "tag": "zoo",
+        "name": "jizIshlh",
+        "value": 34483317
       },
       {
         "rank": 52,
-        "tag": "ALc",
-        "name": "+ECph",
-        "value": 33929544
+        "tag": "GDc",
+        "name": "a65",
+        "value": 34275698
       },
       {
         "rank": 53,
         "tag": "ALc",
-        "name": "Jirou",
-        "value": 33706199
+        "name": "+EC+h",
+        "value": 34222125
       },
       {
         "rank": 54,
         "tag": "Tov",
-        "name": ") FWJ",
-        "value": 33696209
+        "name": "jAE",
+        "value": 34208682
       },
       {
         "rank": 55,
-        "tag": "TOV",
-        "name": "JICK",
-        "value": 33556799
+        "tag": "VAN",
+        "name": "/ #WJ",
+        "value": 34150174
       },
       {
         "rank": 56,
-        "tag": "ALC",
-        "name": "o3^@#02",
-        "value": 33454267
+        "tag": "ALc",
+        "name": "o3^@402",
+        "value": 33901579
       },
       {
         "rank": 57,
-        "tag": "ALC",
-        "name": "> 7",
-        "value": 33420524
+        "tag": "ALc",
+        "name": "thEF RBF",
+        "value": 33722627
       },
       {
         "rank": 58,
-        "tag": "Tov",
-        "name": "zJvt.75tF",
-        "value": 32998799
+        "tag": "TOv",
+        "name": "JICK",
+        "value": 33631734
       },
       {
         "rank": 59,
-        "tag": "ALc",
-        "name": "Yul@# O Z",
-        "value": 32939775
+        "tag": "ALC",
+        "name": "/> ?",
+        "value": 33625194
       },
       {
         "rank": 60,
-        "tag": "ALc",
-        "name": "coffee",
-        "value": 32934100
+        "tag": "tov",
+        "name": "zjvt .751F",
+        "value": 33575182
       },
       {
         "rank": 61,
-        "tag": "VAN",
-        "name": "SEL !9vaN RE;BORN",
-        "value": 32826274
+        "tag": "ALC",
+        "name": "C 1 &0 Ixx",
+        "value": 33296476
       },
       {
         "rank": 62,
-        "tag": "ALC",
-        "name": "Hh6#30653h27 ) 7m",
-        "value": 32738592
+        "tag": "ALc",
+        "name": "coffee",
+        "value": 33264647
       },
       {
         "rank": 63,
-        "tag": "BNr",
-        "name": "choco",
-        "value": 32555514
+        "tag": "ALC",
+        "name": "YUI",
+        "value": 33183198
       },
       {
         "rank": 64,
-        "tag": "",
-        "name": "COCO",
-        "value": 32454133
+        "tag": "BNr",
+        "name": "choco",
+        "value": 33116436
       },
       {
         "rank": 65,
-        "tag": "zoo",
-        "name": "s Cp#l+t",
-        "value": 32410547
+        "tag": "",
+        "name": "GOCO?",
+        "value": 32889787
       },
       {
         "rank": 66,
+        "tag": "TOV",
+        "name": "shinon",
+        "value": 32597772
+      },
+      {
+        "rank": 67,
+        "tag": "zoo",
+        "name": "s Cp#l*t",
+        "value": 32521605
+      },
+      {
+        "rank": 68,
         "tag": "",
         "name": "J+yta",
         "value": 32371720
       },
       {
-        "rank": 67,
-        "tag": "ALC",
-        "name": "Bad",
-        "value": 32192573
-      },
-      {
-        "rank": 68,
-        "tag": "YMG",
-        "name": "s 94",
-        "value": 32183252
-      },
-      {
         "rank": 69,
-        "tag": "",
-        "name": "Waw",
-        "value": 32142066
+        "tag": "YMG",
+        "name": "s+#",
+        "value": 32366582
       },
       {
         "rank": 70,
-        "tag": "GDc",
+        "tag": "GDC",
         "name": "SH+MAGDc",
-        "value": 32110342
+        "value": 32308635
       },
       {
         "rank": 71,
         "tag": "TOV",
         "name": "Ipochi",
-        "value": 32093781
+        "value": 32278554
       },
       {
         "rank": 72,
         "tag": "TOV",
         "name": "PHYZ",
-        "value": 32051348
+        "value": 32249048
       },
       {
         "rank": 73,
-        "tag": "ToV",
-        "name": "Ishinon",
-        "value": 32003215
+        "tag": "ALC",
+        "name": "Bad",
+        "value": 32213648
       },
       {
         "rank": 74,
-        "tag": "ALC",
-        "name": "IR+AJL",
-        "value": 31918570
+        "tag": "",
+        "name": "",
+        "value": 32142066
       },
       {
         "rank": 75,
-        "tag": "YMG",
-        "name": "- /1=",
-        "value": 31814452
+        "tag": "",
+        "name": "",
+        "value": 32109516
       },
       {
         "rank": 76,
-        "tag": "zoo",
-        "name": "jia& h",
-        "value": 31810662
+        "tag": "VAN",
+        "name": "TEt3s & vaN",
+        "value": 32048743
       },
       {
         "rank": 77,
         "tag": "zoo",
         "name": "Wall Sina",
-        "value": 31644491
+        "value": 31876244
       },
       {
         "rank": 78,
-        "tag": "TOv",
-        "name": "jv\"5 & vaN",
-        "value": 31580347
+        "tag": "YMG",
+        "name": "? - /1_",
+        "value": 31814452
       },
       {
         "rank": 79,
         "tag": "ALC",
         "name": "shibuyas",
-        "value": 31552644
+        "value": 31685034
       },
       {
         "rank": 80,
-        "tag": "GDc",
-        "name": "S LiZEBe/GDc",
-        "value": 31371130
+        "tag": "GDC",
+        "name": "Iz LiZE8e/ TIJozi",
+        "value": 31558378
       },
       {
         "rank": 81,
-        "tag": "ALc",
-        "name": "jahSph",
-        "value": 31369226
+        "tag": "",
+        "name": "",
+        "value": 31496300
       },
       {
         "rank": 82,
-        "tag": "ALC",
-        "name": "Rainbow",
-        "value": 31369187
+        "tag": "VA",
+        "name": "Nj#hSph",
+        "value": 31480106
       },
       {
         "rank": 83,
         "tag": "TOV",
         "name": "Bagoos",
-        "value": 31299933
+        "value": 31358105
       },
       {
         "rank": 84,
-        "tag": "TOV",
-        "name": "bukkiTov",
-        "value": 31248941
+        "tag": "",
+        "name": "JrvaN",
+        "value": 31308626
       },
       {
         "rank": 85,
-        "tag": "TOV",
-        "name": "KID vaN",
-        "value": 31194559
+        "tag": "BNr",
+        "name": "Nuts",
+        "value": 31306132
       },
       {
         "rank": 86,
-        "tag": "BNr",
-        "name": "Nuts",
-        "value": 31184928
+        "tag": "zoo",
+        "name": "3h <WhereDoWeGo?",
+        "value": 31273400
       },
       {
         "rank": 87,
-        "tag": "zoo",
-        "name": "Sh ~ WhereDoWeGo?",
-        "value": 31068082
+        "tag": "TO",
+        "name": "VlbukkiTov",
+        "value": 31269591
       },
       {
         "rank": 88,
-        "tag": "ALC",
-        "name": "MIOSKY",
-        "value": 30955663
+        "tag": "VAN",
+        "name": "KID vaN",
+        "value": 31264559
       },
       {
         "rank": 89,
         "tag": "Tov",
-        "name": "ozo",
-        "value": 30937453
+        "name": "o7o",
+        "value": 31197519
       },
       {
         "rank": 90,
-        "tag": "YMG",
-        "name": "S, < 9I+",
-        "value": 30884883
+        "tag": "ALC",
+        "name": "MIOSKY",
+        "value": 31169473
       },
       {
         "rank": 91,
-        "tag": "YMG",
-        "name": "sphSphs",
-        "value": 300743
+        "tag": "VA",
+        "name": "Nj#hSph",
+        "value": 480106
       },
       {
         "rank": 92,
-        "tag": "Tov",
-        "name": "7 4(r@u+E",
-        "value": 140797
+        "tag": "TOv",
+        "name": "I)  > hLTjil",
+        "value": 188851
       },
       {
         "rank": 93,
-        "tag": "zoo",
-        "name": "l3ih < WhereDoWeGo?",
-        "value": 68082
+        "tag": "",
+        "name": "Fermented Syrup",
+        "value": 65600
       },
       {
         "rank": 94,
-        "tag": "",
-        "name": "Fermented",
-        "value": 48800
-      },
-      {
-        "rank": 95,
-        "tag": "ALC",
-        "name": "A %",
-        "value": 44404
-      },
-      {
-        "rank": 96,
         "tag": "",
         "name": "Hero's Total Power",
         "value": 0
@@ -3176,13 +3200,13 @@
         "rank": 2,
         "tag": "ALC",
         "name": "AC LazyCat",
-        "value": 20876760
+        "value": 20927160
       },
       {
         "rank": 3,
-        "tag": "",
-        "name": "8 : IJ",
-        "value": 19841040
+        "tag": "ALC",
+        "name": "FF %",
+        "value": 19889280
       },
       {
         "rank": 4,
@@ -3192,15 +3216,15 @@
       },
       {
         "rank": 5,
-        "tag": "TOv",
-        "name": "s C #hvaN",
+        "tag": "VAN",
+        "name": "+vs + vaN",
         "value": 19589640
       },
       {
         "rank": 6,
         "tag": "TOv",
         "name": "U mhl@Ln",
-        "value": 18063960
+        "value": 18138120
       },
       {
         "rank": 7,
@@ -3211,521 +3235,533 @@
       {
         "rank": 8,
         "tag": "ALC",
-        "name": "VJ > 7",
-        "value": 17887680
+        "name": "WJ > 7",
+        "value": 17908440
       },
       {
         "rank": 9,
-        "tag": "",
-        "name": "sphnyoy-",
-        "value": 17715120
+        "tag": "ToV",
+        "name": "shinon",
+        "value": 17809680
       },
       {
         "rank": 10,
-        "tag": "tov",
-        "name": "+ F",
-        "value": 17617920
+        "tag": "VAN",
+        "name": "ro_?6 &",
+        "value": 17751840
       },
       {
         "rank": 11,
-        "tag": "ToV",
-        "name": "shinon",
-        "value": 17599440
+        "tag": "Tov",
+        "name": "+ kw",
+        "value": 17641680
       },
       {
         "rank": 12,
         "tag": "zoo",
-        "name": "z >A=",
-        "value": 17451840
+        "name": "> /NF",
+        "value": 17482800
       },
       {
         "rank": 13,
-        "tag": "GDC",
-        "name": "SH+O? GDc",
+        "tag": "GDc",
+        "name": "SH+o? GDc",
         "value": 17262600
       },
       {
         "rank": 14,
-        "tag": "ALc",
+        "tag": "ALC",
         "name": "Gerry",
-        "value": 17087640
+        "value": 17118600
       },
       {
         "rank": 15,
-        "tag": "Tov",
-        "name": "z74r@\"+E",
-        "value": 16994760
+        "tag": "ALC",
+        "name": "Korn0512",
+        "value": 16995840
       },
       {
         "rank": 16,
+        "tag": "Tov",
+        "name": "z 4r@\")+E",
+        "value": 16994760
+      },
+      {
+        "rank": 17,
         "tag": "YMG",
         "name": "sphsphx",
         "value": 16987680
       },
       {
-        "rank": 17,
-        "tag": "TOv",
-        "name": "o) < & <",
-        "value": 16926240
-      },
-      {
         "rank": 18,
-        "tag": "ALc",
-        "name": "Korn0512",
-        "value": 16875600
+        "tag": "zoo",
+        "name": "/ -t5",
+        "value": 16972080
       },
       {
         "rank": 19,
-        "tag": "BNr",
-        "name": "SR580n8s",
-        "value": 16758960
+        "tag": "GDc",
+        "name": "bIt7w",
+        "value": 16957560
       },
       {
         "rank": 20,
         "tag": "TOv",
-        "name": "5 ##th",
-        "value": 16708920
+        "name": "o) < 6 <",
+        "value": 16926240
       },
       {
         "rank": 21,
-        "tag": "Tov",
-        "name": "zvt.75t",
-        "value": 16436160
+        "tag": "BNr",
+        "name": "SR58cn8s",
+        "value": 16843920
       },
       {
         "rank": 22,
+        "tag": "TOv",
+        "name": "5 444h",
+        "value": 16732680
+      },
+      {
+        "rank": 23,
+        "tag": "Tov",
+        "name": "z3v$.7511",
+        "value": 16472160
+      },
+      {
+        "rank": 24,
+        "tag": "zoo",
+        "name": "jizIshlh",
+        "value": 16428120
+      },
+      {
+        "rank": 25,
+        "tag": "zoo",
+        "name": "Uniqlo",
+        "value": 16409280
+      },
+      {
+        "rank": 26,
         "tag": "YMG",
         "name": "GaGa",
         "value": 16400760
       },
       {
-        "rank": 23,
+        "rank": 27,
+        "tag": "BNr",
+        "name": "zaku",
+        "value": 16364040
+      },
+      {
+        "rank": 28,
         "tag": "TOv",
         "name": "-vozo@",
         "value": 16348080
       },
       {
-        "rank": 24,
-        "tag": "ALC",
-        "name": "AR*3@853h27 ) Ji",
-        "value": 16321920
-      },
-      {
-        "rank": 25,
-        "tag": "ALc",
-        "name": "IZ & ?U",
-        "value": 16314000
-      },
-      {
-        "rank": 26,
-        "tag": "Tov",
-        "name": "h>+-+",
-        "value": 16305360
-      },
-      {
-        "rank": 27,
-        "tag": "YMG",
-        "name": "a >IJ <",
-        "value": 16253040
-      },
-      {
-        "rank": 28,
-        "tag": "TOv",
-        "name": "h / JO)rain",
-        "value": 16232160
-      },
-      {
         "rank": 29,
-        "tag": "zoo",
-        "name": "<Jl?Jl",
-        "value": 16222680
+        "tag": "VAN",
+        "name": "->+-6",
+        "value": 16329840
       },
       {
         "rank": 30,
-        "tag": "zoo",
-        "name": "Kirindo",
-        "value": 16182720
+        "tag": "ALC",
+        "name": "Hh630653697 ) Ji",
+        "value": 16321920
       },
       {
         "rank": 31,
-        "tag": "YMG",
-        "name": "s9 4",
-        "value": 16060200
+        "tag": "ALc",
+        "name": "IZ & 3U",
+        "value": 16314000
       },
       {
         "rank": 32,
-        "tag": "2o0jo",
-        "name": "924",
-        "value": 16050960
+        "tag": "YMG",
+        "name": "a >VJ <",
+        "value": 16253040
       },
       {
         "rank": 33,
-        "tag": "GDC",
-        "name": "GGGGDc",
-        "value": 16029120
+        "tag": "",
+        "name": "",
+        "value": 16234200
       },
       {
         "rank": 34,
-        "tag": "TOv",
-        "name": "t 5vaN",
-        "value": 16020240
+        "tag": "TOV",
+        "name": "hh / JOrain",
+        "value": 16232160
       },
       {
         "rank": 35,
-        "tag": "ALc",
-        "name": "+ECph",
-        "value": 16009560
+        "tag": "YMG",
+        "name": "s +4",
+        "value": 16144440
       },
       {
         "rank": 36,
-        "tag": "ALc",
-        "name": "coffee",
-        "value": 16004040
+        "tag": "2o0jo",
+        "name": "924",
+        "value": 16086960
       },
       {
         "rank": 37,
-        "tag": "ALc",
-        "name": "lui@tItoz",
-        "value": 16003680
+        "tag": "BNr",
+        "name": "o3WS#m",
+        "value": 16059600
       },
       {
         "rank": 38,
         "tag": "ALC",
         "name": "MuRoTakenoko",
-        "value": 16003200
+        "value": 16051440
       },
       {
         "rank": 39,
-        "tag": "BNr",
-        "name": "- JiTLtiantin",
-        "value": 15999120
+        "tag": "ALc",
+        "name": "+ECPh",
+        "value": 16045560
       },
       {
         "rank": 40,
-        "tag": "YMG",
-        "name": "l (#-J",
-        "value": 15961920
+        "tag": "GDC",
+        "name": "GGGGDc",
+        "value": 16044240
       },
       {
         "rank": 41,
-        "tag": "zoo",
-        "name": "s Cpalst",
-        "value": 15941280
+        "tag": "YMG",
+        "name": "(#-JL",
+        "value": 16023120
       },
       {
         "rank": 42,
+        "tag": "VAN",
+        "name": "$vs+@JF4M",
+        "value": 16020240
+      },
+      {
+        "rank": 43,
+        "tag": "ALc",
+        "name": "lui@TItox",
+        "value": 16003680
+      },
+      {
+        "rank": 44,
+        "tag": "zoo",
+        "name": "s Cp#l*t",
+        "value": 15941280
+      },
+      {
+        "rank": 45,
+        "tag": "zoo",
+        "name": "Tsukajack",
+        "value": 15934080
+      },
+      {
+        "rank": 46,
         "tag": "Tov",
         "name": "jaE",
         "value": 15907200
       },
       {
-        "rank": 43,
+        "rank": 47,
         "tag": "ALc",
-        "name": "~",
+        "name": "Z",
         "value": 15906360
       },
       {
-        "rank": 44,
+        "rank": 48,
         "tag": "zoo",
-        "name": "3h < WhereDoWeGo?",
+        "name": "lsh < WhereDoWeGo?",
         "value": 15904920
       },
       {
-        "rank": 45,
+        "rank": 49,
         "tag": "ALc",
-        "name": "C - <",
+        "name": "C _ <",
         "value": 15888360
       },
       {
-        "rank": 46,
-        "tag": "LTov",
+        "rank": 50,
+        "tag": "TOv",
         "name": "T =Fsph",
         "value": 15884040
       },
       {
-        "rank": 47,
-        "tag": "zoo",
-        "name": "Tsukajack",
-        "value": 15848640
-      },
-      {
-        "rank": 48,
+        "rank": 51,
         "tag": "GDC",
         "name": "MachaGDc",
         "value": 15848400
       },
       {
-        "rank": 49,
+        "rank": 52,
         "tag": "ALc",
-        "name": "tItta",
+        "name": "tItt&",
         "value": 15837120
       },
       {
-        "rank": 50,
-        "tag": "ALc",
-        "name": "5wly",
-        "value": 15822960
-      },
-      {
-        "rank": 51,
-        "tag": "YMG",
-        "name": "@-x",
-        "value": 15816240
-      },
-      {
-        "rank": 52,
-        "tag": "YMG",
-        "name": "RMNFIZ",
-        "value": 15778320
-      },
-      {
         "rank": 53,
-        "tag": "TOv",
-        "name": "i? >Jiltjvtl",
-        "value": 15767040
+        "tag": "YMG",
+        "name": "z EER @7=x",
+        "value": 15828480
       },
       {
         "rank": 54,
-        "tag": "ALC",
-        "name": "C + &l xx",
-        "value": 15762240
+        "tag": "2oO",
+        "name": "5&h)",
+        "value": 15822960
       },
       {
         "rank": 55,
+        "tag": "TOv",
+        "name": "i?->hiltjiml",
+        "value": 15791520
+      },
+      {
+        "rank": 56,
+        "tag": "YMG",
+        "name": "EMNFI2",
+        "value": 15778320
+      },
+      {
+        "rank": 57,
+        "tag": "ALC",
+        "name": "C p &1 Ixx",
+        "value": 15762240
+      },
+      {
+        "rank": 58,
         "tag": "GDC",
         "name": "SH+MAGDc",
         "value": 15755880
       },
       {
-        "rank": 56,
-        "tag": "ALc",
-        "name": "jahsph",
+        "rank": 59,
+        "tag": "VA",
+        "name": "Nj#hsph",
         "value": 15740400
       },
       {
-        "rank": 57,
+        "rank": 60,
         "tag": "BNr",
         "name": "fatboy",
         "value": 15671400
       },
       {
-        "rank": 58,
-        "tag": "YMG",
-        "name": "#RE",
-        "value": 15619800
-      },
-      {
-        "rank": 59,
-        "tag": "ALC",
-        "name": "MIRADY",
-        "value": 15602040
-      },
-      {
-        "rank": 60,
-        "tag": "ALc",
-        "name": "nhxeo",
-        "value": 15586320
-      },
-      {
         "rank": 61,
-        "tag": "Tov",
-        "name": "sy. @#O3R",
-        "value": 15581400
+        "tag": "AUR",
+        "name": "S n#h",
+        "value": 15669720
       },
       {
         "rank": 62,
         "tag": "",
-        "name": "COCO",
-        "value": 15579720
+        "name": "COGOl",
+        "value": 15664680
       },
       {
         "rank": 63,
-        "tag": "",
-        "name": "",
-        "value": 15576360
+        "tag": "YMG",
+        "name": "#ERE",
+        "value": 15649320
       },
       {
         "rank": 64,
+        "tag": "ALc",
+        "name": "++016",
+        "value": 15638760
+      },
+      {
+        "rank": 65,
+        "tag": "ALC",
+        "name": "MIRADY",
+        "value": 15626520
+      },
+      {
+        "rank": 66,
+        "tag": "ALc",
+        "name": "n hz6o",
+        "value": 15586320
+      },
+      {
+        "rank": 67,
+        "tag": "Tov",
+        "name": "b $ . @#0-iQ",
+        "value": 15581400
+      },
+      {
+        "rank": 68,
         "tag": "tovltI",
         "name": "oxiot+-",
         "value": 15564720
       },
       {
-        "rank": 65,
+        "rank": 69,
         "tag": "GDc",
-        "name": "+55",
+        "name": "a$5",
         "value": 15559200
       },
       {
-        "rank": 66,
+        "rank": 70,
         "tag": "zoo",
-        "name": "jia+h",
+        "name": "jis & h",
         "value": 15544200
       },
       {
-        "rank": 67,
+        "rank": 71,
         "tag": "GDc",
-        "name": "JL _",
+        "name": "L _ +58",
         "value": 15543840
       },
       {
-        "rank": 68,
+        "rank": 72,
         "tag": "ALc",
-        "name": "tI+ozIla",
+        "name": "tI+ozIha",
         "value": 15541200
       },
       {
-        "rank": 69,
+        "rank": 73,
         "tag": "BNr",
         "name": "cocoa",
         "value": 15529920
       },
       {
-        "rank": 70,
+        "rank": 74,
         "tag": "ALc",
         "name": "amuro0123",
         "value": 15509520
       },
       {
-        "rank": 71,
+        "rank": 75,
         "tag": "YMG",
-        "name": "- /1 _",
+        "name": "- /1=",
         "value": 15509040
       },
       {
-        "rank": 72,
-        "tag": "tov",
-        "name": "#-DISwAMiSATRN &",
-        "value": 15486960
+        "rank": 76,
+        "tag": "YMG",
+        "name": "lh's",
+        "value": 15434160
       },
       {
-        "rank": 73,
-        "tag": "TOv",
-        "name": ") #WJ",
-        "value": 15468600
+        "rank": 77,
+        "tag": "YMG",
+        "name": "5 >",
+        "value": 15412680
       },
       {
-        "rank": 74,
+        "rank": 78,
         "tag": "ALc",
-        "name": "lps5hrr",
+        "name": "lPs5hrr",
         "value": 15408240
       },
       {
-        "rank": 75,
-        "tag": "YMG",
-        "name": "lh's",
-        "value": 15397440
-      },
-      {
-        "rank": 76,
+        "rank": 79,
         "tag": "GDC",
         "name": "MooferdGDc",
         "value": 15388200
       },
       {
-        "rank": 77,
+        "rank": 80,
         "tag": "YMG",
         "name": "BOM BAY",
-        "value": 15362520
+        "value": 15387000
       },
       {
-        "rank": 78,
+        "rank": 81,
+        "tag": "BNr",
+        "name": "Nuts",
+        "value": 15362040
+      },
+      {
+        "rank": 82,
         "tag": "",
         "name": "JrvaN",
         "value": 15353280
       },
       {
-        "rank": 79,
-        "tag": "YMG",
-        "name": "5 >",
-        "value": 15341280
-      },
-      {
-        "rank": 80,
-        "tag": "zoo",
-        "name": "+ 5 /EFE",
+        "rank": 83,
+        "tag": "ALc",
+        "name": "+ 5 / EME",
         "value": 15337800
       },
       {
-        "rank": 81,
+        "rank": 84,
         "tag": "ALC",
         "name": "unidy",
         "value": 15325440
       },
       {
-        "rank": 82,
+        "rank": 85,
         "tag": "ALC",
-        "name": "/> ?",
+        "name": "/>",
         "value": 15297960
       },
       {
-        "rank": 83,
-        "tag": "BNr",
-        "name": "Nuts",
-        "value": 15294000
+        "rank": 86,
+        "tag": "GDc",
+        "name": "st?b",
+        "value": 15286680
       },
       {
-        "rank": 84,
-        "tag": "ALc",
+        "rank": 87,
+        "tag": "TOV",
+        "name": "JICK",
+        "value": 15276960
+      },
+      {
+        "rank": 88,
+        "tag": "",
         "name": "steeb",
         "value": 15275280
       },
       {
-        "rank": 85,
+        "rank": 89,
         "tag": "BNr",
         "name": "Rhinoceros",
         "value": 15258720
       },
       {
-        "rank": 86,
+        "rank": 90,
         "tag": "Xbp",
-        "name": "> AZ+>",
+        "name": "> /=+>",
         "value": 15248400
       },
       {
-        "rank": 87,
+        "rank": 91,
         "tag": "TOV",
         "name": "KYYD",
         "value": 15245160
       },
       {
-        "rank": 88,
+        "rank": 92,
+        "tag": "YMG",
+        "name": "a 3=",
+        "value": 15241680
+      },
+      {
+        "rank": 93,
         "tag": "GDC",
         "name": "RaiKey GDc",
         "value": 15236880
       },
       {
-        "rank": 89,
-        "tag": "ALc",
-        "name": "lhf b@f-IJoxhx",
-        "value": 15235200
-      },
-      {
-        "rank": 90,
-        "tag": "YMG",
-        "name": "a 3=",
-        "value": 15217200
-      },
-      {
-        "rank": 91,
-        "tag": "TOv",
-        "name": "JICK",
-        "value": 15204240
-      },
-      {
-        "rank": 92,
+        "rank": 94,
         "tag": "ALC",
         "name": "Beroncho",
         "value": 157560
       },
       {
-        "rank": 93,
+        "rank": 95,
         "tag": "",
-        "name": "Fermented Syrup",
-        "value": 20124
+        "name": "Fermented",
+        "value": 20122
       },
       {
-        "rank": 94,
+        "rank": 96,
         "tag": "",
         "name": "Total Pet Power",
         "value": 0
@@ -3734,522 +3770,534 @@
     "mystic_trial": [
       {
         "rank": 1,
-        "tag": "ALC",
-        "name": "AF %",
-        "value": 6846
+        "tag": "ALc",
+        "name": "Guita ALc@ 7 7&;",
+        "value": 2412
       },
       {
         "rank": 2,
-        "tag": "ALc",
-        "name": "Guita ALc@ 7 7&;",
-        "value": 2410
+        "tag": "Tov",
+        "name": "Cmhlis",
+        "value": 2315
       },
       {
         "rank": 3,
-        "tag": "TOv",
-        "name": "C mhlis",
-        "value": 2315
+        "tag": "ALC",
+        "name": "AF %",
+        "value": 2308
       },
       {
         "rank": 4,
         "tag": "ALC",
         "name": "Beroncho",
-        "value": 2284
+        "value": 2292
       },
       {
         "rank": 5,
         "tag": "ALC",
         "name": "AC LazyCat",
-        "value": 2257
+        "value": 2266
       },
       {
         "rank": 6,
-        "tag": "TOV",
-        "name": "ss C #hvaN",
-        "value": 2044
+        "tag": "",
+        "name": "vaN",
+        "value": 2048
       },
       {
         "rank": 7,
         "tag": "zoo",
-        "name": "5 >AF",
-        "value": 1977
+        "name": "5 > A1F",
+        "value": 2030
       },
       {
         "rank": 8,
         "tag": "TOv",
         "name": "U mhl@LA",
-        "value": 1966
+        "value": 1970
       },
       {
         "rank": 9,
         "tag": "YMG",
-        "name": "sphSphs",
+        "name": "sphSphx",
         "value": 1939
       },
       {
         "rank": 10,
         "tag": "ALC",
-        "name": "3#bb&h@#ta",
+        "name": "5 #ho4h@ttu",
         "value": 1905
       },
       {
         "rank": 11,
         "tag": "GDc",
         "name": "MASAGDc",
-        "value": 1891
+        "value": 1904
       },
       {
         "rank": 12,
         "tag": "Tov",
-        "name": "/ (r@u+\u20ac",
-        "value": 1860
+        "name": "7(7@u)+E",
+        "value": 1880
       },
       {
         "rank": 13,
         "tag": "ALc",
         "name": "lui@tItox",
-        "value": 1831
+        "value": 1839
       },
       {
         "rank": 14,
-        "tag": "ALc",
+        "tag": "YMG",
+        "name": "a >V <",
+        "value": 1807
+      },
+      {
+        "rank": 15,
+        "tag": "ALC",
         "name": "Korn0512",
         "value": 1805
       },
       {
-        "rank": 15,
-        "tag": "YMG",
-        "name": "a >VJ <",
-        "value": 1780
-      },
-      {
         "rank": 16,
         "tag": "ALC",
-        "name": "VJ > ?",
-        "value": 1777
+        "name": "J > ?",
+        "value": 1783
       },
       {
         "rank": 17,
-        "tag": "YMG",
-        "name": "nIs-",
-        "value": 1702
+        "tag": "Tov",
+        "name": "t lw",
+        "value": 1780
       },
       {
         "rank": 18,
-        "tag": "ALc",
-        "name": "Gerry",
-        "value": 1699
+        "tag": "TOv",
+        "name": "--ozo@",
+        "value": 1751
       },
       {
         "rank": 19,
-        "tag": "TOv",
-        "name": "t 5vaN",
-        "value": 1669
+        "tag": "GDc",
+        "name": "bIt",
+        "value": 1722
       },
       {
         "rank": 20,
-        "tag": "z0O",
-        "name": "z _tj",
-        "value": 1668
+        "tag": "ALC",
+        "name": "Gerry",
+        "value": 1707
       },
       {
         "rank": 21,
-        "tag": "ALc",
-        "name": "lhts@tIJozi",
-        "value": 1657
+        "tag": "VAN",
+        "name": "g9s+@JF4Y",
+        "value": 1678
       },
       {
         "rank": 22,
-        "tag": "YMG",
-        "name": "GaGa",
-        "value": 1655
+        "tag": "z0O",
+        "name": "z -tj",
+        "value": 1670
       },
       {
         "rank": 23,
-        "tag": "Xbp",
-        "name": "> /=+ >",
-        "value": 1653
+        "tag": "VAN",
+        "name": "ro_35 +",
+        "value": 1664
       },
       {
         "rank": 24,
-        "tag": "Tov",
-        "name": "jo) < 6 <",
-        "value": 1644
+        "tag": "YMG",
+        "name": "GaGa",
+        "value": 1663
       },
       {
         "rank": 25,
-        "tag": "BNr",
-        "name": "fatboy",
-        "value": 1642
+        "tag": "TOv",
+        "name": "5 444h",
+        "value": 1662
       },
       {
         "rank": 26,
-        "tag": "TOv",
-        "name": "i? >hiltjijtl",
-        "value": 1606
+        "tag": "Xbp",
+        "name": "> A=+>",
+        "value": 1653
       },
       {
         "rank": 27,
-        "tag": "tov",
-        "name": "_HSwAMAsAT4RN %",
-        "value": 1601
+        "tag": "Tov",
+        "name": "o) < 6 <",
+        "value": 1650
       },
       {
         "rank": 28,
-        "tag": "TOV",
-        "name": "< 33",
-        "value": 1597
+        "tag": "TOv",
+        "name": "i? >miltjujipl",
+        "value": 1614
       },
       {
         "rank": 29,
         "tag": "YMG",
-        "name": "A (t-J",
-        "value": 1596
+        "name": "l (#-JL",
+        "value": 1611
       },
       {
         "rank": 30,
         "tag": "ALc",
-        "name": "C - <",
-        "value": 1590
+        "name": "C _ <",
+        "value": 1605
       },
       {
         "rank": 31,
-        "tag": "BNr",
-        "name": "SR586n8S",
-        "value": 1585
+        "tag": "tov",
+        "name": "ie_#RMAM49514#",
+        "value": 1604
       },
       {
         "rank": 32,
-        "tag": "TOv",
-        "name": "hh / JO)rain",
-        "value": 1548
+        "tag": "BNr",
+        "name": "SRS 8c85",
+        "value": 1594
       },
       {
         "rank": 33,
         "tag": "TOv",
-        "name": "T _ Fsph",
-        "value": 1534
+        "name": "ah / JOrain",
+        "value": 1571
       },
       {
         "rank": 34,
-        "tag": "GDc",
-        "name": "SH+o? GDc",
-        "value": 1533
+        "tag": "2oojo",
+        "name": "924",
+        "value": 1569
       },
       {
         "rank": 35,
         "tag": "ALc",
-        "name": "tI+ozIla",
-        "value": 1531
+        "name": "ltI+ozIha",
+        "value": 1552
       },
       {
         "rank": 36,
-        "tag": "YMG",
-        "name": "- /1=",
-        "value": 1527
+        "tag": "GDC",
+        "name": "SH+o? GDc",
+        "value": 1550
       },
       {
         "rank": 37,
-        "tag": "",
-        "name": "IALCHhE#3065369\" ) Ji",
-        "value": 1521
+        "tag": "Tov",
+        "name": "T =Fsph",
+        "value": 1535
       },
       {
         "rank": 38,
-        "tag": "ALc",
-        "name": "IZ & 3U",
-        "value": 1512
+        "tag": "ALC",
+        "name": "IAT-= 30853/71 / 7",
+        "value": 1531
       },
       {
         "rank": 39,
-        "tag": "ALc",
-        "name": "ltItta",
-        "value": 1509
+        "tag": "YMG",
+        "name": ") - /1=",
+        "value": 1528
       },
       {
         "rank": 40,
-        "tag": "TOv",
-        "name": ") FWJ",
-        "value": 1478
+        "tag": "ALc",
+        "name": "tItta",
+        "value": 1523
       },
       {
         "rank": 41,
-        "tag": "TOV",
-        "name": "JICK",
-        "value": 1475
+        "tag": "VAN",
+        "name": "/ #WJ",
+        "value": 1500
       },
       {
         "rank": 42,
-        "tag": "zoo",
-        "name": "jizIFhCh",
-        "value": 1470
+        "tag": "VAN",
+        "name": "+\" 256 & vaN",
+        "value": 1493
       },
       {
         "rank": 43,
-        "tag": "ToV",
-        "name": "shinon",
-        "value": 1459
+        "tag": "",
+        "name": "J+yta",
+        "value": 1487
       },
       {
         "rank": 44,
         "tag": "zoo",
-        "name": "Uniqlo",
-        "value": 1452
+        "name": "jlzIshlh",
+        "value": 1482
       },
       {
         "rank": 45,
-        "tag": "",
-        "name": "EZA;",
-        "value": 1439
+        "tag": "ToV",
+        "name": "shinon",
+        "value": 1476
       },
       {
         "rank": 46,
-        "tag": "Tov",
-        "name": "izavs.75t F",
-        "value": 1422
+        "tag": "zoo",
+        "name": "Uniqlo",
+        "value": 1462
       },
       {
         "rank": 47,
-        "tag": "ALc",
-        "name": "+ECph",
-        "value": 1419
+        "tag": "",
+        "name": "RZA6",
+        "value": 1439
       },
       {
         "rank": 48,
-        "tag": "ALC",
-        "name": "o3^@#03",
-        "value": 1416
+        "tag": "Tov",
+        "name": "izvt.751 F",
+        "value": 1429
       },
       {
         "rank": 49,
-        "tag": "Tov",
-        "name": "o7o",
-        "value": 1414
+        "tag": "ALc",
+        "name": "+ECPh",
+        "value": 1427
       },
       {
         "rank": 50,
-        "tag": "TOV",
-        "name": "Bagoos",
-        "value": 1413
+        "tag": "ALC",
+        "name": "/> ?",
+        "value": 1426
       },
       {
         "rank": 51,
-        "tag": "TOV",
-        "name": "IKID vaN",
-        "value": 1408
+        "tag": "ALC",
+        "name": "o 3^@#03",
+        "value": 1417
       },
       {
         "rank": 52,
-        "tag": "GDC",
-        "name": "S LiZEBe GDc",
-        "value": 1403
+        "tag": "TOv",
+        "name": "PHYZ",
+        "value": 1409
       },
       {
         "rank": 53,
-        "tag": "TOV",
-        "name": "PHYZ",
-        "value": 1399
+        "tag": "VAN",
+        "name": "KID vaN",
+        "value": 1408
       },
       {
         "rank": 54,
-        "tag": "zoo",
-        "name": "+ 5 7 E1E",
-        "value": 1394
+        "tag": "GDc",
+        "name": "Is LiZEBe tItozim",
+        "value": 1407
       },
       {
         "rank": 55,
         "tag": "BNr",
         "name": "zaku",
-        "value": 1391
+        "value": 1404
       },
       {
         "rank": 56,
-        "tag": "VAN",
-        "name": "SEL!9vaN RE;BORN",
-        "value": 1389
+        "tag": "zoo",
+        "name": "tJLJAwv)",
+        "value": 1403
       },
       {
         "rank": 57,
         "tag": "",
-        "name": "GOGOl",
-        "value": 1383
+        "name": "GOCOl",
+        "value": 1400
       },
       {
         "rank": 58,
-        "tag": "ALC",
-        "name": "MIOSKY",
-        "value": 1373
+        "tag": "ALc",
+        "name": "+ 5ZE1E",
+        "value": 1398
       },
       {
         "rank": 59,
-        "tag": "tovltI",
-        "name": "oziot+-",
-        "value": 1370
+        "tag": "VAN",
+        "name": "+vs+t\"3",
+        "value": 1390
       },
       {
         "rank": 60,
         "tag": "ALC",
-        "name": "shibuyas",
-        "value": 1365
+        "name": "MIOSKY",
+        "value": 1388
       },
       {
         "rank": 61,
-        "tag": "Tov",
-        "name": "iog. @#0-iQ",
-        "value": 1362
+        "tag": "tovltI",
+        "name": "oziot+-",
+        "value": 1380
       },
       {
         "rank": 62,
-        "tag": "ALc",
-        "name": "YUl@# O Zi",
-        "value": 1354
+        "tag": "ALC",
+        "name": "shibuyas",
+        "value": 1378
       },
       {
         "rank": 63,
         "tag": "ALc",
-        "name": "-Uh",
-        "value": 1351
+        "name": "IZ < #5",
+        "value": 1366
       },
       {
         "rank": 64,
-        "tag": "ALc",
-        "name": "bIFs",
-        "value": 1349
+        "tag": "Tov",
+        "name": "ibg. @#0-iQ",
+        "value": 1362
       },
       {
         "rank": 65,
         "tag": "zoo",
-        "name": "jia & h",
-        "value": 1348
+        "name": "lia&h",
+        "value": 1358
       },
       {
         "rank": 66,
-        "tag": "TOv",
-        "name": "bazU",
-        "value": 1344
+        "tag": "ALc",
+        "name": "YUl",
+        "value": 1354
       },
       {
         "rank": 67,
-        "tag": "ALc",
-        "name": "n hzeo",
-        "value": 1342
+        "tag": "GDC",
+        "name": "MachaGDc",
+        "value": 1353
       },
       {
         "rank": 68,
         "tag": "ALc",
-        "name": "IZ < 45",
-        "value": 1341
+        "name": "-uhi",
+        "value": 1352
       },
       {
         "rank": 69,
-        "tag": "GDC",
-        "name": "MachaGDc",
-        "value": 1335
+        "tag": "ALc",
+        "name": "n hzeo",
+        "value": 1351
       },
       {
         "rank": 70,
-        "tag": "Tov",
-        "name": "-v\"5 & vaN",
-        "value": 1331
+        "tag": "TOv",
+        "name": "b#zU",
+        "value": 1349
       },
       {
         "rank": 71,
-        "tag": "zoo",
-        "name": "lb#xl+rJn",
-        "value": 1329
+        "tag": "ALC",
+        "name": "C + &l Ixx",
+        "value": 1346
       },
       {
         "rank": 72,
-        "tag": "GDc",
-        "name": "a$5",
-        "value": 1326
+        "tag": "VAN",
+        "name": "ahSph",
+        "value": 1344
       },
       {
         "rank": 73,
-        "tag": "TOv",
-        "name": "I+ ,Jkosn+t?t",
-        "value": 1324
+        "tag": "ALc",
+        "name": "Z",
+        "value": 1343
       },
       {
         "rank": 74,
-        "tag": "",
-        "name": "Govelnor",
-        "value": 1323
+        "tag": "VAN",
+        "name": "AAT3s & vaN",
+        "value": 1341
       },
       {
         "rank": 75,
-        "tag": "",
-        "name": "",
-        "value": 1321
+        "tag": "Tov",
+        "name": "j# O-+;B",
+        "value": 1337
       },
       {
         "rank": 76,
-        "tag": "ALc",
-        "name": "",
-        "value": 1317
+        "tag": "zoo",
+        "name": "lh#xIfrmn",
+        "value": 1329
       },
       {
         "rank": 77,
-        "tag": "YM",
-        "name": "Gj@7=x",
-        "value": 1314
+        "tag": "",
+        "name": "Arrivederci",
+        "value": 1324
       },
       {
         "rank": 78,
-        "tag": "ALc",
-        "name": "steeb",
-        "value": 1310
+        "tag": "YMG",
+        "name": "z #BR @7-x",
+        "value": 1321
       },
       {
         "rank": 79,
-        "tag": "zoo",
-        "name": "s Cpalv",
-        "value": 1308
+        "tag": "Tov",
+        "name": "aJE",
+        "value": 1316
       },
       {
         "rank": 80,
-        "tag": "Tov",
-        "name": "jaE",
-        "value": 1307
+        "tag": "",
+        "name": "steeb",
+        "value": 1315
       },
       {
         "rank": 81,
-        "tag": "ALC",
-        "name": "unidy",
-        "value": 1305
+        "tag": "zoo",
+        "name": "s Cpalat",
+        "value": 1314
       },
       {
         "rank": 82,
-        "tag": "TOv",
-        "name": "TZEB",
-        "value": 1300
+        "tag": "BNr",
+        "name": "< !J 7",
+        "value": 1313
       },
       {
         "rank": 83,
-        "tag": "BNr",
-        "name": "v!J 7",
-        "value": 1298
+        "tag": "ALC",
+        "name": "unidy",
+        "value": 1308
       },
       {
         "rank": 84,
-        "tag": "ALC",
-        "name": "EE+AJL",
-        "value": 1297
+        "tag": "VAN",
+        "name": "TZEE",
+        "value": 1305
       },
       {
         "rank": 85,
-        "tag": "TOV",
-        "name": "< 3U",
-        "value": 1292
+        "tag": "BNr",
+        "name": "Rhinoceros",
+        "value": 1303
       },
       {
         "rank": 86,
         "tag": "zoo",
-        "name": "ju1 38",
-        "value": 1289
+        "name": "sih _ WhereDoWeGo?",
+        "value": 1302
       },
       {
         "rank": 87,
+        "tag": "ALC",
+        "name": "IER+AJL",
+        "value": 1299
+      },
+      {
+        "rank": 88,
+        "tag": "",
+        "name": "",
+        "value": 1298
+      },
+      {
+        "rank": 89,
         "tag": "",
         "name": "Mystic Trial",
         "value": 0

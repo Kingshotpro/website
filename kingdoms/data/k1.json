@@ -1,6 +1,6 @@
 {
   "kingdom": 1,
-  "last_updated": "2026-04-16",
+  "last_updated": "2026-04-21",
   "source": "ADB screenshot scraper + EasyOCR extraction",
   "categories": {
     "alliance_power": [
@@ -8,600 +8,600 @@
         "rank": 1,
         "tag": "TiT",
         "name": "Titans",
-        "value": 28196297621
+        "value": 29376874241
       },
       {
         "rank": 2,
         "tag": "KOR",
         "name": "2kz",
-        "value": 27307456413
+        "value": 27059161149
       },
       {
         "rank": 3,
         "tag": "EVL",
         "name": "Evil",
-        "value": 22927356191
+        "value": 22546087544
       },
       {
         "rank": 4,
         "tag": "XII",
         "name": "Ohana",
-        "value": 19965826763
+        "value": 20804659437
       },
       {
         "rank": 5,
         "tag": "KR2",
         "name": "2kz2",
-        "value": 13509608440
+        "value": 13603795476
       },
       {
         "rank": 6,
         "tag": "DUX",
         "name": "DuckSquad",
-        "value": 11885465865
+        "value": 12533802445
       },
       {
         "rank": 7,
         "tag": "Gru",
         "name": "CrimsonKnights",
-        "value": 8996538868
+        "value": 9134786886
       },
       {
         "rank": 8,
-        "tag": "ONE",
-        "name": "UNION",
-        "value": 6934248437
+        "tag": "PHX",
+        "name": "PhoenixKM",
+        "value": 6929656367
       },
       {
         "rank": 9,
-        "tag": "PHX",
-        "name": "PhoenixKM",
-        "value": 6903893338
+        "tag": "ONE",
+        "name": "UNION",
+        "value": 6885939603
       },
       {
         "rank": 10,
         "tag": "EXE",
         "name": "Exosia",
-        "value": 5903864663
+        "value": 6123714475
       },
       {
         "rank": 11,
-        "tag": "WLF",
-        "name": "WOLFPACK",
-        "value": 4583451759
+        "tag": "BRL",
+        "name": "AliancaBR",
+        "value": 6058166104
       },
       {
         "rank": 12,
-        "tag": "DRX",
-        "name": "Dragonix",
-        "value": 3470847508
+        "tag": "KR3",
+        "name": "2kz3",
+        "value": 5789388499
       },
       {
         "rank": 13,
-        "tag": "6T9",
-        "name": "PerfectBalance",
-        "value": 2635613127
+        "tag": "WLF",
+        "name": "WOLFPACK",
+        "value": 4901272563
       },
       {
         "rank": 14,
-        "tag": "ITali",
-        "name": "nternational",
-        "value": 1909890375
+        "tag": "DRX",
+        "name": "Dragonix",
+        "value": 3375189121
       },
       {
         "rank": 15,
-        "tag": "Exe",
-        "name": "SExosia",
-        "value": 1907472178
+        "tag": "6T9",
+        "name": "PerfectBalance",
+        "value": 2682081092
       },
       {
         "rank": 16,
-        "tag": "TTT",
-        "name": "Time Travelers",
-        "value": 1656379626
+        "tag": "Exe",
+        "name": "SExosia",
+        "value": 2009252627
       },
       {
         "rank": 17,
-        "tag": "IDN",
-        "name": "NusantaraEmpire",
-        "value": 1480622977
+        "tag": "",
+        "name": "",
+        "value": 1950649858
       },
       {
         "rank": 18,
-        "tag": "exe",
-        "name": "WestExosia",
-        "value": 1468785826
+        "tag": "",
+        "name": "",
+        "value": 1861335937
       },
       {
         "rank": 19,
-        "tag": "ATA",
-        "name": "ANATOLIA",
-        "value": 1185303569
+        "tag": "TTT",
+        "name": "Time Travelers",
+        "value": 1693148409
       },
       {
         "rank": 20,
-        "tag": "XIX",
-        "name": "BBOhanna",
-        "value": 1184676755
+        "tag": "BST",
+        "name": "BananaSharkTank",
+        "value": 1447830381
       },
       {
         "rank": 21,
-        "tag": "DSR",
-        "name": "HH39194",
-        "value": 1078263835
+        "tag": "IDN",
+        "name": "NusantaraEmpire",
+        "value": 1411318296
       },
       {
         "rank": 22,
-        "tag": "PHxla",
-        "name": "cademyPhoenix",
-        "value": 1021335160
+        "tag": "exe",
+        "name": "WestExosia",
+        "value": 1357308502
       },
       {
         "rank": 23,
-        "tag": "BOZ",
-        "name": "BritishOutlawz",
-        "value": 956937962
+        "tag": "ATA",
+        "name": "ANATOLIA",
+        "value": 1182964828
       },
       {
         "rank": 24,
-        "tag": "JNJ",
-        "name": "cIZtol=X",
-        "value": 858755657
+        "tag": "DSR",
+        "name": "HH8+993",
+        "value": 1084754441
       },
       {
         "rank": 25,
-        "tag": "EMP",
-        "name": "Empire",
-        "value": 822241932
+        "tag": "",
+        "name": "",
+        "value": 1084585183
       },
       {
         "rank": 26,
-        "tag": "156",
-        "name": "SANCTUARY",
-        "value": 703297501
+        "tag": "",
+        "name": "",
+        "value": 959561928
       },
       {
         "rank": 27,
-        "tag": "GT6",
-        "name": "NewHero",
-        "value": 665110152
+        "tag": "",
+        "name": "",
+        "value": 925323418
       },
       {
         "rank": 28,
-        "tag": "MdR",
-        "name": "MediumRare",
-        "value": 660610199
+        "tag": "156",
+        "name": "SANCTUARY",
+        "value": 846532942
       },
       {
         "rank": 29,
-        "tag": "IDA",
-        "name": "idragoni",
-        "value": 607929494
+        "tag": "JNJ",
+        "name": "cHZtol=XF",
+        "value": 843524721
       },
       {
         "rank": 30,
-        "tag": "EXY",
-        "name": "Devil",
-        "value": 527011290
+        "tag": "EMP",
+        "name": "Empire",
+        "value": 829408036
       },
       {
         "rank": 31,
-        "tag": "IDC",
-        "name": "IDontCare",
-        "value": 449106793
+        "tag": "MdR",
+        "name": "MediumRare",
+        "value": 697540089
       },
       {
         "rank": 32,
+        "tag": "evl",
+        "name": "LittleEvil",
+        "value": 686024453
+      },
+      {
+        "rank": 33,
+        "tag": "GT6",
+        "name": "NewHero",
+        "value": 680175009
+      },
+      {
+        "rank": 34,
+        "tag": "IDA",
+        "name": "idragoni",
+        "value": 635594664
+      },
+      {
+        "rank": 35,
+        "tag": "EXY",
+        "name": "Devil",
+        "value": 542593700
+      },
+      {
+        "rank": 36,
+        "tag": "DRx",
+        "name": "DRX ACADEMYxash",
+        "value": 506448659
+      },
+      {
+        "rank": 37,
+        "tag": "IDC",
+        "name": "IDontCare",
+        "value": 454038707
+      },
+      {
+        "rank": 38,
         "tag": "BST",
         "name": "GoodBye",
         "value": 445652505
       },
       {
-        "rank": 33,
-        "tag": "DRx",
-        "name": "DRX ACADEMYxash",
-        "value": 442934950
-      },
-      {
-        "rank": 34,
-        "tag": "evl",
-        "name": "LittleEvil",
-        "value": 417707193
-      },
-      {
-        "rank": 35,
+        "rank": 39,
         "tag": "JAN",
         "name": "Japan",
-        "value": 303778127
+        "value": 313485160
       },
       {
-        "rank": 36,
+        "rank": 40,
         "tag": "GRD",
         "name": "GreenDay",
-        "value": 281536758
+        "value": 291189373
       },
       {
-        "rank": 37,
+        "rank": 41,
+        "tag": "End",
+        "name": "ullg42",
+        "value": 275743647
+      },
+      {
+        "rank": 42,
+        "tag": "FTA",
+        "name": "FairyTals",
+        "value": 272134495
+      },
+      {
+        "rank": 43,
         "tag": "gsh",
-        "name": "us:mnuiav",
-        "value": 253177893
+        "name": "us:muiav",
+        "value": 253506097
       },
       {
-        "rank": 38,
+        "rank": 44,
+        "tag": "",
+        "name": "",
+        "value": 249821565
+      },
+      {
+        "rank": 45,
         "tag": "TMPIT",
         "name": "MP",
         "value": 245570856
       },
       {
-        "rank": 39,
+        "rank": 46,
         "tag": "TIM",
         "name": "TIMMY",
-        "value": 233954240
+        "value": 237136178
       },
       {
-        "rank": 40,
+        "rank": 47,
         "tag": "GXx",
         "name": "vampires",
-        "value": 210578185
+        "value": 214915950
       },
       {
-        "rank": 41,
+        "rank": 48,
         "tag": "PWR",
         "name": "POWER",
-        "value": 208096892
+        "value": 214646018
       },
       {
-        "rank": 42,
+        "rank": 49,
         "tag": "WLA",
         "name": "WOLFPACKAcademy",
         "value": 207363610
       },
       {
-        "rank": 43,
+        "rank": 50,
         "tag": "KR5",
-        "name": "2+35",
-        "value": 186100098
+        "name": "2+z5",
+        "value": 198985554
       },
       {
-        "rank": 44,
+        "rank": 51,
         "tag": "ITB",
         "name": "lstanbul",
-        "value": 175708295
+        "value": 175706661
       },
       {
-        "rank": 45,
+        "rank": 52,
+        "tag": "kOR",
+        "name": "2/36",
+        "value": 175503522
+      },
+      {
+        "rank": 53,
         "tag": "LLX",
         "name": "ScreamingEagles",
         "value": 175413715
       },
       {
-        "rank": 46,
-        "tag": "TOK",
-        "name": "TowerofKings",
-        "value": 171295810
-      },
-      {
-        "rank": 47,
+        "rank": 54,
         "tag": "Uum",
         "name": "wolfpack21",
-        "value": 170370177
-      },
-      {
-        "rank": 48,
-        "tag": "ITA",
-        "name": "International3",
-        "value": 166224948
-      },
-      {
-        "rank": 49,
-        "tag": "RDP",
-        "name": "RDPATIL",
-        "value": 158019738
-      },
-      {
-        "rank": 50,
-        "tag": "DgV",
-        "name": "ACTUA",
-        "value": 155265186
-      },
-      {
-        "rank": 51,
-        "tag": "NYX",
-        "name": "QueensEclipse",
-        "value": 148349904
-      },
-      {
-        "rank": 52,
-        "tag": "KTflj",
-        "name": "ais",
-        "value": 145925115
-      },
-      {
-        "rank": 53,
-        "tag": "VvelS",
-        "name": "ILSBR",
-        "value": 143159187
-      },
-      {
-        "rank": 54,
-        "tag": "MYD",
-        "name": "Myrmidon",
-        "value": 121576043
+        "value": 170465917
       },
       {
         "rank": 55,
-        "tag": "Dfs",
-        "name": "TheEnd",
-        "value": 120655139
+        "tag": "ITAl",
+        "name": "International3",
+        "value": 170005410
       },
       {
         "rank": 56,
+        "tag": "RDP",
+        "name": "RDPATIL",
+        "value": 158020742
+      },
+      {
+        "rank": 57,
+        "tag": "TOK",
+        "name": "TowerofKings",
+        "value": 156814311
+      },
+      {
+        "rank": 58,
+        "tag": "DgV",
+        "name": "ACTUA",
+        "value": 156451666
+      },
+      {
+        "rank": 59,
+        "tag": "KTflj",
+        "name": "ais",
+        "value": 148026995
+      },
+      {
+        "rank": 60,
+        "tag": "",
+        "name": "",
+        "value": 145210289
+      },
+      {
+        "rank": 61,
+        "tag": "Ltm",
+        "name": "PUROLATAM",
+        "value": 143544720
+      },
+      {
+        "rank": 62,
+        "tag": "MYD",
+        "name": "Myrmidon",
+        "value": 129046616
+      },
+      {
+        "rank": 63,
+        "tag": "NYX",
+        "name": "QueensEclipse",
+        "value": 128201162
+      },
+      {
+        "rank": 64,
+        "tag": "Dfs",
+        "name": "TheEnd",
+        "value": 124069738
+      },
+      {
+        "rank": 65,
         "tag": "6t9",
         "name": "BackToGround",
         "value": 118023404
       },
       {
-        "rank": 57,
+        "rank": 66,
         "tag": "069",
         "name": "vz69",
-        "value": 110771065
+        "value": 113720580
       },
       {
-        "rank": 58,
-        "tag": "Arg",
-        "name": "ARGENTINA",
+        "rank": 67,
+        "tag": "ArglA",
+        "name": "RGENTINA",
         "value": 110644602
       },
       {
-        "rank": 59,
-        "tag": "sjyll",
-        "name": "ol",
+        "rank": 68,
+        "tag": "",
+        "name": "",
         "value": 108316641
       },
       {
-        "rank": 60,
-        "tag": "pwS",
+        "rank": 69,
+        "tag": "pws",
         "name": "PolscyWojowie",
         "value": 104140191
       },
       {
-        "rank": 61,
+        "rank": 70,
         "tag": "TAV",
         "name": "TaverneXIIX",
         "value": 98554584
       },
       {
-        "rank": 62,
+        "rank": 71,
+        "tag": "Itali",
+        "name": "nternational2",
+        "value": 95831074
+      },
+      {
+        "rank": 72,
         "tag": "PPG",
         "name": "MoleHole",
         "value": 94219036
       },
       {
-        "rank": 63,
+        "rank": 73,
         "tag": "xTX",
         "name": "TexasHeat",
-        "value": 93585601
+        "value": 93818134
       },
       {
-        "rank": 64,
+        "rank": 74,
         "tag": "WSR",
-        "name": ") -i",
-        "value": 92481046
+        "name": ") -- f",
+        "value": 93740067
       },
       {
-        "rank": 65,
+        "rank": 75,
         "tag": "EOR",
-        "name": "ELITE'OFF'RULER",
-        "value": 85078553
+        "name": "ELITEPOFFPRULER",
+        "value": 88738841
       },
       {
-        "rank": 66,
+        "rank": 76,
         "tag": "DRK",
         "name": "DarkCastle",
-        "value": 84522678
+        "value": 86917408
       },
       {
-        "rank": 67,
+        "rank": 77,
         "tag": "kor",
         "name": "warriorltalian",
         "value": 83888380
       },
       {
-        "rank": 68,
+        "rank": 78,
         "tag": "BAR",
         "name": "HouseBaratheon",
         "value": 83345759
       },
       {
-        "rank": 69,
+        "rank": 79,
         "tag": "IRA",
         "name": "Furias",
         "value": 82172217
       },
       {
-        "rank": 70,
+        "rank": 80,
         "tag": "IRD",
         "name": "lronHorde",
-        "value": 75420834
+        "value": 75708653
       },
       {
-        "rank": 71,
-        "tag": "blp",
-        "name": "blackPink",
+        "rank": 81,
+        "tag": "blplb",
+        "name": "lackPink",
         "value": 72369810
       },
       {
-        "rank": 72,
+        "rank": 82,
         "tag": "BJM",
         "name": "KUTUNGGUANDAMU",
         "value": 71078628
       },
       {
-        "rank": 73,
+        "rank": 83,
         "tag": "",
         "name": "Man",
         "value": 64380712
       },
       {
-        "rank": 74,
-        "tag": "Kys",
-        "name": "Kyssleepengine",
+        "rank": 84,
+        "tag": "",
+        "name": "",
         "value": 63820362
       },
       {
-        "rank": 75,
+        "rank": 85,
         "tag": "RLX",
         "name": "RELAX",
         "value": 62983274
       },
       {
-        "rank": 76,
+        "rank": 86,
+        "tag": "DIE",
+        "name": "DonutslnEden",
+        "value": 62216271
+      },
+      {
+        "rank": 87,
         "tag": "DWN",
         "name": "DawnAlliance",
         "value": 60734799
       },
       {
-        "rank": 77,
-        "tag": "Fra",
-        "name": "ClanFrancophone",
-        "value": 59083541
+        "rank": 88,
+        "tag": "CjQ",
+        "name": "tB A mBRE",
+        "value": 60541611
       },
       {
-        "rank": 78,
+        "rank": 89,
+        "tag": "FOX",
+        "name": "FOXHUNTERS",
+        "value": 59177098
+      },
+      {
+        "rank": 90,
         "tag": "XSJ",
         "name": "Lesanges",
         "value": 58317695
       },
       {
-        "rank": 79,
+        "rank": 91,
         "tag": "TRN",
         "name": "Turan",
         "value": 57696163
       },
       {
-        "rank": 80,
+        "rank": 92,
         "tag": "F25",
         "name": "France25",
         "value": 56843152
       },
       {
-        "rank": 81,
+        "rank": 93,
         "tag": "ANt",
         "name": "AnatoliaN",
         "value": 55458562
       },
       {
-        "rank": 82,
-        "tag": "CjQ",
-        "name": "EB A mBE",
-        "value": 54698539
-      },
-      {
-        "rank": 83,
-        "tag": "CjQ",
-        "name": "EE A mBE",
-        "value": 54698539
-      },
-      {
-        "rank": 84,
-        "tag": "CjQ",
-        "name": "itB A mBRE",
-        "value": 54698539
-      },
-      {
-        "rank": 85,
-        "tag": "CjQ",
-        "name": "tB A mBE",
-        "value": 54698539
-      },
-      {
-        "rank": 86,
-        "tag": "CjQ",
-        "name": "E X mBE",
-        "value": 54698539
-      },
-      {
-        "rank": 87,
-        "tag": "CjQ",
-        "name": "tB A mBRE",
-        "value": 54698539
-      },
-      {
-        "rank": 88,
+        "rank": 94,
         "tag": "SPA",
         "name": "Hispanics",
         "value": 54578305
       },
       {
-        "rank": 89,
+        "rank": 95,
         "tag": "Zip",
         "name": "File",
         "value": 54016485
       },
       {
-        "rank": 90,
-        "tag": "aeH",
-        "name": "Guy",
-        "value": 53095418
-      },
-      {
-        "rank": 91,
+        "rank": 96,
         "tag": "OAKJ",
         "name": "ANDARMA",
         "value": 53089542
       },
       {
-        "rank": 92,
-        "tag": "DRF",
-        "name": "2E4A",
-        "value": 51272650
-      },
-      {
-        "rank": 93,
-        "tag": "DRF",
-        "name": "AR4al",
-        "value": 51272650
-      },
-      {
-        "rank": 94,
-        "tag": "DRF",
-        "name": "A84al",
-        "value": 51272650
-      },
-      {
-        "rank": 95,
-        "tag": "DRF",
-        "name": "ER4A",
-        "value": 51272650
-      },
-      {
-        "rank": 96,
-        "tag": "DRF",
-        "name": "AE4al",
-        "value": 51272650
-      },
-      {
         "rank": 97,
-        "tag": "Cat",
-        "name": "viscaCatalunya",
-        "value": 50276494
+        "tag": "aeH",
+        "name": "Guy",
+        "value": 52119148
       },
       {
         "rank": 98,
-        "tag": "DIE",
-        "name": "DonutslnEden",
-        "value": 713639
+        "tag": "DRF",
+        "name": "ER4A",
+        "value": 51354902
       },
       {
         "rank": 99,
-        "tag": "",
-        "name": "Alliance Power",
-        "value": 0
+        "tag": "Cat",
+        "name": "viscaCatalunya",
+        "value": 50844838
       },
       {
         "rank": 100,
         "tag": "",
-        "name": "Allance",
+        "name": "Alliance Power",
         "value": 0
       }
     ],
@@ -610,103 +610,103 @@
         "rank": 1,
         "tag": "TiT",
         "name": "Titans",
-        "value": 2462302361
+        "value": 2480652529
       },
       {
         "rank": 2,
         "tag": "EVL",
         "name": "Evil",
-        "value": 1817799461
+        "value": 1778408628
       },
       {
         "rank": 3,
         "tag": "KOR",
         "name": "2/z",
-        "value": 1740489749
+        "value": 1711126481
       },
       {
         "rank": 4,
         "tag": "XII",
         "name": "Ohana",
-        "value": 885345517
+        "value": 908988536
       },
       {
         "rank": 5,
         "tag": "KR2",
         "name": "2kz2",
-        "value": 521349880
+        "value": 524636968
       },
       {
         "rank": 6,
         "tag": "DUX",
         "name": "DuckSquad",
-        "value": 103730756
+        "value": 107585371
       },
       {
         "rank": 7,
+        "tag": "ONE",
+        "name": "UNION",
+        "value": 80936598
+      },
+      {
+        "rank": 8,
         "tag": "BST",
         "name": "GoodBye",
         "value": 79446684
       },
       {
-        "rank": 8,
-        "tag": "PHX",
-        "name": "PhoenixKM",
-        "value": 63444176
-      },
-      {
         "rank": 9,
-        "tag": "BRL",
-        "name": "AliancaBR",
-        "value": 44622249
+        "tag": "Gru",
+        "name": "CrimsonKnights",
+        "value": 77160633
       },
       {
         "rank": 10,
-        "tag": "ONE",
-        "name": "UNION",
-        "value": 44359479
+        "tag": "PHX",
+        "name": "PhoenixKM",
+        "value": 62312421
       },
       {
         "rank": 11,
-        "tag": "KR3",
-        "name": "2t33",
-        "value": 42700865
+        "tag": "BRL",
+        "name": "AliancaBR",
+        "value": 44469531
       },
       {
         "rank": 12,
         "tag": "EXE",
         "name": "Exosia",
-        "value": 31251969
+        "value": 31846458
       },
       {
         "rank": 13,
-        "tag": "IDC",
-        "name": "IDontCare",
-        "value": 28055017
+        "tag": "WLF",
+        "name": "WOLFPACK",
+        "value": 29379915
       },
       {
         "rank": 14,
-        "tag": "DRX",
-        "name": "Dragonix",
-        "value": 26903170
+        "tag": "IDC",
+        "name": "IDontCare",
+        "value": 28096400
       },
       {
         "rank": 15,
-        "tag": "XIX",
-        "name": "BBOhanna",
-        "value": 24432170
+        "tag": "BST",
+        "name": "IBananaSharkTank",
+        "value": 24754055
       },
       {
         "rank": 16,
-        "tag": "WLF",
-        "name": "WOLFPACK",
-        "value": 23464215
-      },
-      {
-        "rank": 17,
         "tag": "BAR",
         "name": "HouseBaratheon",
         "value": 21089562
+      },
+      {
+        "rank": 17,
+        "tag": "DRX",
+        "name": "Dragonix",
+        "value": 19603195
       },
       {
         "rank": 18,
@@ -716,495 +716,477 @@
       },
       {
         "rank": 19,
-        "tag": "IDN",
-        "name": "NusantaraEmpire",
-        "value": 13841328
+        "tag": "evl",
+        "name": "LittleEvil",
+        "value": 14726887
       },
       {
         "rank": 20,
-        "tag": "ATA",
-        "name": "ANATOLIA",
-        "value": 10164419
+        "tag": "IDN",
+        "name": "NusantaraEmpire",
+        "value": 12996926
       },
       {
         "rank": 21,
-        "tag": "End",
-        "name": "7llg48",
-        "value": 8248357
+        "tag": "ATA",
+        "name": "ANATOLIA",
+        "value": 9892059
       },
       {
         "rank": 22,
-        "tag": "Exe",
-        "name": "SExosia",
-        "value": 7913227
+        "tag": "End",
+        "name": "7g38",
+        "value": 8248357
       },
       {
         "rank": 23,
-        "tag": "BST",
-        "name": "BananaSharkTank",
-        "value": 7902751
+        "tag": "Exe",
+        "name": "SExosia",
+        "value": 8125945
       },
       {
         "rank": 24,
-        "tag": "1S6",
-        "name": "SANCTUARY",
-        "value": 6904538
+        "tag": "KR4",
+        "name": "2k34",
+        "value": 6485375
       },
       {
         "rank": 25,
-        "tag": "ITali",
-        "name": "nternational",
-        "value": 5349536
+        "tag": "FZP",
+        "name": "FREEZPLAY",
+        "value": 6025184
       },
       {
         "rank": 26,
-        "tag": "PWR",
-        "name": "POWER",
-        "value": 4676884
+        "tag": "XIX",
+        "name": "BBOhanna",
+        "value": 5594371
       },
       {
         "rank": 27,
-        "tag": "PHx",
-        "name": "academyPhoenix",
-        "value": 4415875
+        "tag": "ITal",
+        "name": "International",
+        "value": 5308080
       },
       {
         "rank": 28,
-        "tag": "KR4",
-        "name": "2l34",
-        "value": 4292501
+        "tag": "PWR",
+        "name": "POWER",
+        "value": 4676901
       },
       {
         "rank": 29,
-        "tag": "6T9",
-        "name": "PerfectBalance",
-        "value": 4082718
+        "tag": "PHxla",
+        "name": "cademyPhoenix",
+        "value": 4489425
       },
       {
         "rank": 30,
+        "tag": "6T9",
+        "name": "PerfectBalance",
+        "value": 4111771
+      },
+      {
+        "rank": 31,
         "tag": "6t9",
         "name": "BackToGround",
         "value": 3722220
       },
       {
-        "rank": 31,
+        "rank": 32,
         "tag": "DSR",
-        "name": "uH3203",
-        "value": 3711714
+        "name": "HH3t293",
+        "value": 3721415
       },
       {
-        "rank": 32,
+        "rank": 33,
         "tag": "BOZ",
         "name": "BritishOutlawz",
         "value": 3605927
       },
       {
-        "rank": 33,
+        "rank": 34,
         "tag": "exe",
         "name": "WestExosia",
-        "value": 3340874
-      },
-      {
-        "rank": 34,
-        "tag": "JNJ",
-        "name": "cHZtol=XF",
-        "value": 2994349
+        "value": 3277560
       },
       {
         "rank": 35,
-        "tag": "EMP",
-        "name": "Empire",
-        "value": 2835171
+        "tag": "JNJ",
+        "name": "cIZtOl=XF",
+        "value": 2994606
       },
       {
         "rank": 36,
-        "tag": "TTT",
-        "name": "Time Travelers",
-        "value": 2660723
+        "tag": "EMP",
+        "name": "Empire",
+        "value": 2835313
       },
       {
         "rank": 37,
-        "tag": "GT6",
-        "name": "NewHero",
-        "value": 2072275
+        "tag": "1S6",
+        "name": "SANCTUARY",
+        "value": 2738724
       },
       {
         "rank": 38,
-        "tag": "evl",
-        "name": "LittleEvil",
-        "value": 1995757
+        "tag": "TTT",
+        "name": "Time Travelers",
+        "value": 2591351
       },
       {
         "rank": 39,
-        "tag": "IT",
-        "name": "Allnternational3",
-        "value": 1813480
+        "tag": "GT6",
+        "name": "NewHero",
+        "value": 2072363
       },
       {
         "rank": 40,
+        "tag": "ITA",
+        "name": "International3",
+        "value": 1813702
+      },
+      {
+        "rank": 41,
         "tag": "Dfs",
         "name": "TheEnd",
         "value": 1579690
       },
       {
-        "rank": 41,
-        "tag": "WLA",
-        "name": "WOLFPACKAcademy",
-        "value": 1507311
-      },
-      {
         "rank": 42,
         "tag": "EXY",
         "name": "Devil",
-        "value": 1305621
+        "value": 1442337
       },
       {
         "rank": 43,
-        "tag": "RDPIR",
-        "name": "DPATIL",
-        "value": 1282124
+        "tag": "RDP",
+        "name": "RDPATIL",
+        "value": 1282136
       },
       {
         "rank": 44,
-        "tag": "gsh",
-        "name": "us:muiiav",
-        "value": 1215967
+        "tag": "IDA",
+        "name": "idragoni",
+        "value": 1268490
       },
       {
         "rank": 45,
+        "tag": "DRx",
+        "name": "DRX ACADEMYxash",
+        "value": 1228277
+      },
+      {
+        "rank": 46,
+        "tag": "gsh",
+        "name": "us:nuiav",
+        "value": 1215967
+      },
+      {
+        "rank": 47,
         "tag": "Arg",
         "name": "ARGENTINA",
         "value": 1200462
       },
       {
-        "rank": 46,
-        "tag": "IDA",
-        "name": "idragoni",
-        "value": 1153967
-      },
-      {
-        "rank": 47,
-        "tag": "ERD",
-        "name": "EVILAcademy",
+        "rank": 48,
+        "tag": "",
+        "name": "",
         "value": 1051673
       },
       {
-        "rank": 48,
-        "tag": "pws",
+        "rank": 49,
+        "tag": "pwS",
         "name": "PolscyWojowie",
         "value": 977967
       },
       {
-        "rank": 49,
-        "tag": "Uum",
-        "name": "wolfpack21",
-        "value": 971588
-      },
-      {
         "rank": 50,
-        "tag": "kOR",
-        "name": "2k36",
-        "value": 912274
+        "tag": "EOR",
+        "name": "ELITE OFFPRULER",
+        "value": 812140
       },
       {
         "rank": 51,
-        "tag": "LLX",
-        "name": "ScreamingEagles",
-        "value": 899949
-      },
-      {
-        "rank": 52,
-        "tag": "EOR",
-        "name": "ELITEPOFF RULER",
-        "value": 811738
-      },
-      {
-        "rank": 53,
         "tag": "usql",
         "name": "Gg",
         "value": 774395
       },
       {
-        "rank": 54,
+        "rank": 52,
         "tag": "sjyll",
         "name": "ol",
         "value": 726383
       },
       {
+        "rank": 53,
+        "tag": "TIM",
+        "name": "TIMMY",
+        "value": 699901
+      },
+      {
+        "rank": 54,
+        "tag": "KR3",
+        "name": "2l33",
+        "value": 638716
+      },
+      {
         "rank": 55,
-        "tag": "DRx",
-        "name": "DRX ACADEMYxash",
-        "value": 707045
+        "tag": "MdR",
+        "name": "MediumRare",
+        "value": 617036
       },
       {
         "rank": 56,
-        "tag": "TIM",
-        "name": "TIMMY",
-        "value": 657646
-      },
-      {
-        "rank": 57,
-        "tag": "MdR",
-        "name": "MediumRare",
-        "value": 610410
-      },
-      {
-        "rank": 58,
-        "tag": "TFN",
-        "name": "TheFireNation",
+        "tag": "",
+        "name": "",
         "value": 602569
       },
       {
-        "rank": 59,
+        "rank": 57,
         "tag": "FTA",
         "name": "FairyTals",
-        "value": 557984
+        "value": 557957
       },
       {
-        "rank": 60,
+        "rank": 58,
         "tag": "ITB",
-        "name": "Istanbul",
-        "value": 554662
+        "name": "istanbul",
+        "value": 554763
       },
       {
-        "rank": 61,
-        "tag": "FZP",
-        "name": "FREEZPLAY",
-        "value": 536409
-      },
-      {
-        "rank": 62,
-        "tag": "drx",
-        "name": "dragonixfarm",
-        "value": 500096
-      },
-      {
-        "rank": 63,
+        "rank": 59,
         "tag": "IRD",
-        "name": "ironHorde",
+        "name": "lronHorde",
         "value": 443530
       },
       {
-        "rank": 64,
-        "tag": "Ital",
-        "name": "International2",
+        "rank": 60,
+        "tag": "Itali",
+        "name": "nternational2",
         "value": 440397
       },
       {
-        "rank": 65,
+        "rank": 61,
         "tag": "DWN",
         "name": "DawnAlliance",
         "value": 436733
       },
       {
-        "rank": 66,
+        "rank": 62,
         "tag": "REL",
         "name": "ROYALETERNAL",
         "value": 383482
       },
       {
-        "rank": 67,
+        "rank": 63,
         "tag": "PPG",
         "name": "MoleHole",
         "value": 380391
       },
       {
-        "rank": 68,
+        "rank": 64,
         "tag": "JAN",
         "name": "Japan",
         "value": 357786
       },
       {
-        "rank": 69,
+        "rank": 65,
         "tag": "ANt",
         "name": "AnatoliaN",
         "value": 337624
       },
       {
-        "rank": 70,
+        "rank": 66,
         "tag": "KTflj",
         "name": "ais",
         "value": 336816
       },
       {
-        "rank": 71,
+        "rank": 67,
+        "tag": "Ltm",
+        "name": "PUROLATAM",
+        "value": 333747
+      },
+      {
+        "rank": 68,
+        "tag": "MYD",
+        "name": "Myrmidon",
+        "value": 322355
+      },
+      {
+        "rank": 69,
         "tag": "TAV",
         "name": "TaverneXIIX",
         "value": 316241
       },
       {
-        "rank": 72,
+        "rank": 70,
         "tag": "DRK",
         "name": "DarkCastle",
-        "value": 311043
+        "value": 311092
       },
       {
-        "rank": 73,
+        "rank": 71,
         "tag": "DIE",
         "name": "DonutsInEden",
-        "value": 308280
+        "value": 308288
       },
       {
-        "rank": 74,
+        "rank": 72,
         "tag": "xTX",
         "name": "TexasHeat",
         "value": 307084
       },
       {
+        "rank": 73,
+        "tag": "NYX",
+        "name": "QueensEclipse",
+        "value": 290819
+      },
+      {
+        "rank": 74,
+        "tag": "KR5",
+        "name": "2+35",
+        "value": 284553
+      },
+      {
         "rank": 75,
-        "tag": "Ltm",
-        "name": "PUROLATAM",
-        "value": 303639
+        "tag": "Vve",
+        "name": "SILSBR",
+        "value": 281649
       },
       {
         "rank": 76,
-        "tag": "KR5",
-        "name": "2/35",
-        "value": 284563
+        "tag": "TOK",
+        "name": "TowerofKings",
+        "value": 272828
       },
       {
         "rank": 77,
-        "tag": "NYX",
-        "name": "QueensEclipse",
-        "value": 284475
+        "tag": "hph",
+        "name": "BUBUB",
+        "value": 267289
       },
       {
         "rank": 78,
-        "tag": "TOK",
-        "name": "TowerofKings",
-        "value": 264462
-      },
-      {
-        "rank": 79,
-        "tag": "hph",
-        "name": "BUBUB",
-        "value": 263905
-      },
-      {
-        "rank": 80,
         "tag": "RLX",
         "name": "RELAX",
         "value": 262566
       },
       {
-        "rank": 81,
+        "rank": 79,
         "tag": "kor",
         "name": "warriorltalian",
         "value": 262247
       },
       {
-        "rank": 82,
+        "rank": 80,
         "tag": "WAR",
-        "name": "777ilucion",
+        "name": "77Zilucion",
         "value": 261398
       },
       {
-        "rank": 83,
+        "rank": 81,
         "tag": "aeH",
         "name": "Guy",
         "value": 256662
       },
       {
-        "rank": 84,
+        "rank": 82,
         "tag": "LIL",
         "name": "one",
         "value": 245267
       },
       {
-        "rank": 85,
-        "tag": "Gru",
-        "name": "CrimsonKnights",
-        "value": 242588
-      },
-      {
-        "rank": 86,
+        "rank": 83,
         "tag": "069",
         "name": "vz69",
-        "value": 231812
+        "value": 231830
       },
       {
-        "rank": 87,
+        "rank": 84,
         "tag": "",
         "name": "Man",
         "value": 228734
       },
       {
-        "rank": 88,
+        "rank": 85,
         "tag": "FOX",
         "name": "FOXHUNTERS",
         "value": 218833
       },
       {
-        "rank": 89,
-        "tag": "MYD",
-        "name": "Myrmidon",
-        "value": 214740
+        "rank": 86,
+        "tag": "BZZ",
+        "name": "TSAAZZEAS",
+        "value": 210470
       },
       {
-        "rank": 90,
-        "tag": "BZZIT",
-        "name": "SAAZZEAS",
-        "value": 209481
-      },
-      {
-        "rank": 91,
-        "tag": "GXxlv",
-        "name": "ampires",
-        "value": 192973
-      },
-      {
-        "rank": 92,
+        "rank": 87,
         "tag": "MAF",
         "name": "MAFIA",
         "value": 186266
       },
       {
-        "rank": 93,
+        "rank": 88,
         "tag": "BJM",
         "name": "KUTUNGGUANDAMU",
         "value": 184040
       },
       {
-        "rank": 94,
+        "rank": 89,
         "tag": "ger",
         "name": "Deutschland",
         "value": 167375
       },
       {
-        "rank": 95,
+        "rank": 90,
         "tag": "F25",
         "name": "France25",
         "value": 147002
       },
       {
-        "rank": 96,
+        "rank": 91,
         "tag": "Lcs",
         "name": "LesCeltes",
         "value": 146852
       },
       {
-        "rank": 97,
-        "tag": "blplb",
-        "name": "lackPink",
-        "value": 140195
-      },
-      {
-        "rank": 98,
+        "rank": 92,
         "tag": "blp",
         "name": "blackPink",
         "value": 140195
       },
       {
-        "rank": 99,
+        "rank": 93,
         "tag": "ALB",
         "name": "EagleofKastrio",
         "value": 136309
       },
       {
-        "rank": 100,
-        "tag": "Vve",
-        "name": "SILSBR",
-        "value": 2816
+        "rank": 94,
+        "tag": "unxiv",
+        "name": "ampues",
+        "value": 134313
+      },
+      {
+        "rank": 95,
+        "tag": "ROK",
+        "name": "2kzdg",
+        "value": 126400
+      },
+      {
+        "rank": 96,
+        "tag": "",
+        "name": "IrZFirKEEZFLAT",
+        "value": 25104
+      },
+      {
+        "rank": 97,
+        "tag": "",
+        "name": "Alliance Kills",
+        "value": 0
       }
     ],
     "personal_power": [
@@ -1212,601 +1194,565 @@
         "rank": 1,
         "tag": "TIT",
         "name": "Fringo",
-        "value": 629037829
+        "value": 631480489
       },
       {
         "rank": 2,
         "tag": "KRZ",
-        "name": "LIONs MANEDH4I",
-        "value": 611545769
+        "name": "BANGUL8?",
+        "value": 614454404
       },
       {
         "rank": 3,
         "tag": "KOR",
         "name": "=30",
-        "value": 571424803
+        "value": 573424148
       },
       {
         "rank": 4,
         "tag": "KR2",
-        "name": "EIS#E0l",
-        "value": 563647846
+        "name": "EIS#E0",
+        "value": 567555856
       },
       {
         "rank": 5,
         "tag": "KOR",
-        "name": "30/zl",
-        "value": 556655415
+        "name": "30/21",
+        "value": 560181574
       },
       {
         "rank": 6,
         "tag": "TIT",
         "name": "Grayson Death",
-        "value": 529591384
+        "value": 532195714
       },
       {
         "rank": 7,
         "tag": "KOR",
         "name": "I/? 8+94271822",
-        "value": 522291547
+        "value": 525372929
       },
       {
         "rank": 8,
         "tag": "KOR",
-        "name": "XIZXHxH",
-        "value": 520683635
+        "name": "IIZAtF",
+        "value": 523441945
       },
       {
         "rank": 9,
         "tag": "KOR",
         "name": "Easyzg",
-        "value": 516944750
+        "value": 519682227
       },
       {
         "rank": 10,
         "tag": "KOR",
-        "name": "biNtappaglogotuut",
-        "value": 499359345
+        "name": "OHHHrlle?1",
+        "value": 505145365
       },
       {
         "rank": 11,
         "tag": "KOR",
-        "name": "Jesttaxll_ Elot",
-        "value": 497044521
+        "name": "btNtappa+!0loHuu",
+        "value": 504020104
       },
       {
         "rank": 12,
-        "tag": "XII",
-        "name": "Naikaa",
-        "value": 494904696
+        "tag": "KOR",
+        "name": "Jesttaxil_Elot",
+        "value": 500205479
       },
       {
         "rank": 13,
-        "tag": "KOR",
-        "name": "OHHHIl2?1",
-        "value": 489016296
+        "tag": "XII",
+        "name": "Naikaa",
+        "value": 496898940
       },
       {
         "rank": 14,
         "tag": "KOR",
         "name": "Asura =",
-        "value": 488550381
+        "value": 493764994
       },
       {
         "rank": 15,
-        "tag": "TiT",
-        "name": "kilua",
-        "value": 484514158
+        "tag": "TIT",
+        "name": "KilluaEazee3=0t",
+        "value": 489589237
       },
       {
         "rank": 16,
-        "tag": "KOR",
-        "name": "EH921",
-        "value": 480798931
+        "tag": "",
+        "name": "",
+        "value": 484797667
       },
       {
         "rank": 17,
-        "tag": "TIT",
-        "name": "RebelWookie",
-        "value": 479500204
+        "tag": "",
+        "name": "",
+        "value": 483265021
       },
       {
         "rank": 18,
-        "tag": "",
-        "name": "PKRZTEREA 324281",
-        "value": 479134207
+        "tag": "TIT",
+        "name": "RebelWookie",
+        "value": 480968018
       },
       {
         "rank": 19,
-        "tag": "EVL",
-        "name": "Arek96",
-        "value": 478592883
+        "tag": "XII",
+        "name": "Drae",
+        "value": 467509956
       },
       {
         "rank": 20,
-        "tag": "XII",
-        "name": "Drae",
-        "value": 464849975
+        "tag": "EVL",
+        "name": "MIZZYiip Innit",
+        "value": 463804384
       },
       {
         "rank": 21,
-        "tag": "EVL",
-        "name": "MIZZYiip Innit",
-        "value": 460901527
+        "tag": "TIT",
+        "name": "Striker",
+        "value": 459930640
       },
       {
         "rank": 22,
         "tag": "TIT",
         "name": "small dragon ha",
-        "value": 451775039
+        "value": 458248274
       },
       {
         "rank": 23,
-        "tag": "TIT",
-        "name": "Striker",
-        "value": 447514805
+        "tag": "",
+        "name": "",
+        "value": 457667025
       },
       {
         "rank": 24,
-        "tag": "EVL",
-        "name": "Katy",
-        "value": 442592883
+        "tag": "",
+        "name": "",
+        "value": 453062705
       },
       {
         "rank": 25,
-        "tag": "TIT",
-        "name": "EIGianEazee",
-        "value": 437389525
+        "tag": "",
+        "name": "",
+        "value": 450214595
       },
       {
         "rank": 26,
-        "tag": "TIT",
-        "name": "IKBBaller",
-        "value": 432292066
+        "tag": "",
+        "name": "",
+        "value": 448337599
       },
       {
         "rank": 27,
         "tag": "KOR",
-        "name": "KKingz2210101",
-        "value": 430110994
+        "name": "Advtserzt52",
+        "value": 422935210
       },
       {
         "rank": 28,
-        "tag": "EVL",
-        "name": "ac",
-        "value": 428530958
+        "tag": "TIT",
+        "name": "IKharnEazee",
+        "value": 418381725
       },
       {
         "rank": 29,
-        "tag": "TIT",
-        "name": "Eazee Eren",
-        "value": 425502723
+        "tag": "EVL",
+        "name": "DGK Wraithfoo",
+        "value": 410180232
       },
       {
         "rank": 30,
-        "tag": "KOR",
-        "name": "Advtserzt 5",
-        "value": 420037986
-      },
-      {
-        "rank": 31,
-        "tag": "TIT",
-        "name": "IKharnEazee",
-        "value": 413688605
-      },
-      {
-        "rank": 32,
         "tag": "DUX",
         "name": "NIGHTSNARE",
         "value": 409120442
       },
       {
+        "rank": 31,
+        "tag": "KOR",
+        "name": "Galaxyest+",
+        "value": 407200748
+      },
+      {
+        "rank": 32,
+        "tag": "KOR",
+        "name": "zg0l",
+        "value": 405967922
+      },
+      {
         "rank": 33,
-        "tag": "EVL",
-        "name": "DGK Wraithfoo",
-        "value": 407159649
+        "tag": "TIT",
+        "name": "Byebye",
+        "value": 403117959
       },
       {
         "rank": 34,
-        "tag": "KOR",
-        "name": "Galaxyeat+",
-        "value": 405438674
+        "tag": "KR2",
+        "name": "Z?4",
+        "value": 401268073
       },
       {
         "rank": 35,
-        "tag": "TIT",
-        "name": "Byebye",
-        "value": 399713072
+        "tag": "KOR",
+        "name": "Woo",
+        "value": 394520109
       },
       {
         "rank": 36,
-        "tag": "KR2",
-        "name": "Z?4",
-        "value": 397510959
+        "tag": "TIT",
+        "name": "Bonjoconlaj",
+        "value": 393705967
       },
       {
         "rank": 37,
         "tag": "XII",
-        "name": "Ragnarl",
-        "value": 389035301
+        "name": "Manaa2",
+        "value": 391589074
       },
       {
         "rank": 38,
-        "tag": "KOR",
-        "name": "zznldzofoX ob",
-        "value": 386545830
+        "tag": "EVL",
+        "name": "9o8 JoDaddy8e/",
+        "value": 390238626
       },
       {
         "rank": 39,
-        "tag": "",
-        "name": "EVL 8o8 PharaohDaddyser",
-        "value": 386206051
+        "tag": "KOR",
+        "name": "ndxotoAob",
+        "value": 389804452
       },
       {
         "rank": 40,
-        "tag": "KOR",
-        "name": "Woo",
-        "value": 385839324
+        "tag": "EVL",
+        "name": "Sayncerfoo",
+        "value": 388315339
       },
       {
         "rank": 41,
         "tag": "KOR",
-        "name": "+ol4lg",
-        "value": 385218417
+        "name": "O+ol4lg",
+        "value": 387865839
       },
       {
         "rank": 42,
-        "tag": "TIT",
-        "name": "IBonjoconlaj",
-        "value": 382112214
+        "tag": "",
+        "name": "Ast",
+        "value": 385964437
       },
       {
         "rank": 43,
         "tag": "TIT",
         "name": "Leonidas77",
-        "value": 382094831
+        "value": 383495151
       },
       {
         "rank": 44,
-        "tag": "XII",
-        "name": "~ Lucky MiL",
-        "value": 379500507
+        "tag": "TIT",
+        "name": "ITURK",
+        "value": 382850022
       },
       {
         "rank": 45,
         "tag": "TiT",
         "name": "mcc",
-        "value": 378492654
+        "value": 381240434
       },
       {
         "rank": 46,
         "tag": "KOR",
-        "name": "olo=",
-        "value": 375738977
+        "name": "ollol=",
+        "value": 378551288
       },
       {
         "rank": 47,
         "tag": "TIT",
-        "name": "ITURK",
-        "value": 374488476
+        "name": "IWookie",
+        "value": 377957682
       },
       {
         "rank": 48,
-        "tag": "TIT",
-        "name": "Wookie",
-        "value": 374450688
+        "tag": "EVL",
+        "name": "JustaThiccfoo",
+        "value": 376035838
       },
       {
         "rank": 49,
-        "tag": "KOR",
-        "name": "-2le",
-        "value": 369963934
+        "tag": "TIT",
+        "name": "Iplastikman",
+        "value": 373194354
       },
       {
         "rank": 50,
-        "tag": "KOR",
-        "name": "Z? 5)Hul",
-        "value": 368496781
+        "tag": "",
+        "name": "",
+        "value": 371939144
       },
       {
         "rank": 51,
         "tag": "TIT",
-        "name": "Cold",
-        "value": 368240596
+        "name": "King Swisz",
+        "value": 363736565
       },
       {
         "rank": 52,
         "tag": "KOR",
-        "name": "tI38l7#5 JHuI",
-        "value": 367126263
+        "name": "MOONECLIPSE",
+        "value": 361907051
       },
       {
         "rank": 53,
-        "tag": "TiT",
-        "name": "Iplastikman",
-        "value": 366694164
+        "tag": "KRZ",
+        "name": "poloria",
+        "value": 361742279
       },
       {
         "rank": 54,
-        "tag": "EVL",
-        "name": "JustaThiccfoo",
-        "value": 366247740
+        "tag": "TIT",
+        "name": "Ciccio 86",
+        "value": 359440207
       },
       {
         "rank": 55,
-        "tag": "TIT",
-        "name": "King Swisz",
-        "value": 363095544
+        "tag": "TiT",
+        "name": "dani",
+        "value": 359264934
       },
       {
         "rank": 56,
-        "tag": "KRZ",
-        "name": "Ipoloria",
-        "value": 358851220
+        "tag": "TIT",
+        "name": "Patoo",
+        "value": 358948541
       },
       {
         "rank": 57,
-        "tag": "KOR",
-        "name": "MOONECLIPSE",
-        "value": 358288023
+        "tag": "EVL",
+        "name": "YiipiesGoodGirl",
+        "value": 358660321
       },
       {
         "rank": 58,
-        "tag": "KR2",
-        "name": "F40l",
-        "value": 357049853
+        "tag": "",
+        "name": "",
+        "value": 358378227
       },
       {
         "rank": 59,
-        "tag": "EVL",
-        "name": "YiipiesGoodGirl",
-        "value": 357036099
+        "tag": "KOR",
+        "name": "Sentimental",
+        "value": 354521435
       },
       {
         "rank": 60,
-        "tag": "TiT",
-        "name": "dani",
-        "value": 356018119
+        "tag": "ONE",
+        "name": "Hydrone",
+        "value": 354384525
       },
       {
         "rank": 61,
-        "tag": "TIT",
-        "name": "Patoo",
-        "value": 354940965
+        "tag": "KOR",
+        "name": "Moch+52Ml",
+        "value": 354104746
       },
       {
         "rank": 62,
-        "tag": "TIT",
-        "name": "Tochetto",
-        "value": 354757236
+        "tag": "EVL",
+        "name": "Bush Chookfoo",
+        "value": 353813533
       },
       {
         "rank": 63,
-        "tag": "TIT",
-        "name": "ICiccio 86",
-        "value": 354315215
+        "tag": "EVL",
+        "name": "Mando Nomad",
+        "value": 353557956
       },
       {
         "rank": 64,
         "tag": "EVL",
-        "name": "Mando Nomad",
-        "value": 350994251
+        "name": "Iphylipe",
+        "value": 351946429
       },
       {
         "rank": 65,
-        "tag": "EVL",
-        "name": "Bush Chookfoo",
-        "value": 350780076
+        "tag": "",
+        "name": "",
+        "value": 351341331
       },
       {
         "rank": 66,
-        "tag": "KOR",
-        "name": "Moch+EMl",
-        "value": 349977701
+        "tag": "",
+        "name": "",
+        "value": 350102014
       },
       {
         "rank": 67,
-        "tag": "EVL",
-        "name": "phylipe",
-        "value": 348101812
+        "tag": "TIT",
+        "name": "HumEazee83",
+        "value": 346206182
       },
       {
         "rank": 68,
-        "tag": "TIT",
-        "name": "IKULHANBEY",
-        "value": 346905746
+        "tag": "EVL",
+        "name": "APEX PREDATOR",
+        "value": 346022099
       },
       {
         "rank": 69,
-        "tag": "ONE",
-        "name": "Hydrone",
-        "value": 346626996
+        "tag": "TIT",
+        "name": "Manicas",
+        "value": 343010553
       },
       {
         "rank": 70,
-        "tag": "XII",
-        "name": "Elmer Fudd",
-        "value": 343899944
+        "tag": "BST",
+        "name": "DownHill",
+        "value": 340502313
       },
       {
         "rank": 71,
         "tag": "EVL",
-        "name": "APEX PREDATOR",
-        "value": 343751940
+        "name": "Crank",
+        "value": 340441817
       },
       {
         "rank": 72,
-        "tag": "TIT",
-        "name": "HumEazee83",
-        "value": 342775003
+        "tag": "EVL",
+        "name": "Yiipie",
+        "value": 340006946
       },
       {
         "rank": 73,
         "tag": "TIT",
-        "name": "Manicas",
-        "value": 340643408
+        "name": "Edward Il",
+        "value": 338177084
       },
       {
         "rank": 74,
-        "tag": "KRz",
-        "name": "starEHBl",
-        "value": 335703831
+        "tag": "DuX",
+        "name": "LameDuck",
+        "value": 337454506
       },
       {
         "rank": 75,
-        "tag": "KOR",
-        "name": "7HO22",
-        "value": 334542600
+        "tag": "",
+        "name": "",
+        "value": 336845585
       },
       {
         "rank": 76,
         "tag": "XII",
         "name": "Azade",
-        "value": 332483524
+        "value": 335813684
       },
       {
         "rank": 77,
-        "tag": "TIT",
-        "name": "Lord Waffles",
-        "value": 332464312
+        "tag": "KRz",
+        "name": "starEHHl",
+        "value": 335802685
       },
       {
         "rank": 78,
         "tag": "TIT",
-        "name": "Edward II",
-        "value": 331473216
+        "name": "Drak",
+        "value": 335066451
       },
       {
         "rank": 79,
-        "tag": "DuX",
-        "name": "LameDuck",
-        "value": 331434016
+        "tag": "TIT",
+        "name": "Lord Waffles",
+        "value": 334907542
       },
       {
         "rank": 80,
         "tag": "TIT",
         "name": "ROLEX",
-        "value": 331036036
+        "value": 334442547
       },
       {
         "rank": 81,
-        "tag": "EVL",
-        "name": "RANG3Rfoo",
-        "value": 329951255
+        "tag": "TIT",
+        "name": "JUpSN DOIp",
+        "value": 333256736
       },
       {
         "rank": 82,
         "tag": "EVL",
         "name": "CumpaVero",
-        "value": 329562144
+        "value": 332527643
       },
       {
         "rank": 83,
-        "tag": "TIT",
-        "name": "Drak",
-        "value": 329344511
+        "tag": "EVL",
+        "name": "RANG3Rfoo",
+        "value": 331922311
       },
       {
         "rank": 84,
         "tag": "KOR",
-        "name": "SENZI",
-        "value": 329247936
+        "name": "SEXPI",
+        "value": 331781576
       },
       {
         "rank": 85,
-        "tag": "KOR",
-        "name": "SE4ZI",
-        "value": 329247936
+        "tag": "",
+        "name": "Gfunk",
+        "value": 329695294
       },
       {
         "rank": 86,
-        "tag": "KOR",
+        "tag": "",
         "name": "rose218",
-        "value": 328227153
+        "value": 328256553
       },
       {
         "rank": 87,
-        "tag": "EVL",
-        "name": "Pauly",
-        "value": 327381487
+        "tag": "KOR",
+        "name": "JessyEPR",
+        "value": 327792169
       },
       {
         "rank": 88,
         "tag": "TIT",
-        "name": "STKRaiden Eazee",
-        "value": 325390564
+        "name": "ISTKRaiden Eazee",
+        "value": 327726845
       },
       {
         "rank": 89,
         "tag": "TIT",
-        "name": "ISTKRaiden Eazee",
-        "value": 325390564
+        "name": "Phillywilly",
+        "value": 327638278
       },
       {
         "rank": 90,
-        "tag": "TIT",
-        "name": "Phillywilly",
-        "value": 324786566
+        "tag": "KOR",
+        "name": "zgol",
+        "value": 327489350
       },
       {
         "rank": 91,
-        "tag": "KOR",
-        "name": "zzol",
-        "value": 324407057
+        "tag": "TIT",
+        "name": "STKRaiden Eazee",
+        "value": 726845
       },
       {
         "rank": 92,
-        "tag": "KOR",
-        "name": "zgol",
-        "value": 324407057
+        "tag": "EVL",
+        "name": "Pauly",
+        "value": 335727
       },
       {
         "rank": 93,
-        "tag": "TIT",
-        "name": "Dustin",
-        "value": 324285050
-      },
-      {
-        "rank": 94,
-        "tag": "TIT",
-        "name": "JOpSN DOIp",
-        "value": 323253261
-      },
-      {
-        "rank": 95,
-        "tag": "TIT",
-        "name": "JIJUpSN DOlp",
-        "value": 323253261
-      },
-      {
-        "rank": 96,
-        "tag": "TIT",
-        "name": "JIUp)N DOlp",
-        "value": 323253261
-      },
-      {
-        "rank": 97,
-        "tag": "TIT",
-        "name": "JUpSN DOIp",
-        "value": 323253261
-      },
-      {
-        "rank": 98,
-        "tag": "KOR",
-        "name": "g0l",
-        "value": 711055
-      },
-      {
-        "rank": 99,
-        "tag": "KOR",
-        "name": "ol4g",
-        "value": 206820
-      },
-      {
-        "rank": 100,
         "tag": "",
         "name": "lord296130837",
         "value": 52163
+      },
+      {
+        "rank": 94,
+        "tag": "",
+        "name": "Personal Power",
+        "value": 0
       }
     ],
     "kill_count": [
@@ -1825,14 +1771,14 @@
       {
         "rank": 3,
         "tag": "KRZ",
-        "name": "LIONs MANEOH4I",
+        "name": "BANGULY?",
         "value": 183370397
       },
       {
         "rank": 4,
         "tag": "KOR",
         "name": "ol4g",
-        "value": 179588807
+        "value": 180155781
       },
       {
         "rank": 5,
@@ -1844,115 +1790,115 @@
         "rank": 6,
         "tag": "EVL",
         "name": "Gav innit'! ! foo",
-        "value": 138697641
+        "value": 138697642
       },
       {
         "rank": 7,
         "tag": "KOR",
-        "name": "AdvtserztE",
-        "value": 136645684
+        "name": "AdvtserzE",
+        "value": 136695389
       },
       {
         "rank": 8,
-        "tag": "TIT",
-        "name": "kilua",
-        "value": 131596448
-      },
-      {
-        "rank": 9,
         "tag": "TIT",
         "name": "Eazee Eren",
         "value": 123099045
       },
       {
-        "rank": 10,
+        "rank": 9,
         "tag": "",
         "name": "Madoc",
         "value": 113260061
       },
       {
-        "rank": 11,
+        "rank": 10,
         "tag": "TIT",
         "name": "Fringo",
         "value": 106544224
       },
       {
-        "rank": 12,
+        "rank": 11,
         "tag": "KOR",
-        "name": "OHHHe?1",
-        "value": 105069837
+        "name": "OHHHle?1",
+        "value": 105177091
       },
       {
-        "rank": 13,
+        "rank": 12,
         "tag": "TiT",
         "name": "mcc",
         "value": 96812608
       },
       {
-        "rank": 14,
+        "rank": 13,
         "tag": "EVL",
         "name": "JustaThiccfoo",
-        "value": 96233024
+        "value": 96233025
+      },
+      {
+        "rank": 14,
+        "tag": "",
+        "name": "",
+        "value": 91548227
       },
       {
         "rank": 15,
-        "tag": "EVL",
-        "name": "MadHatter",
-        "value": 91548222
+        "tag": "",
+        "name": "Figte5",
+        "value": 91281614
       },
       {
         "rank": 16,
         "tag": "KOR",
-        "name": "4/7/89527/892",
-        "value": 91281614
-      },
-      {
-        "rank": 17,
-        "tag": "KOR",
-        "name": "Jesttaxil_Elot",
+        "name": "JesttaT_ Elot",
         "value": 90725455
       },
       {
-        "rank": 18,
+        "rank": 17,
         "tag": "TIT",
         "name": "Bonjoconlaj",
         "value": 86821082
       },
       {
-        "rank": 19,
+        "rank": 18,
         "tag": "KR2",
-        "name": "ZS4",
-        "value": 85263018
+        "name": "Z?@",
+        "value": 85277526
+      },
+      {
+        "rank": 19,
+        "tag": "XII",
+        "name": "Thorfinn",
+        "value": 82454859
       },
       {
         "rank": 20,
-        "tag": "XII",
-        "name": "Thorfinn",
-        "value": 82454827
-      },
-      {
-        "rank": 21,
-        "tag": "EVL",
-        "name": "So8 PharaohDaddyse/",
+        "tag": "",
+        "name": "EVL 9o8 JoDaddy8oe/",
         "value": 80326673
       },
       {
-        "rank": 22,
-        "tag": "XII",
-        "name": "- Lucky MiL",
+        "rank": 21,
+        "tag": "",
+        "name": "Ast",
         "value": 79299894
       },
       {
-        "rank": 23,
+        "rank": 22,
         "tag": "TIT",
         "name": "Tochetto",
         "value": 78367998
       },
       {
-        "rank": 24,
+        "rank": 23,
         "tag": "BST",
         "name": "DownHill",
         "value": 77371180
+      },
+      {
+        "rank": 24,
+        "tag": "XII",
+        "name": "Naikaa",
+        "value": 72888763
       },
       {
         "rank": 25,
@@ -1963,20 +1909,20 @@
       {
         "rank": 26,
         "tag": "EVL",
-        "name": "ac",
+        "name": "aC",
         "value": 70363725
       },
       {
         "rank": 27,
         "tag": "EVL",
-        "name": "Katy Perry",
+        "name": "Katy",
         "value": 66933844
       },
       {
         "rank": 28,
         "tag": "XII",
         "name": "BIAKBAKi",
-        "value": 65159068
+        "value": 65333173
       },
       {
         "rank": 29,
@@ -1987,428 +1933,398 @@
       {
         "rank": 30,
         "tag": "KOR",
-        "name": "F301",
+        "name": "S301",
         "value": 63546620
       },
       {
         "rank": 31,
         "tag": "TIT",
         "name": "HumEazee83",
-        "value": 61946991
+        "value": 61962043
       },
       {
         "rank": 32,
-        "tag": "XII",
-        "name": "Ruskof",
-        "value": 61108223
+        "tag": "KOR",
+        "name": "zalezoto x ob",
+        "value": 59891669
       },
       {
         "rank": 33,
+        "tag": "",
+        "name": "XKRZITEREA 324281",
+        "value": 56254646
+      },
+      {
+        "rank": 34,
+        "tag": "TIT",
+        "name": "Rusco",
+        "value": 55395856
+      },
+      {
+        "rank": 35,
         "tag": "TIT",
         "name": "AedesAegypth",
         "value": 55312784
       },
       {
-        "rank": 34,
+        "rank": 36,
         "tag": "TIT",
         "name": "ILOKEH",
         "value": 53800731
       },
       {
-        "rank": 35,
+        "rank": 37,
         "tag": "KOR",
-        "name": "tI3o+z#EJHul",
+        "name": "tI4ok3#EJHul",
         "value": 53156452
       },
       {
-        "rank": 36,
+        "rank": 38,
         "tag": "KOR",
         "name": "Asura =",
         "value": 49354695
       },
       {
-        "rank": 37,
+        "rank": 39,
         "tag": "KOR",
-        "name": "-2lg",
+        "name": "-zlg",
         "value": 48877085
       },
       {
-        "rank": 38,
+        "rank": 40,
         "tag": "TIT",
-        "name": "Iplastikman",
+        "name": "plastikman",
         "value": 48417842
       },
       {
-        "rank": 39,
+        "rank": 41,
         "tag": "XII",
         "name": "EkinOx",
-        "value": 48032653
+        "value": 48038610
       },
       {
-        "rank": 40,
+        "rank": 42,
         "tag": "KOR",
-        "name": "EH92",
+        "name": "EH921",
         "value": 47818773
       },
       {
-        "rank": 41,
+        "rank": 43,
+        "tag": "KOR",
+        "name": "zg0l",
+        "value": 47325665
+      },
+      {
+        "rank": 44,
+        "tag": "KOR",
+        "name": "IIZAtx",
+        "value": 46891444
+      },
+      {
+        "rank": 45,
         "tag": "TIT",
         "name": "Wookie",
         "value": 45771947
       },
       {
-        "rank": 42,
+        "rank": 46,
         "tag": "TIT",
         "name": "ICold",
         "value": 45518511
       },
       {
-        "rank": 43,
-        "tag": "TIT",
-        "name": "Dustin",
+        "rank": 47,
+        "tag": "",
+        "name": "",
         "value": 45459932
       },
       {
-        "rank": 44,
-        "tag": "KRZ",
-        "name": "Z?UE0l",
-        "value": 45139906
+        "rank": 48,
+        "tag": "KR2",
+        "name": "ZSEE0l",
+        "value": 45161969
       },
       {
-        "rank": 45,
+        "rank": 49,
         "tag": "",
         "name": "Paz Vizsla",
         "value": 44981556
       },
       {
-        "rank": 46,
+        "rank": 50,
         "tag": "EVL",
         "name": "APEX PREDATOR",
         "value": 44615598
       },
       {
-        "rank": 47,
-        "tag": "TiT",
+        "rank": 51,
+        "tag": "TIT",
         "name": "Stormreign",
         "value": 43539457
       },
       {
-        "rank": 48,
+        "rank": 52,
         "tag": "TIT",
         "name": "saxIII",
         "value": 42977823
       },
       {
-        "rank": 49,
+        "rank": 53,
+        "tag": "TIT",
+        "name": "Aleex",
+        "value": 41951396
+      },
+      {
+        "rank": 54,
         "tag": "EVL",
-        "name": "MIZZNEMESISfoo",
+        "name": "Iphylipe",
+        "value": 41347675
+      },
+      {
+        "rank": 55,
+        "tag": "TIT",
+        "name": "ISTKRaiden Eazee",
+        "value": 40866892
+      },
+      {
+        "rank": 56,
+        "tag": "",
+        "name": "",
         "value": 40631912
       },
       {
-        "rank": 50,
+        "rank": 57,
         "tag": "EVL",
         "name": "Sayncerfoo",
         "value": 40059906
       },
       {
-        "rank": 51,
+        "rank": 58,
         "tag": "",
         "name": "UniEvL",
         "value": 40057811
       },
       {
-        "rank": 52,
+        "rank": 59,
         "tag": "TIT",
-        "name": "Nobinho",
+        "name": "Byebye",
+        "value": 40000548
+      },
+      {
+        "rank": 60,
+        "tag": "TIT",
+        "name": "INobinho",
         "value": 38912158
       },
       {
-        "rank": 53,
+        "rank": 61,
         "tag": "TIT",
         "name": "AM Eazee F elix",
         "value": 38302073
       },
       {
-        "rank": 54,
+        "rank": 62,
         "tag": "XII",
         "name": "Meliodas",
-        "value": 37432170
+        "value": 37435672
       },
       {
-        "rank": 55,
+        "rank": 63,
         "tag": "XII",
-        "name": "Ragnarl",
-        "value": 37315047
+        "name": "Manaa2",
+        "value": 37317391
       },
       {
-        "rank": 56,
+        "rank": 64,
+        "tag": "ONE",
+        "name": "GOD TiER CRAWL",
+        "value": 37267010
+      },
+      {
+        "rank": 65,
         "tag": "KOR",
-        "name": "Easy_g",
+        "name": "Easy 19",
         "value": 36421305
       },
       {
-        "rank": 57,
+        "rank": 66,
+        "tag": "",
+        "name": "455 ( Go Sgt Slayerde 7 %",
+        "value": 35229674
+      },
+      {
+        "rank": 67,
         "tag": "TIT",
         "name": "IKBBaller",
         "value": 34199840
       },
       {
-        "rank": 58,
+        "rank": 68,
         "tag": "EVL",
         "name": "Yiipie",
-        "value": 34095927
+        "value": 34157068
       },
       {
-        "rank": 59,
+        "rank": 69,
         "tag": "",
         "name": "NoOnelsHere",
         "value": 33137100
       },
       {
-        "rank": 60,
+        "rank": 70,
         "tag": "",
         "name": "GhostNotWHoORE",
         "value": 31395742
       },
       {
-        "rank": 61,
+        "rank": 71,
         "tag": "TIT",
-        "name": "oo8Nazgulgoe/",
-        "value": 31279337
+        "name": "",
+        "value": 31341485
       },
       {
-        "rank": 62,
+        "rank": 72,
         "tag": "TiT",
-        "name": "dani",
+        "name": "Idani",
         "value": 30813482
       },
       {
-        "rank": 63,
+        "rank": 73,
         "tag": "TIT",
         "name": "IKing Swisz",
         "value": 30793768
       },
       {
-        "rank": 64,
-        "tag": "",
-        "name": "KSow",
-        "value": 30693801
-      },
-      {
-        "rank": 65,
+        "rank": 74,
         "tag": "",
         "name": "Damlaujud",
         "value": 30203669
       },
       {
-        "rank": 66,
+        "rank": 75,
         "tag": "EVL",
         "name": "Bush Chookfoo",
         "value": 30179614
       },
       {
-        "rank": 67,
+        "rank": 76,
         "tag": "TIT",
         "name": "IGiu",
         "value": 29764438
       },
       {
-        "rank": 68,
+        "rank": 77,
         "tag": "",
         "name": "Bibii",
         "value": 29714970
       },
       {
-        "rank": 69,
+        "rank": 78,
         "tag": "TIT",
         "name": "ITURK",
-        "value": 29459361
+        "value": 29478351
       },
       {
-        "rank": 70,
-        "tag": "KOR",
-        "name": "EISuzh",
+        "rank": 79,
+        "tag": "",
+        "name": "",
         "value": 29200967
       },
       {
-        "rank": 71,
+        "rank": 80,
         "tag": "",
-        "name": "GSlayer",
+        "name": "",
         "value": 28461390
       },
       {
-        "rank": 72,
-        "tag": "IDC",
-        "name": "z#FlR4",
+        "rank": 81,
+        "tag": "",
+        "name": "",
         "value": 26634786
       },
       {
-        "rank": 73,
+        "rank": 82,
         "tag": "",
         "name": "",
         "value": 26312219
       },
       {
-        "rank": 74,
-        "tag": "EVL",
-        "name": "Arek96",
-        "value": 26225083
-      },
-      {
-        "rank": 75,
-        "tag": "KOR",
-        "name": "ollol =",
-        "value": 25767944
-      },
-      {
-        "rank": 76,
-        "tag": "KOR",
-        "name": "354",
-        "value": 25730083
-      },
-      {
-        "rank": 77,
+        "rank": 83,
         "tag": "TIT",
         "name": "E 245 B",
         "value": 25612238
       },
       {
-        "rank": 78,
+        "rank": 84,
         "tag": "Gru",
         "name": "Falki",
         "value": 25446391
       },
       {
-        "rank": 79,
-        "tag": "KOR",
-        "name": "biNtappa44OloHuu",
-        "value": 25301072
-      },
-      {
-        "rank": 80,
-        "tag": "KOR",
-        "name": "btNtappaE-olotuut",
-        "value": 25301072
-      },
-      {
-        "rank": 81,
-        "tag": "TIT",
-        "name": "EIGianEazee",
-        "value": 25197457
-      },
-      {
-        "rank": 82,
-        "tag": "KOR",
-        "name": "okzlz",
-        "value": 25111452
-      },
-      {
-        "rank": 83,
-        "tag": "KOR",
-        "name": "o+a15",
-        "value": 25111452
-      },
-      {
-        "rank": 84,
-        "tag": "KOR",
-        "name": "kzls",
-        "value": 25111452
-      },
-      {
         "rank": 85,
         "tag": "KOR",
-        "name": "+ziz",
-        "value": 25111452
+        "name": "biNtappa4! 0loHuu",
+        "value": 25301072
       },
       {
         "rank": 86,
-        "tag": "KOR",
-        "name": "okzis",
-        "value": 25111452
+        "tag": "TIT",
+        "name": "EIGianEazee",
+        "value": 25204457
       },
       {
         "rank": 87,
+        "tag": "KOR",
+        "name": "kzlz",
+        "value": 25111452
+      },
+      {
+        "rank": 88,
         "tag": "",
         "name": "Smite",
         "value": 24882498
       },
       {
-        "rank": 88,
+        "rank": 89,
         "tag": "TIT",
         "name": "ROLEX",
         "value": 24614658
       },
       {
-        "rank": 89,
+        "rank": 90,
         "tag": "EVL",
         "name": "Matoya",
         "value": 24477291
       },
       {
-        "rank": 90,
+        "rank": 91,
         "tag": "TIT",
         "name": "Grayson Death",
         "value": 24374940
       },
       {
-        "rank": 91,
-        "tag": "TIT",
-        "name": "IGrayson Death",
-        "value": 24374940
-      },
-      {
         "rank": 92,
-        "tag": "KOR",
-        "name": "trolohut_KOR",
-        "value": 24358228
-      },
-      {
-        "rank": 93,
-        "tag": "KOR",
-        "name": "tFolohut_KOR",
-        "value": 24358228
-      },
-      {
-        "rank": 94,
-        "tag": "KOR",
-        "name": "tFolotut_KOR",
-        "value": 24358228
-      },
-      {
-        "rank": 95,
         "tag": "KOR",
         "name": "tFoloHuu",
         "value": 24358228
       },
       {
-        "rank": 96,
-        "tag": "KOR",
-        "name": "SERAPIM",
-        "value": 24173191
+        "rank": 93,
+        "tag": "TIT",
+        "name": "KilluaEazee3=0t",
+        "value": 603494
       },
       {
-        "rank": 97,
-        "tag": "",
-        "name": "Cviviyui",
-        "value": 23301012
-      },
-      {
-        "rank": 98,
-        "tag": "KOR",
-        "name": "kziz",
-        "value": 111452
-      },
-      {
-        "rank": 99,
+        "rank": 94,
         "tag": "",
         "name": "lord296130837",
-        "value": 67125
+        "value": 67066
       },
       {
-        "rank": 100,
-        "tag": "TIT",
-        "name": "Byebye",
-        "value": 40000
+        "rank": 95,
+        "tag": "",
+        "name": "Kill Count",
+        "value": 0
       }
     ],
     "hero_power": [
@@ -2421,8 +2337,8 @@
       {
         "rank": 2,
         "tag": "KRZ",
-        "name": "LIONs MANEDH4I",
-        "value": 16697297
+        "name": "BANGULY?",
+        "value": 16753367
       },
       {
         "rank": 3,
@@ -2433,20 +2349,20 @@
       {
         "rank": 4,
         "tag": "EVL",
-        "name": "?",
+        "name": "a",
         "value": 15978595
       },
       {
         "rank": 5,
-        "tag": "KOR",
-        "name": "K/7/895271892",
-        "value": 15491942
-      },
-      {
-        "rank": 6,
         "tag": "EVL",
         "name": "MIZZYiip Innit",
         "value": 15412246
+      },
+      {
+        "rank": 6,
+        "tag": "KOR",
+        "name": "I/?18+944221422",
+        "value": 14421644
       },
       {
         "rank": 7,
@@ -2469,548 +2385,500 @@
       {
         "rank": 10,
         "tag": "TIT",
-        "name": "Cold",
-        "value": 12716708
-      },
-      {
-        "rank": 11,
-        "tag": "TIT",
         "name": "small dragon ha",
         "value": 12640047
       },
       {
-        "rank": 12,
+        "rank": 11,
         "tag": "TIT",
         "name": "RebelWookie",
         "value": 12634531
       },
       {
-        "rank": 13,
+        "rank": 12,
         "tag": "KOR",
-        "name": "btNtappa+!olotuut",
+        "name": "btNtappaH!oloHuu",
         "value": 12533406
       },
       {
-        "rank": 14,
+        "rank": 13,
         "tag": "XII",
         "name": "Naikaa",
         "value": 12394535
       },
       {
+        "rank": 14,
+        "tag": "KRZ",
+        "name": "TEREA 2 2281",
+        "value": 12283278
+      },
+      {
         "rank": 15,
-        "tag": "TiT",
+        "tag": "Tit",
         "name": "Imcc",
-        "value": 11958897
+        "value": 12159057
       },
       {
         "rank": 16,
         "tag": "TIT",
-        "name": "kilua",
+        "name": "KilluaEazee3=ot",
         "value": 11681084
       },
       {
         "rank": 17,
         "tag": "KOR",
-        "name": "Easy_9",
+        "name": "Easy19",
         "value": 11560592
       },
       {
         "rank": 18,
         "tag": "KOR",
-        "name": "TSWx",
-        "value": 10948926
+        "name": "EH92l",
+        "value": 10098665
       },
       {
         "rank": 19,
-        "tag": "",
-        "name": "(EVL 8c8 PharaohDaddyder",
-        "value": 10685678
-      },
-      {
-        "rank": 20,
-        "tag": "KOR",
-        "name": "3021",
-        "value": 10607789
-      },
-      {
-        "rank": 21,
-        "tag": "KOR",
-        "name": "OHHHe?1",
-        "value": 10315417
-      },
-      {
-        "rank": 22,
-        "tag": "",
-        "name": "TITJEazee Eren",
-        "value": 10261341
-      },
-      {
-        "rank": 23,
         "tag": "TIT",
         "name": "KharnEazee",
         "value": 9966999
       },
       {
-        "rank": 24,
+        "rank": 20,
         "tag": "EVL",
         "name": "Gav innit' ! ! foo",
         "value": 9925656
       },
       {
-        "rank": 25,
+        "rank": 21,
         "tag": "EVL",
         "name": "MadHatter",
         "value": 9889004
       },
       {
-        "rank": 26,
-        "tag": "KOR",
-        "name": "EH92l",
-        "value": 9717907
+        "rank": 22,
+        "tag": "TIT",
+        "name": "IGrayson Death",
+        "value": 9629170
       },
       {
-        "rank": 27,
+        "rank": 23,
+        "tag": "KR2",
+        "name": "ZSEE0l",
+        "value": 9575629
+      },
+      {
+        "rank": 24,
         "tag": "TIT",
         "name": "Leonidas77",
-        "value": 9491144
+        "value": 9564686
       },
       {
-        "rank": 28,
+        "rank": 25,
         "tag": "KOR",
-        "name": "Asura =",
-        "value": 9474032
+        "name": "Jestiaxll_ Elot",
+        "value": 9546545
       },
       {
-        "rank": 29,
-        "tag": "KOR",
-        "name": "Jesttaxll_ Elo",
-        "value": 9464383
-      },
-      {
-        "rank": 30,
-        "tag": "KR2",
-        "name": "Z?#E0l",
-        "value": 9459844
-      },
-      {
-        "rank": 31,
-        "tag": "",
-        "name": "Madoc",
-        "value": 9366495
-      },
-      {
-        "rank": 32,
+        "rank": 26,
         "tag": "TIT",
         "name": "Dustin",
         "value": 9338913
       },
       {
-        "rank": 33,
-        "tag": "",
-        "name": "Mellon",
-        "value": 9329301
-      },
-      {
-        "rank": 34,
+        "rank": 27,
         "tag": "TIT",
         "name": "Tochetto",
         "value": 9263312
       },
       {
-        "rank": 35,
+        "rank": 28,
         "tag": "TIT",
         "name": "KBBaller",
         "value": 8989469
       },
       {
-        "rank": 36,
+        "rank": 29,
         "tag": "EVL",
         "name": "JustaThiccfoo",
         "value": 8643352
       },
       {
-        "rank": 37,
+        "rank": 30,
         "tag": "TIT",
         "name": "EIGianEazee",
         "value": 8504095
       },
       {
-        "rank": 38,
-        "tag": "TiT",
+        "rank": 31,
+        "tag": "TIT",
         "name": "Striker",
         "value": 8419133
       },
       {
-        "rank": 39,
+        "rank": 32,
         "tag": "KR2",
         "name": "Z?4",
         "value": 8168387
       },
       {
-        "rank": 40,
+        "rank": 33,
+        "tag": "TIt",
+        "name": "",
+        "value": 8167709
+      },
+      {
+        "rank": 34,
         "tag": "EVL",
         "name": "Arek96",
         "value": 7967592
       },
       {
-        "rank": 41,
+        "rank": 35,
         "tag": "XII",
-        "name": "Ragnarl",
+        "name": "Manaa2",
         "value": 7878403
       },
       {
-        "rank": 42,
-        "tag": "TIT",
-        "name": "9o8Nazgul8oe/",
-        "value": 7769052
+        "rank": 36,
+        "tag": "EVL",
+        "name": "Katy",
+        "value": 7868619
       },
       {
-        "rank": 43,
+        "rank": 37,
         "tag": "KOR",
-        "name": "-zlg",
+        "name": "tI3okz#5JHul",
+        "value": 7807269
+      },
+      {
+        "rank": 38,
+        "tag": "KOR",
+        "name": "izle",
         "value": 7737338
       },
       {
-        "rank": 44,
+        "rank": 39,
         "tag": "XII",
         "name": "Drae",
         "value": 7726393
       },
       {
-        "rank": 45,
-        "tag": "KOR",
-        "name": "tI4ok7#EJHul",
-        "value": 7725106
-      },
-      {
-        "rank": 46,
+        "rank": 40,
         "tag": "XII",
         "name": "Ruskof",
         "value": 7722803
       },
       {
-        "rank": 47,
+        "rank": 41,
         "tag": "TIT",
         "name": "Wookie",
         "value": 7696235
       },
       {
-        "rank": 48,
+        "rank": 42,
         "tag": "EVL",
         "name": "DGK Wraithfoo",
-        "value": 7487783
+        "value": 7621590
       },
       {
-        "rank": 49,
+        "rank": 43,
+        "tag": "KOR",
+        "name": "ollol=",
+        "value": 7550047
+      },
+      {
+        "rank": 44,
         "tag": "TIT",
-        "name": "JIJUpSN DOIp",
+        "name": "JUpSN DOlp",
         "value": 7465890
       },
       {
-        "rank": 50,
+        "rank": 45,
         "tag": "KOR",
-        "name": "z3nldzoto x ob",
+        "name": "Z_uldzoto x ob",
         "value": 7377483
       },
       {
-        "rank": 51,
+        "rank": 46,
         "tag": "EVL",
-        "name": "Katy",
+        "name": "Sayncerfoo",
         "value": 7346907
       },
       {
-        "rank": 52,
-        "tag": "KOR",
-        "name": "olo =",
-        "value": 7332709
-      },
-      {
-        "rank": 53,
+        "rank": 47,
         "tag": "",
         "name": "Smite",
         "value": 7169156
       },
       {
-        "rank": 54,
+        "rank": 48,
         "tag": "",
-        "name": "0leWraithblader",
+        "name": "keWraithblader",
         "value": 7108973
       },
       {
-        "rank": 55,
+        "rank": 49,
         "tag": "ONE",
-        "name": "amaryllis",
+        "name": "Dannie",
+        "value": 7076440
+      },
+      {
+        "rank": 50,
+        "tag": "",
+        "name": "Hero: Long Fei",
         "value": 6970958
       },
       {
-        "rank": 56,
+        "rank": 51,
+        "tag": "EVL",
+        "name": "Yiipie",
+        "value": 6741477
+      },
+      {
+        "rank": 52,
         "tag": "TIT",
         "name": "IGiu",
         "value": 6724048
       },
       {
-        "rank": 57,
+        "rank": 53,
         "tag": "",
         "name": "soso",
         "value": 6721235
       },
       {
-        "rank": 58,
+        "rank": 54,
         "tag": "",
         "name": "UniEvL",
         "value": 6634535
       },
       {
-        "rank": 59,
+        "rank": 55,
+        "tag": "KR3",
+        "name": "E=433712",
+        "value": 6605298
+      },
+      {
+        "rank": 56,
         "tag": "KR2",
-        "name": "F40l",
+        "name": "F#0l",
         "value": 6589330
       },
       {
-        "rank": 60,
-        "tag": "EVL",
-        "name": "Yiipie",
-        "value": 6577152
-      },
-      {
-        "rank": 61,
+        "rank": 57,
         "tag": "KOR",
-        "name": "King3=21/0/01",
+        "name": "Kingz =dllolol",
         "value": 6511590
       },
       {
-        "rank": 62,
-        "tag": "KR3",
-        "name": "Z5433712l",
-        "value": 6484793
-      },
-      {
-        "rank": 63,
+        "rank": 58,
         "tag": "EVL",
         "name": "APEX PREDATOR",
         "value": 6461224
       },
       {
-        "rank": 64,
+        "rank": 59,
         "tag": "",
         "name": "Damlaujud",
         "value": 6422998
       },
       {
-        "rank": 65,
-        "tag": "DuX",
-        "name": "LameDuck",
-        "value": 6344971
-      },
-      {
-        "rank": 66,
+        "rank": 60,
         "tag": "TIT",
         "name": "HumEazee83",
         "value": 6316242
       },
       {
-        "rank": 67,
+        "rank": 61,
         "tag": "BST",
         "name": "DownHill",
         "value": 6294416
       },
       {
-        "rank": 68,
+        "rank": 62,
         "tag": "KOR",
         "name": "Woo",
         "value": 6222808
       },
       {
-        "rank": 69,
+        "rank": 63,
         "tag": "TiT",
         "name": "Slim",
         "value": 6099259
       },
       {
-        "rank": 70,
+        "rank": 64,
         "tag": "KOR",
         "name": "AFAF4",
         "value": 6041673
       },
       {
-        "rank": 71,
+        "rank": 65,
+        "tag": "Gru",
+        "name": "Kilua2",
+        "value": 6030757
+      },
+      {
+        "rank": 66,
         "tag": "",
         "name": "Hello123455",
         "value": 5983712
       },
       {
-        "rank": 72,
-        "tag": "Gru",
-        "name": "Kilua2",
-        "value": 5969722
-      },
-      {
-        "rank": 73,
+        "rank": 67,
         "tag": "",
-        "name": "(ONEDannie",
-        "value": 5960692
+        "name": "Hero:",
+        "value": 5919454
       },
       {
-        "rank": 74,
-        "tag": "XII",
-        "name": "BEEF",
-        "value": 5892137
-      },
-      {
-        "rank": 75,
+        "rank": 68,
         "tag": "XII",
         "name": "Meliodas",
         "value": 5883941
       },
       {
-        "rank": 76,
+        "rank": 69,
+        "tag": "TIT",
+        "name": "Aleex",
+        "value": 5852580
+      },
+      {
+        "rank": 70,
+        "tag": "",
+        "name": "Ast",
+        "value": 5851784
+      },
+      {
+        "rank": 71,
+        "tag": "EVL",
+        "name": "WestWest",
+        "value": 5835335
+      },
+      {
+        "rank": 72,
         "tag": "XII",
-        "name": "Elmer Fudd",
+        "name": "EImer Fudd",
         "value": 5827802
       },
       {
-        "rank": 77,
-        "tag": "XII",
-        "name": "- Lucky MiL",
-        "value": 5808759
+        "rank": 73,
+        "tag": "DUX",
+        "name": "NIGHTSNARE",
+        "value": 5804810
       },
       {
-        "rank": 78,
-        "tag": "EVL",
+        "rank": 74,
+        "tag": "",
         "name": "Gfunk",
         "value": 5799215
       },
       {
-        "rank": 79,
-        "tag": "EVL",
-        "name": "WestWest",
-        "value": 5760215
+        "rank": 75,
+        "tag": "TIT",
+        "name": "ICiccio 86",
+        "value": 5770344
       },
       {
-        "rank": 80,
-        "tag": "KOR",
-        "name": "Galaxy 2o+",
+        "rank": 76,
+        "tag": "",
+        "name": "Hero:",
         "value": 5692552
       },
       {
-        "rank": 81,
-        "tag": "TIT",
-        "name": "Aleex",
-        "value": 5656872
-      },
-      {
-        "rank": 82,
+        "rank": 77,
         "tag": "KR2",
-        "name": "Y22",
-        "value": 5504221
+        "name": "YE22",
+        "value": 5646429
       },
       {
-        "rank": 83,
+        "rank": 78,
         "tag": "KOR",
-        "name": "Z2 EIHul",
+        "name": "Z2 5)Hul",
         "value": 5501733
       },
       {
-        "rank": 84,
-        "tag": "",
-        "name": "Hero: Rosa",
-        "value": 5465710
+        "rank": 79,
+        "tag": "XII",
+        "name": "Leopolo",
+        "value": 5493085
       },
       {
-        "rank": 85,
+        "rank": 80,
         "tag": "TIT",
         "name": "Iplastikman",
         "value": 5450750
       },
       {
-        "rank": 86,
+        "rank": 81,
         "tag": "KOR",
         "name": "EE?",
         "value": 5432248
       },
       {
-        "rank": 87,
-        "tag": "EVL",
-        "name": "CumpaVero",
-        "value": 5384922
-      },
-      {
-        "rank": 88,
+        "rank": 82,
         "tag": "EVL",
         "name": "ICumpaVero",
-        "value": 5384922
+        "value": 5401355
       },
       {
-        "rank": 89,
-        "tag": "TiT",
-        "name": "IGoku",
-        "value": 5379568
-      },
-      {
-        "rank": 90,
-        "tag": "TiT",
-        "name": "Goku",
-        "value": 5379568
-      },
-      {
-        "rank": 91,
-        "tag": "TIT",
-        "name": "IGoku",
-        "value": 5379568
-      },
-      {
-        "rank": 92,
+        "rank": 83,
         "tag": "TIT",
         "name": "ILOKEH",
-        "value": 5324818
+        "value": 5352193
       },
       {
-        "rank": 93,
-        "tag": "TIT",
-        "name": "LOKEH",
-        "value": 5324818
+        "rank": 84,
+        "tag": "Gru",
+        "name": "Falki",
+        "value": 5344943
       },
       {
-        "rank": 94,
+        "rank": 85,
         "tag": "EVL",
         "name": "nasti",
         "value": 5317593
       },
       {
-        "rank": 95,
+        "rank": 86,
         "tag": "TIT",
         "name": "AM Eazee F elix",
         "value": 5305573
       },
       {
-        "rank": 96,
-        "tag": "EVL",
-        "name": "Anonimo",
-        "value": 5256569
+        "rank": 87,
+        "tag": "TIT",
+        "name": "Imana eazee",
+        "value": 5286083
       },
       {
-        "rank": 97,
+        "rank": 88,
+        "tag": "EVL",
+        "name": "Anonimo",
+        "value": 5281134
+      },
+      {
+        "rank": 89,
         "tag": "EVL",
         "name": "Kokoszfoo",
         "value": 5230393
       },
       {
-        "rank": 98,
+        "rank": 90,
         "tag": "TIT",
         "name": "UceDuce",
         "value": 5225930
       },
       {
-        "rank": 99,
+        "rank": 91,
         "tag": "",
-        "name": "KR2JRH4E4121",
-        "value": 5223468
+        "name": "lord296130837",
+        "value": 16960
       },
       {
-        "rank": 100,
-        "tag": "KR2",
-        "name": "R HE812l",
-        "value": 5223468
+        "rank": 92,
+        "tag": "",
+        "name": "Hero Power",
+        "value": 0
       }
     ],
     "heros_total_power": [
@@ -3023,8 +2891,8 @@
       {
         "rank": 2,
         "tag": "KRZ",
-        "name": "LIONs MANED4I",
-        "value": 79947998
+        "name": "BANGUL8?",
+        "value": 80238468
       },
       {
         "rank": 3,
@@ -3036,590 +2904,590 @@
         "rank": 4,
         "tag": "XII",
         "name": "Naikaa",
-        "value": 73416445
+        "value": 73176445
       },
       {
         "rank": 5,
         "tag": "KOR",
         "name": "l4g",
-        "value": 71710327
+        "value": 72248827
       },
       {
         "rank": 6,
         "tag": "EVL",
         "name": "MIZZYiip Innit",
-        "value": 71496390
+        "value": 71554283
       },
       {
         "rank": 7,
-        "tag": "KOR",
-        "name": "I/? 8+94271822",
-        "value": 70599536
+        "tag": "TIT",
+        "name": "Leonidas77",
+        "value": 70662161
       },
       {
         "rank": 8,
-        "tag": "EVL",
-        "name": "a",
-        "value": 70219428
+        "tag": "KOR",
+        "name": "*/7182444221822",
+        "value": 70644845
       },
       {
         "rank": 9,
-        "tag": "TIT",
-        "name": "Leonidas77",
-        "value": 70155966
+        "tag": "EVL",
+        "name": "?",
+        "value": 70219428
       },
       {
         "rank": 10,
         "tag": "TIT",
-        "name": "Dustin",
-        "value": 68990664
+        "name": "IKilluaEazee?  =Ot",
+        "value": 68752400
       },
       {
         "rank": 11,
-        "tag": "TIT",
-        "name": "kilua",
-        "value": 68146380
+        "tag": "EVL",
+        "name": "YiipiesGoodGirl",
+        "value": 67881180
       },
       {
         "rank": 12,
-        "tag": "EVL",
-        "name": "YiipiesGoodGirl",
-        "value": 68106180
+        "tag": "",
+        "name": "Hellon",
+        "value": 67276146
       },
       {
         "rank": 13,
-        "tag": "Tit",
+        "tag": "TiT",
         "name": "mcc",
-        "value": 67188899
+        "value": 67192019
       },
       {
         "rank": 14,
-        "tag": "",
-        "name": "Mellon",
-        "value": 67025757
+        "tag": "KOR",
+        "name": "Easy z9",
+        "value": 64891259
       },
       {
         "rank": 15,
-        "tag": "KOR",
-        "name": "Easy zg",
-        "value": 64666897
+        "tag": "TIT",
+        "name": "Eazee Eren",
+        "value": 63348707
       },
       {
         "rank": 16,
         "tag": "TIT",
-        "name": "Eazee Eren",
-        "value": 64095530
+        "name": "small dragon ha",
+        "value": 63092788
       },
       {
         "rank": 17,
-        "tag": "TIT",
-        "name": "RebelWookie",
-        "value": 62680483
+        "tag": "TiT",
+        "name": "Striker",
+        "value": 62882358
       },
       {
         "rank": 18,
-        "tag": "EVL",
-        "name": "MadHatter",
-        "value": 60846766
+        "tag": "TIT",
+        "name": "RebelWookie",
+        "value": 62692783
       },
       {
         "rank": 19,
-        "tag": "KOR",
-        "name": "3o21",
-        "value": 60124683
+        "tag": "KRZ",
+        "name": "ITEREA 3242H1",
+        "value": 62430604
       },
       {
         "rank": 20,
-        "tag": "KR2",
-        "name": "ZSHE0l",
-        "value": 59841850
+        "tag": "",
+        "name": "XEVL 9o8 JoDaddyse",
+        "value": 61471386
       },
       {
         "rank": 21,
-        "tag": "KOR",
-        "name": "btNtappa+loloHuut",
-        "value": 59723365
+        "tag": "EVL",
+        "name": "MadHatter",
+        "value": 60703410
       },
       {
         "rank": 22,
-        "tag": "XII",
-        "name": "Drae",
-        "value": 59104441
+        "tag": "KOR",
+        "name": "3ozl",
+        "value": 60431508
       },
       {
         "rank": 23,
-        "tag": "TIT",
-        "name": "JUp)N DOlp",
-        "value": 59062277
+        "tag": "KR2",
+        "name": "KSHE0l",
+        "value": 60269875
       },
       {
         "rank": 24,
-        "tag": "TIT",
-        "name": "KharnEazee",
-        "value": 58834292
+        "tag": "KOR",
+        "name": "b+Ntappa+40loHuut",
+        "value": 59886114
       },
       {
         "rank": 25,
         "tag": "TIT",
-        "name": "Grayson Death",
-        "value": 58572578
+        "name": "IKharnEazee",
+        "value": 59521393
       },
       {
         "rank": 26,
-        "tag": "KOR",
-        "name": "Jesttaxil_ Elot",
-        "value": 56963538
+        "tag": "XII",
+        "name": "Drae",
+        "value": 59457287
       },
       {
         "rank": 27,
-        "tag": "KOR",
-        "name": "JesttaTilA Elo",
-        "value": 56963538
+        "tag": "TIT",
+        "name": "JIUPSK DOIp",
+        "value": 59175882
       },
       {
         "rank": 28,
         "tag": "TIT",
-        "name": "WWookie",
-        "value": 55900606
+        "name": "Grayson Death",
+        "value": 58668738
       },
       {
         "rank": 29,
         "tag": "KOR",
-        "name": "IIZAtIF",
-        "value": 55731552
+        "name": "JesttaTllA Elo",
+        "value": 57061350
       },
       {
         "rank": 30,
-        "tag": "EVL",
-        "name": "JustaThiccfoo",
-        "value": 54889685
+        "tag": "KOR",
+        "name": "xIzxtxt",
+        "value": 56825029
       },
       {
         "rank": 31,
-        "tag": "KOR",
-        "name": "Asura =",
-        "value": 54589478
+        "tag": "EVL",
+        "name": "JustaThiccfoo",
+        "value": 55991987
       },
       {
         "rank": 32,
         "tag": "TIT",
-        "name": "ICold",
-        "value": 54469743
+        "name": "IWookie",
+        "value": 55937866
       },
       {
         "rank": 33,
-        "tag": "EVL",
-        "name": "Gav innit' ! ! foo",
-        "value": 54372171
+        "tag": "KOR",
+        "name": "Asura =",
+        "value": 55154593
       },
       {
         "rank": 34,
-        "tag": "TIT",
-        "name": "EIGianEazee",
-        "value": 54132080
+        "tag": "EVL",
+        "name": "Gav innit' ! ! foo",
+        "value": 54644732
       },
       {
         "rank": 35,
-        "tag": "KOR",
-        "name": "E/921",
-        "value": 53891384
+        "tag": "TIT",
+        "name": "Cold",
+        "value": 54469743
       },
       {
         "rank": 36,
         "tag": "TIT",
-        "name": "IKBBaller",
-        "value": 53245185
+        "name": "EIGianEazee",
+        "value": 54461947
       },
       {
         "rank": 37,
+        "tag": "KOR",
+        "name": "EH921",
+        "value": 54176862
+      },
+      {
+        "rank": 38,
+        "tag": "TIT",
+        "name": "IKBBaller",
+        "value": 53475210
+      },
+      {
+        "rank": 39,
         "tag": "TIT",
         "name": "Tochetto",
         "value": 52197149
       },
       {
-        "rank": 38,
+        "rank": 40,
         "tag": "EVL",
         "name": "Arek96",
-        "value": 51561971
-      },
-      {
-        "rank": 39,
-        "tag": "Gru",
-        "name": "flyoverweight",
-        "value": 50156766
-      },
-      {
-        "rank": 40,
-        "tag": "TIT",
-        "name": "IGiu",
-        "value": 49314230
+        "value": 51881898
       },
       {
         "rank": 41,
-        "tag": "KOR",
-        "name": "z _*l4zoto x ob",
-        "value": 49212408
+        "tag": "Gru",
+        "name": "flyoverweight",
+        "value": 51478956
       },
       {
         "rank": 42,
-        "tag": "EVL",
-        "name": "Mando Nomad",
-        "value": 48806441
+        "tag": "TIT",
+        "name": "IGiu",
+        "value": 49779005
       },
       {
         "rank": 43,
-        "tag": "EVL",
-        "name": "Sayncerfoo",
-        "value": 47711618
+        "tag": "KOR",
+        "name": "Z=dzoto X ob",
+        "value": 49454612
       },
       {
         "rank": 44,
         "tag": "EVL",
         "name": "Katy",
-        "value": 47271520
+        "value": 49274630
       },
       {
         "rank": 45,
-        "tag": "KOR",
-        "name": "OHHHrl2?1",
-        "value": 46756664
+        "tag": "EVL",
+        "name": "Sayncerfoo",
+        "value": 48008549
       },
       {
         "rank": 46,
-        "tag": "KOR",
-        "name": "tI3o+z#5 JHul",
-        "value": 46749025
+        "tag": "XII",
+        "name": "Leopolo",
+        "value": 47567784
       },
       {
         "rank": 47,
-        "tag": "XII",
-        "name": "Ragnarl",
-        "value": 46542416
+        "tag": "KOR",
+        "name": "tI3okz#EJHul",
+        "value": 47219814
       },
       {
         "rank": 48,
-        "tag": "XII",
-        "name": "Leopolo",
-        "value": 46058020
+        "tag": "KOR",
+        "name": "-zle",
+        "value": 47023829
       },
       {
         "rank": 49,
-        "tag": "KOR",
-        "name": "Advtserzt 5",
-        "value": 45687087
+        "tag": "XII",
+        "name": "Manaa2",
+        "value": 46864559
       },
       {
         "rank": 50,
-        "tag": "XII",
-        "name": "- Lucky MiL",
-        "value": 45475301
+        "tag": "KOR",
+        "name": "OHHH2?1",
+        "value": 46784039
       },
       {
         "rank": 51,
-        "tag": "ONE",
-        "name": "Dannie",
-        "value": 45121298
+        "tag": "KOR",
+        "name": "Advtserzt5",
+        "value": 45961283
       },
       {
         "rank": 52,
+        "tag": "",
+        "name": "ONEDannie",
+        "value": 45761226
+      },
+      {
+        "rank": 53,
+        "tag": "",
+        "name": "Ast",
+        "value": 45756095
+      },
+      {
+        "rank": 54,
+        "tag": "EVL",
+        "name": "DGK Wraithfoo",
+        "value": 44948997
+      },
+      {
+        "rank": 55,
+        "tag": "KOR",
+        "name": "zg0l",
+        "value": 44947607
+      },
+      {
+        "rank": 56,
         "tag": "BST",
         "name": "DownHill",
         "value": 44642468
       },
       {
-        "rank": 53,
-        "tag": "EVL",
-        "name": "DGK Wraithfoo",
-        "value": 44636840
-      },
-      {
-        "rank": 54,
-        "tag": "KOR",
-        "name": "zg0l",
-        "value": 44628974
-      },
-      {
-        "rank": 55,
+        "rank": 57,
         "tag": "DUX",
         "name": "NIGHTSNARE",
         "value": 44352978
       },
       {
-        "rank": 56,
-        "tag": "EVL",
-        "name": "APEX PREDATOR",
-        "value": 44098294
-      },
-      {
-        "rank": 57,
-        "tag": "KOR",
-        "name": "olol=",
-        "value": 44025856
-      },
-      {
         "rank": 58,
         "tag": "KOR",
-        "name": "Ktng3=%0/01",
-        "value": 43177391
+        "name": "olo =",
+        "value": 44343807
       },
       {
         "rank": 59,
         "tag": "EVL",
-        "name": "Yiipie",
-        "value": 42756259
+        "name": "APEX PREDATOR",
+        "value": 44178109
       },
       {
         "rank": 60,
-        "tag": "XII",
-        "name": "Elmer Fudd",
-        "value": 42591634
+        "tag": "KOR",
+        "name": "Ktngz=dlolo",
+        "value": 44093232
       },
       {
         "rank": 61,
+        "tag": "TIt",
+        "name": "",
+        "value": 43330753
+      },
+      {
+        "rank": 62,
+        "tag": "EVL",
+        "name": "Yiipie",
+        "value": 43007579
+      },
+      {
+        "rank": 63,
+        "tag": "XII",
+        "name": "Elmer Fudd",
+        "value": 43006175
+      },
+      {
+        "rank": 64,
+        "tag": "BRL",
+        "name": "Cih@n",
+        "value": 42705521
+      },
+      {
+        "rank": 65,
+        "tag": "TIT",
+        "name": "Lord Waffles",
+        "value": 42590959
+      },
+      {
+        "rank": 66,
         "tag": "XII",
         "name": "BEEF",
         "value": 42590263
       },
       {
-        "rank": 62,
+        "rank": 67,
         "tag": "XII",
         "name": "Ruskof",
-        "value": 42566576
+        "value": 42573051
       },
       {
-        "rank": 63,
-        "tag": "BRL",
-        "name": "Cih@n",
-        "value": 42493004
+        "rank": 68,
+        "tag": "XII",
+        "name": "EkinOx",
+        "value": 42498007
       },
       {
-        "rank": 64,
+        "rank": 69,
         "tag": "TIT",
-        "name": "Lord Waffles",
-        "value": 42454081
+        "name": "Ryanthashar",
+        "value": 42350066
       },
       {
-        "rank": 65,
-        "tag": "DuX",
+        "rank": 70,
+        "tag": "EVL",
+        "name": "WestWest",
+        "value": 42260536
+      },
+      {
+        "rank": 71,
+        "tag": "DUX",
         "name": "LameDuck",
         "value": 42217775
       },
       {
-        "rank": 66,
-        "tag": "EVL",
-        "name": "WestWest",
-        "value": 42185416
-      },
-      {
-        "rank": 67,
-        "tag": "XII",
-        "name": "EkinOx",
-        "value": 42122629
-      },
-      {
-        "rank": 68,
+        "rank": 72,
         "tag": "TIT",
         "name": "ISTKRaiden Eazee",
-        "value": 42010183
+        "value": 42198758
       },
       {
-        "rank": 69,
-        "tag": "EVL",
+        "rank": 73,
+        "tag": "",
         "name": "Gfunk",
         "value": 41956358
       },
       {
-        "rank": 70,
-        "tag": "TIT",
-        "name": "Ryanthashar",
-        "value": 41876240
-      },
-      {
-        "rank": 71,
+        "rank": 74,
         "tag": "TIT",
         "name": "Ciccio 86",
-        "value": 41746526
-      },
-      {
-        "rank": 72,
-        "tag": "",
-        "name": "0leWraithblader",
-        "value": 41670421
-      },
-      {
-        "rank": 73,
-        "tag": "EXE",
-        "name": "Majdsam",
-        "value": 41448756
-      },
-      {
-        "rank": 74,
-        "tag": "KOR",
-        "name": "Z? =JHHl",
-        "value": 40939180
+        "value": 41857346
       },
       {
         "rank": 75,
-        "tag": "EVL",
-        "name": "Kokoszfoo",
-        "value": 40929249
+        "tag": "",
+        "name": "D+eWraithblader",
+        "value": 41670421
       },
       {
         "rank": 76,
-        "tag": "KOR",
-        "name": "Woo",
-        "value": 40422601
+        "tag": "",
+        "name": "",
+        "value": 41549273
       },
       {
         "rank": 77,
-        "tag": "DUX",
-        "name": "Th3cHINO",
-        "value": 40400235
+        "tag": "TIT",
+        "name": "Aleex",
+        "value": 41537975
       },
       {
         "rank": 78,
-        "tag": "TIT",
-        "name": "HenrySapeee",
-        "value": 40385986
+        "tag": "KOR",
+        "name": "Z? 5)Hul",
+        "value": 41357869
       },
       {
         "rank": 79,
-        "tag": "TiT",
-        "name": "Zam_Eazee",
-        "value": 40294611
+        "tag": "KRZ",
+        "name": "Ipoloria",
+        "value": 41102999
       },
       {
         "rank": 80,
-        "tag": "",
-        "name": "Madoc",
-        "value": 40261160
+        "tag": "TIT",
+        "name": "HumEazee83",
+        "value": 40993719
       },
       {
         "rank": 81,
-        "tag": "TiT",
-        "name": "olivier",
-        "value": 40134019
+        "tag": "EVL",
+        "name": "Kokoszfoo",
+        "value": 40944899
       },
       {
         "rank": 82,
-        "tag": "",
-        "name": "",
-        "value": 40092292
+        "tag": "TIT",
+        "name": "HenrySapeee",
+        "value": 40697489
       },
       {
         "rank": 83,
-        "tag": "TIT",
-        "name": "9o8Nazgulgoe/",
-        "value": 39890616
+        "tag": "",
+        "name": "",
+        "value": 40650446
       },
       {
         "rank": 84,
-        "tag": "TIT",
-        "name": "Iplastikman",
-        "value": 39885536
+        "tag": "TiT",
+        "name": "olivier",
+        "value": 40472483
       },
       {
         "rank": 85,
+        "tag": "KOR",
+        "name": "gluckkekse yz",
+        "value": 40219456
+      },
+      {
+        "rank": 86,
+        "tag": "EVL",
+        "name": "MajorDoosh",
+        "value": 40092292
+      },
+      {
+        "rank": 87,
+        "tag": "EVL",
+        "name": "RANG3Rfoo",
+        "value": 40090760
+      },
+      {
+        "rank": 88,
+        "tag": "EVL",
+        "name": "CumpaVero",
+        "value": 39934951
+      },
+      {
+        "rank": 89,
+        "tag": "TIT",
+        "name": "Iplastikman",
+        "value": 39912161
+      },
+      {
+        "rank": 90,
         "tag": "",
         "name": "UniEvL",
         "value": 39832626
       },
       {
-        "rank": 86,
-        "tag": "KOR",
-        "name": "gluckkekse y3",
-        "value": 39803508
+        "rank": 91,
+        "tag": "XI",
+        "name": "Azade",
+        "value": 39815063
       },
       {
-        "rank": 87,
-        "tag": "KOR",
-        "name": "gluckkekse g 3",
-        "value": 39803508
-      },
-      {
-        "rank": 88,
-        "tag": "KOR",
-        "name": "gluckkekse y 3",
-        "value": 39803508
-      },
-      {
-        "rank": 89,
+        "rank": 92,
         "tag": "",
         "name": "Smite",
         "value": 39768937
       },
       {
-        "rank": 90,
-        "tag": "EVL",
-        "name": "CumpaVero",
-        "value": 39692300
-      },
-      {
-        "rank": 91,
-        "tag": "EVL",
-        "name": "RANG3Rfoo",
-        "value": 39622389
-      },
-      {
-        "rank": 92,
-        "tag": "KR2",
-        "name": "Z?@",
-        "value": 39472813
-      },
-      {
         "rank": 93,
-        "tag": "KR2",
-        "name": "Z?4",
-        "value": 39472813
+        "tag": "TIT",
+        "name": "E 245 B",
+        "value": 39721263
       },
       {
         "rank": 94,
-        "tag": "",
-        "name": "soso_413",
-        "value": 39437772
+        "tag": "XII",
+        "name": "Meliodas",
+        "value": 39716353
       },
       {
         "rank": 95,
-        "tag": "",
-        "name": "s0so_4114",
-        "value": 39437772
+        "tag": "KR2",
+        "name": "Z?4",
+        "value": 39687426
       },
       {
         "rank": 96,
-        "tag": "",
-        "name": "soso_41/4",
-        "value": 39437772
+        "tag": "TIT",
+        "name": "zam",
+        "value": 188776
       },
       {
         "rank": 97,
-        "tag": "TIT",
-        "name": "E 245 B",
-        "value": 39370704
+        "tag": "",
+        "name": "lord296130837",
+        "value": 45708
       },
       {
         "rank": 98,
-        "tag": "XII",
-        "name": "Azade",
-        "value": 39358625
+        "tag": "KOR",
+        "name": "Woo",
+        "value": 40719
       },
       {
         "rank": 99,
-        "tag": "XI",
-        "name": "Azade",
-        "value": 39358625
+        "tag": "",
+        "name": "lord296130837",
+        "value": 33920
       },
       {
         "rank": 100,
         "tag": "",
-        "name": "soso_414",
-        "value": 437772
+        "name": "Hero's Total Power",
+        "value": 0
       }
     ],
     "total_pet_power": [
       {
         "rank": 1,
-        "tag": "TiT",
-        "name": "Imcc",
+        "tag": "Tit",
+        "name": "mcc",
         "value": 30161400
       },
       {
@@ -3655,14 +3523,14 @@
       {
         "rank": 7,
         "tag": "KRZ",
-        "name": "LIONs MANEDHAI",
+        "name": "BANGUL8?",
         "value": 24699600
       },
       {
         "rank": 8,
         "tag": "TIT",
         "name": "small dragon ha",
-        "value": 24543120
+        "value": 24544440
       },
       {
         "rank": 9,
@@ -3672,15 +3540,15 @@
       },
       {
         "rank": 10,
-        "tag": "KOR",
-        "name": "x718254.221822",
-        "value": 24069840
+        "tag": "",
+        "name": "mello",
+        "value": 24237480
       },
       {
         "rank": 11,
-        "tag": "EVL",
-        "name": "Sc8 PharaohDaddyder",
-        "value": 23647440
+        "tag": "KOR",
+        "name": "X?18+944221822",
+        "value": 24069840
       },
       {
         "rank": 12,
@@ -3692,73 +3560,73 @@
         "rank": 13,
         "tag": "EVL",
         "name": "MIZZYiip Innit",
-        "value": 23287560
+        "value": 23466840
       },
       {
         "rank": 14,
+        "tag": "KOR",
+        "name": "-301",
+        "value": 23329200
+      },
+      {
+        "rank": 15,
         "tag": "TIT",
         "name": "EIGianEazee",
         "value": 22736880
       },
       {
-        "rank": 15,
+        "rank": 16,
         "tag": "TIT",
         "name": "Eazee Eren",
         "value": 22493400
       },
       {
-        "rank": 16,
+        "rank": 17,
+        "tag": "XII",
+        "name": "Drae",
+        "value": 22314240
+      },
+      {
+        "rank": 18,
         "tag": "KOR",
         "name": "Asura =",
         "value": 21966120
       },
       {
-        "rank": 17,
+        "rank": 19,
         "tag": "TIT",
         "name": "IKharnEazee",
         "value": 21877320
       },
       {
-        "rank": 18,
-        "tag": "EVL",
-        "name": "a",
-        "value": 21495960
-      },
-      {
-        "rank": 19,
-        "tag": "KOR",
-        "name": "Kingz22lo/01",
-        "value": 21485400
-      },
-      {
         "rank": 20,
-        "tag": "EVL",
-        "name": "CumpaVero",
-        "value": 21435360
+        "tag": "KOR",
+        "name": "King3=20/01",
+        "value": 21570360
       },
       {
         "rank": 21,
+        "tag": "EVL",
+        "name": "aC",
+        "value": 21495960
+      },
+      {
+        "rank": 22,
+        "tag": "EVL",
+        "name": "CumpaVero",
+        "value": 21447600
+      },
+      {
+        "rank": 23,
         "tag": "EVL",
         "name": "MadHatter",
         "value": 21430800
       },
       {
-        "rank": 22,
-        "tag": "KOR",
-        "name": "EH921",
-        "value": 21307800
-      },
-      {
-        "rank": 23,
-        "tag": "TIT",
-        "name": "Grayson Death",
-        "value": 21205080
-      },
-      {
         "rank": 24,
-        "tag": "KUR",
-        "name": "ATS^^t",
-        "value": 21150240
+        "tag": "TIT",
+        "name": "IGrayson Death",
+        "value": 21205080
       },
       {
         "rank": 25,
@@ -3768,45 +3636,45 @@
       },
       {
         "rank": 26,
-        "tag": "TIT",
-        "name": "RebelWookie",
-        "value": 21019200
+        "tag": "",
+        "name": "XKRZJTEREA 32428|",
+        "value": 21032400
       },
       {
         "rank": 27,
-        "tag": "",
-        "name": "KRZJTEREA 2 24#8|",
-        "value": 21007920
-      },
-      {
-        "rank": 28,
-        "tag": "TIT",
-        "name": "Aleex",
-        "value": 20966160
-      },
-      {
-        "rank": 29,
         "tag": "KOR",
-        "name": "Easy z9",
+        "name": "Easy_g",
         "value": 20948760
       },
       {
-        "rank": 30,
+        "rank": 28,
         "tag": "KOR",
-        "name": "3ozl",
+        "name": "30/21",
         "value": 20852040
       },
       {
+        "rank": 29,
+        "tag": "TIT",
+        "name": "KilluaEazee3=0t",
+        "value": 20808600
+      },
+      {
+        "rank": 30,
+        "tag": "Gru",
+        "name": "flyoverweight",
+        "value": 20751240
+      },
+      {
         "rank": 31,
-        "tag": "TiT",
-        "name": "kilua",
-        "value": 20712120
+        "tag": "TIT",
+        "name": "Manicas",
+        "value": 20578200
       },
       {
         "rank": 32,
-        "tag": "Gru",
-        "name": "flyoverweight",
-        "value": 20654760
+        "tag": "TIT",
+        "name": "kapaday",
+        "value": 20538120
       },
       {
         "rank": 33,
@@ -3817,7 +3685,7 @@
       {
         "rank": 34,
         "tag": "EVL",
-        "name": "phylipe alany",
+        "name": "Iphylipe",
         "value": 20525520
       },
       {
@@ -3834,31 +3702,31 @@
       },
       {
         "rank": 37,
+        "tag": "",
+        "name": "Ast",
+        "value": 20472840
+      },
+      {
+        "rank": 38,
         "tag": "XII",
         "name": "Azade",
         "value": 20471880
       },
       {
-        "rank": 38,
+        "rank": 39,
         "tag": "BST",
         "name": "DownHill",
         "value": 20459160
       },
       {
-        "rank": 39,
-        "tag": "TIT",
-        "name": "STKRaiden Eazee",
-        "value": 20455440
-      },
-      {
         "rank": 40,
-        "tag": "",
-        "name": "",
-        "value": 20435160
+        "tag": "TIT",
+        "name": "Edward Il",
+        "value": 20423640
       },
       {
         "rank": 41,
-        "tag": "KOR",
+        "tag": "",
         "name": "rose218",
         "value": 20416080
       },
@@ -3870,38 +3738,38 @@
       },
       {
         "rank": 43,
+        "tag": "DUX",
+        "name": "Th3cH'NO",
+        "value": 20371920
+      },
+      {
+        "rank": 44,
         "tag": "KOR",
         "name": "MOONECLIPSE",
         "value": 20364120
       },
       {
-        "rank": 44,
-        "tag": "XII",
-        "name": "Ragnarl",
-        "value": 20325960
-      },
-      {
         "rank": 45,
-        "tag": "KOR",
-        "name": "JesttaTil_ Elot",
-        "value": 20323440
+        "tag": "XII",
+        "name": "Manaa2",
+        "value": 20361960
       },
       {
         "rank": 46,
-        "tag": "XII",
-        "name": "~ Lucky MiL",
-        "value": 20315880
+        "tag": "KOR",
+        "name": "Jesttaxil_ Elot",
+        "value": 20323440
       },
       {
         "rank": 47,
-        "tag": "DUX",
-        "name": "Th3cH'NO",
-        "value": 20285520
+        "tag": "EVL",
+        "name": "Gav innit'! ! foo",
+        "value": 20303400
       },
       {
         "rank": 48,
         "tag": "TIT",
-        "name": "ILOKEH",
+        "name": "LOKEH",
         "value": 20277120
       },
       {
@@ -3912,306 +3780,282 @@
       },
       {
         "rank": 50,
+        "tag": "KR2",
+        "name": "EI=#E0",
+        "value": 20230920
+      },
+      {
+        "rank": 51,
+        "tag": "EVL",
+        "name": "JustaThiccfoo",
+        "value": 20225520
+      },
+      {
+        "rank": 52,
         "tag": "TIT",
         "name": "Will",
         "value": 20219400
       },
       {
-        "rank": 51,
-        "tag": "XII",
-        "name": "Ruskof",
-        "value": 20204400
-      },
-      {
-        "rank": 52,
-        "tag": "EVL",
-        "name": "JustaThiccfoo",
-        "value": 20177280
-      },
-      {
         "rank": 53,
+        "tag": "EXE",
+        "name": "Majdsam",
+        "value": 20183640
+      },
+      {
+        "rank": 54,
         "tag": "TIT",
         "name": "Phillywilly",
         "value": 20170440
       },
       {
-        "rank": 54,
-        "tag": "KOR",
-        "name": "zg0l",
-        "value": 20127600
-      },
-      {
         "rank": 55,
-        "tag": "EXE",
-        "name": "Majdsam",
-        "value": 20087160
+        "tag": "KOR",
+        "name": "-g0l",
+        "value": 20139840
       },
       {
         "rank": 56,
+        "tag": "TIT",
+        "name": "Ciccio 86",
+        "value": 20075880
+      },
+      {
+        "rank": 57,
         "tag": "TIT",
         "name": "BARTON",
         "value": 20065800
       },
       {
-        "rank": 57,
-        "tag": "KR2",
-        "name": "K?#E0",
-        "value": 20037240
-      },
-      {
         "rank": 58,
-        "tag": "KOR",
-        "name": "gtot Xdo+Hl",
-        "value": 20028600
+        "tag": "XII",
+        "name": "Anomander Rake",
+        "value": 20033520
       },
       {
         "rank": 59,
-        "tag": "TIT",
-        "name": "Ciccio 86",
-        "value": 20015400
-      },
-      {
-        "rank": 60,
-        "tag": "KRZ",
-        "name": "Asura=2",
+        "tag": "",
+        "name": "",
         "value": 20002440
       },
       {
-        "rank": 61,
-        "tag": "XII",
-        "name": "Anomander Rake",
-        "value": 19997520
-      },
-      {
-        "rank": 62,
-        "tag": "DUX",
-        "name": "Tidus",
+        "rank": 60,
+        "tag": "",
+        "name": "",
         "value": 19996320
       },
       {
-        "rank": 63,
+        "rank": 61,
         "tag": "KOR",
-        "name": "7HO/E2",
+        "name": "7Ho/221",
         "value": 19995960
       },
       {
-        "rank": 64,
-        "tag": "TIT",
-        "name": "AM Eazee F elix",
-        "value": 19995600
+        "rank": 62,
+        "tag": "",
+        "name": "",
+        "value": 19993320
       },
       {
-        "rank": 65,
+        "rank": 63,
         "tag": "EVL",
         "name": "WestWest",
         "value": 19978560
       },
       {
-        "rank": 66,
-        "tag": "DUX",
-        "name": "Sir Waddlington",
-        "value": 19935720
+        "rank": 64,
+        "tag": "TIT",
+        "name": "SheepishCloud",
+        "value": 19938360
       },
       {
-        "rank": 67,
-        "tag": "XII",
-        "name": "EkinOx",
-        "value": 19933560
-      },
-      {
-        "rank": 68,
+        "rank": 65,
         "tag": "XII",
         "name": "ReMida",
         "value": 19930680
       },
       {
-        "rank": 69,
-        "tag": "EVL",
+        "rank": 66,
+        "tag": "DUX",
+        "name": "Duck Jo",
+        "value": 19923120
+      },
+      {
+        "rank": 67,
+        "tag": "evl",
         "name": "John Mayor Jr",
         "value": 19913040
       },
       {
-        "rank": 70,
-        "tag": "",
-        "name": "",
-        "value": 19898640
-      },
-      {
-        "rank": 71,
+        "rank": 68,
         "tag": "EVL",
         "name": "Kokoszfoo",
         "value": 19891320
       },
       {
-        "rank": 72,
+        "rank": 69,
         "tag": "TIT",
         "name": "Tochetto",
         "value": 19875000
       },
       {
-        "rank": 73,
+        "rank": 70,
         "tag": "",
         "name": "",
         "value": 19858440
       },
       {
-        "rank": 74,
-        "tag": "PHX",
-        "name": "Houston",
-        "value": 19792440
+        "rank": 71,
+        "tag": "TIT",
+        "name": "Patoo",
+        "value": 19854480
       },
       {
-        "rank": 75,
-        "tag": "XII",
-        "name": "Fabien33",
+        "rank": 72,
+        "tag": "TIT",
+        "name": "Striker",
+        "value": 19797960
+      },
+      {
+        "rank": 73,
+        "tag": "XlI",
+        "name": "fabien33",
         "value": 19782720
       },
       {
-        "rank": 76,
+        "rank": 74,
         "tag": "TIT",
-        "name": "Striker",
-        "value": 19774200
+        "name": "Bonjoconlaj",
+        "value": 19779600
       },
       {
-        "rank": 77,
+        "rank": 75,
         "tag": "KOR",
-        "name": "JIIOKERII",
-        "value": 19774080
-      },
-      {
-        "rank": 78,
-        "tag": "KOR",
-        "name": "zgo1",
+        "name": "zgol",
         "value": 19772160
       },
       {
-        "rank": 79,
+        "rank": 76,
         "tag": "BRL",
-        "name": "Thmelo1O",
+        "name": "Thmelo10",
         "value": 19743000
       },
       {
-        "rank": 80,
-        "tag": "TIT",
-        "name": "Bonjoconlaj",
-        "value": 19725600
-      },
-      {
-        "rank": 81,
+        "rank": 77,
         "tag": "",
         "name": "",
         "value": 19709880
       },
       {
-        "rank": 82,
-        "tag": "EVL",
-        "name": "Lord Yoda",
-        "value": 19709880
-      },
-      {
-        "rank": 83,
-        "tag": "TiT",
+        "rank": 78,
+        "tag": "TIT",
         "name": "dani",
         "value": 19656240
       },
       {
-        "rank": 84,
-        "tag": "XlI",
-        "name": "Thorfinn",
-        "value": 19652280
-      },
-      {
-        "rank": 85,
-        "tag": "XII",
-        "name": "Thorfinn",
-        "value": 19652280
-      },
-      {
-        "rank": 86,
+        "rank": 79,
         "tag": "Xll",
         "name": "Thorfinn",
         "value": 19652280
       },
       {
-        "rank": 87,
+        "rank": 80,
+        "tag": "EVL",
+        "name": "Mr Nell",
+        "value": 19604760
+      },
+      {
+        "rank": 81,
         "tag": "TiT",
         "name": "IGiu",
         "value": 19597440
       },
       {
-        "rank": 88,
-        "tag": "TIT",
-        "name": "IGiu",
-        "value": 19597440
+        "rank": 82,
+        "tag": "ONE",
+        "name": "Turgay",
+        "value": 19595520
       },
       {
-        "rank": 89,
+        "rank": 83,
         "tag": "TIT",
         "name": "Kasimoo",
         "value": 19591320
       },
       {
-        "rank": 90,
-        "tag": "TIT",
-        "name": "IKasimoo",
-        "value": 19591320
-      },
-      {
-        "rank": 91,
+        "rank": 84,
         "tag": "TIT",
         "name": "Ryanthashar",
         "value": 19586760
       },
       {
-        "rank": 92,
-        "tag": "EVL",
-        "name": "Mr Nell",
-        "value": 19580280
-      },
-      {
-        "rank": 93,
+        "rank": 85,
         "tag": "XII",
         "name": "Meliodas",
         "value": 19571640
       },
       {
-        "rank": 94,
+        "rank": 86,
         "tag": "TIT",
         "name": "ROLEX",
         "value": 19532760
       },
       {
-        "rank": 95,
-        "tag": "ONE",
-        "name": "Turgay",
-        "value": 19525440
-      },
-      {
-        "rank": 96,
+        "rank": 87,
         "tag": "TIT",
         "name": "IKBBaller",
         "value": 719960
       },
       {
-        "rank": 97,
-        "tag": "XII",
-        "name": "Drae",
-        "value": 302000
+        "rank": 88,
+        "tag": "EVL",
+        "name": "o8 JoDaddy8oe/",
+        "value": 647440
       },
       {
-        "rank": 98,
+        "rank": 89,
+        "tag": "KOR",
+        "name": "EH92l",
+        "value": 307800
+      },
+      {
+        "rank": 90,
+        "tag": "XII",
+        "name": "Ruskof",
+        "value": 204400
+      },
+      {
+        "rank": 91,
         "tag": "",
         "name": "lord296130837",
-        "value": 67098
+        "value": 67027
       },
       {
-        "rank": 99,
-        "tag": "KOR",
-        "name": "F3o1",
-        "value": 329
+        "rank": 92,
+        "tag": "",
+        "name": "",
+        "value": 28600
       },
       {
-        "rank": 100,
+        "rank": 93,
+        "tag": "TIT",
+        "name": "RebelWookie",
+        "value": 21019
+      },
+      {
+        "rank": 94,
+        "tag": "TIT",
+        "name": "ILOKEH",
+        "value": 20277
+      },
+      {
+        "rank": 95,
+        "tag": "TIT",
+        "name": "Aleex",
+        "value": 14400
+      },
+      {
+        "rank": 96,
         "tag": "",
         "name": "Total Pet Power",
         "value": 0
@@ -4227,32 +4071,32 @@
       {
         "rank": 2,
         "tag": "KRZ",
-        "name": "LIONs MANEDH4l",
-        "value": 2576
+        "name": "BANGUL8?",
+        "value": 2583
       },
       {
         "rank": 3,
-        "tag": "Ti",
-        "name": "Tlmcc",
-        "value": 2492
+        "tag": "TiT",
+        "name": "mcc",
+        "value": 2510
       },
       {
         "rank": 4,
         "tag": "KOR",
         "name": "ol4g",
-        "value": 2479
+        "value": 2489
       },
       {
         "rank": 5,
         "tag": "XII",
         "name": "Naikaa",
-        "value": 2446
+        "value": 2449
       },
       {
         "rank": 6,
         "tag": "EVL",
         "name": "MIZZYiip Innit",
-        "value": 2436
+        "value": 2438
       },
       {
         "rank": 7,
@@ -4268,555 +4112,495 @@
       },
       {
         "rank": 9,
-        "tag": "",
-        "name": "TITICold",
-        "value": 2403
+        "tag": "TIT",
+        "name": "Ismall dragon ha",
+        "value": 2424
       },
       {
         "rank": 10,
-        "tag": "EVL",
-        "name": "YiipiesGoodGirl",
-        "value": 2385
+        "tag": "TIT",
+        "name": "Leonidas77",
+        "value": 2411
       },
       {
         "rank": 11,
         "tag": "TIT",
-        "name": "small dragon ha",
-        "value": 2378
+        "name": "ICold",
+        "value": 2403
       },
       {
         "rank": 12,
-        "tag": "XEVL",
-        "name": "ec8 PharaohDaddyeer",
-        "value": 2338
+        "tag": "EVL",
+        "name": "YiipiesGoodGirl",
+        "value": 2387
       },
       {
         "rank": 13,
-        "tag": "KOR",
-        "name": "Easy_g",
-        "value": 2278
+        "tag": "EVL",
+        "name": "9o8 JoDaddy8e/",
+        "value": 2352
       },
       {
         "rank": 14,
-        "tag": "TIT",
-        "name": "IKharnEazee",
-        "value": 2259
+        "tag": "KOR",
+        "name": "Easy zg",
+        "value": 2282
       },
       {
         "rank": 15,
-        "tag": "EVL",
-        "name": "a",
-        "value": 2241
+        "tag": "TIT",
+        "name": "KharnEazee",
+        "value": 2269
       },
       {
         "rank": 16,
-        "tag": "KRZ",
-        "name": "TEREA 324281",
-        "value": 2240
+        "tag": "EVL",
+        "name": "aC",
+        "value": 2258
       },
       {
         "rank": 17,
-        "tag": "TIT",
-        "name": "RebelWookie",
-        "value": 2211
+        "tag": "KRZ",
+        "name": "ITEREA 324281",
+        "value": 2254
       },
       {
         "rank": 18,
-        "tag": "EVL",
-        "name": "MadHatter",
-        "value": 2206
+        "tag": "KOR",
+        "name": "3o2l",
+        "value": 2217
       },
       {
         "rank": 19,
-        "tag": "KOR",
-        "name": "302i",
-        "value": 2205
+        "tag": "EVL",
+        "name": "MadHatter",
+        "value": 2214
       },
       {
         "rank": 20,
-        "tag": "KOR",
-        "name": "btNtappa+!0loHuu",
-        "value": 2193
+        "tag": "TIT",
+        "name": "KilluaEazeez=ot",
+        "value": 2211
       },
       {
         "rank": 21,
-        "tag": "KR2",
-        "name": "EK?#E0",
-        "value": 2177
+        "tag": "KOR",
+        "name": "btNtappa+!oloHuu",
+        "value": 2209
       },
       {
         "rank": 22,
-        "tag": "TIT",
-        "name": "JIJUpSN DOIp",
-        "value": 2167
+        "tag": "KR2",
+        "name": "ZS#E0l",
+        "value": 2190
       },
       {
         "rank": 23,
-        "tag": "KOR",
-        "name": "E/921",
-        "value": 2164
+        "tag": "TIT",
+        "name": "JIUphN DOIp",
+        "value": 2187
       },
       {
         "rank": 24,
         "tag": "TiT",
         "name": "Striker",
-        "value": 2160
+        "value": 2175
       },
       {
         "rank": 25,
-        "tag": "TIT",
-        "name": "Grayson Death",
-        "value": 2155
+        "tag": "KOR",
+        "name": "EH921",
+        "value": 2174
       },
       {
         "rank": 26,
         "tag": "TIT",
-        "name": "Eazee Eren",
-        "value": 2141
+        "name": "Grayson Death",
+        "value": 2156
       },
       {
         "rank": 27,
         "tag": "",
-        "name": "Mellon",
-        "value": 2122
+        "name": "Mellor",
+        "value": 2134
       },
       {
         "rank": 28,
         "tag": "XII",
         "name": "Drae",
-        "value": 2118
+        "value": 2128
       },
       {
         "rank": 29,
-        "tag": "KOR",
-        "name": "Asura =",
-        "value": 2094
+        "tag": "EVL",
+        "name": "Katy Perry",
+        "value": 2124
       },
       {
         "rank": 30,
-        "tag": "EVL",
-        "name": "Katy",
-        "value": 2083
+        "tag": "KOR",
+        "name": "Asura =",
+        "value": 2109
       },
       {
         "rank": 31,
         "tag": "KOR",
-        "name": "xIzAtx",
-        "value": 2066
+        "name": "IIZAtF",
+        "value": 2094
       },
       {
         "rank": 32,
         "tag": "EVL",
-        "name": "Gav innit'! ! foo",
-        "value": 2061
+        "name": "Gav innit' ! ! foo",
+        "value": 2074
       },
       {
         "rank": 33,
-        "tag": "TIT",
-        "name": "EIGianEazee",
-        "value": 2039
+        "tag": "EVL",
+        "name": "JustaThiccfoo",
+        "value": 2063
       },
       {
         "rank": 34,
         "tag": "TIT",
-        "name": "Dustin",
-        "value": 2026
+        "name": "EIGianEazee",
+        "value": 2046
       },
       {
         "rank": 35,
-        "tag": "KOR",
-        "name": "tI4okz#EJHuI",
-        "value": 2000
+        "tag": "TIT",
+        "name": "Dustin",
+        "value": 2029
       },
       {
         "rank": 36,
-        "tag": "XII",
-        "name": "Ragnarl",
-        "value": 1979
+        "tag": "TIT",
+        "name": "KBBaller",
+        "value": 2022
       },
       {
         "rank": 37,
         "tag": "KOR",
-        "name": "JesttaTil_ Elot",
-        "value": 1976
+        "name": "Z_uldzoto X ob",
+        "value": 2019
       },
       {
         "rank": 38,
-        "tag": "EVL",
-        "name": "Arek96",
-        "value": 1921
+        "tag": "KOR",
+        "name": "tI3olz#5 IHul",
+        "value": 2007
       },
       {
         "rank": 39,
-        "tag": "EVL",
-        "name": "DGK Wraithfoo",
-        "value": 1907
+        "tag": "KOR",
+        "name": "Jesttaw_ Elot",
+        "value": 1998
       },
       {
         "rank": 40,
         "tag": "XII",
-        "name": "Ruskof",
-        "value": 1890
+        "name": "Manaa2",
+        "value": 1992
       },
       {
         "rank": 41,
-        "tag": "",
-        "name": "MiL",
-        "value": 1856
+        "tag": "EVL",
+        "name": "Arek96",
+        "value": 1934
       },
       {
         "rank": 42,
+        "tag": "EVL",
+        "name": "DGK Wraithfoo",
+        "value": 1915
+      },
+      {
+        "rank": 43,
+        "tag": "XII",
+        "name": "Ruskof",
+        "value": 1895
+      },
+      {
+        "rank": 44,
+        "tag": "TIT",
+        "name": "HumEazee83",
+        "value": 1856
+      },
+      {
+        "rank": 45,
         "tag": "",
         "name": "UniEvL",
         "value": 1852
       },
       {
-        "rank": 43,
-        "tag": "TIT",
-        "name": "IHumEazee83",
-        "value": 1848
-      },
-      {
-        "rank": 44,
+        "rank": 46,
         "tag": "TIT",
         "name": "Giu",
-        "value": 1826
+        "value": 1829
       },
       {
-        "rank": 45,
+        "rank": 47,
         "tag": "TIT",
         "name": "Tochetto",
         "value": 1824
       },
       {
-        "rank": 46,
-        "tag": "KOR",
-        "name": "olo =",
-        "value": 1817
-      },
-      {
-        "rank": 47,
-        "tag": "TIT",
-        "name": "Wookie",
-        "value": 1808
-      },
-      {
         "rank": 48,
         "tag": "TIT",
         "name": "Aleex",
-        "value": 1804
+        "value": 1822
       },
       {
         "rank": 49,
-        "tag": "EVL",
-        "name": "Yiipie",
-        "value": 1798
+        "tag": "KOR",
+        "name": "oIo  =",
+        "value": 1817
       },
       {
         "rank": 50,
-        "tag": "EVL",
-        "name": "Sayncerfoo",
-        "value": 1797
+        "tag": "TIT",
+        "name": "Wookie",
+        "value": 1809
       },
       {
         "rank": 51,
+        "tag": "EVL",
+        "name": "Yiipie",
+        "value": 1801
+      },
+      {
+        "rank": 52,
         "tag": "BST",
         "name": "DownHill",
         "value": 1788
       },
       {
-        "rank": 52,
-        "tag": "KOR",
-        "name": "-2lo",
-        "value": 1742
-      },
-      {
         "rank": 53,
-        "tag": "XII",
-        "name": "Meliodas",
-        "value": 1733
+        "tag": "KOR",
+        "name": "-2l%",
+        "value": 1748
       },
       {
         "rank": 54,
-        "tag": "KOR",
-        "name": "OHHH2?1",
-        "value": 1728
+        "tag": "XII",
+        "name": "Meliodas",
+        "value": 1741
       },
       {
         "rank": 55,
         "tag": "EVL",
         "name": "APEX PREDATOR",
-        "value": 1727
+        "value": 1733
       },
       {
         "rank": 56,
         "tag": "KOR",
         "name": "zg0l",
-        "value": 1725
+        "value": 1730
       },
       {
         "rank": 57,
-        "tag": "EVL",
-        "name": "WestWest",
-        "value": 1711
+        "tag": "KOR",
+        "name": "OHHHIl2?1",
+        "value": 1728
       },
       {
         "rank": 58,
-        "tag": "EVL",
-        "name": "Gfunk",
-        "value": 1710
+        "tag": "KOR",
+        "name": "Ktng2dlolo",
+        "value": 1723
       },
       {
         "rank": 59,
-        "tag": "TIT",
-        "name": "UceDuce",
-        "value": 1703
+        "tag": "EVL",
+        "name": "WestWest",
+        "value": 1714
       },
       {
         "rank": 60,
-        "tag": "TIT",
-        "name": "Iplastikman",
-        "value": 1702
+        "tag": "",
+        "name": "Gfunk",
+        "value": 1710
       },
       {
         "rank": 61,
         "tag": "EVL",
         "name": "CumpaVero",
-        "value": 1701
+        "value": 1707
       },
       {
         "rank": 62,
-        "tag": "KOR",
-        "name": "Ktng3=210/01",
-        "value": 1695
+        "tag": "TIT",
+        "name": "Iplastikman",
+        "value": 1705
       },
       {
         "rank": 63,
         "tag": "KOR",
         "name": "Woo",
-        "value": 1695
+        "value": 1704
       },
       {
         "rank": 64,
         "tag": "TIT",
-        "name": "ISTKRaiden Eazee",
-        "value": 1679
+        "name": "Bonjoconlaj",
+        "value": 1692
       },
       {
         "rank": 65,
-        "tag": "TIT",
-        "name": "Bonjoconlaj",
-        "value": 1677
+        "tag": "XII",
+        "name": "Azade",
+        "value": 1679
       },
       {
         "rank": 66,
-        "tag": "DUX",
+        "tag": "DuX",
         "name": "LameDuck",
-        "value": 1672
+        "value": 1673
       },
       {
         "rank": 67,
-        "tag": "XII",
-        "name": "Azade",
-        "value": 1663
+        "tag": "EVL",
+        "name": "RANG3Rfoo",
+        "value": 1670
       },
       {
         "rank": 68,
-        "tag": "EVL",
-        "name": "Mando Nomad",
-        "value": 1660
+        "tag": "KRz",
+        "name": "poloria",
+        "value": 1669
       },
       {
         "rank": 69,
-        "tag": "KOR",
-        "name": "Adviserzt5",
-        "value": 1658
+        "tag": "EVL",
+        "name": "Mando Nomad",
+        "value": 1667
       },
       {
         "rank": 70,
-        "tag": "TIT",
-        "name": "Ciccio 86",
-        "value": 1657
+        "tag": "KR2",
+        "name": "I=4",
+        "value": 1664
       },
       {
         "rank": 71,
-        "tag": "KR2",
-        "name": "Z?#",
-        "value": 1657
+        "tag": "TIT",
+        "name": "LOKEH",
+        "value": 1659
       },
       {
         "rank": 72,
+        "tag": "TIT",
+        "name": "ICiccio 86",
+        "value": 1658
+      },
+      {
+        "rank": 73,
         "tag": "DUX",
         "name": "NIGHTSNARE",
         "value": 1652
       },
       {
-        "rank": 73,
-        "tag": "TIT",
-        "name": "9o8Nazgulgoe/",
-        "value": 1651
-      },
-      {
         "rank": 74,
         "tag": "EVL",
-        "name": "RANG3Rfoo",
-        "value": 1645
+        "name": "Crank",
+        "value": 1646
       },
       {
         "rank": 75,
-        "tag": "KRZ",
-        "name": "Ipoloria",
-        "value": 1644
+        "tag": "TiT",
+        "name": "olivier",
+        "value": 1631
       },
       {
         "rank": 76,
-        "tag": "Xll",
-        "name": "Thorfinn",
-        "value": 1635
-      },
-      {
-        "rank": 77,
-        "tag": "EVL",
-        "name": "Crank",
-        "value": 1634
-      },
-      {
-        "rank": 78,
         "tag": "",
         "name": "Damlaujud",
         "value": 1628
       },
       {
-        "rank": 79,
-        "tag": "TiT",
-        "name": "olivier",
-        "value": 1627
-      },
-      {
-        "rank": 80,
+        "rank": 77,
         "tag": "KOR",
-        "name": "Galaxyeat+",
+        "name": "Galaxy ?oh",
         "value": 1626
       },
       {
-        "rank": 81,
+        "rank": 78,
         "tag": "EVL",
         "name": "Kokoszfoo",
-        "value": 1622
+        "value": 1625
       },
       {
-        "rank": 82,
+        "rank": 79,
+        "tag": "EVL",
+        "name": "Bush Chookfoo",
+        "value": 1621
+      },
+      {
+        "rank": 80,
         "tag": "",
         "name": "Bibii",
         "value": 1616
       },
       {
+        "rank": 81,
+        "tag": "XII",
+        "name": "EkinOx",
+        "value": 1611
+      },
+      {
+        "rank": 82,
+        "tag": "TIT",
+        "name": "zam",
+        "value": 1609
+      },
+      {
         "rank": 83,
-        "tag": "EVL",
-        "name": "Bush Chookfoo",
-        "value": 1610
+        "tag": "XI",
+        "name": "Teygaz",
+        "value": 1605
       },
       {
         "rank": 84,
-        "tag": "TIT",
-        "name": "BloodyRedEazee",
-        "value": 1606
+        "tag": "XII",
+        "name": "Leopolo",
+        "value": 1601
       },
       {
         "rank": 85,
-        "tag": "XII",
-        "name": "EkinOx",
-        "value": 1602
+        "tag": "Xll",
+        "name": "gymlulu",
+        "value": 1597
       },
       {
         "rank": 86,
-        "tag": "XII",
-        "name": "Teygaz",
-        "value": 1602
+        "tag": "TIT",
+        "name": "Manicas",
+        "value": 1584
       },
       {
         "rank": 87,
-        "tag": "XI",
-        "name": "Teygaz",
-        "value": 1602
+        "tag": "EVL",
+        "name": "Mr Nell",
+        "value": 1580
       },
       {
         "rank": 88,
         "tag": "TIT",
-        "name": "zam",
-        "value": 1601
+        "name": "Rusco",
+        "value": 1579
       },
       {
         "rank": 89,
-        "tag": "TiT",
-        "name": "zam",
-        "value": 1601
+        "tag": "",
+        "name": "Govelnor",
+        "value": 1033
       },
       {
         "rank": 90,
-        "tag": "TIT",
-        "name": "Zam",
-        "value": 1601
-      },
-      {
-        "rank": 91,
         "tag": "",
-        "name": "OleWraithblader",
-        "value": 1584
-      },
-      {
-        "rank": 92,
-        "tag": "Xlllg",
-        "name": "ymlulu",
-        "value": 1584
-      },
-      {
-        "rank": 93,
-        "tag": "",
-        "name": "0+eWraithblader",
-        "value": 1584
-      },
-      {
-        "rank": 94,
-        "tag": "Xll",
-        "name": "gymlulu",
-        "value": 1584
-      },
-      {
-        "rank": 95,
-        "tag": "",
-        "name": "D+eWraithblader",
-        "value": 1584
-      },
-      {
-        "rank": 96,
-        "tag": "",
-        "name": "0+Wraithblader",
-        "value": 1584
-      },
-      {
-        "rank": 97,
-        "tag": "TiT",
-        "name": "Slim",
-        "value": 1583
-      },
-      {
-        "rank": 98,
-        "tag": "tiT",
-        "name": "Slim",
-        "value": 1583
-      },
-      {
-        "rank": 99,
-        "tag": "tit",
-        "name": "Slim",
-        "value": 1583
-      },
-      {
-        "rank": 100,
-        "tag": "TIT",
-        "name": "Rusco",
-        "value": 1579
+        "name": "lord296130837",
+        "value": 0
       }
     ]
   }
