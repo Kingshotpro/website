@@ -1,0 +1,116 @@
+/**
+ * pricing-config.js — Single source of truth for pricing at runtime.
+ *
+ * ANY pricing display on the site reads from window.KSP_PRICING.
+ * Paywall overlays, pricing.html, CTA buttons, advisor-referenced amounts —
+ * all of them. No hardcoded price strings anywhere else in the code.
+ *
+ * If this disagrees with docs/PRICING.md, docs/PRICING.md wins. Every edit
+ * to this file must be a mirror of an edit to docs/PRICING.md in the same
+ * commit. See docs/PRICING.md section "Changing this doc".
+ *
+ * Stripe buy links marked TODO: are placeholders. The Architect must create
+ * the Stripe products (via the MCP or the Stripe dashboard) and paste the
+ * real URLs here. Until then the buttons hit a 404.
+ */
+(function () {
+  'use strict';
+
+  window.KSP_PRICING = {
+    // Free tier — informational only (no purchase link)
+    free: {
+      name:       'Free',
+      price:      0,
+      price_text: '$0/month',
+      features:   [
+        'Alliance rankings on every kingdom page',
+        'All calculators, guides, hero database',
+        'Top Players aggregator',
+        '5 AI advisor conversations/day (DeepSeek)',
+        '6-turn conversation context',
+      ],
+    },
+
+    subscriptions: [
+      {
+        id:         'pro',
+        name:       'Pro',
+        price:      4.99,
+        price_text: '$4.99/month',
+        tagline:    'Unlimited AI, every kingdom\'s intel, 5 credits/mo',
+        features:   [
+          'Everything Free has',
+          'Unlimited AI advisor (Haiku 4.5)',
+          '12-turn conversation context',
+          'KvK intel on every tracked kingdom',
+          'Chat history export',
+          'Character verification $2.99 (vs $4.99 free)',
+          '5 bonus credits every month',
+        ],
+        buy_url:    'TODO_STRIPE_PRO_499',   // create product: Pro monthly $4.99
+        badge:      'most-popular',
+      },
+      {
+        id:         'pro-plus',
+        name:       'Pro+',
+        price:      9.99,
+        price_text: '$9.99/month',
+        tagline:    'Sonnet for hard questions, 15 credits/mo',
+        features:   [
+          'Everything Pro has',
+          'Sonnet-class AI for deep strategy questions',
+          '20-turn conversation context',
+          '15 bonus credits every month (vs 5)',
+          'Priority on kingdom-request queue',
+          'War Council badge',
+        ],
+        buy_url:    'TODO_STRIPE_PRO_PLUS_999',
+        badge:      'proposed',   // flip to '' once Architect confirms scope
+        status:     'proposed',
+      },
+    ],
+
+    credit_packs: [
+      { id: 'starter',     credits: 10, price: 1.99, buy_url: 'TODO_STRIPE_CREDITS_10'  },
+      { id: 'standard',    credits: 30, price: 4.99, buy_url: 'TODO_STRIPE_CREDITS_30'  },
+      { id: 'best-value',  credits: 75, price: 9.99, buy_url: 'TODO_STRIPE_CREDITS_75', badge: 'best-value' },
+    ],
+
+    // What credits buy. Referenced by any feature that gates via credits.
+    // The paywall builds its unlock-buttons from kingdom_intel here.
+    credit_actions: {
+      kingdom_intel: [
+        { credits: 1, duration_sec:      86400, label: '24 hours' },
+        { credits: 3, duration_sec:     604800, label: '7 days'   },
+        { credits: 8, duration_sec:    2592000, label: '30 days'  },
+      ],
+      world_chat_snapshot: { credits: 1, permanent: true },
+      kingdom_add:         { credits: 5, credits_expedited: 10 },  // new kingdom
+      kingdom_refresh:     { credits: 3, credits_expedited: 6  },  // update existing
+      char_verify_free:    { dollars: 4.99 },
+      char_verify_pro:     { dollars: 2.99 },
+    },
+
+    // Short reference the paywall CTA can link to. Always respects KSP_BASE.
+    get pricing_page_url() {
+      return (window.KSP_BASE || '') + 'pricing.html';
+    },
+
+    // Utility: human-readable formatter shared by every view
+    formatPrice: function (p) {
+      if (p === 0 || p === '0') return 'Free';
+      var n = typeof p === 'number' ? p : parseFloat(p);
+      if (isNaN(n)) return '';
+      return '$' + n.toFixed(2);
+    },
+  };
+
+  // Sanity check — any Claude editing this file should still have these
+  // keys present. If a future refactor breaks the shape, code that reads
+  // from here will console-warn before silently breaking the UI.
+  ['free', 'subscriptions', 'credit_packs', 'credit_actions'].forEach(function (k) {
+    if (!window.KSP_PRICING[k]) {
+      console.warn('[KSP_PRICING] missing required key:', k);
+    }
+  });
+})();
