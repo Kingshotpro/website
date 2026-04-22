@@ -13,6 +13,36 @@
 
 ---
 
+## 2026-04-22 — Task #4: Stripe products reconciled with 2-tier + credits model
+
+**Verdict:** Five new Stripe products + prices + payment links created.
+Six stale products (4-tier model at $9.99/$29.99/$99.99) archived.
+`pricing.html`, `js/pricing-config.js`, and `docs/PRICING.md` now all
+point at the real live URLs — no more `TODO_STRIPE_*` placeholders.
+
+**Created (all livemode):**
+- Pro ($4.99/mo) — `prod_UNoVQD1Lx7PFc2` → `buy.stripe.com/28E9AS4dgfrk3Ej4G46Vq06`
+- Pro+ ($9.99/mo) — `prod_UNoV4QpP2aCqLO` → `buy.stripe.com/28E6oG114cf8caP2xW6Vq07`
+- Credits 10 ($1.99) — `prod_UNoVWk1eTyLgD4` → `buy.stripe.com/3cI4gyh02a70eiXa0o6Vq08`
+- Credits 30 ($4.99) — `prod_UNoVz4tzSeiavV` → `buy.stripe.com/4gM4gy11492Wfn1dcA6Vq09`
+- Credits 75 ($9.99) — `prod_UNoVIV7XtcfFoE` → `buy.stripe.com/14AdR88tw0wqcaPdcA6Vq0a`
+
+**Archived** (active: false, no new checkouts, existing data preserved):
+- `prod_UJU7DflIxmhC4t` / `prod_UJNdil1eu5jl6Y` — old Pro $9.99/mo
+- `prod_UJU7a0UAgUXxjE` / `prod_UJNdVTU9eHgSrl` — War Council $29.99/mo
+- `prod_UJU77USWVLp4Pi` / `prod_UJNdyyNqHJQ4t6` — Elite $99.99/mo
+
+**Safe because:** verified zero active subscriptions before archiving.
+
+**Webhook-amount disambiguation:** the new credit-pack prices collide at
+the amount level with the subscription prices (Pro $4.99 = 499¢ = Credits
+Standard 30; Pro+ $9.99 = 999¢ = Credits Best Value 75). The
+`handleStripeWebhook` already disambiguates via `session.mode`
+(`subscription` vs `payment`), so no ambiguity in practice. Documented
+in `docs/PRICING.md` § "Webhook mapping".
+
+---
+
 ## 2026-04-22 — Task #5: Player-lookup bot runs inside the Worker (Browser Rendering)
 
 **Verdict:** `POST /player/lookup` is live at `kingshotpro-api.kingshotpro.workers.dev`.

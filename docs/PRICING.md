@@ -91,22 +91,41 @@ Proposed scope (needs Architect sign-off before going live):
 - `$9.99/mo "old" Pro` — killed April 16, but a *new* $9.99 tier (Pro+, above)
   is planned with different scope. Don't confuse the two.
 
-## Stripe state (as of 2026-04-21)
+## Stripe state (current — reconciled 2026-04-22)
 
-Commit `8ed7989` created live Stripe products at the killed prices. These
-need action:
+All products and prices below are LIVE on account `acct_1TKjtXCTwcITa9f2`
+(`kingshotpro` display name). Active subscription count at reconciliation: 0.
 
-| Product | Price | Buy link | Action needed |
-|---------|-------|----------|---------------|
-| "PRO" | $9.99/mo | `buy.stripe.com/9B68wObFI5QKa2H8Wk6Vq03` | Archive or re-price to $4.99 |
-| "WAR COUNCIL" | $29.99/mo | `buy.stripe.com/3cI4gydNQ6UO3Ej6Oc6Vq04` | **Archive** |
-| "ELITE" | $99.99/mo | `buy.stripe.com/28EcN45hkeng3Ej3C06Vq05` | **Archive** |
-| "Credits — 10/30/75" | — | — | **Create** |
-| Pro — $4.99/mo | — | — | **Create** |
-| Pro+ — $9.99/mo | — | — | **Create after confirmation** |
+### Active (current model)
 
-A Claude with Stripe MCP access can do this in one session after explicit
-Architect go-ahead.
+| Name | Price | Product ID | Price ID | Buy link |
+|------|-------|-----------|----------|----------|
+| Pro | $4.99/mo | `prod_UNoVQD1Lx7PFc2` | `price_1TP2snCTwcITa9f2DRnl3zFX` | `buy.stripe.com/28E9AS4dgfrk3Ej4G46Vq06` |
+| Pro+ | $9.99/mo | `prod_UNoV4QpP2aCqLO` | `price_1TP2sqCTwcITa9f2sG0bTArf` | `buy.stripe.com/28E6oG114cf8caP2xW6Vq07` |
+| Credits — 10 (Starter) | $1.99 one-time | `prod_UNoVWk1eTyLgD4` | `price_1TP2stCTwcITa9f22LhqHc4c` | `buy.stripe.com/3cI4gyh02a70eiXa0o6Vq08` |
+| Credits — 30 (Standard) | $4.99 one-time | `prod_UNoVz4tzSeiavV` | `price_1TP2suCTwcITa9f2PmWgSAmQ` | `buy.stripe.com/4gM4gy11492Wfn1dcA6Vq09` |
+| Credits — 75 (Best Value) | $9.99 one-time | `prod_UNoVIV7XtcfFoE` | `price_1TP2sxCTwcITa9f2AiA4SJH9` | `buy.stripe.com/14AdR88tw0wqcaPdcA6Vq0a` |
+
+### Archived (old 4-tier model)
+
+Archived on 2026-04-22, `active: false`. No new checkouts possible on
+these. Left in Stripe so historical receipts stay valid.
+
+- `prod_UJU7DflIxmhC4t` / `prod_UJNdil1eu5jl6Y` — old "KingshotPro Pro" $9.99/mo
+- `prod_UJU7a0UAgUXxjE` / `prod_UJNdVTU9eHgSrl` — old "KingshotPro War Council" $29.99/mo
+- `prod_UJU77USWVLp4Pi` / `prod_UJNdyyNqHJQ4t6` — old "KingshotPro Elite" $99.99/mo
+
+### Webhook mapping
+
+The Worker's `handleStripeWebhook` at `worker/worker.js:1039` routes on
+`session.mode` + `session.amount_total`. Matching amounts:
+  - 499 → grants 30 credits (Credits — Standard) OR Pro tier if subscription
+  - 199 → 10 credits
+  - 999 → 75 credits OR Pro+ tier if subscription
+
+Note: 499 is ambiguous between "30 credits" and "Pro subscription" at the
+amount level. `session.mode` disambiguates (`payment` vs `subscription`)
+so there's no conflict in practice. Same for 999.
 
 ---
 

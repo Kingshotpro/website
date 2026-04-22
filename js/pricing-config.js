@@ -47,7 +47,9 @@
           'Character verification $2.99 (vs $4.99 free)',
           '5 bonus credits every month',
         ],
-        buy_url:    'TODO_STRIPE_PRO_499',   // create product: Pro monthly $4.99
+        stripe_product_id: 'prod_UNoVQD1Lx7PFc2',
+        stripe_price_id:   'price_1TP2snCTwcITa9f2DRnl3zFX',
+        buy_url:    'https://buy.stripe.com/28E9AS4dgfrk3Ej4G46Vq06',
         badge:      'most-popular',
       },
       {
@@ -64,16 +66,28 @@
           'Priority on kingdom-request queue',
           'War Council badge',
         ],
-        buy_url:    'TODO_STRIPE_PRO_PLUS_999',
+        stripe_product_id: 'prod_UNoV4QpP2aCqLO',
+        stripe_price_id:   'price_1TP2sqCTwcITa9f2sG0bTArf',
+        buy_url:    'https://buy.stripe.com/28E6oG114cf8caP2xW6Vq07',
         badge:      'proposed',   // flip to '' once Architect confirms scope
         status:     'proposed',
       },
     ],
 
     credit_packs: [
-      { id: 'starter',     credits: 10, price: 1.99, buy_url: 'TODO_STRIPE_CREDITS_10'  },
-      { id: 'standard',    credits: 30, price: 4.99, buy_url: 'TODO_STRIPE_CREDITS_30'  },
-      { id: 'best-value',  credits: 75, price: 9.99, buy_url: 'TODO_STRIPE_CREDITS_75', badge: 'best-value' },
+      { id: 'starter',     credits: 10, price: 1.99,
+        stripe_product_id: 'prod_UNoVWk1eTyLgD4',
+        stripe_price_id:   'price_1TP2stCTwcITa9f22LhqHc4c',
+        buy_url:           'https://buy.stripe.com/3cI4gyh02a70eiXa0o6Vq08' },
+      { id: 'standard',    credits: 30, price: 4.99,
+        stripe_product_id: 'prod_UNoVz4tzSeiavV',
+        stripe_price_id:   'price_1TP2suCTwcITa9f2PmWgSAmQ',
+        buy_url:           'https://buy.stripe.com/4gM4gy11492Wfn1dcA6Vq09' },
+      { id: 'best-value',  credits: 75, price: 9.99,
+        stripe_product_id: 'prod_UNoVIV7XtcfFoE',
+        stripe_price_id:   'price_1TP2sxCTwcITa9f2AiA4SJH9',
+        buy_url:           'https://buy.stripe.com/14AdR88tw0wqcaPdcA6Vq0a',
+        badge:             'best-value' },
     ],
 
     // What credits buy. Referenced by any feature that gates via credits.
