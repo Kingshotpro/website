@@ -85,6 +85,25 @@ problem that was solvable by a different method. The rule:
 
 ---
 
+## Before you reach for a new paid service
+
+**Ask: what infrastructure is the Architect already paying for?** Adding a
+new SaaS or cloud service without checking the existing stack is a
+default-to-cost failure. Before proposing or deploying anything new:
+
+1. Read the "Platform Boundaries" table in `docs/ARCHITECTURE.md`.
+2. If the thing you want to build could plausibly run on existing paid
+   infra (Cloudflare, DigitalOcean droplet, Resend email quota, OpenAI
+   credits, etc.), propose that FIRST. State the alternative. Let the
+   Architect pick.
+3. If you're unsure whether they have infra for it — ASK. "Do you have
+   a VPS or a DO droplet I could deploy this on?" takes one line.
+
+Example failure from 2026-04-22: built the Player ID lookup bot on
+Cloudflare Browser Rendering ($0.09/browser-hour) without asking
+whether the Architect's DigitalOcean droplet was an option. `bot/server.py`
+was already written for exactly that case. Sloppy.
+
 ## Before you start building something the site doesn't have
 
 Check if it already exists. Common things I've seen almost-rebuilt:
