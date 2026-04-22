@@ -113,6 +113,29 @@
       <!-- PROFILE CARD (shown after lookup) -->
       <div class="profile-card" id="profile-card" aria-live="polite"></div>
 
+      <!-- MAGIC-LINK SIGNUP — save profile + credits to email, cross-device.
+           Backend lives at /auth/send + /auth/verify (worker/worker.js:146-218).
+           Shown whether or not a Player ID has been entered; having the FID
+           first is ideal but not required. -->
+      <div class="auth-signup" id="auth-signup">
+        <div class="auth-signup-head">
+          <span class="auth-signup-icon">✉️</span>
+          <div>
+            <div class="auth-signup-title">Save your progress with email</div>
+            <div class="auth-signup-sub">One click login from any device. Your profile, credits, and unlocks travel with you.</div>
+          </div>
+        </div>
+        <form id="auth-signup-form" class="auth-signup-form" autocomplete="email">
+          <input type="email" id="auth-signup-email" placeholder="you@email.com" required>
+          <button type="submit" id="auth-signup-btn">Send magic link</button>
+        </form>
+        <div class="auth-signup-status" id="auth-signup-status"></div>
+        <p class="auth-signup-note">
+          Free. No password. We only use your email to sign you in —
+          <a href="privacy.html">privacy policy</a>.
+        </p>
+      </div>
+
     </section><!-- /hero -->
 
     <!-- ─── ADVISORY OUTPUT ─────────────── -->
@@ -374,5 +397,6 @@
 <script src="js/advisor-referral.js"></script>
 <script src="js/advisor-alliance.js"></script>
 <script src="js/advisor-accounts.js"></script>
+<script src="js/auth-signup.js"></script>
 </body>
 </html>

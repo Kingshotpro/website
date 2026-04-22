@@ -1765,3 +1765,46 @@ input[type="range"] {
 @media (max-width: 520px) {
   .ksp-paywall-options { grid-template-columns: 1fr; }
 }
+
+/* ─── Magic-link email signup (homepage) ─────────────────────────
+   Shown below the profile card. Calls /auth/send on the Worker
+   which sends a Resend email with a link back to /auth?token=X.   */
+.auth-signup {
+  max-width: 520px; margin: 28px auto 0; padding: 20px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+}
+.auth-signup-head {
+  display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px;
+}
+.auth-signup-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
+.auth-signup-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.auth-signup-sub   { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+.auth-signup-form {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.auth-signup-form input {
+  flex: 1; min-width: 180px; padding: 10px 14px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text); font-size: 14px; font-family: inherit;
+}
+.auth-signup-form input:focus { outline: none; border-color: var(--gold); }
+.auth-signup-form button {
+  padding: 10px 18px; background: var(--gold); color: var(--bg);
+  border: none; border-radius: 8px; font-weight: 700; font-size: 13px;
+  cursor: pointer; font-family: inherit;
+}
+.auth-signup-form button:hover:not(:disabled) { opacity: 0.9; }
+.auth-signup-form button:disabled { opacity: 0.55; cursor: wait; }
+
+.auth-signup-status {
+  display: none; margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+}
+.auth-signup-status.ok   { display: block; background: rgba(74, 222, 128, 0.1); border: 1px solid #4ade80; color: #4ade80; }
+.auth-signup-status.err  { display: block; background: rgba(248, 113, 113, 0.1); border: 1px solid #f87171; color: #f87171; }
+.auth-signup-status.info { display: block; background: rgba(240, 192, 64, 0.1); border: 1px solid var(--gold); color: var(--gold); }
+
+.auth-signup-note {
+  font-size: 11px; color: var(--text-muted); margin-top: 10px; text-align: center;
+}
+.auth-signup-note a { color: var(--text-muted); text-decoration: underline; }
