@@ -18,13 +18,13 @@ const FID_API        = 'https://kingshotpro-api.kingshotpro.workers.dev/player';
 //
 // Override at runtime: set window.KSP_LOOKUP_URL before fid.js runs
 // (useful for local dev / cloudflared tunnels / staging deployments).
-// TODO: set to the real cloud-deployed bot URL once hosting is picked.
-// Candidates (Architect to confirm): Cloudflare Worker + Browser Rendering,
-// Fly.io, Railway, Render. The Mac-side quick-tunnel approach was the wrong
-// direction — killed 2026-04-21.
+// Cloud-deployed lookup bot. Runs inside the Worker at /player/lookup
+// using Cloudflare Browser Rendering. Drives headless Chrome through CG's
+// giftcode page, intercepts the sign-protected /api/player response, caches
+// results in KV for 24h per FID. Proven live 2026-04-22 against Jetrix (K223).
 const LOOKUP_BOT_URL = (typeof window !== 'undefined' && window.KSP_LOOKUP_URL)
   ? window.KSP_LOOKUP_URL
-  : null;   // null = skip the bot call entirely until we have a real URL
+  : 'https://kingshotpro-api.kingshotpro.workers.dev/player/lookup';
 
 const PROFILE_KEY    = 'ksp_profile';       // sessionStorage fallback key
 const LAST_FID_KEY   = 'ksp_last_fid';      // localStorage — last looked-up FID
@@ -133,15 +133,9 @@ async function fetchPlayerProfile(fid) {
     // Timeout or network error → fall through to bot
   }
 
-  // 3) Bot. Always works as long as the cloud service is deployed.
-  //    If LOOKUP_BOT_URL is null (no cloud service picked yet), throw
-  //    a clean error rather than hitting a dead host.
-  if (!LOOKUP_BOT_URL) {
-    throw new Error(
-      'Player lookup service not deployed yet. Ask the admin to complete ' +
-      'the cloud deployment step — see docs/DECISIONS.md.'
-    );
-  }
+  // 3) Bot — always works: Browser Rendering inside the Worker renders
+  //    the CG giftcode page, intercepts the sign-protected response,
+  //    caches in KV 24h. ~5-15s cold, ~200ms cached.
   return await fetchFromLookupBot(fid);
 }
 

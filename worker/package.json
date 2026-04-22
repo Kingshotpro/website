@@ -1,0 +1,10 @@
+{
+  "name": "kingshotpro-api-worker",
+  "version": "1.0.0",
+  "private": true,
+  "main": "worker.js",
+  "type": "module",
+  "dependencies": {
+    "@cloudflare/puppeteer": "^0.0.14"
+  }
+}

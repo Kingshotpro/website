@@ -1,3 +1,5 @@
+import puppeteer from '@cloudflare/puppeteer';
+
 const UPSTREAM_BASE = 'https://kingshot-giftcode.centurygame.com';
 
 const ROUTES = {
@@ -97,6 +99,8 @@ export default {
         return handleIntelUnlockKingdom(request, env);
       } else if (url.pathname === '/worldchat/unlock') {
         return handleWorldchatUnlock(request, env);
+      } else if (url.pathname === '/player/lookup') {
+        return handlePlayerLookup(request, env);
       }
     }
 
@@ -1209,6 +1213,126 @@ const KINGDOM_REQUEST_COSTS = {
   add_expedited:   10,
   update_expedited: 6,
 };
+
+// POST /player/lookup — headless-browser Player ID lookup via Cloudflare
+// Browser Rendering. Loads the CG giftcode page, lets their obfuscated JS
+// compute the `sign` field, intercepts the /api/player response.
+//
+// Replaces the ADB-scraper-only flow and the separate bot/server.py Python
+// service. Runs inside this Worker. Result cached in KV for 24h per FID.
+//
+// Architecture reference: docs/ARCHITECTURE.md § "Platform Boundaries".
+// Proof-of-concept was bot/lookup_player.py — same logic, different runtime.
+//
+// Cost: ~2-6 seconds of browser time per uncached lookup. At Cloudflare
+// Browser Rendering prices ($0.09/browser-hour), ~$0.00015-$0.00050 per
+// lookup. Cached hits are free.
+const PLAYER_CACHE_TTL = 86400;         // 24 hours
+const PLAYER_LOOKUP_TIMEOUT_MS = 25_000; // hard ceiling per request
+
+async function handlePlayerLookup(request, env) {
+  let fid;
+  try {
+    const body = await request.json();
+    fid = String(body.fid || '').trim();
+  } catch {
+    return corsWrapCred(request, '{"error":"bad_request"}', 400);
+  }
+
+  if (!/^\d{4,12}$/.test(fid)) {
+    return corsWrapCred(request, '{"error":"invalid_fid","detail":"Player ID must be 4-12 digits"}', 400);
+  }
+
+  // Cache hit — serve instantly.
+  const cacheKey = `player:${fid}`;
+  const cached = await env.KV.get(cacheKey, { type: 'json' });
+  if (cached) {
+    return corsWrapCred(request, JSON.stringify({ ...cached, cached: true }), 200);
+  }
+
+  // Browser Rendering requires the binding to be present. If the account
+  // doesn't have Browser Rendering enabled, env.BROWSER is undefined and
+  // we want a clear error rather than a 500.
+  if (!env.BROWSER) {
+    return corsWrapCred(request, JSON.stringify({
+      error: 'browser_rendering_not_bound',
+      detail: 'Worker is missing the BROWSER binding. Enable Browser Rendering on the account + ensure wrangler.toml has [browser] binding.',
+    }), 503);
+  }
+
+  let browser;
+  try {
+    browser = await puppeteer.launch(env.BROWSER);
+    const page = await browser.newPage();
+
+    // Capture the /api/player response off the wire. This is the whole
+    // point of using a real browser — CG's JS computes the sign, we just
+    // read the resulting JSON.
+    const playerPromise = new Promise((resolve) => {
+      const onResponse = async (res) => {
+        const url = res.url();
+        if (url.includes('/api/player') && res.request().method() === 'POST') {
+          try {
+            const data = await res.json();
+            resolve(data);
+          } catch { /* fall through, timeout will catch */ }
+        }
+      };
+      page.on('response', onResponse);
+    });
+
+    await page.goto('https://ks-giftcode.centurygame.com/', {
+      waitUntil: 'domcontentloaded',
+      timeout:   PLAYER_LOOKUP_TIMEOUT_MS,
+    });
+
+    // Wait for the Player ID input to render
+    await page.waitForSelector('input[placeholder="Player ID"]', { timeout: 10_000 });
+
+    // Fill the FID and click Login
+    await page.type('input[placeholder="Player ID"]', fid);
+    await page.waitForSelector('.login_btn', { timeout: 5_000 });
+    await page.click('.login_btn');
+
+    // Wait up to ~10s for the /api/player response
+    const raw = await Promise.race([
+      playerPromise,
+      new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 12_000)),
+    ]);
+
+    if (!raw || raw.code !== 0 || !raw.data) {
+      return corsWrapCred(request, JSON.stringify({
+        error: 'not_found',
+        detail: 'Player ID not found or CG returned a non-success code.',
+      }), 404);
+    }
+
+    const d = raw.data;
+    const profile = {
+      fid:            d.fid,
+      nickname:       d.nickname,
+      kid:            d.kid,
+      stove_lv:       d.stove_lv,
+      avatar_image:   d.avatar_image || '',
+      total_recharge: (d.total_recharge_amount || 0) / 100,
+      looked_up:      Math.floor(Date.now() / 1000),
+      source:         'cf_browser_rendering',
+    };
+
+    await env.KV.put(cacheKey, JSON.stringify(profile), { expirationTtl: PLAYER_CACHE_TTL });
+
+    return corsWrapCred(request, JSON.stringify(profile), 200);
+  } catch (err) {
+    return corsWrapCred(request, JSON.stringify({
+      error:  'lookup_failed',
+      detail: String(err && err.message ? err.message : err),
+    }), 502);
+  } finally {
+    if (browser) {
+      try { await browser.close(); } catch { /* ignore */ }
+    }
+  }
+}
 
 // GET /credits/balance — public-callable. Returns user balance if signed in,
 // free/0 shape if anonymous. credits.js expects this on every page load.

@@ -13,6 +13,42 @@
 
 ---
 
+## 2026-04-22 — Task #5: Player-lookup bot runs inside the Worker (Browser Rendering)
+
+**Verdict:** `POST /player/lookup` is live at `kingshotpro-api.kingshotpro.workers.dev`.
+Runs `@cloudflare/puppeteer` inside the Worker — no separate service, no
+VPS, no Fly.io. Cached in KV for 24h per FID.
+
+**Proven:** Live test against Player 40507834 (Jetrix メ, K223) returned
+the full profile via a real browser session in ~7 seconds cold, ~120ms
+from cache on the second call. `source: "cf_browser_rendering"` in the
+response confirms the browser path executed.
+
+**Cost:** Browser Rendering bills per browser-hour (~$0.09/hr). Each
+uncached lookup is ~5-8 seconds of browser time → ~$0.00012-$0.00020
+per lookup. With 24h cache, a repeat user costs nothing.
+
+**Changes made:**
+- `worker/wrangler.toml`: added `nodejs_compat` flag and `[browser]` binding.
+- `worker/package.json` (new): declares `@cloudflare/puppeteer` dependency.
+- `worker/worker.js`: imports puppeteer at top, adds `handlePlayerLookup`,
+  registers `/player/lookup` POST route.
+- `js/fid.js`: `LOOKUP_BOT_URL` now points at the Worker endpoint;
+  the "null = skip bot" fallback path removed (the bot is live).
+- `.gitignore`: added `worker/node_modules/`.
+
+**Obsolete (but kept on disk for reference):**
+- `bot/lookup_player.py` — Python reference implementation, still useful
+  for admin CLI runs when the Worker is down.
+- `bot/server.py`, `bot/Dockerfile`, `bot/fly.toml`,
+  `bot/com.kingshotpro.bot.plist` — the Fly.io / Mac-side alternative
+  path. Not removed because the Architect might want them as a failover.
+
+**Deployed:** Worker version `f6b5cc2c-3456-4d73-832a-cf9a7bcfc83e` on
+account `b686aea95a94ead96e9146669e4f373c`.
+
+---
+
 ## 2026-04-22 — Task #3: Stripe webhook rewrite per AUDIT_SPEC
 
 **Verdict:** `handleStripeWebhook` rewritten to use `session.mode` +

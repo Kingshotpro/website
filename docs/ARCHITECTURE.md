@@ -241,9 +241,13 @@ No Worker deploy is automated; Worker needs `wrangler deploy` manually.
 These are facts about current production, not aspirations. Each is tied
 to a specific file:line.
 
-1. **Every new FID lookup fails** unless the user is pre-registered in
-   `players/registry.json`. `worker.js:114-142` proxies to CG's `/api/player`
-   which returns Sign Error. No bot endpoint is deployed.
+1. ~~**Every new FID lookup fails**~~ **FIXED and deployed 2026-04-22.**
+   New `POST /player/lookup` endpoint in the Worker uses Cloudflare
+   Browser Rendering (`@cloudflare/puppeteer`) to drive CG's giftcode
+   page, intercept the `/api/player` response, cache in KV 24h.
+   Proven live against Jetrix (K223): cold ~7s, cached ~120ms.
+   The legacy `/player` proxy at `worker.js:114-142` is still there
+   but only hit by older frontends; current `fid.js` uses `/player/lookup`.
 2. ~~**Credit system is entirely broken**~~ **FIXED in commit 511a329**
    (not yet deployed). Five Worker endpoints added:
    `/credits/balance`, `/kingdom/request`, `/intel/unlock-kingdom`,

@@ -1,12 +1,22 @@
 name = "kingshotpro-api"
 main = "worker.js"
 compatibility_date = "2024-09-23"
+# nodejs_compat enables top-level imports like @cloudflare/puppeteer.
+compatibility_flags = ["nodejs_compat"]
 
 # KV Namespace — create with: wrangler kv namespace create KV
 # Then paste the id below
 [[kv_namespaces]]
 binding = "KV"
 id = "6279d210fac34b698b71fca9b23135e4"
+
+# Browser Rendering — runs @cloudflare/puppeteer inside the Worker.
+# Requires Workers Paid plan. Billed separately from Workers.
+# Used by handlePlayerLookup to drive the CG giftcode page and intercept
+# the /api/player response. See bot/lookup_player.py for the equivalent
+# Python implementation we developed against first.
+[browser]
+binding = "BROWSER"
 
 # Secrets (set with: wrangler secret put RESEND_KEY, etc.)
 # RESEND_KEY — Resend API key for magic link emails
