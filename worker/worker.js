@@ -91,6 +91,12 @@ export default {
         return handleSurveySubmit(request, env);
       } else if (url.pathname === '/verify/mark-sent') {
         return handleVerifyMarkSent(request, env);
+      } else if (url.pathname === '/kingdom/request') {
+        return handleKingdomRequest(request, env);
+      } else if (url.pathname === '/intel/unlock-kingdom') {
+        return handleIntelUnlockKingdom(request, env);
+      } else if (url.pathname === '/worldchat/unlock') {
+        return handleWorldchatUnlock(request, env);
       }
     }
 
@@ -109,6 +115,12 @@ export default {
     }
     if (request.method === 'GET' && url.pathname === '/verify/admin') {
       return handleVerifyAdminPage(request, env, url);
+    }
+    if (request.method === 'GET' && url.pathname === '/credits/balance') {
+      return handleCreditsBalance(request, env);
+    }
+    if (request.method === 'GET' && url.pathname === '/advisor/history') {
+      return handleAdvisorHistory(request, env);
     }
 
     const upstream = ROUTES[url.pathname];
@@ -195,24 +207,39 @@ async function handleAuthVerify(request, env) {
 
   const { email } = authData;
   const userKey = `user:${email}`;
-  const userData = {
-    email,
-    fid,
-    tier: 'free',
-    created: Date.now(),
-    energy_today: 5,
-    energy_date: new Date().toISOString().split('T')[0],
-    memory: [],
-  };
+
+  // FIX: previously this function unconditionally created a new record,
+  // wiping any existing tier/credits/memory on every magic-link sign-in.
+  // Load existing first; only construct a fresh record if none exists.
+  // AUDIT_SPEC.md described this fix — verified not applied until now.
+  let userData = await env.KV.get(userKey, { type: 'json' });
+  if (!userData) {
+    userData = {
+      email,
+      fid,
+      tier: 'free',
+      created: Date.now(),
+      energy_today: 5,
+      energy_date: new Date().toISOString().split('T')[0],
+      memory: [],
+      credits: 0,
+      credit_history: [],
+    };
+  } else {
+    // Returning user — update fid if they passed a new one
+    if (fid && fid !== userData.fid) userData.fid = fid;
+    // Defensive: seed credit fields on records that predate this code
+    if (userData.credits === undefined)            userData.credits = 0;
+    if (!Array.isArray(userData.credit_history))   userData.credit_history = [];
+  }
 
   await env.KV.put(userKey, JSON.stringify(userData));
 
   const sessionToken = crypto.randomUUID();
   await env.KV.put(`session:${sessionToken}`, JSON.stringify({ email }));
-
   await env.KV.delete(`auth_token:${token}`);
 
-  const response = corsWrap(JSON.stringify({ ok: true, tier: 'free' }), 200);
+  const response = corsWrapCred(request, JSON.stringify({ ok: true, tier: userData.tier || 'free' }), 200);
   response.headers.append('Set-Cookie', `ksp_session=${sessionToken}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=2592000`);
   return response;
 }
@@ -1083,6 +1110,239 @@ async function handleStripeWebhook(request, env) {
   }
 
   return corsWrap('{"ok":true,"note":"unhandled event"}');
+}
+
+// ──────────────────────────────────────────────────────────────────
+// Credit-gated feature endpoints
+// ──────────────────────────────────────────────────────────────────
+// Credit costs — single source of truth for the server. Keep in sync
+// with docs/PRICING.md and js/pricing-config.js.
+const INTEL_COST_BY_DURATION = {
+  86400:    1,   // 24 hours
+  604800:   3,   // 7 days
+  2592000:  8,   // 30 days
+};
+const WORLDCHAT_UNLOCK_COST = 1;
+const KINGDOM_REQUEST_COSTS = {
+  add:              5,
+  update:           3,
+  add_expedited:   10,
+  update_expedited: 6,
+};
+
+// GET /credits/balance — public-callable. Returns user balance if signed in,
+// free/0 shape if anonymous. credits.js expects this on every page load.
+async function handleCreditsBalance(request, env) {
+  const user = await getUser(request, env);
+  if (!user) {
+    return corsWrapCred(request, JSON.stringify({ tier: 'free', balance: 0, fid: '' }), 200);
+  }
+  return corsWrapCred(request, JSON.stringify({
+    tier:    user.tier    || 'free',
+    balance: user.credits || 0,
+    fid:     user.fid     || '',
+  }), 200);
+}
+
+// POST /kingdom/request — request a new kingdom or refresh. Charges credits.
+// Body: { type: 'add' | 'update' | 'add_expedited' | 'update_expedited', kingdom: 735 }
+async function handleKingdomRequest(request, env) {
+  const user = await getUser(request, env);
+  if (!user) return corsWrapCred(request, '{"error":"not_logged_in"}', 401);
+
+  let type, kingdom;
+  try {
+    const body = await request.json();
+    type = String(body.type || 'add').toLowerCase();
+    kingdom = parseInt(body.kingdom, 10);
+  } catch { return corsWrapCred(request, '{"error":"bad request"}', 400); }
+
+  if (!Number.isInteger(kingdom) || kingdom < 1 || kingdom > 99999) {
+    return corsWrapCred(request, '{"error":"invalid_kingdom"}', 400);
+  }
+  const cost = KINGDOM_REQUEST_COSTS[type];
+  if (cost === undefined) {
+    return corsWrapCred(request, '{"error":"invalid_request_type"}', 400);
+  }
+  const balance = user.credits || 0;
+  if (balance < cost) {
+    return corsWrapCred(request, JSON.stringify({
+      error: 'insufficient_credits', cost, balance,
+    }), 402);
+  }
+
+  // Record the request for admin review (any existing pending request gets overwritten;
+  // we only track one-per-user-per-kingdom-per-type to prevent spam).
+  const reqKey = `kingdom_req:${kingdom}:${user.email}:${type}`;
+  await env.KV.put(reqKey, JSON.stringify({
+    email: user.email, fid: user.fid || '', kingdom, type,
+    at: Date.now(), status: 'pending',
+  }));
+
+  // Deduct credits and record in history
+  user.credits = balance - cost;
+  if (!Array.isArray(user.credit_history)) user.credit_history = [];
+  user.credit_history.push({
+    at: Date.now(), kind: `kingdom_${type}`, kingdom, amount: -cost,
+  });
+  await env.KV.put(`user:${user.email}`, JSON.stringify(user));
+
+  return corsWrapCred(request, JSON.stringify({ ok: true, balance: user.credits }), 200);
+}
+
+// POST /intel/unlock-kingdom — unlock KvK intel panels for one kingdom
+// for 24h / 7d / 30d. Body: { kingdom, duration_sec, cost_credits }.
+// Server validates that duration_sec maps to cost_credits — prevents
+// client-side tampering with the price.
+async function handleIntelUnlockKingdom(request, env) {
+  const user = await getUser(request, env);
+  if (!user) return corsWrapCred(request, '{"error":"not_logged_in"}', 401);
+
+  let kingdom, duration_sec, cost_credits;
+  try {
+    const body = await request.json();
+    kingdom       = parseInt(body.kingdom,       10);
+    duration_sec  = parseInt(body.duration_sec,  10);
+    cost_credits  = parseInt(body.cost_credits,  10);
+  } catch { return corsWrapCred(request, '{"error":"bad request"}', 400); }
+
+  if (!Number.isInteger(kingdom) || kingdom < 1 || kingdom > 99999) {
+    return corsWrapCred(request, '{"error":"invalid_kingdom"}', 400);
+  }
+  const expectedCost = INTEL_COST_BY_DURATION[duration_sec];
+  if (expectedCost === undefined || expectedCost !== cost_credits) {
+    return corsWrapCred(request, '{"error":"invalid_cost_or_duration"}', 400);
+  }
+
+  const balance = user.credits || 0;
+  if (balance < cost_credits) {
+    return corsWrapCred(request, JSON.stringify({
+      error: 'insufficient_credits', cost: cost_credits, balance,
+    }), 402);
+  }
+
+  // Write the unlock with an expiry TTL that matches the duration so KV
+  // auto-deletes it when access expires. Also return the expiry timestamp
+  // so the client UI can show "5h left" without polling.
+  const expirySec = Math.floor(Date.now() / 1000) + duration_sec;
+  const intelKey = `intel:${user.email}:k${kingdom}`;
+  await env.KV.put(intelKey, String(expirySec), { expirationTtl: duration_sec });
+
+  user.credits = balance - cost_credits;
+  if (!Array.isArray(user.credit_history)) user.credit_history = [];
+  user.credit_history.push({
+    at: Date.now(), kind: 'intel_unlock', kingdom, duration_sec, amount: -cost_credits,
+  });
+  await env.KV.put(`user:${user.email}`, JSON.stringify(user));
+
+  return corsWrapCred(request, JSON.stringify({
+    ok: true, balance: user.credits, expiry_sec: expirySec,
+  }), 200);
+}
+
+// POST /worldchat/unlock — unlock one world chat snapshot, permanent.
+// Body: { kingdom, snapshot }. Idempotent: second unlock for same
+// (user, kingdom, snapshot) returns success without re-charging.
+async function handleWorldchatUnlock(request, env) {
+  const user = await getUser(request, env);
+  if (!user) return corsWrapCred(request, '{"error":"not_logged_in"}', 401);
+
+  let kingdom, snapshot;
+  try {
+    const body = await request.json();
+    kingdom  = parseInt(body.kingdom, 10);
+    snapshot = String(body.snapshot || '').trim();
+  } catch { return corsWrapCred(request, '{"error":"bad request"}', 400); }
+
+  if (!Number.isInteger(kingdom) || !snapshot || snapshot.length > 64) {
+    return corsWrapCred(request, '{"error":"invalid_args"}', 400);
+  }
+
+  const unlockKey = `wc_unlock:${user.email}:k${kingdom}:${snapshot}`;
+
+  // Idempotency: already unlocked → success with current balance, no charge
+  const existing = await env.KV.get(unlockKey);
+  if (existing) {
+    return corsWrapCred(request, JSON.stringify({
+      ok: true, balance: user.credits || 0, already: true,
+    }), 200);
+  }
+
+  const balance = user.credits || 0;
+  if (balance < WORLDCHAT_UNLOCK_COST) {
+    return corsWrapCred(request, JSON.stringify({
+      error: 'insufficient_credits', cost: WORLDCHAT_UNLOCK_COST, balance,
+    }), 402);
+  }
+
+  await env.KV.put(unlockKey, JSON.stringify({ at: Date.now() }));
+
+  user.credits = balance - WORLDCHAT_UNLOCK_COST;
+  if (!Array.isArray(user.credit_history)) user.credit_history = [];
+  user.credit_history.push({
+    at: Date.now(), kind: 'worldchat_unlock', kingdom, snapshot,
+    amount: -WORLDCHAT_UNLOCK_COST,
+  });
+  await env.KV.put(`user:${user.email}`, JSON.stringify(user));
+
+  return corsWrapCred(request, JSON.stringify({ ok: true, balance: user.credits }), 200);
+}
+
+// GET /advisor/history — return the full chat history for Pro+ users.
+// credits.js' exportChat() calls this so users can download their memory.
+async function handleAdvisorHistory(request, env) {
+  const user = await getUser(request, env);
+  if (!user) return corsWrapCred(request, '{"error":"not_logged_in"}', 401);
+  if (!tierAtLeast(user, 'pro')) {
+    return corsWrapCred(request, '{"error":"tier_required","required":"pro"}', 403);
+  }
+  return corsWrapCred(request, JSON.stringify({
+    email:  user.email,
+    fid:    user.fid || '',
+    memory: user.memory || [],
+    count:  (user.memory || []).length,
+  }), 200);
+}
+
+// ──────────────────────────────────────────────────────────────────
+// CORS helpers
+// ──────────────────────────────────────────────────────────────────
+
+// Allowed origins for credentialed requests. Only these can carry the
+// ksp_session cookie. If you add a new production domain, add it here.
+const ALLOWED_ORIGINS = new Set([
+  'https://kingshotpro.com',
+  'https://www.kingshotpro.com',
+  'https://kingshotpro.github.io',
+  'https://kingshotpro.pages.dev',
+  // Local dev — remove in production lockdown if desired
+  'http://localhost:8080',
+  'http://localhost:5500',
+  'http://127.0.0.1:8080',
+  'http://127.0.0.1:5500',
+]);
+
+// corsWrapCred — origin-aware CORS wrapper for credentialed endpoints.
+// Browsers REJECT `Allow-Origin: *` combined with `Allow-Credentials: true`,
+// so cookie-bearing requests require echoing the specific Origin header.
+function corsWrapCred(request, body, status = 200) {
+  const origin = request && request.headers && request.headers.get('Origin');
+  const allowed = origin && ALLOWED_ORIGINS.has(origin);
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Cache-Control': 'no-store',
+    'Vary': 'Origin',
+  };
+  if (allowed) {
+    headers['Access-Control-Allow-Origin']      = origin;
+    headers['Access-Control-Allow-Credentials'] = 'true';
+  } else {
+    // No origin match — fall back to non-credentialed permissive CORS
+    headers['Access-Control-Allow-Origin'] = '*';
+  }
+  return new Response(body, { status, headers });
 }
 
 function corsWrap(body, status = 200) {
