@@ -13,6 +13,79 @@
 
 ---
 
+## 2026-04-22 — Task #3: Stripe webhook rewrite per AUDIT_SPEC
+
+**Verdict:** `handleStripeWebhook` rewritten to use `session.mode` +
+`session.amount_total` for routing. Two pre-existing bugs fixed:
+(a) line_items-based tier routing replaced, every payment now routes
+correctly; (b) cancellation handler now uses a `stripe_cust:{customer_id}`
+→ email reverse mapping that's written during checkout.
+
+**Also surfaced:** the webhook does not verify the `Stripe-Signature`
+header. Anyone who can POST to `/stripe/webhook` can forge events and
+grant themselves Pro or credits. Added a TODO comment; fix is a separate
+task (needs `STRIPE_WEBHOOK_SECRET` secret + HMAC-SHA256 verification).
+
+**Status:** Code committed. Not yet deployed via `wrangler deploy`.
+
+**Still to do for full 2-tier migration:**
+- Archive live $29.99 and $99.99 Stripe products.
+- Re-price $9.99 Pro product to $4.99, OR create new one.
+- Create three credit-pack products at $1.99 / $4.99 / $9.99.
+- Update `pricing.html` buy buttons to point at the new products.
+- All of the above is "Task #4" per the proposal.
+
+**See:** `worker/worker.js:1038+` handleStripeWebhook, AUDIT_SPEC.md
+(the spec this finally implements).
+
+---
+
+## 2026-04-22 — Task #2: Five credit-gated Worker endpoints built
+
+**Verdict:** `/credits/balance`, `/kingdom/request`, `/intel/unlock-kingdom`,
+`/worldchat/unlock`, `/advisor/history` now exist in the Worker. Each
+consults `getUser()`, respects credit cost constants
+(`INTEL_COST_BY_DURATION`, `WORLDCHAT_UNLOCK_COST`,
+`KINGDOM_REQUEST_COSTS`), deducts credits, writes `credit_history`.
+
+**Also surfaced & fixed:**
+- `handleAuthVerify` previously overwrote user records on every
+  magic-link sign-in, wiping tier/credits/memory. AUDIT_SPEC documented
+  this; it was never actually fixed until this commit.
+- `corsWrap` sends `Allow-Origin: *` with `Allow-Credentials: true`
+  which browsers reject. New `corsWrapCred` helper echoes a specific
+  origin when it matches the allow-list. New endpoints use it;
+  existing endpoints left on the broken helper pending separate pass.
+
+**New KV patterns:**
+- `intel:{email}:k{kid}` — expiry timestamp, TTL = unlock duration
+- `wc_unlock:{email}:k{kid}:{snap}` — permanent unlock record
+- `kingdom_req:{kid}:{email}:{type}` — pending admin-review request
+- `stripe_cust:{customer_id}` — email reverse-lookup for Stripe events
+
+**Status:** Code committed (`511a329`). Not yet deployed.
+
+---
+
+## 2026-04-22 — Task #1: Magic-link UI wired to existing /auth endpoints
+
+**Verdict:** Homepage `#auth-signup-form` calls `/auth/send`. New
+`auth/index.html` page receives the magic link, calls `/auth/verify`,
+displays success/error state. Zero backend changes needed — the
+`/auth/send` and `/auth/verify` endpoints have been live for weeks.
+
+**Status:** Committed (`9d32507`) + pushed. Already live on GitHub Pages.
+
+**Limitation:** The site has no endpoint to confirm "is this user
+currently signed in?" — the session cookie is httpOnly so JS can't
+read it. Landing page of `/auth/` sets `ksp_signed_in=1` in
+localStorage as a UI hint, but that's advisory only, not authoritative.
+Follow-up: add `GET /user/me` that returns `{ email, tier, credits }`
+for the current session. Frontend can then show signed-in state in
+the topbar.
+
+---
+
 ## 2026-04-21 — Architecture doc written; surfaced 5 production bugs
 
 **Verdict:** `docs/ARCHITECTURE.md` now records what the system IS in

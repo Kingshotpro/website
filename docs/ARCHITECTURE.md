@@ -244,18 +244,38 @@ to a specific file:line.
 1. **Every new FID lookup fails** unless the user is pre-registered in
    `players/registry.json`. `worker.js:114-142` proxies to CG's `/api/player`
    which returns Sign Error. No bot endpoint is deployed.
-2. **Credit system is entirely broken** — four client-side endpoints all 404.
-   See "Frontend-backend mismatches" above.
-3. **Magic-link auth is orphaned** — built server-side, never called client-side.
-4. **Stripe webhook assigns everyone to Pro** regardless of price paid
-   (`worker.js:1041-1065` bug, documented above).
-5. **Stripe cancellations silently no-op** (`worker.js:1071` bug, documented above).
-6. **Pricing doc and Stripe are out of sync.** `docs/PRICING.md` and
-   memory say 2-tier + credits; code and Stripe still show 4-tier.
+2. ~~**Credit system is entirely broken**~~ **FIXED in commit 511a329**
+   (not yet deployed). Five Worker endpoints added:
+   `/credits/balance`, `/kingdom/request`, `/intel/unlock-kingdom`,
+   `/worldchat/unlock`, `/advisor/history`. `wrangler deploy` required.
+3. ~~**Magic-link auth is orphaned**~~ **FIXED in commit 9d32507.**
+   Homepage signup form + `/auth/` verify page now live on Pages.
+4. ~~**Stripe webhook assigns everyone to Pro**~~ **FIXED (uncommitted).**
+   Now routes on `session.mode` + `amount_total`. Credit packs map
+   199/499/999 cents → 10/30/75 credits. Subscription → Pro.
+5. ~~**Stripe cancellations silently no-op**~~ **FIXED (uncommitted).**
+   Now uses `stripe_cust:{customer_id}` reverse mapping stored during
+   checkout. `canceled`/`unpaid`/`incomplete_expired` → downgrade to free.
+6. **Stripe products vs pricing doc are still out of sync.** Live Stripe
+   products are at $9.99/$29.99/$99.99. `docs/PRICING.md` says Pro $4.99
+   + credit packs. The webhook now handles the credit-pack amounts
+   (199/499/999) but no credit-pack products exist in Stripe yet. Task #4.
 7. **Sign-out button works** (shipped earlier this session) — exception to the
    broken-list, noted so the next Claude doesn't rebuild it.
 8. **`TIER_MODELS`, `TIER_REVENUE_USD`, `TIER_CONTEXT_WINDOW`** constants in
-   `worker.js` still reference killed tiers.
+   `worker.js` still reference killed tiers. Left intact because the existing
+   tierAtLeast() calls still need to parse tier values; cleanup is a
+   separate pass aligned with the Stripe product reconciliation.
+9. **Stripe webhook does NOT verify the `Stripe-Signature` header.** Anyone
+   who can POST to `/stripe/webhook` can forge events. Add HMAC-SHA256
+   verification against `STRIPE_WEBHOOK_SECRET` before real traffic.
+   Documented with TODO comment at the top of `handleStripeWebhook`.
+10. **CORS on existing endpoints is broken for credentialed requests.**
+    `corsWrap` sets `Allow-Origin: *` with `Allow-Credentials: true` —
+    browsers reject this. New `corsWrapCred` helper (origin-aware) was
+    added for the 5 new endpoints and for `handleAuthVerify`; the rest
+    of the endpoints still use the broken helper. Systematic conversion
+    is a separate pass.
 
 ---
 

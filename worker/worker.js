@@ -1036,29 +1036,37 @@ async function handlePortrait(request, env) {
 
 // ── Stripe Webhook ─────────────────────────
 async function handleStripeWebhook(request, env) {
-  // Stripe sends events when subscriptions change
-  // We map the Stripe price ID to our tier names
-  const PRICE_TO_TIER = {
-    // Test mode (old account)
-    'price_1TKkEnFs4JpQNEkSRplADapH': 'pro',
-    'price_1TKkEoFs4JpQNEkSYu8qE89Y': 'pro',
-    'price_1TKkEoFs4JpQNEkSRbbD3K5X': 'war_council',
-    'price_1TKkEoFs4JpQNEkSdD5BjG0A': 'war_council',
-    'price_1TKkEpFs4JpQNEkSGg9BaCPw': 'elite',
-    'price_1TKkEpFs4JpQNEkSsDL82YV9': 'elite',
-    // Live mode
-    'price_1TKr9uCTwcITa9f2GJdMCqzy': 'pro',        // Pro monthly
-    'price_1TKr9uCTwcITa9f2hjIdYqnz': 'pro',        // Pro annual
-    'price_1TKr9vCTwcITa9f2oceLoWsD': 'war_council', // WC monthly
-    'price_1TKr9vCTwcITa9f2Tn9SN6Bm': 'war_council', // WC annual
-    'price_1TKr9vCTwcITa9f2k1AbY1QL': 'elite',      // Elite monthly
-    'price_1TKr9vCTwcITa9f2TLeAfx4o': 'elite',      // Elite annual
+  // Stripe → KV pipeline. Handles subscription + one-time credit-pack payments.
+  //
+  // ⚠️ SECURITY TODO: this handler does NOT verify the Stripe-Signature
+  // header. Anyone who can POST to /stripe/webhook can forge events and
+  // grant themselves Pro tier or credits. Add HMAC-SHA256 verification
+  // against env.STRIPE_WEBHOOK_SECRET before this sees real traffic.
+  // Documented in docs/ARCHITECTURE.md § "Known broken or stale state."
+  //
+  // Prior version had two silent bugs:
+  //   1. Used session.line_items which Stripe doesn't populate by default
+  //      on checkout.session.completed. Loop never matched → every payment
+  //      defaulted to tier 'pro' regardless of what was actually purchased.
+  //   2. Used sub.customer_email which doesn't exist on subscription
+  //      objects. Every cancellation silently no-op'd; users stayed Pro.
+  //
+  // New routing is mode-based + amount-based, per AUDIT_SPEC.md:
+  //   session.mode === 'subscription' → Pro tier
+  //   session.mode === 'payment'      → credit pack by amount_total (cents)
+  //                                     199 → 10, 499 → 30, 999 → 75
+  //   Any other amount → log with credit_history 'unknown_amount'
+
+  // Credit-pack pricing — cents → credits. Keep in sync with docs/PRICING.md.
+  const CREDIT_PACK_BY_AMOUNT = {
+    199:  10,   // Starter
+    499:  30,   // Standard
+    999:  75,   // Best value
   };
 
   let event;
   try {
-    const body = await request.text();
-    event = JSON.parse(body);
+    event = JSON.parse(await request.text());
   } catch {
     return corsWrap('{"error":"invalid payload"}', 400);
   }
@@ -1066,50 +1074,122 @@ async function handleStripeWebhook(request, env) {
   const type = event.type;
 
   if (type === 'checkout.session.completed') {
-    // New subscription
     const session = event.data.object;
     const email = session.customer_email || session.customer_details?.email;
-    if (!email) return corsWrap('{"ok":true,"note":"no email"}');
-
-    // Get the price ID from line items
-    const lineItems = session.line_items?.data || [];
-    let tier = 'pro'; // default
-    for (const item of lineItems) {
-      const priceId = item.price?.id;
-      if (priceId && PRICE_TO_TIER[priceId]) {
-        tier = PRICE_TO_TIER[priceId];
-        break;
-      }
+    if (!email) {
+      return corsWrap('{"ok":true,"note":"no email on checkout session"}');
     }
 
-    // Update or create user in KV
+    // Load the user record — or create a minimal one if this is their
+    // very first interaction (payment-before-signup is a legit flow).
     let user = await env.KV.get(`user:${email}`, { type: 'json' });
-    if (user) {
-      user.tier = tier;
-    } else {
-      user = { email, tier, fid: '', created: Date.now(), energy_today: 999, energy_date: '', memory: [] };
+    if (!user) {
+      user = {
+        email, fid: '', tier: 'free',
+        created: Date.now(),
+        energy_today: 5,
+        energy_date: new Date().toISOString().split('T')[0],
+        memory: [],
+        credits: 0,
+        credit_history: [],
+      };
     }
+    // Defensive: seed fields on legacy records
+    if (user.credits === undefined)          user.credits = 0;
+    if (!Array.isArray(user.credit_history)) user.credit_history = [];
+
+    // Store the reverse mapping so future subscription events (cancellations,
+    // updates) can look up the email from Stripe's customer ID — subscription
+    // objects don't carry customer_email, only the customer ID string.
+    if (session.customer) {
+      await env.KV.put(`stripe_cust:${session.customer}`, email);
+      user.stripe_customer_id = session.customer;
+    }
+
+    let responsePayload = { ok: true };
+
+    if (session.mode === 'subscription') {
+      user.tier = 'pro';
+      user.credit_history.push({
+        at: Date.now(), kind: 'subscription_start', tier: 'pro',
+        stripe_session_id: session.id || '',
+      });
+      responsePayload.tier = 'pro';
+
+    } else if (session.mode === 'payment') {
+      const amount = session.amount_total;
+      const creditsToAdd = CREDIT_PACK_BY_AMOUNT[amount];
+      if (creditsToAdd) {
+        user.credits = (user.credits || 0) + creditsToAdd;
+        user.credit_history.push({
+          at: Date.now(), kind: 'credit_pack_purchase',
+          amount_cents: amount, credits: creditsToAdd,
+          stripe_session_id: session.id || '',
+        });
+        responsePayload.credits_added  = creditsToAdd;
+        responsePayload.credits_total  = user.credits;
+      } else {
+        // Unknown amount — don't grant credits, but record for investigation.
+        user.credit_history.push({
+          at: Date.now(), kind: 'payment_unmapped',
+          amount_cents: amount,
+          stripe_session_id: session.id || '',
+        });
+        responsePayload.note = 'amount not mapped to any credit pack';
+        responsePayload.amount_cents = amount;
+      }
+
+    } else {
+      // Unknown mode — should not happen but we log it.
+      user.credit_history.push({
+        at: Date.now(), kind: 'checkout_unknown_mode',
+        mode: session.mode || 'null',
+        stripe_session_id: session.id || '',
+      });
+      responsePayload.note = 'unknown session.mode';
+    }
+
     await env.KV.put(`user:${email}`, JSON.stringify(user));
-    return corsWrap(JSON.stringify({ ok: true, tier }));
+    return corsWrap(JSON.stringify(responsePayload));
+  }
 
-  } else if (type === 'customer.subscription.deleted' || type === 'customer.subscription.updated') {
-    // Subscription cancelled or changed
+  if (type === 'customer.subscription.deleted' || type === 'customer.subscription.updated') {
     const sub = event.data.object;
-    const email = sub.customer_email;
-    if (!email) return corsWrap('{"ok":true}');
+    // customer is a STRING ID, not an object — look up email via reverse mapping
+    const customerId = sub.customer;
+    if (!customerId) {
+      return corsWrap('{"ok":true,"note":"no customer id on subscription event"}');
+    }
+    const email = await env.KV.get(`stripe_cust:${customerId}`);
+    if (!email) {
+      // Subscription exists in Stripe but we never stored the reverse mapping.
+      // Could be a subscription created before this code, or before stripe_cust:
+      // was ever written. Nothing we can do without the email — bail loudly.
+      return corsWrap(JSON.stringify({
+        ok: true, note: 'no customer mapping', customer_id: customerId,
+      }));
+    }
 
-    if (sub.status === 'canceled' || sub.status === 'unpaid') {
-      // Downgrade to free
+    // Only downgrade on genuinely terminal states. 'past_due' can recover
+    // after a retry; 'incomplete' means payment never cleared but might still.
+    const terminalStatuses = new Set(['canceled', 'unpaid', 'incomplete_expired']);
+    if (terminalStatuses.has(sub.status)) {
       let user = await env.KV.get(`user:${email}`, { type: 'json' });
       if (user) {
         user.tier = 'free';
+        if (!Array.isArray(user.credit_history)) user.credit_history = [];
+        user.credit_history.push({
+          at: Date.now(), kind: 'subscription_end',
+          stripe_sub_status: sub.status,
+        });
         await env.KV.put(`user:${email}`, JSON.stringify(user));
       }
+      return corsWrap(JSON.stringify({ ok: true, downgraded: true, status: sub.status }));
     }
-    return corsWrap('{"ok":true}');
+    return corsWrap(JSON.stringify({ ok: true, status: sub.status, action: 'none' }));
   }
 
-  return corsWrap('{"ok":true,"note":"unhandled event"}');
+  return corsWrap('{"ok":true,"note":"unhandled event type","type":"' + (type || '') + '"}');
 }
 
 // ──────────────────────────────────────────────────────────────────
