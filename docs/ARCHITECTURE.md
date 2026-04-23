@@ -93,8 +93,8 @@ the Worker responds to.
 | `/advisor/chronicle` | `handleChronicle` | `tierAtLeast('pro')` | Monthly chronicle generation. |
 | `/advisor/illustration` | `handleIllustration` | `tierAtLeast('pro')` | Battle illustration via DALL-E. |
 | `/advisor/video` | `handleAdvisorVideo` | `getUser` | Simli video response. |
-| `/advisor/voice` | `handleVoice` | `tierAtLeast('elite')` | Daily voice message via OpenAI TTS. |
-| `/advisor/portrait` | `handlePortrait` | `tierAtLeast('elite')` | Custom advisor portrait via DALL-E. |
+| `/advisor/voice` | `handleVoice` | `tierAtLeast('pro_plus')` | Daily voice message via OpenAI TTS. |
+| `/advisor/portrait` | `handlePortrait` | `tierAtLeast('pro_plus')` | Custom advisor portrait via DALL-E. |
 | `/stripe/webhook` | `handleStripeWebhook` | Stripe signature (not verified) | Subscription & one-time payment events. |
 | `/verify/request` | `handleVerifyRequest` | none | User submits character verification request. |
 | `/verify/confirm` | `handleVerifyConfirm` | admin token | Admin confirms a verification. |
@@ -109,6 +109,7 @@ the Worker responds to.
 | `/video/cache` | `handleVideoCacheAdmin` | admin token | View the Simli video cache. |
 | `/survey/admin` | `handleSurveyAdmin` | admin token | View collected survey responses. |
 | `/verify/admin` | `handleVerifyAdminPage` | admin token | Admin dashboard for character verification. |
+| `/user/me` | `handleUserMe` | `getUser` (cookie) | Returns `{ authenticated, email, fid, tier, credits, intel_unlocks, wc_unlocks }`. |
 | `/player` | proxy → `centurygame.com/api/player` | none | **Currently broken for every new FID** — CG added sign requirement. |
 | `/redeem` | proxy → same | none | Same upstream, same brokenness. |
 
@@ -266,14 +267,14 @@ to a specific file:line.
    (199/499/999) but no credit-pack products exist in Stripe yet. Task #4.
 7. **Sign-out button works** (shipped earlier this session) — exception to the
    broken-list, noted so the next Claude doesn't rebuild it.
-8. **`TIER_MODELS`, `TIER_REVENUE_USD`, `TIER_CONTEXT_WINDOW`** constants in
-   `worker.js` still reference killed tiers. Left intact because the existing
-   tierAtLeast() calls still need to parse tier values; cleanup is a
-   separate pass aligned with the Stripe product reconciliation.
-9. **Stripe webhook does NOT verify the `Stripe-Signature` header.** Anyone
-   who can POST to `/stripe/webhook` can forge events. Add HMAC-SHA256
-   verification against `STRIPE_WEBHOOK_SECRET` before real traffic.
-   Documented with TODO comment at the top of `handleStripeWebhook`.
+8. ~~**`TIER_MODELS`, `TIER_REVENUE_USD`, `TIER_CONTEXT_WINDOW`** constants stale.~~
+   **FIXED 2026-04-23.** All four `TIER_*` constants now match 2-tier + Pro+
+   model. `war_council`/`elite` removed. `pro_plus` added with Sonnet routing.
+   `handleVoice`/`handlePortrait` re-gated to `tierAtLeast('pro_plus')`.
+9. ~~**Stripe webhook does NOT verify the `Stripe-Signature` header.**~~
+   **FIXED 2026-04-23.** `verifyStripeSignature` HMAC-SHA256 helper added.
+   Returns HTTP 401 on missing or invalid signature. 5-minute replay window.
+   `STRIPE_WEBHOOK_SECRET` Worker secret confirmed present.
 10. **CORS on existing endpoints is broken for credentialed requests.**
     `corsWrap` sets `Allow-Origin: *` with `Allow-Credentials: true` —
     browsers reject this. New `corsWrapCred` helper (origin-aware) was

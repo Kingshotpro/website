@@ -13,6 +13,70 @@
 
 ---
 
+## 2026-04-23 — Worker Hardening Task C: Pro+ tier added; stale tier constants replaced; subscriptions route by amount; voice/portrait re-gated
+
+**Verdict:** `TIER_MODELS`, `TIER_REVENUE_USD`, `TIER_CONTEXT_WINDOW`, and `TIER_RANK` in
+`worker/worker.js` now match the 2-tier + Pro+ model from `docs/PRICING.md`.
+`war_council` and `elite` entries removed from all four constants.
+`handleVoice` and `handlePortrait` re-gated from `tierAtLeast('elite')` to
+`tierAtLeast('pro_plus')` — these endpoints are now reachable for the first time.
+Stripe subscription webhook now routes on `amount_total`:
+499¢ → `'pro'`, 999¢ → `'pro_plus'`, fallback → `'pro'`.
+`js/pricing-config.js` `id: 'pro-plus'` corrected to `id: 'pro_plus'` for consistency.
+
+**Files changed:** `worker/worker.js:21-42` (TIER_* constants), `worker/worker.js:952` (TIER_RANK),
+`worker/worker.js:998,1021` (voice/portrait gating), `worker/worker.js` handleStripeWebhook subscription branch,
+`js/pricing-config.js:56`.
+
+**Test:** `node --check` + `wrangler deploy --dry-run` clean.
+Voice → `{"error":"tier_required","required":"pro_plus"}` ✓
+Portrait → `{"error":"tier_required","required":"pro_plus"}` ✓
+Deployed: Worker version `cdbb0225-152b-47d9-9126-f340e66c5889`.
+
+**Status:** Done.
+
+---
+
+## 2026-04-23 — Worker Hardening Task B: GET /user/me endpoint added
+
+**Verdict:** `handleUserMe` added to `worker/worker.js`. Returns
+`{ authenticated: false }` for anonymous requests and
+`{ authenticated, email, fid, tier, credits, intel_unlocks, wc_unlocks }` for
+sessions with a valid `ksp_session` cookie. Uses `corsWrapCred` (origin-aware
+CORS) for cookie-bearing responses. KV LIST calls enumerate active intel and
+world-chat unlock records for the current user.
+
+**Files changed:** `worker/worker.js` — new `handleUserMe` function,
+GET `/user/me` route registered in the dispatch block.
+
+**Test:** `curl -H "Origin: https://kingshotpro.com" .../user/me` →
+`{"authenticated":false}` ✓
+Deployed: Worker version `cdbb0225-152b-47d9-9126-f340e66c5889`.
+
+**Status:** Done. Frontend wiring (topbar signed-in state) is a follow-up task.
+
+---
+
+## 2026-04-23 — Worker Hardening Task A: Stripe webhook signature verification
+
+**Verdict:** `handleStripeWebhook` now verifies the `Stripe-Signature` header
+before touching any payload. `verifyStripeSignature(request, body, secret)` helper
+added — HMAC-SHA256 of `t.body`, constant-time compare, 5-minute replay window.
+Returns HTTP 401 `{"error":"invalid_signature"}` on any forged or unsigned request.
+`STRIPE_WEBHOOK_SECRET` was already set as a Worker secret (confirmed via `wrangler secret list`).
+TODO comment at the top of the handler removed.
+
+**Files changed:** `worker/worker.js` — `verifyStripeSignature` function added,
+`handleStripeWebhook` body-read + verify block replacing old unsafe parse.
+
+**Test:** forged POST with no signature → `{"error":"invalid_signature"}` (HTTP 401) ✓
+Deployed: Worker version `cdbb0225-152b-47d9-9126-f340e66c5889`.
+
+**Status:** Done. Real Stripe test event from the dashboard should be verified by
+the Architect to confirm live webhooks still process correctly.
+
+---
+
 ## 2026-04-22 — Task #4: Stripe products reconciled with 2-tier + credits model
 
 **Verdict:** Five new Stripe products + prices + payment links created.

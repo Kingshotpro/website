@@ -21,27 +21,16 @@ const GROUNDING_APPENDIX = '\n\nKINGSHOT REFERENCE (canonical — do not invent 
 // Model routing by tier. Swap these lines to change which AI a tier uses.
 // providers: 'deepseek' | 'anthropic' | 'openai'
 const TIER_MODELS = {
-  free:        { provider: 'deepseek',  model: 'deepseek-chat' },
-  pro:         { provider: 'anthropic', model: 'claude-haiku-4-5' },
-  war_council: { provider: 'anthropic', model: 'claude-haiku-4-5' },
-  elite:       { provider: 'anthropic', model: 'claude-haiku-4-5' },
+  free:     { provider: 'deepseek',  model: 'deepseek-chat' },
+  pro:      { provider: 'anthropic', model: 'claude-haiku-4-5' },
+  pro_plus: { provider: 'anthropic', model: 'claude-sonnet-4-6', fallback_model: 'claude-haiku-4-5' },
 };
 
 // Revenue per tier per month (drives soft-cap thresholds)
-const TIER_REVENUE_USD = {
-  free: 0,
-  pro: 9.99,
-  war_council: 29.99,
-  elite: 99.99,
-};
+const TIER_REVENUE_USD = { free: 0, pro: 4.99, pro_plus: 9.99 };
 
 // Conversation context window per tier (turns of history kept in context)
-const TIER_CONTEXT_WINDOW = {
-  free: 6,
-  pro: 12,
-  war_council: 20,
-  elite: 30,
-};
+const TIER_CONTEXT_WINDOW = { free: 6, pro: 12, pro_plus: 20 };
 
 // Provider pricing — USD per million tokens. Keep in sync with provider pages.
 const ANTHROPIC_RATES = {
@@ -125,6 +114,9 @@ export default {
     }
     if (request.method === 'GET' && url.pathname === '/advisor/history') {
       return handleAdvisorHistory(request, env);
+    }
+    if (request.method === 'GET' && url.pathname === '/user/me') {
+      return handleUserMe(request, env);
     }
 
     const upstream = ROUTES[url.pathname];
@@ -949,7 +941,7 @@ async function handleVideoCacheAdmin(request, env, url) {
 }
 
 // ── Tier check helper ──────────────────────
-const TIER_RANK = { free: 0, pro: 1, war_council: 2, elite: 3 };
+const TIER_RANK = { free: 0, pro: 1, pro_plus: 2 };
 function tierAtLeast(user, required) {
   if (!user) return false;
   return (TIER_RANK[user.tier] || 0) >= (TIER_RANK[required] || 0);
@@ -994,10 +986,10 @@ async function handleIllustration(request, env) {
   return corsWrap(JSON.stringify({ image_url: url, generated: new Date().toISOString() }));
 }
 
-// ── Premium: Voice Message (Elite) ─────────
+// ── Premium: Voice Message (Pro+) ──────────
 async function handleVoice(request, env) {
   const user = await getUser(request, env);
-  if (!tierAtLeast(user, 'elite')) return corsWrap('{"error":"tier_required","required":"elite"}', 403);
+  if (!tierAtLeast(user, 'pro_plus')) return corsWrap('{"error":"tier_required","required":"pro_plus"}', 403);
 
   const { text } = await request.json();
   const res = await fetch('https://api.openai.com/v1/audio/speech', {
@@ -1017,10 +1009,10 @@ async function handleVoice(request, env) {
   });
 }
 
-// ── Premium: Custom Portrait (Elite) ───────
+// ── Premium: Custom Portrait (Pro+) ────────
 async function handlePortrait(request, env) {
   const user = await getUser(request, env);
-  if (!tierAtLeast(user, 'elite')) return corsWrap('{"error":"tier_required","required":"elite"}', 403);
+  if (!tierAtLeast(user, 'pro_plus')) return corsWrap('{"error":"tier_required","required":"pro_plus"}', 403);
 
   const { description } = await request.json();
   const prompt = 'Medieval fantasy character portrait, head and shoulders, ' +
@@ -1039,27 +1031,58 @@ async function handlePortrait(request, env) {
 }
 
 // ── Stripe Webhook ─────────────────────────
+
+async function verifyStripeSignature(request, body, secret) {
+  const header = request.headers.get('Stripe-Signature');
+  if (!header || !secret) return false;
+  const parts = {};
+  for (const kv of header.split(',')) {
+    const i = kv.indexOf('=');
+    if (i > 0) parts[kv.slice(0, i).trim()] = kv.slice(i + 1).trim();
+  }
+  const t = parts.t;
+  const v1 = parts.v1;
+  if (!t || !v1) return false;
+
+  // Replay protection: reject signatures older than 5 minutes.
+  const ageSec = Math.abs(Math.floor(Date.now() / 1000) - parseInt(t, 10));
+  if (!Number.isFinite(ageSec) || ageSec > 300) return false;
+
+  const payload = `${t}.${body}`;
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(secret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  const mac = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(payload));
+  const expected = Array.from(new Uint8Array(mac))
+    .map(b => b.toString(16).padStart(2, '0')).join('');
+
+  // Constant-time compare
+  if (expected.length !== v1.length) return false;
+  let mismatch = 0;
+  for (let i = 0; i < expected.length; i++) {
+    mismatch |= expected.charCodeAt(i) ^ v1.charCodeAt(i);
+  }
+  return mismatch === 0;
+}
+
 async function handleStripeWebhook(request, env) {
-  // Stripe → KV pipeline. Handles subscription + one-time credit-pack payments.
-  //
-  // ⚠️ SECURITY TODO: this handler does NOT verify the Stripe-Signature
-  // header. Anyone who can POST to /stripe/webhook can forge events and
-  // grant themselves Pro tier or credits. Add HMAC-SHA256 verification
-  // against env.STRIPE_WEBHOOK_SECRET before this sees real traffic.
-  // Documented in docs/ARCHITECTURE.md § "Known broken or stale state."
-  //
-  // Prior version had two silent bugs:
-  //   1. Used session.line_items which Stripe doesn't populate by default
-  //      on checkout.session.completed. Loop never matched → every payment
-  //      defaulted to tier 'pro' regardless of what was actually purchased.
-  //   2. Used sub.customer_email which doesn't exist on subscription
-  //      objects. Every cancellation silently no-op'd; users stayed Pro.
-  //
-  // New routing is mode-based + amount-based, per AUDIT_SPEC.md:
-  //   session.mode === 'subscription' → Pro tier
-  //   session.mode === 'payment'      → credit pack by amount_total (cents)
-  //                                     199 → 10, 499 → 30, 999 → 75
-  //   Any other amount → log with credit_history 'unknown_amount'
+  // Read body as text BEFORE parsing — HMAC needs raw bytes.
+  let body;
+  try { body = await request.text(); }
+  catch { return corsWrap('{"error":"read_failed"}', 400); }
+
+  const verified = await verifyStripeSignature(request, body, env.STRIPE_WEBHOOK_SECRET);
+  if (!verified) {
+    return corsWrap('{"error":"invalid_signature"}', 401);
+  }
+
+  let event;
+  try { event = JSON.parse(body); }
+  catch { return corsWrap('{"error":"invalid_payload"}', 400); }
 
   // Credit-pack pricing — cents → credits. Keep in sync with docs/PRICING.md.
   const CREDIT_PACK_BY_AMOUNT = {
@@ -1067,13 +1090,6 @@ async function handleStripeWebhook(request, env) {
     499:  30,   // Standard
     999:  75,   // Best value
   };
-
-  let event;
-  try {
-    event = JSON.parse(await request.text());
-  } catch {
-    return corsWrap('{"error":"invalid payload"}', 400);
-  }
 
   const type = event.type;
 
@@ -1113,12 +1129,15 @@ async function handleStripeWebhook(request, env) {
     let responsePayload = { ok: true };
 
     if (session.mode === 'subscription') {
-      user.tier = 'pro';
+      const SUB_TIER_BY_AMOUNT = { 499: 'pro', 999: 'pro_plus' };
+      const tier = SUB_TIER_BY_AMOUNT[session.amount_total] || 'pro';
+      user.tier = tier;
       user.credit_history.push({
-        at: Date.now(), kind: 'subscription_start', tier: 'pro',
+        at: Date.now(), kind: 'subscription_start', tier,
+        amount_cents: session.amount_total,
         stripe_session_id: session.id || '',
       });
-      responsePayload.tier = 'pro';
+      responsePayload.tier = tier;
 
     } else if (session.mode === 'payment') {
       const amount = session.amount_total;
@@ -1332,6 +1351,47 @@ async function handlePlayerLookup(request, env) {
       try { await browser.close(); } catch { /* ignore */ }
     }
   }
+}
+
+// GET /user/me — authoritative signed-in state for the frontend.
+// Returns authenticated: false for anonymous requests, or the full user
+// record shape (email, tier, credits, intel_unlocks, wc_unlocks) for
+// sessions with a valid ksp_session cookie.
+async function handleUserMe(request, env) {
+  const user = await getUser(request, env);
+  if (!user) {
+    return corsWrapCred(request, JSON.stringify({ authenticated: false }), 200);
+  }
+
+  const nowSec = Math.floor(Date.now() / 1000);
+  const intelList = await env.KV.list({ prefix: `intel:${user.email}:` });
+  const intel_unlocks = [];
+  for (const k of intelList.keys) {
+    const m = k.name.match(/^intel:[^:]+:k(\d+)$/);
+    if (!m) continue;
+    const expiry_sec = parseInt(await env.KV.get(k.name), 10);
+    if (expiry_sec && expiry_sec > nowSec) {
+      intel_unlocks.push({ kingdom: parseInt(m[1], 10), expiry_sec });
+    }
+  }
+
+  const wcList = await env.KV.list({ prefix: `wc_unlock:${user.email}:` });
+  const wc_unlocks = [];
+  for (const k of wcList.keys) {
+    const m = k.name.match(/^wc_unlock:[^:]+:k(\d+):(.+)$/);
+    if (!m) continue;
+    wc_unlocks.push({ kingdom: parseInt(m[1], 10), snapshot: m[2] });
+  }
+
+  return corsWrapCred(request, JSON.stringify({
+    authenticated: true,
+    email:         user.email,
+    fid:           user.fid || '',
+    tier:          user.tier || 'free',
+    credits:       user.credits || 0,
+    intel_unlocks,
+    wc_unlocks,
+  }), 200);
 }
 
 // GET /credits/balance — public-callable. Returns user balance if signed in,
