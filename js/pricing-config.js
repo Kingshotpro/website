@@ -53,7 +53,7 @@
         badge:      'most-popular',
       },
       {
-        id:         'pro-plus',
+        id:         'pro_plus',
         name:       'Pro+',
         price:      9.99,
         price_text: '$9.99/month',
