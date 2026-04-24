@@ -13,6 +13,15 @@
 
 ---
 
+> **Worker 15 completion note — April 24, 2026**
+> ALL 8 CHAPTER 1 HERO IDLE SETS COMPLETE. 64 idle frames (4 heroes × 4 dirs × 4 frames)
+> added for Halv, Brin, Marrow, Thessa. Same Strategy B hybrid. Marrow required 1 re-prompt
+> (skull-face problem — same pattern as Caelen; fix: strong human-face language). Brin_s
+> required 1 re-prompt (missed in initial batch). Full log: `FULL_SPRITES_LOG.md` Worker 15
+> supplement. 128 total idle frames now on disk across all 8 heroes.
+
+---
+
 ---
 
 ## Identity

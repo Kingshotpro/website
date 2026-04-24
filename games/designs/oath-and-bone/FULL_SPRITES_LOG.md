@@ -163,3 +163,129 @@ The `--cref` approach was confirmed non-functional for Worker 13 sprite jobs. Do
 ---
 
 *Worker 14 · April 24, 2026 · 64 idle sprite frames shipped. Strategy B hybrid (16 MJ + PIL) is the proven approach for Oath and Bone sprite animation. First submission batch was a total loss (closure bug). Second batch was clean. One-download-per-tab-session is the hard constraint for MJ CDN downloads.*
+
+---
+
+## Worker 15 Supplement — April 24, 2026
+*Halv, Brin, Marrow, Thessa idle sprite sets*
+
+### Identity
+
+Worker 15 — idle sprite completion for the 4 missing Chapter 1 heroes. Scope: 64 idle frames (4 heroes × 4 dirs × 4 frames). Pure art scope — no engine, preview HTML, or JS touched.
+
+---
+
+### What shipped
+
+| Hero | Frames | Path | Re-prompts | Status |
+|---|---|---|---|---|
+| Halv | 16 (4 dirs × 4 frames) | `art/sprites/halv/idle_<dir>_<0-3>.png` | 0 | ✓ ON DISK |
+| Brin | 16 (4 dirs × 4 frames) | `art/sprites/brin/idle_<dir>_<0-3>.png` | 1 (brin_s missed in batch) | ✓ ON DISK |
+| Marrow | 16 (4 dirs × 4 frames) | `art/sprites/marrow/idle_<dir>_<0-3>.png` | 1 (skull-face on S/E/W) | ✓ ON DISK |
+| Thessa | 16 (4 dirs × 4 frames) | `art/sprites/thessa/idle_<dir>_<0-3>.png` | 0 | ✓ ON DISK |
+
+Total: **64 idle frames** across 4 heroes. All 640×960 (2:3 ratio, FFT PS1 pixel-art register).
+
+---
+
+### Strategy
+
+Same Strategy B hybrid as Worker 14: 16 MJ base frames (one per hero×direction) + PIL ±2px breathing bob animation expansion. `process_sprites_w15.py` at `/tmp/process_sprites_w15.py`.
+
+---
+
+### MJ Job IDs (Worker 15)
+
+| Hero | Direction | Job ID (short) | Full UUID |
+|---|---|---|---|
+| halv | n | 8cf14443 | 8cf14443-75f7-4621-b8a1-a8113d0992b7 |
+| halv | s | 3c6d1d87 | 3c6d1d87-42d3-4864-9f45-48ce404a111d |
+| halv | e | 364134c0 | 364134c0-c8b2-4bfa-b0c5-5048789cc1ad |
+| halv | w | 5e39f344 | 5e39f344-d9de-4310-8d58-abc89ce567a1 |
+| brin | n | 8a6add25 | 8a6add25-be17-436e-ba44-85dcbf372330 |
+| brin | s | d6028427 | d6028427-df49-4399-a512-ac2fc44419b7 (re-submit #1) |
+| brin | e | 293b87cd | 293b87cd-e86a-426f-986a-86dc385deba0 |
+| brin | w | 1ef5b23e | 1ef5b23e-708b-4455-92d9-1ee62ada4842 |
+| marrow | n | f7562ba6 | f7562ba6-2408-43b1-9997-71bda838cbef (re-submit #1) |
+| marrow | s | ff9bbdaf | ff9bbdaf-1800-45d9-87dc-9b4b29f7c4c9 (re-submit #1) |
+| marrow | e | 1640aa84 | 1640aa84-c84b-4370-9284-bfeff0edf7f8 (re-submit #1) |
+| marrow | w | 60a17585 | 60a17585-71fb-4ce4-8ef0-1b40f64b9622 (re-submit #1) |
+| thessa | n | 55920ead | 55920ead-bdb3-44f5-aef5-9fd6e6d82c74 |
+| thessa | s | 818dab61 | 818dab61-1fa1-41a6-9ba0-a22f905c41df |
+| thessa | e | 27d0fcbf | 27d0fcbf-3c5e-493e-9515-e29e039adba7 |
+| thessa | w | 04713bef | 04713bef-938c-4996-89cf-e80a8c59ddf9 |
+
+---
+
+### MJ Prompts used (Worker 15)
+
+**Base template** (same for all heroes):
+```
+pixel art RPG game sprite, [CHARACTER], 16-bit era pixel art style, chunky visible square pixels, flat color shading no gradients, thick black outline, pure magenta #FF00FF solid background, 8 color palette, Final Fantasy Tactics PS1 sprite, no anti-aliasing, no shadow, standing idle neutral, [DIRECTION] --ar 2:3 --stylize 50 --v 6
+```
+
+**Character descriptions:**
+- Halv: `weathered male warrior age 44, grey-streaked beard, iron and grey plate armor, small sergeant pin on collar, sword at side, honest fatigue in posture, no magic items no glow`
+- Brin: `young female ranger age 19, hard-eyed expression, scar through left brow, leather armor, bow held at ready, quiver on back, dark hair tied back practical` (re-submit #1 for south direction)
+- Marrow (initial — REJECTED): `human male scholar necromancer age 31, dark scholar robes, staff` — produced skull face on S/E/W
+- Marrow (re-submit #1 — ACCEPTED): Added `human male living person not undead not skeleton not skull, small wire-frame glasses, pale skin, dark scholar robes long, worn leather satchel at side, simple wooden staff in one hand, quiet unremarkable appearance` — all 4 directions re-submitted, all passed
+- Thessa: `weathered female druid age 27, freckled face, braided hair, weather-lined skin, woven grove-circle pendant living plant material not metal, staff in right hand, leather and bark armor, earth tones`
+
+**Direction suffixes** (same as Worker 14):
+- n: `facing away from viewer back to camera`
+- s: `facing the viewer front view`
+- e: `facing right in profile right side visible`
+- w: `facing left in profile left side visible`
+
+---
+
+### Visual QA
+
+| Hero/Dir | Result | Notes |
+|---|---|---|
+| halv_s | ✓ EXCELLENT | Grey-bearded warrior, iron armor, sword. Perfect FFT register |
+| halv_n/e/w | ✓ ACCEPTED | Consistent character |
+| brin_s | ✓ EXCELLENT | Half-elf ranger, pointed ears, dark hair, leather + bow |
+| brin_n | ✓ ACCEPTED | Quiver visible on back (green equipment, correctly kept) |
+| brin_e | ✓ ACCEPTED | Clean transparent background |
+| brin_w | ✓ ACCEPTED | Two-pass strip + global bg catch for enclosed tan region |
+| marrow_s | ✓ EXCELLENT | Scholar with glasses, dark robes, satchel, staff. Human face. |
+| marrow_e/w | ✓ ACCEPTED | Same character, human face with glasses |
+| marrow_n | ✓ ACCEPTED | 3/4 profile facing away, face partially visible |
+| thessa_s | ✓ EXCELLENT | Pixel art druid, earth tones, living staff, freckled face |
+| thessa_n/e/w | ✓ ACCEPTED | Consistent character, good register |
+
+---
+
+### Failures and fixes
+
+**brin_s missing from initial batch**: The MJ submission loop submitted 15 prompts but brin_s failed to register. Re-submitted as a single fresh prompt from the main tab. Job `d6028427` completed and downloaded to `/tmp/raw_w15/brin_s.png`.
+
+**brin background — multi-color MJ backgrounds**: brin_n and brin_w had backgrounds with multiple color regions (white + green/tan panel). Standard corner flood-fill leaves enclosed background islands. Fixed with two-pass: (1) corner flood-fill, (2) global color-match pass (tolerance=25) to catch enclosed bg pixels.
+
+**Marrow skull/undead face — 3 of 4 directions**: Same failure mode as Worker 13 Caelen. MJ associates scholarly robes + staff with undead/necromancer register. Fix: re-submit all 4 directions with strong human language — `human male living person not undead not skeleton not skull` + explicit `wire-frame glasses, pale skin` removed all ambiguity. Re-prompt #1 passed on all 4.
+
+**Hand-rolled STORE ZIP bug**: The central directory entry external file attributes field requires 4 bytes (offset 38-41), not 2. Having only 2 bytes shifted the local-offset field by 2 bytes, causing `unzip` to read wrong file offsets. Fix: ensure 4 zero bytes for external attr.
+
+**Download pipeline constraint**: Same as Worker 14 — Chrome blocks sequential programmatic downloads. One ZIP download per fresh tab session. Required creating fresh tabs (589033690, 589033691, 589033692) for each download operation.
+
+---
+
+### Known deviations
+
+1. **Marrow's triple-loop tattoo**: Prompt included it but not visible at MJ's pixel-art fidelity (small forearm detail). Acceptable — tattoo is below the visual threshold of the sprite register.
+2. **Marrow_n**: 3/4 profile rather than true back-facing view. MJ V6 interprets "facing away" as slight turn. Character remains unambiguous.
+3. **Brin's scar**: "scar through left brow" present in prompt; may not be visible at 48×72 display size.
+4. **Foot shadows**: Some sprites (marrow_e, brin_w) retain a small ground shadow at the sprite's base. Acceptable at 48×72 display size; consistent with FFT sprite conventions.
+
+---
+
+### Recommendation for Worker 16
+
+Worker 16 should wire Halv/Brin/Marrow/Thessa into the preview HTML (`oath-and-bone-preview.html`) and engine using the same `idle_<dir>_<frame>.png` naming convention as Vael/Caelen/Bladewind/Ironwall. No new sprite generation needed — all 8 Chapter 1 hero idle sets are now on disk.
+
+Attack animation frames remain ungenerated for ALL 8 heroes (both the 4 from Worker 14 and the 4 new ones). Use the same MJ recipe with attack stances if/when the engine needs them.
+
+---
+
+*Worker 15 · April 24, 2026 · 64 idle frames shipped for Halv/Brin/Marrow/Thessa. Marrow skull-face failure reproduced Worker 13's Caelen pattern — strong human-face language is the required fix for any scholarly/robed character. ZIP format bug identified and fixed (external attr field = 4 bytes). All 8 Chapter 1 hero idle sprite sets are now complete.*
