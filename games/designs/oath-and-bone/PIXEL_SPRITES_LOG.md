@@ -123,3 +123,30 @@ Save to `art/sprites/<unit>/idle_<dir>_<n>_px.png`. The `_px` suffix distinguish
 ---
 
 *Worker 13 · April 24, 2026 · The register pivot is done. Painted portraits stay. Pixel sprites ship.*
+
+---
+
+## Preview verification — April 24, 2026 (local port 3970)
+
+Verified via Claude Preview tool on `http://localhost:3970/games/oath-and-bone-preview.html` (same file as committed to `games/oath-and-bone-preview.html`, served by kingshotpro http-server from the `KingshotPro/` root).
+
+**Results:**
+
+| Unit | Renders as | Label visible | Notes |
+|---|---|---|---|
+| Vael | Chunky pixel knight, grey/gold armor, sword | VAEL | ✓ correct register |
+| Caelen | Pixel wizard, dark robes, staff, pointed hat | CAELEN | ✓ correct register; hat deviation flagged |
+| Bladewind ×2 | Armored infantry, brown/red, sword | BLADEWIND | ✓ correct register |
+| Ironwall ×1 | Armored figure with lance/crossbow, iron-grey | IRONWALL | ✓ correct register |
+
+**UI verified:**
+- Painted portrait (Vael) in top UI strip ✓
+- Gold HP bar (`#f0c040`) ✓
+- Blue panel chrome on action buttons ✓
+- Isometric hex grid with tile textures ✓
+- Dark-olive elevation-2 ridge diagonal visible in north mid-map ✓
+- 6 of 6 `<img class="unit-sprite">` elements loaded with `naturalWidth=896` ✓
+
+**No CSS div-placeholder silhouettes remaining.** All enemy units now render via `<img>` tags with pixel sprites.
+
+All 7 commits pushed to origin. GH Pages rebuild triggered from `894e8fe`.
