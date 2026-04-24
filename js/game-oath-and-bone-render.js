@@ -710,8 +710,28 @@
 
   window.OathAndBoneEngine.onUnitMoved = function (unit, fromQ, fromR, toQ, toR) {
     _moveMode = false; _moveHexes = [];
-    render();
-    _scheduleEnemyTick();
+
+    // Slide the existing sprite element to the destination position.
+    // unit.q/r are already updated by the engine, so unitDomPos returns the to-pos.
+    var sprite = _stage ? _stage.querySelector('[data-unit-id="' + unit.id + '"]') : null;
+    if (sprite) {
+      var toPos = unitDomPos(unit);
+      _animating = true;
+      sprite.style.transition = 'left 0.3s ease-out, top 0.3s ease-out';
+      sprite.style.left   = toPos.sx + 'px';
+      sprite.style.top    = toPos.sy + 'px';
+      sprite.style.zIndex = unit.r + 1;
+      setTimeout(function () {
+        sprite.style.transition = '';
+        _animating = false;
+        render();
+        _scheduleEnemyTick();
+      }, 320);
+    } else {
+      // No sprite in DOM (first frame or unit without art) — instant redraw
+      render();
+      _scheduleEnemyTick();
+    }
   };
 
   window.OathAndBoneEngine.onUnitAttacked = function (attacker, target, damage) {
