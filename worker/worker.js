@@ -280,7 +280,7 @@ async function handleAdvisorChat(request, env) {
 
   // Build system prompt: base + player context + archetype identity + grounding layer
   let systemPrompt = (env.SYSTEM_PROMPT || 'You are a medieval advisor for Kingshot players.') +
-    '\n\nPlayer context: ' + (playerContext || 'Unknown') +
+    '\n\nPlayer context: ' + (playerContext ? JSON.stringify(playerContext) : 'Unknown') +
     '\n\nYou are ' + (advisorName || 'the advisor') + ', archetype: ' + (archetype || 'steward') +
     '. Stay in character. Be concise and strategic.' +
     GROUNDING_APPENDIX;
@@ -395,7 +395,7 @@ async function handleAdvisorConsult(request, env) {
 
   // Build system prompt with grounding layer (same as chat path)
   const systemPrompt = (env.SYSTEM_PROMPT || 'You are a medieval advisor for Kingshot players.') +
-    '\n\nPlayer context: ' + (playerContext || 'Unknown') +
+    '\n\nPlayer context: ' + (playerContext ? JSON.stringify(playerContext) : 'Unknown') +
     '\n\nYou are ' + (advisorName || 'the advisor') + ', archetype: ' + (archetype || 'steward') +
     '. Stay in character. Be concise and strategic.' +
     GROUNDING_APPENDIX;
