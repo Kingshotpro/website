@@ -48,7 +48,18 @@ var SCENARIO_B1 = {
     { id: 'player_brin', heroId: 'brin', team: 'player', q: 5, r: 12,
       hp_max: 95, move: 4, attack_range: 3, attack_dmg: 13, initiative: 16,
       defense: 5, acted: false, permadeath_loss: false, permadeath_game_over: false,
-      troop_tag: 'archer', magic: null }
+      troop_tag: 'archer', magic: null },
+    { id: 'player_caelen', heroId: 'caelen', team: 'player', q: 6, r: 12,
+      hp_max: 70, move: 3, attack_range: 1, attack_dmg: 6, initiative: 10,
+      defense: 4, acted: false, permadeath_loss: false, permadeath_game_over: false,
+      troop_tag: 'wizard',
+      magic: {
+        school: 'wizardry',
+        mana: 40, mana_max: 40, mana_regen: 3,
+        spells_equipped: ['firebolt', 'frost_shard', 'spark', 'shield'],
+        active_summons: []
+      }
+    }
   ],
 
   enemyStart: [
@@ -130,8 +141,8 @@ var SCENARIO_B1 = {
   ],
 
   party: {
-    size: 3,
-    locked: ['vael', 'halv', 'brin'],
+    size: 4,
+    locked: ['vael', 'halv', 'brin', 'caelen'],
     flexible: []
   }
 };

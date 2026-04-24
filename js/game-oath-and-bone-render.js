@@ -45,6 +45,9 @@
   var _attackHexes     = [];    // [{q,r}] from engine.getAttackableHexes()
   var _enemyTickBusy   = false; // prevents stacked enemy-turn timers
   var _animating       = false; // true while a slide animation is running — defers render + tick
+  var _castMode        = false;
+  var _castSpellId     = null;
+  var _castHexes       = [];    // [{q,r}] valid target hexes for selected spell
 
   // ── ISO PROJECTION ───────────────────────────────────────────────────
   // Same 2:1 iso formula as the preview. Hex topology comes from engine
@@ -143,6 +146,17 @@
       '@keyframes oab-float{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-42px)}}',
       // Round banner
       '.oab-round-banner{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:1500;background:rgba(14,6,26,.9);border:1px solid #f0c040;border-radius:4px;padding:8px 24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;font-size:14px;font-weight:700;color:#f0c040;letter-spacing:.1em;text-transform:uppercase;pointer-events:none}',
+      // Spell panel (appears above action panel when CAST mode is active)
+      '.oab-spell-panel{background:linear-gradient(to bottom,#1a2840 0%,#0e1828 100%);border-top:1px solid #3a5a9a;padding:8px 20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}',
+      '.oab-spell-btn{background:linear-gradient(to bottom,#0e3060,#061830);border:2px solid #2a4a80;color:#a0c0ff;padding:7px 16px;font-family:inherit;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;opacity:.8}',
+      '.oab-spell-btn.active{border-color:#60a0ff;color:#fff;opacity:1;box-shadow:0 0 6px rgba(100,160,255,.5)}',
+      '.oab-spell-btn:disabled{opacity:.3;cursor:default}',
+      '.oab-spell-label{font-size:9px;color:#5a7a9e;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}',
+      // Mana bar
+      '.oab-bar-fill.mp{background:#5c8ce0}',
+      // Fire VFX flash
+      '.oab-fire-vfx{position:absolute;pointer-events:none;width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,rgba(255,160,20,.9) 0%,rgba(255,60,0,.6) 50%,transparent 70%);z-index:1100;animation:oab-fire .5s ease-out forwards}',
+      '@keyframes oab-fire{0%{opacity:1;transform:scale(.6)}60%{opacity:.9;transform:scale(1.3)}100%{opacity:0;transform:scale(1.8)}}',
       // Battle end overlay
       '.oab-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2000;background:rgba(0,0,0,.72)}',
       '.oab-overlay-box{background:#16181f;border:2px solid #f0c040;border-radius:6px;padding:40px 60px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}',
@@ -200,7 +214,7 @@
     var panel = document.createElement('div');
     panel.className = 'oab-action-panel';
     panel.id = 'oab-action-panel';
-    ['move', 'attack', 'hold'].forEach(function (action) {
+    ['move', 'attack', 'cast', 'hold'].forEach(function (action) {
       var btn = document.createElement('button');
       btn.className = 'oab-btn';
       btn.dataset.action = action;
@@ -209,6 +223,13 @@
       panel.appendChild(btn);
     });
     container.appendChild(panel);
+
+    // Spell panel (hidden until CAST mode is active)
+    var spellPanel = document.createElement('div');
+    spellPanel.className = 'oab-spell-panel';
+    spellPanel.id = 'oab-spell-panel';
+    spellPanel.style.display = 'none';
+    container.appendChild(spellPanel);
 
     // Canvas click handler
     canvas.addEventListener('click', function (e) {
@@ -223,6 +244,7 @@
     // Action button handlers
     panel.querySelector('[data-action=move]').addEventListener('click', handleMoveBtn);
     panel.querySelector('[data-action=attack]').addEventListener('click', handleAttackBtn);
+    panel.querySelector('[data-action=cast]').addEventListener('click', handleCastBtn);
     panel.querySelector('[data-action=hold]').addEventListener('click', handleHoldBtn);
 
     // Scroll so player heroes (Vael q=3,r=12) are visible
@@ -279,6 +301,22 @@
 
       stats.appendChild(hpLabel);
       stats.appendChild(hpTrack);
+
+      // Show mana bar if this unit is a caster
+      if (unit.magic && unit.magic.mana !== undefined) {
+        var mpLabel = document.createElement('div');
+        mpLabel.className = 'oab-bar-label';
+        mpLabel.textContent = 'MP ' + unit.magic.mana + ' / ' + unit.magic.mana_max;
+        var mpTrack = document.createElement('div');
+        mpTrack.className = 'oab-bar-track';
+        var mpFill = document.createElement('div');
+        mpFill.className = 'oab-bar-fill mp';
+        mpFill.style.width = Math.max(0, Math.round(unit.magic.mana / unit.magic.mana_max * 100)) + '%';
+        mpTrack.appendChild(mpFill);
+        stats.appendChild(mpLabel);
+        stats.appendChild(mpTrack);
+      }
+
       panel.appendChild(stats);
       bar.appendChild(panel);
     }
@@ -378,6 +416,17 @@
       _ctx.lineTo(vBottom.x, vBottom.y); _ctx.lineTo(vLeft.x, vLeft.y);
       _ctx.closePath(); _ctx.fill();
       _ctx.strokeStyle = 'rgba(240,192,64,.9)';
+      _ctx.lineWidth = 1.6; _ctx.stroke();
+    }
+
+    // ── Cast-range highlight (blue tint) ──
+    if (_castMode && _hexInList(_castHexes, q, r)) {
+      _ctx.fillStyle = 'rgba(92,140,224,.30)';
+      _ctx.beginPath();
+      _ctx.moveTo(vTop.x, vTop.y); _ctx.lineTo(vRight.x, vRight.y);
+      _ctx.lineTo(vBottom.x, vBottom.y); _ctx.lineTo(vLeft.x, vLeft.y);
+      _ctx.closePath(); _ctx.fill();
+      _ctx.strokeStyle = 'rgba(92,140,224,.85)';
       _ctx.lineWidth = 1.6; _ctx.stroke();
     }
 
@@ -513,6 +562,7 @@
     _selectedUnitId = unitId;
     _moveMode   = false; _moveHexes   = [];
     _attackMode = false; _attackHexes = [];
+    _castMode   = false; _castSpellId = null; _castHexes = [];
     render();
   }
 
@@ -539,6 +589,12 @@
       return;
     }
 
+    // Cast mode: clicking a valid cast hex fires the spell
+    if (_castMode && _castSpellId && _hexInList(_castHexes, q, r)) {
+      _executeCast(q, r);
+      return;
+    }
+
     // Click on a tile containing a player unit → select it
     var t = window.OathAndBoneEngine.getTile(q, r);
     if (t && t.unit) {
@@ -548,6 +604,11 @@
   }
 
   function handleEnemyClick(enemyUnit) {
+    if (_castMode && _castSpellId && _selectedUnitId) {
+      if (!_hexInList(_castHexes, enemyUnit.q, enemyUnit.r)) return;
+      _executeCast(enemyUnit.q, enemyUnit.r);
+      return;
+    }
     if (!_attackMode || !_selectedUnitId) return;
     if (!_hexInList(_attackHexes, enemyUnit.q, enemyUnit.r)) return;
     var res = window.OathAndBoneEngine.attackUnit(_selectedUnitId, enemyUnit.id);
@@ -575,9 +636,95 @@
     render();
   }
 
+  function handleCastBtn() {
+    if (!_selectedUnitId) return;
+    var unit = window.OathAndBoneEngine.getUnit(_selectedUnitId);
+    if (!unit || unit.acted || unit.hp <= 0 || !unit.magic) return;
+    _castMode   = !_castMode;
+    _moveMode   = false; _moveHexes   = [];
+    _attackMode = false; _attackHexes = [];
+    if (_castMode) {
+      // Pre-select Firebolt as the only active spell for this proof-of-pipeline
+      _castSpellId = 'firebolt';
+      _castHexes   = window.OathAndBoneSpells
+        ? window.OathAndBoneSpells.getSpellTargetHexes(_selectedUnitId, _castSpellId)
+        : [];
+      _buildSpellPanel(unit);
+    } else {
+      _castSpellId = null; _castHexes = [];
+      _hideSpellPanel();
+    }
+    render();
+  }
+
+  function _buildSpellPanel(unit) {
+    var panel = document.getElementById('oab-spell-panel');
+    if (!panel) return;
+    panel.innerHTML = '';
+    panel.style.display = 'flex';
+
+    var label = document.createElement('span');
+    label.className = 'oab-spell-label';
+    label.textContent = 'Spells:';
+    panel.appendChild(label);
+
+    var equipped = unit.magic && unit.magic.spells_equipped ? unit.magic.spells_equipped : [];
+    equipped.forEach(function (spellId) {
+      var def = window.OathAndBoneSpells ? window.OathAndBoneSpells.getSpellDef(spellId) : null;
+      var cost = def && def.cost && def.cost.mp !== undefined ? def.cost.mp + ' MP' : '?';
+      var active = spellId === 'firebolt'; // Only Firebolt wired for Concern 3
+      var btn = document.createElement('button');
+      btn.className = 'oab-spell-btn' + (active ? ' active' : '');
+      btn.textContent = spellId.replace(/_/g, ' ').toUpperCase() + ' (' + cost + ')';
+      btn.disabled = !active;
+      if (active) {
+        btn.addEventListener('click', function () {
+          _castSpellId = spellId;
+          _castHexes = window.OathAndBoneSpells
+            ? window.OathAndBoneSpells.getSpellTargetHexes(_selectedUnitId, spellId)
+            : [];
+          render();
+        });
+      }
+      panel.appendChild(btn);
+    });
+  }
+
+  function _hideSpellPanel() {
+    var panel = document.getElementById('oab-spell-panel');
+    if (panel) { panel.style.display = 'none'; panel.innerHTML = ''; }
+  }
+
+  function _executeCast(q, r) {
+    if (!_selectedUnitId || !_castSpellId) return;
+    var ok = window.OathAndBoneEngine.castSpell(_selectedUnitId, _castSpellId, q, r);
+    if (ok) {
+      _castMode = false; _castSpellId = null; _castHexes = [];
+      _hideSpellPanel();
+    }
+  }
+
+  function showFireVFX(q, r) {
+    if (!_stage) return;
+    var p = unitDomPos({ q: q, r: r,
+      hp: 1, hp_max: 1,
+      team: 'enemy' });
+    // Use isoPos directly for tile center
+    var pos = isoPos(q, r);
+    var cx = pos.x + TILE_W / 2 - 20;
+    var cy = pos.y + TILE_H / 2 - 20;
+    var el = document.createElement('div');
+    el.className = 'oab-fire-vfx';
+    el.style.cssText = 'left:' + cx + 'px;top:' + cy + 'px';
+    _stage.appendChild(el);
+    setTimeout(function () { if (el.parentNode) el.remove(); }, 550);
+  }
+
   function handleHoldBtn() {
     _moveMode = false; _moveHexes = [];
     _attackMode = false; _attackHexes = [];
+    _castMode = false; _castSpellId = null; _castHexes = [];
+    _hideSpellPanel();
     _selectedUnitId = null;
     window.OathAndBoneEngine.advanceTurn();
     render();
@@ -601,7 +748,9 @@
     var name = (current.heroId || current.id.split('_')[1] || current.id).toUpperCase();
     if (current.team === 'player') {
       if (_selectedUnitId === current.id) {
-        bar.textContent = 'Round ' + battle.round + ' — ' + name + '  HP ' + current.hp + '/' + current.hp_max + '  Move ' + current.move + '  Atk ' + current.attack_range + '  Choose an action.';
+        var manaStr = (current.magic && current.magic.mana !== undefined)
+          ? '  MP ' + current.magic.mana + '/' + current.magic.mana_max : '';
+        bar.textContent = 'Round ' + battle.round + ' — ' + name + '  HP ' + current.hp + '/' + current.hp_max + '  Move ' + current.move + '  Atk ' + current.attack_range + manaStr + '  Choose an action.';
       } else {
         bar.textContent = 'Round ' + battle.round + ' — Click ' + name + ' to select, then choose an action.';
       }
@@ -615,8 +764,10 @@
     if (!panel) return;
     var sel     = _selectedUnitId ? window.OathAndBoneEngine.getUnit(_selectedUnitId) : null;
     var canAct  = sel && sel.hp > 0 && !sel.acted && sel.team === 'player';
+    var canCast = canAct && sel.magic && sel.magic.spells_equipped && sel.magic.spells_equipped.length > 0;
     panel.querySelector('[data-action=move]').disabled   = !canAct;
     panel.querySelector('[data-action=attack]').disabled = !canAct;
+    panel.querySelector('[data-action=cast]').disabled   = !canCast;
     panel.querySelector('[data-action=hold]').disabled   = !sel;
   }
 
@@ -767,6 +918,29 @@
 
   window.OathAndBoneEngine.onBattleEnd = function (result) {
     showBattleEnd(result);
+  };
+
+  // Spell cast hook — fire VFX + damage float + auto-advance turn
+  window.OathAndBoneSpells.onSpellCast = function (caster, spellDef, targetQ, targetR, effectDetails) {
+    showFireVFX(targetQ, targetR);
+    // Extract damage from effectDetails (first damage entry)
+    for (var i = 0; i < effectDetails.length; i++) {
+      var ed = effectDetails[i];
+      if (ed.type === 'damage' || ed.type === 'chain_damage') {
+        var target = window.OathAndBoneEngine.getUnit(ed.target);
+        if (target) showDamage(target, ed.amount);
+        break;
+      }
+    }
+    render();
+    updateTurnBar('Cast: ' + spellDef.school + ' — ' + (spellDef.effect.damage || '?') + ' DMG');
+    // Auto-advance after showing cast result
+    setTimeout(function () {
+      _selectedUnitId = null;
+      window.OathAndBoneEngine.advanceTurn();
+      render();
+      _scheduleEnemyTick();
+    }, 1200);
   };
 
   // ── SCENARIO LOAD ────────────────────────────────────────────────────

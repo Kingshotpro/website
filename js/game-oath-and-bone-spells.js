@@ -368,7 +368,9 @@ window.OathAndBoneSpells = (function() {
       // Spell Resolution
       var spellEffects = [];
       var spellTargetTile = window.OathAndBoneEngine.getTile(targetQ, targetR);
-      var spellTargetUnit = spellTargetTile ? spellTargetTile.unit : null;
+      // tile.unit stores the unit ID (string) — resolve to the actual unit object
+      var spellTargetUnit = (spellTargetTile && spellTargetTile.unit)
+        ? window.OathAndBoneEngine.getUnit(spellTargetTile.unit) : null;
 
       // Determine targets based on targeting and AoE
       var targets = [];
@@ -419,18 +421,21 @@ window.OathAndBoneSpells = (function() {
             var hex = targetHexes[i];
             var tile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
             if (tile && tile.unit) {
-              if (spellDef.school === 'wizardry' || spellDef.school === 'druidry') { // Assume wizard/druid AoE affects enemies primarily unless specified
-                  if (tile.unit.team !== caster.team) {
-                      targets.push(tile.unit);
-                  }
-              } else if (spellDef.school === 'necromancy') { // Assume necromancy AoE affects enemies primarily
-                   if (tile.unit.team !== caster.team) {
-                      targets.push(tile.unit);
-                  }
-              }
-              // Specific spell logic might override general enemy/ally targeting within AoE
-              if (spellId === 'earthquake' && tile.unit) { // Earthquake affects all in AoE
-                 targets.push(tile.unit);
+              var tileUnit = window.OathAndBoneEngine.getUnit(tile.unit);
+              if (tileUnit) {
+                if (spellDef.school === 'wizardry' || spellDef.school === 'druidry') {
+                    if (tileUnit.team !== caster.team) {
+                        targets.push(tileUnit);
+                    }
+                } else if (spellDef.school === 'necromancy') {
+                     if (tileUnit.team !== caster.team) {
+                        targets.push(tileUnit);
+                    }
+                }
+                // Earthquake affects all in AoE
+                if (spellId === 'earthquake') {
+                   targets.push(tileUnit);
+                }
               }
             }
           }
@@ -880,11 +885,12 @@ window.OathAndBoneSpells = (function() {
         }
 
 
-        // Targeting validation
-        if (spellDef.targeting === 'enemy' && tile.unit && tile.unit.team === caster.team) continue;
-        if (spellDef.targeting === 'ally' && tile.unit && tile.unit.team !== caster.team) continue;
-        if (spellDef.targeting === 'dead_ally' && tile.unit && tile.unit.hp > 0) continue;
-        if (spellDef.targeting === 'enemy_caster' && (!tile.unit || !tile.unit.magic)) continue;
+        // Targeting validation — tile.unit is a unit ID string; resolve to unit object
+        var tileUnitObj = tile.unit ? window.OathAndBoneEngine.getUnit(tile.unit) : null;
+        if (spellDef.targeting === 'enemy' && tileUnitObj && tileUnitObj.team === caster.team) continue;
+        if (spellDef.targeting === 'ally' && tileUnitObj && tileUnitObj.team !== caster.team) continue;
+        if (spellDef.targeting === 'dead_ally' && tileUnitObj && tileUnitObj.hp > 0) continue;
+        if (spellDef.targeting === 'enemy_caster' && (!tileUnitObj || !tileUnitObj.magic)) continue;
 
 
         validHexes.push(hex);

@@ -527,6 +527,32 @@ window.OathAndBoneEngine = {
     return true;
   },
 
+  // Delegates to OathAndBoneSpells.castSpell, then marks the caster as acted
+  // and runs the battle-end check. Returns true on success, false otherwise.
+  castSpell: function(casterId, spellId, targetQ, targetR) {
+    var caster = _getUnit(casterId);
+    if (!caster || !_isUnitAlive(caster)) return false;
+    if (_battle.phase !== 'active') return false;
+    if (caster.acted) return false;
+    if (!window.OathAndBoneSpells || !window.OathAndBoneSpells.castSpell) return false;
+
+    var result = window.OathAndBoneSpells.castSpell(casterId, spellId, targetQ, targetR);
+    if (!result || !result.success) return false;
+
+    caster.acted = true;
+
+    // Mark any player unit that reached 0 HP as permadeath_loss
+    for (var id in _battle.units) {
+      var u = _battle.units[id];
+      if (u.hp === 0 && u.team === 'player' && !u.permadeath_loss) {
+        u.permadeath_loss = true;
+      }
+    }
+
+    _checkBattleEnd();
+    return true;
+  },
+
   advanceTurn: function() {
     if (_battle.phase !== 'active') {
       console.warn("Cannot advance turn: Battle is not active. Phase: " + _battle.phase);
