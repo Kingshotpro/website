@@ -74,7 +74,7 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
-| P1-06 | game-oath-and-bone-ai.js — 1212 lines, all gates passed (5 fixes post-gen) | 2026-04-24 | pending |
+| P1-06 | game-oath-and-bone-ai.js — 1212 lines, all gates passed (5 fixes post-gen) | 2026-04-24 | c565844 |
 | P1-05 | game-oath-and-bone-spells.js — 971 lines, Gate 2 self-approved (tile.unit bug noted) | 2026-04-24 | 315db20 |
 | P1-04 | game-oath-and-bone-engine.js — 581 lines, all gates passed | 2026-04-24 | 2e4cd6f |
 | P1-03 | game-oath-and-bone.js skeleton — 174 lines, all gates passed | 2026-04-24 | 8d5dd6d |
