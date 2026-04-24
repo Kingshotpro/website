@@ -8,7 +8,7 @@ spend_today_usd: 0.00
 mj_count_today: 0
 PAUSE: false
 
-succession_note: "Pre-flight audit complete 2026-04-24. P1-07 (Wizardry) was ACTIVE but spells already exist in game-oath-and-bone-spells.js (15 wizardry defs at :8-22, built in P1-05) — moved to COMPLETED PRE-BUILT. P1-09 (Druidry) similarly PRE-BUILT (15 druidry defs at :39-53). P1-08 (Necromancy) PARTIAL — 12 of 14 spells on disk, 2 missing. Next cycle should pick P1-08 as ACTIVE and delegate only the 2 missing necromancy spells. See audit table at end of this file."
+succession_note: "Pre-flight complete 2026-04-24. Ready for /schedule --every 4h orchestrator fire and /schedule --every 12h Challenger fire. Architect cleared."
 
 ---
 
@@ -16,8 +16,7 @@ succession_note: "Pre-flight audit complete 2026-04-24. P1-07 (Wizardry) was ACT
 
 | ID | Task | Attempt | Template | Output path |
 |---|---|---|---|---|
-
-*(cleared by pre-flight audit — P1-07 moved to COMPLETED PRE-BUILT; orchestrator picks P1-08 next cycle)*
+| P1-10 | Hero definition objects (6 heroes, permadeath flags) | 1 | 3.1 | WORKER_OUTPUT/code/P1-10.md |
 
 ---
 
@@ -25,8 +24,7 @@ succession_note: "Pre-flight audit complete 2026-04-24. P1-07 (Wizardry) was ACT
 
 | ID | Task | Template | Depends on |
 |---|---|---|---|
-| P1-08 | Spell definition objects — Necromancy school (14 spells — PARTIAL: 12 on disk at game-oath-and-bone-spells.js:25-36; delegate only the 2 missing spells, do NOT regenerate all 14) | 3.3 | P1-03 |
-| P1-10 | Hero definition objects (6 heroes, permadeath flags) | 3.1 | P1-03 |
+| P1-11 | B1 battle scenario data object | 3.4 | P1-04 |
 | P1-11 | B1 battle scenario data object | 3.4 | P1-04 |
 | P1-12 | advisor.js wiring — XP grant on Sergeant+ win | 3.1 | P1-03 |
 | P1-13 | Fix worker.js:962 handleChronicle playerContext stringify (same pattern as P1-01) | 3.1 (narrow) | — |
@@ -73,6 +71,8 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
+| P1-10 | Hero definition objects (6 heroes) — ACTIVE this cycle | 2026-04-24 | pending |
+| P1-08 | Spell defs — Necromancy (12 battle spells; MAGIC.md §2 says 13 total, Marrow's Binding camp-only) — PRE-BUILT | 2026-04-24 | audit-2026-04-24 |
 | P1-09 | Spell defs — Druidry (15 spells) — PRE-BUILT in P1-05 (game-oath-and-bone-spells.js:39-53) | 2026-04-24 | audit-2026-04-24 (no separate commit needed) |
 | P1-07 | Spell defs — Wizardry (15 spells, 1 over spec-14) — PRE-BUILT in P1-05 (game-oath-and-bone-spells.js:8-22) | 2026-04-24 | audit-2026-04-24 (no separate commit needed) |
 | P1-06 | game-oath-and-bone-ai.js — 1212 lines, all gates passed (5 fixes post-gen) | 2026-04-24 | c565844 |
