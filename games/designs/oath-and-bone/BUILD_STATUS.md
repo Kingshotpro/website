@@ -52,7 +52,7 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
-| P1-13 | Fix worker.js:962 handleChronicle playerContext stringify — direct fix, no delegation | 2026-04-24 | pending |
+| P1-13 | Fix worker.js:962 handleChronicle playerContext stringify — direct fix, no delegation | 2026-04-24 | b72095d |
 | P1-12 | advisor.js XP wiring — PRE-BUILT (engine.js:195→onBattleVictory→Advisor.grantXP; schema gap noted) | 2026-04-24 | no commit needed |
 | P1-11 | game-oath-and-bone-battles.js — 136 lines, all gates passed (1 post-gen: forest 9→10) | 2026-04-24 | 3b16c17 |
 | P1-10 | game-oath-and-bone-heroes.js — 168 lines, all gates passed, no fixes needed | 2026-04-24 | 11cbab8 |
