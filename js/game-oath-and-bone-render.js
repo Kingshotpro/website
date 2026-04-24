@@ -44,6 +44,7 @@
   var _attackMode      = false;
   var _attackHexes     = [];    // [{q,r}] from engine.getAttackableHexes()
   var _enemyTickBusy   = false; // prevents stacked enemy-turn timers
+  var _animating       = false; // true while a slide animation is running — defers render + tick
 
   // ── ISO PROJECTION ───────────────────────────────────────────────────
   // Same 2:1 iso formula as the preview. Hex topology comes from engine
@@ -665,8 +666,10 @@
   }
 
   // ── ENEMY AUTO-TURN ──────────────────────────────────────────────────
-  // When the current unit is an enemy, auto-advance after a short delay.
-  // Uses a busy flag to prevent timer stacking.
+  // When the current unit is an enemy, call OathAndBoneAI.takeTurn() after
+  // a short delay so the player can see each move. takeTurn() handles
+  // advanceTurn() internally. If _animating is true when the callback fires,
+  // the slide animation's completion callback will call render + reschedule.
   function _scheduleEnemyTick() {
     if (_enemyTickBusy) return;
     var battle  = window.OathAndBoneEngine.getBattle();
@@ -679,11 +682,18 @@
       var cur = window.OathAndBoneEngine.getCurrentUnit();
       var b   = window.OathAndBoneEngine.getBattle();
       if (cur && cur.team === 'enemy' && b.phase === 'active') {
-        window.OathAndBoneEngine.advanceTurn();
-        render();
-        _scheduleEnemyTick(); // chain for consecutive enemy units
+        if (window.OathAndBoneAI && window.OathAndBoneAI.takeTurn) {
+          window.OathAndBoneAI.takeTurn(cur.id);
+        } else {
+          window.OathAndBoneEngine.advanceTurn();
+        }
+        if (!_animating) {
+          render();
+          _scheduleEnemyTick(); // chain for consecutive enemy units
+        }
+        // if _animating: the move animation's 320ms callback handles render + next tick
       }
-    }, 750);
+    }, 400);
   }
 
   // ── ENGINE HOOKS ─────────────────────────────────────────────────────
@@ -718,16 +728,21 @@
         _scheduleEnemyTick();
       }, 1200);
     } else {
-      render();
-      _scheduleEnemyTick();
+      if (!_animating) {
+        render();
+        _scheduleEnemyTick();
+      }
+      // if _animating: slide completion callback handles render + reschedule
     }
   };
 
   window.OathAndBoneEngine.onRoundStart = function (round) {
     _selectedUnitId = null;
     showRoundBanner(round);
-    render();
-    _scheduleEnemyTick();
+    if (!_animating) {
+      render();
+      _scheduleEnemyTick();
+    }
   };
 
   window.OathAndBoneEngine.onBattleEnd = function (result) {
