@@ -4,6 +4,17 @@
 
 ---
 
+> **Worker 14 completion note — April 24, 2026**
+> Idle sprite scope DELIVERED. 64 idle frames (4 units × 4 dirs × 4 frames) are on disk at
+> `art/sprites/<unit>/idle_<dir>_<0-3>.png`. Strategy B hybrid (16 MJ base frames + PIL ±2px
+> breathing bob) is the proven approach. Full generation log: `FULL_SPRITES_LOG.md`.
+> Attack frames (4 dirs × 4 frames per unit) are Worker 15 scope — see Worker 14 recommendations
+> in `FULL_SPRITES_LOG.md`.
+
+---
+
+---
+
 ## Identity
 
 Worker 13 — the sprite-register pivot worker. Tasked with replacing the painted 1024×1024 character sprites with chunky PS1-era pixel-art sprites matching the Final Fantasy Tactics visual register. Painted portraits (18 total in `art/portraits/`) stay untouched — they're still used in the top UI strip.
