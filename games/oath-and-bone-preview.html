@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oath and Bone — Visual Prototype</title>
+<style>
+/* ── KingshotPro palette (inlined from css/style.css) ── */
+:root {
+  --bg:        #0d0d0f;
+  --surface:   #16181f;
+  --surface-2: #1e2030;
+  --border:    #2a2d3e;
+  --gold:      #f0c040;
+  --gold-dim:  #c09828;
+  --gold-glow: rgba(240, 192, 64, 0.15);
+  --text:      #e8e8ec;
+  --text-muted:#7a7d8e;
+  --text-dim:  #4a4d5e;
+  --green:     #4caf82;
+  --red:       #e05c5c;
+  --blue:      #5c8ce0;
+  --font:      -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── TOP UI STRIP ── */
+#ui-top {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 82px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.hero-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.portrait-thumb {
+  width: 54px;
+  height: 54px;
+  border: 2px solid var(--gold-dim);
+  border-radius: 4px;
+  object-fit: cover;
+  background: var(--surface-2);
+  display: block;
+  flex-shrink: 0;
+}
+
+.portrait-placeholder {
+  width: 54px;
+  height: 54px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-name {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bar-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bar-track {
+  width: 110px;
+  height: 7px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  transition: width 0.2s;
+}
+
+.bar-fill.hp   { background: var(--gold); }
+.bar-fill.mana { background: var(--blue); }
+
+.ui-divider {
+  width: 1px;
+  height: 54px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+#hex-info {
+  flex: 1;
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'SF Mono', 'Fira Mono', 'Courier New', monospace;
+  line-height: 1.5;
+}
+
+#hex-info .hex-q {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+#hex-info .hex-hint {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+/* ── BATTLE LABEL BAR ── */
+#battle-bar {
+  background: linear-gradient(to right, var(--surface-2), var(--surface));
+  border-bottom: 1px solid var(--border);
+  padding: 6px 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.battle-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.battle-meta {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ── STAGE SCROLL CONTAINER ── */
+#stage-scroll {
+  overflow: auto;
+  background: #08080b;
+  border-bottom: 1px solid var(--border);
+  max-height: 54vh;
+}
+
+/* ── STAGE (canvas + sprites overlay) ── */
+#stage {
+  position: relative;
+  /* width/height set by JS */
+}
+
+#hex-canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* ── UNIT SPRITES ── */
+.unit-sprite {
+  position: absolute;
+  image-rendering: pixelated;
+  pointer-events: none;
+  /* keep sprites crisp when scaled */
+}
+
+/* ── ENEMY SILHOUETTES ── */
+.enemy-silhouette {
+  position: absolute;
+  background: rgba(14, 6, 26, 0.92);
+  border: 1px solid rgba(80, 50, 110, 0.45);
+  border-radius: 3px 3px 1px 1px;
+  pointer-events: none;
+  /* subtle enemy shape — a rounded rectangle head + broader shoulders */
+}
+
+.enemy-silhouette::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: rgba(14, 6, 26, 0.92);
+  border: 1px solid rgba(80, 50, 110, 0.45);
+  border-radius: 50%;
+}
+
+/* ── BOTTOM ACTION WHEEL ── */
+#ui-bottom {
+  background: var(--surface);
+  border-top: 2px solid var(--border);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 10px 22px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: default;          /* non-functional; no pointer */
+  border-radius: 4px;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+  min-width: 80px;
+  opacity: 0.7;
+  user-select: none;
+}
+
+/* give each action a distinct accent on hover, for register fidelity */
+.action-btn[data-action="move"]:hover {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+  background: var(--gold-glow);
+  opacity: 1;
+}
+.action-btn[data-action="attack"]:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(224, 92, 92, 0.1);
+  opacity: 1;
+}
+.action-btn[data-action="cast"]:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: rgba(92, 140, 224, 0.1);
+  opacity: 1;
+}
+.action-btn[data-action="item"]:hover {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(76, 175, 130, 0.1);
+  opacity: 1;
+}
+.action-btn[data-action="hold"]:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+  background: rgba(120, 120, 150, 0.1);
+  opacity: 1;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 8px 20px;
+  font-size: 10px;
+  color: var(--text-dim);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.04em;
+}
+
+/* ── LOADING OVERLAY ── */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+#loading.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div id="loading">loading tiles…</div>
+
+<!-- ── TOP UI STRIP ── -->
+<div id="ui-top">
+
+  <!-- Vael -->
+  <div class="hero-panel">
+    <img class="portrait-thumb" id="vael-portrait"
+         src="designs/oath-and-bone/art/portraits/vael_neutral_v1.png"
+         alt="Vael Thorne"
+         onerror="this.style.display='none';document.getElementById('ph-vael').style.display='flex'">
+    <div class="portrait-placeholder" id="ph-vael" style="display:none">VAEL</div>
+    <div class="hero-stats">
+      <div class="hero-name">Vael Thorne</div>
+      <div class="bar-row">
+        <div class="bar-label">HP  120 / 120</div>
+        <div class="bar-track"><div class="bar-fill hp" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-divider"></div>
+
+  <!-- Caelen -->
+  <div class="hero-panel">
+    <img class="portrait-thumb" id="caelen-portrait"
+         src="designs/oath-and-bone/art/portraits/caelen_neutral_v1.png"
+         alt="Caelen the Quiet"
+         onerror="this.style.display='none';document.getElementById('ph-caelen').style.display='flex'">
+    <div class="portrait-placeholder" id="ph-caelen" style="display:none">CAELEN</div>
+    <div class="hero-stats">
+      <div class="hero-name">Caelen the Quiet</div>
+      <div class="bar-row">
+        <div class="bar-label">HP   70 / 70</div>
+        <div class="bar-track"><div class="bar-fill hp" style="width:100%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Mana 40 / 40</div>
+        <div class="bar-track"><div class="bar-fill mana" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hex info (right-aligned) -->
+  <div id="hex-info">
+    <div class="hex-q">—</div>
+    <div class="hex-hint">click any tile</div>
+  </div>
+</div>
+
+<!-- ── BATTLE LABEL BAR ── -->
+<div id="battle-bar">
+  <span class="battle-title">B1 — The Muster</span>
+  <span class="battle-meta">plain biome · 12 × 14 hex · elevation max 2 · act 1 · tutorial</span>
+</div>
+
+<!-- ── GAME STAGE ── -->
+<div id="stage-scroll">
+  <div id="stage">
+    <canvas id="hex-canvas"></canvas>
+    <!-- unit sprites and enemy silhouettes injected by JS -->
+  </div>
+</div>
+
+<!-- ── BOTTOM ACTION WHEEL ── -->
+<div id="ui-bottom">
+  <button class="action-btn" data-action="move">move</button>
+  <button class="action-btn" data-action="attack">attack</button>
+  <button class="action-btn" data-action="cast">cast</button>
+  <button class="action-btn" data-action="item">item</button>
+  <button class="action-btn" data-action="hold">hold</button>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>Unofficial. Not affiliated with Century Games. &nbsp;·&nbsp; Oath and Bone — Visual Prototype · Worker 12 · April 2026</footer>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  OATH AND BONE — VISUAL PROTOTYPE
+//  Worker 12 · April 2026
+//  Single-file static preview. No game logic. Art-forward.
+// ════════════════════════════════════════════════════════
+
+// ── CONFIG ──────────────────────────────────────────────
+const TILE_W = 128;   // display width of one hex tile (spec: BUILD_PLAN §1.1)
+const TILE_H = 64;    // display height
+const MAP_W  = 12;    // columns  (q = 0 … 11)
+const MAP_H  = 14;    // rows     (r = 0 … 13)
+
+// Origin of the map on the canvas.
+// Leftmost tile is (q=0, r=13): x = PAD_X + (0-13)*64 = PAD_X - 832 ≥ 0 → PAD_X ≥ 832
+const PAD_X  = 860;
+const PAD_Y  = 40;
+
+// Canvas dimensions: cover entire map + a little breathing room.
+// x range: [PAD_X - 832, PAD_X + 11*64 + TILE_W] = [28, 1700]
+// y range: [PAD_Y, PAD_Y + (11+13)*16 + TILE_H]  = [40, 488]
+const CANVAS_W = 1760;
+const CANVAS_H = 520;
+
+// Sprite display size (px). Source art is 1024×1024; scale down cleanly.
+const SPRITE_W = 80;
+const SPRITE_H = 80;
+
+// Enemy silhouette size
+const ENEMY_W  = 42;
+const ENEMY_H  = 52;
+
+// Elevation Y-offset per level (sprite only, per BUILD_PLAN §1.1.1)
+const ELEV_OFFSET = 16;
+
+// Art root path (relative to this file)
+const ART = 'designs/oath-and-bone/art';
+
+// ── MAP DATA ────────────────────────────────────────────
+// B1 "The Muster" — ridge spine: elevation 2, 3 hexes wide at r=1 (north center)
+// Per BATTLES.md §2: "ridge spine at rows 1–2 (elevation 2, 3 hexes wide)"
+// Placed at q=4,5,6 r=1 (north-center of 12-wide map).
+const RIDGE = new Set(['4,1', '5,1', '6,1']);
+
+function hexElev(q, r) { return RIDGE.has(`${q},${r}`) ? 2 : 0; }
+function hexTerrain(q, r) { return RIDGE.has(`${q},${r}`) ? 'ridge' : 'plain'; }
+
+// ── COORDINATE MATH ─────────────────────────────────────
+// Isometric formula from existing tile compositor (test_compositor.html).
+// x = PAD_X + (q - r) * (TILE_W/2)
+// y = PAD_Y + (q + r) * (TILE_H/4)
+function isoPos(q, r) {
+  return {
+    x: PAD_X + (q - r) * (TILE_W / 2),
+    y: PAD_Y + (q + r) * (TILE_H / 4)
+  };
+}
+
+// Inverse: screen → nearest hex (for click handling)
+function screenToHex(px, py) {
+  const dx = px - PAD_X;
+  const dy = py - PAD_Y;
+  // From isoPos: dx = (q-r)*64, dy = (q+r)*16
+  // Solving: q = (dx/64 + dy/16)/2, r = (dy/16 - dx/64)/2
+  const qf = (dx / (TILE_W / 2) + dy / (TILE_H / 4)) / 2;
+  const rf = (dy / (TILE_H / 4) - dx / (TILE_W / 2)) / 2;
+  const q  = Math.round(qf);
+  const r  = Math.round(rf);
+  if (q >= 0 && q < MAP_W && r >= 0 && r < MAP_H) return [q, r];
+  return null;
+}
+
+// ── IMAGES ──────────────────────────────────────────────
+// Per SEAMLESS_LOG + EFFECTS_SPRITES_LOG: these are the actual isometric
+// hex-tile images shipped by Worker 3 (1536×768 → displayed at 128×64).
+const imgPlain = new Image();
+const imgRidge = new Image();
+imgPlain.src = `${ART}/tiles/plain/base.png`;
+imgRidge.src = `${ART}/tiles/plain/elevation-2.png`;
+
+// ── STATE ────────────────────────────────────────────────
+let selectedHex  = null;
+let imagesReady  = 0;
+let totalImages  = 2;
+
+function onImgEvent() {
+  imagesReady++;
+  if (imagesReady >= totalImages) initStage();
+}
+imgPlain.onload  = imgPlain.onerror  = onImgEvent;
+imgRidge.onload  = imgRidge.onerror  = onImgEvent;
+
+// Safety: if onload fires before the handler is wired, fire now.
+if (imgPlain.complete) onImgEvent();
+if (imgRidge.complete) onImgEvent();
+
+// Fallback in case images never fire (e.g., cached already done):
+setTimeout(() => { if (imagesReady < totalImages) initStage(); }, 1200);
+
+// ── DRAW HEX MAP ────────────────────────────────────────
+function drawMap(ctx) {
+  ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+
+  // Void fill
+  ctx.fillStyle = '#07070a';
+  ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+
+  // Painter's algorithm: draw diagonal strips low-sum → high-sum so
+  // tiles in front occlude tiles behind (standard isometric order).
+  for (let sum = 0; sum < MAP_W + MAP_H - 1; sum++) {
+    const rMin = Math.max(0, sum - MAP_W + 1);
+    const rMax = Math.min(MAP_H - 1, sum);
+    for (let r = rMin; r <= rMax; r++) {
+      const q = sum - r;
+      if (q < 0 || q >= MAP_W) continue;
+
+      const { x, y } = isoPos(q, r);
+      const isRidge  = RIDGE.has(`${q},${r}`);
+      const img      = isRidge ? imgRidge : imgPlain;
+
+      if (img.complete && img.naturalWidth > 0) {
+        ctx.drawImage(img, x, y, TILE_W, TILE_H);
+      } else {
+        // CSS placeholder: draw a coloured diamond
+        const cx = x + TILE_W / 2;
+        const cy = y + TILE_H / 2;
+        ctx.fillStyle = isRidge ? '#2c2238' : '#181e18';
+        ctx.beginPath();
+        ctx.moveTo(cx,          y);
+        ctx.lineTo(x + TILE_W,  cy);
+        ctx.lineTo(cx,          y + TILE_H);
+        ctx.lineTo(x,           cy);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = isRidge ? '#3d2f55' : '#222a22';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+
+      // Ridge: add a subtle gold rim so the elevation reads clearly
+      if (isRidge) {
+        const cx = x + TILE_W / 2;
+        const cy = y + TILE_H / 2;
+        ctx.strokeStyle = 'rgba(200, 170, 80, 0.35)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(cx,          y);
+        ctx.lineTo(x + TILE_W,  cy);
+        ctx.lineTo(cx,          y + TILE_H);
+        ctx.lineTo(x,           cy);
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+      // Selected hex highlight
+      if (selectedHex && selectedHex[0] === q && selectedHex[1] === r) {
+        const cx = x + TILE_W / 2;
+        const cy = y + TILE_H / 2;
+        ctx.fillStyle = 'rgba(240, 192, 64, 0.20)';
+        ctx.beginPath();
+        ctx.moveTo(cx,          y);
+        ctx.lineTo(x + TILE_W,  cy);
+        ctx.lineTo(cx,          y + TILE_H);
+        ctx.lineTo(x,           cy);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = '#f0c040';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+// ── PLACE UNITS ─────────────────────────────────────────
+function placeUnits(stage) {
+  // ── HEROES (south edge, player side) ─────────────────
+  // B1 player start: Vael(3,12), Halv(4,12), Brin(5,12).
+  // Preview shows Vael + Caelen on the south edge (per prototype brief).
+  // Caelen placed at (5,12) in Brin's B1 slot — noted in PREVIEW_LOG.
+  const heroes = [
+    { id: 'vael',   q: 3, r: 12, src: `${ART}/sprites/vael/idle_n_0.png`,   label: 'Vael'   },
+    { id: 'caelen', q: 5, r: 12, src: `${ART}/sprites/caelen/idle_n_0.png`, label: 'Caelen' },
+  ];
+
+  heroes.forEach(h => {
+    const { x, y } = isoPos(h.q, h.r);
+    const elev = hexElev(h.q, h.r);
+
+    // Center sprite over hex; feet near tile bottom point.
+    const sx = x + TILE_W / 2 - SPRITE_W / 2;
+    const sy = y + TILE_H     - SPRITE_H  - elev * ELEV_OFFSET + 6;
+
+    const img = document.createElement('img');
+    img.className = 'unit-sprite';
+    img.src    = h.src;
+    img.alt    = h.label;
+    img.title  = h.label;
+    img.style.left   = sx + 'px';
+    img.style.top    = sy + 'px';
+    img.style.width  = SPRITE_W + 'px';
+    img.style.height = SPRITE_H + 'px';
+    img.style.zIndex = String(h.r + 1);       // south (high r) renders in front
+    img.onerror = () => {
+      // Substitute: show a named CSS block sized like a unit
+      img.replaceWith(makePlaceholderUnit(h.label, sx, sy, SPRITE_W, SPRITE_H, '#2a3022', '#8ab060', h.r));
+    };
+    stage.appendChild(img);
+  });
+
+  // ── ENEMIES (north edge, silhouettes) ─────────────────
+  // B1 enemy north: Bladewind-A(4,2), Bladewind-B(6,2),
+  //                 Bladewind-C(3,4), Ironwall archer(5,1) on ridge.
+  // Four silhouettes, one on the ridge (elevation 2) per spec.
+  const enemies = [
+    { q: 5, r: 1 },   // Ironwall archer ON the ridge — shows elevation
+    { q: 4, r: 2 },   // Bladewind-A
+    { q: 6, r: 2 },   // Bladewind-B
+    { q: 3, r: 4 },   // Bladewind-C
+  ];
+
+  enemies.forEach((e, i) => {
+    const { x, y } = isoPos(e.q, e.r);
+    const elev = hexElev(e.q, e.r);
+
+    const ex = x + TILE_W / 2 - ENEMY_W / 2;
+    const ey = y + TILE_H     - ENEMY_H  - elev * ELEV_OFFSET;
+
+    const div = document.createElement('div');
+    div.className = 'enemy-silhouette';
+    div.style.left   = ex + 'px';
+    div.style.top    = ey + 'px';
+    div.style.width  = ENEMY_W + 'px';
+    div.style.height = ENEMY_H + 'px';
+    div.style.zIndex = String(e.r + 1);
+    div.title = `Enemy ${i + 1} (${e.q}, ${e.r})`;
+    stage.appendChild(div);
+  });
+}
+
+// ── PLACEHOLDER UNIT (when sprite image fails to load) ──
+function makePlaceholderUnit(label, sx, sy, w, h, bg, border, r) {
+  const div = document.createElement('div');
+  div.style.cssText = `
+    position: absolute;
+    left: ${sx}px; top: ${sy}px;
+    width: ${w}px; height: ${h}px;
+    background: ${bg};
+    border: 1px solid ${border};
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; color: ${border};
+    letter-spacing: 0.06em;
+    z-index: ${r + 1};
+    pointer-events: none;
+  `;
+  div.textContent = label.toUpperCase();
+  return div;
+}
+
+// ── HEX INFO UPDATE ──────────────────────────────────────
+function updateHexInfo(q, r) {
+  const terrain  = hexTerrain(q, r);
+  const elev     = hexElev(q, r);
+  const elevStr  = elev > 0 ? ` · elevation ${elev}` : ' · elevation 0';
+  const info     = document.getElementById('hex-info');
+  info.innerHTML = `
+    <div class="hex-q">hex (${q}, ${r})</div>
+    <div style="font-size:11px;color:var(--text-muted)">${terrain}${elevStr}</div>
+  `;
+}
+
+// ── INIT ────────────────────────────────────────────────
+let staged = false;
+
+function initStage() {
+  if (staged) return;
+  staged = true;
+
+  // Size canvas and stage container
+  const canvas = document.getElementById('hex-canvas');
+  canvas.width  = CANVAS_W;
+  canvas.height = CANVAS_H;
+
+  const stage = document.getElementById('stage');
+  stage.style.width  = CANVAS_W + 'px';
+  stage.style.height = CANVAS_H + 'px';
+
+  // Draw tile map
+  const ctx = canvas.getContext('2d');
+  drawMap(ctx);
+
+  // Place unit sprites and enemy silhouettes
+  placeUnits(stage);
+
+  // Scroll stage so the south edge (heroes) is roughly centered on load.
+  // The south row is at y ≈ PAD_Y + (3+12)*16 = 40+240 = 280.
+  const scroll = document.getElementById('stage-scroll');
+  scroll.scrollLeft = PAD_X - Math.floor(scroll.clientWidth / 2);
+
+  // Hide loading overlay
+  document.getElementById('loading').classList.add('hidden');
+
+  // ── CLICK HANDLER ──────────────────────────────────────
+  canvas.addEventListener('click', e => {
+    const rect   = canvas.getBoundingClientRect();
+    const scaleX = CANVAS_W / rect.width;
+    const scaleY = CANVAS_H / rect.height;
+    const px = (e.clientX - rect.left) * scaleX;
+    const py = (e.clientY - rect.top)  * scaleY;
+    const hex = screenToHex(px, py);
+    if (hex) {
+      selectedHex = hex;
+      drawMap(ctx);
+      updateHexInfo(hex[0], hex[1]);
+    }
+  });
+}
+</script>
+</body>
+</html>
