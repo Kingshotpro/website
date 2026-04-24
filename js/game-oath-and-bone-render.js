@@ -48,6 +48,10 @@
   var _castMode        = false;
   var _castSpellId     = null;
   var _castHexes       = [];    // [{q,r}] valid target hexes for selected spell
+  var _tileImgCache    = {};    // terrain → HTMLImageElement (Concern 1)
+  var _mapScale        = 1;     // CSS scale applied to stage (Concern 2)
+  var _resizeTimer     = null;  // throttle handle for window resize
+  var _hoveredHex      = null;  // {q,r} under cursor, or null (Concern 3)
 
   // ── ISO PROJECTION ───────────────────────────────────────────────────
   // Same 2:1 iso formula as the preview. Hex topology comes from engine
@@ -390,15 +394,38 @@
       _ctx.strokeStyle = 'rgba(0,0,0,.5)'; _ctx.lineWidth = 0.6; _ctx.stroke();
     }
 
-    // ── Top face (terrain-colored diamond) ──
-    var topColor = tile.terrain === 'ridge'  ? '#4a5830'
-                 : tile.terrain === 'forest' ? '#2a3e1a'
-                 : '#38481e'; // plain
-    _ctx.fillStyle = topColor;
-    _ctx.beginPath();
-    _ctx.moveTo(vTop.x, vTop.y); _ctx.lineTo(vRight.x, vRight.y);
-    _ctx.lineTo(vBottom.x, vBottom.y); _ctx.lineTo(vLeft.x, vLeft.y);
-    _ctx.closePath(); _ctx.fill();
+    // ── Top face (tile PNG clipped to diamond, or solid-color fallback) ──
+    var tImg = _getTileImage(tile.terrain);
+    if (tImg && tImg.complete && tImg.naturalWidth > 0) {
+      _ctx.save();
+      _ctx.beginPath();
+      _ctx.moveTo(vTop.x, vTop.y); _ctx.lineTo(vRight.x, vRight.y);
+      _ctx.lineTo(vBottom.x, vBottom.y); _ctx.lineTo(vLeft.x, vLeft.y);
+      _ctx.closePath(); _ctx.clip();
+      if (_tileFlip(q, r)) {
+        // Horizontal flip: translate to right edge, scale x=-1, draw at 0,0
+        _ctx.translate(x + TILE_W, topY);
+        _ctx.scale(-1, 1);
+        _ctx.drawImage(tImg, 0, 0, TILE_W, TILE_H);
+      } else {
+        _ctx.drawImage(tImg, x, topY, TILE_W, TILE_H);
+      }
+      _ctx.restore();
+    } else {
+      var topColor = tile.terrain === 'ridge'      ? '#4a5830'
+                   : tile.terrain === 'forest'     ? '#2a3e1a'
+                   : tile.terrain === 'water'      ? '#1a3050'
+                   : tile.terrain === 'ruin'       ? '#3a3228'
+                   : tile.terrain === 'cliff_edge' ? '#3c3c2e'
+                   : tile.terrain === 'rough'      ? '#2e2c1e'
+                   : tile.terrain === 'sanctum'    ? '#3a3830'
+                   : '#38481e'; // plain
+      _ctx.fillStyle = topColor;
+      _ctx.beginPath();
+      _ctx.moveTo(vTop.x, vTop.y); _ctx.lineTo(vRight.x, vRight.y);
+      _ctx.lineTo(vBottom.x, vBottom.y); _ctx.lineTo(vLeft.x, vLeft.y);
+      _ctx.closePath(); _ctx.fill();
+    }
 
     // Thin edge outline
     _ctx.strokeStyle = 'rgba(0,0,0,.28)';
@@ -460,6 +487,36 @@
       if (list[i].q === q && list[i].r === r) return true;
     }
     return false;
+  }
+
+  // ── TILE IMAGE HELPERS (Concern 1) ───────────────────────────────────
+  var ART_TILE = ART + '/tiles/';
+  var _TILE_SRCS = {
+    plain:      'plain/base.png',
+    ridge:      'ridge/base.png',
+    forest:     'forest/base.png',
+    water:      'river/base.png',
+    ruin:       'ruin/base.png',
+    cliff_edge: 'plain/cliff-edge.png',
+    rough:      'rough/base.png',
+    sanctum:    'sanctum/base.png'
+  };
+
+  function _getTileImage(terrain) {
+    if (_tileImgCache[terrain]) return _tileImgCache[terrain];
+    var rel = _TILE_SRCS[terrain];
+    if (!rel) return null;
+    var img = new Image();
+    img.onload = function () { if (!_animating) render(); };
+    img.src = ART_TILE + rel;
+    _tileImgCache[terrain] = img;
+    return img;
+  }
+
+  // Deterministic horizontal flip: avoids visible tile repetition.
+  // Uses only X-flip (safe for directional lighting in iso tiles).
+  function _tileFlip(q, r) {
+    return (((q * 2654435761) ^ (r * 1013904223)) >>> 0) & 1;
   }
 
   // ── SPRITE DOM SYNC ──────────────────────────────────────────────────
