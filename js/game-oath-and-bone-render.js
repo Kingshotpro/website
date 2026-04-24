@@ -74,6 +74,57 @@
     return null;
   }
 
+  // ── ZOOM-TO-FIT (Concern 2) ──────────────────────────────────────────
+  // Scales the stage container so the full map fits the available viewport
+  // without scrolling. Capped at 1.0 — never upscales beyond native art.
+  // Click coords self-correct: canvas.getBoundingClientRect() returns the
+  // visual (scaled) rect, so existing scaleX = CANVAS_W / rect.width = 1/s,
+  // which already converts back to native canvas coords. No click-handler
+  // changes needed.
+  function _applyZoomToFit() {
+    var scroll = document.getElementById('oab-stage-scroll');
+    if (!_stage || !scroll) return;
+
+    // Skip scaling on mobile — let the user pinch-zoom natively
+    if (window.innerWidth < 768) {
+      _mapScale = 1;
+      _stage.style.transform    = '';
+      _stage.style.transformOrigin = '';
+      scroll.style.overflow  = 'auto';
+      scroll.style.height    = '';
+      return;
+    }
+
+    var heroH   = (document.getElementById('oab-hero-bar')     || { offsetHeight: 70  }).offsetHeight;
+    var turnH   = (document.getElementById('oab-turn-bar')     || { offsetHeight: 36  }).offsetHeight;
+    var actH    = (document.getElementById('oab-action-panel') || { offsetHeight: 52  }).offsetHeight;
+    var topH    = (document.getElementById('ui-top')           || { offsetHeight: 44  }).offsetHeight;
+    var footerH = 44; // footer + safety margin
+    var usedH   = heroH + turnH + actH + topH + footerH;
+
+    var availW = window.innerWidth;
+    var availH = Math.max(200, window.innerHeight - usedH);
+    var scale  = Math.min(availW / CANVAS_W, availH / CANVAS_H, 1.0);
+    scale = Math.max(0.25, scale); // never absurdly tiny
+    _mapScale = scale;
+
+    _stage.style.transform       = scale < 1 ? 'scale(' + scale.toFixed(4) + ')' : '';
+    _stage.style.transformOrigin = 'top left';
+
+    if (scale < 1) {
+      scroll.style.overflow = 'hidden';
+      scroll.style.height   = Math.ceil(CANVAS_H * scale) + 'px';
+    } else {
+      scroll.style.overflow = 'auto';
+      scroll.style.height   = '';
+    }
+  }
+
+  function _onResize() {
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(_applyZoomToFit, 100);
+  }
+
   // ── SPRITE HELPERS ───────────────────────────────────────────────────
   function unitSpriteKey(unit) {
     if (unit.heroId) return unit.heroId;
@@ -251,12 +302,9 @@
     panel.querySelector('[data-action=cast]').addEventListener('click', handleCastBtn);
     panel.querySelector('[data-action=hold]').addEventListener('click', handleHoldBtn);
 
-    // Scroll so player heroes (Vael q=3,r=12) are visible
-    var vPos = isoPos(3, 12);
-    setTimeout(function () {
-      scroll.scrollLeft = Math.max(0, vPos.x - Math.floor(scroll.clientWidth  / 2));
-      scroll.scrollTop  = Math.max(0, vPos.y - Math.floor(scroll.clientHeight / 2));
-    }, 0);
+    // Zoom-to-fit: must run after layout so offsetHeight values are valid
+    setTimeout(_applyZoomToFit, 0);
+    window.addEventListener('resize', _onResize);
   }
 
   // ── HERO BAR ─────────────────────────────────────────────────────────
