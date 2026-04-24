@@ -1,6 +1,6 @@
 # BUILD_STATUS.md — Oath and Bone Autonomous Build Queue
 
-last_updated: 2026-04-24T19:00:00Z
+last_updated: 2026-04-24T19:30:00Z
 last_feedback_processed: 2026-04-24T18:00:00Z
 current_phase: 1
 daily_cap_hit: false
@@ -8,7 +8,7 @@ spend_today_usd: 0.00
 mj_count_today: 0
 PAUSE: false
 
-succession_note: "P1-06 complete 2026-04-24. game-oath-and-bone-ai.js written (1212 lines). window.OathAndBoneAI: takeTurn(), 6 archetypes (ironwall/bladewind/warden/cabal/binding/grove_warden), epsilon=0.1 exploration, Scout/Sergeant/Marshal difficulty scaling. 5 post-generation fixes applied (see WORKER_OUTPUT/code/P1-06.md). All gates passed. P1-07 is next: Wizardry spell defs (14 spells, Template 3.3)."
+succession_note: "Pre-flight audit complete 2026-04-24. P1-07 (Wizardry) was ACTIVE but spells already exist in game-oath-and-bone-spells.js (15 wizardry defs at :8-22, built in P1-05) — moved to COMPLETED PRE-BUILT. P1-09 (Druidry) similarly PRE-BUILT (15 druidry defs at :39-53). P1-08 (Necromancy) PARTIAL — 12 of 14 spells on disk, 2 missing. Next cycle should pick P1-08 as ACTIVE and delegate only the 2 missing necromancy spells. See audit table at end of this file."
 
 ---
 
@@ -16,7 +16,8 @@ succession_note: "P1-06 complete 2026-04-24. game-oath-and-bone-ai.js written (1
 
 | ID | Task | Attempt | Template | Output path |
 |---|---|---|---|---|
-| P1-07 | Spell definition objects — Wizardry school (14 spells) | 1 | 3.3 | WORKER_OUTPUT/code/P1-07.md |
+
+*(cleared by pre-flight audit — P1-07 moved to COMPLETED PRE-BUILT; orchestrator picks P1-08 next cycle)*
 
 ---
 
@@ -24,9 +25,7 @@ succession_note: "P1-06 complete 2026-04-24. game-oath-and-bone-ai.js written (1
 
 | ID | Task | Template | Depends on |
 |---|---|---|---|
-| P1-08 | Spell definition objects — Necromancy school (14 spells) | 3.3 | P1-03 |
-| P1-08 | Spell definition objects — Necromancy school (14 spells) | 3.3 | P1-03 |
-| P1-09 | Spell definition objects — Druidry school (15 spells) | 3.3 | P1-03 |
+| P1-08 | Spell definition objects — Necromancy school (14 spells — PARTIAL: 12 on disk at game-oath-and-bone-spells.js:25-36; delegate only the 2 missing spells, do NOT regenerate all 14) | 3.3 | P1-03 |
 | P1-10 | Hero definition objects (6 heroes, permadeath flags) | 3.1 | P1-03 |
 | P1-11 | B1 battle scenario data object | 3.4 | P1-04 |
 | P1-12 | advisor.js wiring — XP grant on Sergeant+ win | 3.1 | P1-03 |
@@ -74,6 +73,8 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
+| P1-09 | Spell defs — Druidry (15 spells) — PRE-BUILT in P1-05 (game-oath-and-bone-spells.js:39-53) | 2026-04-24 | audit-2026-04-24 (no separate commit needed) |
+| P1-07 | Spell defs — Wizardry (15 spells, 1 over spec-14) — PRE-BUILT in P1-05 (game-oath-and-bone-spells.js:8-22) | 2026-04-24 | audit-2026-04-24 (no separate commit needed) |
 | P1-06 | game-oath-and-bone-ai.js — 1212 lines, all gates passed (5 fixes post-gen) | 2026-04-24 | c565844 |
 | P1-05 | game-oath-and-bone-spells.js — 971 lines, Gate 2 self-approved (tile.unit bug noted) | 2026-04-24 | 315db20 |
 | P1-04 | game-oath-and-bone-engine.js — 581 lines, all gates passed | 2026-04-24 | 2e4cd6f |
@@ -91,3 +92,23 @@ Not scheduled. Architect review of Phase 2 output required first.
 ## ESCALATED
 
 (none)
+
+---
+
+## P1 Queue Audit (2026-04-24)
+
+*Pre-flight sweep run before /schedule fires permanently. All grepped patterns applied to KingshotPro/js/game-oath-and-bone*.js and js/advisor.js. Per Principle XXII: every grep match read at file:line before marking PRE-BUILT.*
+
+| Task | Description | Status | Evidence |
+|---|---|---|---|
+| P1-04 | game-oath-and-bone-engine.js | COMPLETED (already marked) | commit 2e4cd6f, 581 lines on disk; castSpell exists at game-oath-and-bone-spells.js:316 |
+| P1-05 | game-oath-and-bone-spells.js | COMPLETED (already marked) | commit 315db20, 971 lines; spell defs at lines 8-53 verified |
+| P1-06 | enemy AI (6 archetypes) | COMPLETED (post-audit) | commit c565844, game-oath-and-bone-ai.js 1212 lines; archetypes: ironwall/bladewind/warden/cabal/binding/grove_warden |
+| P1-07 | Wizardry spell defs (14 spells) | PRE-BUILT | game-oath-and-bone-spells.js:8-22 — 15 wizardry defs (firebolt through teleport); confirmed via grep count=15; delivered in P1-05 |
+| P1-08 | Necromancy spell defs (14 spells) | PARTIAL | game-oath-and-bone-spells.js:25-36 — 12 necromancy defs (raise_skeleton through corpse_explosion); confirmed via grep count=12; spec requires 14; 2 missing; orchestrator should delegate only the 2 missing spells |
+| P1-09 | Druidry spell defs (15 spells) | PRE-BUILT | game-oath-and-bone-spells.js:39-53 — 15 druidry defs (heal through natures_grace); confirmed via grep count=15; exact spec match; delivered in P1-05 |
+| P1-10 | Hero definition objects | UNBUILT | no HERO_, vael, caelen, marrow matches in any game-oath-and-bone*.js |
+| P1-11 | B1 battle scenario | UNBUILT | no SCENARIO_, battle_b1, the_muster matches in any game-oath-and-bone*.js |
+| P1-12 | advisor.js XP grant wiring | UNBUILT | grantXP at advisor.js:259 confirmed; grep 'oathandbone' in advisor.js = 0 matches; not yet wired |
+
+**Orchestrator instruction for P1-08 delegation:** Do NOT regenerate all 14 Necromancy spells. The existing 12 are: raise_skeleton, raise_archer_wraith, raise_lich_servant, curse_of_weakness, curse_of_binding, curse_of_death, life_drain, soul_siphon, bone_shield, shroud, unhallow, corpse_explosion. Delegate only the 2 missing spells from MAGIC.md's 14-spell Necromancy list — identify which 2 are absent, generate only those, integrate them into the existing _SPELLS object in game-oath-and-bone-spells.js without touching the existing 12.
