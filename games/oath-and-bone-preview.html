@@ -209,21 +209,12 @@ html, body {
   image-rendering: pixelated;
 }
 
-/* ── UNIT SPRITES (FFT-style: free-standing painted figures ON tiles) ── */
+/* ── UNIT SPRITES (FFT pixel-art sprites — transparent PNG, no mask needed) ── */
 .unit-sprite {
   position: absolute;
-  image-rendering: auto;
+  image-rendering: pixelated;
   pointer-events: none;
-  object-fit: cover;
-  /* Source PNGs have character upper-center with dark surrounding background.
-     Crop via object-position to the character's torso/head area. */
-  object-position: center 22%;
-  /* Tight ellipse mask: fully opaque in character area, hard fade right at
-     the edge so dark-robed figures (Caelen) stay readable but the PNG
-     background corners never show as hard rectangles. */
-  mask-image: radial-gradient(ellipse 55% 72% at 50% 42%, black 85%, transparent 99%);
-  -webkit-mask-image: radial-gradient(ellipse 55% 72% at 50% 42%, black 85%, transparent 99%);
-  filter: drop-shadow(1px 4px 5px rgba(0,0,0,0.85));
+  filter: drop-shadow(1px 3px 3px rgba(0,0,0,0.75));
 }
 
 /* Ground shadow under each unit — anchors the figure to the tile */
@@ -497,9 +488,9 @@ const PAD_Y  = 200;
 const CANVAS_W = 1760;
 const CANVAS_H = 1080;
 
-// Sprite display size (px). FFT-style: taller than wide, full-figure.
-const SPRITE_W = 78;
-const SPRITE_H = 118;
+// Sprite display size (px). FFT pixel-art scale — small sprites on tiles.
+const SPRITE_W = 48;
+const SPRITE_H = 72;
 
 // Enemy placeholder size — narrower+taller than before so it reads as a figure
 const ENEMY_W  = 36;
@@ -803,13 +794,8 @@ function syncUnitPos(u) {
   const p = unitDomPos(u);
   const img = document.querySelector(`[data-unit-id="${u.id}"]`);
   if (img) {
-    if (u.type === 'hero') {
-      img.style.left = p.sx + 'px';
-      img.style.top  = p.sy + 'px';
-    } else {
-      img.style.left = p.ex + 'px';
-      img.style.top  = p.ey + 'px';
-    }
+    img.style.left = p.sx + 'px';
+    img.style.top  = p.sy + 'px';
     img.style.zIndex = String(u.r + 1);
   }
   const chip = document.querySelector(`[data-name-for="${u.id}"]`);
@@ -826,17 +812,17 @@ function placeUnits(stage) {
   // Vael: Knight — HP 120, Move 3. Caelen: Wizard — HP 70, Move 3, Mana 40.
   game.units = [
     { id: 'vael',   type: 'hero', q: 3, r: 12, label: 'Vael',
-      src: `${ART}/sprites/vael/idle_n_0.png`,
+      src: `${ART}/sprites/vael/idle_n_0_px.png`,
       moveRange: 3, hp: 120, maxHp: 120, school: null },
     { id: 'caelen', type: 'hero', q: 5, r: 12, label: 'Caelen',
-      src: `${ART}/sprites/caelen/idle_n_0.png`,
+      src: `${ART}/sprites/caelen/idle_n_0_px.png`,
       moveRange: 3, hp: 70,  maxHp: 70,  school: 'wizardry',
       mana: 40, mana_max: 40 },
-    // Enemies still placeholder silhouettes until Worker 13 ships real art.
-    { id: 'e1', type: 'enemy', q: 5, r: 1, label: 'Ironwall',  archetype: 'ironwall',  moveRange: 2, hp: 100, maxHp: 100 },
-    { id: 'e2', type: 'enemy', q: 4, r: 2, label: 'Bladewind', archetype: 'bladewind', moveRange: 3, hp: 80,  maxHp: 80  },
-    { id: 'e3', type: 'enemy', q: 6, r: 2, label: 'Bladewind', archetype: 'bladewind', moveRange: 3, hp: 80,  maxHp: 80  },
-    { id: 'e4', type: 'enemy', q: 3, r: 4, label: 'Bladewind', archetype: 'bladewind', moveRange: 3, hp: 80,  maxHp: 80  },
+    // Pixel-art enemy sprites — Worker 13
+    { id: 'e1', type: 'enemy', q: 5, r: 1, label: 'Ironwall',  archetype: 'ironwall',  src: `${ART}/sprites/ironwall/idle_n_0_px.png`,  moveRange: 2, hp: 100, maxHp: 100 },
+    { id: 'e2', type: 'enemy', q: 4, r: 2, label: 'Bladewind', archetype: 'bladewind', src: `${ART}/sprites/bladewind/idle_n_0_px.png`, moveRange: 3, hp: 80,  maxHp: 80  },
+    { id: 'e3', type: 'enemy', q: 6, r: 2, label: 'Bladewind', archetype: 'bladewind', src: `${ART}/sprites/bladewind/idle_n_0_px.png`, moveRange: 3, hp: 80,  maxHp: 80  },
+    { id: 'e4', type: 'enemy', q: 3, r: 4, label: 'Bladewind', archetype: 'bladewind', src: `${ART}/sprites/bladewind/idle_n_0_px.png`, moveRange: 3, hp: 80,  maxHp: 80  },
   ];
 
   game.units.forEach(u => {
@@ -876,21 +862,27 @@ function placeUnits(stage) {
       chip.style.zIndex = String(u.r + 2);
       stage.appendChild(chip);
     } else {
-      // enemy silhouette
-      const div = document.createElement('div');
-      div.className = 'enemy-silhouette';
-      div.dataset.unitId = u.id;
-      div.style.left   = p.ex + 'px';
-      div.style.top    = p.ey + 'px';
-      div.style.width  = ENEMY_W + 'px';
-      div.style.height = ENEMY_H + 'px';
-      div.style.zIndex = String(u.r + 1);
-      div.title = `${u.label} (${u.q}, ${u.r})`;
-      if (u.archetype === 'ironwall') {
-        div.style.background = 'rgba(60, 28, 14, 0.92)';
-        div.style.borderColor = 'rgba(180, 100, 50, 0.5)';
-      }
-      stage.appendChild(div);
+      // enemy pixel-art sprite (img, same sizing as heroes)
+      const img = document.createElement('img');
+      img.className = 'unit-sprite';
+      img.dataset.unitId = u.id;
+      img.src   = u.src;
+      img.alt   = u.label;
+      img.title = `${u.label} (${u.q}, ${u.r})`;
+      img.style.left   = p.sx + 'px';
+      img.style.top    = p.sy + 'px';
+      img.style.width  = SPRITE_W + 'px';
+      img.style.height = SPRITE_H + 'px';
+      img.style.zIndex = String(u.r + 1);
+      img.onerror = () => {
+        // fallback: replace with dark div silhouette
+        const div = document.createElement('div');
+        div.className = 'enemy-silhouette';
+        div.dataset.unitId = u.id;
+        div.style.cssText = `position:absolute;left:${p.ex}px;top:${p.ey}px;width:${SPRITE_W}px;height:${SPRITE_H}px;z-index:${u.r+1};`;
+        img.replaceWith(div);
+      };
+      stage.appendChild(img);
 
       // enemy label chip (smaller, red-tinted)
       const chip = document.createElement('div');
