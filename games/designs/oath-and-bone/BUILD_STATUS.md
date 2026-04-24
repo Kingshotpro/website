@@ -68,7 +68,7 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
-| P1-11 | game-oath-and-bone-battles.js — 136 lines, all gates passed (1 post-gen: forest 9→10) | 2026-04-24 | pending |
+| P1-11 | game-oath-and-bone-battles.js — 136 lines, all gates passed (1 post-gen: forest 9→10) | 2026-04-24 | 3b16c17 |
 | P1-10 | game-oath-and-bone-heroes.js — 168 lines, all gates passed, no fixes needed | 2026-04-24 | 11cbab8 |
 | P1-08 | Spell defs — Necromancy (12 battle spells; MAGIC.md §2 says 13 total, Marrow's Binding camp-only) — PRE-BUILT | 2026-04-24 | audit-2026-04-24 |
 | P1-09 | Spell defs — Druidry (15 spells) — PRE-BUILT in P1-05 (game-oath-and-bone-spells.js:39-53) | 2026-04-24 | audit-2026-04-24 (no separate commit needed) |
