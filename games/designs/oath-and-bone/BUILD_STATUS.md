@@ -1,6 +1,6 @@
 # BUILD_STATUS.md — Oath and Bone Autonomous Build Queue
 
-last_updated: 2026-04-24T19:30:00Z
+last_updated: 2026-04-24T20:00:00Z
 last_feedback_processed: 2026-04-24T18:00:00Z
 current_phase: 1
 daily_cap_hit: false
@@ -8,7 +8,7 @@ spend_today_usd: 0.00
 mj_count_today: 0
 PAUSE: false
 
-succession_note: "Pre-flight complete 2026-04-24. Ready for /schedule --every 4h orchestrator fire and /schedule --every 12h Challenger fire. Architect cleared."
+succession_note: "P1-10 complete 2026-04-24. game-oath-and-bone-heroes.js (168 lines). window.OathAndBoneHeroes: getDefinition, createUnit, getAllHeroIds, isGameOverHero. All 6 heroes: vael/halv/brin/caelen/marrow/thessa. All gates passed, no post-gen fixes. P1-11 is next: B1 battle scenario data object (Template 3.4). P1-08 closed: all 12 necromancy battle spells pre-built in P1-05; Marrow's Binding is camp-only rite not in _SPELLS (MAGIC.md §2 says 13 total)."
 
 ---
 
@@ -16,7 +16,7 @@ succession_note: "Pre-flight complete 2026-04-24. Ready for /schedule --every 4h
 
 | ID | Task | Attempt | Template | Output path |
 |---|---|---|---|---|
-| P1-10 | Hero definition objects (6 heroes, permadeath flags) | 1 | 3.1 | WORKER_OUTPUT/code/P1-10.md |
+| P1-11 | B1 battle scenario data object | 1 | 3.4 | WORKER_OUTPUT/code/P1-11.md |
 
 ---
 
@@ -24,8 +24,6 @@ succession_note: "Pre-flight complete 2026-04-24. Ready for /schedule --every 4h
 
 | ID | Task | Template | Depends on |
 |---|---|---|---|
-| P1-11 | B1 battle scenario data object | 3.4 | P1-04 |
-| P1-11 | B1 battle scenario data object | 3.4 | P1-04 |
 | P1-12 | advisor.js wiring — XP grant on Sergeant+ win | 3.1 | P1-03 |
 | P1-13 | Fix worker.js:962 handleChronicle playerContext stringify (same pattern as P1-01) | 3.1 (narrow) | — |
 
@@ -71,7 +69,7 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
-| P1-10 | Hero definition objects (6 heroes) — ACTIVE this cycle | 2026-04-24 | pending |
+| P1-10 | game-oath-and-bone-heroes.js — 168 lines, all gates passed, no fixes needed | 2026-04-24 | pending |
 | P1-08 | Spell defs — Necromancy (12 battle spells; MAGIC.md §2 says 13 total, Marrow's Binding camp-only) — PRE-BUILT | 2026-04-24 | audit-2026-04-24 |
 | P1-09 | Spell defs — Druidry (15 spells) — PRE-BUILT in P1-05 (game-oath-and-bone-spells.js:39-53) | 2026-04-24 | audit-2026-04-24 (no separate commit needed) |
 | P1-07 | Spell defs — Wizardry (15 spells, 1 over spec-14) — PRE-BUILT in P1-05 (game-oath-and-bone-spells.js:8-22) | 2026-04-24 | audit-2026-04-24 (no separate commit needed) |
