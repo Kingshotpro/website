@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" fill="#000"/>
+  <!-- Ground -->
+  <ellipse cx="96" cy="150" rx="50" ry="8" fill="#1a0a00" opacity="0.6"/>
+  <!-- Fire glow -->
+  <radialGradient id="glow">
+    <stop offset="0%" stop-color="#ff6600" stop-opacity="0.4"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+  </radialGradient>
+  <circle cx="96" cy="110" r="60" fill="url(#glow)"/>
+  <!-- Fire -->
+  <path d="M96 70 Q108 90 104 110 Q100 130 96 135 Q92 130 88 110 Q84 90 96 70Z" fill="#ff9900" opacity="0.9"/>
+  <path d="M96 80 Q104 95 101 110 Q98 125 96 128 Q94 125 91 110 Q88 95 96 80Z" fill="#ffcc00" opacity="0.8"/>
+  <path d="M96 90 Q100 100 99 110 Q97 118 96 120 Q95 118 93 110 Q92 100 96 90Z" fill="#fff5cc" opacity="0.7"/>
+  <!-- Sparks -->
+  <circle cx="88" cy="72" r="1.5" fill="#ffcc00" opacity="0.8"/>
+  <circle cx="105" cy="68" r="1" fill="#ff9900" opacity="0.7"/>
+  <circle cx="92" cy="65" r="1.2" fill="#fff5cc" opacity="0.6"/>
+</svg>

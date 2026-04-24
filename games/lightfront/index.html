@@ -1,0 +1,3560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Campfire</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a0a00">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Campfire">
+  <link rel="apple-touch-icon" href="icon-192.svg">
+  <meta name="description" content="An idle RPG about rescuing people from darkness and growing a community of light.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    canvas {
+      display: block;
+      background: #000;
+      max-width: 100%;
+      max-height: 100%;
+      touch-action: none;
+    }
+  </style>
+</head>
+<body>
+<canvas id="game" width="390" height="844"></canvas>
+<script>
+
+// ===== ENGINE =====
+const Campfire = {
+  modules: {},
+  _events: {},
+  state: null,
+  ctx: null,
+  canvas: null,
+  game: null,
+  audio: null,
+  input: null,
+
+  register(name, module) {
+    this.modules[name] = module;
+  },
+
+  _events: {},
+
+  emit(event, data) {
+    if (!this._events[event]) return;
+    this._events[event].forEach(fn => fn(data));
+  },
+
+  on(event, fn) {
+    if (!this._events[event]) this._events[event] = [];
+    this._events[event].push(fn);
+  },
+
+  init() {
+    Object.values(this.modules).forEach(m => m.init?.());
+  }
+};
+
+// ===== MODULE: Sprites =====
+Campfire.register('sprites', {
+  S: {},
+  init() {
+    ['wisp','shade','voidling','swarm','darkknight',
+     'soul_normal','soul_named','soul_ember',
+     'bg_far','bg_mid','gate_green','gate_red','cocoon'].forEach(name => {
+      const img = new Image();
+      img.src = `assets/sprites/${name}.png`;
+      this.S[name] = img;
+    });
+  },
+  ready(name) {
+    const img = this.S[name];
+    return img && img.complete && img.naturalWidth > 0;
+  }
+});
+
+// ===== MODULE: Dialogue =====
+Campfire.register('dialogue', {
+  init() {},
+  DIALOGUE: {
+    opening: {
+      lines: [
+        "...you're here.",
+        "The fire was almost out.",
+        "I've been waiting.",
+        "Stoke the fire. Three times.",
+        "Wait... did you hear that?",
+        "Someone is calling from the dark.",
+        "The light refuses to leave."
+      ],
+      stokeRemaining: ["Again.", "One more."],
+      cryCarries: "A cry carries through the darkness."
+    },
+    idle: {
+      generic: [
+        "Someone hums near the flame.",
+        "A rescued soul brings wood to the pile.",
+        "The dark waits. The camp does not.",
+        "Eyes catch the light and soften.",
+        "A child asks if dawn is real."
+      ],
+      named: [
+        "{name} sits closer to the fire tonight.",
+        "{name} is {role}.",
+        "{name} catches your eye and nods."
+      ],
+      intimate: "I like it here. With you.",
+      intimateDelay: 120
+    },
+    mission: {
+      find: "You found someone. Bring them home.",
+      bossSpawn: "A Dark Knight answers the return path.",
+      darkKnightFalls: "The Dark Knight falls back into shadow.",
+      returnComplete: "You return with another life in the light.",
+      chooseRescue: "Choose a rescue signal",
+      findLostSoul: "Find the lost soul",
+      returnToCamp: "Return to camp"
+    },
+    system: {
+      levelUp: "Level up! +1 stat point",
+      marketBuilt: "Market built. Shop feels fuller.",
+      darkWaveHit: "Dark Wave struck the camp.",
+      darkWaveHeld: "The walls held through the Dark Wave.",
+      fireDying: "The fire is fading...",
+      tooTired: "Too tired to travel.",
+      death: "The dark closes in. You crawl back to camp.",
+      retreat: "You retreat to camp.",
+      noStatPoints: "No stat points.",
+      reset: "Save cleared. A small flame returns.",
+      boot: "Tend the campfire. Rescue, don't conquer.",
+      tapToStoke: "Tap fire to stoke"
+    },
+    names: ["Ember","Lark","Moss","Thaw","Vale","Cinder","Wren","Fern","Ash","Dew","Reed","Flint","Sage","Drift","Glow","Haven","Thorn","Brook","Soot","Kindle","Clay","Petal","Spark","Mist","Rust","Thistle","Bloom","Slate","Wisp","Root"],
+    roles: ["tends the fire","watches the edge","tells stories","mends clothes","gathers wood","hums old songs","teaches the children","counts the stars","keeps the embers bright","remembers the names"],
+    firstLines: [
+      "I can still hear it. The silence before you came.",
+      "Is this... is this a fire? A real one?",
+      "How many others? How many did you bring back?",
+      "I was starting to forget what warmth felt like.",
+      "Thank you. I don't know what else to say.",
+      "I kept walking toward where I thought light might be.",
+      "There are more. Out there. Still waiting.",
+      "Can I sit here? Just for a while?",
+      "I haven't said my name out loud in so long.",
+      "The dark told me no one was coming. The dark was wrong."
+    ],
+    crowdRunner: {
+      title: "The Gloom Run",
+      start: "Lead the lost souls through the void.",
+      bossWarn: "Something ancient stirs in the dark...",
+      victory: "The runners return with light.",
+      defeat: "The darkness consumed the last flame.",
+      tooTired: "Too tired to run.",
+      firstCocoon: "A soul trapped in shadow... break it free!",
+      bossAppear: "Hold the line. The dark answers our light.",
+      victoryLine: " souls carried the light."
+    }
+  }
+});
+
+// ===== MODULE: Audio =====
+Campfire.register('audio', {
+  ctx: null,
+  enabled: false,
+
+  init() {
+    if (this.ctx) return;
+    try {
+      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      this.enabled = true;
+    } catch(e) {}
+    Campfire.audio = this;
+  },
+
+  beep(freq=440, dur=0.08, type="sine", gain=0.04, slide=0) {
+    if (!this.enabled || !this.ctx) return;
+    const t0 = this.ctx.currentTime;
+    const o = this.ctx.createOscillator();
+    const g = this.ctx.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(freq, t0);
+    if (slide) o.frequency.linearRampToValueAtTime(freq + slide, t0 + dur);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(gain, t0 + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g).connect(this.ctx.destination);
+    o.start(t0);
+    o.stop(t0 + dur + 0.02);
+  },
+
+  fire() {
+    this.beep(320, 0.05, "triangle", 0.03, 180);
+    this.beep(190, 0.08, "square", 0.015, 60);
+  },
+
+  hit() { this.beep(140, 0.05, "sawtooth", 0.035, -40); },
+  rescue() { this.beep(523, 0.08, "triangle", 0.04, 120); this.beep(784, 0.12, "triangle", 0.025, -70); },
+  level() { this.beep(392, 0.06, "triangle", 0.03); this.beep(523, 0.08, "triangle", 0.03); this.beep(659, 0.12, "triangle", 0.04); },
+  buy() { this.beep(660, 0.04, "square", 0.02); this.beep(880, 0.06, "square", 0.02); },
+  danger() { this.beep(120, 0.18, "sawtooth", 0.045, -60); },
+  click() { this.beep(700, 0.03, "square", 0.015, 20); },
+  distantCry() {
+    this.beep(280, 0.4, "sine", 0.012, -60);
+    setTimeout(() => this.beep(320, 0.3, "sine", 0.008, -40), 500);
+  }
+});
+
+// ===== MODULE: Input =====
+Campfire.register('input', {
+  x: 0,
+  y: 0,
+  down: false,
+  pressed: false,
+  released: false,
+  startX: 0,
+  startY: 0,
+  dx: 0,
+  dy: 0,
+  moveX: 0,
+  moveY: 0,
+  pointerId: null,
+  lastTapTime: 0,
+
+  init() {
+    const W = 390, H = 844;
+    Campfire.input = this;
+
+    const canvas = document.getElementById("game") || Campfire.canvas;
+
+    if (!canvas) {
+      console.warn("Input: canvas not found, event listeners not attached");
+      return;
+    }
+
+    const setPointer = (x, y) => {
+      const r = canvas.getBoundingClientRect();
+      this.x = (x - r.left) * (W / r.width);
+      this.y = (y - r.top) * (H / r.height);
+    };
+
+    const pointerStart = (x, y, id) => {
+      Campfire.audio?.init?.();
+      if (Campfire.audio?.ctx && Campfire.audio.ctx.state === "suspended") {
+        Campfire.audio.ctx.resume();
+      }
+      setPointer(x, y);
+      this.down = true;
+      this.pressed = true;
+      this.pointerId = id;
+      this.startX = this.x;
+      this.startY = this.y;
+      this.dx = 0;
+      this.dy = 0;
+      this.moveX = 0;
+      this.moveY = 0;
+    };
+
+    const pointerMove = (x, y, id) => {
+      if (this.pointerId !== null && id !== this.pointerId) return;
+      const ox = this.x, oy = this.y;
+      setPointer(x, y);
+      this.dx = this.x - this.startX;
+      this.dy = this.y - this.startY;
+      this.moveX = this.x - ox;
+      this.moveY = this.y - oy;
+    };
+
+    const pointerEnd = (x, y, id) => {
+      if (this.pointerId !== null && id !== this.pointerId) return;
+      setPointer(x, y);
+      this.down = false;
+      this.released = true;
+      this.pointerId = null;
+    };
+
+    canvas.addEventListener("mousedown", e => pointerStart(e.clientX, e.clientY, 1));
+    window.addEventListener("mousemove", e => pointerMove(e.clientX, e.clientY, 1));
+    window.addEventListener("mouseup", e => pointerEnd(e.clientX, e.clientY, 1));
+    canvas.addEventListener("touchstart", e => {
+      const t = e.changedTouches[0];
+      pointerStart(t.clientX, t.clientY, t.identifier);
+    });
+    canvas.addEventListener("touchmove", e => {
+      const t = e.changedTouches[0];
+      pointerMove(t.clientX, t.clientY, t.identifier);
+    });
+    canvas.addEventListener("touchend", e => {
+      const t = e.changedTouches[0];
+      pointerEnd(t.clientX, t.clientY, t.identifier);
+    });
+  },
+
+  update() {
+    this.pressed = false;
+    this.released = false;
+  }
+});
+
+// ===== MODULE: State =====
+Campfire.register('state', {
+  started: false,
+  level: 1,
+  xp: 0,
+  xpTo: 10,
+  statPoints: 0,
+  coins: 18,
+  gems: 2,
+  spirit: 0,
+  fire: 25,
+  fireMax: 120,
+  fireTendPower: 18,
+  population: 1,
+  populationCap: 2,
+  rescued: 0,
+  area: 1,
+  stamina: 100,
+  staminaMax: 100,
+  hpMax: 3,
+  baseLight: 70,
+  baseFireRate: 1.0,
+  baseDamage: 1,
+  baseSpeed: 72,
+  baseMagnet: 30,
+  wallStrength: 0,
+  defense: 0,
+  coinsPerMin: 0,
+  buildings: {},
+  heroesOwned: { lightbearer: true },
+  currentHero: "lightbearer",
+  gear: { lightbearer:0, guardian:0, scout:0, mage:0 },
+  darkWaveTimer: 600,
+  idleLineCooldown: 8,
+  specialSaid: false,
+  rescuedPeople: [],
+  fallen: [],
+  corruption: 0,
+  embers: 0,
+
+  SAVE_KEY: "campfire_single_html_save_v1",
+
+  buildingDefs: [
+    { key:"shelter", name:"Shelter", cost:10, pop:2, reqLevel:1, desc:"+2 population cap" },
+    { key:"wall", name:"Wall", cost:25, pop:3, reqLevel:1, desc:"+Camp safety" },
+    { key:"watchtower", name:"Watchtower", cost:40, pop:5, reqLevel:1, desc:"+Map reveal" },
+    { key:"blacksmith", name:"Blacksmith", cost:60, pop:5, reqLevel:3, desc:"+Hero gear" },
+    { key:"farm", name:"Farm", cost:50, pop:6, reqLevel:1, desc:"+2 coins/min" },
+    { key:"barracks", name:"Barracks", cost:80, pop:8, reqLevel:1, desc:"+Defense" },
+    { key:"alchemylab", name:"Alchemy Lab", cost:100, pop:8, reqLevel:7, desc:"+Potent light" },
+    { key:"market", name:"Market", cost:120, pop:10, reqLevel:1, desc:"Unlock shop" },
+    { key:"wizardtower", name:"Wizard Tower", cost:200, pop:12, reqLevel:15, desc:"+Magic heroes" },
+    { key:"greatbeacon", name:"Great Beacon", cost:500, pop:20, reqLevel:1, desc:"Enduring hope" }
+  ],
+
+  heroDefs: [
+    { key:"lightbearer", name:"Lightbearer", cost:0, desc:"Balanced. Carries the first ember.", bonus:{light:10} },
+    { key:"guardian", name:"Guardian", cost:80, desc:"More HP, slightly slower.", bonus:{hp:2, speed:-8} },
+    { key:"scout", name:"Scout", cost:100, desc:"Fast and keen.", bonus:{speed:22, magnet:18} },
+    { key:"mage", name:"Mage", cost:140, desc:"Strong projectiles, wider light.", bonus:{damage:1, light:18, fireRate:0.25} }
+  ],
+
+  shopDefs: [
+    { key:"stamina", name:"Rations", cost:25, gemCost:0, desc:"+20 max stamina", apply:s => s.staminaMax += 20 },
+    { key:"embers", name:"Warm Gloves", cost:35, gemCost:0, desc:"+10 fire tending power", apply:s => s.fireTendPower += 10 },
+    { key:"gemLight", name:"Prism Lens", cost:0, gemCost:4, desc:"+8 light radius", apply:s => s.baseLight += 8 },
+    { key:"gemDamage", name:"Bright Core", cost:0, gemCost:5, desc:"+1 damage", apply:s => s.baseDamage += 1 },
+    { key:"gemSpeed", name:"Wind Thread", cost:0, gemCost:4, desc:"+10 speed", apply:s => s.baseSpeed += 10 }
+  ],
+
+  init() {
+    this.loadGame();
+    Campfire.state = this;
+  },
+
+  resetState() {
+    this.started = true;
+    this.level = 1;
+    this.xp = 0;
+    this.xpTo = 10;
+    this.statPoints = 0;
+    this.coins = 18;
+    this.gems = 2;
+    this.spirit = 0;
+    this.fire = 25;
+    this.fireMax = 120;
+    this.fireTendPower = 18;
+    this.population = 1;
+    this.populationCap = 2;
+    this.rescued = 0;
+    this.area = 1;
+    this.stamina = 100;
+    this.staminaMax = 100;
+    this.hpMax = 3;
+    this.baseLight = 70;
+    this.baseFireRate = 1.0;
+    this.baseDamage = 1;
+    this.baseSpeed = 72;
+    this.baseMagnet = 30;
+    this.wallStrength = 0;
+    this.defense = 0;
+    this.coinsPerMin = 0;
+    this.buildings = {};
+    this.heroesOwned = { lightbearer: true };
+    this.currentHero = "lightbearer";
+    this.gear = { lightbearer:0, guardian:0, scout:0, mage:0 };
+    this.darkWaveTimer = 600;
+    this.idleLineCooldown = 8;
+    this.specialSaid = false;
+    // rescuedNames removed — using state.rescuedPeople[] objects instead
+    this.fallen = [];
+    this.corruption = 0;
+    this.embers = 0;
+  },
+
+  saveGame() {
+    const data = { ...this };
+    localStorage.setItem(this.SAVE_KEY, JSON.stringify(data));
+  },
+
+  loadGame() {
+    try {
+      const raw = localStorage.getItem(this.SAVE_KEY);
+      if (raw) {
+        const data = JSON.parse(raw);
+        // Capture defaults before overwrite for migration
+        const defaults = {
+          spirit: 0, rescuedPeople: [], idleLineCooldown: 8,
+          specialSaid: false, defense: 0, coinsPerMin: 0,
+          gear: { lightbearer:0, guardian:0, scout:0, mage:0 },
+          fallen: [], corruption: 0, embers: 0
+        };
+        Object.assign(this, data);
+        // Fill missing fields from defaults (save migration)
+        for (const [key, val] of Object.entries(defaults)) {
+          if (this[key] === undefined) this[key] = val;
+        }
+      }
+    } catch(e) {}
+  }
+});
+
+// ===== MODULE: Particles =====
+Campfire.register('particles', {
+  particles: [],
+
+  init() {},
+
+  createParticle(x, y, vx, vy, life, size, color) {
+    this.particles.push({ x, y, vx, vy, life, maxLife: life, size, color });
+  },
+
+  fireBurst(x, y, count=10) {
+    for (let i = 0; i < count; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const s = Math.random() * 80 + 40;
+      this.createParticle(x, y, Math.cos(a) * s, Math.sin(a) * s - 40, 0.5, Math.random() * 4 + 2, `hsl(${30 + Math.random() * 30}, 100%, ${50 + Math.random() * 30}%)`);
+    }
+  },
+
+  goldenBurst(x, y, count=20) {
+    for (let i = 0; i < count; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const s = Math.random() * 100 + 60;
+      this.createParticle(x, y, Math.cos(a) * s, Math.sin(a) * s - 30, 0.8, Math.random() * 5 + 3, `hsl(45, 100%, ${50 + Math.random() * 40}%)`);
+    }
+  },
+
+  update(dt) {
+    for (let i = this.particles.length - 1; i >= 0; i--) {
+      const p = this.particles[i];
+      p.life -= dt;
+      if (p.life <= 0) {
+        this.particles.splice(i, 1);
+        continue;
+      }
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.vy += 40 * dt;
+    }
+  },
+
+  draw(ctx) {
+    for (const p of this.particles) {
+      const alpha = Math.max(0, p.life / p.maxLife);
+      ctx.globalAlpha = alpha * 0.8;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+});
+
+// ===== MODULE: Renderer =====
+Campfire.register('renderer', {
+  init() {},
+
+  drawBackgroundDark(ctx, W, H) {
+    ctx.fillStyle = "#0a0a1a";
+    ctx.fillRect(0, 0, W, H);
+    const stars = Campfire.game.stars;
+    if (stars) {
+      stars.forEach(s => {
+        ctx.fillStyle = `rgba(255, 255, 255, ${s.a})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+  },
+
+  drawFire(ctx, x, y, scale=1, power=1) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scale, scale);
+    const b = Math.min(1, power);
+    ctx.fillStyle = `rgba(255, ${100*b}, 0, ${0.8*b})`;
+    for (let i = 0; i < 3; i++) {
+      ctx.beginPath();
+      ctx.moveTo(-10, 20);
+      ctx.quadraticCurveTo(-15 - i*3, 10 - i*5, -12 - i*2, -5 - i*8);
+      ctx.quadraticCurveTo(-8 - i, 5 - i*5, 0, -15 - i*5);
+      ctx.quadraticCurveTo(8 + i, 5 - i*5, 12 + i*2, -5 - i*8);
+      ctx.quadraticCurveTo(15 + i*3, 10 - i*5, 10, 20);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.fillStyle = `rgba(255, 200, 0, ${0.5*b})`;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 8*b, 12*b, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  },
+
+  drawPerson(ctx, x, y, size=30, tint=0, eyesOpen=true, carrying=false) {
+    ctx.save();
+    ctx.translate(x, y);
+    const h = size;
+    const w = size * 0.6;
+    ctx.fillStyle = tint ? `hsl(0, 0%, ${60 + tint*10}%)` : "#b8956a";
+    ctx.beginPath();
+    ctx.ellipse(0, -h*0.3, w*0.5, h*0.4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = tint ? `hsl(0, 0%, ${50 + tint*5}%)` : "#8b7355";
+    ctx.fillRect(-w*0.5, -h*0.1, w, h*0.6);
+    ctx.fillRect(-w*0.7, h*0.3, w*0.35, h*0.5);
+    ctx.fillRect(w*0.35, h*0.3, w*0.35, h*0.5);
+    if (eyesOpen) {
+      ctx.fillStyle = "#000";
+      ctx.beginPath();
+      ctx.arc(-w*0.2, -h*0.25, w*0.08, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(w*0.2, -h*0.25, w*0.08, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.strokeStyle = "#000";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(-w*0.25, -h*0.25);
+      ctx.lineTo(-w*0.15, -h*0.25);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(w*0.15, -h*0.25);
+      ctx.lineTo(w*0.25, -h*0.25);
+      ctx.stroke();
+    }
+    if (carrying) {
+      ctx.fillStyle = "#d4a574";
+      ctx.fillRect(-w*0.3, -h*0.35, w*0.6, h*0.15);
+    }
+    ctx.restore();
+  },
+
+  drawBuilding(ctx, x, y, w, h, type) {
+    ctx.save();
+    ctx.translate(x, y);
+
+    if (type === "shelter") {
+      // A-frame tent shape
+      ctx.fillStyle = "#8b6f47";
+      ctx.beginPath();
+      ctx.moveTo(0, h);
+      ctx.lineTo(w/2, -h*0.2);
+      ctx.lineTo(w, h);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = "#6b5030";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      // Door
+      ctx.fillStyle = "#5a4020";
+      ctx.fillRect(w*0.35, h*0.5, w*0.3, h*0.5);
+    } else if (type === "wall") {
+      // Stone wall segment
+      ctx.fillStyle = "#666";
+      ctx.fillRect(0, h*0.3, w, h*0.7);
+      ctx.fillStyle = "#555";
+      ctx.fillRect(0, h*0.3, w*0.45, h*0.35);
+      ctx.fillRect(w*0.55, h*0.3, w*0.45, h*0.35);
+      ctx.fillRect(w*0.2, h*0.65, w*0.6, h*0.35);
+      ctx.strokeStyle = "#444";
+      ctx.lineWidth = 1;
+      ctx.strokeRect(0, h*0.3, w, h*0.7);
+      // Crenellation
+      for (let i = 0; i < 3; i++) {
+        ctx.fillStyle = "#777";
+        ctx.fillRect(i * w/3 + 2, h*0.15, w/3 - 4, h*0.2);
+      }
+    } else if (type === "watchtower") {
+      // Tall narrow tower
+      ctx.fillStyle = "#7a5d3a";
+      ctx.fillRect(w*0.2, -h*0.5, w*0.6, h*1.5);
+      ctx.fillStyle = "#9a7d5a";
+      ctx.fillRect(w*0.1, -h*0.6, w*0.8, h*0.15);
+      // Window
+      ctx.fillStyle = "#ffdd88";
+      ctx.fillRect(w*0.4, -h*0.2, w*0.2, h*0.15);
+    } else if (type === "blacksmith") {
+      // Squat building with chimney
+      ctx.fillStyle = "#3d3d3d";
+      ctx.fillRect(0, h*0.3, w, h*0.7);
+      ctx.fillStyle = "#555";
+      ctx.fillRect(w*0.7, -h*0.2, w*0.2, h*0.5);
+      // Anvil glow
+      ctx.fillStyle = "#ff6620";
+      ctx.beginPath();
+      ctx.arc(w*0.3, h*0.6, 3, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (type === "farm") {
+      // Green plot with fence
+      ctx.fillStyle = "#4a6b18";
+      ctx.fillRect(0, h*0.4, w, h*0.6);
+      ctx.strokeStyle = "#8b6f47";
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(-2, h*0.35, w+4, h*0.65);
+      // Crop rows
+      ctx.fillStyle = "#6b8e23";
+      for (let i = 0; i < 3; i++) {
+        ctx.fillRect(4, h*0.5 + i*h*0.15, w-8, 3);
+      }
+    } else if (type === "barracks") {
+      // Military building
+      ctx.fillStyle = "#5d4e37";
+      ctx.fillRect(0, h*0.2, w, h*0.8);
+      ctx.fillStyle = "#4a3d2a";
+      ctx.fillRect(w*0.35, h*0.55, w*0.3, h*0.45);
+      // Flag
+      ctx.strokeStyle = "#8b6f47";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(w*0.8, h*0.2);
+      ctx.lineTo(w*0.8, -h*0.2);
+      ctx.stroke();
+      ctx.fillStyle = "#cc4444";
+      ctx.fillRect(w*0.8, -h*0.2, 8, 6);
+    } else if (type === "market") {
+      // Market stall with awning
+      ctx.fillStyle = "#a0826d";
+      ctx.fillRect(0, h*0.4, w, h*0.6);
+      ctx.fillStyle = "#cc9966";
+      ctx.beginPath();
+      ctx.moveTo(-3, h*0.4);
+      ctx.lineTo(w/2, h*0.05);
+      ctx.lineTo(w+3, h*0.4);
+      ctx.closePath();
+      ctx.fill();
+    } else if (type === "alchemylab") {
+      // Mystical building
+      ctx.fillStyle = "#4a3f5e";
+      ctx.fillRect(0, h*0.2, w, h*0.8);
+      // Glowing window
+      ctx.fillStyle = "#aa77ff";
+      ctx.beginPath();
+      ctx.arc(w/2, h*0.45, 4, 0, Math.PI * 2);
+      ctx.fill();
+      // Smoke
+      ctx.fillStyle = "rgba(170, 120, 255, 0.3)";
+      ctx.beginPath();
+      ctx.arc(w*0.7, h*0.05, 5, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (type === "wizardtower") {
+      // Tall pointy tower
+      ctx.fillStyle = "#6b5b95";
+      ctx.fillRect(w*0.15, -h*0.3, w*0.7, h*1.3);
+      ctx.fillStyle = "#8b7bb5";
+      ctx.beginPath();
+      ctx.moveTo(w*0.05, -h*0.3);
+      ctx.lineTo(w/2, -h*0.9);
+      ctx.lineTo(w*0.95, -h*0.3);
+      ctx.closePath();
+      ctx.fill();
+      // Star on top
+      ctx.fillStyle = "#ddccff";
+      ctx.beginPath();
+      ctx.arc(w/2, -h*0.85, 3, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (type === "greatbeacon") {
+      // Glowing beacon pillar
+      ctx.fillStyle = "#b8960a";
+      ctx.fillRect(w*0.25, -h*0.4, w*0.5, h*1.4);
+      ctx.fillStyle = "#ffd700";
+      ctx.beginPath();
+      ctx.arc(w/2, -h*0.5, 8, 0, Math.PI * 2);
+      ctx.fill();
+      // Beacon glow
+      const bg = ctx.createRadialGradient(w/2, -h*0.5, 3, w/2, -h*0.5, 25);
+      bg.addColorStop(0, "rgba(255, 215, 0, 0.4)");
+      bg.addColorStop(1, "rgba(255, 215, 0, 0)");
+      ctx.fillStyle = bg;
+      ctx.beginPath();
+      ctx.arc(w/2, -h*0.5, 25, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      // Fallback
+      ctx.fillStyle = "#666";
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    ctx.restore();
+  },
+
+  drawHUD(ctx, W, H, missionMode=false) {
+    const state = Campfire.state;
+    const game = Campfire.game;
+
+    ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+    ctx.fillRect(0, 0, W, 45);
+    ctx.fillStyle = "#fff";
+    ctx.font = "14px sans-serif";
+    ctx.textAlign = "left";
+
+    let x = 10;
+    ctx.fillText(`L:${state.level}`, x, 25); x += 50;
+    ctx.fillText(`XP:${state.xp}/${state.xpTo}`, x, 25); x += 80;
+    if (missionMode) {
+      ctx.fillText(`HP:${game.mission.player.hp}/${game.mission.player.hpMax}`, x, 25);
+    } else {
+      ctx.fillText(`${state.coins}C`, x, 25); x += 50;
+      ctx.fillText(`${state.gems}G`, x, 25);
+    }
+  }
+});
+
+// ===== MODULE: Economy =====
+Campfire.register('economy', {
+  init() {},
+
+  updateEconomy(dt) {
+    const state = Campfire.state;
+    const game = Campfire.game;
+    state.coinsPerMin = (state.buildings.farm || 0) * 2;
+    state.coins += state.coinsPerMin * dt / 60;
+    state.darkWaveTimer = Math.max(0, state.darkWaveTimer - dt);
+
+    const penalty = Math.max(0, 6 - state.defense - (state.buildings.wall || 0) * 0.5);
+    const healthDrain = penalty * 0.5 * dt / 60;
+    state.fire = Math.max(0, state.fire - healthDrain);
+
+    if (state.fire === 0 && !game.darkWaving) {
+      game.darkWaving = true;
+      state.darkWaveTimer = 120;
+      Campfire.audio?.danger();
+      this.showMessage(Campfire.modules.dialogue.DIALOGUE.system.darkWaveHit);
+    }
+
+    if (state.darkWaveTimer === 0 && game.darkWaving) {
+      game.darkWaving = false;
+      state.darkWaveTimer = 600;
+      state.fire = Math.min(state.fireMax, state.fire + 20);
+      this.showMessage(Campfire.modules.dialogue.DIALOGUE.system.darkWaveHeld);
+    }
+
+    if (state.fire < state.fireMax * 0.2) {
+      this.showMessage(Campfire.modules.dialogue.DIALOGUE.system.fireDying);
+    }
+  },
+
+  gainXP(v) {
+    const state = Campfire.state;
+    state.xp += v;
+    while (state.xp >= state.xpTo) {
+      state.xp -= state.xpTo;
+      state.level++;
+      state.statPoints++;
+      state.xpTo = Math.floor(10 + state.level * 2.5);
+      Campfire.audio?.level();
+      this.showMessage(Campfire.modules.dialogue.DIALOGUE.system.levelUp);
+    }
+  },
+
+  getHeroData() {
+    const state = Campfire.state;
+    const hero = state.heroDefs.find(h => h.key === state.currentHero) || state.heroDefs[0];
+    const gear = state.gear[state.currentHero] || 0;
+    return {
+      hpMax: state.hpMax + (hero.bonus?.hp || 0),
+      light: state.baseLight + (hero.bonus?.light || 0) + gear * 6,
+      fireRate: state.baseFireRate + (hero.bonus?.fireRate || 0),
+      damage: state.baseDamage + (hero.bonus?.damage || 0),
+      speed: state.baseSpeed + (hero.bonus?.speed || 0),
+      magnet: state.baseMagnet + (hero.bonus?.magnet || 0)
+    };
+  },
+
+  popCapFromBuildings() {
+    const state = Campfire.state;
+    let cap = 2;
+    cap += (state.buildings.shelter || 0) * 2;
+    cap += (state.buildings.wall || 0) * 3;
+    cap += (state.buildings.watchtower || 0) * 5;
+    cap += (state.buildings.blacksmith || 0) * 5;
+    cap += (state.buildings.farm || 0) * 6;
+    cap += (state.buildings.barracks || 0) * 8;
+    cap += (state.buildings.alchemylab || 0) * 8;
+    cap += (state.buildings.market || 0) * 10;
+    cap += (state.buildings.wizardtower || 0) * 12;
+    cap += (state.buildings.greatbeacon || 0) * 20;
+    return cap;
+  },
+
+  showMessage(msg) {
+    const game = Campfire.game;
+    game.message = msg;
+    game.messageTimer = 3;
+  }
+});
+
+// ===== MODULE: Opening =====
+Campfire.register('opening', {
+  init() {},
+
+  update(dt) {
+    const game = Campfire.game;
+    const open = game.open;
+
+    open.timer += dt;
+
+    if (open.phase === 0) {
+      open.fireScale = Math.min(1, open.timer / 1.5);
+      if (open.timer > 1.5) { open.phase = 1; open.timer = 0; }
+    } else if (open.phase === 1) {
+      open.charAlpha = Math.min(1, open.timer / 0.8);
+      if (open.timer > 0.8) { open.phase = 2; open.timer = 0; }
+    } else if (open.phase === 2) {
+      if (open.timer > 1.2) { open.phase = 3; open.timer = 0; }
+    } else if (open.phase === 3) {
+      if (Campfire.input.pressed) {
+        open.stokes++;
+        Campfire.audio?.fire();
+        open.fireScale = 1.3;
+        open.timer = 0;
+        if (open.stokes === 3) { open.phase = 4; open.timer = 0; }
+      }
+      open.fireScale = Math.max(1, open.fireScale - dt * 0.5);
+    } else if (open.phase === 4) {
+      if (open.timer > 0.8) { open.phase = 5; open.timer = 0; Campfire.audio.distantCry(); }
+    } else if (open.phase === 5) {
+      if (open.timer > 2) { open.phase = 6; open.timer = 0; open.lineIndex = 5; }
+    } else if (open.phase === 6) {
+      if (open.timer > 1.5) {
+        if (open.lineIndex < open.lines.length - 1) {
+          open.lineIndex++;
+          open.timer = 0;
+        } else {
+          Campfire.state.started = true;
+          Campfire.transitionTo(() => {
+            Campfire.game.scene = "camp";
+            Campfire.modules.camp.buildCampVisuals();
+            Campfire.game.returnGlow = 1;
+            Campfire.modules.economy.showMessage("Tend the campfire. Rescue, don't conquer.");
+          }, 1.5);
+        }
+      }
+    }
+  },
+
+  draw(ctx, W, H) {
+    const game = Campfire.game;
+    const open = game.open;
+    const t = game.time;
+    const fireX = W / 2, fireY = H * 0.48;
+
+    // Pure black background
+    ctx.fillStyle = "#020206";
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars — very dim, barely there
+    const stars = game.stars;
+    if (stars) {
+      stars.forEach(s => {
+        const twinkle = Math.sin(t * s.s * 4 + s.x) * 0.15 + 0.6;
+        ctx.fillStyle = `rgba(255, 255, 255, ${s.a * 0.4 * twinkle})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 0.8, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    // Fire glow — warm radial light that grows with stoking
+    const glowR = (40 + open.fireScale * 100) * open.fireScale;
+    if (glowR > 5) {
+      const glow = ctx.createRadialGradient(fireX, fireY, 5, fireX, fireY, glowR);
+      glow.addColorStop(0, `rgba(255, 180, 80, ${0.35 * open.fireScale})`);
+      glow.addColorStop(0.4, `rgba(255, 120, 40, ${0.12 * open.fireScale})`);
+      glow.addColorStop(0.7, `rgba(180, 60, 10, ${0.04 * open.fireScale})`);
+      glow.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(fireX, fireY, glowR, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Ground hint — earthy warmth below fire
+    if (open.fireScale > 0.3) {
+      const groundGrd = ctx.createRadialGradient(fireX, fireY + 30, 10, fireX, fireY + 30, glowR * 0.7);
+      groundGrd.addColorStop(0, `rgba(40, 22, 8, ${0.3 * open.fireScale})`);
+      groundGrd.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = groundGrd;
+      ctx.beginPath();
+      ctx.arc(fireX, fireY + 30, glowR * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Fire sprite
+    Campfire.modules.renderer.drawFire(ctx, fireX, fireY, open.fireScale, open.fireScale);
+
+    // Character — sitting BESIDE the fire (to the right, slightly below)
+    if (open.charAlpha > 0) {
+      ctx.globalAlpha = open.charAlpha;
+      const charX = fireX + 48;
+      const charY = open.phase >= 5 ? fireY - 6 : fireY + 4; // stands up in phase 5
+      Campfire.modules.renderer.drawPerson(ctx, charX, charY, 30, 0, open.phase < 5, false);
+      ctx.globalAlpha = 1;
+    }
+
+    // Dialogue text — single line at a time, centered below
+    if (open.phase >= 2) {
+      const currentLine = open.lines[Math.min(open.lineIndex, open.lines.length - 1)];
+      // Fade in effect
+      const lineAlpha = Math.min(1, open.timer / 0.4);
+      ctx.fillStyle = `rgba(255, 255, 255, ${0.9 * lineAlpha})`;
+      ctx.font = "16px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(currentLine, W / 2, H * 0.72);
+
+      // Tap hint
+      if (open.phase === 2 || (open.phase >= 5 && open.phase <= 6)) {
+        const hintAlpha = 0.25 + Math.sin(t * 2) * 0.1;
+        ctx.fillStyle = `rgba(255, 255, 255, ${hintAlpha})`;
+        ctx.font = "11px sans-serif";
+        ctx.fillText("tap to continue", W / 2, H * 0.78);
+      }
+    }
+
+    // Stoke phase — progress indicator
+    if (open.phase === 3) {
+      const remaining = 3 - open.stokes;
+      // Fire ring — dots showing stoke progress
+      for (let i = 0; i < 3; i++) {
+        const dotX = W / 2 - 20 + i * 20;
+        const dotY = H * 0.64;
+        ctx.fillStyle = i < open.stokes ? "#ffa040" : "rgba(255, 160, 60, 0.3)";
+        ctx.beginPath();
+        ctx.arc(dotX, dotY, 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      const pulseAlpha = 0.4 + Math.sin(t * 4) * 0.2;
+      ctx.fillStyle = `rgba(255, 200, 120, ${pulseAlpha})`;
+      ctx.font = "13px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("tap the fire", W / 2, H * 0.68);
+    }
+  }
+});
+
+// ===== MODULE: Camp =====
+Campfire.register('camp', {
+  buildingDef: null,
+  shopDef: null,
+  heroDef: null,
+
+  init() {},
+
+  // === GAMES OVERLAY ===
+  CAMP_GAMES: [
+    { name: "Ember Keeper", desc: "Catch embers", url: "ember_keeper.html", icon: "✨", color: "#ff8833" },
+    { name: "Signal", desc: "Decode words", url: "signal.html", icon: "📡", color: "#88bbff" },
+    { name: "Drift", desc: "Gather lights", url: "drift.html", icon: "💫", color: "#ffdd88" },
+    { name: "Pulse", desc: "Keep rhythm", url: "pulse.html", icon: "💓", color: "#ee8899" },
+    { name: "Tend", desc: "Grow garden", url: "tend.html", icon: "🌱", color: "#88cc44" },
+    { name: "Echo", desc: "Remember", url: "echo.html", icon: "🔮", color: "#bb99ee" },
+    { name: "Gather", desc: "Collect all", url: "gather.html", icon: "🌟", color: "#ffcc44" },
+    { name: "Weave", desc: "Constellations", url: "weave.html", icon: "⭐", color: "#bbbbff" },
+    { name: "Shield", desc: "Tower defense", url: "shield.html", icon: "🛡", color: "#ffaa44" },
+  ],
+
+  handleGamesOverlay(x, y) {
+    // Check if tapped outside overlay (dismiss)
+    if (y < 100 || y > 700) {
+      Campfire.game.gamesOverlay = false;
+      return;
+    }
+    // Check game buttons
+    const startY = 140;
+    const cardH = 60;
+    const gap = 8;
+    for (let i = 0; i < this.CAMP_GAMES.length; i++) {
+      const cy = startY + i * (cardH + gap);
+      if (x >= 25 && x <= 365 && y >= cy && y <= cy + cardH) {
+        const game = this.CAMP_GAMES[i];
+        // Open in same window
+        window.location.href = game.url;
+        return;
+      }
+    }
+    // Close button area
+    if (y >= 680 && y <= 720) {
+      Campfire.game.gamesOverlay = false;
+    }
+  },
+
+  drawGamesOverlay(ctx, W, H) {
+    if (!Campfire.game.gamesOverlay) return;
+    const t = Campfire.game.time;
+
+    // Dim background
+    ctx.fillStyle = "rgba(0, 0, 0, 0.75)";
+    ctx.fillRect(0, 0, W, H);
+
+    // Title
+    ctx.fillStyle = "#ffcc66";
+    ctx.font = "bold 20px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("CAMPFIRE GAMES", W/2, 120);
+
+    // Game cards
+    const startY = 140;
+    const cardH = 60;
+    const gap = 8;
+    for (let i = 0; i < this.CAMP_GAMES.length; i++) {
+      const g = this.CAMP_GAMES[i];
+      const cy = startY + i * (cardH + gap);
+
+      // Card background
+      ctx.fillStyle = "rgba(30, 25, 20, 0.8)";
+      ctx.beginPath(); ctx.roundRect(25, cy, 340, cardH, 10); ctx.fill();
+      ctx.strokeStyle = "rgba(255, 200, 100, 0.12)";
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.roundRect(25, cy, 340, cardH, 10); ctx.stroke();
+
+      // Icon
+      ctx.font = "22px sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText(g.icon, 40, cy + 38);
+
+      // Name
+      ctx.fillStyle = g.color;
+      ctx.font = "bold 15px sans-serif";
+      ctx.fillText(g.name, 72, cy + 26);
+
+      // Desc
+      ctx.fillStyle = "rgba(255, 255, 255, 0.35)";
+      ctx.font = "11px sans-serif";
+      ctx.fillText(g.desc, 72, cy + 44);
+
+      // Play arrow
+      ctx.fillStyle = "rgba(255, 200, 100, 0.3)";
+      ctx.font = "16px sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText("▸", 355, cy + 36);
+    }
+
+    // Close button
+    ctx.fillStyle = "rgba(255, 255, 255, 0.25)";
+    ctx.font = "13px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("tap outside to close", W/2, 700);
+  },
+
+  buildCampVisuals() {
+    const game = Campfire.game;
+    game.campgrounds = [];
+    const state = Campfire.state;
+    const count = Math.max(2, Math.min(state.population, 18));
+    for (let i = 0; i < count; i++) {
+      this.makeCampPerson(i, count);
+    }
+  },
+
+  makeCampPerson(index, total) {
+    const game = Campfire.game;
+    // People sit in arcs around the fire (195, 400)
+    // First ring: 6 people in a semicircle below fire
+    // Second ring: next 6, wider arc
+    // Third ring: rest, even wider
+    const fireX = 195, fireY = 400;
+    const ring = Math.floor((index || 0) / 6);
+    const posInRing = (index || 0) % 6;
+    const ringCount = Math.min(6, (total || 6) - ring * 6);
+    const baseR = 55 + ring * 45;
+    const r = baseR + (Math.random() - 0.5) * 12;
+    // Arc from roughly 0.3PI to 0.7PI (below fire, semicircle)
+    const arcStart = Math.PI * 0.15 + ring * 0.1;
+    const arcEnd = Math.PI * 0.85 - ring * 0.1;
+    const angle = arcStart + (posInRing / Math.max(1, ringCount - 1)) * (arcEnd - arcStart);
+    const jitter = (Math.random() - 0.5) * 0.15;
+    game.campgrounds.push({
+      x: fireX + Math.cos(angle + jitter) * r,
+      y: fireY + Math.sin(angle + jitter) * r,
+      vx: 0,
+      vy: 0,
+      sway: Math.random() * Math.PI * 2,
+      swaySpeed: 0.3 + Math.random() * 0.4
+    });
+  },
+
+  update(dt) {
+    const game = Campfire.game;
+    const state = Campfire.state;
+
+    Campfire.modules.economy.updateEconomy(dt);
+
+    state.fire = Math.min(state.fireMax, state.fire + state.coinsPerMin * dt / 60);
+    state.stamina = Math.min(state.staminaMax, state.stamina + dt * 2);
+    state.idleLineCooldown = Math.max(0, state.idleLineCooldown - dt);
+    game.messageTimer = Math.max(0, game.messageTimer - dt);
+
+    if (state.idleLineCooldown === 0 && Math.random() < 0.02) {
+      const dialogue = Campfire.modules.dialogue.DIALOGUE;
+      const worldTime = game.worldTime;
+      if (worldTime > 120 && !state.specialSaid) {
+        game.message = dialogue.idle.intimate;
+        state.specialSaid = true;
+      } else if (Math.random() < 0.5 && state.rescuedPeople.length > 0) {
+        const rp = state.rescuedPeople[Math.floor(Math.random() * state.rescuedPeople.length)];
+        const name = rp.name;
+        const role = rp.role || dialogue.roles[Math.floor(Math.random() * dialogue.roles.length)];
+        const line = dialogue.idle.named[Math.floor(Math.random() * dialogue.idle.named.length)];
+        game.message = line.replace("{name}", name).replace("{role}", role);
+      } else {
+        game.message = dialogue.idle.generic[Math.floor(Math.random() * dialogue.idle.generic.length)];
+      }
+      game.messageTimer = 3;
+      state.idleLineCooldown = 8;
+    }
+
+    this.handleCampUI();
+  },
+
+  handleCampUI() {
+    const game = Campfire.game;
+    const state = Campfire.state;
+    const input = Campfire.input;
+
+    if (!input.released) return;
+
+    const btnY = 844 - 70;
+    const btnH = 44;
+    const fireR = { x: 155, y: 360, w: 80, h: 80 };
+    const missionB = { x: 6, y: btnY, w: 72, h: btnH };
+    const runB = { x: 82, y: btnY, w: 50, h: btnH };
+    const buildB = { x: 136, y: btnY, w: 58, h: btnH };
+    const shopB = { x: 198, y: btnY, w: 54, h: btnH };
+    const heroB = { x: 256, y: btnY, w: 50, h: btnH };
+    const gamesB = { x: 310, y: btnY, w: 72, h: btnH };
+    const resetB = { x: 335, y: 4, w: 50, h: 20 };
+
+    const inRect = (px, py, r) => px >= r.x && py >= r.y && px <= r.x + r.w && py <= r.y + r.h;
+
+    // Games overlay handling
+    if (Campfire.game.gamesOverlay) {
+      this.handleGamesOverlay(input.x, input.y);
+      return;
+    }
+
+    if (inRect(input.x, input.y, fireR)) {
+      this.tendFire();
+    } else if (inRect(input.x, input.y, missionB)) {
+      Campfire.modules.map.goToMap();
+    } else if (inRect(input.x, input.y, runB)) {
+      Campfire.modules.crowdRunner.startRun();
+    } else if (inRect(input.x, input.y, buildB)) {
+      this.cycleBuild();
+    } else if (inRect(input.x, input.y, shopB)) {
+      this.buyShopItem();
+    } else if (inRect(input.x, input.y, heroB)) {
+      this.cycleHero();
+    } else if (inRect(input.x, input.y, gamesB)) {
+      Campfire.game.gamesOverlay = true;
+      Campfire.audio?.click();
+    } else if (inRect(input.x, input.y, resetB)) {
+      state.resetState();
+      this.buildCampVisuals();
+      Campfire.modules.dialogue.DIALOGUE.system.reset;
+    }
+  },
+
+  tendFire() {
+    const state = Campfire.state;
+    const game = Campfire.game;
+
+    state.fire = Math.min(state.fireMax, state.fire + state.fireTendPower);
+    Campfire.audio?.fire();
+    Campfire.modules.particles.fireBurst(195, 400, 20);
+    // More embers rising
+    for (let i = 0; i < 8; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const s = Math.random() * 30 + 15;
+      Campfire.modules.particles.createParticle(
+        195 + (Math.random() - 0.5) * 10, 395,
+        Math.cos(a) * s * 0.3, -Math.random() * 80 - 30,
+        1.2 + Math.random() * 0.8,
+        1.5 + Math.random() * 2,
+        `hsl(${25 + Math.random() * 25}, 100%, ${50 + Math.random() * 30}%)`
+      );
+    }
+    game.screenShake = 2;
+    // Trigger autosave after tending
+    game.autosave = 3;
+  },
+
+  cycleBuild() {
+    const state = Campfire.state;
+    const game = Campfire.game;
+    const buildings = state.buildingDefs.filter(b => b.reqLevel <= state.level);
+
+    if (!game.buildPreview) {
+      // First tap: show the first affordable building
+      const affordable = buildings.filter(b => state.coins >= b.cost);
+      if (affordable.length === 0) {
+        Campfire.modules.economy.showMessage("Not enough sparks to build.");
+        return;
+      }
+      game.buildPreview = affordable[0];
+      game.buildPreviewTimer = 4;
+      Campfire.audio?.click();
+      return;
+    }
+
+    // We have a preview — cycle to next affordable or confirm
+    const affordable = buildings.filter(b => state.coins >= b.cost);
+    const currentIdx = affordable.findIndex(b => b.key === game.buildPreview.key);
+
+    if (currentIdx >= 0 && affordable.length > 1) {
+      // Cycle to next
+      const nextIdx = (currentIdx + 1) % affordable.length;
+      if (nextIdx === currentIdx) {
+        // Same building — confirm purchase
+        this.confirmBuild(game.buildPreview);
+      } else {
+        game.buildPreview = affordable[nextIdx];
+        game.buildPreviewTimer = 4;
+        Campfire.audio?.click();
+      }
+    } else {
+      // Only one option or already cycled — confirm
+      this.confirmBuild(game.buildPreview);
+    }
+  },
+
+  confirmBuild(def) {
+    const state = Campfire.state;
+    const game = Campfire.game;
+
+    if (state.coins >= def.cost) {
+      state.coins -= def.cost;
+      state.buildings[def.key] = (state.buildings[def.key] || 0) + 1;
+      state.populationCap = Campfire.modules.economy.popCapFromBuildings();
+      Campfire.audio?.buy();
+      this.buildCampVisuals();
+      Campfire.modules.economy.showMessage(`Built: ${def.name}. ${def.desc}`);
+      Campfire.modules.particles.fireBurst(195, 350, 10);
+      game.screenShake = 1.5;
+      game.autosave = 2;
+    }
+    game.buildPreview = null;
+    game.buildPreviewTimer = 0;
+  },
+
+  buyShopItem() {
+    const state = Campfire.state;
+    const shops = state.shopDefs;
+    const nextIdx = (shops.findIndex(s => s.key === this.shopDef?.key) + 1) % shops.length;
+    this.shopDef = shops[nextIdx];
+
+    const canBuy = (this.shopDef.gemCost > 0 ? state.gems >= this.shopDef.gemCost : state.coins >= this.shopDef.cost);
+    if (canBuy) {
+      if (this.shopDef.gemCost > 0) {
+        state.gems -= this.shopDef.gemCost;
+      } else {
+        state.coins -= this.shopDef.cost;
+      }
+      this.shopDef.apply(state);
+      Campfire.audio.buy();
+    }
+  },
+
+  cycleHero() {
+    const state = Campfire.state;
+    const available = state.heroDefs.filter(h => state.heroesOwned[h.key]);
+    const nextIdx = (available.findIndex(h => h.key === state.currentHero) + 1) % available.length;
+    state.currentHero = available[nextIdx].key;
+  },
+
+  draw(ctx, W, H) {
+    const game = Campfire.game;
+    const state = Campfire.state;
+    const firePower = Math.max(0.15, state.fire / state.fireMax);
+    const fireX = 195, fireY = 400;
+    const lightR = 120 + firePower * 160 + state.population * 8;
+    const t = game.time;
+
+    // === DAY/NIGHT SKY ===
+    // dayTime: 0=dawn, 0.25=midday, 0.5=dusk, 0.75=midnight
+    const dt_ = game.dayTime;
+    // Night amount: 1 at midnight, 0 at midday
+    const nightAmount = Math.max(0, Math.min(1,
+      dt_ < 0.15 ? 1 - dt_ / 0.15 :          // dawn transition (night -> day)
+      dt_ < 0.35 ? 0 :                         // full day
+      dt_ < 0.5 ? (dt_ - 0.35) / 0.15 :       // dusk transition (day -> night)
+      1                                          // full night
+    ));
+    // Sky colors by time of day
+    const skyR = Math.round(6 + (1 - nightAmount) * 40 + (dt_ < 0.15 || (dt_ > 0.35 && dt_ < 0.5) ? 40 : 0));
+    const skyG = Math.round(6 + (1 - nightAmount) * 50);
+    const skyB = Math.round(16 + (1 - nightAmount) * 70);
+    ctx.fillStyle = `rgb(${skyR}, ${skyG}, ${skyB})`;
+    ctx.fillRect(0, 0, W, H);
+
+    // Horizon glow during dawn/dusk
+    if (nightAmount < 0.9 && nightAmount > 0.1) {
+      const horizonY = H * 0.5;
+      const isDawn = dt_ < 0.25;
+      const horizonR = isDawn ? 255 : 200;
+      const horizonG = isDawn ? 160 : 100;
+      const horizonB = isDawn ? 80 : 140;
+      const horizonAlpha = (1 - Math.abs(nightAmount - 0.5) * 2) * 0.25;
+      const hGlow = ctx.createLinearGradient(0, horizonY - 100, 0, horizonY + 60);
+      hGlow.addColorStop(0, "rgba(0,0,0,0)");
+      hGlow.addColorStop(0.4, `rgba(${horizonR}, ${horizonG}, ${horizonB}, ${horizonAlpha})`);
+      hGlow.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = hGlow;
+      ctx.fillRect(0, horizonY - 100, W, 160);
+    }
+
+    // Stars (visible at night, fade during day)
+    const starVisibility = nightAmount;
+    const stars = game.stars;
+    if (stars && starVisibility > 0.05) {
+      stars.forEach(s => {
+        const dToFire = Math.hypot(s.x - fireX, s.y - fireY);
+        const starDim = Math.max(0, Math.min(1, (dToFire - lightR * 0.4) / (lightR * 0.6)));
+        const twinkle = Math.sin(t * s.s * 6 + s.x) * 0.2 + 0.8;
+        ctx.fillStyle = `rgba(255, 255, 255, ${s.a * starDim * twinkle * starVisibility})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    // Screen shake
+    if (game.screenShake > 0) {
+      ctx.save();
+      ctx.translate((Math.random() - 0.5) * game.screenShake, (Math.random() - 0.5) * game.screenShake);
+      game.screenShake = Math.max(0, game.screenShake - game.dt * 8);
+    }
+
+    // === GROUND PLANE: earthy gradient below fire ===
+    const groundY = fireY + 20;
+    const groundGrd = ctx.createLinearGradient(0, groundY, 0, H);
+    groundGrd.addColorStop(0, `rgba(30, 18, 8, ${0.3 * firePower})`);
+    groundGrd.addColorStop(0.4, `rgba(18, 10, 4, ${0.15 * firePower})`);
+    groundGrd.addColorStop(1, "rgba(6, 6, 16, 0)");
+    ctx.fillStyle = groundGrd;
+    ctx.fillRect(0, groundY, W, H - groundY);
+
+    // Ground details — small rocks/pebbles near fire
+    ctx.fillStyle = `rgba(60, 40, 25, ${0.2 * firePower})`;
+    for (let i = 0; i < 12; i++) {
+      const rx = fireX + ((i * 37 + 13) % 300) - 150;
+      const ry = groundY + 10 + ((i * 53 + 7) % 180);
+      ctx.beginPath();
+      ctx.ellipse(rx, ry, 3 + (i % 3) * 2, 2 + (i % 2), 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // === FIRE GLOW: warm radial gradient (stronger at night) ===
+    const glowMult = 0.5 + nightAmount * 0.5; // Fire glow is more visible at night
+    // Outer ambient glow
+    const outerGlow = ctx.createRadialGradient(fireX, fireY, 8, fireX, fireY, lightR);
+    outerGlow.addColorStop(0, `rgba(255, 180, 80, ${0.25 * firePower * glowMult})`);
+    outerGlow.addColorStop(0.3, `rgba(255, 120, 40, ${0.12 * firePower * glowMult})`);
+    outerGlow.addColorStop(0.6, `rgba(180, 60, 10, ${0.05 * firePower * glowMult})`);
+    outerGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+    ctx.fillStyle = outerGlow;
+    ctx.beginPath();
+    ctx.arc(fireX, fireY, lightR, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Daytime ambient light (makes everything visible without fire)
+    if (nightAmount < 0.8) {
+      const dayLight = (1 - nightAmount) * 0.12;
+      ctx.fillStyle = `rgba(200, 200, 220, ${dayLight})`;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    // Inner warm core
+    const flicker = 1 + Math.sin(t * 8) * 0.04 + Math.sin(t * 13) * 0.02;
+    const coreGlow = ctx.createRadialGradient(fireX, fireY - 5, 4, fireX, fireY, 60 * flicker);
+    coreGlow.addColorStop(0, `rgba(255, 220, 140, ${0.4 * firePower * glowMult})`);
+    coreGlow.addColorStop(0.5, `rgba(255, 160, 60, ${0.15 * firePower * glowMult})`);
+    coreGlow.addColorStop(1, "rgba(255, 100, 20, 0)");
+    ctx.fillStyle = coreGlow;
+    ctx.beginPath();
+    ctx.arc(fireX, fireY, 60 * flicker, 0, Math.PI * 2);
+    ctx.fill();
+
+    // === BUILDINGS: arranged around camp perimeter ===
+    const builtList = [];
+    for (const def of state.buildingDefs) {
+      const count = state.buildings[def.key] || 0;
+      for (let i = 0; i < count; i++) builtList.push(def.key);
+    }
+    if (builtList.length > 0) {
+      // Place buildings in fixed slots around fire perimeter
+      const buildSlots = [
+        { x: fireX - 110, y: fireY - 30 },  // far left
+        { x: fireX + 110, y: fireY - 30 },  // far right
+        { x: fireX - 80, y: fireY - 70 },   // upper left
+        { x: fireX + 80, y: fireY - 70 },   // upper right
+        { x: fireX - 130, y: fireY + 30 },  // lower left
+        { x: fireX + 130, y: fireY + 30 },  // lower right
+        { x: fireX, y: fireY - 100 },        // top center
+        { x: fireX - 50, y: fireY - 100 },  // top left
+        { x: fireX + 50, y: fireY - 100 },  // top right
+        { x: fireX, y: fireY - 140 },        // far top
+      ];
+      builtList.forEach((bkey, bi) => {
+        if (bi >= buildSlots.length) return;
+        const slot = buildSlots[bi];
+        const bDist = Math.hypot(slot.x - fireX, slot.y - fireY);
+        const litAmount = Math.max(0.35, Math.min(1, 1 - (bDist - 50) / lightR));
+        ctx.globalAlpha = litAmount;
+        Campfire.modules.renderer.drawBuilding(ctx, slot.x - 17, slot.y - 17, 35, 35, bkey);
+        ctx.globalAlpha = 1;
+      });
+    }
+
+    // === PEOPLE: gathered around fire ===
+    for (const p of game.campgrounds) {
+      // Gentle sway animation
+      if (p.sway !== undefined) {
+        p.sway += (p.swaySpeed || 0.3) * game.dt;
+      }
+      const swayX = Math.sin(p.sway || 0) * 1.5;
+      // People lit by firelight
+      const pDist = Math.hypot(p.x - fireX, p.y - fireY);
+      const pLit = Math.max(0.25, Math.min(1, 1 - (pDist - 30) / lightR));
+      ctx.globalAlpha = pLit;
+      Campfire.modules.renderer.drawPerson(ctx, p.x + swayX, p.y, 22, 0, true, false);
+      ctx.globalAlpha = 1;
+    }
+
+    // === FIRE SPRITE ===
+    Campfire.modules.renderer.drawFire(ctx, fireX, fireY, 1 + firePower * 0.3, firePower);
+
+    // Floating embers (more, with drift)
+    for (let i = 0; i < 8; i++) {
+      const emberT = (t * (0.35 + i * 0.12) + i * 1.7) % 4;
+      const emberAlpha = Math.max(0, 1 - emberT / 4) * firePower * 0.55;
+      const drift = Math.sin(t * 0.6 + i * 2.3) * (10 + i * 3);
+      const ex = fireX + drift;
+      const ey = fireY - 8 - emberT * 45;
+      const sz = Math.max(0.5, 1.8 - emberT * 0.35);
+      ctx.fillStyle = `rgba(255, ${140 + i * 12}, ${40 + i * 8}, ${emberAlpha})`;
+      ctx.beginPath();
+      ctx.arc(ex, ey, sz, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Smoke wisps rising above fire
+    for (let i = 0; i < 3; i++) {
+      const smokeT = (t * (0.2 + i * 0.08) + i * 2.5) % 6;
+      const smokeAlpha = Math.max(0, 0.08 - smokeT * 0.013) * firePower;
+      if (smokeAlpha > 0) {
+        const sx = fireX + Math.sin(t * 0.3 + i * 3) * (12 + smokeT * 3);
+        const sy = fireY - 30 - smokeT * 30;
+        const sr = 4 + smokeT * 4;
+        ctx.fillStyle = `rgba(180, 160, 140, ${smokeAlpha})`;
+        ctx.beginPath();
+        ctx.arc(sx, sy, sr, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    if (game.screenShake > 0) ctx.restore();
+
+    Campfire.modules.particles.draw(ctx);
+
+    // === HUD: Clean layout ===
+    // Top bar — stats
+    ctx.fillStyle = "rgba(0, 0, 0, 0.45)";
+    ctx.fillRect(0, 0, W, 50);
+    // Level badge
+    ctx.fillStyle = "#ffcc66";
+    ctx.font = "bold 16px sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText(`Lv ${state.level}`, 12, 22);
+    // XP bar
+    const xpFrac = state.xp / state.xpTo;
+    ctx.fillStyle = "rgba(255,255,255,0.1)";
+    ctx.fillRect(12, 28, 70, 6);
+    ctx.fillStyle = "rgba(255, 200, 80, 0.6)";
+    ctx.fillRect(12, 28, 70 * xpFrac, 6);
+    // Resources
+    ctx.fillStyle = "#f2cf73";
+    ctx.font = "14px sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(`${Math.floor(state.coins)} sparks`, W - 12, 20);
+    ctx.fillStyle = "#7ce2ff";
+    ctx.fillText(`${state.gems} gems`, W - 12, 38);
+    // Population
+    ctx.fillStyle = "#ccc";
+    ctx.font = "12px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(`${state.population} souls`, W / 2, 20);
+    // Fire status
+    const firePercent = Math.floor(firePower * 100);
+    ctx.fillStyle = firePercent < 30 ? "#ff6644" : "#ff9944";
+    ctx.fillText(`Fire: ${firePercent}%`, W / 2, 38);
+    // Idle income indicator
+    if (state.coinsPerMin > 0) {
+      ctx.fillStyle = "rgba(200, 180, 100, 0.6)";
+      ctx.font = "10px sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText(`+${state.coinsPerMin}/min`, W - 12, 48);
+    }
+    // Time of day indicator
+    const timeNames = dt_ < 0.1 ? "Dawn" : dt_ < 0.2 ? "Morning" : dt_ < 0.35 ? "Day" : dt_ < 0.45 ? "Evening" : dt_ < 0.55 ? "Dusk" : dt_ < 0.65 ? "Twilight" : dt_ < 0.85 ? "Night" : "Late Night";
+    ctx.fillStyle = `rgba(${nightAmount > 0.5 ? '180,180,200' : '100,100,120'}, 0.4)`;
+    ctx.font = "10px sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText(timeNames, 12, 48);
+
+    // === MEMORIAL PANEL: fallen colonists ===
+    if (state.fallen && state.fallen.length > 0) {
+      const visible = state.fallen.slice(-4); // most recent 4
+      const mH = 14 + visible.length * 14;
+      const mY = H - 80 - mH;
+      ctx.fillStyle = 'rgba(10,5,5,0.55)';
+      ctx.beginPath();
+      ctx.roundRect(8, mY, 155, mH, 6);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(180,80,80,0.2)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.roundRect(8, mY, 155, mH, 6);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(200,120,100,0.6)';
+      ctx.font = '9px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText('◦ Remembered', 16, mY + 11);
+      for (let fi = 0; fi < visible.length; fi++) {
+        const f = visible[fi];
+        ctx.fillStyle = 'rgba(200,170,140,0.5)';
+        ctx.font = '10px sans-serif';
+        ctx.fillText(`${f.name}`, 16, mY + 22 + fi * 14);
+        ctx.fillStyle = 'rgba(140,110,90,0.4)';
+        ctx.font = '9px sans-serif';
+        ctx.fillText(`${f.role}`, 72, mY + 22 + fi * 14);
+      }
+      if (state.fallen.length > 4) {
+        ctx.fillStyle = 'rgba(140,110,90,0.4)';
+        ctx.font = '9px sans-serif';
+        ctx.fillText(`+${state.fallen.length - 4} more`, 16, mY + mH - 3);
+      }
+    }
+
+    // === EMBERS INDICATOR ===
+    if (state.embers > 0) {
+      ctx.fillStyle = 'rgba(255,180,60,0.18)';
+      ctx.beginPath();
+      ctx.roundRect(8, H - 82, 155, 14, 4);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(255,200,80,0.7)';
+      ctx.font = '9px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(`◈ ${state.embers} embers  (5 + 30✦ = resurrect)`, 14, H - 72);
+    }
+
+    // === BOTTOM BUTTONS: styled, visible ===
+    const btnY = H - 70;
+    const btnH = 44;
+    const buttons = [
+      { label: "Rescue", x: 6, w: 72, key: "mission", color: "rgba(80, 120, 200, 0.35)" },
+      { label: "Run", x: 82, w: 50, key: "run", color: "rgba(120, 80, 160, 0.35)" },
+      { label: "Build", x: 136, w: 58, key: "build", color: "rgba(139, 111, 71, 0.35)" },
+      { label: "Shop", x: 198, w: 54, key: "shop", color: "rgba(160, 130, 109, 0.35)" },
+      { label: "Hero", x: 256, w: 50, key: "hero", color: "rgba(100, 140, 100, 0.35)" },
+      { label: "Games", x: 310, w: 72, key: "games", color: "rgba(200, 160, 60, 0.35)" }
+    ];
+    for (const btn of buttons) {
+      // Button background
+      ctx.fillStyle = btn.color;
+      ctx.beginPath();
+      ctx.roundRect(btn.x, btnY, btn.w, btnH, 8);
+      ctx.fill();
+      // Border
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.roundRect(btn.x, btnY, btn.w, btnH, 8);
+      ctx.stroke();
+      // Label
+      ctx.fillStyle = "#ddd";
+      ctx.font = "13px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(btn.label, btn.x + btn.w / 2, btnY + btnH / 2 + 5);
+    }
+
+    // Top action buttons
+    const topBtns = [
+      { label: "Reset", x: W - 55, w: 50, key: "reset" }
+    ];
+    for (const btn of topBtns) {
+      ctx.fillStyle = "rgba(100, 40, 40, 0.3)";
+      ctx.beginPath();
+      ctx.roundRect(btn.x, 4, btn.w, 20, 4);
+      ctx.fill();
+      ctx.fillStyle = "#888";
+      ctx.font = "10px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(btn.label, btn.x + btn.w / 2, 18);
+    }
+
+    // === BUILD PREVIEW PANEL ===
+    if (game.buildPreview && game.buildPreviewTimer > 0) {
+      game.buildPreviewTimer -= game.dt;
+      if (game.buildPreviewTimer <= 0) {
+        game.buildPreview = null;
+      } else {
+        const bp = game.buildPreview;
+        const bpAlpha = Math.min(1, game.buildPreviewTimer / 0.3);
+        const panelY = H - 125;
+        ctx.fillStyle = `rgba(20, 15, 10, ${0.8 * bpAlpha})`;
+        ctx.beginPath();
+        ctx.roundRect(20, panelY, W - 40, 48, 10);
+        ctx.fill();
+        ctx.strokeStyle = `rgba(180, 140, 80, ${0.4 * bpAlpha})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect(20, panelY, W - 40, 48, 10);
+        ctx.stroke();
+        // Building name and cost
+        ctx.fillStyle = `rgba(255, 220, 140, ${bpAlpha})`;
+        ctx.font = "bold 14px sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText(bp.name, 32, panelY + 20);
+        ctx.fillStyle = `rgba(200, 180, 140, ${0.8 * bpAlpha})`;
+        ctx.font = "11px sans-serif";
+        ctx.fillText(bp.desc, 32, panelY + 36);
+        // Cost
+        ctx.fillStyle = state.coins >= bp.cost ? `rgba(242, 207, 115, ${bpAlpha})` : `rgba(200, 80, 80, ${bpAlpha})`;
+        ctx.font = "bold 13px sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText(`${bp.cost} sparks`, W - 32, panelY + 20);
+        // Tap hint
+        ctx.fillStyle = `rgba(255, 255, 255, ${0.5 * bpAlpha + Math.sin(t * 4) * 0.15})`;
+        ctx.font = "10px sans-serif";
+        ctx.fillText("tap Build again", W - 32, panelY + 36);
+      }
+    }
+
+    // === MESSAGE: centered, fading ===
+    if (game.message && game.messageTimer > 0) {
+      const msgAlpha = Math.min(1, game.messageTimer / 0.5);
+      ctx.fillStyle = `rgba(0, 0, 0, ${0.6 * msgAlpha})`;
+      ctx.beginPath();
+      ctx.roundRect(30, 80, W - 60, 50, 12);
+      ctx.fill();
+      ctx.fillStyle = `rgba(255, 255, 255, ${0.9 * msgAlpha})`;
+      ctx.font = "14px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(game.message, W / 2, 110);
+    }
+
+    // === FIRE TENDING HINT ===
+    if (state.fire < state.fireMax * 0.4 && game.worldTime > 5) {
+      const hintAlpha = 0.3 + Math.sin(t * 3) * 0.15;
+      ctx.fillStyle = `rgba(255, 180, 80, ${hintAlpha})`;
+      ctx.font = "11px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("tap fire to stoke", fireX, fireY + 50);
+    }
+
+    // === GAMES OVERLAY (on top of everything) ===
+    this.drawGamesOverlay(ctx, W, H);
+  }
+});
+
+// ===== MODULE: Map =====
+Campfire.register('map', {
+  init() {},
+
+  goToMap() {
+    const game = Campfire.game;
+    const state = Campfire.state;
+    if (state.stamina < 10) {
+      Campfire.modules.economy.showMessage(Campfire.modules.dialogue.DIALOGUE.system.tooTired);
+      return;
+    }
+    const signals = this.makeMapSignals();
+    Campfire.transitionTo(() => {
+      game.scene = "map";
+      game.mapSignals = signals;
+    }, 3);
+  },
+
+  makeMapSignals() {
+    const count = 4 + Math.min(2, Math.floor(Campfire.state.level / 5));
+    const signals = [];
+    const descriptions = [
+      "A faint cry...", "Desperate whisper", "Distant sobbing",
+      "A child calls out", "Someone hums weakly", "Tapping in the dark"
+    ];
+    for (let i = 0; i < count; i++) {
+      const danger = Math.max(1, Math.min(5, 1 + Campfire.state.area + Math.floor(Campfire.state.level / 4)));
+      const distance = 0.3 + Math.random() * 0.7;
+      const rewardCoins = 8 + danger * 6 + Math.floor(Math.random() * 12);
+      const rewardGems = Math.random() < 0.25 + danger * 0.07 ? 1 : 0;
+      const rescueTime = 30 + danger * 12 + Math.random() * 22 + Campfire.state.area * 6;
+      // Spread signals in a ring around camp center, clamped to screen
+      const angle = (i / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
+      const r = 80 + distance * 100;
+      const sx = Math.max(40, Math.min(350, 195 + Math.cos(angle) * r));
+      const sy = Math.max(80, Math.min(700, 420 + Math.sin(angle) * r * 0.7));
+      signals.push({
+        id: `signal_${i}_${Date.now()}`,
+        x: sx,
+        y: sy,
+        distance,
+        danger,
+        rescueTime,
+        rewardCoins,
+        rewardGems,
+        pulse: Math.random() * Math.PI * 2,
+        desc: descriptions[i % descriptions.length],
+        area: Math.max(1, Math.min(4, 1 + Math.floor(Math.random() * 4 + Campfire.state.level / 8)))
+      });
+    }
+    return signals;
+  },
+
+  update(dt) {
+    const input = Campfire.input;
+    const game = Campfire.game;
+
+    if (!game.mapSignals) return;
+    for (const s of game.mapSignals) {
+      s.pulse = (s.pulse + dt * (1.5 + s.danger * 0.3)) % (Math.PI * 2);
+    }
+
+    if (input.released) {
+      // Back button
+      if (input.x < 70 && input.y < 50) {
+        game.scene = "camp";
+        return;
+      }
+      for (const s of game.mapSignals) {
+        const d = Math.hypot(input.x - s.x, input.y - s.y);
+        if (d < 35) {
+          Campfire.state.stamina -= 10;
+          const signal = s;
+          Campfire.transitionTo(() => {
+            Campfire.modules.mission.startMission(signal);
+            Campfire.modules.economy.showMessage("You step into the dark...");
+          }, 2);
+          return;
+        }
+      }
+    }
+  },
+
+  draw(ctx, W, H) {
+    const t = Campfire.game.time;
+
+    // Dark background
+    ctx.fillStyle = "#040410";
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars
+    const stars = Campfire.game.stars;
+    if (stars) {
+      stars.forEach(s => {
+        ctx.fillStyle = `rgba(255, 255, 255, ${s.a * 0.5})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 0.8, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    // Camp beacon at center
+    const campX = 195, campY = 420;
+    const campGlow = ctx.createRadialGradient(campX, campY, 5, campX, campY, 60);
+    campGlow.addColorStop(0, "rgba(255, 200, 100, 0.6)");
+    campGlow.addColorStop(0.5, "rgba(255, 140, 40, 0.15)");
+    campGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+    ctx.fillStyle = campGlow;
+    ctx.beginPath();
+    ctx.arc(campX, campY, 60, 0, Math.PI * 2);
+    ctx.fill();
+    Campfire.modules.renderer.drawFire(ctx, campX, campY, 0.5, 1);
+    ctx.fillStyle = "#ffcc66";
+    ctx.font = "11px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("Camp", campX, campY + 22);
+
+    // Title
+    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.font = "15px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("Voices in the Dark", W / 2, 40);
+
+    // Stamina
+    ctx.fillStyle = "#aaa";
+    ctx.font = "12px sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(`Stamina: ${Math.floor(Campfire.state.stamina)}`, W - 15, 40);
+
+    // Back button
+    ctx.fillStyle = "rgba(255, 255, 255, 0.15)";
+    ctx.beginPath();
+    ctx.roundRect(10, 10, 55, 28, 6);
+    ctx.fill();
+    ctx.fillStyle = "#ccc";
+    ctx.font = "12px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("< Back", 37, 30);
+
+    // Rescue signals
+    if (!Campfire.game.mapSignals) return;
+    for (const s of Campfire.game.mapSignals) {
+      const pulse = Math.sin(s.pulse);
+      const urgency = s.danger / 5;
+
+      // Pulsing glow
+      const sigR = 18 + pulse * 8;
+      const sigGlow = ctx.createRadialGradient(s.x, s.y, 2, s.x, s.y, sigR);
+      sigGlow.addColorStop(0, `rgba(${160 + urgency * 80}, ${200 - urgency * 60}, 255, ${0.6 + pulse * 0.2})`);
+      sigGlow.addColorStop(1, "rgba(100, 150, 255, 0)");
+      ctx.fillStyle = sigGlow;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, sigR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Core dot
+      ctx.fillStyle = `rgba(${180 + urgency * 60}, ${220 - urgency * 60}, 255, ${0.7 + pulse * 0.3})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Description
+      ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
+      ctx.font = "11px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(s.desc, s.x, s.y - 22);
+
+      // Danger indicator
+      ctx.fillStyle = `rgba(255, ${200 - urgency * 100}, ${100 - urgency * 80}, 0.6)`;
+      ctx.font = "10px sans-serif";
+      ctx.fillText("danger " + s.danger, s.x, s.y + 22);
+    }
+  }
+});
+
+// ===== MODULE: Mission =====
+Campfire.register('mission', {
+  init() {},
+
+  startMission(signal) {
+    const hero = Campfire.modules.economy.getHeroData();
+    const area = signal.area || Campfire.state.area;
+    const difficulty = signal.danger + area - 1 + Math.floor(Campfire.state.level / 6);
+    Campfire.game.scene = "mission";
+    Campfire.game.mission = {
+      phase: "rescue",
+      t: 0,
+      duration: signal.rescueTime,
+      rescuedProgress: 0,
+      player: {
+        x: 195,
+        y: 600,
+        vx: 0,
+        vy: 0,
+        hp: hero.hpMax,
+        hpMax: hero.hpMax,
+        light: hero.light,
+        fireRate: hero.fireRate,
+        damage: hero.damage,
+        speed: hero.speed,
+        magnet: hero.magnet,
+        shotCd: 0,
+        invuln: 0
+      },
+      signal,
+      area,
+      difficulty,
+      enemies: [],
+      projectiles: [],
+      pickups: [],
+      orbs: [],
+      rescued: { x: 195 + (Math.random() - 0.5) * 160, y: 200 + (Math.random() - 0.5) * 120, found: false, pulse: 0, cracking: false, crackTimer: 0, crackPhase: 0 },
+      spawnTimer: 0,
+      returnSpawnTimer: 0,
+      darkness: 1,
+      fogPulse: 0,
+      cameraOffsetX: 0,
+      cameraOffsetY: 0,
+      mapSize: { w: 840, h: 1300 },
+      bossSpawned: false,
+      complete: false
+    };
+    Campfire.audio?.click();
+  },
+
+  spawnEnemy(type, x, y, mission) {
+    const defs = {
+      wisp: { hp: 1, speed: 26, size: 12, color: "#8e8eaa" },
+      shade: { hp: 2, speed: 34, size: 16, color: "#5e5e7c" },
+      voidling: { hp: 4, speed: 22, size: 20, color: "#2e203e" },
+      stalker: { hp: 3, speed: 40, size: 18, color: "#101010" },
+      swarm: { hp: 1, speed: 48, size: 10, color: "#4c4c59" },
+      darkknight: { hp: 10, speed: 22, size: 28, color: "#201015" }
+    };
+    const d = defs[type];
+    mission.enemies.push({
+      type, x, y,
+      hp: d.hp + Math.max(0, mission.difficulty - 2) * (type === "darkknight" ? 2 : type === "voidling" ? 1 : 0),
+      maxHp: d.hp,
+      speed: d.speed + mission.difficulty * 1.5,
+      size: d.size,
+      color: d.color,
+      t: Math.random() * Math.PI * 2,
+      alpha: type === "stalker" ? 0.18 : 1,
+      hitFlash: 0
+    });
+  },
+
+  spawnAroundPlayer(mission, forceBoss=false) {
+    const p = mission.player;
+    const edge = Math.floor(Math.random() * 4);
+    let x, y;
+    const pad = 120;
+    if (edge === 0) { x = Math.random() * (mission.mapSize.w + 2*pad) - pad; y = -pad; }
+    else if (edge === 1) { x = mission.mapSize.w + pad; y = Math.random() * (mission.mapSize.h + 2*pad) - pad; }
+    else if (edge === 2) { x = Math.random() * (mission.mapSize.w + 2*pad) - pad; y = mission.mapSize.h + pad; }
+    else { x = -pad; y = Math.random() * (mission.mapSize.h + 2*pad) - pad; }
+
+    if (forceBoss) {
+      this.spawnEnemy("darkknight", x, y, mission);
+      mission.bossSpawned = true;
+      Campfire.modules.economy.showMessage(Campfire.modules.dialogue.DIALOGUE.mission.bossSpawn);
+      Campfire.audio?.danger();
+      return;
+    }
+
+    const r = Math.random();
+    let type = "wisp";
+    if (mission.difficulty >= 6 && r > 0.93) type = "darkknight";
+    else if (mission.difficulty >= 4 && r > 0.82) type = "voidling";
+    else if (mission.difficulty >= 3 && r > 0.68) type = "stalker";
+    else if (mission.difficulty >= 2 && r > 0.50) type = "shade";
+    else if (r > 0.35) type = "swarm";
+    
+    this.spawnEnemy(type, x, y, mission);
+    if (type === "swarm") {
+      for (let i = 0; i < 2 + Math.floor(mission.difficulty / 3); i++) {
+        this.spawnEnemy("swarm", x + (Math.random() - 0.5) * 36, y + (Math.random() - 0.5) * 36, mission);
+      }
+    }
+  },
+
+  update(dt) {
+    const input = Campfire.input;
+    const mission = Campfire.game.mission;
+    if (!mission) return;
+
+    const p = mission.player;
+    p.invuln = Math.max(0, p.invuln - dt);
+
+    const drag = Math.pow(0.0001, dt);
+    p.vx *= drag;
+    p.vy *= drag;
+
+    if (input.down) {
+      const dx = input.x - 195;
+      const dy = input.y - 600;
+      const len = Math.hypot(dx, dy) || 1;
+      const ax = dx / len;
+      const ay = dy / len;
+      const stick = Math.max(0, Math.min(1, len / 60));
+      p.vx += ax * p.speed * stick * 6 * dt;
+      p.vy += ay * p.speed * stick * 6 * dt;
+    }
+
+    p.x += p.vx * dt * 60;
+    p.y += p.vy * dt * 60;
+    p.x = Math.max(0, Math.min(mission.mapSize.w, p.x));
+    p.y = Math.max(0, Math.min(mission.mapSize.h, p.y));
+
+    const rescued = mission.rescued;
+    rescued.pulse += dt * 4;
+
+    if (mission.phase === "rescue" && !rescued.found) {
+      if (!rescued.cracking && Math.hypot(p.x - rescued.x, p.y - rescued.y) < 42) {
+        rescued.cracking = true;
+        rescued.crackTimer = 0;
+      }
+
+      if (rescued.cracking && rescued.crackTimer < 1.5) {
+        rescued.crackTimer += dt;
+        if (rescued.crackTimer >= 0.5 && rescued.crackPhase < 1) {
+          rescued.crackPhase = 1;
+          Campfire.game.screenShake = 3;
+        }
+        if (rescued.crackTimer >= 1.0 && rescued.crackPhase < 2) {
+          rescued.crackPhase = 2;
+          Campfire.modules.particles.goldenBurst(rescued.x, rescued.y, 15);
+          Campfire.audio?.rescue();
+        }
+        if (rescued.crackTimer >= 1.5) {
+          rescued.found = true;
+          rescued.cracking = false;
+          mission.phase = "return";
+          mission.duration = Math.max(25, Math.min(90, mission.signal.rescueTime * 0.8));
+          Campfire.state.rescued++;
+          Campfire.state.population = Math.min(Campfire.state.population + 1, Campfire.state.populationCap);
+          const dialogue = Campfire.modules.dialogue.DIALOGUE;
+          const nIdx = Campfire.state.rescuedPeople.length % dialogue.names.length;
+          const rIdx = Campfire.state.rescuedPeople.length % dialogue.roles.length;
+          const fIdx = Campfire.state.rescuedPeople.length % dialogue.firstLines.length;
+          Campfire.state.rescuedPeople.push({
+            name: dialogue.names[nIdx],
+            role: dialogue.roles[rIdx],
+            firstLine: dialogue.firstLines[fIdx],
+            arrived: false
+          });
+          Campfire.modules.economy.showMessage(dialogue.mission.find);
+          Campfire.modules.economy.gainXP(6 + mission.signal.danger * 2);
+          if (Campfire.state.rescued % 4 === 0) Campfire.state.gems += 1;
+          Campfire.modules.camp.buildCampVisuals();
+          Campfire.modules.particles.goldenBurst(rescued.x, rescued.y, 20);
+          if (mission.difficulty >= 6 && !mission.bossSpawned) this.spawnAroundPlayer(mission, true);
+        }
+      }
+    }
+
+    p.shotCd -= dt;
+    if (p.shotCd <= 0) {
+      let nearest = null, nd = 999999;
+      for (const e of mission.enemies) {
+        const d = Math.hypot(p.x - e.x, p.y - e.y);
+        if (d < nd && d < p.light + 40) { nd = d; nearest = e; }
+      }
+      if (nearest) {
+        const a = Math.atan2(nearest.y - p.y, nearest.x - p.x);
+        mission.projectiles.push({
+          x: p.x, y: p.y,
+          vx: Math.cos(a) * 220,
+          vy: Math.sin(a) * 220,
+          life: 1.4,
+          damage: p.damage,
+          size: 4
+        });
+        p.shotCd = p.fireRate;
+        Campfire.audio?.beep(820, 0.025, "triangle", 0.012, -100);
+      }
+    }
+
+    const spawnBase = Math.max(0.25, 1.7 - mission.difficulty * 0.14);
+    mission.spawnTimer -= dt;
+    if (mission.spawnTimer <= 0 && mission.enemies.length < 28) {
+      mission.spawnTimer = spawnBase * (0.6 + Math.random() * 0.55);
+      this.spawnAroundPlayer(mission);
+    }
+
+    if (mission.phase === "return") {
+      mission.returnSpawnTimer -= dt;
+      if (mission.returnSpawnTimer <= 0) {
+        mission.returnSpawnTimer = Math.max(0.22, 1.2 - mission.difficulty * 0.1) * (0.7 + Math.random() * 0.4);
+        this.spawnAroundPlayer(mission);
+      }
+    }
+
+    for (let i = mission.projectiles.length - 1; i >= 0; i--) {
+      const pr = mission.projectiles[i];
+      pr.x += pr.vx * dt;
+      pr.y += pr.vy * dt;
+      pr.life -= dt;
+      if (pr.life <= 0) { mission.projectiles.splice(i, 1); continue; }
+
+      for (let j = mission.enemies.length - 1; j >= 0; j--) {
+        const e = mission.enemies[j];
+        if (Math.hypot(pr.x - e.x, pr.y - e.y) < e.size + pr.size) {
+          e.hp -= pr.damage;
+          e.hitFlash = 0.12;
+          mission.projectiles.splice(i, 1);
+          Campfire.audio?.hit();
+
+          if (e.hp <= 0) {
+            const coins = e.type === "darkknight" ? 8 : e.type === "voidling" ? 4 : e.type === "shade" ? 2 : 1;
+            Campfire.state.coins += coins;
+            if (Math.random() < (e.type === "darkknight" ? 1 : 0.12)) Campfire.state.gems += 1;
+            Campfire.modules.economy.gainXP(coins);
+            mission.pickups.push({
+              x: e.x, y: e.y,
+              v: 1 + coins,
+              kind: Math.random() < 0.1 ? "gem" : "coin"
+            });
+            if (e.type === "swarm") {
+              for (let k = 0; k < 2; k++) {
+                mission.pickups.push({
+                  x: e.x + (Math.random() - 0.5) * 12,
+                  y: e.y + (Math.random() - 0.5) * 12,
+                  v: 1,
+                  kind: "coin"
+                });
+              }
+            }
+            if (e.type === "darkknight") Campfire.modules.economy.showMessage(Campfire.modules.dialogue.DIALOGUE.mission.darkKnightFalls);
+            Campfire.modules.particles.createParticle(e.x, e.y, 0, 0, 0, 0, "");
+            for (let n = 0; n < 8; n++) {
+              Campfire.modules.particles.createParticle(
+                e.x, e.y,
+                (Math.random() - 0.5) * 60,
+                (Math.random() - 0.5) * 60,
+                0.3 + Math.random() * 0.5,
+                2 + Math.random() * 3,
+                "rgba(220,220,255,1)"
+              );
+            }
+            mission.enemies.splice(j, 1);
+          }
+          break;
+        }
+      }
+    }
+
+    for (let i = mission.enemies.length - 1; i >= 0; i--) {
+      const e = mission.enemies[i];
+      e.t += dt;
+      e.hitFlash = Math.max(0, e.hitFlash - dt);
+
+      let a = Math.atan2(p.y - e.y, p.x - e.x);
+      let s = e.speed;
+
+      if (e.type === "shade") a += Math.sin(e.t * 7) * 0.8;
+      if (e.type === "voidling") {
+        p.light = Math.max(40, p.light - dt * 2.2);
+      }
+      if (e.type === "stalker") {
+        e.alpha = Math.max(0.08, Math.min(0.5, 0.08 + Math.hypot(e.x - p.x, e.y - p.y) / 320));
+        if (Math.hypot(e.x - p.x, e.y - p.y) < p.light * 0.75) e.alpha = 0.95;
+      }
+
+      e.x += Math.cos(a) * s * dt;
+      e.y += Math.sin(a) * s * dt;
+
+      if (Math.hypot(e.x - p.x, e.y - p.y) < e.size + 14) {
+        if (p.invuln <= 0) {
+          p.hp--;
+          p.invuln = 0.85;
+          Campfire.game.screenShake = 8;
+          Campfire.audio?.danger();
+          if (e.type !== "darkknight") mission.enemies.splice(i, 1);
+          if (p.hp <= 0) {
+            Campfire.modules.economy.showMessage(Campfire.modules.dialogue.DIALOGUE.system.death);
+            Campfire.state.stamina = Math.max(0, Campfire.state.stamina - 15);
+            Campfire.game.scene = "camp";
+            Campfire.game.mission = null;
+            return;
+          }
+        }
+      }
+    }
+
+    for (let i = mission.pickups.length - 1; i >= 0; i--) {
+      const pk = mission.pickups[i];
+      const d = Math.hypot(pk.x - p.x, pk.y - p.y);
+      if (d < p.magnet) {
+        const a = Math.atan2(p.y - pk.y, p.x - pk.x);
+        pk.x += Math.cos(a) * 160 * dt;
+        pk.y += Math.sin(a) * 160 * dt;
+      }
+      if (d < 18) {
+        if (pk.kind === "gem") Campfire.state.gems += pk.v;
+        else Campfire.state.coins += pk.v;
+        mission.pickups.splice(i, 1);
+        Campfire.audio?.beep(1000, 0.03, "triangle", 0.018, 80);
+      }
+    }
+
+    if (mission.phase === "return") {
+      const homeX = mission.mapSize.w / 2, homeY = mission.mapSize.h - 120;
+      if (Math.hypot(p.x - homeX, p.y - homeY) < 56) {
+        const reward = mission.signal.rewardCoins + mission.signal.danger * 3 + mission.area * 4;
+        Campfire.state.coins += reward;
+        Campfire.state.gems += mission.signal.rewardGems;
+        Campfire.state.spirit += 1;
+        const newest = Campfire.state.rescuedPeople.filter(rp => !rp.arrived).pop();
+        Campfire.audio?.rescue();
+
+        // Transition back to camp with warm glow
+        Campfire.transitionTo(() => {
+          Campfire.game.scene = "camp";
+          Campfire.game.mission = null;
+          Campfire.game.returnGlow = 1.5; // Warm glow pulse on return
+          Campfire.modules.camp.buildCampVisuals();
+          Campfire.modules.particles.goldenBurst(195, 400, 25);
+          if (newest) {
+            newest.arrived = true;
+            Campfire.modules.economy.showMessage(newest.name + ": \"" + newest.firstLine + "\"");
+          } else {
+            Campfire.modules.economy.showMessage(Campfire.modules.dialogue.DIALOGUE.mission.returnComplete);
+          }
+          Campfire.game.autosave = 2;
+        }, 1.8);
+        return;
+      }
+    }
+
+    if (input.pressed) {
+      for (const b of Campfire.game.bottomButtons) {
+        if (input.x >= b.r.x && input.y >= b.r.y && input.x <= b.r.x + b.r.w && input.y <= b.r.y + b.r.h && b.key === "missions") {
+          Campfire.game.scene = "camp";
+          Campfire.game.mission = null;
+          Campfire.modules.economy.showMessage(Campfire.modules.dialogue.DIALOGUE.system.retreat);
+          return;
+        }
+      }
+    }
+  },
+
+  draw(ctx, W, H) {
+    const mission = Campfire.game.mission;
+    if (!mission) return;
+
+    Campfire.modules.renderer.drawBackgroundDark(ctx, W, H);
+
+    const p = mission.player;
+    const camX = Math.max(0, Math.min(mission.mapSize.w - W, p.x - W / 2));
+    const camY = Math.max(0, Math.min(mission.mapSize.h - H, p.y - H * 0.55));
+
+    ctx.save();
+    ctx.translate(-camX, -camY);
+
+    // Grid background
+    ctx.fillStyle = "#0c0c11";
+    for (let gy = 0; gy < mission.mapSize.h; gy += 52) {
+      for (let gx = 0; gx < mission.mapSize.w; gx += 52) {
+        if ((Math.floor(gx / 52) + Math.floor(gy / 52)) % 2 === 0) {
+          ctx.fillStyle = "#0c0c11";
+        } else {
+          ctx.fillStyle = "#0a0a0f";
+        }
+        ctx.fillRect(gx, gy, 52, 52);
+      }
+    }
+
+    // Random obstacles
+    for (let i = 0; i < 120; i++) {
+      const rx = (i * 73) % mission.mapSize.w;
+      const ry = (i * 149) % mission.mapSize.h;
+      ctx.fillStyle = "#121118";
+      ctx.fillRect(rx, ry, 8 + (i % 4) * 4, 8 + (i % 3) * 3);
+    }
+
+    // Rescued soul (cocoon)
+    if (mission.phase === "rescue" && !mission.rescued.found) {
+      const rx = mission.rescued.x, ry = mission.rescued.y;
+      const pulse = 1 + Math.sin(mission.rescued.pulse) * 0.2;
+      const cocoonAlpha = mission.rescued.cracking ? Math.max(0, 1 - mission.rescued.crackTimer / 1.5) : 1;
+
+      ctx.save();
+      ctx.globalAlpha = cocoonAlpha;
+
+      // Dark cocoon
+      if (Campfire.modules.sprites.ready('cocoon')) {
+        ctx.drawImage(Campfire.modules.sprites.S.cocoon, rx - 28, ry - 36, 56, 72);
+      } else {
+        ctx.fillStyle = "#0a0812";
+        ctx.beginPath();
+        ctx.ellipse(rx, ry, 28, 36, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Orbiting particles
+      for (let i = 0; i < 4; i++) {
+        const a = mission.rescued.pulse + (i * Math.PI * 2) / 4;
+        ctx.fillStyle = "#150f20";
+        ctx.beginPath();
+        ctx.arc(rx + Math.cos(a) * 30, ry + Math.sin(a) * 20, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.restore();
+
+      // Golden glow (if not cracking)
+      if (!mission.rescued.cracking) {
+        const gg = ctx.createRadialGradient(rx, ry, 5, rx, ry, 42 * pulse);
+        gg.addColorStop(0, "rgba(255,240,160,0.5)");
+        gg.addColorStop(1, "rgba(255,180,80,0)");
+        ctx.fillStyle = gg;
+        ctx.beginPath();
+        ctx.arc(rx, ry, 42 * pulse, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Cracks
+      if (mission.rescued.cracking && mission.rescued.crackTimer >= 0.5) {
+        const t = mission.rescued.crackTimer;
+        const crackCount = t >= 1.0 ? 6 : 2;
+        for (let i = 0; i < crackCount; i++) {
+          const a = (i / crackCount) * Math.PI * 2 + t * 2;
+          const len = Math.max(0, Math.min(40, (t - 0.5) * 60));
+          ctx.save();
+          ctx.strokeStyle = "#ffd484";
+          ctx.lineWidth = t >= 1.0 ? 2 : 1;
+          ctx.globalAlpha = Math.max(0, Math.min(0.9, t - 0.5));
+          ctx.beginPath();
+          ctx.moveTo(rx, ry);
+          ctx.lineTo(rx + Math.cos(a) * len, ry + Math.sin(a) * len * 0.75);
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+
+      // Person reveal with alpha fade
+      const personAlpha = mission.rescued.cracking ? Math.max(0, Math.min(1, (mission.rescued.crackTimer - 1.0) / 0.5)) : 0;
+      if (personAlpha > 0) {
+        ctx.save();
+        ctx.globalAlpha = personAlpha;
+        Campfire.modules.renderer.drawPerson(ctx, rx, ry, 30, 1, true, false);
+        ctx.restore();
+      } else if (!mission.rescued.cracking) {
+        Campfire.modules.renderer.drawPerson(ctx, rx, ry, 30, 1, true, false);
+      }
+    }
+
+    // Return fire beacon
+    if (mission.phase === "return") {
+      const hx = mission.mapSize.w / 2, hy = mission.mapSize.h - 120;
+      const gg = ctx.createRadialGradient(hx, hy, 12, hx, hy, 80);
+      gg.addColorStop(0, "rgba(255,230,160,0.7)");
+      gg.addColorStop(1, "rgba(255,230,160,0)");
+      ctx.fillStyle = gg;
+      ctx.beginPath();
+      ctx.arc(hx, hy, 80, 0, Math.PI * 2);
+      ctx.fill();
+      Campfire.modules.renderer.drawFire(ctx, hx, hy, 0.8, 30);
+    }
+
+    // Pickups
+    for (const pk of mission.pickups) {
+      ctx.fillStyle = pk.kind === "gem" ? "#7ce2ff" : "#f2cf73";
+      ctx.beginPath();
+      ctx.arc(pk.x, pk.y, pk.kind === "gem" ? 5 : 4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Projectiles
+    for (const pr of mission.projectiles) {
+      const gg = ctx.createRadialGradient(pr.x, pr.y, 1, pr.x, pr.y, 12);
+      gg.addColorStop(0, "rgba(255,255,220,1)");
+      gg.addColorStop(1, "rgba(255,220,100,0)");
+      ctx.fillStyle = gg;
+      ctx.beginPath();
+      ctx.arc(pr.x, pr.y, 10, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Enemies
+    const spr = Campfire.modules.sprites;
+    for (const e of mission.enemies) {
+      ctx.save();
+      ctx.globalAlpha = e.alpha || 1;
+      const sx = e.x - e.size, sy = e.y - e.size, sw = e.size * 2, sh = e.size * 2;
+      if (spr.ready(e.type)) {
+        if (e.hitFlash > 0) ctx.filter = 'brightness(4) saturate(0)';
+        ctx.drawImage(spr.S[e.type], sx, sy, sw, sh);
+        ctx.filter = 'none';
+        if (e.type === "darkknight") {
+          const hpW = 56;
+          ctx.fillStyle = '#300';
+          ctx.fillRect(e.x - hpW/2, sy - 12, hpW, 6);
+          ctx.fillStyle = '#f44';
+          ctx.fillRect(e.x - hpW/2, sy - 12, (e.hp / e.maxHp) * hpW, 6);
+        }
+      } else if (e.type === "darkknight") {
+        ctx.fillStyle = e.hitFlash > 0 ? "#b4788e" : "#2b1622";
+        ctx.fillRect(e.x - 12, e.y - 22, 24, 30);
+        ctx.fillStyle = "#d8c9d0";
+        ctx.beginPath();
+        ctx.arc(e.x, e.y - 28, 9, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "#111";
+        ctx.beginPath();
+        ctx.arc(e.x - 3, e.y - 29, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(e.x + 3, e.y - 29, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillStyle = e.hitFlash > 0 ? "#d9d9ff" : e.color;
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "#111";
+        ctx.beginPath();
+        ctx.arc(e.x - e.size * 0.2, e.y - e.size * 0.1, Math.max(1.2, e.size * 0.07), 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(e.x + e.size * 0.2, e.y - e.size * 0.1, Math.max(1.2, e.size * 0.07), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    // Player
+    if (!(p.invuln > 0 && Math.floor(p.invuln * 10) % 2 === 0)) {
+      Campfire.modules.renderer.drawPerson(ctx, p.x, p.y, 30, 0, true, true);
+    }
+
+    // Light radius and fog
+    const lightR = p.light + Math.sin(mission.fogPulse) * 4;
+    const grd = ctx.createRadialGradient(p.x, p.y - 8, 10, p.x, p.y, lightR);
+    grd.addColorStop(0, "rgba(255,230,160,0.34)");
+    grd.addColorStop(0.45, "rgba(255,180,100,0.12)");
+    grd.addColorStop(1, "rgba(255,160,80,0)");
+    ctx.fillStyle = grd;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, lightR, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore();
+
+    // Darkness overlay
+    ctx.fillStyle = "rgba(0,0,0,0.92)";
+    ctx.fillRect(0, 0, W, H);
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-out";
+    const lgr = ctx.createRadialGradient(W / 2, H * 0.55, 20, W / 2, H * 0.55, p.light + Math.sin(mission.fogPulse) * 4);
+    lgr.addColorStop(0, "rgba(0,0,0,1)");
+    lgr.addColorStop(0.7, "rgba(0,0,0,0.88)");
+    lgr.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = lgr;
+    ctx.beginPath();
+    ctx.arc(W / 2, H * 0.55, p.light + 10, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (mission.phase === "rescue" && !mission.rescued.found) {
+      const rx = mission.rescued.x - camX, ry = mission.rescued.y - camY;
+      const gg = ctx.createRadialGradient(rx, ry, 0, rx, ry, 36);
+      gg.addColorStop(0, "rgba(0,0,0,0.8)");
+      gg.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = gg;
+      ctx.beginPath();
+      ctx.arc(rx, ry, 36, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
+
+    mission.fogPulse += Campfire.game.dt * 2;
+
+    Campfire.modules.particles.draw(ctx);
+    Campfire.modules.renderer.drawHUD(ctx, W, H, true);
+  }
+});
+
+// ===== MODULE: Crowd Runner (Sub-game) =====
+// Built by Gemini 2.5 Pro, integrated by Worker Claude (March 23, 2026)
+Campfire.register('crowdRunner', {
+  // --- STATE ---
+  run: null, // All run state lives here, reset each run
+
+  init() {},
+
+  startRun() {
+    const state = Campfire.state;
+    if (state.stamina < 20) {
+      Campfire.modules.economy.showMessage("Too tired to run.");
+      return false;
+    }
+    state.stamina -= 20;
+
+    this.run = {
+      group: [],
+      projectiles: [],
+      enemies: [],
+      gates: [],
+      cocoons: [],
+      pickups: [],
+      timer: 0,
+      roadOffset: 0,
+      playerX: 195,
+      targetX: 195,
+      scrollSpeed: 280,
+      gameState: 'RUNNING', // RUNNING, BOSS_WARN, BOSS, VICTORY, GAMEOVER
+      score: 0,
+      coinsEarned: 0,
+      gemsEarned: 0,
+      shake: 0,
+      flash: 0,
+      flashColor: '#fff',
+      slowMo: 0,
+      spawnTimer: 1.5,
+      gateTimer: 5,
+      bossSpawnTimer: 0,
+      cocoonTimer: 0,
+      bgFarOffset: 0,
+      bgMidOffset: 0,
+      waveIndex: 0,
+      bossSpawned: false,
+      powerup: { type: null, timer: 0, text: '' },
+      endTimer: 0,
+      runMessages: [],
+      shownFirstCocoon: false
+    };
+
+    // Start with 3 souls
+    for (let i = 0; i < 3; i++) this.addSoul();
+    Campfire.audio?.click();
+    Campfire.game.scene = "crowdRunner";
+    return true;
+  },
+
+  addSoul() {
+    const r = this.run;
+    const names = Campfire.modules.dialogue.DIALOGUE.names;
+    const name = names[Math.floor(Math.random() * names.length)];
+    r.group.push({
+      x: r.playerX,
+      y: 700,
+      fireTimer: Math.random() * 0.5,
+      flash: 0,
+      name: name
+    });
+    return name;
+  },
+
+  removeSouls(count) {
+    const r = this.run;
+    const removed = Math.min(count, r.group.length);
+    const lostNames = r.group.slice(0, removed).map(s => s.name).filter(Boolean);
+    r.group.splice(0, removed);
+    r.shake = Math.max(r.shake, 8);
+    r.flash = 0.2;
+    r.flashColor = '#ff0000';
+    Campfire.audio?.danger();
+    if (lostNames.length > 0) {
+      if (lostNames.length === 1) {
+        this.showRunMessage('The dark claims ' + lostNames[0] + '.');
+      } else {
+        this.showRunMessage('The dark claims ' + lostNames[0] + ' and ' + (lostNames.length - 1) + ' others.');
+      }
+    }
+    if (r.group.length <= 0) {
+      r.gameState = 'GAMEOVER';
+      r.endTimer = 2.5;
+      Campfire.modules.economy.showMessage("The darkness consumed the last flame.");
+    }
+  },
+
+  showRunMessage(text) {
+    const r = this.run;
+    if (!r) return;
+    r.runMessages.push({
+      text: text,
+      timer: 2.0,
+      y: 400,
+      alpha: 1
+    });
+    if (r.runMessages.length > 3) r.runMessages.shift();
+  },
+
+  spawnEnemy(type, x, y) {
+    const r = this.run;
+    const defs = {
+      wisp:      { hp: 1, speed: 60, size: 12, color: '#8e8eaa', kills: 1 },
+      shade:     { hp: 2, speed: 50, size: 16, color: '#5e5e7c', kills: 1 },
+      voidling:  { hp: 4, speed: 35, size: 22, color: '#2e203e', kills: 2 },
+      swarm:     { hp: 1, speed: 80, size: 8,  color: '#4c4c59', kills: 1 },
+      darkknight:{ hp: 120 + Campfire.state.level * 15, speed: 30, size: 60, color: '#201015', kills: 5 }
+    };
+    const d = defs[type] || defs.wisp;
+    r.enemies.push({
+      type, x: x ?? (55 + Math.random() * 280), y: y ?? -40,
+      hp: d.hp, maxHp: d.hp, speed: d.speed, size: d.size,
+      color: d.color, kills: d.kills,
+      t: Math.random() * Math.PI * 2, hitFlash: 0, alpha: 1
+    });
+  },
+
+  spawnGateRow() {
+    const r = this.run;
+    const cols = 2 + (Math.random() < 0.3 ? 1 : 0);
+    const positions = cols === 2 ? [130, 260] : [100, 195, 290];
+    positions.forEach(px => {
+      const isRed = Math.random() < 0.35;
+      const canShoot = isRed && Math.random() < 0.4;
+      r.gates.push({
+        x: px, y: -60,
+        val: isRed ? -(2 + Math.floor(Math.random() * 6)) : 1 + Math.floor(Math.random() * 3),
+        isRed, canShoot, active: true, pulse: 0
+      });
+    });
+  },
+
+  spawnCocoon() {
+    const r = this.run;
+    const abilities = ['Firekeeper', 'Beacon', 'Guardian', 'Stormcaller'];
+    r.cocoons.push({
+      x: 80 + Math.random() * 230, y: -50,
+      hp: 12 + Math.floor(r.timer / 10) * 3,
+      maxHp: 12 + Math.floor(r.timer / 10) * 3,
+      ability: abilities[Math.floor(Math.random() * abilities.length)],
+      active: true, crackTimer: 0
+    });
+  },
+
+  update(dt) {
+    const r = this.run;
+    if (!r) return;
+
+    // Update run messages
+    if (r.runMessages) {
+      for (let i = r.runMessages.length - 1; i >= 0; i--) {
+        const m = r.runMessages[i];
+        m.timer -= dt;
+        m.y -= dt * 20;
+        m.alpha = Math.min(1, m.timer / 0.5);
+        if (m.timer <= 0) r.runMessages.splice(i, 1);
+      }
+    }
+
+    // Slow-mo
+    if (r.slowMo > 0) {
+      r.slowMo -= dt;
+      dt *= 0.3;
+    }
+
+    // End states
+    if (r.gameState === 'GAMEOVER' || r.gameState === 'VICTORY') {
+      r.endTimer -= dt;
+      if (r.endTimer <= 0) {
+        Campfire.state.coins += r.coinsEarned;
+        Campfire.state.gems += r.gemsEarned;
+        Campfire.modules.economy.gainXP(Math.floor(r.score / 5));
+        if (r.gameState === 'VICTORY') {
+          Campfire.modules.economy.showMessage("The runners return with " + r.coinsEarned + " sparks of light.");
+        }
+        Campfire.game.scene = "camp";
+        this.run = null;
+      }
+      return;
+    }
+
+    // Timer and decay
+    r.timer += dt;
+    r.shake = Math.max(0, r.shake - dt * 30);
+    r.flash = Math.max(0, r.flash - dt * 3);
+    r.roadOffset = (r.roadOffset + r.scrollSpeed * dt) % 40;
+    r.bgFarOffset = (r.bgFarOffset + r.scrollSpeed * 0.2 * dt) % 844;
+    r.bgMidOffset = (r.bgMidOffset + r.scrollSpeed * 0.5 * dt) % 844;
+
+    // Powerup timer
+    if (r.powerup.timer > 0) {
+      r.powerup.timer -= dt;
+      if (r.powerup.timer <= 0) r.powerup.type = null;
+    }
+
+    // Input: drag left/right
+    if (Campfire.input.down) {
+      r.targetX = Math.max(55 + 30, Math.min(390 - 55 - 30, Campfire.input.x));
+    }
+    r.playerX += (r.targetX - r.playerX) * 0.12;
+
+    // --- SPAWNING TIMELINE ---
+    if (r.gameState === 'RUNNING') {
+      // Continuous enemy spawning
+      r.spawnTimer -= dt;
+      if (r.spawnTimer <= 0) {
+        const intensity = Math.min(1, r.timer / 45);
+        const spawnDelay = Math.max(0.3, 1.5 - intensity * 1.2);
+        r.spawnTimer = spawnDelay;
+
+        const roll = Math.random();
+        if (r.timer > 30 && roll > 0.85) {
+          // Voidling
+          this.spawnEnemy('voidling');
+        } else if (r.timer > 15 && roll > 0.7) {
+          // Shade
+          this.spawnEnemy('shade');
+        } else if (r.timer > 20 && roll > 0.6) {
+          // Swarm burst
+          const sx = 80 + Math.random() * 230;
+          for (let i = 0; i < 3; i++) {
+            this.spawnEnemy('swarm', sx + (Math.random() - 0.5) * 30, -30 - Math.random() * 40);
+          }
+        } else {
+          this.spawnEnemy('wisp');
+        }
+      }
+
+      // Gate rows every ~8 seconds
+      r.gateTimer -= dt;
+      if (r.gateTimer <= 0) {
+        this.spawnGateRow();
+        r.gateTimer = 7 + Math.random() * 3;
+      }
+
+      // Cocoons every ~14 seconds (starting at 12s)
+      if (r.timer > 12) {
+        r.cocoonTimer -= dt;
+        if (r.cocoonTimer <= 0) {
+          this.spawnCocoon();
+          r.cocoonTimer = 12 + Math.random() * 5;
+          if (!r.shownFirstCocoon) {
+            r.shownFirstCocoon = true;
+            const dlg = Campfire.modules.dialogue.DIALOGUE.crowdRunner;
+            this.showRunMessage(dlg.firstCocoon);
+          }
+        }
+      }
+
+      // Boss at ~48 seconds
+      if (r.timer > 48 && !r.bossSpawned) {
+        r.gameState = 'BOSS_WARN';
+        r.bossSpawnTimer = 2;
+        r.shake = 15;
+        r.scrollSpeed = 100;
+        Campfire.audio?.danger();
+        const dlg = Campfire.modules.dialogue.DIALOGUE.crowdRunner;
+        Campfire.modules.economy.showMessage(dlg.bossWarn);
+        this.showRunMessage(dlg.bossAppear);
+      }
+    }
+
+    // Boss spawn countdown (game-loop safe, replaces setTimeout)
+    if (r.gameState === 'BOSS_WARN') {
+      r.bossSpawnTimer -= dt;
+      if (r.bossSpawnTimer <= 0) {
+        r.gameState = 'BOSS';
+        this.spawnEnemy('darkknight', 195, -100);
+        r.bossSpawned = true;
+      }
+    }
+
+    // --- UPDATE GROUP (formation + firing) ---
+    const fireRateMult = r.powerup.type === 'Firekeeper' ? 0.5 : 1;
+    r.group.forEach((soul, idx) => {
+      // Triangle formation
+      const row = Math.floor(idx / 5);
+      const col = idx % 5 - 2;
+      const tx = r.playerX + col * 16;
+      const ty = 700 + row * 16;
+      soul.x += (tx - soul.x) * 0.18;
+      soul.y += (ty - soul.y) * 0.18;
+      soul.flash = Math.max(0, soul.flash - dt * 5);
+
+      // Auto-fire
+      soul.fireTimer -= dt;
+      if (soul.fireTimer <= 0 && r.enemies.length > 0) {
+        // Find nearest enemy
+        let nearest = null, nd = 99999;
+        for (const e of r.enemies) {
+          const d = Math.hypot(soul.x - e.x, soul.y - e.y);
+          if (d < nd) { nd = d; nearest = e; }
+        }
+        if (nearest) {
+          const a = Math.atan2(nearest.y - soul.y, nearest.x - soul.x);
+          r.projectiles.push({
+            x: soul.x, y: soul.y,
+            vx: Math.cos(a) * 500,
+            vy: Math.sin(a) * 500,
+            life: 1.2,
+            damage: 1 + (r.powerup.type === 'Stormcaller' ? 1 : 0)
+          });
+          Campfire.audio?.beep(900, 0.02, "triangle", 0.008, -80);
+        }
+        soul.fireTimer = (0.5 + Math.random() * 0.3) * fireRateMult;
+      }
+    });
+
+    // --- UPDATE PROJECTILES ---
+    for (let i = r.projectiles.length - 1; i >= 0; i--) {
+      const p = r.projectiles[i];
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.life -= dt;
+      if (p.life <= 0 || p.y < -20 || p.y > 870) {
+        r.projectiles.splice(i, 1);
+        continue;
+      }
+
+      // Hit enemies
+      for (let j = r.enemies.length - 1; j >= 0; j--) {
+        const e = r.enemies[j];
+        if (Math.hypot(p.x - e.x, p.y - e.y) < e.size + 6) {
+          e.hp -= p.damage;
+          e.hitFlash = 0.1;
+          r.projectiles.splice(i, 1);
+
+          // Chain lightning for Stormcaller
+          if (r.powerup.type === 'Stormcaller' && Math.random() < 0.3) {
+            for (const other of r.enemies) {
+              if (other !== e && Math.hypot(other.x - e.x, other.y - e.y) < 80) {
+                other.hp -= 1;
+                other.hitFlash = 0.1;
+                Campfire.modules.particles.createParticle(
+                  (e.x + other.x) / 2, (e.y + other.y) / 2,
+                  0, 0, 0.3, 3, '#88ccff'
+                );
+              }
+            }
+          }
+
+          if (e.hp <= 0) {
+            // Kill enemy
+            const coins = e.type === 'darkknight' ? 20 : e.type === 'voidling' ? 4 : e.type === 'shade' ? 2 : 1;
+            r.coinsEarned += coins;
+            r.score += coins * 5;
+            if (Math.random() < (e.type === 'darkknight' ? 1 : 0.08)) r.gemsEarned += 1;
+
+            Campfire.audio?.hit();
+            Campfire.modules.particles.fireBurst(e.x, e.y, 6);
+            r.shake = Math.max(r.shake, e.type === 'darkknight' ? 15 : 2);
+
+            if (e.type === 'darkknight') {
+              // Boss killed = victory
+              r.gameState = 'VICTORY';
+              r.endTimer = 3;
+              r.slowMo = 2;
+              r.shake = 20;
+              Campfire.modules.particles.goldenBurst(e.x, e.y, 40);
+              Campfire.audio?.rescue();
+              Campfire.audio?.level();
+              this.showRunMessage(r.group.length + Campfire.modules.dialogue.DIALOGUE.crowdRunner.victoryLine);
+              // Coin rain particles
+              for (let k = 0; k < 30; k++) {
+                Campfire.modules.particles.createParticle(
+                  50 + Math.random() * 290, -20 - Math.random() * 100,
+                  (Math.random() - 0.5) * 30, 80 + Math.random() * 60,
+                  1.5, 4, '#f2cf73'
+                );
+              }
+            }
+            r.enemies.splice(j, 1);
+          }
+          break;
+        }
+      }
+
+      // Hit gates (increase positive gate values)
+      for (const g of r.gates) {
+        if (g.active && !g.isRed && Math.abs(p.x - g.x) < 60 && Math.abs(p.y - g.y) < 25) {
+          g.val++;
+          g.pulse = 0.3;
+          r.projectiles.splice(i, 1);
+          Campfire.audio?.click();
+          break;
+        }
+        // Shootable red gates
+        if (g.active && g.isRed && g.canShoot && Math.abs(p.x - g.x) < 60 && Math.abs(p.y - g.y) < 25) {
+          g.val = Math.min(0, g.val + 1);
+          g.pulse = 0.3;
+          r.projectiles.splice(i, 1);
+          break;
+        }
+      }
+
+      // Hit cocoons
+      for (const c of r.cocoons) {
+        if (c.active && Math.abs(p.x - c.x) < 30 && Math.abs(p.y - c.y) < 30) {
+          c.hp--;
+          r.projectiles.splice(i, 1);
+          if (c.hp <= 0) {
+            c.active = false;
+            c.crackTimer = 1;
+            Campfire.modules.particles.goldenBurst(c.x, c.y, 15);
+            Campfire.audio?.rescue();
+            // Apply powerup
+            const abilityNames = Campfire.modules.dialogue.DIALOGUE.names;
+            const abilityName = abilityNames[Math.floor(Math.random() * abilityNames.length)];
+            r.powerup.type = c.ability;
+            r.powerup.timer = 15;
+            r.powerup.text = abilityName + ' the ' + c.ability;
+            Campfire.modules.economy.showMessage(abilityName + " the " + c.ability + " joins the light!");
+            this.showRunMessage(abilityName + ' breaks free!');
+            // Guardian: add shield hits
+            if (c.ability === 'Guardian') r.powerup.shieldHits = 3;
+            if (c.ability === 'Beacon') r.powerup.timer = 20;
+          }
+          break;
+        }
+      }
+    }
+
+    // --- UPDATE ENEMIES ---
+    for (let i = r.enemies.length - 1; i >= 0; i--) {
+      const e = r.enemies[i];
+      e.t += dt;
+      e.hitFlash = Math.max(0, e.hitFlash - dt);
+
+      // Movement
+      let moveY = e.speed * dt;
+      if (e.type === 'shade') {
+        e.x += Math.sin(e.t * 4) * 80 * dt;
+      }
+      if (e.type === 'darkknight') {
+        // Boss moves toward group center
+        moveY = e.speed * dt;
+      }
+      e.y += moveY;
+
+      // Voidling dims nearby (visual only — via powerup check later)
+      // Contact with group
+      if (e.y > 680 && Math.abs(e.x - r.playerX) < Math.min(80, 50 + r.group.length * 2)) {
+        if (r.powerup.type === 'Guardian' && r.powerup.shieldHits > 0) {
+          r.powerup.shieldHits--;
+          r.shake = Math.max(r.shake, 4);
+          Campfire.audio?.hit();
+          r.enemies.splice(i, 1);
+          if (r.powerup.shieldHits <= 0) r.powerup.type = null;
+        } else {
+          this.removeSouls(e.kills);
+          Campfire.modules.particles.fireBurst(e.x, e.y, 4);
+          r.enemies.splice(i, 1);
+        }
+        continue;
+      }
+
+      // Off screen bottom
+      if (e.y > 880) {
+        r.enemies.splice(i, 1);
+      }
+    }
+
+    // --- UPDATE GATES ---
+    for (let i = r.gates.length - 1; i >= 0; i--) {
+      const g = r.gates[i];
+      g.y += r.scrollSpeed * dt;
+      g.pulse = Math.max(0, (g.pulse || 0) - dt * 2);
+
+      // Group runs through gate
+      if (g.active && Math.abs(700 - g.y) < 20 && Math.abs(r.playerX - g.x) < 65) {
+        g.active = false;
+        if (g.val > 0) {
+          const newNames = [];
+          for (let j = 0; j < g.val; j++) newNames.push(this.addSoul());
+          if (newNames.length === 1) {
+            this.showRunMessage(newNames[0] + ' joins the light.');
+          } else {
+            this.showRunMessage(newNames[0] + ' and ' + (newNames.length - 1) + ' others join the light.');
+          }
+          r.flash = 0.15;
+          r.flashColor = '#ffd700';
+          r.shake = Math.max(r.shake, 4);
+          Campfire.audio?.rescue();
+        } else if (g.val < 0) {
+          this.removeSouls(Math.abs(g.val));
+        }
+      }
+
+      if (g.y > 880) r.gates.splice(i, 1);
+    }
+
+    // --- UPDATE COCOONS ---
+    for (let i = r.cocoons.length - 1; i >= 0; i--) {
+      const c = r.cocoons[i];
+      c.y += r.scrollSpeed * dt;
+      if (!c.active && c.crackTimer > 0) c.crackTimer -= dt;
+      if (c.y > 880) r.cocoons.splice(i, 1);
+    }
+
+    // --- UPDATE PICKUPS (coin/gem visuals) ---
+    for (let i = r.pickups.length - 1; i >= 0; i--) {
+      const pk = r.pickups[i];
+      pk.y += pk.vy * dt;
+      pk.life -= dt;
+      if (pk.life <= 0) r.pickups.splice(i, 1);
+    }
+  },
+
+  draw(ctx, W, H) {
+    const r = this.run;
+    if (!r) return;
+
+    // Background
+    ctx.fillStyle = '#0a0a12';
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.save();
+    // Screen shake
+    if (r.shake > 0) {
+      ctx.translate((Math.random() - 0.5) * r.shake, (Math.random() - 0.5) * r.shake);
+    }
+
+    // Background parallax (bg_far = ruins, scrolls at 0.2x)
+    const _spr = Campfire.modules.sprites;
+    if (_spr.ready('bg_far')) {
+      const img = _spr.S.bg_far;
+      const imgH = Math.round(W * img.naturalHeight / img.naturalWidth) || H;
+      const startY = -(r.bgFarOffset % imgH);
+      for (let y = startY; y < H; y += imgH) ctx.drawImage(img, 0, y, W, imgH);
+    } else {
+      const stars = Campfire.game.stars;
+      if (stars) {
+        stars.forEach(s => {
+          ctx.fillStyle = `rgba(255,255,255,${s.a * 0.5})`;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r * 0.7, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+    }
+
+    // Road
+    const roadL = W / 2 - 140;
+    const roadR = W / 2 + 140;
+    ctx.fillStyle = '#14141c';
+    ctx.fillRect(roadL, 0, 280, H);
+
+    // Road surface texture (bg_mid, scrolls at 0.5x)
+    if (_spr.ready('bg_mid')) {
+      const img = _spr.S.bg_mid;
+      const imgH = Math.round(280 * img.naturalHeight / img.naturalWidth) || H;
+      const startY = -(r.bgMidOffset % imgH);
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(roadL, 0, 280, H);
+      ctx.clip();
+      for (let y = startY; y < H; y += imgH) ctx.drawImage(img, roadL, y, 280, imgH);
+      ctx.restore();
+    }
+
+    // Road edges
+    ctx.strokeStyle = '#222230';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(roadL, 0); ctx.lineTo(roadL, H);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(roadR, 0); ctx.lineTo(roadR, H);
+    ctx.stroke();
+
+    // Dashed center line (scrolling)
+    ctx.strokeStyle = '#1e1e2a';
+    ctx.setLineDash([20, 20]);
+    ctx.lineDashOffset = -r.roadOffset;
+    ctx.beginPath();
+    ctx.moveTo(W / 2, 0);
+    ctx.lineTo(W / 2, H);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // --- DRAW GATES ---
+    for (const g of r.gates) {
+      if (!g.active) continue;
+      const glow = g.pulse || 0;
+      const gateKey = g.isRed ? 'gate_red' : 'gate_green';
+      if (_spr.ready(gateKey)) {
+        ctx.save();
+        ctx.globalAlpha = Math.min(1, 0.85 + glow);
+        ctx.drawImage(_spr.S[gateKey], g.x - 55, g.y - 18, 110, 36);
+        ctx.restore();
+      } else {
+        if (g.isRed) {
+          ctx.fillStyle = g.canShoot ? `rgba(200,120,0,${0.7 + glow})` : `rgba(180,30,30,${0.7 + glow})`;
+        } else {
+          ctx.fillStyle = `rgba(200,170,50,${0.7 + glow})`;
+        }
+        ctx.fillRect(g.x - 55, g.y - 18, 110, 36);
+        ctx.strokeStyle = g.isRed ? (g.canShoot ? '#cc8800' : '#aa2020') : '#daa520';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(g.x - 55, g.y - 18, 110, 36);
+      }
+      // Number always on top
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 22px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText((g.val > 0 ? '+' : '') + g.val, g.x, g.y + 8);
+    }
+
+    // --- DRAW COCOONS ---
+    for (const c of r.cocoons) {
+      if (c.active) {
+        // Faint golden glow (always drawn)
+        const gg = ctx.createRadialGradient(c.x, c.y, 5, c.x, c.y, 35);
+        gg.addColorStop(0, 'rgba(255,220,100,0.25)');
+        gg.addColorStop(1, 'rgba(255,180,50,0)');
+        ctx.fillStyle = gg;
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, 35, 0, Math.PI * 2);
+        ctx.fill();
+        // Cocoon body
+        if (_spr.ready('cocoon')) {
+          ctx.drawImage(_spr.S.cocoon, c.x - 22, c.y - 28, 44, 56);
+        } else {
+          ctx.fillStyle = '#1a0a2a';
+          ctx.beginPath();
+          ctx.ellipse(c.x, c.y, 22, 28, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // HP and ability text always on top
+        ctx.fillStyle = '#ffd700';
+        ctx.font = '14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(c.hp, c.x, c.y + 5);
+        ctx.fillStyle = '#aaa';
+        ctx.font = '10px sans-serif';
+        ctx.fillText(c.ability, c.x, c.y - 32);
+      }
+    }
+
+    // --- DRAW ENEMIES ---
+    for (const e of r.enemies) {
+      ctx.save();
+      ctx.globalAlpha = e.alpha || 1;
+      const s = e.size;
+      if (_spr.ready(e.type)) {
+        if (e.hitFlash > 0) ctx.filter = 'brightness(4) saturate(0)';
+        ctx.drawImage(_spr.S[e.type], e.x - s, e.y - s, s * 2, s * 2);
+        ctx.filter = 'none';
+        if (e.type === 'darkknight') {
+          ctx.fillStyle = '#300';
+          ctx.fillRect(e.x - 50, e.y - s - 15, 100, 8);
+          ctx.fillStyle = '#f44';
+          ctx.fillRect(e.x - 50, e.y - s - 15, (e.hp / e.maxHp) * 100, 8);
+        }
+      } else if (e.type === 'darkknight') {
+        ctx.fillStyle = e.hitFlash > 0 ? '#886080' : '#1a0812';
+        ctx.fillRect(e.x - s, e.y - s, s * 2, s * 2);
+        ctx.fillStyle = '#ff2020';
+        ctx.beginPath();
+        ctx.arc(e.x - s * 0.35, e.y - s * 0.2, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(e.x + s * 0.35, e.y - s * 0.2, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#300';
+        ctx.fillRect(e.x - 50, e.y - s - 15, 100, 8);
+        ctx.fillStyle = '#f44';
+        ctx.fillRect(e.x - 50, e.y - s - 15, (e.hp / e.maxHp) * 100, 8);
+      } else {
+        ctx.fillStyle = e.hitFlash > 0 ? '#ddddff' : e.color;
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, s, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = e.type === 'voidling' ? '#6020a0' : '#cc2020';
+        ctx.beginPath();
+        ctx.arc(e.x - s * 0.25, e.y - s * 0.15, Math.max(1.5, s * 0.12), 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(e.x + s * 0.25, e.y - s * 0.15, Math.max(1.5, s * 0.12), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    // --- DRAW PROJECTILES ---
+    for (const p of r.projectiles) {
+      const gg = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, 10);
+      gg.addColorStop(0, 'rgba(255,255,200,0.9)');
+      gg.addColorStop(1, 'rgba(255,200,80,0)');
+      ctx.fillStyle = gg;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 10, 0, Math.PI * 2);
+      ctx.fill();
+      // Core
+      ctx.fillStyle = '#ffe880';
+      ctx.beginPath();
+      ctx.ellipse(p.x, p.y, 3, 5, Math.atan2(p.vy, p.vx), 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // --- DRAW GROUP ---
+    const lightRadius = (r.powerup.type === 'Beacon' ? 160 : 100) + r.group.length * 3;
+    // Group light glow
+    const groupCx = r.playerX;
+    const groupCy = 700;
+    const lg = ctx.createRadialGradient(groupCx, groupCy, 10, groupCx, groupCy, lightRadius);
+    lg.addColorStop(0, 'rgba(255,200,100,0.25)');
+    lg.addColorStop(0.6, 'rgba(255,160,60,0.08)');
+    lg.addColorStop(1, 'rgba(255,120,40,0)');
+    ctx.fillStyle = lg;
+    ctx.beginPath();
+    ctx.arc(groupCx, groupCy, lightRadius, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Individual souls
+    for (const soul of r.group) {
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = '#ffaa44';
+      const soulKey = soul.name ? 'soul_named' : 'soul_normal';
+      if (_spr.ready(soulKey)) {
+        if (soul.flash > 0) ctx.filter = 'brightness(3) saturate(0)';
+        ctx.drawImage(_spr.S[soulKey], soul.x - 8, soul.y - 12, 16, 20);
+        ctx.filter = 'none';
+      } else {
+        ctx.fillStyle = soul.flash > 0 ? '#ffffff' : '#ffcc66';
+        ctx.beginPath();
+        ctx.arc(soul.x, soul.y, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#442200';
+        ctx.beginPath();
+        ctx.arc(soul.x - 2, soul.y - 1, 1, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(soul.x + 2, soul.y - 1, 1, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#ff6600';
+        ctx.beginPath();
+        ctx.moveTo(soul.x - 2, soul.y - 6);
+        ctx.lineTo(soul.x, soul.y - 12 - Math.random() * 2);
+        ctx.lineTo(soul.x + 2, soul.y - 6);
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+    }
+
+    // --- DARKNESS OVERLAY (fog of war) ---
+    ctx.fillStyle = 'rgba(0,0,0,0.85)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    // Main group light
+    const fogG = ctx.createRadialGradient(groupCx, groupCy, 20, groupCx, groupCy, lightRadius);
+    fogG.addColorStop(0, 'rgba(0,0,0,1)');
+    fogG.addColorStop(0.65, 'rgba(0,0,0,0.85)');
+    fogG.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = fogG;
+    ctx.beginPath();
+    ctx.arc(groupCx, groupCy, lightRadius, 0, Math.PI * 2);
+    ctx.fill();
+    // Gate glows visible through fog
+    for (const g of r.gates) {
+      if (!g.active) continue;
+      const gg2 = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, 50);
+      gg2.addColorStop(0, 'rgba(0,0,0,0.6)');
+      gg2.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = gg2;
+      ctx.beginPath();
+      ctx.arc(g.x, g.y, 50, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    // Cocoon glows
+    for (const c of r.cocoons) {
+      if (!c.active) continue;
+      const cg = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, 40);
+      cg.addColorStop(0, 'rgba(0,0,0,0.5)');
+      cg.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = cg;
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, 40, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // --- PARTICLES (use engine) ---
+    Campfire.modules.particles.draw(ctx);
+
+    // --- HUD ---
+    // Soul count (big)
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.fillRect(0, 0, W, 50);
+    ctx.fillStyle = '#ffcc66';
+    ctx.font = 'bold 24px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('SOULS: ' + r.group.length, 15, 35);
+    ctx.fillStyle = '#f2cf73';
+    ctx.font = '16px sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(r.coinsEarned + 'C  ' + r.gemsEarned + 'G', W - 15, 35);
+
+    // Powerup indicator
+    if (r.powerup.type) {
+      ctx.fillStyle = 'rgba(255,200,50,0.2)';
+      ctx.fillRect(100, 52, 190, 22);
+      ctx.fillStyle = '#ffd700';
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(r.powerup.type + ' ' + Math.ceil(r.powerup.timer) + 's', W / 2, 67);
+    }
+
+    // Timer
+    ctx.fillStyle = '#888';
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(Math.floor(r.timer) + 's', W / 2, H - 15);
+
+    // Boss warning
+    if (r.gameState === 'BOSS_WARN') {
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(0, H / 2 - 40, W, 80);
+      ctx.fillStyle = '#ff4444';
+      ctx.font = 'bold 28px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('DARKNESS RISING', W / 2, H / 2 + 10);
+    }
+
+    // Victory/Gameover overlay
+    if (r.gameState === 'VICTORY') {
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#ffd700';
+      ctx.font = 'bold 36px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('PURIFIED', W / 2, H / 2 - 20);
+      ctx.fillStyle = '#fff';
+      ctx.font = '18px sans-serif';
+      ctx.fillText(r.group.length + ' souls carried the light', W / 2, H / 2 + 20);
+      ctx.fillText(r.coinsEarned + ' sparks gathered', W / 2, H / 2 + 50);
+    }
+
+    if (r.gameState === 'GAMEOVER') {
+      ctx.fillStyle = 'rgba(0,0,0,0.7)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#882222';
+      ctx.font = 'bold 30px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('THE LIGHT FADES', W / 2, H / 2 - 10);
+      ctx.fillStyle = '#aaa';
+      ctx.font = '16px sans-serif';
+      ctx.fillText(r.coinsEarned + ' sparks recovered', W / 2, H / 2 + 25);
+    }
+
+    // Draw run messages (soul names, dialogue)
+    if (r.runMessages) {
+      r.runMessages.forEach(m => {
+        ctx.save();
+        ctx.globalAlpha = m.alpha;
+        ctx.fillStyle = '#ffd700';
+        ctx.font = '14px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(m.text, W / 2, m.y);
+        ctx.restore();
+      });
+    }
+
+    // Screen flash overlay
+    if (r.flash > 0) {
+      ctx.fillStyle = r.flashColor;
+      ctx.globalAlpha = r.flash;
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalAlpha = 1;
+    }
+
+    // Message (from economy.showMessage)
+    if (Campfire.game.message && Campfire.game.messageTimer > 0) {
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(20, 80, W - 40, 40);
+      ctx.fillStyle = '#fff';
+      ctx.font = '13px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(Campfire.game.message, W / 2, 105);
+    }
+
+    ctx.restore();
+  }
+});
+
+
+
+// ===== TRANSITION HELPER =====
+Campfire.transitionTo = function(callback, speed) {
+  const tr = Campfire.game.transition;
+  tr.active = true;
+  tr.alpha = 0;
+  tr.direction = "out";
+  tr.callback = callback;
+  tr.speed = speed || 2.5;
+};
+
+// ===== MODULE: Core (must be last) =====
+Campfire.register('core', {
+  W: 390,
+  H: 844,
+  currentScene: "opening",
+  lastTime: 0,
+
+  init() {
+    const W = this.W;
+    const H = this.H;
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+
+    Campfire.canvas = canvas;
+    Campfire.ctx = ctx;
+
+    Campfire.game = {
+      time: 0,
+      dt: 1/60,
+      scene: "opening",
+      fade: 0,
+      worldTime: 0,
+      dayTime: 0.75, // 0-1 cycle: 0=dawn, 0.25=day, 0.5=dusk, 0.75=night. Start at night.
+      dayCycleSpeed: 1/300, // Full cycle in 300 seconds (5 minutes)
+      dialogueTimer: 0,
+      specialDialogueTimer: 0,
+      autosave: 0,
+      message: "",
+      messageTimer: 0,
+      particles: [],
+      screenShake: 0,
+      stars: Array.from({length: 80}, () => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.2 + 0.4,
+        a: Math.random() * 0.7 + 0.2,
+        s: Math.random() * 0.4 + 0.1
+      })),
+      open: {
+        timer: 0,
+        phase: 0,
+        stokes: 0,
+        fireScale: 0,
+        charAlpha: 0,
+        lineIndex: 0,
+        lines: Campfire.modules.dialogue.DIALOGUE.opening.lines
+      },
+      topButtons: [],
+      bottomButtons: [],
+      campgrounds: [],
+      mapSignals: [],
+      mission: null,
+      darkWaving: false,
+      transition: { active: false, alpha: 0, direction: "out", callback: null, speed: 2 },
+      returnGlow: 0
+    };
+
+    this.gameLoop = this.gameLoop.bind(this);
+    requestAnimationFrame(this.gameLoop);
+  },
+
+  gameLoop(now) {
+    const game = Campfire.game;
+
+    if (!this.lastTime) this.lastTime = now;
+    let deltaMs = now - this.lastTime;
+    this.lastTime = now;
+
+    let dt = Math.min(deltaMs / 1000, 1/30);
+    game.dt = dt;
+    game.time += dt;
+    game.worldTime += dt;
+    game.dayTime = (game.dayTime + game.dayCycleSpeed * dt) % 1;
+
+    const input = Campfire.input;
+
+    if (game.scene === "opening") {
+      Campfire.modules.opening.update(dt);
+    } else if (game.scene === "camp") {
+      Campfire.modules.camp.update(dt);
+    } else if (game.scene === "map") {
+      Campfire.modules.map.update(dt);
+    } else if (game.scene === "mission") {
+      Campfire.modules.mission.update(dt);
+    } else if (game.scene === "crowdRunner") {
+      Campfire.modules.crowdRunner.update(dt);
+    }
+
+    Campfire.modules.particles.update(dt);
+    input.update();
+
+    const ctx = Campfire.ctx;
+    if (game.scene === "opening") {
+      Campfire.modules.opening.draw(ctx, this.W, this.H);
+    } else if (game.scene === "camp") {
+      Campfire.modules.camp.draw(ctx, this.W, this.H);
+    } else if (game.scene === "map") {
+      Campfire.modules.map.draw(ctx, this.W, this.H);
+    } else if (game.scene === "mission") {
+      Campfire.modules.mission.draw(ctx, this.W, this.H);
+    } else if (game.scene === "crowdRunner") {
+      Campfire.modules.crowdRunner.draw(ctx, this.W, this.H);
+    }
+
+    // === SCENE TRANSITION OVERLAY ===
+    const tr = game.transition;
+    if (tr.active) {
+      if (tr.direction === "out") {
+        tr.alpha = Math.min(1, tr.alpha + dt * tr.speed);
+        if (tr.alpha >= 1) {
+          if (tr.callback) tr.callback();
+          tr.callback = null;
+          tr.direction = "in";
+        }
+      } else {
+        tr.alpha = Math.max(0, tr.alpha - dt * tr.speed);
+        if (tr.alpha <= 0) {
+          tr.active = false;
+        }
+      }
+      ctx.fillStyle = `rgba(0, 0, 0, ${tr.alpha})`;
+      ctx.fillRect(0, 0, this.W, this.H);
+    }
+
+    // === RETURN GLOW (warm pulse when arriving at camp) ===
+    if (game.returnGlow > 0) {
+      game.returnGlow = Math.max(0, game.returnGlow - dt * 0.8);
+      const rg = ctx.createRadialGradient(195, 400, 10, 195, 400, 250);
+      rg.addColorStop(0, `rgba(255, 220, 140, ${0.35 * game.returnGlow})`);
+      rg.addColorStop(1, "rgba(255, 180, 80, 0)");
+      ctx.fillStyle = rg;
+      ctx.beginPath();
+      ctx.arc(195, 400, 250, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    if (game.autosave > 0) {
+      game.autosave -= dt;
+      if (game.autosave <= 0) {
+        Campfire.state.saveGame();
+      }
+    }
+
+    requestAnimationFrame(this.gameLoop);
+  }
+});
+
+// ===== BOOT =====
+Campfire.init();
+
+// ===== PWA: Service Worker Registration =====
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#000"/>
+  <!-- Ground -->
+  <ellipse cx="256" cy="400" rx="130" ry="20" fill="#1a0a00" opacity="0.6"/>
+  <!-- Fire glow -->
+  <radialGradient id="glow512">
+    <stop offset="0%" stop-color="#ff6600" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+  </radialGradient>
+  <circle cx="256" cy="290" r="160" fill="url(#glow512)"/>
+  <!-- Fire outer -->
+  <path d="M256 160 Q290 220 280 290 Q268 360 256 375 Q244 360 232 290 Q222 220 256 160Z" fill="#ff9900" opacity="0.9"/>
+  <!-- Fire mid -->
+  <path d="M256 190 Q280 240 272 300 Q264 345 256 355 Q248 345 240 300 Q232 240 256 190Z" fill="#ffcc00" opacity="0.8"/>
+  <!-- Fire inner -->
+  <path d="M256 220 Q270 260 266 305 Q260 335 256 340 Q252 335 246 305 Q242 260 256 220Z" fill="#fff5cc" opacity="0.7"/>
+  <!-- Sparks -->
+  <circle cx="235" cy="165" r="4" fill="#ffcc00" opacity="0.8"/>
+  <circle cx="280" cy="150" r="2.5" fill="#ff9900" opacity="0.7"/>
+  <circle cx="248" cy="145" r="3" fill="#fff5cc" opacity="0.6"/>
+  <circle cx="268" cy="158" r="2" fill="#ffcc00" opacity="0.5"/>
+  <!-- Text -->
+  <text x="256" y="460" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36" fill="#ff9900" opacity="0.8">CAMPFIRE</text>
+</svg>
