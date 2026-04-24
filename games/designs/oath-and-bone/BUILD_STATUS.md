@@ -1,6 +1,6 @@
 # BUILD_STATUS.md — Oath and Bone Autonomous Build Queue
 
-last_updated: 2026-04-24T20:00:00Z
+last_updated: 2026-04-24T21:00:00Z
 last_feedback_processed: 2026-04-24T18:00:00Z
 current_phase: 1
 daily_cap_hit: false
@@ -8,7 +8,7 @@ spend_today_usd: 0.00
 mj_count_today: 0
 PAUSE: false
 
-succession_note: "P1-10 complete 2026-04-24. game-oath-and-bone-heroes.js (168 lines). window.OathAndBoneHeroes: getDefinition, createUnit, getAllHeroIds, isGameOverHero. All 6 heroes: vael/halv/brin/caelen/marrow/thessa. All gates passed, no post-gen fixes. P1-11 is next: B1 battle scenario data object (Template 3.4). P1-08 closed: all 12 necromancy battle spells pre-built in P1-05; Marrow's Binding is camp-only rite not in _SPELLS (MAGIC.md §2 says 13 total)."
+succession_note: "P1-11 complete 2026-04-24. game-oath-and-bone-battles.js (136 lines). SCENARIO_B1 + window.OathAndBoneBattles.getScenario. 12W×14H map, 3 ridge, 10 forest, 155 plain. playerStart: vael/halv/brin. enemyStart: 4× bladewind (Lv2) + 1× ironwall archer (Lv3). All 4 gates passed; 1 post-gen fix (forest count 9→10 at q=8,r=8). Engine field names correct: hp_max, move. P1-12 is next: advisor.js XP grant wiring on Sergeant+ win."
 
 ---
 
@@ -16,7 +16,7 @@ succession_note: "P1-10 complete 2026-04-24. game-oath-and-bone-heroes.js (168 l
 
 | ID | Task | Attempt | Template | Output path |
 |---|---|---|---|---|
-| P1-11 | B1 battle scenario data object | 1 | 3.4 | WORKER_OUTPUT/code/P1-11.md |
+| P1-12 | advisor.js wiring — XP grant on Sergeant+ win | 1 | 3.1 | WORKER_OUTPUT/code/P1-12.md |
 
 ---
 
@@ -24,7 +24,6 @@ succession_note: "P1-10 complete 2026-04-24. game-oath-and-bone-heroes.js (168 l
 
 | ID | Task | Template | Depends on |
 |---|---|---|---|
-| P1-12 | advisor.js wiring — XP grant on Sergeant+ win | 3.1 | P1-03 |
 | P1-13 | Fix worker.js:962 handleChronicle playerContext stringify (same pattern as P1-01) | 3.1 (narrow) | — |
 
 ---
@@ -69,6 +68,7 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
+| P1-11 | game-oath-and-bone-battles.js — 136 lines, all gates passed (1 post-gen: forest 9→10) | 2026-04-24 | pending |
 | P1-10 | game-oath-and-bone-heroes.js — 168 lines, all gates passed, no fixes needed | 2026-04-24 | 11cbab8 |
 | P1-08 | Spell defs — Necromancy (12 battle spells; MAGIC.md §2 says 13 total, Marrow's Binding camp-only) — PRE-BUILT | 2026-04-24 | audit-2026-04-24 |
 | P1-09 | Spell defs — Druidry (15 spells) — PRE-BUILT in P1-05 (game-oath-and-bone-spells.js:39-53) | 2026-04-24 | audit-2026-04-24 (no separate commit needed) |
