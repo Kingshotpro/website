@@ -68,57 +68,8 @@ html, body {
   justify-content: center;
 }
 
-#engine-status {
-  max-width: 560px;
-  padding: 30px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  text-align: center;
-}
-#engine-status h1 {
-  font-size: 18px;
-  color: var(--gold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-#engine-status p {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
-#engine-status .status-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-#engine-status .ok   { background: #4caf82; }
-#engine-status .warn { background: var(--gold); }
-#engine-status .fail { background: #e05c5c; }
-#engine-status code {
-  font-family: 'SF Mono', 'Fira Mono', 'Courier New', monospace;
-  font-size: 11px;
-  color: var(--text);
-  background: var(--bg);
-  padding: 2px 6px;
-  border-radius: 2px;
-}
-#module-list {
-  list-style: none;
-  margin: 16px 0;
-  text-align: left;
-  font-family: 'SF Mono', 'Fira Mono', 'Courier New', monospace;
-  font-size: 11px;
-}
-#module-list li {
-  padding: 4px 0;
-  color: var(--text-muted);
-}
+/* #engine-status styles removed — renderer (Worker 16) builds the battle UI
+   dynamically inside #oathandbone-game via game-oath-and-bone-render.js */
 
 footer {
   padding: 12px 20px;
@@ -138,21 +89,10 @@ footer {
 </header>
 
 <main id="oathandbone-game">
-  <div id="engine-status">
-    <h1>Engine Loading</h1>
-    <p>Initializing Phase 1 engine modules…</p>
-    <ul id="module-list"></ul>
-    <p id="status-line"><span class="status-dot warn"></span>Checking…</p>
-    <p style="font-size:11px; margin-top:20px">
-      The renderer module (Worker 16) has not yet attached to the engine's hooks.
-      Until it does, this page shows module load status only.
-      For a playable interactive view of the register, open the
-      <a href="/games/oath-and-bone-preview.html" style="color:var(--blue)">visual prototype</a>.
-    </p>
-  </div>
+  <!-- Battle UI built here by game-oath-and-bone-render.js onReady hook -->
 </main>
 
-<footer>Unofficial. Not affiliated with Century Games. &nbsp;·&nbsp; Oath and Bone engine shell · Phase 1 modules loaded · Renderer pending</footer>
+<footer>Unofficial. Not affiliated with Century Games. &nbsp;·&nbsp; Oath and Bone · Phase 1 engine · Worker 16 renderer</footer>
 
 <!-- ──────────────────────────────────────────────────────── -->
 <!-- MODULE LOAD ORDER — dependencies flow left-to-right       -->
@@ -172,56 +112,14 @@ footer {
 <!-- Engine (core state machine; reads all data + AI) -->
 <script src="/js/game-oath-and-bone-engine.js"></script>
 
-<!-- Orchestrator (wires advisor + lifecycle, exposes init) -->
+<!-- Renderer (Worker 16) — attaches engine hooks and loads SCENARIO_B1
+     BEFORE the orchestrator polls so start() finds a ready scenario. -->
+<script src="/js/game-oath-and-bone-render.js"></script>
+
+<!-- Orchestrator (wires advisor + lifecycle; its init() calls engine.start()) -->
 <script src="/js/game-oath-and-bone.js"></script>
 
-<!-- Renderer (not yet implemented — Worker 16 will add
-     /js/game-oath-and-bone-render.js that attaches to engine hooks
-     onReady, onUnitMoved, onUnitAttacked, onRoundStart, onBattleEnd
-     and draws the battle on a <canvas> inside #oathandbone-game) -->
-
-<script>
-(function () {
-  'use strict';
-  // Module load verification — proves modules loaded without console errors
-  // and reports the state in #module-list. Replace with renderer.init()
-  // when Worker 16 ships /js/game-oath-and-bone-render.js.
-
-  var modules = [
-    { name: 'window.OathAndBone',         probe: function () { return typeof window.OathAndBone === 'object'; } },
-    { name: 'window.OathAndBoneEngine',   probe: function () { return typeof window.OathAndBoneEngine === 'object'; } },
-    { name: 'SCENARIO_B1',                probe: function () { return typeof SCENARIO_B1 === 'object' && SCENARIO_B1.id === 'b1'; } },
-    { name: 'HERO_DEFINITIONS',           probe: function () { return typeof HERO_DEFINITIONS === 'object' && !!HERO_DEFINITIONS.vael; } },
-    { name: 'SPELLS (wizardry/necro/druid)', probe: function () { return typeof window.OathAndBoneSpells === 'object'; } },
-    { name: 'AI archetypes',              probe: function () { return typeof window.OathAndBoneAI === 'object' || typeof archetypes !== 'undefined'; } },
-    { name: 'Advisor (site-wide)',        probe: function () { return typeof Advisor !== 'undefined' && typeof Advisor.grantXP === 'function'; } }
-  ];
-
-  var list = document.getElementById('module-list');
-  var statusLine = document.getElementById('status-line');
-  var anyFailed = false;
-
-  modules.forEach(function (m) {
-    var ok;
-    try { ok = !!m.probe(); } catch (e) { ok = false; }
-    if (!ok) anyFailed = true;
-    var li = document.createElement('li');
-    li.innerHTML = '<span class="status-dot ' + (ok ? 'ok' : 'fail') + '"></span>' +
-                   (ok ? '✓ ' : '✗ ') + '<code>' + m.name + '</code>';
-    list.appendChild(li);
-  });
-
-  if (anyFailed) {
-    statusLine.innerHTML = '<span class="status-dot fail"></span>One or more modules failed to load. Check console.';
-  } else {
-    statusLine.innerHTML = '<span class="status-dot ok"></span>All Phase 1 modules loaded. Waiting on renderer (Worker 16).';
-  }
-
-  // Daily gate: set the localStorage key so the advisor wiring recognizes
-  // the page was visited. This is harmless for the shell state.
-  try { localStorage.setItem('ksp_oathandbone_last_shell_visit', new Date().toISOString()); } catch (e) {}
-})();
-</script>
+<script>OathAndBone.init();</script>
 
 </body>
 </html>
