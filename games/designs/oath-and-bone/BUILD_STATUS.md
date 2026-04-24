@@ -1,14 +1,14 @@
 # BUILD_STATUS.md — Oath and Bone Autonomous Build Queue
 
-last_updated: 2026-04-24T16:00:00Z
-last_feedback_processed: 2026-04-24T12:00:00Z
+last_updated: 2026-04-24T18:00:00Z
+last_feedback_processed: 2026-04-24T18:00:00Z
 current_phase: 1
 daily_cap_hit: false
 spend_today_usd: 0.00
 mj_count_today: 0
 PAUSE: false
 
-succession_note: "P1-04 complete 2026-04-24. game-oath-and-bone-engine.js written (581 lines). window.OathAndBoneEngine API: start/loadScenario/getBattle/getTile/getUnit/getCurrentUnit/getMovableHexes/getAttackableHexes/moveUnit/attackUnit/advanceTurn + hooks. Hex math (axial), elevation movement costs, attack modifiers, turn order (initiative desc). All gates passed. Gemini 2.5-flash congested — used 2.5-flash-lite as fallback (worked). P1-05 is now ACTIVE: spell resolution + school routing."
+succession_note: "P1-05 complete 2026-04-24. game-oath-and-bone-spells.js written (971 lines). window.OathAndBoneSpells: applyRegen (3 schools), castSpell, onUnitKilled, tickStatusEffects, 43 Ch1 MVP spell defs. Self-approved Gate 2: getSpellTargetHexes has tile.unit schema bug (tile.unit is id string, not object) — Challenger to review. P1-06 is now ACTIVE: enemy AI (6 archetypes)."
 
 ---
 
@@ -16,7 +16,7 @@ succession_note: "P1-04 complete 2026-04-24. game-oath-and-bone-engine.js writte
 
 | ID | Task | Attempt | Template | Output path |
 |---|---|---|---|---|
-| P1-05 | Combat state machine: spell resolution + school routing | 1 | 3.1 | WORKER_OUTPUT/code/P1-05.md |
+| P1-06 | Combat state machine: enemy AI (6 archetypes) | 1 | 3.1 | WORKER_OUTPUT/code/P1-06.md |
 
 ---
 
@@ -24,8 +24,6 @@ succession_note: "P1-04 complete 2026-04-24. game-oath-and-bone-engine.js writte
 
 | ID | Task | Template | Depends on |
 |---|---|---|---|
-| P1-05 | Combat state machine: spell resolution + school routing | 3.1 | P1-04 |
-| P1-06 | Combat state machine: enemy AI (6 archetypes) | 3.1 | P1-05 |
 | P1-07 | Spell definition objects — Wizardry school (14 spells) | 3.3 | P1-03 |
 | P1-08 | Spell definition objects — Necromancy school (14 spells) | 3.3 | P1-03 |
 | P1-09 | Spell definition objects — Druidry school (15 spells) | 3.3 | P1-03 |
@@ -75,6 +73,7 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
+| P1-05 | game-oath-and-bone-spells.js — 971 lines, Gate 2 self-approved (tile.unit bug noted) | 2026-04-24 | 315db20 |
 | P1-04 | game-oath-and-bone-engine.js — 581 lines, all gates passed | 2026-04-24 | 2e4cd6f |
 | P1-03 | game-oath-and-bone.js skeleton — 174 lines, all gates passed | 2026-04-24 | 8d5dd6d |
 | P1-02 | GET /credits/balance — already implemented at worker.js:1399 (verified) | 2026-04-24 | no commit needed |
