@@ -2670,10 +2670,9 @@ Campfire.register('crowdRunner', {
         Campfire.state.coins += r.coinsEarned;
         Campfire.state.gems += r.gemsEarned;
         Campfire.modules.economy.gainXP(Math.floor(r.score / 5));
-        if (r.gameState === 'VICTORY') {
-          Campfire.modules.economy.showMessage("The runners return with " + r.coinsEarned + " sparks of light.");
-        }
-        Campfire.game.scene = "camp";
+        Campfire.modules.hub.recordScore(r.score);
+        Campfire.game.scene = "hub";
+        Campfire.modules.hub.subScene = null;
         this.run = null;
       }
       return;
@@ -3396,11 +3395,452 @@ Campfire.transitionTo = function(callback, speed) {
   tr.speed = speed || 2.5;
 };
 
+// ===== MODULE: Hub (main menu — replaces opening as default entry) =====
+Campfire.register('hub', {
+  subScene: null, // null=main, 'heroes', 'shop', 'about'
+  zones: [],
+  heroScroll: 0,
+  bestScore: 0,
+  _emberPhase: 0,
+
+  init() {
+    this.bestScore = parseInt(localStorage.getItem('lf_best_score') || '0');
+  },
+
+  recordScore(n) {
+    if (n > this.bestScore) {
+      this.bestScore = n;
+      localStorage.setItem('lf_best_score', n);
+    }
+  },
+
+  update(dt) {
+    this._emberPhase = (this._emberPhase + dt * 0.8) % (Math.PI * 2);
+    const inp = Campfire.input;
+    if (!inp.tapped) return;
+    const x = inp.x, y = inp.y;
+    const inZ = (z) => x >= z.x && y >= z.y && x <= z.x + z.w && y <= z.y + z.h;
+    for (const z of this.zones) {
+      if (inZ(z)) { z.action(); Campfire.audio?.click(); break; }
+    }
+  },
+
+  draw(ctx, W, H) {
+    this.zones = [];
+    const addZone = (x, y, w, h, action) => this.zones.push({x,y,w,h,action});
+
+    // --- Background ---
+    ctx.fillStyle = '#09060f';
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars
+    const stars = Campfire.game.stars;
+    stars.forEach(s => {
+      const twinkle = 0.5 + 0.5 * Math.sin(this._emberPhase * s.s * 3 + s.x);
+      ctx.fillStyle = `rgba(255,220,180,${s.a * twinkle})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // Ambient ground glow
+    const glow = ctx.createRadialGradient(W/2, H*0.55, 20, W/2, H*0.55, 280);
+    glow.addColorStop(0, `rgba(255,140,40,${0.08 + 0.04 * Math.sin(this._emberPhase)})`);
+    glow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    if (this.subScene === 'heroes') { this._drawHeroes(ctx, W, H, addZone); return; }
+    if (this.subScene === 'shop')   { this._drawShop(ctx, W, H, addZone); return; }
+    if (this.subScene === 'about')  { this._drawAbout(ctx, W, H, addZone); return; }
+
+    // --- MAIN HUB ---
+
+    // Title
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffd580';
+    ctx.font = 'bold 42px system-ui';
+    ctx.fillText('LIGHTFRONT', W/2, 72);
+    ctx.fillStyle = 'rgba(255,180,80,0.55)';
+    ctx.font = '14px system-ui';
+    ctx.fillText('Survive the Dark. Carry the Light.', W/2, 96);
+
+    // Stats bar
+    const state = Campfire.state;
+    const barY = 120;
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    this._roundRect(ctx, 20, barY, W - 40, 38, 10);
+    ctx.fill();
+    ctx.fillStyle = '#ffd580';
+    ctx.font = '13px system-ui';
+    ctx.textAlign = 'left';
+    ctx.fillText(`Lv ${state.level}`, 36, barY + 24);
+    ctx.textAlign = 'center';
+    ctx.fillText(`🪙 ${state.coins}`, W/2, barY + 24);
+    ctx.textAlign = 'right';
+    ctx.fillText(`💎 ${state.gems}`, W - 36, barY + 24);
+    ctx.textAlign = 'center';
+
+    // PLAY card
+    const cardY = 178, cardH = 190;
+    const pulse = 0.5 + 0.5 * Math.sin(this._emberPhase * 1.4);
+    ctx.fillStyle = `rgba(180,80,20,${0.18 + 0.06 * pulse})`;
+    this._roundRect(ctx, 20, cardY, W - 40, cardH, 16);
+    ctx.fill();
+    ctx.strokeStyle = `rgba(255,160,60,${0.35 + 0.2 * pulse})`;
+    ctx.lineWidth = 1.5;
+    this._roundRect(ctx, 20, cardY, W - 40, cardH, 16);
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgba(255,140,40,0.15)';
+    ctx.font = '64px system-ui';
+    ctx.fillText('⚔️', W/2, cardY + 72);
+
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 22px system-ui';
+    ctx.fillText('THE GLOOM RUN', W/2, cardY + 105);
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '13px system-ui';
+    ctx.fillText('Fight through the void. Rescue the lost.', W/2, cardY + 126);
+
+    ctx.fillStyle = 'rgba(255,200,80,0.15)';
+    ctx.font = '12px system-ui';
+    const bestTxt = this.bestScore > 0 ? `Best: ${this.bestScore} souls rescued` : 'First run — no record yet';
+    ctx.fillText(bestTxt, W/2, cardY + 148);
+
+    // PLAY button inside card
+    const pbY = cardY + 160, pbH = 40;
+    const pbX = W/2 - 80;
+    ctx.fillStyle = `rgba(255,160,50,${0.7 + 0.2 * pulse})`;
+    this._roundRect(ctx, pbX, pbY, 160, pbH, 10);
+    ctx.fill();
+    ctx.fillStyle = '#1a0a00';
+    ctx.font = 'bold 18px system-ui';
+    ctx.fillText('▶  PLAY', W/2, pbY + 27);
+    addZone(20, cardY, W - 40, cardH, () => {
+      Campfire.transitionTo(() => {
+        const ok = Campfire.modules.crowdRunner.startRun();
+        if (!ok) { Campfire.game.scene = 'hub'; }
+      }, 3);
+    });
+
+    // Divider label
+    ctx.fillStyle = 'rgba(255,255,255,0.2)';
+    ctx.font = '11px system-ui';
+    ctx.fillText('━━━  MORE GAMES  ━━━', W/2, 394);
+
+    // Coming soon cards (2 mini cards)
+    const miniW = (W - 56) / 2;
+    [['🏰','Realm Wars','Coming Soon'],['🌑','Void Drift','Coming Soon']].forEach(([icon, name, tag], i) => {
+      const cx = 20 + i * (miniW + 16), cy = 406, ch = 80;
+      ctx.fillStyle = 'rgba(255,255,255,0.04)';
+      this._roundRect(ctx, cx, cy, miniW, ch, 12);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+      ctx.lineWidth = 1;
+      this._roundRect(ctx, cx, cy, miniW, ch, 12);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,0.3)';
+      ctx.font = '28px system-ui';
+      ctx.fillText(icon, cx + miniW/2, cy + 36);
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.font = '12px system-ui';
+      ctx.fillText(name, cx + miniW/2, cy + 56);
+      ctx.fillStyle = 'rgba(255,120,120,0.6)';
+      ctx.font = '10px system-ui';
+      ctx.fillText(tag, cx + miniW/2, cy + 70);
+    });
+
+    // Bottom nav row: Heroes | Shop | About
+    const navY = 512, navH = 90, navW = (W - 56) / 3;
+    const navItems = [
+      { icon: '🦸', label: 'HEROES', action: () => { this.subScene = 'heroes'; } },
+      { icon: '🛍️', label: 'SHOP',   action: () => { this.subScene = 'shop'; } },
+      { icon: 'ℹ️',  label: 'ABOUT',  action: () => { this.subScene = 'about'; } },
+    ];
+    navItems.forEach((item, i) => {
+      const nx = 20 + i * (navW + 8);
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      this._roundRect(ctx, nx, navY, navW, navH, 14);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+      ctx.lineWidth = 1;
+      this._roundRect(ctx, nx, navY, navW, navH, 14);
+      ctx.stroke();
+      ctx.fillStyle = '#fff';
+      ctx.font = '30px system-ui';
+      ctx.fillText(item.icon, nx + navW/2, navY + 42);
+      ctx.fillStyle = 'rgba(255,220,120,0.8)';
+      ctx.font = 'bold 11px system-ui';
+      ctx.fillText(item.label, nx + navW/2, navY + 68);
+      addZone(nx, navY, navW, navH, item.action);
+    });
+
+    // Version
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
+    ctx.font = '10px system-ui';
+    ctx.fillText('v0.8.1 · Lightfront', W/2, H - 16);
+  },
+
+  _drawHeroes(ctx, W, H, addZone) {
+    const state = Campfire.state;
+    // Back button
+    this._backBtn(ctx, W, addZone, () => { this.subScene = null; });
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffd580';
+    ctx.font = 'bold 22px system-ui';
+    ctx.fillText('HEROES', W/2, 54);
+
+    const heroes = state.heroDefs;
+    heroes.forEach((h, i) => {
+      const cardY = 80 + i * 170, cardH = 155;
+      const owned = state.heroesOwned[h.key];
+      const selected = state.currentHero === h.key;
+
+      ctx.fillStyle = selected ? 'rgba(255,180,40,0.12)' : 'rgba(255,255,255,0.05)';
+      this._roundRect(ctx, 20, cardY, W - 40, cardH, 14);
+      ctx.fill();
+      ctx.strokeStyle = selected ? 'rgba(255,180,40,0.6)' : (owned ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.07)');
+      ctx.lineWidth = selected ? 2 : 1;
+      this._roundRect(ctx, 20, cardY, W - 40, cardH, 14);
+      ctx.stroke();
+
+      // Hero icon placeholder circle
+      const iconColors = { lightbearer:'#ffb040', guardian:'#60a0ff', scout:'#40e080', mage:'#c060ff' };
+      const iconSymbols = { lightbearer:'🔥', guardian:'🛡️', scout:'🏃', mage:'🔮' };
+      ctx.fillStyle = owned ? (iconColors[h.key] || '#888') : '#333';
+      ctx.beginPath();
+      ctx.arc(65, cardY + 55, 34, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.font = '26px system-ui';
+      ctx.fillText(iconSymbols[h.key] || '?', 65, cardY + 64);
+
+      // Name + desc
+      ctx.textAlign = 'left';
+      ctx.fillStyle = owned ? '#fff' : 'rgba(255,255,255,0.35)';
+      ctx.font = `bold 16px system-ui`;
+      ctx.fillText(h.name, 112, cardY + 38);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.font = '13px system-ui';
+      ctx.fillText(h.desc, 112, cardY + 58);
+
+      // Bonuses
+      const bonusStr = Object.entries(h.bonus||{}).map(([k,v]) => `+${v} ${k}`).join('  ');
+      ctx.fillStyle = 'rgba(255,220,80,0.7)';
+      ctx.font = '12px system-ui';
+      ctx.fillText(bonusStr, 112, cardY + 76);
+
+      // Action button
+      ctx.textAlign = 'center';
+      const btnX = 112, btnY = cardY + 100, btnW = W - 132, btnH = 34;
+      if (selected) {
+        ctx.fillStyle = 'rgba(255,180,40,0.4)';
+        this._roundRect(ctx, btnX, btnY, btnW, btnH, 8);
+        ctx.fill();
+        ctx.fillStyle = '#ffd580';
+        ctx.font = 'bold 13px system-ui';
+        ctx.fillText('✓ ACTIVE', btnX + btnW/2, btnY + 22);
+      } else if (owned) {
+        ctx.fillStyle = 'rgba(100,200,100,0.3)';
+        this._roundRect(ctx, btnX, btnY, btnW, btnH, 8);
+        ctx.fill();
+        ctx.fillStyle = '#80ff80';
+        ctx.font = 'bold 13px system-ui';
+        ctx.fillText('SELECT', btnX + btnW/2, btnY + 22);
+        addZone(btnX, btnY, btnW, btnH, () => { state.currentHero = h.key; });
+      } else {
+        ctx.fillStyle = 'rgba(255,255,255,0.08)';
+        this._roundRect(ctx, btnX, btnY, btnW, btnH, 8);
+        ctx.fill();
+        ctx.fillStyle = '#ffd580';
+        ctx.font = 'bold 13px system-ui';
+        const canAfford = state.coins >= h.cost;
+        ctx.fillStyle = canAfford ? '#ffd580' : 'rgba(255,255,255,0.3)';
+        ctx.fillText(`🪙 ${h.cost}  UNLOCK`, btnX + btnW/2, btnY + 22);
+        if (canAfford) {
+          addZone(btnX, btnY, btnW, btnH, () => {
+            state.coins -= h.cost;
+            state.heroesOwned[h.key] = true;
+            state.currentHero = h.key;
+            state.saveGame?.();
+          });
+        }
+      }
+    });
+  },
+
+  _drawShop(ctx, W, H, addZone) {
+    const state = Campfire.state;
+    this._backBtn(ctx, W, addZone, () => { this.subScene = null; });
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffd580';
+    ctx.font = 'bold 22px system-ui';
+    ctx.fillText('SHOP', W/2, 54);
+
+    // Balance
+    ctx.fillStyle = 'rgba(255,255,255,0.07)';
+    this._roundRect(ctx, 20, 68, W-40, 36, 10);
+    ctx.fill();
+    ctx.fillStyle = '#ffd580';
+    ctx.font = '14px system-ui';
+    ctx.fillText(`🪙 ${state.coins}  coins    💎 ${state.gems}  gems`, W/2, 91);
+
+    // Upgrades
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.font = 'bold 11px system-ui';
+    ctx.fillText('UPGRADES', 28, 124);
+
+    state.shopDefs.forEach((item, i) => {
+      const iy = 132 + i * 76;
+      ctx.fillStyle = 'rgba(255,255,255,0.05)';
+      this._roundRect(ctx, 20, iy, W-40, 64, 12);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+      ctx.lineWidth = 1;
+      this._roundRect(ctx, 20, iy, W-40, 64, 12);
+      ctx.stroke();
+
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 14px system-ui';
+      ctx.fillText(item.name, 36, iy + 22);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.font = '12px system-ui';
+      ctx.fillText(item.desc, 36, iy + 40);
+
+      // Buy button
+      ctx.textAlign = 'center';
+      const bx = W - 110, bw = 86, bh = 28, by = iy + 18;
+      const cost = item.cost > 0 ? item.cost : item.gemCost;
+      const currency = item.cost > 0 ? 'coin' : 'gem';
+      const symbol = item.cost > 0 ? '🪙' : '💎';
+      const balance = item.cost > 0 ? state.coins : state.gems;
+      const canAfford = balance >= cost;
+
+      ctx.fillStyle = canAfford ? 'rgba(255,180,40,0.4)' : 'rgba(255,255,255,0.08)';
+      this._roundRect(ctx, bx, by, bw, bh, 7);
+      ctx.fill();
+      ctx.fillStyle = canAfford ? '#ffd580' : 'rgba(255,255,255,0.25)';
+      ctx.font = 'bold 12px system-ui';
+      ctx.fillText(`${symbol} ${cost}  BUY`, bx + bw/2, by + 19);
+
+      if (canAfford) {
+        addZone(bx, by, bw, bh, () => {
+          if (item.cost > 0) state.coins -= item.cost;
+          else state.gems -= item.gemCost;
+          item.apply(state);
+          state.saveGame?.();
+        });
+      }
+      ctx.textAlign = 'left';
+    });
+
+    // Packs divider
+    const packY = 132 + state.shopDefs.length * 76 + 8;
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.font = 'bold 11px system-ui';
+    ctx.fillText('COIN PACKS', 28, packY + 16);
+
+    const packs = [
+      { name:'Ember Pack', coins: 100, gems: 0, price:'$0.99', color:'rgba(255,160,40,0.2)' },
+      { name:'Blaze Pack', coins: 500, gems: 5, price:'$3.99', color:'rgba(255,100,20,0.2)' },
+      { name:'Inferno Pack', coins: 1500, gems: 20, price:'$9.99', color:'rgba(200,40,20,0.25)' },
+    ];
+    packs.forEach((pack, i) => {
+      const py = packY + 24 + i * 68;
+      ctx.fillStyle = pack.color;
+      this._roundRect(ctx, 20, py, W-40, 58, 12);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,180,80,0.2)';
+      ctx.lineWidth = 1;
+      this._roundRect(ctx, 20, py, W-40, 58, 12);
+      ctx.stroke();
+      ctx.fillStyle = '#ffd580';
+      ctx.font = 'bold 15px system-ui';
+      ctx.fillText(pack.name, 36, py + 22);
+      ctx.fillStyle = 'rgba(255,255,255,0.6)';
+      ctx.font = '12px system-ui';
+      const detail = pack.gems > 0 ? `🪙 ${pack.coins}  +  💎 ${pack.gems}` : `🪙 ${pack.coins}`;
+      ctx.fillText(detail, 36, py + 40);
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'rgba(100,200,100,0.4)';
+      this._roundRect(ctx, W-120, py+12, 88, 30, 8);
+      ctx.fill();
+      ctx.fillStyle = '#aaffaa';
+      ctx.font = 'bold 14px system-ui';
+      ctx.fillText(pack.price, W-76, py + 32);
+      ctx.textAlign = 'left';
+    });
+  },
+
+  _drawAbout(ctx, W, H, addZone) {
+    this._backBtn(ctx, W, addZone, () => { this.subScene = null; });
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffd580';
+    ctx.font = 'bold 22px system-ui';
+    ctx.fillText('ABOUT', W/2, 54);
+
+    const lines = [
+      ['LIGHTFRONT', 'bold 28px system-ui', '#ffd580', 140],
+      ['A dark fantasy crowd runner.', '15px system-ui', 'rgba(255,255,255,0.7)', 174],
+      ['Rescue souls from the void.', '15px system-ui', 'rgba(255,255,255,0.7)', 196],
+      ['Carry the light back.', '15px system-ui', 'rgba(255,255,255,0.7)', 218],
+      ['', '', '', 240],
+      ['HOW TO PLAY', 'bold 13px system-ui', 'rgba(255,200,80,0.8)', 270],
+      ['Tap ◀  ▶ to steer your group.', '13px system-ui', 'rgba(255,255,255,0.6)', 292],
+      ['Pass through green gates.', '13px system-ui', 'rgba(255,255,255,0.6)', 310],
+      ['Avoid red gates and enemies.', '13px system-ui', 'rgba(255,255,255,0.6)', 328],
+      ['Save souls from cocoons.', '13px system-ui', 'rgba(255,255,255,0.6)', 346],
+      ['Defeat the Dark Knight.', '13px system-ui', 'rgba(255,255,255,0.6)', 364],
+      ['', '', '', 380],
+      ['CREDITS', 'bold 13px system-ui', 'rgba(255,200,80,0.8)', 408],
+      ['Design & Code — The Hive', '13px system-ui', 'rgba(255,255,255,0.5)', 428],
+      ['Art — Midjourney v6.1', '13px system-ui', 'rgba(255,255,255,0.5)', 446],
+      ['v0.8.1 · kingshotpro.com/games/lightfront', '11px system-ui', 'rgba(255,255,255,0.25)', 480],
+    ];
+    lines.forEach(([text, font, color, y]) => {
+      if (!text) return;
+      ctx.font = font;
+      ctx.fillStyle = color;
+      ctx.fillText(text, W/2, y);
+    });
+  },
+
+  _backBtn(ctx, W, addZone, action) {
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(255,255,255,0.12)';
+    this._roundRect(ctx, 16, 16, 64, 32, 8);
+    ctx.fill();
+    ctx.fillStyle = 'rgba(255,220,120,0.9)';
+    ctx.font = 'bold 13px system-ui';
+    ctx.fillText('← Back', 26, 37);
+    addZone(16, 16, 64, 32, action);
+  },
+
+  _roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+});
+
 // ===== MODULE: Core (must be last) =====
 Campfire.register('core', {
   W: 390,
   H: 844,
-  currentScene: "opening",
+  currentScene: "hub",
   lastTime: 0,
 
   init() {
@@ -3415,7 +3855,7 @@ Campfire.register('core', {
     Campfire.game = {
       time: 0,
       dt: 1/60,
-      scene: "opening",
+      scene: "hub",
       fade: 0,
       worldTime: 0,
       dayTime: 0.75, // 0-1 cycle: 0=dawn, 0.25=day, 0.5=dusk, 0.75=night. Start at night.
@@ -3472,7 +3912,9 @@ Campfire.register('core', {
 
     const input = Campfire.input;
 
-    if (game.scene === "opening") {
+    if (game.scene === "hub") {
+      Campfire.modules.hub.update(dt);
+    } else if (game.scene === "opening") {
       Campfire.modules.opening.update(dt);
     } else if (game.scene === "camp") {
       Campfire.modules.camp.update(dt);
@@ -3488,7 +3930,9 @@ Campfire.register('core', {
     input.update();
 
     const ctx = Campfire.ctx;
-    if (game.scene === "opening") {
+    if (game.scene === "hub") {
+      Campfire.modules.hub.draw(ctx, this.W, this.H);
+    } else if (game.scene === "opening") {
       Campfire.modules.opening.draw(ctx, this.W, this.H);
     } else if (game.scene === "camp") {
       Campfire.modules.camp.draw(ctx, this.W, this.H);
