@@ -3041,7 +3041,7 @@ Campfire.register('crowdRunner', {
     // Road
     const roadL = W / 2 - 140;
     const roadR = W / 2 + 140;
-    ctx.fillStyle = '#14141c';
+    ctx.fillStyle = '#1e1e2c';
     ctx.fillRect(roadL, 0, 280, H);
 
     // Road surface texture (bg_mid, scrolls at 0.5x)
@@ -3058,7 +3058,7 @@ Campfire.register('crowdRunner', {
     }
 
     // Road edges
-    ctx.strokeStyle = '#222230';
+    ctx.strokeStyle = '#3a3a50';
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(roadL, 0); ctx.lineTo(roadL, H);
@@ -3068,7 +3068,7 @@ Campfire.register('crowdRunner', {
     ctx.stroke();
 
     // Dashed center line (scrolling)
-    ctx.strokeStyle = '#1e1e2a';
+    ctx.strokeStyle = '#32324a';
     ctx.setLineDash([20, 20]);
     ctx.lineDashOffset = -r.roadOffset;
     ctx.beginPath();
@@ -3198,7 +3198,7 @@ Campfire.register('crowdRunner', {
     }
 
     // --- DRAW GROUP ---
-    const lightRadius = (r.powerup.type === 'Beacon' ? 160 : 100) + r.group.length * 3;
+    const lightRadius = (r.powerup.type === 'Beacon' ? 300 : 220) + r.group.length * 5;
     // Group light glow
     const groupCx = r.playerX;
     const groupCy = 700;
@@ -3243,14 +3243,14 @@ Campfire.register('crowdRunner', {
     }
 
     // --- DARKNESS OVERLAY (fog of war) ---
-    ctx.fillStyle = 'rgba(0,0,0,0.85)';
+    ctx.fillStyle = 'rgba(0,0,0,0.45)';
     ctx.fillRect(0, 0, W, H);
     ctx.save();
     ctx.globalCompositeOperation = 'destination-out';
     // Main group light
     const fogG = ctx.createRadialGradient(groupCx, groupCy, 20, groupCx, groupCy, lightRadius);
     fogG.addColorStop(0, 'rgba(0,0,0,1)');
-    fogG.addColorStop(0.65, 'rgba(0,0,0,0.85)');
+    fogG.addColorStop(0.8, 'rgba(0,0,0,0.6)');
     fogG.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = fogG;
     ctx.beginPath();
@@ -3259,23 +3259,23 @@ Campfire.register('crowdRunner', {
     // Gate glows visible through fog
     for (const g of r.gates) {
       if (!g.active) continue;
-      const gg2 = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, 50);
-      gg2.addColorStop(0, 'rgba(0,0,0,0.6)');
+      const gg2 = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, 90);
+      gg2.addColorStop(0, 'rgba(0,0,0,0.8)');
       gg2.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = gg2;
       ctx.beginPath();
-      ctx.arc(g.x, g.y, 50, 0, Math.PI * 2);
+      ctx.arc(g.x, g.y, 90, 0, Math.PI * 2);
       ctx.fill();
     }
     // Cocoon glows
     for (const c of r.cocoons) {
       if (!c.active) continue;
-      const cg = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, 40);
-      cg.addColorStop(0, 'rgba(0,0,0,0.5)');
+      const cg = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, 70);
+      cg.addColorStop(0, 'rgba(0,0,0,0.7)');
       cg.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = cg;
       ctx.beginPath();
-      ctx.arc(c.x, c.y, 40, 0, Math.PI * 2);
+      ctx.arc(c.x, c.y, 70, 0, Math.PI * 2);
       ctx.fill();
     }
     ctx.restore();
