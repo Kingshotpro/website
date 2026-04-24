@@ -419,8 +419,8 @@ const CANVAS_W = 1760;
 const CANVAS_H = 520;
 
 // Sprite display size (px). Source art is 1024×1024; scale down cleanly.
-const SPRITE_W = 80;
-const SPRITE_H = 80;
+const SPRITE_W = 160;
+const SPRITE_H = 160;
 
 // Enemy silhouette size
 const ENEMY_W  = 42;
@@ -515,7 +515,22 @@ function drawMap(ctx) {
       const img      = isRidge ? imgRidge : imgPlain;
 
       if (img.complete && img.naturalWidth > 0) {
+        // Diamond-clip: each tile is a 4-vertex iso diamond, not a square.
+        // Without clipping, the 1536×768 source fills the bounding rect and
+        // adjacent rows overlap into visible stripes. Clip to diamond shape
+        // so the painted tile art reads as discrete iso tiles.
+        const cx = x + TILE_W / 2;
+        const cy = y + TILE_H / 2;
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(cx,          y);
+        ctx.lineTo(x + TILE_W,  cy);
+        ctx.lineTo(cx,          y + TILE_H);
+        ctx.lineTo(x,           cy);
+        ctx.closePath();
+        ctx.clip();
         ctx.drawImage(img, x, y, TILE_W, TILE_H);
+        ctx.restore();
       } else {
         // CSS placeholder: draw a coloured diamond
         const cx = x + TILE_W / 2;
@@ -689,10 +704,15 @@ function initStage() {
   // Place unit sprites and enemy silhouettes
   placeUnits(stage);
 
-  // Scroll stage so the south edge (heroes) is roughly centered on load.
-  // The south row is at y ≈ PAD_Y + (3+12)*16 = 40+240 = 280.
+  // Scroll stage so the heroes (Vael q=3,r=12 and Caelen q=5,r=12) are centered.
+  // Their midpoint in canvas pixels: x ≈ 412 (Vael sprite center 348, Caelen 476),
+  // y ≈ 286 (Vael top 190 + SPRITE_H/2, Caelen 222 + SPRITE_H/2, midpoint).
+  // Worker 12 used PAD_X which scrolled them off-screen; this corrects it.
   const scroll = document.getElementById('stage-scroll');
-  scroll.scrollLeft = PAD_X - Math.floor(scroll.clientWidth / 2);
+  const heroCenterX = 412;
+  const heroCenterY = 286;
+  scroll.scrollLeft = Math.max(0, heroCenterX - Math.floor(scroll.clientWidth  / 2));
+  scroll.scrollTop  = Math.max(0, heroCenterY - Math.floor(scroll.clientHeight / 2));
 
   // Hide loading overlay
   document.getElementById('loading').classList.add('hidden');
