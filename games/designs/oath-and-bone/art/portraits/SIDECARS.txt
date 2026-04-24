@@ -1,0 +1,28 @@
+All images in this directory are AI-generated via Midjourney v6 from original prompts.
+Unofficial. Not affiliated with Century Games.
+
+Per-file (each is the 0_0 quadrant of a 4-image MJ grid; alternates 0_1..0_3 remain at the same jobId on cdn.midjourney.com):
+
+  vael_neutral_v1.png   — Vael Thorne (HEROES.md §1), neutral.            jobId b24bfe50-804d-4ba1-a561-84a201a2ab47
+  vael_grief_v1.png     — Vael Thorne, emotive (grief held sideways).     jobId 9979c64b-ffbb-430c-96b7-399d6c1bcec5
+  vael_command_v1.png   — Vael Thorne, combat (Braced Charge / mid-shout).jobId 0af3fdfe-7c2c-4588-b64f-bf1bf92e533d
+  halv_neutral_v1.png   — Sergeant Halv (HEROES.md §2), neutral.          jobId ca5f89eb-ae00-4ae1-a407-7f5acf52c0ad
+  halv_weary_v1.png     — Sergeant Halv, emotive (weary).                 jobId afd8a9d8-60f1-4245-906a-c09c4481f878
+  halv_command_v1.png   — Sergeant Halv, combat (Hold the Line).          jobId faeab7cb-2bf8-4328-979a-d8eac20d959a
+  brin_neutral_v1.png   — Brin Fletcher (HEROES.md §3), neutral.          jobId 104d8e0e-0f2a-4fbc-9077-194b7d262a5c
+  brin_guarded_v1.png   — Brin Fletcher, emotive (guarded).               jobId 6c5f11f6-ef35-4e61-a5f4-0bf7a9dce8ce
+  brin_command_v1.png   — Brin Fletcher, combat (Called Shot).            jobId f8001b53-cb53-4072-ab6b-3480b8775dfe
+
+  caelen_neutral_v1.png    — Caelen the Quiet (HEROES.md §4), neutral.      jobId 90101afe-af43-4ca7-b10f-1ff9024634bf
+  caelen_regret_v1.png     — Caelen the Quiet, emotive ("should have cast"). jobId 30d2ef93-74a2-4a55-a3ce-75ccf69cc5c7
+  caelen_command_v1.png    — Caelen the Quiet, combat (Fireball "Down.").    jobId bd75571d-9a95-4b68-9e1c-c677fd7c1cee
+  marrow_neutral_v1.png    — Marrow (HEROES.md §5), neutral.                 jobId cc685b45-b47e-4c3c-819f-3785194f0695
+  marrow_reckoning_v1.png  — Marrow, emotive (quiet reckoning, hand at tattoo). jobId fbc6b0f3-568d-45c0-8236-a876fa873aa7
+  marrow_command_v1.png    — Marrow, combat (Raise Skeleton "Serve me.").    jobId 4bbeb4c0-38d9-46cb-8c1d-be375c6f4bd9
+  thessa_neutral_v1.png    — Thessa of the Hollow (HEROES.md §6), neutral.   jobId b11de776-394b-43cb-bad0-f4fc9c2d5b17
+  thessa_watching_v1.png   — Thessa, emotive ("I'm watching").               jobId e09ed82e-5985-42a1-a061-2c71a874246a
+  thessa_command_v1.png    — Thessa, combat (Summon Wolf "Go.").             jobId a3885a62-55dd-4466-bc52-8a9f5c55ab23
+
+Original characters. Not affiliated with Century Games or any Kingshot canonical hero.
+
+Provenance: Game title was "Crownsmoke" through 2026-04-24; renamed to "Oath and Bone" on that date. Portrait filenames and jobIds above are unchanged.

@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Oath and Bone — Art Compositor</title>
+<style>
+  body { margin: 0; background: #0b0c10; color: #d4d4d4; font: 13px/1.4 ui-monospace, monospace; padding: 16px; }
+  h1, h2, h3 { margin: 16px 0 8px; color: #e2d4a9; font-weight: 500; }
+  h1 { border-bottom: 1px solid #2a2a2a; padding-bottom: 8px; }
+  .grid { display: grid; gap: 4px; grid-template-columns: repeat(8, 1fr); }
+  .tile { background: #15171c; border: 1px solid #1f1f1f; position: relative; }
+  .tile img { width: 100%; height: auto; display: block; }
+  .tile .label { position: absolute; bottom: 2px; left: 4px; right: 4px; font-size: 10px; color: #a8a8a8; background: rgba(0,0,0,0.55); padding: 2px 4px; text-align: center; }
+  .spells { grid-template-columns: repeat(6, 1fr); }
+  .zoom64 { grid-template-columns: repeat(16, 64px); gap: 1px; }
+  .zoom64 .tile img { width: 64px; height: 64px; }
+  .zoom128 { grid-template-columns: repeat(8, 128px); gap: 2px; }
+  .zoom128 .tile img { width: 128px; height: 128px; }
+  .anim-row { display: flex; gap: 4px; align-items: center; margin-bottom: 6px; }
+  .anim-row .name { width: 110px; color: #a8a8a8; font-size: 11px; }
+  .anim-row .frames { display: flex; gap: 2px; }
+  .anim-row .frames img { width: 96px; height: 96px; background: #15171c; }
+  .anim-cycle { position: relative; width: 96px; height: 96px; }
+  .anim-cycle img { position: absolute; inset: 0; opacity: 0; animation: cycle 0.8s steps(1) infinite; }
+  .anim-cycle img:nth-child(1) { animation-delay: 0s; }
+  .anim-cycle img:nth-child(2) { animation-delay: 0.2s; }
+  .anim-cycle img:nth-child(3) { animation-delay: 0.4s; }
+  .anim-cycle img:nth-child(4) { animation-delay: 0.6s; }
+  @keyframes cycle { 0%,25% { opacity: 1; } 25.1%,100% { opacity: 0; } }
+  .overlay-test { position: relative; width: 384px; height: 192px; margin: 8px 0; background: #000; }
+  .overlay-test .tile-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .overlay-test .spell-fg { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 150px; height: 150px; mix-blend-mode: screen; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  section { background: #0f1218; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px; }
+  code { background: #151820; padding: 2px 5px; border-radius: 3px; color: #e2d4a9; }
+</style>
+</head>
+<body>
+
+<h1>Oath and Bone — Spell Effects + Hero Sprites Compositor</h1>
+<p>43 spell stills + 64 sprite frames + packed sheets. Painterly VS/UO/FFT register, locked to tile + portrait style. Serving from <code>port 3981</code>.</p>
+
+<section>
+  <h2>1 · Sprite animation preview (native resolution, looped)</h2>
+  <p>Each cell cycles through its 4 frames at 0.8 s. Verifies pose coherence across the 4-grid.</p>
+  <h3>Vael — knight</h3>
+  <div id="vael-anim"></div>
+  <h3>Caelen — wizard</h3>
+  <div id="caelen-anim"></div>
+</section>
+
+<section>
+  <h2>2 · Silhouette readability — 64 × 64 zoom test</h2>
+  <p>The brief requires sprites readable at 64 × 64 tactical zoom. Rendered at exact target size against tile-background grey.</p>
+  <h3>Vael</h3>
+  <img src="sprites/vael/vael_zoom64_test.png" style="image-rendering: pixelated; border: 1px solid #222" />
+  <h3>Caelen</h3>
+  <img src="sprites/caelen/caelen_zoom64_test.png" style="image-rendering: pixelated; border: 1px solid #222" />
+</section>
+
+<section>
+  <h2>3 · Packed sprite sheets (256 × 256 per frame, 8 rows × 4 cols = 32 frames per hero)</h2>
+  <p>Row order: <code>idle_n, idle_e, idle_s, idle_w, attack_n, attack_e, attack_s, attack_w</code>. See <code>sprites/&lt;hero&gt;/layout.json</code>.</p>
+  <div class="row">
+    <div><h3>Vael</h3><img src="sprites/vael/vael_sheet.png" style="width: 384px; border: 1px solid #222" /></div>
+    <div><h3>Caelen</h3><img src="sprites/caelen/caelen_sheet.png" style="width: 384px; border: 1px solid #222" /></div>
+  </div>
+</section>
+
+<section>
+  <h2>4 · Spell contact sheets (43 spells, grouped by school)</h2>
+  <h3>Wizardry — cold blue/purple, crystalline (15)</h3>
+  <img src="spells/wizardry_contact.png" style="width: 100%; border: 1px solid #222" />
+  <h3>Necromancy — green-black/bone, dissonant (13)</h3>
+  <img src="spells/necromancy_contact.png" style="width: 100%; border: 1px solid #222" />
+  <h3>Druidry — gold-green/loam, organic (15)</h3>
+  <img src="spells/druidry_contact.png" style="width: 100%; border: 1px solid #222" />
+</section>
+
+<section>
+  <h2>5 · Spell overlay on biome tile (tactical zoom)</h2>
+  <p>Spell rendered with <code>mix-blend-mode: screen</code> over a biome base tile at 384 × 192 (tactical scale).</p>
+  <div class="row" id="overlay-tests"></div>
+</section>
+
+<section>
+  <h2>6 · Individual spell gallery (tactical-zoom cells)</h2>
+  <h3>Wizardry</h3>
+  <div class="grid spells" id="spells-wizardry"></div>
+  <h3>Necromancy</h3>
+  <div class="grid spells" id="spells-necromancy"></div>
+  <h3>Druidry</h3>
+  <div class="grid spells" id="spells-druidry"></div>
+</section>
+
+<script>
+const DIRS = ["n","e","s","w"];
+const ANIMS = ["idle","attack"];
+const FRAMES = 4;
+const HEROES = ["vael","caelen"];
+
+function mkAnim(hero) {
+  const host = document.getElementById(hero + "-anim");
+  for (const anim of ANIMS) {
+    for (const d of DIRS) {
+      const row = document.createElement("div");
+      row.className = "anim-row";
+      row.innerHTML = '<span class="name">' + anim + "_" + d + '</span>';
+      const cycle = document.createElement("div");
+      cycle.className = "anim-cycle";
+      for (let f = 0; f < FRAMES; f++) {
+        const img = document.createElement("img");
+        img.src = `sprites/${hero}/${anim}_${d}_${f}.png`;
+        img.style.width = "96px"; img.style.height = "96px";
+        cycle.appendChild(img);
+      }
+      // also show static frames next to it for clarity
+      const frames = document.createElement("div");
+      frames.className = "frames";
+      for (let f = 0; f < FRAMES; f++) {
+        const img = document.createElement("img");
+        img.src = `sprites/${hero}/${anim}_${d}_${f}.png`;
+        frames.appendChild(img);
+      }
+      row.appendChild(cycle);
+      row.appendChild(frames);
+      host.appendChild(row);
+    }
+  }
+}
+HEROES.forEach(mkAnim);
+
+const SPELLS = {
+  wizardry: ["firebolt","fireball","incinerate","frost_shard","blizzard","permafrost","spark","chain_lightning","storm","force_push","telekinesis","gravity_well","shield","mana_siphon","teleport"],
+  necromancy: ["raise_skeleton","raise_archer_wraith","raise_lich_servant","curse_of_weakness","curse_of_binding","curse_of_death","life_drain","soul_siphon","bone_shield","shroud","marrows_binding","unhallow","corpse_explosion"],
+  druidry: ["heal","group_heal","resurrection","regrowth","thorn_grove","living_terrain","summon_wolf","summon_bear","pack_call","gale","root","earthquake","cleanse","barkskin","natures_grace"]
+};
+
+for (const school of Object.keys(SPELLS)) {
+  const host = document.getElementById("spells-" + school);
+  for (const id of SPELLS[school]) {
+    const cell = document.createElement("div");
+    cell.className = "tile";
+    cell.innerHTML = `<img src="spells/${school}/${id}.png"><div class="label">${id}</div>`;
+    host.appendChild(cell);
+  }
+}
+
+// Overlay: pick a few spells on matching biome tiles
+const OVERLAYS = [
+  { spell: "spells/druidry/pack_call.png", tile: "tiles/forest/base.png", label: "pack_call on forest" },
+  { spell: "spells/druidry/earthquake.png", tile: "tiles/plain/base.png", label: "earthquake on plain" },
+  { spell: "spells/necromancy/raise_skeleton.png", tile: "tiles/ruin/base.png", label: "raise_skeleton on ruin" },
+  { spell: "spells/necromancy/curse_of_death.png", tile: "tiles/rough/base.png", label: "curse_of_death on rough" },
+  { spell: "spells/wizardry/storm.png", tile: "tiles/ridge/base.png", label: "storm on ridge" },
+  { spell: "spells/wizardry/permafrost.png", tile: "tiles/river/base.png", label: "permafrost on river" }
+];
+const host = document.getElementById("overlay-tests");
+for (const o of OVERLAYS) {
+  const div = document.createElement("div");
+  div.innerHTML = `<div class="overlay-test"><img class="tile-bg" src="${o.tile}"><img class="spell-fg" src="${o.spell}"></div><div style="font-size:11px;color:#888">${o.label}</div>`;
+  host.appendChild(div);
+}
+</script>
+
+</body>
+</html>

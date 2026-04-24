@@ -1,0 +1,46 @@
+{
+  "frame_size": 256,
+  "frames_per_row": 4,
+  "rows": [
+    {
+      "row": 0,
+      "anim": "idle",
+      "dir": "n"
+    },
+    {
+      "row": 1,
+      "anim": "idle",
+      "dir": "e"
+    },
+    {
+      "row": 2,
+      "anim": "idle",
+      "dir": "s"
+    },
+    {
+      "row": 3,
+      "anim": "idle",
+      "dir": "w"
+    },
+    {
+      "row": 4,
+      "anim": "attack",
+      "dir": "n"
+    },
+    {
+      "row": 5,
+      "anim": "attack",
+      "dir": "e"
+    },
+    {
+      "row": 6,
+      "anim": "attack",
+      "dir": "s"
+    },
+    {
+      "row": 7,
+      "anim": "attack",
+      "dir": "w"
+    }
+  ]
+}

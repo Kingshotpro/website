@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Oath and Bone Tile Compositor — Elevation Test</title>
+<style>
+  body { background: #1a1a1a; color: #ccc; font-family: monospace; margin: 0; padding: 20px; }
+  h1 { color: #b8960c; font-size: 14px; margin-bottom: 4px; }
+  p { font-size: 11px; color: #888; margin: 0 0 16px; }
+  #controls { margin-bottom: 16px; }
+  select, button { background: #2a2a2a; color: #ccc; border: 1px solid #444; padding: 4px 8px; font-family: monospace; font-size: 12px; cursor: pointer; }
+  select:focus, button:focus { outline: none; border-color: #b8960c; }
+  button:hover { background: #333; }
+  #stage { position: relative; width: 900px; height: 420px; background: #111; border: 1px solid #333; overflow: hidden; }
+  .tile-slot { position: absolute; }
+  .tile-slot img { width: 256px; height: 128px; image-rendering: pixelated; display: block; }
+  .tile-slot .label { position: absolute; bottom: 2px; left: 4px; font-size: 9px; color: rgba(255,255,150,0.8); pointer-events: none; }
+  #seam-check { margin-top: 12px; font-size: 11px; color: #888; }
+  #seam-check span { color: #b8960c; }
+  .missing { border: 1px dashed #555; background: #1a1a1a; width: 256px; height: 128px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #444; }
+</style>
+</head>
+<body>
+
+<h1>Oath and Bone — Tile Elevation Compositor</h1>
+<p>Tests: do base/elev-1/elev-2/cliff-edge of the same biome read as a coherent isometric hex map? Check for seam visibility and elevation cue legibility.</p>
+
+<div id="controls">
+  <label style="font-size:11px">Biome: </label>
+  <select id="biome-select" onchange="loadBiome(this.value)">
+    <option value="plain">plain</option>
+    <option value="rough">rough</option>
+    <option value="ridge">ridge</option>
+    <option value="river">river</option>
+    <option value="forest">forest</option>
+    <option value="ruin">ruin</option>
+    <option value="sanctum">sanctum</option>
+  </select>
+  &nbsp;
+  <button onclick="loadBiome(document.getElementById('biome-select').value)">Reload</button>
+  &nbsp;
+  <button onclick="toggleGrid()">Toggle Grid</button>
+</div>
+
+<div id="stage"></div>
+
+<div id="seam-check">
+  Layout: isometric 2×2 grid. <span>Top-left</span> = base &nbsp;|&nbsp; <span>Top-right</span> = elevation-1 &nbsp;|&nbsp; <span>Bottom-left</span> = elevation-2 &nbsp;|&nbsp; <span>Bottom-right</span> = cliff-edge<br>
+  Pass criteria: elevation sides visually stack (taller = more side visible), no jarring seams where tiles meet, biome accent colour consistent across all 4.
+</div>
+
+<script>
+const TILE_W = 256;
+const TILE_H = 128;
+const ISO_X = TILE_W / 2;  // 128 — horizontal step per column
+const ISO_Y = TILE_H / 2;  // 64  — vertical step per column
+const STAGE_PAD_X = 180;
+const STAGE_PAD_Y = 60;
+
+// Isometric 2×2 grid positions (col, row) → screen (x, y)
+// Standard isometric: x = (col - row) * ISO_X, y = (col + row) * ISO_Y
+function isoPos(col, row) {
+  return {
+    x: STAGE_PAD_X + (col - row) * ISO_X,
+    y: STAGE_PAD_Y + (col + row) * (ISO_Y / 2)
+  };
+}
+
+const LAYOUT = [
+  { col: 0, row: 0, type: 'base',        label: 'base' },
+  { col: 1, row: 0, type: 'elevation-1', label: 'elev-1' },
+  { col: 0, row: 1, type: 'elevation-2', label: 'elev-2' },
+  { col: 1, row: 1, type: 'cliff-edge',  label: 'cliff-edge' },
+];
+
+let showGrid = false;
+
+function loadBiome(biome) {
+  const stage = document.getElementById('stage');
+  stage.innerHTML = '';
+
+  LAYOUT.forEach(({ col, row, type, label }) => {
+    const pos = isoPos(col, row);
+    const slot = document.createElement('div');
+    slot.className = 'tile-slot';
+    slot.style.left = pos.x + 'px';
+    slot.style.top  = pos.y + 'px';
+    slot.style.zIndex = (col + row + 1).toString();
+
+    const src = `./${biome}/${type}.png`;
+    const img = new Image();
+    img.onload = () => {
+      slot.innerHTML = '';
+      slot.appendChild(img);
+      const lbl = document.createElement('div');
+      lbl.className = 'label';
+      lbl.textContent = label;
+      slot.appendChild(lbl);
+    };
+    img.onerror = () => {
+      const miss = document.createElement('div');
+      miss.className = 'missing';
+      miss.textContent = `${biome}/${type} — not yet downloaded`;
+      slot.appendChild(miss);
+      const lbl = document.createElement('div');
+      lbl.className = 'label';
+      lbl.style.color = '#555';
+      lbl.textContent = label;
+      slot.appendChild(lbl);
+    };
+    img.src = src;
+    img.width = TILE_W;
+    img.height = TILE_H;
+    img.style.imageRendering = 'pixelated';
+
+    stage.appendChild(slot);
+  });
+
+  if (showGrid) drawGrid(stage);
+}
+
+function drawGrid(stage) {
+  const grid = document.createElement('canvas');
+  grid.width = 900; grid.height = 420;
+  grid.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;opacity:0.25';
+  const ctx = grid.getContext('2d');
+  ctx.strokeStyle = '#b8960c';
+  ctx.lineWidth = 0.5;
+  for (let x = 0; x < 900; x += 64) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 420); ctx.stroke(); }
+  for (let y = 0; y < 420; y += 32) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(900, y); ctx.stroke(); }
+  stage.appendChild(grid);
+}
+
+function toggleGrid() {
+  showGrid = !showGrid;
+  loadBiome(document.getElementById('biome-select').value);
+}
+
+loadBiome('plain');
+</script>
+
+</body>
+</html>
