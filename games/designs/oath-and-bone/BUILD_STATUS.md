@@ -1,6 +1,6 @@
 # BUILD_STATUS.md — Oath and Bone Autonomous Build Queue
 
-last_updated: 2026-04-24T14:00:00Z
+last_updated: 2026-04-24T16:00:00Z
 last_feedback_processed: 2026-04-24T12:00:00Z
 current_phase: 1
 daily_cap_hit: false
@@ -8,7 +8,7 @@ spend_today_usd: 0.00
 mj_count_today: 0
 PAUSE: false
 
-succession_note: "P1-03 complete 2026-04-24. game-oath-and-bone.js skeleton written (174 lines). IIFE pattern, OathAndBone namespace, daily gate, advisor wiring stubs (onBattleVictory/observe/onBattleEnd), OathAndBoneEngine polling. All gates passed (no Crownsmoke, no hardcoded prices, Soul Review 3-channel comment present). P1-04 is now ACTIVE: combat state machine unit placement + turn order."
+succession_note: "P1-04 complete 2026-04-24. game-oath-and-bone-engine.js written (581 lines). window.OathAndBoneEngine API: start/loadScenario/getBattle/getTile/getUnit/getCurrentUnit/getMovableHexes/getAttackableHexes/moveUnit/attackUnit/advanceTurn + hooks. Hex math (axial), elevation movement costs, attack modifiers, turn order (initiative desc). All gates passed. Gemini 2.5-flash congested — used 2.5-flash-lite as fallback (worked). P1-05 is now ACTIVE: spell resolution + school routing."
 
 ---
 
@@ -16,7 +16,7 @@ succession_note: "P1-03 complete 2026-04-24. game-oath-and-bone.js skeleton writ
 
 | ID | Task | Attempt | Template | Output path |
 |---|---|---|---|---|
-| P1-04 | Combat state machine: unit placement + turn order | 1 | 3.1 | WORKER_OUTPUT/code/P1-04.md |
+| P1-05 | Combat state machine: spell resolution + school routing | 1 | 3.1 | WORKER_OUTPUT/code/P1-05.md |
 
 ---
 
@@ -24,7 +24,6 @@ succession_note: "P1-03 complete 2026-04-24. game-oath-and-bone.js skeleton writ
 
 | ID | Task | Template | Depends on |
 |---|---|---|---|
-| P1-04 | Combat state machine: unit placement + turn order | 3.1 | P1-03 |
 | P1-05 | Combat state machine: spell resolution + school routing | 3.1 | P1-04 |
 | P1-06 | Combat state machine: enemy AI (6 archetypes) | 3.1 | P1-05 |
 | P1-07 | Spell definition objects — Wizardry school (14 spells) | 3.3 | P1-03 |
@@ -76,7 +75,8 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
-| P1-03 | game-oath-and-bone.js skeleton — 174 lines, all gates passed | 2026-04-24 | pending |
+| P1-04 | game-oath-and-bone-engine.js — 581 lines, all gates passed | 2026-04-24 | 2e4cd6f |
+| P1-03 | game-oath-and-bone.js skeleton — 174 lines, all gates passed | 2026-04-24 | 8d5dd6d |
 | P1-02 | GET /credits/balance — already implemented at worker.js:1399 (verified) | 2026-04-24 | no commit needed |
 | P1-01 | Fix worker.js playerContext stringify — lines 283+398 | 2026-04-24 | 4116c88 |
 | — | AUTONOMOUS_BUILD.md written | 2026-04-24 | (uncommitted) |
