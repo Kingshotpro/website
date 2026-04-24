@@ -296,6 +296,29 @@
       handleCanvasClick(px, py);
     });
 
+    // Hover listeners (Concern 3)
+    canvas.addEventListener('mousemove', function (e) {
+      var rect   = canvas.getBoundingClientRect();
+      var scaleX = CANVAS_W / rect.width;
+      var scaleY = CANVAS_H / rect.height;
+      var px = (e.clientX - rect.left) * scaleX;
+      var py = (e.clientY - rect.top)  * scaleY;
+      var hex = screenToHex(px, py);
+      var changed = !hex !== !_hoveredHex ||
+                    (hex && _hoveredHex && (hex.q !== _hoveredHex.q || hex.r !== _hoveredHex.r));
+      if (changed) {
+        _hoveredHex = hex;
+        if (!_animating) render();
+      }
+    });
+
+    canvas.addEventListener('mouseleave', function () {
+      if (_hoveredHex) {
+        _hoveredHex = null;
+        if (!_animating) render();
+      }
+    });
+
     // Action button handlers
     panel.querySelector('[data-action=move]').addEventListener('click', handleMoveBtn);
     panel.querySelector('[data-action=attack]').addEventListener('click', handleAttackBtn);
@@ -528,6 +551,33 @@
         _ctx.closePath(); _ctx.stroke();
       }
     }
+
+    // ── Hover outline (Concern 3) ──
+    // Gold = general hover. Red = valid enemy target in cast mode.
+    // Thinner and semi-transparent to distinguish from move-range gold fill.
+    if (_hoveredHex && _hoveredHex.q === q && _hoveredHex.r === r) {
+      var hTile     = window.OathAndBoneEngine.getTile(q, r);
+      var hUnitId   = hTile && hTile.unit;
+      var hUnit     = hUnitId ? window.OathAndBoneEngine.getBattle().units[hUnitId] : null;
+      var hasEnemy  = hUnit && hUnit.team === 'enemy';
+      var inCastRng = _castMode && _hexInList(_castHexes, q, r);
+
+      var hColor;
+      if (inCastRng && hasEnemy) {
+        hColor = 'rgba(224,92,92,.95)';   // red — valid spell target
+      } else if (inCastRng) {
+        hColor = 'rgba(92,140,224,.80)';   // dim blue — in range, no target
+      } else {
+        hColor = 'rgba(240,192,64,.80)';   // gold — general hover
+      }
+
+      _ctx.strokeStyle = hColor;
+      _ctx.lineWidth   = 1.8;
+      _ctx.beginPath();
+      _ctx.moveTo(vTop.x, vTop.y); _ctx.lineTo(vRight.x, vRight.y);
+      _ctx.lineTo(vBottom.x, vBottom.y); _ctx.lineTo(vLeft.x, vLeft.y);
+      _ctx.closePath(); _ctx.stroke();
+    }
   }
 
   function _hexInList(list, q, r) {
@@ -571,7 +621,7 @@
   // Remove-and-recreate approach (no animations — flagged for Worker 17).
   function syncSprites() {
     if (!_stage) return;
-    var oldEls = _stage.querySelectorAll('.oab-sprite,.oab-name,.oab-cursor,.oab-hp-bar');
+    var oldEls = _stage.querySelectorAll('.oab-sprite,.oab-name,.oab-cursor,.oab-hp-bar,.oab-ghost');
     oldEls.forEach(function (el) { el.remove(); });
 
     var battle = window.OathAndBoneEngine.getBattle();
@@ -579,6 +629,34 @@
       var unit = battle.units[id];
       if (unit.hp <= 0) continue;
       _createUnitDom(unit);
+    }
+
+    // Ghost sprite: semitransparent preview of selected unit at hovered destination (Concern 3)
+    if (_moveMode && _hoveredHex && _selectedUnitId &&
+        _hexInList(_moveHexes, _hoveredHex.q, _hoveredHex.r)) {
+      var selU = battle.units[_selectedUnitId];
+      if (selU) {
+        var ghostUnit = { q: _hoveredHex.q, r: _hoveredHex.r,
+                          hp: selU.hp, hp_max: selU.hp_max, team: selU.team,
+                          heroId: selU.heroId, id: selU.id };
+        var gp   = unitDomPos(ghostUnit);
+        var gkey = unitSpriteKey(selU);
+        var gsrc = spriteSrc(gkey);
+        var ghost;
+        if (gsrc) {
+          ghost     = document.createElement('img');
+          ghost.src = gsrc;
+          ghost.alt = 'ghost';
+        } else {
+          ghost = _makePlaceholder(selU, gp, true);
+        }
+        ghost.className = 'oab-ghost';
+        ghost.style.cssText = 'position:absolute;left:' + gp.sx + 'px;top:' + gp.sy + 'px;' +
+          'width:' + SPRITE_W + 'px;height:' + SPRITE_H + 'px;opacity:0.40;pointer-events:none;' +
+          'image-rendering:pixelated;z-index:' + (_hoveredHex.r + 1) + ';' +
+          'filter:grayscale(0.2) drop-shadow(0 0 6px rgba(240,192,64,.6))';
+        _stage.appendChild(ghost);
+      }
     }
   }
 
