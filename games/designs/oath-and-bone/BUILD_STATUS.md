@@ -30,6 +30,7 @@ succession_note: "P1-05 complete 2026-04-24. game-oath-and-bone-spells.js writte
 | P1-10 | Hero definition objects (6 heroes, permadeath flags) | 3.1 | P1-03 |
 | P1-11 | B1 battle scenario data object | 3.4 | P1-04 |
 | P1-12 | advisor.js wiring — XP grant on Sergeant+ win | 3.1 | P1-03 |
+| P1-13 | Fix worker.js:962 handleChronicle playerContext stringify (same pattern as P1-01) | 3.1 (narrow) | — |
 
 ---
 
