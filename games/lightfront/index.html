@@ -3417,7 +3417,7 @@ Campfire.register('hub', {
   update(dt) {
     this._emberPhase = (this._emberPhase + dt * 0.8) % (Math.PI * 2);
     const inp = Campfire.input;
-    if (!inp.tapped) return;
+    if (!inp.pressed) return;
     const x = inp.x, y = inp.y;
     const inZ = (z) => x >= z.x && y >= z.y && x <= z.x + z.w && y <= z.y + z.h;
     for (const z of this.zones) {
