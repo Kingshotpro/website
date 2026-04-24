@@ -959,7 +959,7 @@ async function handleChronicle(request, env) {
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { 'Authorization': 'Bearer ' + env.OPENAI_KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: 'gpt-4o-mini', max_tokens: 400, messages: [{ role: 'system', content: system }, { role: 'user', content: 'Player context: ' + (playerContext || 'Unknown') + '\n\nWrite the chronicle entry.' }] }),
+    body: JSON.stringify({ model: 'gpt-4o-mini', max_tokens: 400, messages: [{ role: 'system', content: system }, { role: 'user', content: 'Player context: ' + (playerContext ? JSON.stringify(playerContext) : 'Unknown') + '\n\nWrite the chronicle entry.' }] }),
   });
   const data = await res.json();
   const text = (data.choices && data.choices[0]) ? data.choices[0].message.content : 'The chronicler\'s quill has stilled.';
