@@ -126,3 +126,28 @@ staging note.
 ---
 
 *Worker 12. This file is complete. The Architect has a surface to react to.*
+
+---
+
+## Worker 13 update — April 24, 2026 — Sprite-style pivot
+
+The Architect reviewed the preview and called it "not FFT." The gap: the existing hero sprites (`idle_n_0.png`) are 1024×1024 painterly illustrations — the visual register of a painted portrait, not a pixel-art unit sprite.
+
+**Pivot executed by Worker 13:**
+
+- 4 new pixel-art sprites generated via Midjourney and saved as `idle_n_0_px.png` alongside the existing painted frames (which remain on disk, archive-worthy).
+- Preview updated: sprite paths switched to `_px` variants, `SPRITE_W/H` reduced from 78×118 → **48×72**, radial-gradient mask removed (transparent PNGs don't need feathering), enemy CSS div-placeholders replaced with `<img>` tags using the new enemy sprites.
+- The 18 painted portraits in `art/portraits/` are **untouched** — still used in the top UI strip.
+
+Asset summary:
+
+| Unit | New sprite | Style |
+|---|---|---|
+| Vael | `art/sprites/vael/idle_n_0_px.png` | Chunky pixel knight, grey/gold, sword |
+| Caelen | `art/sprites/caelen/idle_n_0_px.png` | Pixel wizard, dark robes, staff, pointed hat |
+| Bladewind | `art/sprites/bladewind/idle_n_0_px.png` | Armored infantry, brown/red, short sword |
+| Ironwall | `art/sprites/ironwall/idle_n_0_px.png` | Armored archer, iron-grey/tan |
+
+See `PIXEL_SPRITES_LOG.md` for full MJ generation log, prompt recipes, and Worker 14 instructions.
+
+*Worker 13. Register pivot complete.*
