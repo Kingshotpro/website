@@ -1,6 +1,6 @@
 # BUILD_STATUS.md — Oath and Bone Autonomous Build Queue
 
-last_updated: 2026-04-24T12:00:00Z
+last_updated: 2026-04-24T13:00:00Z
 last_feedback_processed: 2026-04-24T12:00:00Z
 current_phase: 1
 daily_cap_hit: false
@@ -8,7 +8,7 @@ spend_today_usd: 0.00
 mj_count_today: 0
 PAUSE: false
 
-succession_note: "P1-01 calibration complete 2026-04-24. Pipeline verified end-to-end: gemini_call.sh → delegation prompt → Gemini response → Edit integration → commit. Fix applied to worker.js lines 283+398 (line numbers shifted from :260 due to 5 commits since CROSS_INTERSECTION.md was written). Note: worker.js:962 handleChronicle has same playerContext bug — separate task, out of P1-01 scope. Ready for /schedule or /loop."
+succession_note: "P1-02 cycle: handleCreditsBalance already implemented at worker.js:1399 (commit 511a329, 2026-04-22). No generation needed — verified correct. P1-03 is now ACTIVE: game-oath-and-bone.js skeleton. Next orchestrator reads AUTONOMOUS_BUILD.md §3 Template 3.1 and generates the module skeleton via Gemini."
 
 ---
 
@@ -16,7 +16,7 @@ succession_note: "P1-01 calibration complete 2026-04-24. Pipeline verified end-t
 
 | ID | Task | Attempt | Template | Output path |
 |---|---|---|---|---|
-| P1-02 | GET /credits/balance endpoint + KV ledger in worker.js | 1 | 3.1 | WORKER_OUTPUT/code/P1-02.md |
+| P1-03 | Oath and Bone game module skeleton (game-oath-and-bone.js) | 1 | 3.1 | WORKER_OUTPUT/code/P1-03.md |
 
 ---
 
@@ -24,8 +24,6 @@ succession_note: "P1-01 calibration complete 2026-04-24. Pipeline verified end-t
 
 | ID | Task | Template | Depends on |
 |---|---|---|---|
-| P1-03 | Oath and Bone game module skeleton (game-oath-and-bone.js) | 3.1 | P1-01 |
-| P1-03 | Oath and Bone game module skeleton (game-oath-and-bone.js) | 3.1 | P1-01 |
 | P1-04 | Combat state machine: unit placement + turn order | 3.1 | P1-03 |
 | P1-05 | Combat state machine: spell resolution + school routing | 3.1 | P1-04 |
 | P1-06 | Combat state machine: enemy AI (6 archetypes) | 3.1 | P1-05 |
@@ -78,7 +76,8 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
-| P1-01 | Fix worker.js playerContext stringify — lines 283+398 | 2026-04-24 | pending (see Step 8) |
+| P1-02 | GET /credits/balance — already implemented at worker.js:1399 (verified) | 2026-04-24 | no commit needed |
+| P1-01 | Fix worker.js playerContext stringify — lines 283+398 | 2026-04-24 | 4116c88 |
 | — | AUTONOMOUS_BUILD.md written | 2026-04-24 | (uncommitted) |
 | — | AUTONOMOUS_BUILD_SUCCESSION.md written | 2026-04-24 | (uncommitted) |
 | — | ORCHESTRATOR_PROMPT.md written | 2026-04-24 | (uncommitted) |
