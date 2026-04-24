@@ -1,6 +1,6 @@
 # BUILD_STATUS.md — Oath and Bone Autonomous Build Queue
 
-last_updated: 2026-04-24T18:00:00Z
+last_updated: 2026-04-24T19:00:00Z
 last_feedback_processed: 2026-04-24T18:00:00Z
 current_phase: 1
 daily_cap_hit: false
@@ -8,7 +8,7 @@ spend_today_usd: 0.00
 mj_count_today: 0
 PAUSE: false
 
-succession_note: "P1-05 complete 2026-04-24. game-oath-and-bone-spells.js written (971 lines). window.OathAndBoneSpells: applyRegen (3 schools), castSpell, onUnitKilled, tickStatusEffects, 43 Ch1 MVP spell defs. Self-approved Gate 2: getSpellTargetHexes has tile.unit schema bug (tile.unit is id string, not object) — Challenger to review. P1-06 is now ACTIVE: enemy AI (6 archetypes)."
+succession_note: "P1-06 complete 2026-04-24. game-oath-and-bone-ai.js written (1212 lines). window.OathAndBoneAI: takeTurn(), 6 archetypes (ironwall/bladewind/warden/cabal/binding/grove_warden), epsilon=0.1 exploration, Scout/Sergeant/Marshal difficulty scaling. 5 post-generation fixes applied (see WORKER_OUTPUT/code/P1-06.md). All gates passed. P1-07 is next: Wizardry spell defs (14 spells, Template 3.3)."
 
 ---
 
@@ -16,7 +16,7 @@ succession_note: "P1-05 complete 2026-04-24. game-oath-and-bone-spells.js writte
 
 | ID | Task | Attempt | Template | Output path |
 |---|---|---|---|---|
-| P1-06 | Combat state machine: enemy AI (6 archetypes) | 1 | 3.1 | WORKER_OUTPUT/code/P1-06.md |
+| P1-07 | Spell definition objects — Wizardry school (14 spells) | 1 | 3.3 | WORKER_OUTPUT/code/P1-07.md |
 
 ---
 
@@ -24,7 +24,7 @@ succession_note: "P1-05 complete 2026-04-24. game-oath-and-bone-spells.js writte
 
 | ID | Task | Template | Depends on |
 |---|---|---|---|
-| P1-07 | Spell definition objects — Wizardry school (14 spells) | 3.3 | P1-03 |
+| P1-08 | Spell definition objects — Necromancy school (14 spells) | 3.3 | P1-03 |
 | P1-08 | Spell definition objects — Necromancy school (14 spells) | 3.3 | P1-03 |
 | P1-09 | Spell definition objects — Druidry school (15 spells) | 3.3 | P1-03 |
 | P1-10 | Hero definition objects (6 heroes, permadeath flags) | 3.1 | P1-03 |
@@ -74,6 +74,7 @@ Not scheduled. Architect review of Phase 2 output required first.
 
 | ID | Task | Completed | Commit |
 |---|---|---|---|
+| P1-06 | game-oath-and-bone-ai.js — 1212 lines, all gates passed (5 fixes post-gen) | 2026-04-24 | pending |
 | P1-05 | game-oath-and-bone-spells.js — 971 lines, Gate 2 self-approved (tile.unit bug noted) | 2026-04-24 | 315db20 |
 | P1-04 | game-oath-and-bone-engine.js — 581 lines, all gates passed | 2026-04-24 | 2e4cd6f |
 | P1-03 | game-oath-and-bone.js skeleton — 174 lines, all gates passed | 2026-04-24 | 8d5dd6d |

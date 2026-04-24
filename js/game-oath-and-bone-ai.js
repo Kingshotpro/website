@@ -1,0 +1,1213 @@
+var DISCLAIMER = 'Unofficial. Not affiliated with Century Games.';
+
+window.OathAndBoneAI = (function() {
+
+  // Static spell pool — all Ch1 MVP spells keyed by school
+  // Used by magic AI archetypes (D/E/F) instead of battle.scenario.spells (which doesn't exist)
+  var _ALL_SPELL_IDS = [
+    'firebolt','fireball','incinerate','frost_shard','blizzard','permafrost',
+    'spark','chain_lightning','storm','force_push','teleki_nesis','gravity_well',
+    'shield','mana_siphon','teleport',
+    'raise_skeleton','raise_archer_wraith','raise_lich_servant',
+    'curse_of_weakness','curse_of_binding','curse_of_death',
+    'life_drain','soul_siphon','bone_shield','shroud','unhallow','corpse_explosion',
+    'heal','group_heal','resurrection','regrowth','thorn_grove','living_terrain',
+    'summon_wolf','summon_bear','pack_call',
+    'gale','root','earthquake','cleanse','barkskin','natures_grace'
+  ];
+
+  // --- Private Helpers ---
+
+  function _aiHexDistance(a, b) {
+    return Math.max(Math.abs(a.q - b.q), Math.abs(a.r - b.r), Math.abs((-a.q - a.r) - (-b.q - b.r)));
+  }
+
+  function _getUnitsByTeam(team) {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var units = {};
+    for (var id in battle.units) {
+      if (battle.units[id].team === team) {
+        units[id] = battle.units[id];
+      }
+    }
+    return units;
+  }
+
+  function _getEnemies(unit) {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var enemies = {};
+    for (var id in battle.units) {
+      if (battle.units[id].team !== unit.team) {
+        enemies[id] = battle.units[id];
+      }
+    }
+    return enemies;
+  }
+
+  function _getAllyEnemies(unit) {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var allies = {};
+    for (var id in battle.units) {
+      if (battle.units[id].team === unit.team && id !== unit.id) {
+        allies[id] = battle.units[id];
+      }
+    }
+    return allies;
+  }
+
+  function _findNearestUnit(fromUnit, targetUnits) {
+    var nearestUnitId = null;
+    var minDistance = Infinity;
+    for (var id in targetUnits) {
+      var distance = _aiHexDistance(fromUnit, targetUnits[id]);
+      if (distance < minDistance) {
+        minDistance = distance;
+        nearestUnitId = id;
+      }
+    }
+    return nearestUnitId ? targetUnits[nearestUnitId] : null;
+  }
+
+  function _findNearestEnemyUnit(unit) {
+    return _findNearestUnit(unit, _getEnemies(unit));
+  }
+
+  function _findNearestAllyEnemyUnit(unit) {
+    return _findNearestUnit(unit, _getAllyEnemies(unit));
+  }
+
+  function _getBestAttackTarget(attacker) {
+    var attackableHexes = window.OathAndBoneEngine.getAttackableHexes(attacker.id);
+    if (!attackableHexes || attackableHexes.length === 0) {
+      return null;
+    }
+
+    var enemies = _getEnemies(attacker);
+    var bestTarget = null;
+    var maxScore = -Infinity;
+
+    for (var hexIdx = 0; hexIdx < attackableHexes.length; hexIdx++) {
+      var hex = attackableHexes[hexIdx];
+      var _hexTile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
+      var targetUnitId = _hexTile ? _hexTile.unit : null;
+      if (targetUnitId) {
+        var targetUnit = window.OathAndBoneEngine.getUnit(targetUnitId);
+        if (targetUnit && targetUnit.team !== attacker.team) {
+          var score = 0;
+          // Basic attack damage score
+          score += targetUnit.hp; // Prioritize targets that can be killed
+
+          // Elevation advantage (for Warden)
+          var attackerTile = window.OathAndBoneEngine.getTile(attacker.q, attacker.r);
+          var targetTile = window.OathAndBoneEngine.getTile(targetUnit.q, targetUnit.r);
+          if (attackerTile && targetTile) {
+            if (attackerTile.elevation > targetTile.elevation) {
+              score *= 1.20;
+            } else if (attackerTile.elevation < targetTile.elevation) {
+              score *= 0.80;
+            }
+          }
+
+          if (score > maxScore) {
+            maxScore = score;
+            bestTarget = targetUnit;
+          }
+        }
+      }
+    }
+    return bestTarget;
+  }
+
+  function _canCastSpell(unit, spellId) {
+    if (!window.OathAndBoneSpells) return false;
+    var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+    if (!spellDef || !spellDef.cost) return false;
+    if (spellDef.cost.mp !== undefined) return unit.mana >= spellDef.cost.mp;
+    if (spellDef.cost.souls !== undefined) return unit.souls >= spellDef.cost.souls;
+    if (spellDef.cost.verdance !== undefined) return unit.verdance >= spellDef.cost.verdance;
+    return false;
+  }
+
+  function _findBestAoESpellTarget(caster) {
+    if (!window.OathAndBoneSpells) return null;
+    var battle = window.OathAndBoneEngine.getBattle();
+    var bestSpell = null;
+    var bestTargetHex = null;
+    var maxHitCount = 0;
+    var highestCost = -1;
+
+    var spellsToConsider = [];
+    for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+      var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+      if (spellDef && spellDef.school === caster.magic_school && spellDef.aoe && _canCastSpell(caster, spellId)) {
+        spellsToConsider.push({ id: spellId, def: spellDef });
+      }
+    }
+
+    for (var i = 0; i < spellsToConsider.length; i++) {
+      var spell = spellsToConsider[i];
+      var targetHexes = window.OathAndBoneSpells.getSpellTargetHexes(caster.id, spell.id);
+      for (var j = 0; j < targetHexes.length; j++) {
+        var targetHex = targetHexes[j];
+        var hitCount = 0;
+        var potentialTargets = [];
+
+        // Check units within AoE
+        var aoeRadius = spell.def.aoe;
+        for (var qOffset = -aoeRadius; qOffset <= aoeRadius; qOffset++) {
+          for (var rOffset = Math.max(-aoeRadius, -qOffset - aoeRadius); rOffset <= Math.min(aoeRadius, -qOffset + aoeRadius); rOffset++) {
+            var currentQ = targetHex.q + qOffset;
+            var currentR = targetHex.r + rOffset;
+            var tile = window.OathAndBoneEngine.getTile(currentQ, currentR);
+            if (tile && tile.unit) {
+              var unitOnTile = window.OathAndBoneEngine.getUnit(tile.unit);
+              if (unitOnTile && unitOnTile.team !== caster.team) {
+                hitCount++;
+                potentialTargets.push(unitOnTile);
+              }
+            }
+          }
+        }
+
+        if (hitCount >= 2) {
+          if (hitCount > maxHitCount || (hitCount === maxHitCount && spell.def.cost > highestCost)) {
+            maxHitCount = hitCount;
+            highestCost = spell.def.cost;
+            bestSpell = spell.id;
+            bestTargetHex = targetHex;
+          }
+        }
+      }
+    }
+
+    return bestSpell ? { spellId: bestSpell, targetHex: bestTargetHex } : null;
+  }
+
+  function _findDefensiveSpell(caster) {
+    if (!window.OathAndBoneSpells) return null;
+    var battle = window.OathAndBoneEngine.getBattle();
+    var spellsToConsider = [];
+    for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+      var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+      if (spellDef && spellDef.school === caster.magic_school && _canCastSpell(caster, spellId)) {
+        if (spellDef.effect === 'teleport' || spellDef.effect === 'shield' || spellDef.effect === 'teleport_strike') {
+          spellsToConsider.push({ id: spellId, def: spellDef });
+        }
+      }
+    }
+
+    if (spellsToConsider.length === 0) return null;
+
+    // Prioritize teleport_strike if available and HP is low
+    for (var i = 0; i < spellsToConsider.length; i++) {
+      if (spellsToConsider[i].def.effect === 'teleport_strike') {
+        return { spellId: spellsToConsider[i].id, targetHex: { q: caster.q, r: caster.r } }; // Target self for teleport strike
+      }
+    }
+
+    // Otherwise, find any defensive spell
+    return { spellId: spellsToConsider[0].id, targetHex: { q: caster.q, r: caster.r } };
+  }
+
+  function _isNearPlayerMelee(unit) {
+    var enemies = _getEnemies(unit);
+    for (var id in enemies) {
+      var enemy = enemies[id];
+      if ((enemy.move_range <= 1 || enemy.attack_range <= 1) && _aiHexDistance(unit, enemy) <= 2) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function _isAllyEnemyInMelee(unit) {
+    var allies = _getAllyEnemies(unit);
+    for (var id in allies) {
+      var ally = allies[id];
+      var enemies = _getEnemies(ally);
+      for (var enemyId in enemies) {
+        var enemy = enemies[enemyId];
+        if (_aiHexDistance(ally, enemy) === 1) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  function _findLowestHpAlly(unit) {
+    var allies = _getAllyEnemies(unit);
+    var lowestHpAlly = null;
+    var minHp = Infinity;
+    for (var id in allies) {
+      if (allies[id].hp < minHp) {
+        minHp = allies[id].hp;
+        lowestHpAlly = allies[id];
+      }
+    }
+    return lowestHpAlly;
+  }
+
+  function _findDeadUnitsInRange(unit, range) {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var deadUnits = [];
+    for (var id in battle.units) {
+      var u = battle.units[id];
+      if (u.hp === 0 && _aiHexDistance(unit, u) <= range) {
+        deadUnits.push(u);
+      }
+    }
+    return deadUnits;
+  }
+
+  function _isAllySummon(unit) {
+    return unit.is_summon && unit.summon_owner === window.OathAndBoneEngine.getCurrentUnit().id;
+  }
+
+  function _findNearestPlayerUnit(unit) {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var nearestPlayer = null;
+    var minDistance = Infinity;
+    for (var id in battle.units) {
+      var u = battle.units[id];
+      if (u.team === 'player') {
+        var distance = _aiHexDistance(unit, u);
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestPlayer = u;
+        }
+      }
+    }
+    return nearestPlayer;
+  }
+
+  function _getMapMidline() {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var maxR = 0;
+    for (var key in battle.tiles) {
+      var tile = battle.tiles[key];
+      if (tile.r > maxR) maxR = tile.r;
+    }
+    return maxR / 2; // Assuming positive R is south
+  }
+
+  function _isPastMidline(unit) {
+    return unit.r < _getMapMidline();
+  }
+
+  function _findBestMoveToMaintainFormation(unit) {
+    var nearestAlly = _findNearestAllyEnemyUnit(unit);
+    if (!nearestAlly) return { q: unit.q, r: unit.r }; // Stay put if no allies
+
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var minDistanceToAlly = Infinity;
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var distanceToAlly = _aiHexDistance({ q: hex.q, r: hex.r }, nearestAlly);
+      if (distanceToAlly <= 2) {
+        if (distanceToAlly < minDistanceToAlly) {
+          minDistanceToAlly = distanceToAlly;
+          bestMove = { q: hex.q, r: hex.r };
+        }
+      }
+    }
+    return bestMove;
+  }
+
+  function _findBestMoveTowardsTarget(unit, target) {
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var minDistance = Infinity;
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var distance = _aiHexDistance({ q: hex.q, r: hex.r }, target);
+      if (distance < minDistance) {
+        minDistance = distance;
+        bestMove = { q: hex.q, r: hex.r };
+      }
+    }
+    return bestMove;
+  }
+
+  function _findBestMoveToImproveAdvantage(unit) {
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var maxAdvantage = -Infinity;
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var _potTile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
+          var potentialUnit = _potTile && _potTile.unit ? window.OathAndBoneEngine.getUnit(_potTile.unit) : null;
+      if (potentialUnit && potentialUnit.team !== unit.team) {
+        var advantage = 0;
+        var attackerTile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
+        var targetTile = window.OathAndBoneEngine.getTile(potentialUnit.q, potentialUnit.r);
+        if (attackerTile && targetTile) {
+          if (attackerTile.elevation > targetTile.elevation) {
+            advantage = 1.20;
+          } else if (attackerTile.elevation < targetTile.elevation) {
+            advantage = 0.80;
+          } else {
+            advantage = 1.0;
+          }
+        }
+        if (advantage > maxAdvantage) {
+          maxAdvantage = advantage;
+          bestMove = { q: hex.q, r: hex.r };
+        }
+      }
+    }
+    return bestMove;
+  }
+
+  function _findBestMoveToMaintainSpacing(unit, targetUnit, minSpacing) {
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var maxDistance = -Infinity;
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var distance = _aiHexDistance({ q: hex.q, r: hex.r }, targetUnit);
+      if (distance >= minSpacing) {
+        if (distance > maxDistance) {
+          maxDistance = distance;
+          bestMove = { q: hex.q, r: hex.r };
+        }
+      }
+    }
+    return bestMove;
+  }
+
+  function _findBestMoveTowardsEdge(unit) {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var minDistanceToEdge = Infinity;
+
+    // Assuming positive R is south, negative R is north
+    var edgeR = unit.r > 0 ? -5 : 5; // Arbitrary far edge
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var distanceToEdge = Math.abs(hex.r - edgeR);
+      if (distanceToEdge < minDistanceToEdge) {
+        minDistanceToEdge = distanceToEdge;
+        bestMove = { q: hex.q, r: hex.r };
+      }
+    }
+    return bestMove;
+  }
+
+  function _findBestMoveToKeepDeadInRange(unit, deadUnits, range) {
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var maxDeadUnitsInRange = -1;
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var currentDeadInRange = 0;
+      for (var j = 0; j < deadUnits.length; j++) {
+        if (_aiHexDistance({ q: hex.q, r: hex.r }, deadUnits[j]) <= range) {
+          currentDeadInRange++;
+        }
+      }
+      if (currentDeadInRange > maxDeadUnitsInRange) {
+        maxDeadUnitsInRange = currentDeadInRange;
+        bestMove = { q: hex.q, r: hex.r };
+      }
+    }
+    return bestMove;
+  }
+
+  function _findBestMoveToKeepSummonsInFront(unit) {
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var minDistanceToSummon = Infinity;
+
+    var summons = [];
+    for (var id in window.OathAndBoneEngine.getBattle().units) {
+      var u = window.OathAndBoneEngine.getUnit(id);
+      if (u && u.is_summon && u.summon_owner === unit.id) {
+        summons.push(u);
+      }
+    }
+
+    if (summons.length === 0) return bestMove; // No summons to position behind
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var distanceToNearestSummon = Infinity;
+      for (var j = 0; j < summons.length; j++) {
+        distanceToNearestSummon = Math.min(distanceToNearestSummon, _aiHexDistance({ q: hex.q, r: hex.r }, summons[j]));
+      }
+      if (distanceToNearestSummon < minDistanceToSummon) {
+        minDistanceToSummon = distanceToNearestSummon;
+        bestMove = { q: hex.q, r: hex.r };
+      }
+    }
+    return bestMove;
+  }
+
+  function _findBestMoveToFlankSummon(unit) {
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var minDistanceToCenter = Infinity;
+
+    var summons = [];
+    for (var id in window.OathAndBoneEngine.getBattle().units) {
+      var u = window.OathAndBoneEngine.getUnit(id);
+      if (u && u.is_summon && u.summon_owner === unit.id) {
+        summons.push(u);
+      }
+    }
+
+    if (summons.length === 0) return bestMove;
+
+    var centerSummon = null;
+    var maxDistToOtherSummon = -1;
+    for (var i = 0; i < summons.length; i++) {
+      var currentSummon = summons[i];
+      var distToOthers = 0;
+      for (var j = 0; j < summons.length; j++) {
+        if (i !== j) {
+          distToOthers = Math.max(distToOthers, _aiHexDistance(currentSummon, summons[j]));
+        }
+      }
+      if (distToOthers > maxDistToOtherSummon) {
+        maxDistToOtherSummon = distToOthers;
+        centerSummon = currentSummon;
+      }
+    }
+
+    if (!centerSummon) return bestMove;
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var distanceToCenterSummon = _aiHexDistance({ q: hex.q, r: hex.r }, centerSummon);
+      if (distanceToCenterSummon < minDistanceToCenter) {
+        minDistanceToCenter = distanceToCenterSummon;
+        bestMove = { q: hex.q, r: hex.r };
+      }
+    }
+    return bestMove;
+  }
+
+  function _findBestMoveTowardsPackCenter(unit) {
+    var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+    var bestMove = { q: unit.q, r: unit.r };
+    var minDistanceToPackCenter = Infinity;
+
+    var packCenter = { q: unit.q, r: unit.r }; // Default to current position
+    var summonCount = 0;
+    for (var id in window.OathAndBoneEngine.getBattle().units) {
+      var u = window.OathAndBoneEngine.getUnit(id);
+      if (u && u.is_summon && u.summon_owner === unit.id) {
+        packCenter.q += u.q;
+        packCenter.r += u.r;
+        summonCount++;
+      }
+    }
+
+    if (summonCount > 0) {
+      packCenter.q /= summonCount;
+      packCenter.r /= summonCount;
+    } else {
+      return bestMove; // No summons to form a pack center
+    }
+
+    for (var i = 0; i < movableHexes.length; i++) {
+      var hex = movableHexes[i];
+      var distance = _aiHexDistance({ q: hex.q, r: hex.r }, packCenter);
+      if (distance < minDistanceToPackCenter) {
+        minDistanceToPackCenter = distance;
+        bestMove = { q: hex.q, r: hex.r };
+      }
+    }
+    return bestMove;
+  }
+
+
+  // --- Archetype AI Functions ---
+
+  function _ironwallAI(unit, difficulty) {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var moveAction = { q: unit.q, r: unit.r, action: 'hold' };
+    var attackAction = null;
+
+    // Priority 1: Keep formation
+    var nearestAlly = _findNearestAllyEnemyUnit(unit);
+    if (nearestAlly && _aiHexDistance(unit, nearestAlly) > 2) {
+      var formationMove = _findBestMoveToMaintainFormation(unit);
+      if (formationMove.q !== unit.q || formationMove.r !== unit.r) {
+        moveAction = { q: formationMove.q, r: formationMove.r, action: 'move' };
+      }
+    }
+
+    // Priority 2: Healing
+    if (unit.magic_school === 'druidry' && window.OathAndBoneSpells) {
+      var allies = _getAllyEnemies(unit);
+      for (var id in allies) {
+        var ally = allies[id];
+        if (ally.hp < ally.max_hp * 0.40) {
+          var healSpell = null;
+          // Find a heal spell
+          for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+            var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+            if (spellDef && spellDef.school === 'druidry' && spellDef.effect === 'heal' && _canCastSpell(unit, spellId)) {
+              var targetHexes = window.OathAndBoneSpells.getSpellTargetHexes(unit.id, spellId);
+              for (var i = 0; i < targetHexes.length; i++) {
+                if (targetHexes[i].q === ally.q && targetHexes[i].r === ally.r) {
+                  healSpell = { spellId: spellId, targetHex: targetHexes[i] };
+                  break;
+                }
+              }
+            }
+            if (healSpell) break;
+          }
+          if (healSpell) {
+            attackAction = healSpell;
+            break;
+          }
+        }
+      }
+    }
+
+    // Priority 3: Attack if player unit entered range
+    if (!attackAction) {
+      var attackableHexes = window.OathAndBoneEngine.getAttackableHexes(unit.id);
+      for (var i = 0; i < attackableHexes.length; i++) {
+        var hex = attackableHexes[i];
+        var tile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
+        if (tile && tile.unit) {
+          var targetUnit = window.OathAndBoneEngine.getUnit(tile.unit);
+          if (targetUnit && targetUnit.team === 'player') {
+            attackAction = { targetId: targetUnit.id, action: 'attack' };
+            break;
+          }
+        }
+      }
+    }
+
+    // Never pursues past the map midline
+    if (moveAction.action === 'move' && moveAction.q < _getMapMidline() && unit.r >= _getMapMidline()) {
+      // If moving south past midline, revert to staying put or moving north
+      if (unit.r >= _getMapMidline()) {
+        moveAction = { q: unit.q, r: unit.r, action: 'hold' };
+      }
+    }
+
+    // Difficulty Scaling
+    if (difficulty === 1) { // Scout
+      // Random move among top-3 formation moves
+      var formationMove = _findBestMoveToMaintainFormation(unit);
+      var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+      var potentialMoves = [];
+      for (var i = 0; i < movableHexes.length; i++) {
+        var hex = movableHexes[i];
+        if (_aiHexDistance(hex, nearestAlly) <= 2) {
+          potentialMoves.push(hex);
+        }
+      }
+      if (potentialMoves.length > 0) {
+        var randomIndex = Math.floor(Math.random() * Math.min(potentialMoves.length, 3));
+        moveAction = { q: potentialMoves[randomIndex].q, r: potentialMoves[randomIndex].r, action: 'move' };
+      }
+    } else if (difficulty === 3) { // Marshal
+      // Nearest ally with attack-opportunity scan
+      var attackableHexes = window.OathAndBoneEngine.getAttackableHexes(unit.id);
+      var playerUnitsInRange = [];
+      for (var i = 0; i < attackableHexes.length; i++) {
+        var hex = attackableHexes[i];
+        var tile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
+        if (tile && tile.unit) {
+          var targetUnit = window.OathAndBoneEngine.getUnit(tile.unit);
+          if (targetUnit && targetUnit.team === 'player') {
+            playerUnitsInRange.push(targetUnit);
+          }
+        }
+      }
+      if (playerUnitsInRange.length > 0) {
+        attackAction = { targetId: playerUnitsInRange[0].id, action: 'attack' }; // Simple focus on first found
+      }
+    }
+
+    return { move: moveAction, attack: attackAction };
+  }
+
+  function _bladewindAI(unit, difficulty) {
+    var moveAction = { q: unit.q, r: unit.r, action: 'hold' };
+    var attackAction = null;
+
+    // Priority 1: Move toward nearest player unit
+    var nearestPlayer = _findNearestPlayerUnit(unit);
+    if (nearestPlayer) {
+      var moveTarget = _findBestMoveTowardsTarget(unit, nearestPlayer);
+      if (moveTarget.q !== unit.q || moveTarget.r !== unit.r) {
+        moveAction = { q: moveTarget.q, r: moveTarget.r, action: 'move' };
+      }
+    }
+
+    // Priority 2: Attack nearest player unit in range
+    var bestAttackTarget = _getBestAttackTarget(unit);
+    if (bestAttackTarget) {
+      attackAction = { targetId: bestAttackTarget.id, action: 'attack' };
+    }
+
+    // Priority 3: Retreat if HP below 25%
+    if (unit.hp < unit.max_hp * 0.25) {
+      var retreatMove = { q: unit.q, r: unit.r };
+      var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+      var farthestFromPlayer = -1;
+      for (var i = 0; i < movableHexes.length; i++) {
+        var hex = movableHexes[i];
+        var dist = _aiHexDistance({ q: hex.q, r: hex.r }, nearestPlayer);
+        if (dist > farthestFromPlayer) {
+          farthestFromPlayer = dist;
+          retreatMove = { q: hex.q, r: hex.r };
+        }
+      }
+      if (retreatMove.q !== unit.q || retreatMove.r !== unit.r) {
+        moveAction = { q: retreatMove.q, r: retreatMove.r, action: 'move' };
+      }
+      // If retreating, don't attack
+      attackAction = null;
+    }
+
+    // Difficulty Scaling
+    if (difficulty === 3) { // Marshal
+      // Coordinates with lowest-HP player unit focus
+      var battle = window.OathAndBoneEngine.getBattle();
+      var lowestHpPlayer = null;
+      var minHp = Infinity;
+      for (var id in battle.units) {
+        var u = battle.units[id];
+        if (u.team === 'player' && u.hp < minHp) {
+          minHp = u.hp;
+          lowestHpPlayer = u;
+        }
+      }
+      if (lowestHpPlayer && bestAttackTarget && bestAttackTarget.id !== lowestHpPlayer.id) {
+        // If current best target is not the lowest HP player, re-evaluate
+        var targetHexes = window.OathAndBoneEngine.getAttackableHexes(unit.id);
+        for (var i = 0; i < targetHexes.length; i++) {
+          var hex = targetHexes[i];
+          var tile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
+          if (tile && tile.unit && tile.unit === lowestHpPlayer.id) {
+            attackAction = { targetId: lowestHpPlayer.id, action: 'attack' };
+            break;
+          }
+        }
+      }
+    }
+
+    return { move: moveAction, attack: attackAction };
+  }
+
+  function _wardenAI(unit, difficulty) {
+    var moveAction = { q: unit.q, r: unit.r, action: 'hold' };
+    var attackAction = null;
+
+    // Priority 1: Scan for highest attack_dmg advantage
+    var bestTarget = null;
+    var maxAdvantage = -Infinity;
+    var targetHexForAttack = null;
+
+    var attackableHexes = window.OathAndBoneEngine.getAttackableHexes(unit.id);
+    var enemies = _getEnemies(unit);
+
+    for (var id in enemies) {
+      var enemy = enemies[id];
+      var advantage = 1.0;
+      var attackerTile = window.OathAndBoneEngine.getTile(unit.q, unit.r);
+      var targetTile = window.OathAndBoneEngine.getTile(enemy.q, enemy.r);
+
+      if (attackerTile && targetTile) {
+        if (attackerTile.elevation > targetTile.elevation) {
+          advantage = 1.20;
+        } else if (attackerTile.elevation < targetTile.elevation) {
+          advantage = 0.80;
+        }
+      }
+
+      // Difficulty scaling: Marshal prefers targets with status effects
+      if (difficulty === 3 && enemy.status_effects.length > 0) {
+        advantage *= 1.10; // Boost advantage for targets with debuffs
+      }
+
+      if (advantage >= 1.10) {
+        if (advantage > maxAdvantage) {
+          maxAdvantage = advantage;
+          bestTarget = enemy;
+          // Find the hex that allows this attack
+          for (var i = 0; i < attackableHexes.length; i++) {
+            var hex = attackableHexes[i];
+            var tile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
+            if (tile && tile.unit && tile.unit === enemy.id) {
+              targetHexForAttack = { q: hex.q, r: hex.r };
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    if (bestTarget && targetHexForAttack) {
+      // Close to attack
+      var moveTarget = _findBestMoveTowardsTarget(unit, bestTarget);
+      if (_aiHexDistance(moveTarget, bestTarget) <= unit.attack_range) {
+        moveAction = { q: moveTarget.q, r: moveTarget.r, action: 'move' };
+        attackAction = { targetId: bestTarget.id, action: 'attack' };
+      } else {
+        // Move closer but don't attack yet
+        moveAction = { q: moveTarget.q, r: moveTarget.r, action: 'move' };
+      }
+    } else {
+      // Priority 2: Reposition to improve next-turn advantage
+      var repositionMove = _findBestMoveToImproveAdvantage(unit);
+      if (repositionMove.q !== unit.q || repositionMove.r !== unit.r) {
+        moveAction = { q: repositionMove.q, r: repositionMove.r, action: 'move' };
+      }
+    }
+
+    // Priority 3: Hold if no good opportunity
+    if (!attackAction && !moveAction.action === 'move') {
+      moveAction = { q: unit.q, r: unit.r, action: 'hold' };
+    }
+
+    return { move: moveAction, attack: attackAction };
+  }
+
+  function _cabalAI(unit, difficulty) {
+    var moveAction = { q: unit.q, r: unit.r, action: 'hold' };
+    var attackAction = null;
+
+    // Priority 1: Maintain 3-hex spacing from player melee
+    var playerMeleeUnits = [];
+    var enemies = _getEnemies(unit);
+    for (var id in enemies) {
+      var enemy = enemies[id];
+      if ((enemy.move_range <= 1 || enemy.attack_range <= 1)) {
+        playerMeleeUnits.push(enemy);
+      }
+    }
+
+    if (playerMeleeUnits.length > 0) {
+      for (var i = 0; i < playerMeleeUnits.length; i++) {
+        if (_aiHexDistance(unit, playerMeleeUnits[i]) <= 2) {
+          var spacingMove = _findBestMoveToMaintainSpacing(unit, playerMeleeUnits[i], 3);
+          if (spacingMove.q !== unit.q || spacingMove.r !== unit.r) {
+            moveAction = { q: spacingMove.q, r: spacingMove.r, action: 'move' };
+            break; // Only need to move away from one
+          }
+        }
+      }
+    }
+
+    // Priority 2: AoE spell
+    if (window.OathAndBoneSpells && unit.mana > 0) {
+      var aoESpellTarget = _findBestAoESpellTarget(unit);
+      if (aoESpellTarget) {
+        attackAction = { spellId: aoESpellTarget.spellId, targetHex: aoESpellTarget.targetHex, action: 'cast' };
+      }
+    }
+
+    // Priority 3: Retreat if HP below 30%
+    if (unit.hp < unit.max_hp * 0.30) {
+      var retreatMove = _findBestMoveTowardsEdge(unit);
+      if (retreatMove.q !== unit.q || retreatMove.r !== unit.r) {
+        moveAction = { q: retreatMove.q, r: retreatMove.r, action: 'move' };
+      }
+      // Attempt to cast a defensive/positioning spell
+      if (window.OathAndBoneSpells) {
+        var defensiveSpell = _findDefensiveSpell(unit);
+        if (defensiveSpell) {
+          attackAction = { spellId: defensiveSpell.spellId, targetHex: defensiveSpell.targetHex, action: 'cast' };
+        }
+      }
+      // If retreating, do not attack physically
+      if (attackAction && attackAction.action === 'attack') {
+        attackAction = null;
+      }
+    }
+
+    // Uses Teleport reactively
+    if (!attackAction && !moveAction.action === 'move' && unit.hp < unit.max_hp * 0.30 && window.OathAndBoneSpells) {
+      var teleportSpell = _findDefensiveSpell(unit);
+      if (teleportSpell && teleportSpell.def.effect === 'teleport_strike') {
+        attackAction = { spellId: teleportSpell.spellId, targetHex: teleportSpell.targetHex, action: 'cast' };
+      }
+    }
+
+    return { move: moveAction, attack: attackAction };
+  }
+
+  function _bindingAI(unit, difficulty) {
+    var moveAction = { q: unit.q, r: unit.r, action: 'hold' };
+    var attackAction = null;
+
+    // Priority 1: Summon skeletons on round 1
+    var battle = window.OathAndBoneEngine.getBattle();
+    if (battle.round === 1 && unit.souls >= 10 && window.OathAndBoneSpells) { // Assuming soul cost for raise_skeleton is 10
+      var raiseSkeletonSpell = null;
+      for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+        var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+        if (spellDef && spellDef.school === 'necromancy' && spellDef.effect === 'summon' && spellDef.id === 'raise_skeleton') {
+          raiseSkeletonSpell = spellDef;
+          break;
+        }
+      }
+
+      if (raiseSkeletonSpell && _canCastSpell(unit, raiseSkeletonSpell.id)) {
+        var summonTargetHex = null;
+        var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+        for (var i = 0; i < movableHexes.length; i++) {
+          var hex = movableHexes[i];
+          var tile = window.OathAndBoneEngine.getTile(hex.q, hex.r);
+          if (tile && !tile.unit) { // Find an empty adjacent hex
+            var isAdjacent = _aiHexDistance({ q: hex.q, r: hex.r }, unit) === 1;
+            if (isAdjacent) {
+              summonTargetHex = { q: hex.q, r: hex.r };
+              break;
+            }
+          }
+        }
+        if (summonTargetHex) {
+          attackAction = { spellId: raiseSkeletonSpell.id, targetHex: summonTargetHex, action: 'cast' };
+          return { move: moveAction, attack: attackAction }; // Execute summon immediately
+        }
+      }
+    }
+
+    // Priority 2: Cast Curse on highest attack_dmg player unit
+    if (window.OathAndBoneSpells && unit.mana > 0) {
+      var highestDmgPlayer = null;
+      var maxDmg = -1;
+      var enemies = _getEnemies(unit);
+      for (var id in enemies) {
+        var enemy = enemies[id];
+        if (enemy.team === 'player' && enemy.attack_dmg > maxDmg) {
+          maxDmg = enemy.attack_dmg;
+          highestDmgPlayer = enemy;
+        }
+      }
+
+      if (highestDmgPlayer) {
+        var curseSpell = null;
+        for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+          var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+          if (spellDef && spellDef.school === 'necromancy' && spellDef.effect === 'curse' && _canCastSpell(unit, spellId)) {
+            var targetHexes = window.OathAndBoneSpells.getSpellTargetHexes(unit.id, spellId);
+            for (var i = 0; i < targetHexes.length; i++) {
+              if (targetHexes[i].q === highestDmgPlayer.q && targetHexes[i].r === highestDmgPlayer.r) {
+                curseSpell = { spellId: spellId, targetHex: targetHexes[i] };
+                break;
+              }
+            }
+          }
+          if (curseSpell) break;
+        }
+        if (curseSpell) {
+          attackAction = curseSpell;
+          attackAction.action = 'cast';
+        }
+      }
+    }
+
+    // Priority 3: Position to keep dead unit in range for corpse explosion
+    var deadUnitsInRange = _findDeadUnitsInRange(unit, unit.attack_range);
+    if (deadUnitsInRange.length > 0) {
+      var corpseMove = _findBestMoveToKeepDeadInRange(unit, deadUnitsInRange, unit.attack_range);
+      if (corpseMove.q !== unit.q || corpseMove.r !== unit.r) {
+        moveAction = { q: corpseMove.q, r: corpseMove.r, action: 'move' };
+      }
+    } else {
+      // Fall back to physical attack if no dead units in range
+      var bestAttackTarget = _getBestAttackTarget(unit);
+      if (bestAttackTarget) {
+        attackAction = { targetId: bestAttackTarget.id, action: 'attack' };
+      }
+    }
+
+    // Necromancer itself positions behind its summons
+    var summons = [];
+    for (var id in battle.units) {
+      var u = battle.units[id];
+      if (u && u.is_summon && u.summon_owner === unit.id) {
+        summons.push(u);
+      }
+    }
+    if (summons.length > 0) {
+      var summonBehindMove = _findBestMoveToKeepSummonsInFront(unit);
+      if (summonBehindMove.q !== unit.q || summonBehindMove.r !== unit.r) {
+        moveAction = { q: summonBehindMove.q, r: summonBehindMove.r, action: 'move' };
+      }
+    }
+
+    return { move: moveAction, attack: attackAction };
+  }
+
+  function _groveWardenAI(unit, difficulty) {
+    var moveAction = { q: unit.q, r: unit.r, action: 'hold' };
+    var attackAction = null;
+
+    // Priority 1: Convert terrain to thorn-grove
+    if (unit.verdance >= 10 && window.OathAndBoneSpells) { // Assuming verdance cost for thorn_grove is 10
+      if (_isAllyEnemyInMelee(unit)) {
+        var thornGroveSpell = null;
+        for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+          var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+          if (spellDef && spellDef.school === 'druidry' && spellDef.effect === 'terrain_conversion' && spellDef.id === 'thorn_grove' && _canCastSpell(unit, spellId)) {
+            var targetHexes = window.OathAndBoneSpells.getSpellTargetHexes(unit.id, spellId);
+            // Find an adjacent hex to an ally in melee
+            for (var i = 0; i < targetHexes.length; i++) {
+              var targetHex = targetHexes[i];
+              var allies = _getAllyEnemies(unit);
+              for (var allyId in allies) {
+                var ally = allies[allyId];
+                var enemies = _getEnemies(ally);
+                for (var enemyId in enemies) {
+                  var enemy = enemies[enemyId];
+                  if (_aiHexDistance(ally, enemy) === 1 && _aiHexDistance(targetHex, ally) === 1) {
+                    thornGroveSpell = { spellId: spellId, targetHex: targetHex };
+                    break;
+                  }
+                }
+                if (thornGroveSpell) break;
+              }
+              if (thornGroveSpell) break;
+            }
+          }
+          if (thornGroveSpell) break;
+        }
+        if (thornGroveSpell) {
+          attackAction = thornGroveSpell;
+          attackAction.action = 'cast';
+        }
+      }
+    }
+
+    // Priority 2: Heal lowest-HP ally
+    if (!attackAction && unit.verdance >= 15 && window.OathAndBoneSpells) { // Assuming verdance cost for heal is 15
+      var lowestHpAlly = _findLowestHpAlly(unit);
+      if (lowestHpAlly && lowestHpAlly.hp < lowestHpAlly.max_hp * 0.50) {
+        var healSpell = null;
+        for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+          var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+          if (spellDef && spellDef.school === 'druidry' && spellDef.effect === 'heal' && _canCastSpell(unit, spellId)) {
+            var targetHexes = window.OathAndBoneSpells.getSpellTargetHexes(unit.id, spellId);
+            for (var i = 0; i < targetHexes.length; i++) {
+              if (targetHexes[i].q === lowestHpAlly.q && targetHexes[i].r === lowestHpAlly.r) {
+                healSpell = { spellId: spellId, targetHex: targetHexes[i] };
+                break;
+              }
+            }
+          }
+          if (healSpell) break;
+        }
+        if (healSpell) {
+          attackAction = healSpell;
+          attackAction.action = 'cast';
+        }
+      }
+    }
+
+    // Priority 3: Summon wolves or bear
+    if (!attackAction && unit.verdance >= 20 && window.OathAndBoneSpells) { // Assuming verdance cost for summons
+      var summonSpell = null;
+      var battle = window.OathAndBoneEngine.getBattle();
+      if (battle.round <= 3) {
+        // Summon wolves to flanks
+        var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+        var flankHexes = [];
+        for (var i = 0; i < movableHexes.length; i++) {
+          var hex = movableHexes[i];
+          if (_aiHexDistance(hex, unit) === 1) {
+            var isFlank = false;
+            // Check if it's to the left or right of a potential front line
+            var allies = _getAllyEnemies(unit);
+            for (var allyId in allies) {
+              var ally = allies[allyId];
+              if (_aiHexDistance(hex, ally) === 1 && Math.abs(hex.q - ally.q) === 1 && hex.r === ally.r) {
+                isFlank = true;
+                break;
+              }
+            }
+            if (isFlank) {
+              flankHexes.push(hex);
+            }
+          }
+        }
+        if (flankHexes.length >= 2) {
+          for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+            var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+            if (spellDef && spellDef.school === 'druidry' && spellDef.effect === 'summon' && spellDef.id === 'summon_wolf' && _canCastSpell(unit, spellId)) {
+              summonSpell = { spellId: spellId, targetHex: flankHexes[0] }; // Target one flank
+              break;
+            }
+          }
+        } else {
+          // Summon bear center
+          for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+            var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+            if (spellDef && spellDef.school === 'druidry' && spellDef.effect === 'summon' && spellDef.id === 'summon_bear' && _canCastSpell(unit, spellId)) {
+              summonSpell = { spellId: spellId, targetHex: unit }; // Target self for bear
+              break;
+            }
+          }
+        }
+      }
+      if (summonSpell) {
+        attackAction = summonSpell;
+        attackAction.action = 'cast';
+      }
+    }
+
+    // Retreats only when HP drops below 25%
+    if (unit.hp < unit.max_hp * 0.25) {
+      var retreatMove = _findBestMoveTowardsPackCenter(unit); // Move towards pack center (summons)
+      if (retreatMove.q !== unit.q || retreatMove.r !== unit.r) {
+        moveAction = { q: retreatMove.q, r: retreatMove.r, action: 'move' };
+      }
+      // At <25% HP: prioritize pack_call or any summon spell
+      if (window.OathAndBoneSpells) {
+        var summonSpell = null;
+        for (var _spIdx = 0; _spIdx < _ALL_SPELL_IDS.length; _spIdx++) { var spellId = _ALL_SPELL_IDS[_spIdx];
+          var spellDef = window.OathAndBoneSpells.getSpellDef(spellId);
+          if (spellDef && spellDef.school === 'druidry' && spellDef.effect === 'summon' && _canCastSpell(unit, spellId)) {
+            // Prioritize pack_call if it exists
+            if (spellDef.id === 'pack_call') {
+              summonSpell = { spellId: spellId, targetHex: unit };
+              break;
+            }
+            // Otherwise, take any summon spell
+            if (!summonSpell) {
+              summonSpell = { spellId: spellId, targetHex: unit };
+            }
+          }
+        }
+        if (summonSpell) {
+          attackAction = summonSpell;
+          attackAction.action = 'cast';
+        }
+      }
+    }
+
+    return { move: moveAction, attack: attackAction };
+  }
+
+
+  // --- Main AI Logic ---
+
+  var archetypes = {
+    'ironwall': _ironwallAI,
+    'bladewind': _bladewindAI,
+    'warden': _wardenAI,
+    'cabal': _cabalAI,
+    'binding': _bindingAI,
+    'grove_warden': _groveWardenAI
+  };
+
+  function takeTurn(unitId) {
+    var unit = window.OathAndBoneEngine.getUnit(unitId);
+    if (!unit || unit.hp <= 0 || unit.team !== 'enemy' || unit.acted) {
+      return;
+    }
+
+    var battle = window.OathAndBoneEngine.getBattle();
+    var difficulty = battle.scenario.difficultyTier || 2; // Default to Sergeant
+
+    // ε=0.1 random exploration
+    if (Math.random() < 0.1) {
+      var movableHexes = window.OathAndBoneEngine.getMovableHexes(unit.id);
+      var attackableHexes = window.OathAndBoneEngine.getAttackableHexes(unit.id);
+
+      var possibleActions = [];
+      if (movableHexes && movableHexes.length > 0) {
+        for (var i = 0; i < movableHexes.length; i++) {
+          possibleActions.push({ type: 'move', hex: movableHexes[i] });
+        }
+      }
+      if (attackableHexes && attackableHexes.length > 0) {
+        for (var i = 0; i < attackableHexes.length; i++) {
+          var tile = window.OathAndBoneEngine.getTile(attackableHexes[i].q, attackableHexes[i].r);
+          if (tile && tile.unit) {
+            var targetUnit = window.OathAndBoneEngine.getUnit(tile.unit);
+            if (targetUnit && targetUnit.team !== unit.team) {
+              possibleActions.push({ type: 'attack', target: targetUnit });
+            }
+          }
+        }
+      }
+
+      if (possibleActions.length > 0) {
+        var randomAction = possibleActions[Math.floor(Math.random() * possibleActions.length)];
+        if (randomAction.type === 'move') {
+          window.OathAndBoneEngine.moveUnit(unit.id, randomAction.hex.q, randomAction.hex.r);
+        } else if (randomAction.type === 'attack') {
+          window.OathAndBoneEngine.attackUnit(unit.id, randomAction.target.id);
+        }
+      }
+      // Always advance turn after random exploration action (or no-op)
+      window.OathAndBoneEngine.advanceTurn();
+      return;
+    }
+
+    // Execute archetype decision tree
+    var aiFunction = archetypes[unit.heroId];
+    if (!aiFunction) {
+      console.error("Unknown AI archetype: " + unit.heroId);
+      window.OathAndBoneEngine.advanceTurn();
+      return;
+    }
+
+    var decision = aiFunction(unit, difficulty);
+
+    var moved = false;
+    if (decision.move && (decision.move.q !== unit.q || decision.move.r !== unit.r)) {
+      if (window.OathAndBoneEngine.moveUnit(unit.id, decision.move.q, decision.move.r)) {
+        moved = true;
+      }
+    }
+
+    var acted = false;
+    if (decision.attack) {
+      if (decision.attack.action === 'attack') {
+        if (window.OathAndBoneEngine.attackUnit(unit.id, decision.attack.targetId)) {
+          acted = true;
+        }
+      } else if (decision.attack.action === 'cast') {
+        if (window.OathAndBoneSpells && window.OathAndBoneSpells.castSpell) {
+          if (window.OathAndBoneSpells.castSpell(unit.id, decision.attack.spellId, decision.attack.targetHex.q, decision.attack.targetHex.r)) {
+            acted = true;
+          }
+        }
+      }
+    }
+
+    // If no action was taken (either moved but didn't attack, or held and didn't attack)
+    if (!acted && !moved && decision.move && decision.move.action === 'hold') {
+      // This is a hold action
+      window.OathAndBoneEngine.advanceTurn();
+    } else if (!acted && moved) {
+      // Moved but did not attack, advance turn
+      window.OathAndBoneEngine.advanceTurn();
+    } else if (!acted && !moved && !decision.move) {
+      // No move decision, and no attack decision, advance turn
+      window.OathAndBoneEngine.advanceTurn();
+    } else if (acted) {
+      // Action was taken (attack or cast), advance turn
+      window.OathAndBoneEngine.advanceTurn();
+    } else {
+      // Fallback: if something went wrong, advance turn
+      window.OathAndBoneEngine.advanceTurn();
+    }
+  }
+
+  return {
+    takeTurn: takeTurn
+  };
+
+})();
