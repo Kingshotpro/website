@@ -209,26 +209,52 @@ html, body {
   image-rendering: pixelated;
 }
 
-/* ── UNIT SPRITES ── */
+/* ── UNIT SPRITES (FFT-style: free-standing painted figures ON tiles) ── */
 .unit-sprite {
   position: absolute;
   image-rendering: auto;
   pointer-events: none;
-  /* Mask the painted portrait PNG into a tall hex shape so the dark
-     backgrounds of the source art disappear and units read as painted
-     tokens on the tile grid, not square frames.
-     Also slight gold drop-shadow for readability against tile texture. */
-  clip-path: polygon(50% 0%, 96% 28%, 96% 72%, 50% 100%, 4% 72%, 4% 28%);
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.7));
-  /* Center the figure in the clip — source PNGs have character ~upper-center,
-     so shift the image up so face lands in the visible hex area. */
   object-fit: cover;
-  object-position: center 20%;
+  /* Source PNGs have character upper-center with dark surrounding background.
+     Crop via object-position to the character's torso/head area. */
+  object-position: center 22%;
+  /* Tight ellipse mask: fully opaque in character area, hard fade right at
+     the edge so dark-robed figures (Caelen) stay readable but the PNG
+     background corners never show as hard rectangles. */
+  mask-image: radial-gradient(ellipse 55% 72% at 50% 42%, black 85%, transparent 99%);
+  -webkit-mask-image: radial-gradient(ellipse 55% 72% at 50% 42%, black 85%, transparent 99%);
+  filter: drop-shadow(1px 4px 5px rgba(0,0,0,0.85));
+}
+
+/* Ground shadow under each unit — anchors the figure to the tile */
+.unit-shadow {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(ellipse 50% 50% at center, rgba(0,0,0,0.55), transparent 80%);
+  border-radius: 50%;
 }
 
 /* Selected unit — warm gold glow */
 .unit-sprite.selected {
-  filter: drop-shadow(0 0 6px rgba(240,192,64,0.9)) drop-shadow(0 2px 3px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 0 7px rgba(240,192,64,0.95))
+          drop-shadow(0 3px 4px rgba(0,0,0,0.65));
+}
+
+/* Gold selection cursor floating above selected unit (FFT cursor register) */
+.selection-cursor {
+  position: absolute;
+  pointer-events: none;
+  width: 0; height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 14px solid #f0c040;
+  filter: drop-shadow(0 0 4px rgba(240,192,64,0.8));
+  animation: cursor-bob 0.9s ease-in-out infinite alternate;
+  z-index: 999;
+}
+@keyframes cursor-bob {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
 }
 
 /* Unit name chip above sprite (helps reading while art isn't tight) */
@@ -268,34 +294,39 @@ html, body {
   border-radius: 50%;
 }
 
-/* ── BOTTOM ACTION WHEEL ── */
+/* ── BOTTOM ACTION PANEL (FFT blue window chrome) ── */
 #ui-bottom {
-  background: var(--surface);
-  border-top: 2px solid var(--border);
-  padding: 12px 20px;
+  background: linear-gradient(to bottom, #18284a 0%, #0e1a34 100%);
+  border-top: 2px solid #3a5a9a;
+  box-shadow: inset 0 1px 0 #4a74b8, inset 0 -1px 0 #08122a;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .action-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background: linear-gradient(to bottom, #2858a0 0%, #1a3a70 100%);
+  border: 2px solid #4a74b8;
+  border-bottom-color: #08122a;
+  border-right-color: #08122a;
+  color: #ffffff;
   padding: 10px 22px;
   font-family: var(--font);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  cursor: default;          /* non-functional; no pointer */
-  border-radius: 4px;
-  transition: border-color 0.12s, color 0.12s, background 0.12s;
+  cursor: default;
+  border-radius: 2px;
+  transition: all 0.1s ease-out;
   min-width: 80px;
-  opacity: 0.7;
+  opacity: 0.85;
   user-select: none;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.8);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 /* give each action a distinct accent on hover, for register fidelity */
@@ -453,25 +484,31 @@ const MAP_H  = 14;    // rows     (r = 0 … 13)
 
 // Origin of the map on the canvas.
 // Leftmost tile is (q=0, r=13): x = PAD_X + (0-13)*64 = PAD_X - 832 ≥ 0 → PAD_X ≥ 832
+// Top clearance for raised blocks + tall sprites: PAD_Y ≥ (maxElev*BLOCK_H) + SPRITE_H + nameChip
+// With maxElev=2, BLOCK_H=22, SPRITE_H=118, chip~16: min 178. Using 200 for breathing room.
 const PAD_X  = 860;
-const PAD_Y  = 40;
+const PAD_Y  = 200;
 
-// Canvas dimensions: cover entire map + a little breathing room.
+// Canvas dimensions (FFT-style iso with TILE_H/2 vertical step — standard,
+// not the tight TILE_H/4 packing the earlier hex-clip version used).
 // x range: [PAD_X - 832, PAD_X + 11*64 + TILE_W] = [28, 1700]
-// y range: [PAD_Y, PAD_Y + (11+13)*16 + TILE_H]  = [40, 488]
+// y range: [PAD_Y - maxLift, PAD_Y + (q+r)max * TILE_H/2 + TILE_H]
+//        = [156, 200 + 24*32 + 64] = [156, 1032]
 const CANVAS_W = 1760;
-const CANVAS_H = 520;
+const CANVAS_H = 1080;
 
-// Sprite display size (px). Source art is 1024×1024; scale down cleanly.
-const SPRITE_W = 80;
-const SPRITE_H = 80;
+// Sprite display size (px). FFT-style: taller than wide, full-figure.
+const SPRITE_W = 78;
+const SPRITE_H = 118;
 
-// Enemy silhouette size
-const ENEMY_W  = 42;
-const ENEMY_H  = 52;
+// Enemy placeholder size — narrower+taller than before so it reads as a figure
+const ENEMY_W  = 36;
+const ENEMY_H  = 80;
 
-// Elevation Y-offset per level (sprite only, per BUILD_PLAN §1.1.1)
-const ELEV_OFFSET = 16;
+// Elevation: each level raises the tile's top face by BLOCK_H pixels and
+// adds visible side faces of that height (FFT cube-stack terrain).
+const BLOCK_H     = 22;
+const ELEV_OFFSET = BLOCK_H; // kept as alias for any legacy references
 
 // Art root path (relative to this file)
 const ART = 'designs/oath-and-bone/art';
@@ -485,25 +522,25 @@ const RIDGE = new Set(['4,1', '5,1', '6,1']);
 function hexElev(q, r) { return RIDGE.has(`${q},${r}`) ? 2 : 0; }
 function hexTerrain(q, r) { return RIDGE.has(`${q},${r}`) ? 'ridge' : 'plain'; }
 
-// ── COORDINATE MATH ─────────────────────────────────────
-// Isometric formula from existing tile compositor (test_compositor.html).
+// ── COORDINATE MATH (FFT-style 2:1 iso, standard) ───────
 // x = PAD_X + (q - r) * (TILE_W/2)
-// y = PAD_Y + (q + r) * (TILE_H/4)
+// y = PAD_Y + (q + r) * (TILE_H/2)   — standard iso, no overlap
 function isoPos(q, r) {
   return {
     x: PAD_X + (q - r) * (TILE_W / 2),
-    y: PAD_Y + (q + r) * (TILE_H / 4)
+    y: PAD_Y + (q + r) * (TILE_H / 2)
   };
 }
 
-// Inverse: screen → nearest hex (for click handling)
+// Inverse: screen → nearest tile (for click handling).
+// Note: we pick the tile by ground plane only. If a block is elevated,
+// the click still maps to the (q,r) whose ground projection is clicked.
+// Good enough for a preview; real engine would raycast against top faces.
 function screenToHex(px, py) {
   const dx = px - PAD_X;
   const dy = py - PAD_Y;
-  // From isoPos: dx = (q-r)*64, dy = (q+r)*16
-  // Solving: q = (dx/64 + dy/16)/2, r = (dy/16 - dx/64)/2
-  const qf = (dx / (TILE_W / 2) + dy / (TILE_H / 4)) / 2;
-  const rf = (dy / (TILE_H / 4) - dx / (TILE_W / 2)) / 2;
+  const qf = (dx / (TILE_W / 2) + dy / (TILE_H / 2)) / 2;
+  const rf = (dy / (TILE_H / 2) - dx / (TILE_W / 2)) / 2;
   const q  = Math.round(qf);
   const r  = Math.round(rf);
   if (q >= 0 && q < MAP_W && r >= 0 && r < MAP_H) return [q, r];
@@ -511,12 +548,15 @@ function screenToHex(px, py) {
 }
 
 // ── IMAGES ──────────────────────────────────────────────
-// Per SEAMLESS_LOG + EFFECTS_SPRITES_LOG: these are the actual isometric
-// hex-tile images shipped by Worker 3 (1536×768 → displayed at 128×64).
-const imgPlain = new Image();
+// FFT uses saturated grass-green biomes; switching to forest tiles for
+// that register. (Design spec says B1 is plain biome — noted deviation
+// for preview. Real engine slice will honor the biome tag.)
+const imgGrass = new Image();
 const imgRidge = new Image();
-imgPlain.src = `${ART}/tiles/plain/base.png`;
-imgRidge.src = `${ART}/tiles/plain/elevation-2.png`;
+imgGrass.src = `${ART}/tiles/forest/base.png`;
+imgRidge.src = `${ART}/tiles/forest/elevation-2.png`;
+// Legacy alias so any remaining `imgPlain` references don't break.
+const imgPlain = imgGrass;
 
 // ── STATE ────────────────────────────────────────────────
 let selectedHex  = null;
@@ -527,133 +567,163 @@ function onImgEvent() {
   imagesReady++;
   if (imagesReady >= totalImages) initStage();
 }
-imgPlain.onload  = imgPlain.onerror  = onImgEvent;
+imgGrass.onload  = imgGrass.onerror  = onImgEvent;
 imgRidge.onload  = imgRidge.onerror  = onImgEvent;
 
 // Safety: if onload fires before the handler is wired, fire now.
-if (imgPlain.complete) onImgEvent();
+if (imgGrass.complete) onImgEvent();
 if (imgRidge.complete) onImgEvent();
 
 // Fallback in case images never fire (e.g., cached already done):
 setTimeout(() => { if (imagesReady < totalImages) initStage(); }, 1200);
 
-// ── DRAW HEX MAP ────────────────────────────────────────
+// ── DRAW MAP (FFT-style cube-stack blocks) ──────────────
+// Each tile is a 3D block:
+//   top face    = painted diamond (the tile PNG, clipped)
+//   left face   = parallelogram, darker shade (shadow side)
+//   right face  = parallelogram, medium shade (lit side)
+// Elevation raises the top face by elev * BLOCK_H; side faces extend down
+// to the ground plane so stacked blocks read as terrain with depth.
 function drawMap(ctx) {
   ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
-
-  // Void fill
-  ctx.fillStyle = '#07070a';
+  // Deep forest-void background for iso depth
+  ctx.fillStyle = '#0b140e';
   ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
-  // Painter's algorithm: draw diagonal strips low-sum → high-sum so
-  // tiles in front occlude tiles behind (standard isometric order).
+  // Painter's algorithm: back-to-front by (q+r) sum.
   for (let sum = 0; sum < MAP_W + MAP_H - 1; sum++) {
     const rMin = Math.max(0, sum - MAP_W + 1);
     const rMax = Math.min(MAP_H - 1, sum);
     for (let r = rMin; r <= rMax; r++) {
       const q = sum - r;
       if (q < 0 || q >= MAP_W) continue;
-
-      const { x, y } = isoPos(q, r);
-      const isRidge  = RIDGE.has(`${q},${r}`);
-      const img      = isRidge ? imgRidge : imgPlain;
-
-      if (img.complete && img.naturalWidth > 0) {
-        // Diamond-clip: each tile is a 4-vertex iso diamond, not a square.
-        // Without clipping, the 1536×768 source fills the bounding rect and
-        // adjacent rows overlap into visible stripes. Clip to diamond shape
-        // so the painted tile art reads as discrete iso tiles.
-        const cx = x + TILE_W / 2;
-        const cy = y + TILE_H / 2;
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(cx,          y);
-        ctx.lineTo(x + TILE_W,  cy);
-        ctx.lineTo(cx,          y + TILE_H);
-        ctx.lineTo(x,           cy);
-        ctx.closePath();
-        ctx.clip();
-        ctx.drawImage(img, x, y, TILE_W, TILE_H);
-        ctx.restore();
-      } else {
-        // CSS placeholder: draw a coloured diamond
-        const cx = x + TILE_W / 2;
-        const cy = y + TILE_H / 2;
-        ctx.fillStyle = isRidge ? '#2c2238' : '#181e18';
-        ctx.beginPath();
-        ctx.moveTo(cx,          y);
-        ctx.lineTo(x + TILE_W,  cy);
-        ctx.lineTo(cx,          y + TILE_H);
-        ctx.lineTo(x,           cy);
-        ctx.closePath();
-        ctx.fill();
-        ctx.strokeStyle = isRidge ? '#3d2f55' : '#222a22';
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-
-      // Ridge: add a subtle gold rim so the elevation reads clearly
-      if (isRidge) {
-        const cx = x + TILE_W / 2;
-        const cy = y + TILE_H / 2;
-        ctx.strokeStyle = 'rgba(200, 170, 80, 0.35)';
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(cx,          y);
-        ctx.lineTo(x + TILE_W,  cy);
-        ctx.lineTo(cx,          y + TILE_H);
-        ctx.lineTo(x,           cy);
-        ctx.closePath();
-        ctx.stroke();
-      }
-
-      // Reachable hex highlight (gold-tint during move mode)
-      if (game.moveMode && game.reachable.has(`${q},${r}`)) {
-        const cx = x + TILE_W / 2;
-        const cy = y + TILE_H / 2;
-        ctx.fillStyle = 'rgba(240, 192, 64, 0.28)';
-        ctx.beginPath();
-        ctx.moveTo(cx,          y);
-        ctx.lineTo(x + TILE_W,  cy);
-        ctx.lineTo(cx,          y + TILE_H);
-        ctx.lineTo(x,           cy);
-        ctx.closePath();
-        ctx.fill();
-        ctx.strokeStyle = 'rgba(240, 192, 64, 0.75)';
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-      }
-
-      // Selected unit's current hex — strong gold outline
-      const sel = getSelected();
-      if (sel && sel.q === q && sel.r === r) {
-        const cx = x + TILE_W / 2;
-        const cy = y + TILE_H / 2;
-        ctx.strokeStyle = '#f0c040';
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        ctx.moveTo(cx,          y);
-        ctx.lineTo(x + TILE_W,  cy);
-        ctx.lineTo(cx,          y + TILE_H);
-        ctx.lineTo(x,           cy);
-        ctx.closePath();
-        ctx.stroke();
-      }
-
-      // Clicked hex info (kept for non-move-mode exploration)
-      if (!game.moveMode && selectedHex && selectedHex[0] === q && selectedHex[1] === r) {
-        const cx = x + TILE_W / 2;
-        const cy = y + TILE_H / 2;
-        ctx.fillStyle = 'rgba(240, 192, 64, 0.15)';
-        ctx.beginPath();
-        ctx.moveTo(cx,          y);
-        ctx.lineTo(x + TILE_W,  cy);
-        ctx.lineTo(cx,          y + TILE_H);
-        ctx.lineTo(x,           cy);
-        ctx.closePath();
-        ctx.fill();
-      }
+      drawTile(ctx, q, r);
     }
+  }
+}
+
+function drawTile(ctx, q, r) {
+  const { x, y } = isoPos(q, r);
+  const elev = hexElev(q, r);
+  const lift = elev * BLOCK_H;
+  const isRidge = elev > 0;
+
+  // Top face vertices (raised by lift). Top face y origin = y - lift.
+  const topY = y - lift;
+  const cx   = x + TILE_W / 2;
+  const vTop    = { x: cx,           y: topY };
+  const vRight  = { x: x + TILE_W,   y: topY + TILE_H / 2 };
+  const vBottom = { x: cx,           y: topY + TILE_H };
+  const vLeft   = { x: x,            y: topY + TILE_H / 2 };
+
+  // Ground-plane vertices (bottom of side faces, at elev=0)
+  const gLeft   = { x: x,            y: y + TILE_H / 2 };
+  const gRight  = { x: x + TILE_W,   y: y + TILE_H / 2 };
+  const gBottom = { x: cx,           y: y + TILE_H };
+
+  // ── Side faces (only if elevated) ──
+  if (elev > 0) {
+    // Left side — shadow-darker. Polygon: vLeft → gLeft → gBottom → vBottom.
+    ctx.fillStyle = isRidge ? '#283518' : '#1e2814';
+    ctx.beginPath();
+    ctx.moveTo(vLeft.x,   vLeft.y);
+    ctx.lineTo(gLeft.x,   gLeft.y);
+    ctx.lineTo(gBottom.x, gBottom.y);
+    ctx.lineTo(vBottom.x, vBottom.y);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+    ctx.lineWidth = 0.6;
+    ctx.stroke();
+
+    // Right side — lit-medium. Polygon: vBottom → gBottom → gRight → vRight.
+    ctx.fillStyle = isRidge ? '#3a4822' : '#2c3a1e';
+    ctx.beginPath();
+    ctx.moveTo(vBottom.x, vBottom.y);
+    ctx.lineTo(gBottom.x, gBottom.y);
+    ctx.lineTo(gRight.x,  gRight.y);
+    ctx.lineTo(vRight.x,  vRight.y);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+    ctx.lineWidth = 0.6;
+    ctx.stroke();
+  }
+
+  // ── Top face: painted tile art clipped to diamond ──
+  const img = isRidge ? imgRidge : imgGrass;
+  if (img && img.complete && img.naturalWidth > 0) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(vTop.x,    vTop.y);
+    ctx.lineTo(vRight.x,  vRight.y);
+    ctx.lineTo(vBottom.x, vBottom.y);
+    ctx.lineTo(vLeft.x,   vLeft.y);
+    ctx.closePath();
+    ctx.clip();
+    ctx.drawImage(img, x, topY, TILE_W, TILE_H);
+    ctx.restore();
+  } else {
+    ctx.fillStyle = isRidge ? '#4a5830' : '#3a4a24';
+    ctx.beginPath();
+    ctx.moveTo(vTop.x,    vTop.y);
+    ctx.lineTo(vRight.x,  vRight.y);
+    ctx.lineTo(vBottom.x, vBottom.y);
+    ctx.lineTo(vLeft.x,   vLeft.y);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // ── Top face outline (FFT-style thin tile edge) ──
+  ctx.strokeStyle = 'rgba(0,0,0,0.30)';
+  ctx.lineWidth = 0.7;
+  ctx.beginPath();
+  ctx.moveTo(vTop.x,    vTop.y);
+  ctx.lineTo(vRight.x,  vRight.y);
+  ctx.lineTo(vBottom.x, vBottom.y);
+  ctx.lineTo(vLeft.x,   vLeft.y);
+  ctx.closePath();
+  ctx.stroke();
+
+  // ── Reachable tile highlight (gold tint on top face during move mode) ──
+  if (game.moveMode && game.reachable.has(`${q},${r}`)) {
+    ctx.fillStyle = 'rgba(240, 192, 64, 0.32)';
+    ctx.beginPath();
+    ctx.moveTo(vTop.x,    vTop.y);
+    ctx.lineTo(vRight.x,  vRight.y);
+    ctx.lineTo(vBottom.x, vBottom.y);
+    ctx.lineTo(vLeft.x,   vLeft.y);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(240, 192, 64, 0.9)';
+    ctx.lineWidth = 1.6;
+    ctx.stroke();
+  }
+
+  // ── Selected unit's tile — strong gold outline ──
+  const sel = getSelected();
+  if (sel && sel.q === q && sel.r === r) {
+    ctx.strokeStyle = '#f0c040';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(vTop.x,    vTop.y);
+    ctx.lineTo(vRight.x,  vRight.y);
+    ctx.lineTo(vBottom.x, vBottom.y);
+    ctx.lineTo(vLeft.x,   vLeft.y);
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // ── Clicked-hex info indicator ──
+  if (!game.moveMode && selectedHex && selectedHex[0] === q && selectedHex[1] === r) {
+    ctx.fillStyle = 'rgba(240, 192, 64, 0.14)';
+    ctx.beginPath();
+    ctx.moveTo(vTop.x,    vTop.y);
+    ctx.lineTo(vRight.x,  vRight.y);
+    ctx.lineTo(vBottom.x, vBottom.y);
+    ctx.lineTo(vLeft.x,   vLeft.y);
+    ctx.closePath();
+    ctx.fill();
   }
 }
 
@@ -674,13 +744,14 @@ function getSelected() {
   return game.selectedId ? game.units.find(u => u.id === game.selectedId) : null;
 }
 
-// Neighbors on the iso diamond grid — 6 logical neighbors treating it as
-// hex-adjacent (N, S, E, W, NE, SW) so movement feels like a hex game.
+// Neighbors on the square iso grid — FFT uses 4-neighbor (N, S, E, W) only.
+// Diagonal movement is blocked; units path around corners just like FFT.
 function neighbors(q, r) {
   return [
-    [q,   r-1], [q,   r+1],
-    [q-1, r  ], [q+1, r  ],
-    [q+1, r-1], [q-1, r+1],
+    [q,   r-1], // N
+    [q,   r+1], // S
+    [q-1, r  ], // W
+    [q+1, r  ], // E
   ];
 }
 
@@ -710,16 +781,21 @@ function computeReachable(u) {
 }
 
 // ── DOM SYNC ────────────────────────────────────────────
+// FFT-style placement: unit feet at center of tile TOP face. Free-standing
+// figure rises above; no clipping, the painted character stands on the block.
 function unitDomPos(u) {
   const { x, y } = isoPos(u.q, u.r);
   const elev = hexElev(u.q, u.r);
+  const topY = y - elev * BLOCK_H;                // top face origin y
+  const cx   = x + TILE_W / 2;
+  const footY = topY + TILE_H / 2 + 4;            // slightly below top-face center for weight
   return {
-    sx: x + TILE_W / 2 - SPRITE_W / 2,
-    sy: y + TILE_H - SPRITE_H - elev * ELEV_OFFSET + 6,
-    ex: x + TILE_W / 2 - ENEMY_W / 2,
-    ey: y + TILE_H - ENEMY_H - elev * ELEV_OFFSET,
-    nameX: x + TILE_W / 2 - 40,
-    nameY: y + TILE_H - SPRITE_H - elev * ELEV_OFFSET - 4,
+    sx: cx - SPRITE_W / 2,
+    sy: footY - SPRITE_H,
+    ex: cx - ENEMY_W / 2,
+    ey: footY - ENEMY_H,
+    nameX: cx - 40,
+    nameY: topY - 18,                             // chip floats above the block
   };
 }
 
@@ -957,12 +1033,13 @@ function initStage() {
   placeUnits(stage);
 
   // Scroll stage so the heroes (Vael q=3,r=12 and Caelen q=5,r=12) are centered.
-  // Their midpoint in canvas pixels: x ≈ 412 (Vael sprite center 348, Caelen 476),
-  // y ≈ 286 (Vael top 190 + SPRITE_H/2, Caelen 222 + SPRITE_H/2, midpoint).
-  // Worker 12 used PAD_X which scrolled them off-screen; this corrects it.
+  // With new 2:1 iso math:
+  //   Vael:   x = 860 + (3-12)*64 = 284, y = 200 + 15*32 = 680 (top face)
+  //   Caelen: x = 860 + (5-12)*64 = 412, y = 200 + 17*32 = 744
+  //   Midpoint (tile centers): x ≈ 412, y ≈ 744
   const scroll = document.getElementById('stage-scroll');
   const heroCenterX = 412;
-  const heroCenterY = 286;
+  const heroCenterY = 744;
   scroll.scrollLeft = Math.max(0, heroCenterX - Math.floor(scroll.clientWidth  / 2));
   scroll.scrollTop  = Math.max(0, heroCenterY - Math.floor(scroll.clientHeight / 2));
 
