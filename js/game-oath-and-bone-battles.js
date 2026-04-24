@@ -8,6 +8,13 @@ var SCENARIO_B1 = {
   map_width: 12,
   map_height: 14,
 
+  // Runtime tier field — engine.js:193 reads scenario.difficultyTier.
+  // Default sergeant. The player's selected tier (scout/sergeant/marshal)
+  // overrides this at battle start. Before this default existed, the
+  // engine read undefined → tripped the scout-gate (no XP) guard even on
+  // Sergeant+ wins. Schema-align gap flagged in BUILD_STATUS succession_note.
+  difficultyTier: 'sergeant',
+
   hexTypes: {
     plain:  { terrain: 'plain',  elevation: 0, tile_mods: [] },
     ridge:  { terrain: 'ridge',  elevation: 2, tile_mods: [] },
