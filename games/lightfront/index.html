@@ -2538,7 +2538,11 @@ Campfire.register('crowdRunner', {
       powerup: { type: null, timer: 0, text: '' },
       endTimer: 0,
       runMessages: [],
-      shownFirstCocoon: false
+      shownFirstCocoon: false,
+      reviveAvailable: true,
+      coinDoubleAvailable: true,
+      coinDoublePending: false,
+      invincible: 0
     };
 
     // Start with 3 souls
@@ -2663,11 +2667,78 @@ Campfire.register('crowdRunner', {
       dt *= 0.3;
     }
 
+    // Invincibility countdown (post-revive window)
+    if (r.invincible > 0) r.invincible -= dt;
+
     // End states
-    if (r.gameState === 'GAMEOVER' || r.gameState === 'VICTORY') {
+    if (r.gameState === 'GAMEOVER') {
+      const inp = Campfire.input;
+      if (r.reviveAvailable) {
+        // Offer revive window — counts down endTimer (2.5s) as the decision window
+        r.endTimer -= dt;
+        if (inp.pressed) {
+          // Button zone: centered, y=H/2+80, 220×56
+          const bx = 195, by = 422 + 80, bw = 220, bh = 56;
+          if (Math.abs(inp.x - bx) < bw / 2 && Math.abs(inp.y - by) < bh / 2) {
+            if (Campfire.state.coins >= 5) {
+              Campfire.state.coins -= 5;
+              r.reviveAvailable = false;
+              r.group = [];
+              for (let i = 0; i < 3; i++) {
+                r.group.push({ x: r.playerX + (i - 1) * 16, y: 700, name: null, flash: 1.5 });
+              }
+              r.gameState = 'RUNNING';
+              r.invincible = 2.5;
+              r.flash = 0.6; r.flashColor = 'rgba(255,180,80,0.5)';
+              return;
+            }
+          }
+        }
+        if (r.endTimer <= 0) {
+          r.reviveAvailable = false;
+          r.endTimer = 1.2; // short pause before hub
+        }
+        return;
+      }
       r.endTimer -= dt;
       if (r.endTimer <= 0) {
         Campfire.state.coins += r.coinsEarned;
+        Campfire.state.gems += r.gemsEarned;
+        Campfire.modules.economy.gainXP(Math.floor(r.score / 5));
+        Campfire.modules.hub.recordScore(r.score);
+        Campfire.game.scene = "hub";
+        Campfire.modules.hub.subScene = null;
+        this.run = null;
+      }
+      return;
+    }
+
+    if (r.gameState === 'VICTORY') {
+      const inp = Campfire.input;
+      if (r.coinDoubleAvailable) {
+        r.endTimer -= dt;
+        if (inp.pressed) {
+          // Button zone: centered, y=H/2+100, 220×56
+          const bx = 195, by = 422 + 100, bw = 220, bh = 56;
+          if (Math.abs(inp.x - bx) < bw / 2 && Math.abs(inp.y - by) < bh / 2) {
+            if (Campfire.state.coins >= 3) {
+              Campfire.state.coins -= 3;
+              r.coinDoublePending = true;
+              r.coinDoubleAvailable = false;
+              r.endTimer = 1.0;
+              return;
+            }
+          }
+        }
+        if (r.endTimer <= 0) {
+          r.coinDoubleAvailable = false;
+          r.endTimer = 1.0;
+        }
+        return;
+      }
+      r.endTimer -= dt;
+      if (r.endTimer <= 0) {
+        Campfire.state.coins += r.coinsEarned * (r.coinDoublePending ? 2 : 1);
         Campfire.state.gems += r.gemsEarned;
         Campfire.modules.economy.gainXP(Math.floor(r.score / 5));
         Campfire.modules.hub.recordScore(r.score);
@@ -2945,6 +3016,8 @@ Campfire.register('crowdRunner', {
           Campfire.audio?.hit();
           r.enemies.splice(i, 1);
           if (r.powerup.shieldHits <= 0) r.powerup.type = null;
+        } else if (r.invincible > 0) {
+          r.enemies.splice(i, 1); // pass through while invincible
         } else {
           this.removeSouls(e.kills);
           Campfire.modules.particles.fireBurst(e.x, e.y, 4);
@@ -3331,6 +3404,25 @@ Campfire.register('crowdRunner', {
       ctx.font = '18px sans-serif';
       ctx.fillText(r.group.length + ' souls carried the light', W / 2, H / 2 + 20);
       ctx.fillText(r.coinsEarned + ' sparks gathered', W / 2, H / 2 + 50);
+      // Coin double offer
+      if (r.coinDoubleAvailable) {
+        const canAfford = Campfire.state.coins >= 3;
+        const bx = W / 2, by = H / 2 + 100, bw = 220, bh = 52;
+        ctx.fillStyle = canAfford ? 'rgba(255,200,50,0.18)' : 'rgba(80,80,80,0.18)';
+        ctx.beginPath();
+        ctx.roundRect(bx - bw / 2, by - bh / 2, bw, bh, 10);
+        ctx.fill();
+        ctx.strokeStyle = canAfford ? '#ffd700' : '#555';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.fillStyle = canAfford ? '#ffd700' : '#666';
+        ctx.font = 'bold 17px sans-serif';
+        ctx.fillText(canAfford ? '✦ Double Sparks — 3 Embers' : 'Not enough Embers', bx, by + 6);
+      } else if (r.coinDoublePending) {
+        ctx.fillStyle = '#ffd700';
+        ctx.font = 'bold 16px sans-serif';
+        ctx.fillText('✦ Sparks doubled!', W / 2, H / 2 + 110);
+      }
     }
 
     if (r.gameState === 'GAMEOVER') {
@@ -3343,6 +3435,25 @@ Campfire.register('crowdRunner', {
       ctx.fillStyle = '#aaa';
       ctx.font = '16px sans-serif';
       ctx.fillText(r.coinsEarned + ' sparks recovered', W / 2, H / 2 + 25);
+      // Revive offer
+      if (r.reviveAvailable) {
+        const canAfford = Campfire.state.coins >= 5;
+        const bx = W / 2, by = H / 2 + 80, bw = 220, bh = 56;
+        ctx.fillStyle = canAfford ? 'rgba(255,160,40,0.2)' : 'rgba(80,80,80,0.18)';
+        ctx.beginPath();
+        ctx.roundRect(bx - bw / 2, by - bh / 2, bw, bh, 12);
+        ctx.fill();
+        ctx.strokeStyle = canAfford ? '#ff9933' : '#444';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.fillStyle = canAfford ? '#ffcc66' : '#555';
+        ctx.font = 'bold 18px sans-serif';
+        ctx.fillText(canAfford ? '✦ Continue — 5 Embers' : 'Not enough Embers', bx, by + 7);
+        // Fading timer bar
+        const barW = (bw - 20) * Math.max(0, r.endTimer / 2.5);
+        ctx.fillStyle = 'rgba(255,150,30,0.35)';
+        ctx.fillRect(bx - bw / 2 + 10, by + bh / 2 - 8, barW, 4);
+      }
     }
 
     // Draw run messages (soul names, dialogue)
