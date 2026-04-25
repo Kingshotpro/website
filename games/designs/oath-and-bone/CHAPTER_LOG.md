@@ -138,3 +138,30 @@ propagates `unlocked_scenarios` and `current_battle` from the server response in
 | `f9ccdee` | Worker 21: B2 + B3 scenario data + OathAndBoneScenarios lookup |
 | `406e0e9` | Worker 21: scenario selection + unlock progression |
 | `0b2ac6b` | Worker 21: minimal world map — scenario cards with unlock state |
+
+---
+
+## Worker 26 — MVP Audit discoveries (2026-04-25)
+
+Read-only audit. No code changed. Full report: `MVP_AUDIT_REPORT.md`.
+
+### New gaps not in prior logs
+
+| Gap | Location | Severity |
+|---|---|---|
+| `onUnitFallen` hook absent — unit death fires zero Soul Review channels | engine.js:617–619 (add hook); render.js (add handler) | **BLOCKING** |
+| Server never deployed (`wrangler deploy` not run) — entire persistence layer dead | worker.js (all oab handlers) | **BLOCKING** |
+| Tutorial modal + VICTORY overlay can stack simultaneously | render.js:1516 `showBattleEnd` | non-blocking / UX bug |
+| B2 does not unlock offline — client has no optimistic unlock on victory | `_saveToServer` in render.js; game-oath-and-bone.js | non-blocking / UX bug |
+| Physical attack (`onUnitAttacked`) has no strike/lunge animation — only `onUnitMoved` has slide | render.js:1848 | non-blocking / Soul Review partial |
+| Mid-battle turn bar shows mechanical text, not character voice barbs | render.js `updateTurnBar` | non-blocking / Soul Review partial |
+
+### Concerns that passed
+
+- Concern 2 (Canon): all heroes original; disclaimer in all static footers + JS module headers ✓
+- Concern 3 (Free-Means-Free): no `if(paid)` gate found anywhere in oath-and-bone JS ✓
+- Concern 4 (Pricing): no hardcoded `$[0-9]` in oath-and-bone files ✓
+
+### Walkthrough steps confirmed live
+
+Cold start → engine init → hero selection → MOVE mode → T1 tutorial on attack → VICTORY screen (3 Soul Review channels) → world map → resume prompt on reload. All confirmed in browser against `localhost:3970`.

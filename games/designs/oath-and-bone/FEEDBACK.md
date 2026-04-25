@@ -21,3 +21,38 @@ Phase 1 has no art tasks. Phase 2 art pipeline (P2-01, P2-11, P2-12) requires Mi
 ---
 
 Worker 12: visual prototype ready at games/oath-and-bone-preview.html — open locally or deploy to staging, redirect aesthetic direction if off.
+
+---
+
+## AUDIT FLAGS — Worker 26, 2026-04-25
+
+MVP audit complete. Two findings block public launch. Full verdicts in MVP_AUDIT_REPORT.md.
+
+### BLOCKER 1 — Server not deployed
+
+`wrangler deploy` has never been run. Worker 22 + 23 code is committed but every server
+endpoint is dead (`/oath-and-bone/save`, `/load`, `/spend`, `/battle-result`). In production:
+- Crown balance is never saved between sessions
+- B2 never unlocks after B1 win — all players stuck on B1 forever
+- All server-side cheat protections are inactive
+- Battle-end shows "Save failed — will sync on next play." every time
+
+Fix: run `wrangler deploy` from `worker/`. Confirm with curl `/oath-and-bone/load`.
+
+### BLOCKER 2 — Unit death fires zero feedback channels (Soul Review)
+
+No `onUnitFallen` hook exists in the engine. When a unit reaches hp=0, it vanishes silently
+from the canvas on the next syncSprites() pass. DESIGN.md requires 3 non-audio channels on
+unit death (desaturate, HP=0 float, party line). None fire.
+
+Fix outlined in MVP_AUDIT_REPORT.md §Concern 1 / Unit falls. Two-line engine add +
+~10-line render hook.
+
+### Non-blocking (next worker picks up)
+
+- Tutorial modal + VICTORY overlay can stack simultaneously if battle ends while T1 showing
+- B2 doesn't unlock offline — client needs optimistic unlock on victory before server confirms
+- Physical attack has no strike/lunge animation (onUnitMoved has slide, onUnitAttacked doesn't)
+- Mid-battle turn bar is mechanical text, not character voice barbs (DESIGN.md calls for per-event barbs)
+
+All non-blocking gaps are detailed in MVP_AUDIT_REPORT.md §Concern 5 and §Gaps Discovered.
