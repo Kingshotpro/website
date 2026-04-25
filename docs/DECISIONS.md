@@ -13,6 +13,46 @@
 
 ---
 
+## 2026-04-25 — Worker 21: Act 1 scaffold (B2, B3, world map)
+
+**Verdict:** Three scenarios, server-authoritative unlock chain, minimal world map.
+All locked behind server state; anonymous players always start B1.
+
+**What shipped (3 commits: f9ccdee, 406e0e9, 0b2ac6b):**
+
+- `battles.js`: SCENARIO_B2 ("The Hollow", forest) and SCENARIO_B3 ("The Crypt Gate",
+  ruin) added. Both use 12×14 map dimensions (renderer MAP_W/MAP_H hard constraint).
+  `window.OathAndBoneScenarios = { b1, b2, b3 }` lookup map added.
+- `worker.js`: `oabDefaultState` now includes `unlocked_scenarios: ['b1']`.
+  `handleOabBattleResult` unlocks next scenario on victory (b1→b2, b2→b3) and advances
+  `current_battle`. Response now includes `unlocked_scenarios` and `current_battle`.
+  `handleOabSave` unions `unlocked_scenarios` with the same floor pattern as `fallen_heroes`.
+- `game-oath-and-bone.js`: `init()` converted to async; loads server state via
+  `OathAndBoneServer.load()` (anonymous fallback = default state), calls
+  `OathAndBoneEngine.loadScenario()` with correct scenario, routes returning players
+  to world map.
+- `render.js`: `_showWorldMap(container, state)` renders FFT blue chrome with three
+  scenario cards (COMPLETED/AVAILABLE/LOCKED). AVAILABLE cards pulse gold and launch
+  `_startScenario()`. Continue button replaced with world map route. `_saveToServer`
+  now propagates `unlocked_scenarios` + `current_battle` from server response into
+  `window.OathAndBone.currentState`. Public API: `OathAndBoneRender.showWorldMap`,
+  `OathAndBoneRender.startScenario`.
+
+**Constraint deviations from BATTLES.md (documented for V2):**
+- BATTLES.md specified B2 at 14×12 and B3 at 10×16. Both deployed at 12×14
+  because `render.js` MAP_W/MAP_H are hard-coded constants. V2 work to
+  make renderer dimension-agnostic is deferred.
+
+**Known gaps left open (not Worker 21 scope):**
+- B2 tutorial events `first_forest_attack` / `first_water_blocked` not wired in engine.
+- B3 tutorial events `first_skeleton_kill` / `magic_revealed` not wired in engine.
+- Skeleton sprite placeholder uses `heroId: 'bladewind'` (V2 art scope).
+- Thessa conditional recruitment (story-flag engine not built).
+- `story_flags.read` gate not enforced — any player can enter B2/B3 if server unlocks them.
+  Worker 22 or the story-flag engine should enforce the read gate before B2/B3 start.
+
+---
+
 ## 2026-04-24 — Worker 23: Oath and Bone server-state KV schema
 
 **Verdict:** Server-side persistence for Oath and Bone uses the existing
