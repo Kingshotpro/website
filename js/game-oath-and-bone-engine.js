@@ -616,6 +616,9 @@ window.OathAndBoneEngine = {
     // permadeath_loss: once set to true, never cleared — not on save/load, not on scenario restart
     if (target.hp === 0 && target.team === 'player') {
       target.permadeath_loss = true; // Permanent flag, never cleared
+      if (window.OathAndBoneEngine.onUnitFallen) {
+        window.OathAndBoneEngine.onUnitFallen(target, attacker);
+      }
     }
 
     if (window.OathAndBoneEngine.onUnitAttacked) {
@@ -651,6 +654,9 @@ window.OathAndBoneEngine = {
       var u = _battle.units[id];
       if (u.hp === 0 && u.team === 'player' && !u.permadeath_loss) {
         u.permadeath_loss = true;
+        if (window.OathAndBoneEngine.onUnitFallen) {
+          window.OathAndBoneEngine.onUnitFallen(u, null);
+        }
       }
     }
 
@@ -679,6 +685,9 @@ window.OathAndBoneEngine = {
       var u = _battle.units[id];
       if (u.hp === 0 && u.team === 'player' && !u.permadeath_loss) {
         u.permadeath_loss = true;
+        if (window.OathAndBoneEngine.onUnitFallen) {
+          window.OathAndBoneEngine.onUnitFallen(u, null);
+        }
       }
     }
 

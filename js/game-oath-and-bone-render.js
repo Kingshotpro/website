@@ -1824,6 +1824,39 @@
     window.OathAndBoneEngine.start(container, { practiceMode: practiceMode });
   }
 
+  // ── FALLEN BARBS (HEROES.md voice register — party reaction when a hero falls) ─
+  var _FALLEN_BARBS = {
+    vael:    "We can't lose her.",
+    halv:    "Oh, Halv.",
+    brin:    "Damn.",
+    caelen:  "...he should not have fallen.",
+    marrow:  "What he owed, he's paid.",
+    thessa:  "The grove loses a guardian."
+  };
+
+  // Bottom-of-screen italic toast — 2 second duration. Used for death narrative.
+  function _showFallenToast(msg) {
+    try {
+      var el = document.createElement('div');
+      el.style.cssText = [
+        'position:fixed', 'bottom:60px', 'left:50%',
+        'transform:translateX(-50%)',
+        'background:rgba(20,20,30,0.92)', 'color:#c0d4f0',
+        'padding:10px 22px', 'border-radius:4px',
+        'z-index:10000',
+        'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+        'font-size:13px', 'font-style:italic', 'pointer-events:none',
+        'max-width:340px', 'text-align:center',
+        'border:1px solid rgba(100,100,160,0.4)'
+      ].join(';');
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(function () {
+        if (el.parentNode) el.parentNode.removeChild(el);
+      }, 2000);
+    } catch (e) {}
+  }
+
   // ── ENGINE HOOKS ─────────────────────────────────────────────────────
   // Attached synchronously before the orchestrator calls start().
   // render.js loads BEFORE game-oath-and-bone.js in the HTML script order.
@@ -1897,6 +1930,55 @@
 
   window.OathAndBoneEngine.onBattleEnd = function (result) {
     showBattleEnd(result);
+  };
+
+  // Unit-fallen hook — fires from engine AFTER hp hits 0, BEFORE unit is
+  // removed from turn queue. Delivers 3 Soul Review channels for permadeath:
+  //   1. VISUAL:    grayscale + faded linger sprite (1.5s)
+  //   2. NUMERICAL: damage float from the killing blow (fires via onUnitAttacked)
+  //   3. NARRATIVE: voice barb toast from _FALLEN_BARBS (2s)
+  // V2 audio worker hooks into this same event (4th channel deferred).
+  window.OathAndBoneEngine.onUnitFallen = function (unit, killedBy) {
+    // ── VISUAL: linger silhouette ──────────────────────────────────────
+    if (_stage) {
+      var pos = unitDomPos(unit);
+      var key = unitSpriteKey(unit);
+      var src = spriteSrc(key);
+      var lingerEl;
+      var sharedStyle = 'position:absolute' +
+        ';left:' + pos.sx + 'px' +
+        ';top:' + pos.sy + 'px' +
+        ';width:' + SPRITE_W + 'px' +
+        ';height:' + SPRITE_H + 'px' +
+        ';filter:grayscale(1)' +
+        ';opacity:0.4' +
+        ';pointer-events:none' +
+        ';image-rendering:pixelated' +
+        ';z-index:' + (unit.q + unit.r + 2);
+      if (src) {
+        lingerEl = document.createElement('img');
+        lingerEl.src = src;
+        lingerEl.alt = key;
+        lingerEl.style.cssText = sharedStyle;
+      } else {
+        lingerEl = document.createElement('div');
+        lingerEl.textContent = (unit.heroId || unit.id || '?').charAt(0).toUpperCase();
+        lingerEl.style.cssText = sharedStyle +
+          ';display:flex;align-items:center;justify-content:center' +
+          ';font-weight:bold;font-size:14px;color:#fff' +
+          ';background:rgba(60,60,80,0.5);border-radius:4px';
+      }
+      lingerEl.className = 'oab-fallen-linger';
+      _stage.appendChild(lingerEl);
+      setTimeout(function () {
+        if (lingerEl.parentNode) lingerEl.parentNode.removeChild(lingerEl);
+      }, 1500);
+    }
+
+    // ── NARRATIVE: voice barb toast ────────────────────────────────────
+    var heroId = (unit.heroId || unit.id.replace('player_', '') || '').toLowerCase();
+    var barb   = _FALLEN_BARBS[heroId] || 'One of ours is gone.';
+    _showFallenToast('\u201c' + barb + '\u201d');
   };
 
   // Tutorial trigger hook — render shows modal with copy from scenario
