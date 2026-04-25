@@ -13,6 +13,93 @@
 
 ---
 
+## 2026-04-24 — Worker 23: Oath and Bone server-state KV schema
+
+**Verdict:** Server-side persistence for Oath and Bone uses the existing
+`env.KV` namespace (id `6279d210fac34b698b71fca9b23135e4`, binding `KV`).
+**No new namespace.** Three key shapes, one auth model, one inline daily-grant
+helper that will extract to `/credits/grant-daily` when Muster ships.
+
+**KV keys (all under `env.KV`):**
+
+- `oab_state_<fid>` — single canonical JSON document per player:
+  `{ hero_state, crown_balance, equipped, learned_spells, fallen_heroes,
+     current_chapter, current_battle, last_save_iso, version }`.
+  Permanent (no TTL). Source of truth for everything in the player's save.
+- `oab_history_<fid>_<YYYY-MM>` — append-only array of battle outcomes
+  for that month: `[{scenario_id, result, date_iso, heroes_lost,
+  xp_earned, crowns_earned, difficulty_tier, ts}]`. **13-month TTL**
+  (current month + 12 = ~395 days). Older months expire automatically.
+- `oab_crown_balance_<fid>` — scalar number. Hot-path read cache for
+  spend validation. `oab_state_<fid>.crown_balance` is **canonical**;
+  this scalar is the cache. Both written together inside one handler.
+
+**Why the canonical-vs-cache split:** `/spend` reads only the scalar (one
+KV op), validates `balance >= amount`, debits, writes both keys back.
+A read-modify-write loop with a state-version check (incremented on
+every mutation) prevents lost updates without needing a true CAS
+primitive (KV doesn't expose one). `/save` and `/load` operate on the
+canonical state document; they refresh the scalar cache as a side effect.
+History is partitioned by month so monthly rollover doesn't require
+rewriting one giant array.
+
+**12-month retention rule:** history older than 12 months is intentionally
+allowed to expire. Player-facing UI surfaces only show 30/90 days; analytics
+that need longer windows pull from the canonical state's running counters
+(total wins, total fallen heroes, etc.).
+
+**Auth model:** all four endpoints (`POST /oath-and-bone/save`, `/load`,
+`/spend`, `/battle-result`) require a `ksp_session` cookie (existing
+`getUser(request, env)` pattern) **and** a non-empty `user.fid`. Anonymous
+players persist to `localStorage` via Worker 22's client wrapper and
+migrate to server state on sign-in. This matches the
+`/intel/unlock-kingdom`, `/worldchat/unlock`, and `/kingdom/request`
+auth model already established in `worker.js` — server is the only
+authority on currency-adjacent state. A spoofed body `fid` is ignored;
+the FID always comes from the cookie session's user record.
+
+**Daily-credit-grant helper (deviation note, please redirect if wrong):**
+the Worker 23 spec instructed me to "trigger existing
+`/credits/grant-daily` endpoint" on first Sergeant+ win of day. **That
+endpoint does not exist yet** — verified by grep against worker.js.
+CROSS_INTERSECTION.md §4.2 documented its absence; Worker Hardening
+Task #2 added the other four credit endpoints but not grant-daily.
+For now Worker 23 implements `grantDailyCreditFromOathAndBone(env, user, source, eventKey)`
+as an **inline helper inside worker.js** — same daily-cap logic the
+shared endpoint will eventually own (`oab_credits_granted_<fid>_<YYYY-MM-DD>`,
+48h TTL, 5 credits/day cap, Sergeant/Marshal-only). When Muster ships
+its credit-grant calls, this helper extracts to a shared
+`/credits/grant-daily` route; Oath and Bone code stays untouched —
+only the helper's home moves. Audit trail goes through the existing
+`user.credit_history` array with `kind: 'oab_daily_grant'`.
+
+**CONSTANTS block in worker.js:** `OAB_DAILY_CREDIT_CAP`,
+`OAB_CREDIT_GRANT_TABLE` (event+tier → credits), `OAB_SPEND_CONTEXTS`
+(allowed `context` values), `OAB_MAX_CROWNS_PER_BATTLE_RESULT` (sanity
+bound on client-reported earnings), `OAB_HISTORY_RETENTION_MONTHS = 12`.
+Crown shop prices stay client-side in ECONOMY.md / future
+`pricing-config.js.oathandbone` per the project CLAUDE.md "no
+hardcoded prices" rule — server `/spend` validates balance, not item
+unit prices, and records `item_id` to `credit_history` for audit.
+
+**Files added/changed in this 3-commit batch:**
+- `docs/DECISIONS.md` — this entry (commit 1).
+- `worker/worker.js` — POST routes + handlers + CONSTANTS + helper (commit 2).
+- `js/oath-and-bone-server.js` — thin client wrapper exposing
+  `window.OathAndBoneServer = { save, load, spend, recordBattleResult }`
+  (commit 3).
+- `games/designs/oath-and-bone/SERVER_PERSIST_LOG.md` — handoff for
+  Worker 22 with endpoint contracts and curl test results (commit 3).
+
+**Status:** Schema locked here. Endpoints + wrapper land in the next
+two commits. **Not yet deployed** — Worker 23 commits the code; deploy
+runs via `wrangler deploy` from the `worker/` directory under the
+Architect's account. Curl test results in SERVER_PERSIST_LOG.md were
+captured against `wrangler dev` locally where possible; production
+verification waits on deploy.
+
+---
+
 ## 2026-04-23 — Worker Hardening Task C: Pro+ tier added; stale tier constants replaced; subscriptions route by amount; voice/portrait re-gated
 
 **Verdict:** `TIER_MODELS`, `TIER_REVENUE_USD`, `TIER_CONTEXT_WINDOW`, and `TIER_RANK` in
