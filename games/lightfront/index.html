@@ -3118,7 +3118,9 @@ Campfire.register('crowdRunner', {
         ctx.fill();
         // Cocoon body
         if (_spr.ready('cocoon')) {
+          ctx.globalCompositeOperation = 'screen';
           ctx.drawImage(_spr.S.cocoon, c.x - 22, c.y - 28, 44, 56);
+          ctx.globalCompositeOperation = 'source-over';
         } else {
           ctx.fillStyle = '#1a0a2a';
           ctx.beginPath();
@@ -3142,9 +3144,11 @@ Campfire.register('crowdRunner', {
       ctx.globalAlpha = e.alpha || 1;
       const s = e.size;
       if (_spr.ready(e.type)) {
+        ctx.globalCompositeOperation = 'screen';
         if (e.hitFlash > 0) ctx.filter = 'brightness(4) saturate(0)';
         ctx.drawImage(_spr.S[e.type], e.x - s, e.y - s, s * 2, s * 2);
         ctx.filter = 'none';
+        ctx.globalCompositeOperation = 'source-over';
         if (e.type === 'darkknight') {
           ctx.fillStyle = '#300';
           ctx.fillRect(e.x - 50, e.y - s - 15, 100, 8);
@@ -3217,9 +3221,11 @@ Campfire.register('crowdRunner', {
       ctx.shadowColor = '#ffaa44';
       const soulKey = soul.name ? 'soul_named' : 'soul_normal';
       if (_spr.ready(soulKey)) {
+        ctx.globalCompositeOperation = 'screen';
         if (soul.flash > 0) ctx.filter = 'brightness(3) saturate(0)';
         ctx.drawImage(_spr.S[soulKey], soul.x - 8, soul.y - 12, 16, 20);
         ctx.filter = 'none';
+        ctx.globalCompositeOperation = 'source-over';
       } else {
         ctx.fillStyle = soul.flash > 0 ? '#ffffff' : '#ffcc66';
         ctx.beginPath();
