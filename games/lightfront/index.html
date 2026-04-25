@@ -337,9 +337,9 @@ Campfire.register('state', {
   defense: 0,
   coinsPerMin: 0,
   buildings: {},
-  heroesOwned: { lightbearer: true },
-  currentHero: "lightbearer",
-  gear: { lightbearer:0, guardian:0, scout:0, mage:0 },
+  heroesOwned: { ember_warden: true, void_reaper: true },
+  currentHero: "ember_warden",
+  gear: { ember_warden:0, solar_paladin:0, dawn_shepherd:0, void_reaper:0, shade_broker:0, necromancer_king:0 },
   darkWaveTimer: 600,
   idleLineCooldown: 8,
   specialSaid: false,
@@ -364,10 +364,32 @@ Campfire.register('state', {
   ],
 
   heroDefs: [
-    { key:"lightbearer", name:"Lightbearer", cost:0, desc:"Balanced. Carries the first ember.", bonus:{light:10} },
-    { key:"guardian", name:"Guardian", cost:80, desc:"More HP, slightly slower.", bonus:{hp:2, speed:-8} },
-    { key:"scout", name:"Scout", cost:100, desc:"Fast and keen.", bonus:{speed:22, magnet:18} },
-    { key:"mage", name:"Mage", cost:140, desc:"Strong projectiles, wider light.", bonus:{damage:1, light:18, fireRate:0.25} }
+    // --- LIGHT SIDE ---
+    { key:"ember_warden", name:"Ember Warden", faction:"light", icon:"🔥", color:"#ffaa33",
+      cost:0, desc:"The first flame. Balanced and steadfast.",
+      passive:{ key:"startBonus", value:3, desc:"+3 souls at run start" },
+      active:{ key:"warden_rally", desc:"Rally: summon 4 souls instantly", once:true } },
+    { key:"solar_paladin", name:"Solar Paladin", faction:"light", icon:"☀️", color:"#ffe066",
+      cost:60, desc:"Turns every gate into a victory.",
+      passive:{ key:"gateBoost", value:0.25, desc:"Positive gates give +25% more" },
+      active:{ key:"paladin_shield", desc:"Raise a Guardian shield (absorbs 5 hits)", once:true } },
+    { key:"dawn_shepherd", name:"Dawn Shepherd", faction:"light", icon:"🕊️", color:"#88ffcc",
+      cost:90, desc:"Guides souls through the darkest paths.",
+      passive:{ key:"gateSkip", value:1, desc:"First negative gate of each run costs nothing" },
+      active:{ key:"shepherd_cocoon", desc:"Crack all cocoons on screen instantly", once:true } },
+    // --- DARK SIDE ---
+    { key:"void_reaper", name:"Void Reaper", faction:"dark", icon:"💀", color:"#aa44ff",
+      cost:0, desc:"Takes what the darkness leaves behind.",
+      passive:{ key:"soulDrop", value:1, desc:"Enemies drop 1 soul on death" },
+      active:{ key:"reaper_wipe", desc:"Sacrifice 5 souls to destroy all enemies", once:true } },
+    { key:"shade_broker", name:"Shade Broker", faction:"dark", icon:"🌑", color:"#8844cc",
+      cost:60, desc:"Every loss is a negotiation.",
+      passive:{ key:"darkGate", value:0.5, desc:"Negative gates cost 50% fewer souls" },
+      active:{ key:"broker_bribe", desc:"Next gate is free — any value", once:true } },
+    { key:"necromancer_king", name:"Necromancer King", faction:"dark", icon:"👑", color:"#440088",
+      cost:90, desc:"Power is paid in souls.",
+      passive:{ key:"darkShield", value:1, desc:"Begin each run with a Guardian shield" },
+      active:{ key:"king_devour", desc:"Spend 8 souls — double run speed for 10s", once:true } },
   ],
 
   shopDefs: [
@@ -411,9 +433,9 @@ Campfire.register('state', {
     this.defense = 0;
     this.coinsPerMin = 0;
     this.buildings = {};
-    this.heroesOwned = { lightbearer: true };
-    this.currentHero = "lightbearer";
-    this.gear = { lightbearer:0, guardian:0, scout:0, mage:0 };
+    this.heroesOwned = { ember_warden: true, void_reaper: true };
+    this.currentHero = "ember_warden";
+    this.gear = { ember_warden:0, solar_paladin:0, dawn_shepherd:0, void_reaper:0, shade_broker:0, necromancer_king:0 };
     this.darkWaveTimer = 600;
     this.idleLineCooldown = 8;
     this.specialSaid = false;
@@ -2542,11 +2564,21 @@ Campfire.register('crowdRunner', {
       reviveAvailable: true,
       coinDoubleAvailable: true,
       coinDoublePending: false,
-      invincible: 0
+      invincible: 0,
+      activeUsed: false,
+      activePending: false // broker_bribe: next gate free
     };
 
-    // Start with 3 souls
-    for (let i = 0; i < 3; i++) this.addSoul();
+    // Apply hero passives at run start
+    const hero = Campfire.state.heroDefs.find(h => h.key === Campfire.state.currentHero) || Campfire.state.heroDefs[0];
+    this.run._hero = hero;
+    if (hero.passive?.key === 'darkShield') {
+      this.run.powerup = { type: 'Guardian', timer: 999, text: 'Guardian', shieldHits: 5 };
+    }
+
+    // Start with 3 souls + passive bonus
+    const startCount = 3 + (hero.passive?.key === 'startBonus' ? (hero.passive.value || 0) : 0);
+    for (let i = 0; i < startCount; i++) this.addSoul();
     Campfire.audio?.click();
     Campfire.game.scene = "crowdRunner";
     return true;
@@ -2769,6 +2801,62 @@ Campfire.register('crowdRunner', {
     }
     r.playerX += (r.targetX - r.playerX) * 0.12;
 
+    // Active ability button tap (bottom-right, 70×44)
+    if (Campfire.input.pressed && !r.activeUsed) {
+      const W = 390, abx = W - 55, aby = 780;
+      if (Math.abs(Campfire.input.x - abx) < 35 && Math.abs(Campfire.input.y - aby) < 22) {
+        const key = r._hero?.active?.key;
+        if (key === 'warden_rally') {
+          for (let i = 0; i < 4; i++) this.addSoul();
+          this.showRunMessage('Rally! 4 souls answer the call.');
+          r.activeUsed = true;
+        } else if (key === 'paladin_shield') {
+          r.powerup = { type: 'Guardian', timer: 999, text: 'Guardian', shieldHits: 5 };
+          this.showRunMessage('Guardian shield raised!');
+          r.activeUsed = true;
+        } else if (key === 'shepherd_cocoon') {
+          r.cocoons.forEach(c => {
+            if (c.active) {
+              c.active = false; c.crackTimer = 0.5;
+              Campfire.modules.particles.goldenBurst(c.x, c.y, 10);
+              for (let i = 0; i < c.hp; i++) this.addSoul();
+            }
+          });
+          this.showRunMessage('All cocoons cracked open!');
+          r.activeUsed = true;
+        } else if (key === 'reaper_wipe') {
+          if (r.group.length >= 5) {
+            this.removeSouls(5);
+            r.enemies.forEach(e => Campfire.modules.particles.fireBurst(e.x, e.y, 4));
+            r.enemies = [];
+            this.showRunMessage('Void consumed them all.');
+            r.activeUsed = true;
+          } else {
+            this.showRunMessage('Need 5 souls to sacrifice.');
+          }
+        } else if (key === 'broker_bribe') {
+          r.activePending = true;
+          this.showRunMessage('Next gate is free.');
+          r.activeUsed = true;
+        } else if (key === 'king_devour') {
+          if (r.group.length >= 8) {
+            this.removeSouls(8);
+            r.scrollSpeed *= 2;
+            r._devourTimer = 10;
+            this.showRunMessage('Speed of the void — 10 seconds!');
+            r.activeUsed = true;
+          } else {
+            this.showRunMessage('Need 8 souls to devour.');
+          }
+        }
+      }
+    }
+    // Devour speed-boost countdown
+    if (r._devourTimer > 0) {
+      r._devourTimer -= dt;
+      if (r._devourTimer <= 0) { r.scrollSpeed = 280; r._devourTimer = 0; }
+    }
+
     // --- SPAWNING TIMELINE ---
     if (r.gameState === 'RUNNING') {
       // Continuous enemy spawning
@@ -2915,6 +3003,11 @@ Campfire.register('crowdRunner', {
             r.coinsEarned += coins;
             r.score += coins * 5;
             if (Math.random() < (e.type === 'darkknight' ? 1 : 0.08)) r.gemsEarned += 1;
+            // soulDrop passive: Void Reaper harvests souls from enemies
+            if (r._hero?.passive?.key === 'soulDrop' && e.type !== 'darkknight') {
+              this.addSoul();
+              this.showRunMessage('Soul harvested.');
+            }
 
             Campfire.audio?.hit();
             Campfire.modules.particles.fireBurst(e.x, e.y, 6);
@@ -3041,9 +3134,17 @@ Campfire.register('crowdRunner', {
       // Group runs through gate
       if (g.active && Math.abs(700 - g.y) < 20 && Math.abs(r.playerX - g.x) < 65) {
         g.active = false;
-        if (g.val > 0) {
+        const passive = r._hero?.passive;
+        // broker_bribe active: skip this gate entirely
+        if (r.activePending) {
+          r.activePending = false;
+          this.showRunMessage('Gate bypassed.');
+        } else if (g.val > 0) {
+          // gateBoost passive: positive gates give more
+          let val = g.val;
+          if (passive?.key === 'gateBoost') val = Math.ceil(val * (1 + passive.value));
           const newNames = [];
-          for (let j = 0; j < g.val; j++) newNames.push(this.addSoul());
+          for (let j = 0; j < val; j++) newNames.push(this.addSoul());
           if (newNames.length === 1) {
             this.showRunMessage(newNames[0] + ' joins the light.');
           } else {
@@ -3054,7 +3155,16 @@ Campfire.register('crowdRunner', {
           r.shake = Math.max(r.shake, 4);
           Campfire.audio?.rescue();
         } else if (g.val < 0) {
-          this.removeSouls(Math.abs(g.val));
+          // gateSkip: first negative gate is free
+          if (passive?.key === 'gateSkip' && !r._gateSkipUsed) {
+            r._gateSkipUsed = true;
+            this.showRunMessage('Shepherd guided you past the void.');
+          } else {
+            // darkGate: reduce negative gate cost
+            let loss = Math.abs(g.val);
+            if (passive?.key === 'darkGate') loss = Math.max(1, Math.floor(loss * passive.value));
+            this.removeSouls(loss);
+          }
         }
       }
 
@@ -3382,6 +3492,26 @@ Campfire.register('crowdRunner', {
     ctx.textAlign = 'center';
     ctx.fillText(Math.floor(r.timer) + 's', W / 2, H - 15);
 
+    // Active ability button (bottom-right)
+    if (r._hero?.active) {
+      const abx = W - 55, aby = 780, abw = 70, abh = 44;
+      const used = r.activeUsed;
+      ctx.fillStyle = used ? 'rgba(60,60,60,0.7)' : (r._hero.faction === 'dark' ? 'rgba(100,20,180,0.55)' : 'rgba(200,120,20,0.55)');
+      ctx.beginPath();
+      ctx.roundRect(abx - abw / 2, aby - abh / 2, abw, abh, 10);
+      ctx.fill();
+      ctx.strokeStyle = used ? '#333' : (r._hero.faction === 'dark' ? '#aa44ff' : '#ffaa33');
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.font = '20px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = used ? '#444' : '#fff';
+      ctx.fillText(r._hero.icon, abx, aby + 7);
+      ctx.font = '9px sans-serif';
+      ctx.fillStyle = used ? '#333' : 'rgba(255,255,255,0.6)';
+      ctx.fillText(used ? 'USED' : 'ACTIVE', abx, aby + abh / 2 - 2);
+    }
+
     // Boss warning
     if (r.gameState === 'BOSS_WARN') {
       ctx.fillStyle = 'rgba(0,0,0,0.6)';
@@ -3701,44 +3831,60 @@ Campfire.register('hub', {
     ctx.fillText('HEROES', W/2, 54);
 
     const heroes = state.heroDefs;
+    const lightHeroes = heroes.filter(h => h.faction === 'light');
+    const darkHeroes  = heroes.filter(h => h.faction === 'dark');
+
+    // Section labels
+    ctx.textAlign = 'left';
+    ctx.font = 'bold 11px system-ui';
+    ctx.fillStyle = '#ffaa33';
+    ctx.fillText('⚔ LIGHT SIDE', 24, 82);
+    ctx.fillStyle = '#aa44ff';
+    ctx.fillText('☠ DARK SIDE', 24, 82 + lightHeroes.length * 148 + 18);
+
     heroes.forEach((h, i) => {
-      const cardY = 80 + i * 170, cardH = 155;
+      const isLight = h.faction === 'light';
+      const sectionOffset = isLight ? 0 : lightHeroes.length * 148 + 26;
+      const idxInSection = isLight ? lightHeroes.indexOf(h) : darkHeroes.indexOf(h);
+      const cardY = 90 + idxInSection * 148 + sectionOffset;
+      const cardH = 138;
       const owned = state.heroesOwned[h.key];
       const selected = state.currentHero === h.key;
+      const factionColor = isLight ? '#ffaa33' : '#aa44ff';
 
-      ctx.fillStyle = selected ? 'rgba(255,180,40,0.12)' : 'rgba(255,255,255,0.05)';
-      this._roundRect(ctx, 20, cardY, W - 40, cardH, 14);
+      ctx.fillStyle = selected
+        ? (isLight ? 'rgba(255,170,51,0.13)' : 'rgba(170,68,255,0.13)')
+        : 'rgba(255,255,255,0.04)';
+      this._roundRect(ctx, 20, cardY, W - 40, cardH, 12);
       ctx.fill();
-      ctx.strokeStyle = selected ? 'rgba(255,180,40,0.6)' : (owned ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.07)');
+      ctx.strokeStyle = selected ? factionColor : (owned ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.06)');
       ctx.lineWidth = selected ? 2 : 1;
-      this._roundRect(ctx, 20, cardY, W - 40, cardH, 14);
+      this._roundRect(ctx, 20, cardY, W - 40, cardH, 12);
       ctx.stroke();
 
-      // Hero icon placeholder circle
-      const iconColors = { lightbearer:'#ffb040', guardian:'#60a0ff', scout:'#40e080', mage:'#c060ff' };
-      const iconSymbols = { lightbearer:'🔥', guardian:'🛡️', scout:'🏃', mage:'🔮' };
-      ctx.fillStyle = owned ? (iconColors[h.key] || '#888') : '#333';
+      // Portrait circle
+      ctx.fillStyle = owned ? (h.color || factionColor) : '#2a2a2a';
       ctx.beginPath();
-      ctx.arc(65, cardY + 55, 34, 0, Math.PI * 2);
+      ctx.arc(62, cardY + 46, 30, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = '#fff';
-      ctx.font = '26px system-ui';
-      ctx.fillText(iconSymbols[h.key] || '?', 65, cardY + 64);
+      ctx.font = '22px system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = owned ? '#fff' : '#444';
+      ctx.fillText(h.icon || '?', 62, cardY + 54);
 
-      // Name + desc
+      // Name + faction tag + desc
       ctx.textAlign = 'left';
-      ctx.fillStyle = owned ? '#fff' : 'rgba(255,255,255,0.35)';
-      ctx.font = `bold 16px system-ui`;
-      ctx.fillText(h.name, 112, cardY + 38);
-      ctx.fillStyle = 'rgba(255,255,255,0.5)';
-      ctx.font = '13px system-ui';
-      ctx.fillText(h.desc, 112, cardY + 58);
-
-      // Bonuses
-      const bonusStr = Object.entries(h.bonus||{}).map(([k,v]) => `+${v} ${k}`).join('  ');
-      ctx.fillStyle = 'rgba(255,220,80,0.7)';
+      ctx.fillStyle = owned ? '#fff' : 'rgba(255,255,255,0.3)';
+      ctx.font = 'bold 15px system-ui';
+      ctx.fillText(h.name, 104, cardY + 26);
+      ctx.fillStyle = owned ? factionColor : '#444';
+      ctx.font = '10px system-ui';
+      ctx.fillText(isLight ? '✦ LIGHT' : '✦ DARK', 104, cardY + 40);
+      ctx.fillStyle = owned ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.2)';
       ctx.font = '12px system-ui';
-      ctx.fillText(bonusStr, 112, cardY + 76);
+      ctx.fillText(h.passive?.desc || '', 104, cardY + 56);
+      ctx.fillStyle = owned ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.12)';
+      ctx.fillText('⚡ ' + (h.active?.desc || ''), 104, cardY + 72);
 
       // Action button
       ctx.textAlign = 'center';
