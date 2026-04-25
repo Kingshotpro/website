@@ -60,7 +60,9 @@ var _battle = {
   turnIndex: 0,       // which index in turnQueue is acting
   round: 1,
   phase: 'placement', // 'placement' | 'active' | 'victory' | 'defeat'
-  scenario: null      // the scenario object passed to start()
+  scenario: null,     // the scenario object passed to start()
+  tutorials_fired: {}, // tracks which tutorial triggers fired this session
+  playerHoldUsed: false // tracks if any player unit used Hold in rounds 1-2 (T3 gate)
 };
 
 // Elevation movement cost calculation
@@ -161,6 +163,22 @@ function _resetUnitsForRound() {
   }
 }
 
+// Tutorial trigger — only fires if scenario includes the tutorial, not already
+// fired this session, and not already seen (localStorage 'ksp_oathandbone_tutorials_seen').
+function _fireTutorialTrigger(triggerId) {
+  if (!_battle.scenario || !_battle.scenario.tutorials ||
+      _battle.scenario.tutorials.indexOf(triggerId) === -1) return;
+  if (_battle.tutorials_fired[triggerId]) return;
+  try {
+    var seen = JSON.parse(localStorage.getItem('ksp_oathandbone_tutorials_seen') || '[]');
+    if (seen.indexOf(triggerId) !== -1) return;
+  } catch (e) {}
+  _battle.tutorials_fired[triggerId] = true;
+  if (window.OathAndBoneEngine && window.OathAndBoneEngine.onTutorialTrigger) {
+    window.OathAndBoneEngine.onTutorialTrigger(triggerId);
+  }
+}
+
 // Helper to check for battle end conditions
 function _checkBattleEnd() {
   var playerUnits = [];
@@ -227,6 +245,8 @@ window.OathAndBoneEngine = {
     _battle.turnIndex = 0;
     _battle.round = 1;
     _battle.phase = 'placement';
+    _battle.tutorials_fired = {};
+    _battle.playerHoldUsed = false;
 
     // Build tile grid from scenario.map + scenario.hexTypes
     for (var q in _battle.scenario.map) {
@@ -554,6 +574,16 @@ window.OathAndBoneEngine = {
 
     attacker.acted = true;
 
+    // Tutorial T1: first player attack — troop triangle explanation
+    if (attacker.team === 'player') {
+      _fireTutorialTrigger('T1');
+    }
+    // Tutorial T2: first ranged attack from elevation ≥2 firing downward — elevation bonus explanation
+    if (attacker.attack_range >= 2 && attackerTile && targetTile &&
+        attackerTile.elevation >= 2 && targetTile.elevation < attackerTile.elevation) {
+      _fireTutorialTrigger('T2');
+    }
+
     // permadeath_loss: once set to true, never cleared — not on save/load, not on scenario restart
     if (target.hp === 0 && target.team === 'player') {
       target.permadeath_loss = true; // Permanent flag, never cleared
@@ -629,6 +659,10 @@ window.OathAndBoneEngine = {
     var currentUnit = this.getCurrentUnit();
     if (currentUnit && !currentUnit.acted) {
       currentUnit.acted = true;
+      // Track player Hold usage for T3 tutorial (rounds 1–2 only)
+      if (currentUnit.team === 'player' && _battle.round <= 2) {
+        _battle.playerHoldUsed = true;
+      }
     }
 
     _battle.turnIndex++;
@@ -637,6 +671,11 @@ window.OathAndBoneEngine = {
       _battle.round++;
       _resetUnitsForRound();
       _buildTurnQueue();
+
+      // Tutorial T3: entering round 3 with no player Hold used in rounds 1-2
+      if (_battle.round === 3 && !_battle.playerHoldUsed) {
+        _fireTutorialTrigger('T3');
+      }
 
       if (window.OathAndBoneEngine.onRoundStart) {
         window.OathAndBoneEngine.onRoundStart(_battle.round);
@@ -666,9 +705,10 @@ window.OathAndBoneEngine = {
   },
 
   // Hooks — renderer attaches these
-  onReady: null,        // function(container, options)
-  onUnitMoved: null,    // function(unit, fromQ, fromR, toQ, toR)
-  onUnitAttacked: null, // function(attacker, target, damage)
-  onRoundStart: null,   // function(round)
-  onBattleEnd: null     // function(result) — 'victory' or 'defeat'
+  onReady: null,           // function(container, options)
+  onUnitMoved: null,       // function(unit, fromQ, fromR, toQ, toR)
+  onUnitAttacked: null,    // function(attacker, target, damage)
+  onRoundStart: null,      // function(round)
+  onBattleEnd: null,       // function(result) — 'victory' or 'defeat'
+  onTutorialTrigger: null  // function(triggerId) — 'T1'|'T2'|'T3' etc.
 };

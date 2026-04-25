@@ -51,10 +51,12 @@
   var _abilityMode     = false;
   var _abilityId       = null;
   var _abilityHexes    = [];    // [{q,r}] valid target hexes for selected ability
-  var _tileImgCache    = {};    // terrain → HTMLImageElement (Concern 1)
-  var _mapScale        = 1;     // CSS scale applied to stage (Concern 2)
-  var _resizeTimer     = null;  // throttle handle for window resize
-  var _hoveredHex      = null;  // {q,r} under cursor, or null (Concern 3)
+  var _tileImgCache       = {};    // terrain → HTMLImageElement (Concern 1)
+  var _mapScale           = 1;     // CSS scale applied to stage (Concern 2)
+  var _resizeTimer        = null;  // throttle handle for window resize
+  var _hoveredHex         = null;  // {q,r} under cursor, or null (Concern 3)
+  var _tutorialModalOpen  = false; // true while a tutorial modal is blocking interaction
+  var _pendingAdvance     = false; // true when advanceTurn should fire after tutorial dismiss
 
   // ── ISO PROJECTION ───────────────────────────────────────────────────
   // Same 2:1 iso formula as the preview. Hex topology comes from engine
@@ -258,7 +260,14 @@
       '.oab-overlay-title{font-size:28px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}',
       '.oab-overlay-title.victory{color:#f0c040}',
       '.oab-overlay-title.defeat{color:#e05c5c}',
-      '.oab-overlay-sub{font-size:14px;color:#7a7d8e}'
+      '.oab-overlay-sub{font-size:14px;color:#7a7d8e}',
+      // Tutorial modal — blue FFT chrome, fixed to viewport so it covers action panel too
+      '.oab-tut-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9000;background:rgba(0,0,0,.60)}',
+      '.oab-tut-box{background:linear-gradient(to bottom,#18284a 0%,#0e1a34 100%);border:2px solid #3a5a9a;box-shadow:inset 0 1px 0 #4a74b8,0 6px 32px rgba(0,0,0,.85);border-radius:4px;padding:28px 36px;max-width:420px;width:90%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;text-align:center}',
+      '.oab-tut-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#4a74b8;margin-bottom:10px}',
+      '.oab-tut-copy{font-size:13px;color:#c0d4f0;line-height:1.65;margin-bottom:22px}',
+      '.oab-tut-gotit{background:linear-gradient(to bottom,#2858a0,#1a3a70);border:2px solid #4a74b8;border-bottom-color:#08122a;border-right-color:#08122a;color:#fff;padding:9px 28px;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,.5)}',
+      '.oab-tut-gotit:hover{opacity:.9;border-color:#60a0ff}'
     ].join('\n');
     document.head.appendChild(s);
   }
@@ -821,6 +830,7 @@
 
   // ── CANVAS CLICK ─────────────────────────────────────────────────────
   function handleCanvasClick(px, py) {
+    if (_tutorialModalOpen) return;
     var hex = screenToHex(px, py);
     if (!hex) return;
     var q = hex.q, r = hex.r;
@@ -881,6 +891,7 @@
 
   // ── ACTION BUTTONS ───────────────────────────────────────────────────
   function handleMoveBtn() {
+    if (_tutorialModalOpen) return;
     if (!_selectedUnitId) return;
     var unit = window.OathAndBoneEngine.getUnit(_selectedUnitId);
     if (!unit || unit.acted || unit.hp <= 0) return;
@@ -891,6 +902,7 @@
   }
 
   function handleAttackBtn() {
+    if (_tutorialModalOpen) return;
     if (!_selectedUnitId) return;
     var unit = window.OathAndBoneEngine.getUnit(_selectedUnitId);
     if (!unit || unit.acted || unit.hp <= 0) return;
@@ -901,6 +913,7 @@
   }
 
   function handleCastBtn() {
+    if (_tutorialModalOpen) return;
     if (!_selectedUnitId) return;
     var unit = window.OathAndBoneEngine.getUnit(_selectedUnitId);
     if (!unit || unit.acted || unit.hp <= 0 || !unit.magic) return;
@@ -924,6 +937,7 @@
   }
 
   function handleAbilityBtn() {
+    if (_tutorialModalOpen) return;
     if (!_selectedUnitId) return;
     var unit = window.OathAndBoneEngine.getUnit(_selectedUnitId);
     if (!unit || unit.acted || unit.hp <= 0) return;
@@ -1200,7 +1214,65 @@
     }
   }
 
+  // Extracted advance-turn logic so tutorial dismiss can call it directly.
+  function _doAdvanceTurn() {
+    _pendingAdvance = false;
+    _selectedUnitId = null;
+    window.OathAndBoneEngine.advanceTurn();
+    render();
+    _scheduleEnemyTick();
+  }
+
+  // Show a tutorial modal for the given triggerId with the supplied copy text.
+  // Appended to document.body so it covers the full viewport (incl. action panel).
+  function showTutorialModal(triggerId, copyText) {
+    _tutorialModalOpen = true;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'oab-tut-overlay';
+    overlay.id = 'oab-tut-overlay-' + triggerId;
+
+    var box = document.createElement('div');
+    box.className = 'oab-tut-box';
+
+    var label = document.createElement('div');
+    label.className = 'oab-tut-label';
+    label.textContent = triggerId;
+
+    var copy = document.createElement('div');
+    copy.className = 'oab-tut-copy';
+    copy.textContent = copyText;
+
+    var btn = document.createElement('button');
+    btn.className = 'oab-tut-gotit';
+    btn.textContent = 'Got it';
+    btn.addEventListener('click', function () {
+      // Persist to localStorage so this tutorial never fires again for this user
+      try {
+        var seen = JSON.parse(localStorage.getItem('ksp_oathandbone_tutorials_seen') || '[]');
+        if (seen.indexOf(triggerId) === -1) seen.push(triggerId);
+        localStorage.setItem('ksp_oathandbone_tutorials_seen', JSON.stringify(seen));
+      } catch (e) {}
+      if (overlay.parentNode) overlay.remove();
+      _tutorialModalOpen = false;
+      if (_pendingAdvance) {
+        _doAdvanceTurn();
+      } else {
+        // T3 fires during round start — no pending advance; just resume
+        render();
+        _scheduleEnemyTick();
+      }
+    });
+
+    box.appendChild(label);
+    box.appendChild(copy);
+    box.appendChild(btn);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  }
+
   function handleHoldBtn() {
+    if (_tutorialModalOpen) return;
     _moveMode = false; _moveHexes = [];
     _attackMode = false; _attackHexes = [];
     _castMode = false; _castSpellId = null; _castHexes = [];
@@ -1317,6 +1389,7 @@
   // advanceTurn() internally. If _animating is true when the callback fires,
   // the slide animation's completion callback will call render + reschedule.
   function _scheduleEnemyTick() {
+    if (_tutorialModalOpen) return; // pause during tutorial modals
     if (_enemyTickBusy) return;
     var battle  = window.OathAndBoneEngine.getBattle();
     var current = window.OathAndBoneEngine.getCurrentUnit();
@@ -1383,15 +1456,17 @@
   window.OathAndBoneEngine.onUnitAttacked = function (attacker, target, damage) {
     _attackMode = false; _attackHexes = [];
     showDamage(target, damage);
-    // If player attacked, auto-advance after showing result
+    // If player attacked, auto-advance after showing result (gated on tutorial modal)
     if (attacker.team === 'player') {
       render();
       updateTurnBar('Attack: ' + attacker.id.split('_')[1] + ' → -' + damage + ' HP');
       setTimeout(function () {
-        _selectedUnitId = null;
-        window.OathAndBoneEngine.advanceTurn();
-        render();
-        _scheduleEnemyTick();
+        if (_tutorialModalOpen) {
+          // Tutorial opened (T1/T2) — _doAdvanceTurn will fire on "Got it" dismiss
+          _pendingAdvance = true;
+          return;
+        }
+        _doAdvanceTurn();
       }, 1200);
     } else {
       if (!_animating) {
@@ -1413,6 +1488,14 @@
 
   window.OathAndBoneEngine.onBattleEnd = function (result) {
     showBattleEnd(result);
+  };
+
+  // Tutorial trigger hook — render shows modal with copy from scenario
+  window.OathAndBoneEngine.onTutorialTrigger = function (triggerId) {
+    var battle = window.OathAndBoneEngine.getBattle();
+    var scenario = battle && battle.scenario;
+    if (!scenario || !scenario.tutorial_copy || !scenario.tutorial_copy[triggerId]) return;
+    showTutorialModal(triggerId, scenario.tutorial_copy[triggerId]);
   };
 
   // Spell cast hook — per-spell VFX + damage/heal float + auto-advance
