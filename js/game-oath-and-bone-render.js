@@ -282,7 +282,24 @@
       '.oab-results-barb{font-size:12px;color:#7a7d8e;font-style:italic;margin:12px 0 8px;padding:0 16px;line-height:1.5}',
       '.oab-results-balance{font-size:12px;color:#f0c040;margin-top:6px;letter-spacing:.04em}',
       '.oab-results-save-status{font-size:10px;color:#5a5d6e;margin-top:4px;letter-spacing:.04em}',
-      '.oab-results-btns{display:flex;gap:10px;justify-content:center;margin-top:18px}'
+      '.oab-results-btns{display:flex;gap:10px;justify-content:center;margin-top:18px}',
+      // World map
+      '.oab-worldmap{background:linear-gradient(to bottom,#18284a 0%,#0e1a34 100%);min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}',
+      '.oab-worldmap-title{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#4a74b8;margin-bottom:6px}',
+      '.oab-worldmap-sub{font-size:11px;color:#5a7a9e;letter-spacing:.06em;margin-bottom:28px}',
+      '.oab-worldmap-cards{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}',
+      '.oab-worldmap-card{background:#0e1a34;border:2px solid #2a3a5e;border-radius:4px;padding:18px 22px;min-width:130px;max-width:160px;text-align:center;transition:border-color .2s}',
+      '.oab-worldmap-card.completed{border-color:#5a7040;opacity:.8}',
+      '.oab-worldmap-card.available{border-color:#f0c040;cursor:pointer;animation:oab-mapcard-pulse 1.6s ease-in-out infinite}',
+      '.oab-worldmap-card.available:hover{border-color:#ffe060;background:rgba(240,192,64,.06)}',
+      '.oab-worldmap-card.locked{border-color:#2a2d3e;opacity:.45;cursor:default}',
+      '@keyframes oab-mapcard-pulse{0%,100%{box-shadow:0 0 0 0 rgba(240,192,64,0)}50%{box-shadow:0 0 0 5px rgba(240,192,64,.18)}}',
+      '.oab-worldmap-card-biome{font-size:9px;color:#5a7a9e;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px}',
+      '.oab-worldmap-card-name{font-size:13px;font-weight:700;color:#c0d4f0;margin-bottom:8px}',
+      '.oab-worldmap-card-state{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}',
+      '.oab-worldmap-card.completed .oab-worldmap-card-state{color:#7a9a50}',
+      '.oab-worldmap-card.available .oab-worldmap-card-state{color:#f0c040}',
+      '.oab-worldmap-card.locked .oab-worldmap-card-state{color:#3a3d4e}'
     ].join('\n');
     document.head.appendChild(s);
   }
@@ -1470,6 +1487,16 @@
       if (res.crown_credit_grant && res.crown_credit_grant.granted && creditEl) {
         creditEl.textContent = res.crown_credit_grant.granted;
       }
+      // Propagate server-authoritative unlock state to currentState so
+      // the Continue → world map reflects newly unlocked scenarios immediately.
+      if (window.OathAndBone && window.OathAndBone.currentState) {
+        if (Array.isArray(res.unlocked_scenarios)) {
+          window.OathAndBone.currentState.unlocked_scenarios = res.unlocked_scenarios;
+        }
+        if (res.current_battle) {
+          window.OathAndBone.currentState.current_battle = res.current_battle;
+        }
+      }
     }).catch(function () {
       if (saveStatusEl) {
         saveStatusEl.textContent = 'Save failed \u2014 will sync on next play.';
@@ -1562,8 +1589,9 @@
     continueBtn.className = 'oab-btn';
     continueBtn.textContent = 'Continue';
     continueBtn.addEventListener('click', function () {
-      // Placeholder: return to camp/world-map — full nav is Worker 21 scope
-      window.location.reload();
+      var st = (window.OathAndBone && window.OathAndBone.currentState) ||
+               { unlocked_scenarios: ['b1'], current_battle: 'b1' };
+      _showWorldMap(_container, st);
     });
 
     var replayBtn = document.createElement('button');
@@ -1614,6 +1642,99 @@
         // if _animating: the move animation's 320ms callback handles render + next tick
       }
     }, 400);
+  }
+
+  // ── WORLD MAP ────────────────────────────────────────────────────────
+
+  var _SCENARIO_ORDER  = ['b1', 'b2', 'b3'];
+  var _SCENARIO_BIOMES = { b1: 'B1 \u2014 Plains', b2: 'B2 \u2014 Forest', b3: 'B3 \u2014 Ruin' };
+
+  function _scenarioCardState(id, unlocked, current) {
+    if (unlocked.indexOf(id) === -1) return 'locked';
+    if (id === current)              return 'available';
+    return 'completed';
+  }
+
+  function _showWorldMap(container, state) {
+    if (!container) return;
+    injectStyles();
+    container.innerHTML = '';
+    container.style.cssText = 'display:block;padding:0;min-height:auto';
+
+    var st       = state || (window.OathAndBone && window.OathAndBone.currentState) || {};
+    var unlocked = Array.isArray(st.unlocked_scenarios) ? st.unlocked_scenarios : ['b1'];
+    var current  = st.current_battle || 'b1';
+    var scenarios = window.OathAndBoneScenarios || {};
+
+    var wrap = document.createElement('div');
+    wrap.className = 'oab-worldmap';
+
+    var heading = document.createElement('div');
+    heading.className = 'oab-worldmap-title';
+    heading.textContent = 'ACT I \u2014 THE BORDERLANDS';
+    wrap.appendChild(heading);
+
+    var sub = document.createElement('div');
+    sub.className = 'oab-worldmap-sub';
+    sub.textContent = 'Choose your next engagement.';
+    wrap.appendChild(sub);
+
+    var cardRow = document.createElement('div');
+    cardRow.className = 'oab-worldmap-cards';
+
+    _SCENARIO_ORDER.forEach(function (id) {
+      var sc    = scenarios[id];
+      var cs    = _scenarioCardState(id, unlocked, current);
+      var card  = document.createElement('div');
+      card.className = 'oab-worldmap-card ' + cs;
+
+      var biomeEl = document.createElement('div');
+      biomeEl.className = 'oab-worldmap-card-biome';
+      biomeEl.textContent = _SCENARIO_BIOMES[id] || id.toUpperCase();
+
+      var nameEl = document.createElement('div');
+      nameEl.className = 'oab-worldmap-card-name';
+      nameEl.textContent = sc ? sc.name : id.toUpperCase();
+
+      var stateEl = document.createElement('div');
+      stateEl.className = 'oab-worldmap-card-state';
+      stateEl.textContent = cs.toUpperCase();
+
+      card.appendChild(biomeEl);
+      card.appendChild(nameEl);
+      card.appendChild(stateEl);
+
+      if (cs === 'available') {
+        (function (scenarioId) {
+          card.addEventListener('click', function () {
+            _startScenario(container, scenarioId);
+          });
+        }(id));
+      }
+
+      cardRow.appendChild(card);
+    });
+
+    wrap.appendChild(cardRow);
+    container.appendChild(wrap);
+  }
+
+  function _startScenario(container, scenarioId) {
+    var scenarios = window.OathAndBoneScenarios || {};
+    var scenario  = scenarios[scenarioId] || scenarios['b1'];
+    if (!scenario || !window.OathAndBoneEngine) return;
+    if (window.OathAndBoneEngine.loadScenario) {
+      window.OathAndBoneEngine.loadScenario(scenario);
+    }
+    if (window.OathAndBone && window.OathAndBone.currentState) {
+      window.OathAndBone.currentState.current_battle = scenarioId;
+    }
+    var practiceMode = false;
+    try {
+      practiceMode = localStorage.getItem('ksp_oathandbone_played') ===
+                     new Date().toISOString().slice(0, 10);
+    } catch (e) {}
+    window.OathAndBoneEngine.start(container, { practiceMode: practiceMode });
   }
 
   // ── ENGINE HOOKS ─────────────────────────────────────────────────────
@@ -1759,7 +1880,9 @@
     init: function (container, scenario) {
       if (scenario) window.OathAndBoneEngine.loadScenario(scenario);
       window.OathAndBoneEngine.start(container, {});
-    }
+    },
+    showWorldMap:  function (container, state) { _showWorldMap(container, state); },
+    startScenario: function (container, id)    { _startScenario(container, id); }
   };
 
 }());
