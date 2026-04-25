@@ -1610,9 +1610,10 @@ function oabDefaultState() {
     equipped:        {},
     learned_spells:  [],
     fallen_heroes:   [],
-    current_chapter: 1,
-    current_battle:  'b1',
-    last_save_iso:   null,
+    current_chapter:    1,
+    current_battle:     'b1',
+    unlocked_scenarios: ['b1'],
+    last_save_iso:      null,
     version:         0,
   };
 }
@@ -1699,6 +1700,18 @@ async function handleOabSave(request, env) {
     state.fallen_heroes = merged;
   } else {
     state.fallen_heroes = state.fallen_heroes.map(String);
+  }
+
+  // Unlocked scenarios: server is the floor — client can never shrink the list.
+  if (existing && Array.isArray(existing.unlocked_scenarios)) {
+    state.unlocked_scenarios = Array.from(new Set([
+      ...existing.unlocked_scenarios.map(String),
+      ...(Array.isArray(state.unlocked_scenarios) ? state.unlocked_scenarios.map(String) : []),
+    ]));
+  } else {
+    state.unlocked_scenarios = Array.isArray(state.unlocked_scenarios)
+      ? state.unlocked_scenarios.map(String)
+      : ['b1'];
   }
 
   state.last_save_iso = new Date().toISOString();
@@ -1900,6 +1913,19 @@ async function handleOabBattleResult(request, env) {
   for (const h of heroes_lost) fallenSet.add(h);
   state.fallen_heroes = Array.from(fallenSet);
   state.crown_balance = (Number(state.crown_balance) || 0) + crowns_earned;
+
+  // Scenario unlock progression (Act 1 linear chain: b1 → b2 → b3).
+  if (result === 'victory') {
+    const unlockMap = { b1: 'b2', b2: 'b3' };
+    const nextScenario = unlockMap[scenario_id];
+    if (nextScenario) {
+      const unlockedSet = new Set(state.unlocked_scenarios || ['b1']);
+      unlockedSet.add(nextScenario);
+      state.unlocked_scenarios = Array.from(unlockedSet);
+      state.current_battle = nextScenario;
+    }
+  }
+
   state.last_save_iso = nowIso;
   state.version       = (Number(state.version) || 0) + 1;
   await env.KV.put(`oab_state_${fid}`, JSON.stringify(state));
@@ -1922,8 +1948,10 @@ async function handleOabBattleResult(request, env) {
 
   return corsWrapCred(request, JSON.stringify({
     ok: true,
-    new_crown_balance: state.crown_balance,
-    fallen_heroes: state.fallen_heroes,
+    new_crown_balance:  state.crown_balance,
+    fallen_heroes:      state.fallen_heroes,
+    unlocked_scenarios: state.unlocked_scenarios || ['b1'],
+    current_battle:     state.current_battle,
     crown_credit_grant: creditGrant,
   }), 200);
 }

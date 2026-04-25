@@ -128,7 +128,7 @@
   };
 
   // Init: called by the HTML page to start the game
-  function init() {
+  async function init() {
     var container = document.getElementById(CONTAINER_ID);
     if (!container) {
       console.error('Oath and Bone: Game container element not found (ID: ' + CONTAINER_ID + '). Cannot initialize.');
@@ -137,36 +137,65 @@
 
     showLoadingState(container, 'Loading Oath and Bone engine. Please wait...');
 
+    // Load server state. 401/400 = anonymous player → use defaults (start B1).
+    var serverState = null;
+    var firstLoad   = true;
+    try {
+      if (window.OathAndBoneServer) {
+        var res = await window.OathAndBoneServer.load();
+        if (res && res.ok && res.state) {
+          serverState = res.state;
+          firstLoad   = (res.first_load !== false);
+        }
+      }
+    } catch (e) {
+      console.warn('Oath and Bone: server load failed, using defaults.', e);
+    }
+
+    var defaultState = { unlocked_scenarios: ['b1'], current_battle: 'b1' };
+    var state = Object.assign({}, defaultState, serverState || {});
+    NAMESPACE.currentState = state;
+
     var pollStartTime = Date.now();
-    var maxPollTime = 5000; // 5 seconds timeout
-    var pollInterval = 100; // Check every 100ms
+    var maxPollTime   = 5000;
+    var pollInterval  = 100;
 
     function pollForEngine() {
       if (window.OathAndBoneEngine) {
         console.log('Oath and Bone: Engine detected. Attempting to start...');
         try {
-          // Pass practiceMode flag based on daily gate status
+          // Load the player's current scenario (overrides render.js line-1755 pre-load).
+          var scenarioId = state.current_battle || 'b1';
+          var scenarios  = window.OathAndBoneScenarios;
+          var scenario   = (scenarios && (scenarios[scenarioId] || scenarios['b1'])) || null;
+          if (scenario && window.OathAndBoneEngine.loadScenario) {
+            window.OathAndBoneEngine.loadScenario(scenario);
+          }
+
           var practiceModeActive = alreadyPlayed();
           if (practiceModeActive) {
-            console.log('Oath and Bone: Daily gate active. Starting in practice mode (no XP/credits earned).');
-            showLoadingState(container, 'Daily play limit reached. Starting in practice mode (no XP or credits earned).', false); // Update message
+            console.log('Oath and Bone: Daily gate active. Starting in practice mode.');
           }
-          window.OathAndBoneEngine.start(container, { practiceMode: practiceModeActive });
+
+          // Returning players see the world map; first-timers drop straight into B1.
+          if (!firstLoad && window.OathAndBoneRender && window.OathAndBoneRender.showWorldMap) {
+            window.OathAndBoneRender.showWorldMap(container, state);
+          } else {
+            window.OathAndBoneEngine.start(container, { practiceMode: practiceModeActive });
+          }
         } catch (e) {
           console.error('Oath and Bone: Error starting engine:', e);
           showLoadingState(container, 'An error occurred while starting the game engine. Please try again. ' + DISCLAIMER, true);
         }
       } else if (Date.now() - pollStartTime < maxPollTime) {
-        // Not timed out yet, poll again
         setTimeout(pollForEngine, pollInterval);
       } else {
-        // Timed out
         console.error('Oath and Bone: Engine module "window.OathAndBoneEngine" not found after ' + (maxPollTime / 1000) + ' seconds.');
         showLoadingState(container, 'Failed to load game engine. Please refresh the page. ' + DISCLAIMER, true);
       }
     }
 
-    pollForEngine(); // Start polling for the engine
+    pollForEngine();
   }
 
   // Expose init function to the global OathAndBone namespace
