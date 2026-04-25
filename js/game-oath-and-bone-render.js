@@ -267,7 +267,22 @@
       '.oab-tut-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#4a74b8;margin-bottom:10px}',
       '.oab-tut-copy{font-size:13px;color:#c0d4f0;line-height:1.65;margin-bottom:22px}',
       '.oab-tut-gotit{background:linear-gradient(to bottom,#2858a0,#1a3a70);border:2px solid #4a74b8;border-bottom-color:#08122a;border-right-color:#08122a;color:#fff;padding:9px 28px;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,.5)}',
-      '.oab-tut-gotit:hover{opacity:.9;border-color:#60a0ff}'
+      '.oab-tut-gotit:hover{opacity:.9;border-color:#60a0ff}',
+      // Results panel
+      '.oab-results-box{min-width:320px;max-width:460px;padding:28px 40px}',
+      '.oab-results-rewards{margin:18px 0 12px;display:flex;flex-direction:column;gap:0}',
+      '.oab-results-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #2a2d3e}',
+      '.oab-results-icon{font-size:16px;width:22px;text-align:center;flex-shrink:0}',
+      '.oab-results-rlabel{font-size:11px;color:#7a7d8e;letter-spacing:.06em;text-transform:uppercase;flex:1;text-align:left}',
+      '.oab-results-value{font-size:15px;font-weight:700;color:#f0c040}',
+      '.oab-results-fallen{margin:14px 0 8px;padding:10px 14px;background:rgba(224,92,92,.08);border:1px solid rgba(224,92,92,.25);border-radius:3px;text-align:left}',
+      '.oab-results-fallen-line{color:#e05c5c;font-size:12px;line-height:1.5;margin-bottom:3px}',
+      '.oab-results-fallen-line:last-child{margin-bottom:0}',
+      '.oab-results-survived{color:#4caf82;font-size:12px}',
+      '.oab-results-barb{font-size:12px;color:#7a7d8e;font-style:italic;margin:12px 0 8px;padding:0 16px;line-height:1.5}',
+      '.oab-results-balance{font-size:12px;color:#f0c040;margin-top:6px;letter-spacing:.04em}',
+      '.oab-results-save-status{font-size:10px;color:#5a5d6e;margin-top:4px;letter-spacing:.04em}',
+      '.oab-results-btns{display:flex;gap:10px;justify-content:center;margin-top:18px}'
     ].join('\n');
     document.head.appendChild(s);
   }
@@ -1362,25 +1377,211 @@
     setTimeout(function () { if (el.parentNode) el.remove(); }, 2000);
   }
 
+  // ── BATTLE END HELPERS ────────────────────────────────────────────────
+
+  // Returns { xp, crowns, credits } for display. Defeat grant per ECONOMY.md §2.
+  function _computeRewards(result, scenario, tier) {
+    if (result === 'defeat') {
+      return { xp: 15, crowns: 10, credits: 0 };
+    }
+    var xp = (scenario && scenario.rewards && scenario.rewards.xp && scenario.rewards.xp[tier]) || 0;
+    var baseCrowns = (scenario && scenario.rewards && scenario.rewards.crowns) || 0;
+    var rewardMult = 1.0;
+    if (scenario && scenario.difficulty_tiers && scenario.difficulty_tiers[tier]) {
+      rewardMult = scenario.difficulty_tiers[tier].reward_mult || 1.0;
+    }
+    return { xp: xp, crowns: Math.floor(baseCrowns * rewardMult), credits: 0 };
+  }
+
+  // Returns array of player units with permadeath_loss flag set.
+  function _getFallenHeroes(battle) {
+    var fallen = [];
+    for (var id in battle.units) {
+      var u = battle.units[id];
+      if (u.team === 'player' && u.permadeath_loss) fallen.push(u);
+    }
+    return fallen;
+  }
+
+  // Hardcoded voice barbs from HEROES.md — Worker 21 can wire dynamic advisor calls in V2.
+  var _VICTORY_BARBS = [
+    'Good work.',
+    'For the seat.',
+    "That's the opening.",
+    'Got him.'
+  ];
+  var _DEFEAT_BARBS = [
+    '\u2026I should have cast sooner.',
+    "Get up. We're not done.",
+    "I'm watching.",
+    'The fire was always going to reach Highspire.'
+  ];
+  function _getAdvisorBarb(result) {
+    var barbs = result === 'victory' ? _VICTORY_BARBS : _DEFEAT_BARBS;
+    return barbs[Math.floor(Math.random() * barbs.length)];
+  }
+
+  // Creates a single reward row: icon · label · value
+  function _rewardRow(icon, label, value, dataType) {
+    var row = document.createElement('div');
+    row.className = 'oab-results-row';
+    var iconEl = document.createElement('span');
+    iconEl.className = 'oab-results-icon';
+    iconEl.textContent = icon;
+    var labelEl = document.createElement('span');
+    labelEl.className = 'oab-results-rlabel';
+    labelEl.textContent = label;
+    var valueEl = document.createElement('span');
+    valueEl.className = 'oab-results-value';
+    valueEl.textContent = value;
+    if (dataType) valueEl.dataset.rewardType = dataType;
+    row.appendChild(iconEl);
+    row.appendChild(labelEl);
+    row.appendChild(valueEl);
+    return row;
+  }
+
+  // Non-blocking server save. Updates DOM on response; never blocks UI.
+  function _saveToServer(result, scenario, tier, rewards, fallenHeroes, saveStatusEl, balanceEl, creditEl) {
+    if (!window.OathAndBoneServer || !window.OathAndBoneServer.recordBattleResult) {
+      if (saveStatusEl) saveStatusEl.textContent = 'Save unavailable \u2014 server not loaded.';
+      return;
+    }
+    var heroesLost = fallenHeroes.map(function (h) { return h.heroId || h.id; });
+    window.OathAndBoneServer.recordBattleResult({
+      scenarioId:     (scenario && scenario.id) ? scenario.id.toUpperCase() : 'B1',
+      outcome:        result,
+      heroesLost:     heroesLost,
+      xpEarned:       rewards.xp,
+      crownsEarned:   rewards.crowns,
+      difficultyTier: tier
+    }).then(function (res) {
+      if (!res || !res.ok) {
+        if (saveStatusEl) {
+          saveStatusEl.textContent = 'Save failed \u2014 will sync on next play.';
+          saveStatusEl.style.color = '#e05c5c';
+        }
+        return;
+      }
+      if (typeof res.new_crown_balance === 'number' && balanceEl) {
+        balanceEl.textContent = 'Crown balance: ' + res.new_crown_balance;
+        balanceEl.style.display = 'block';
+      }
+      if (res.crown_credit_grant && res.crown_credit_grant.granted && creditEl) {
+        creditEl.textContent = res.crown_credit_grant.granted;
+      }
+    }).catch(function () {
+      if (saveStatusEl) {
+        saveStatusEl.textContent = 'Save failed \u2014 will sync on next play.';
+        saveStatusEl.style.color = '#e05c5c';
+      }
+    });
+  }
+
   // ── BATTLE END ───────────────────────────────────────────────────────
   function showBattleEnd(result) {
     _moveMode = false; _attackMode = false; _selectedUnitId = null;
     render();
     if (!_stage) return;
+
+    var battle   = window.OathAndBoneEngine.getBattle();
+    var scenario = battle.scenario;
+    var tier     = (scenario && scenario.difficultyTier) || 'sergeant';
+    var rewards  = _computeRewards(result, scenario, tier);
+    var fallen   = _getFallenHeroes(battle);
+
+    // ── Overlay shell ──────────────────────────────────────────────────
     var overlay = document.createElement('div');
     overlay.className = 'oab-overlay';
-    var box   = document.createElement('div');
-    box.className = 'oab-overlay-box';
+
+    var box = document.createElement('div');
+    box.className = 'oab-overlay-box oab-results-box';
+
+    // VICTORY / DEFEAT title (visual channel — Soul Review ch.1)
     var title = document.createElement('div');
-    title.className   = 'oab-overlay-title ' + result;
-    title.textContent = result === 'victory' ? 'Victory' : 'Defeat';
-    var sub = document.createElement('div');
-    sub.className   = 'oab-overlay-sub';
-    sub.textContent = result === 'victory' ? 'All enemies defeated.' : 'All heroes have fallen.';
+    title.className = 'oab-overlay-title ' + result;
+    title.textContent = result === 'victory' ? 'VICTORY' : 'DEFEAT';
     box.appendChild(title);
-    box.appendChild(sub);
+
+    // TODO Worker 25: wire victory/defeat chime to this DOM event —
+    // overlay.dispatchEvent(new CustomEvent('oab:battleend', { bubbles:true, detail:{ result:result } }))
+
+    // ── Reward rows (numerical channel — Soul Review ch.3) ─────────────
+    var rewardsDiv = document.createElement('div');
+    rewardsDiv.className = 'oab-results-rewards';
+    rewardsDiv.appendChild(_rewardRow('\u2b50', 'XP',      rewards.xp,      null));
+    rewardsDiv.appendChild(_rewardRow('\u2a00', 'Crowns',  rewards.crowns,  null));
+    var creditRow = _rewardRow('\u2299', 'Credits', rewards.credits, 'credits');
+    var creditEl  = creditRow.querySelector('[data-reward-type]');
+    rewardsDiv.appendChild(creditRow);
+    box.appendChild(rewardsDiv);
+
+    // Crown balance (revealed after server responds)
+    var balanceEl = document.createElement('div');
+    balanceEl.className = 'oab-results-balance';
+    balanceEl.style.display = 'none';
+    box.appendChild(balanceEl);
+
+    // Save status
+    var saveStatusEl = document.createElement('div');
+    saveStatusEl.className = 'oab-results-save-status';
+    box.appendChild(saveStatusEl);
+
+    // ── Heroes lost / survived ─────────────────────────────────────────
+    var fallenDiv = document.createElement('div');
+    fallenDiv.className = 'oab-results-fallen';
+    if (fallen.length > 0) {
+      fallen.forEach(function (hero) {
+        var name = (hero.heroId || hero.id.replace('player_', ''));
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+        var line = document.createElement('div');
+        line.className = 'oab-results-fallen-line';
+        line.textContent = name + ' has fallen. ' +
+          (hero.permadeath_game_over ? 'The battle is lost.' : 'They cannot be revived.');
+        fallenDiv.appendChild(line);
+      });
+    } else {
+      var survived = document.createElement('div');
+      survived.className = 'oab-results-survived';
+      survived.textContent = 'All heroes survived.';
+      fallenDiv.appendChild(survived);
+    }
+    box.appendChild(fallenDiv);
+
+    // ── Advisor voice barb (narrative channel — Soul Review ch.4) ──────
+    var barb = document.createElement('div');
+    barb.className = 'oab-results-barb';
+    barb.textContent = '\u201c' + _getAdvisorBarb(result) + '\u201d';
+    box.appendChild(barb);
+
+    // ── Buttons ────────────────────────────────────────────────────────
+    var btnRow = document.createElement('div');
+    btnRow.className = 'oab-results-btns';
+
+    var continueBtn = document.createElement('button');
+    continueBtn.className = 'oab-btn';
+    continueBtn.textContent = 'Continue';
+    continueBtn.addEventListener('click', function () {
+      // Placeholder: return to camp/world-map — full nav is Worker 21 scope
+      window.location.reload();
+    });
+
+    var replayBtn = document.createElement('button');
+    replayBtn.className = 'oab-btn';
+    replayBtn.textContent = 'Replay';
+    replayBtn.addEventListener('click', function () {
+      window.location.reload();
+    });
+
+    btnRow.appendChild(continueBtn);
+    btnRow.appendChild(replayBtn);
+    box.appendChild(btnRow);
+
     overlay.appendChild(box);
     _stage.appendChild(overlay);
+
+    // Non-blocking save — must NOT block UI on network call
+    _saveToServer(result, scenario, tier, rewards, fallen, saveStatusEl, balanceEl, creditEl);
   }
 
   // ── ENEMY AUTO-TURN ──────────────────────────────────────────────────
