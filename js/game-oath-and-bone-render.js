@@ -1608,7 +1608,9 @@
     continueBtn.className = 'oab-btn';
     continueBtn.textContent = 'Continue';
     continueBtn.addEventListener('click', function () {
-      var st = (window.OathAndBone && window.OathAndBone.currentState) ||
+      // Prefer cache so the world map reflects the optimistic unlock from Bug B fix.
+      var st = (window.OathAndBoneCache && window.OathAndBoneCache.getState()) ||
+               (window.OathAndBone && window.OathAndBone.currentState) ||
                { unlocked_scenarios: ['b1'], current_battle: 'b1' };
       _showWorldMap(_container, st);
     });
@@ -1743,7 +1745,10 @@
     container.innerHTML = '';
     container.style.cssText = 'display:block;padding:0;min-height:auto';
 
-    var st       = state || (window.OathAndBone && window.OathAndBone.currentState) || {};
+    // Source of truth is the local cache (keeps unlocked_scenarios current even
+    // when server is down). Fall back to orchestrator in-memory copy, then empty.
+    var _cacheState = window.OathAndBoneCache && window.OathAndBoneCache.getState();
+    var st = state || _cacheState || (window.OathAndBone && window.OathAndBone.currentState) || {};
     var unlocked = Array.isArray(st.unlocked_scenarios) ? st.unlocked_scenarios : ['b1'];
     var current  = st.current_battle || 'b1';
     var scenarios = window.OathAndBoneScenarios || {};
