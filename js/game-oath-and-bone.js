@@ -137,24 +137,62 @@
 
     showLoadingState(container, 'Loading Oath and Bone engine. Please wait...');
 
-    // Load server state. 401/400 = anonymous player → use defaults (start B1).
-    var serverState = null;
-    var firstLoad   = true;
-    try {
-      if (window.OathAndBoneServer) {
-        var res = await window.OathAndBoneServer.load();
-        if (res && res.ok && res.state) {
-          serverState = res.state;
-          firstLoad   = (res.first_load !== false);
+    // Load state through cache layer (OathAndBoneCache → OathAndBoneServer).
+    // syncFromServer() handles: auth fallback, conflict resolution, offline
+    // tolerance, and sign-in banner for anonymous players.
+    var state;
+    if (window.OathAndBoneCache) {
+      state = await window.OathAndBoneCache.syncFromServer();
+    } else {
+      // Cache module absent (mis-ordered script tags). Fall back to direct server
+      // call so the game still loads, but without offline tolerance.
+      state = { hero_state: {}, crown_balance: 0, equipped: {},
+                learned_spells: [], fallen_heroes: [],
+                current_chapter: 1, current_battle: 'b1',
+                unlocked_scenarios: ['b1'], last_save_iso: null, version: 0 };
+      try {
+        if (window.OathAndBoneServer) {
+          var fallbackRes = await window.OathAndBoneServer.load();
+          if (fallbackRes && fallbackRes.ok && fallbackRes.state) {
+            state = fallbackRes.state;
+          }
         }
+      } catch (e) {
+        console.warn('Oath and Bone: fallback server load failed.', e);
       }
-    } catch (e) {
-      console.warn('Oath and Bone: server load failed, using defaults.', e);
     }
 
-    var defaultState = { unlocked_scenarios: ['b1'], current_battle: 'b1' };
-    var state = Object.assign({}, defaultState, serverState || {});
+    // firstLoad is true when the player has never saved to the server.
+    // last_save_iso is null on first-ever load (server default state).
+    var firstLoad = !state.last_save_iso;
+
     NAMESPACE.currentState = state;
+
+    // ── DEV MODE: Crown spend test button ──────────────────────────────────
+    // Visible only when URL contains ?dev. Lets Worker 24 verify the
+    // spend round-trip before wiring the real shop UI.
+    if (window.location.search.indexOf('dev') !== -1 && window.OathAndBoneCache) {
+      var devBtn = document.createElement('button');
+      devBtn.textContent = '[DEV] Spend 10 Crowns';
+      devBtn.style.cssText = [
+        'position:fixed', 'bottom:60px', 'right:10px', 'z-index:9999',
+        'font-size:11px', 'padding:6px 10px',
+        'background:#1a3870', 'border:1px solid #3a5a9a', 'color:#c0d4f0',
+        'cursor:pointer', 'border-radius:3px', 'font-family:sans-serif'
+      ].join(';');
+      devBtn.addEventListener('click', function () {
+        window.OathAndBoneCache.spend(10, 'dev_test_item', 'shop')
+          .then(function (res) {
+            console.log('[DEV] Spend result:', res);
+            alert('[DEV] Spend result:\n' + JSON.stringify(res, null, 2));
+          })
+          .catch(function (e) {
+            console.error('[DEV] Spend error:', e);
+            alert('[DEV] Spend error: ' + e.message);
+          });
+      });
+      document.body.appendChild(devBtn);
+    }
 
     var pollStartTime = Date.now();
     var maxPollTime   = 5000;
@@ -164,7 +202,7 @@
       if (window.OathAndBoneEngine) {
         console.log('Oath and Bone: Engine detected. Attempting to start...');
         try {
-          // Load the player's current scenario (overrides render.js line-1755 pre-load).
+          // Load the player's current scenario (overrides render.js line-1876 pre-load).
           var scenarioId = state.current_battle || 'b1';
           var scenarios  = window.OathAndBoneScenarios;
           var scenario   = (scenarios && (scenarios[scenarioId] || scenarios['b1'])) || null;

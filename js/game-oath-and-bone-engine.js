@@ -231,6 +231,25 @@ function _checkBattleEnd() {
 }
 
 
+// Syncs live hero HP into window.OathAndBone.currentState and pushes to cache.
+// Called after attacks, spells, and abilities so the debounced server save
+// carries current (not pre-battle) HP values.
+function _pushStateToCache() {
+  if (!window.OathAndBoneCache || !window.OathAndBone || !window.OathAndBone.currentState) return;
+  var st = window.OathAndBone.currentState;
+  if (!st.hero_state) st.hero_state = {};
+  for (var id in _battle.units) {
+    var unit = _battle.units[id];
+    if (unit.team !== 'player') continue;
+    var key = unit.heroId || id;
+    st.hero_state[key] = {
+      hp:  unit.hp,
+      mp:  unit.magic ? unit.magic.mana : undefined
+    };
+  }
+  window.OathAndBoneCache.setState(st);
+}
+
 window.OathAndBoneEngine = {
 
   start: function(container, options) {
@@ -595,6 +614,10 @@ window.OathAndBoneEngine = {
 
     _checkBattleEnd();
 
+    // Persist live hero HP to cache so a mid-battle close doesn't leave
+    // the world state with stale HP values.
+    _pushStateToCache();
+
     return true;
   },
 
@@ -621,6 +644,7 @@ window.OathAndBoneEngine = {
     }
 
     _checkBattleEnd();
+    _pushStateToCache();
     return true;
   },
 
@@ -647,6 +671,7 @@ window.OathAndBoneEngine = {
     }
 
     _checkBattleEnd();
+    _pushStateToCache();
     return true;
   },
 

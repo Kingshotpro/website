@@ -1458,14 +1458,19 @@
     return row;
   }
 
-  // Non-blocking server save. Updates DOM on response; never blocks UI.
+  // Non-blocking battle-result save. Routes through the cache layer so:
+  //   1. Local history is written immediately (player sees history before network).
+  //   2. Cache merges server-authoritative values (balance, fallen_heroes,
+  //      unlocked_scenarios) on success.
+  //   3. Offline tolerance: if server is unreachable, cache queues the save.
   function _saveToServer(result, scenario, tier, rewards, fallenHeroes, saveStatusEl, balanceEl, creditEl) {
-    if (!window.OathAndBoneServer || !window.OathAndBoneServer.recordBattleResult) {
-      if (saveStatusEl) saveStatusEl.textContent = 'Save unavailable \u2014 server not loaded.';
+    var caller = window.OathAndBoneCache || window.OathAndBoneServer;
+    if (!caller || !caller.recordBattleResult) {
+      if (saveStatusEl) saveStatusEl.textContent = 'Save unavailable \u2014 modules not loaded.';
       return;
     }
     var heroesLost = fallenHeroes.map(function (h) { return h.heroId || h.id; });
-    window.OathAndBoneServer.recordBattleResult({
+    caller.recordBattleResult({
       scenarioId:     (scenario && scenario.id) ? scenario.id.toUpperCase() : 'B1',
       outcome:        result,
       heroesLost:     heroesLost,
@@ -1489,6 +1494,8 @@
       }
       // Propagate server-authoritative unlock state to currentState so
       // the Continue → world map reflects newly unlocked scenarios immediately.
+      // (Cache layer already did this internally; this keeps the orchestrator's
+      // in-memory copy in sync too.)
       if (window.OathAndBone && window.OathAndBone.currentState) {
         if (Array.isArray(res.unlocked_scenarios)) {
           window.OathAndBone.currentState.unlocked_scenarios = res.unlocked_scenarios;
