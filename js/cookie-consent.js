@@ -1,5 +1,5 @@
 /**
- * cookie-consent.js — GDPR cookie consent banner
+ * cookie-consent.js — GDPR cookie consent banner + Google Consent Mode v2
  * Shows once. Choice stored in localStorage. Blocks non-essential cookies until accepted.
  */
 (function () {
@@ -12,6 +12,41 @@
 
   function setConsent(value) {
     try { localStorage.setItem(KEY, value); } catch (e) {}
+  }
+
+  // Google Consent Mode v2 — must fire before AdSense loads
+  function initConsentMode() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = window.gtag || gtag;
+    // Default: all ad-related storage denied
+    gtag('consent', 'default', {
+      ad_storage:           'denied',
+      ad_user_data:         'denied',
+      ad_personalization:   'denied',
+      analytics_storage:    'denied',
+      wait_for_update:      500
+    });
+  }
+
+  function grantConsent() {
+    if (!window.gtag) return;
+    window.gtag('consent', 'update', {
+      ad_storage:           'granted',
+      ad_user_data:         'granted',
+      ad_personalization:   'granted',
+      analytics_storage:    'granted'
+    });
+  }
+
+  function denyConsent() {
+    if (!window.gtag) return;
+    window.gtag('consent', 'update', {
+      ad_storage:           'denied',
+      ad_user_data:         'denied',
+      ad_personalization:   'denied',
+      analytics_storage:    'denied'
+    });
   }
 
   function showBanner() {
@@ -32,26 +67,35 @@
 
     document.getElementById('cookie-accept').addEventListener('click', function () {
       setConsent('all');
+      grantConsent();
       banner.remove();
     });
     document.getElementById('cookie-essential').addEventListener('click', function () {
       setConsent('essential');
+      denyConsent();
       banner.remove();
-      // Disable ad scripts if they exist
       document.querySelectorAll('.ad-slot').forEach(function (el) { el.style.display = 'none'; });
     });
   }
 
-  if (!getConsent()) {
+  // Fire consent defaults immediately (before AdSense)
+  initConsentMode();
+
+  // Restore prior consent on return visits
+  var prior = getConsent();
+  if (prior === 'all') {
+    grantConsent();
+  } else if (prior === 'essential') {
+    denyConsent();
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.ad-slot').forEach(function (el) { el.style.display = 'none'; });
+    });
+  } else {
+    // No prior choice — show banner
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showBanner);
     } else {
       showBanner();
     }
-  } else if (getConsent() === 'essential') {
-    // Hide ad slots for essential-only users
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.ad-slot').forEach(function (el) { el.style.display = 'none'; });
-    });
   }
 })();

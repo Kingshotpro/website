@@ -456,9 +456,11 @@
       policyNav.style.cssText = 'font-size:12px;margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;';
       var links = [
         { href: B + 'about.html',         label: 'About' },
+        { href: B + 'contact.html',       label: 'Contact' },
         { href: B + 'privacy.html',       label: 'Privacy Policy' },
         { href: B + 'cookie-policy.html', label: 'Cookie Policy' },
         { href: B + 'terms.html',         label: 'Terms of Service' },
+        { href: B + 'disclaimer.html',    label: 'Disclaimer' },
       ];
       for (var li = 0; li < links.length; li++) {
         var a = document.createElement('a');
