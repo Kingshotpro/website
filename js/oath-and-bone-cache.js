@@ -159,8 +159,9 @@
   }
 
   // ── PUBLIC: recordBattleResult ───────────────────────────────────────────
-  // Writes to local history immediately; forwards to server; updates cache
-  // with server-authoritative values on success.
+  // Writes to local history immediately; optimistically advances campaign
+  // unlock on victory; forwards to server; server wins only if it is
+  // at least as far ahead as our optimistic update.
   function recordBattleResult(result) {
     // Local history write — player sees their history immediately
     var hk   = historyKey();
@@ -169,29 +170,77 @@
     hist.push(Object.assign({}, result, { ts: Date.now() }));
     lsSet(hk, JSON.stringify(hist));
 
+    // ── Optimistic scenario unlock on victory ──────────────────────────
+    // Advances unlocked_scenarios + current_battle locally before the
+    // server confirms, so B2/B3 are playable even when the server is down.
+    // Crown balance is NOT updated here — server is authority on that.
+    if (result && result.outcome === 'victory') {
+      var order = (typeof window !== 'undefined' && window.OAB_SCENARIO_ORDER) ||
+                  ['b1', 'b2', 'b3'];
+      var doneId  = (result.scenarioId || '').toLowerCase();
+      var doneIdx = order.indexOf(doneId);
+      if (doneIdx >= 0 && doneIdx < order.length - 1) {
+        var nextId = order[doneIdx + 1];
+        var st = getState();
+        if (st) {
+          if (!Array.isArray(st.unlocked_scenarios)) {
+            st.unlocked_scenarios = [order[0]];
+          }
+          if (st.unlocked_scenarios.indexOf(nextId) === -1) {
+            st.unlocked_scenarios = st.unlocked_scenarios.concat([nextId]);
+          }
+          // Advance current_battle pointer to next scenario
+          var curIdx = order.indexOf((st.current_battle || '').toLowerCase());
+          if (curIdx <= doneIdx) {
+            st.current_battle = nextId;
+          }
+          lsSet(KEY_STATE, JSON.stringify(st));
+          _pendingWrites.push({ ts: Date.now() });
+          lsSet(KEY_PENDING, JSON.stringify(_pendingWrites));
+          // Keep in-memory orchestrator state in sync so world map is correct
+          if (window.OathAndBone && window.OathAndBone.currentState) {
+            window.OathAndBone.currentState.unlocked_scenarios = st.unlocked_scenarios;
+            window.OathAndBone.currentState.current_battle     = st.current_battle;
+          }
+        }
+      }
+    }
+
     if (!window.OathAndBoneServer || !window.OathAndBoneServer.recordBattleResult) {
       return Promise.reject(new Error('Server not available'));
     }
 
     return window.OathAndBoneServer.recordBattleResult(result).then(function (res) {
       if (res && res.ok) {
-        // Merge server-authoritative fields into local cache
-        var st = getState();
-        if (st) {
+        // Merge server-authoritative fields into local cache.
+        // For unlock progression: server wins only if it is at least as far
+        // ahead as our optimistic update. A shorter server array means the
+        // server failed to record the win — client's optimistic state stays.
+        var st2 = getState();
+        if (st2) {
           if (typeof res.new_crown_balance === 'number') {
-            st.crown_balance = res.new_crown_balance;
+            st2.crown_balance = res.new_crown_balance;
           }
           if (Array.isArray(res.fallen_heroes)) {
-            st.fallen_heroes = res.fallen_heroes;
+            st2.fallen_heroes = res.fallen_heroes;
           }
-          // Worker 21 additions — server returns updated unlock chain on victory
           if (Array.isArray(res.unlocked_scenarios)) {
-            st.unlocked_scenarios = res.unlocked_scenarios;
+            var clientLen = Array.isArray(st2.unlocked_scenarios)
+                              ? st2.unlocked_scenarios.length : 0;
+            if (res.unlocked_scenarios.length >= clientLen) {
+              st2.unlocked_scenarios = res.unlocked_scenarios;
+            }
           }
           if (res.current_battle) {
-            st.current_battle = res.current_battle;
+            var ord    = (typeof window !== 'undefined' && window.OAB_SCENARIO_ORDER) ||
+                         ['b1', 'b2', 'b3'];
+            var srvIdx = ord.indexOf(res.current_battle.toLowerCase());
+            var cliIdx = ord.indexOf((st2.current_battle || '').toLowerCase());
+            if (srvIdx >= cliIdx) {
+              st2.current_battle = res.current_battle;
+            }
           }
-          lsSet(KEY_STATE, JSON.stringify(st));
+          lsSet(KEY_STATE, JSON.stringify(st2));
         }
         _lastServerError = 0;
       } else {

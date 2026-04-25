@@ -482,6 +482,10 @@ var SCENARIOS = {
 };
 window.OathAndBoneScenarios = SCENARIOS;
 
+// Campaign progression order — used by cache.js for optimistic client unlock.
+var OAB_SCENARIO_ORDER = ['b1', 'b2', 'b3'];
+window.OAB_SCENARIO_ORDER = OAB_SCENARIO_ORDER;
+
 window.OathAndBoneBattles = {
   getScenario: function(id) {
     var s = SCENARIOS[id];
