@@ -2621,6 +2621,11 @@ Campfire.register('crowdRunner', {
     }
   },
 
+  // Returns light or dark string based on current hero faction
+  _ft(light, dark) {
+    return this.run?._hero?.faction === 'dark' ? dark : light;
+  },
+
   showRunMessage(text) {
     const r = this.run;
     if (!r) return;
@@ -2808,7 +2813,7 @@ Campfire.register('crowdRunner', {
         const key = r._hero?.active?.key;
         if (key === 'warden_rally') {
           for (let i = 0; i < 4; i++) this.addSoul();
-          this.showRunMessage('Rally! 4 souls answer the call.');
+          this.showRunMessage(this._ft('Rally! 4 souls answer the call.', '4 shades rise from the void.'));
           r.activeUsed = true;
         } else if (key === 'paladin_shield') {
           r.powerup = { type: 'Guardian', timer: 999, text: 'Guardian', shieldHits: 5 };
@@ -2942,7 +2947,7 @@ Campfire.register('crowdRunner', {
 
       // Auto-fire — straight up by default, auto-aim only with Seeker powerup
       soul.fireTimer -= dt;
-      if (soul.fireTimer <= 0 && r.enemies.length > 0) {
+      if (soul.fireTimer <= 0) {
         let vx = 0, vy = -500;
         if (r.powerup.type === 'Seeker') {
           // Seeker buff: aim at nearest enemy
@@ -3010,7 +3015,7 @@ Campfire.register('crowdRunner', {
             // soulDrop passive: Void Reaper harvests souls from enemies
             if (r._hero?.passive?.key === 'soulDrop' && e.type !== 'darkknight') {
               this.addSoul();
-              this.showRunMessage('Soul harvested.');
+              this.showRunMessage(this._ft('A soul is rescued.', 'Soul consumed.'));
             }
 
             Campfire.audio?.hit();
@@ -3076,7 +3081,7 @@ Campfire.register('crowdRunner', {
             r.powerup.type = c.ability;
             r.powerup.timer = 15;
             r.powerup.text = abilityName + ' the ' + c.ability;
-            Campfire.modules.economy.showMessage(abilityName + " the " + c.ability + " joins the light!");
+            Campfire.modules.economy.showMessage(abilityName + ' the ' + c.ability + this._ft(' joins the light!', ' joins the void!'));
             this.showRunMessage(abilityName + ' breaks free!');
             // Guardian: add shield hits
             if (c.ability === 'Guardian') r.powerup.shieldHits = 3;
@@ -3150,9 +3155,9 @@ Campfire.register('crowdRunner', {
           const newNames = [];
           for (let j = 0; j < val; j++) newNames.push(this.addSoul());
           if (newNames.length === 1) {
-            this.showRunMessage(newNames[0] + ' joins the light.');
+            this.showRunMessage(newNames[0] + this._ft(' joins the light.', ' joins the void.'));
           } else {
-            this.showRunMessage(newNames[0] + ' and ' + (newNames.length - 1) + ' others join the light.');
+            this.showRunMessage(newNames[0] + ' and ' + (newNames.length - 1) + this._ft(' others join the light.', ' others join the void.'));
           }
           r.flash = 0.15;
           r.flashColor = '#ffd700';
@@ -3474,7 +3479,7 @@ Campfire.register('crowdRunner', {
     ctx.fillStyle = '#ffcc66';
     ctx.font = 'bold 24px sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText('SOULS: ' + r.group.length, 15, 35);
+    ctx.fillText(this._ft('SOULS: ', 'SHADES: ') + r.group.length, 15, 35);
     ctx.fillStyle = '#f2cf73';
     ctx.font = '16px sans-serif';
     ctx.textAlign = 'right';
@@ -3533,10 +3538,10 @@ Campfire.register('crowdRunner', {
       ctx.fillStyle = '#ffd700';
       ctx.font = 'bold 36px sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('PURIFIED', W / 2, H / 2 - 20);
+      ctx.fillText(this._ft('PURIFIED', 'VOID TRIUMPHANT'), W / 2, H / 2 - 20);
       ctx.fillStyle = '#fff';
       ctx.font = '18px sans-serif';
-      ctx.fillText(r.group.length + ' souls carried the light', W / 2, H / 2 + 20);
+      ctx.fillText(r.group.length + this._ft(' souls carried the light', ' shades consumed the dark'), W / 2, H / 2 + 20);
       ctx.fillText(r.coinsEarned + ' sparks gathered', W / 2, H / 2 + 50);
       // Coin double offer
       if (r.coinDoubleAvailable) {
@@ -3565,7 +3570,7 @@ Campfire.register('crowdRunner', {
       ctx.fillStyle = '#882222';
       ctx.font = 'bold 30px sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('THE LIGHT FADES', W / 2, H / 2 - 10);
+      ctx.fillText(this._ft('THE LIGHT FADES', 'THE VOID RECLAIMS YOU'), W / 2, H / 2 - 10);
       ctx.fillStyle = '#aaa';
       ctx.font = '16px sans-serif';
       ctx.fillText(r.coinsEarned + ' sparks recovered', W / 2, H / 2 + 25);
