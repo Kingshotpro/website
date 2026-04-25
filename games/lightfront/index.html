@@ -2668,7 +2668,7 @@ Campfire.register('crowdRunner', {
 
   spawnCocoon() {
     const r = this.run;
-    const abilities = ['Firekeeper', 'Beacon', 'Guardian', 'Stormcaller'];
+    const abilities = ['Firekeeper', 'Beacon', 'Guardian', 'Stormcaller', 'Seeker'];
     r.cocoons.push({
       x: 80 + Math.random() * 230, y: -50,
       hp: 12 + Math.floor(r.timer / 10) * 3,
@@ -2940,26 +2940,30 @@ Campfire.register('crowdRunner', {
       soul.y += (ty - soul.y) * 0.18;
       soul.flash = Math.max(0, soul.flash - dt * 5);
 
-      // Auto-fire
+      // Auto-fire — straight up by default, auto-aim only with Seeker powerup
       soul.fireTimer -= dt;
       if (soul.fireTimer <= 0 && r.enemies.length > 0) {
-        // Find nearest enemy
-        let nearest = null, nd = 99999;
-        for (const e of r.enemies) {
-          const d = Math.hypot(soul.x - e.x, soul.y - e.y);
-          if (d < nd) { nd = d; nearest = e; }
+        let vx = 0, vy = -500;
+        if (r.powerup.type === 'Seeker') {
+          // Seeker buff: aim at nearest enemy
+          let nearest = null, nd = 99999;
+          for (const e of r.enemies) {
+            const d = Math.hypot(soul.x - e.x, soul.y - e.y);
+            if (d < nd) { nd = d; nearest = e; }
+          }
+          if (nearest) {
+            const a = Math.atan2(nearest.y - soul.y, nearest.x - soul.x);
+            vx = Math.cos(a) * 500;
+            vy = Math.sin(a) * 500;
+          }
         }
-        if (nearest) {
-          const a = Math.atan2(nearest.y - soul.y, nearest.x - soul.x);
-          r.projectiles.push({
-            x: soul.x, y: soul.y,
-            vx: Math.cos(a) * 500,
-            vy: Math.sin(a) * 500,
-            life: 1.2,
-            damage: 1 + (r.powerup.type === 'Stormcaller' ? 1 : 0)
-          });
-          Campfire.audio?.beep(900, 0.02, "triangle", 0.008, -80);
-        }
+        r.projectiles.push({
+          x: soul.x, y: soul.y,
+          vx, vy,
+          life: 1.2,
+          damage: 1 + (r.powerup.type === 'Stormcaller' ? 1 : 0)
+        });
+        Campfire.audio?.beep(900, 0.02, "triangle", 0.008, -80);
         soul.fireTimer = (0.5 + Math.random() * 0.3) * fireRateMult;
       }
     });
