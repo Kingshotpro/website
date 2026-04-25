@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Oath and Bone — Variant Adjacency Test</title>
+<style>
+  body { background: #1a1a1a; color: #ccc; font-family: monospace; margin: 0; padding: 20px; }
+  h1 { color: #b8960c; font-size: 14px; margin: 0 0 4px; }
+  p  { font-size: 11px; color: #888; margin: 0 0 16px; max-width: 900px; }
+  .label { color: #b8960c; margin: 16px 0 4px; font-size: 12px; }
+  .row { display: flex; gap: 0; border: 1px solid #333; width: fit-content; }
+  .tile { width: 256px; height: 256px; background-size: 256px 256px; image-rendering: auto; }
+  .v1 { background-image: url('plain_seamless.png'); }
+  .v2 { background-image: url('plain_seamless_v2.png'); }
+  .refs { display: flex; gap: 16px; }
+  .ref { text-align: center; font-size: 10px; color: #888; }
+  .ref img { width: 256px; height: 256px; display: block; border: 1px solid #333; }
+  .mosaic-row { display: flex; gap: 0; }
+</style>
+</head>
+<body>
+<h1>Oath and Bone — Variant A × Variant B Adjacency Test</h1>
+<p>Does variant A's right edge match variant B's left edge? If yes, we can randomly shuffle
+textures per hex and eliminate the quilt pattern while keeping seamless flow.
+Both PNGs are MJ `--tile` of the same prompt (different seeds).</p>
+
+<div class="label">Source A (plain_seamless.png) · Source B (plain_seamless_v2.png)</div>
+<div class="refs">
+  <div class="ref"><img src="plain_seamless.png"><div>A</div></div>
+  <div class="ref"><img src="plain_seamless_v2.png"><div>B</div></div>
+</div>
+
+<div class="label">A → B adjacency (edge in middle)</div>
+<div class="row">
+  <div class="tile v1"></div>
+  <div class="tile v2"></div>
+</div>
+
+<div class="label">B → A adjacency (edge in middle, reverse order)</div>
+<div class="row">
+  <div class="tile v2"></div>
+  <div class="tile v1"></div>
+</div>
+
+<div class="label">Mosaic 4×2 — A B A B / B A B A (shuffled pattern simulating runtime)</div>
+<div class="mosaic-row">
+  <div class="tile v1"></div><div class="tile v2"></div><div class="tile v1"></div><div class="tile v2"></div>
+</div>
+<div class="mosaic-row">
+  <div class="tile v2"></div><div class="tile v1"></div><div class="tile v2"></div><div class="tile v1"></div>
+</div>
+
+<div class="label">Continuous A 4×2 (baseline — expect quilt)</div>
+<div class="mosaic-row">
+  <div class="tile v1"></div><div class="tile v1"></div><div class="tile v1"></div><div class="tile v1"></div>
+</div>
+<div class="mosaic-row">
+  <div class="tile v1"></div><div class="tile v1"></div><div class="tile v1"></div><div class="tile v1"></div>
+</div>
+</body>
+</html>

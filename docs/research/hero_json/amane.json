@@ -1,0 +1,329 @@
+{
+  "name": "Amane",
+  "slug": "amane",
+  "gen": 1,
+  "rarity": "epic",
+  "troop": "archer",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/amane.md",
+  "base_stats": {
+    "attack": 2157,
+    "defense": 2220,
+    "health": 13320,
+    "expedition_attack_pct": 140.11,
+    "expedition_defense_pct": 140.11,
+    "sources": [
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/amane-build-guide",
+      "kingshotdata.com/heroes/mikoto",
+      "kingshotguide.org/heroes/amane"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_functional_equivalence_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Sakura Blossom",
+        "description": "Summons a protective enchantment, increasing all Hero and Escorts' Attack and Attack Speed for 4 seconds.",
+        "scaling_attack": [
+          1.5,
+          2,
+          2.5,
+          3,
+          3.5
+        ],
+        "scaling_attack_speed": [
+          2.5,
+          3,
+          3.5,
+          4,
+          4.5
+        ],
+        "scaling_unit": "percent_attack_and_attack_speed",
+        "duration_seconds": 4,
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/mikoto"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      },
+      {
+        "name": "Fire Sigil",
+        "description": "Lobs a fiery sigil dealing damage.",
+        "scaling": [
+          150,
+          165,
+          180,
+          195,
+          210
+        ],
+        "scaling_unit": "percent_of_attack",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/mikoto"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      },
+      {
+        "name": "Divine Melody",
+        "description": "Every 3 basic attacks increases Amane's Attack Speed until the end of battle.",
+        "scaling": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "scaling_unit": "percent_attack_speed_stacking_every_3_attacks",
+        "duration": "until_battle_end",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/mikoto"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Tri-Phalanx",
+        "description": "Increases all squads' total Attack.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_squad_attack",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/mikoto"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      },
+      {
+        "name": "Exorcism",
+        "description": "Increases Infirmary Healing Speed.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_infirmary_healing_speed",
+        "notable": "Unique utility skill — speeds up injured troop recovery.",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/mikoto"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": []
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Epic heroes do not have exclusive gear.",
+  "skill_priority": {
+    "order": [
+      "Max Tri-Phalanx (Expedition Attack) FIRST",
+      "Then Exorcism (healing speed) for late-game recovery",
+      "Conquest as filler"
+    ],
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 32",
+      "gloves": "Archer Rare Lv 32",
+      "chest": "Archer Rare Lv 32",
+      "boots": "Archer Rare Lv 32"
+    },
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 40",
+      "gloves": "Archer Epic Lv 40",
+      "chest": "Archer Epic Lv 40",
+      "boots": "Archer Epic Lv 40"
+    },
+    "reasoning": "Standard archer archetype at epic tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides)."
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "partner_pair": [
+          "Amane",
+          "Chenko"
+        ],
+        "math": "2× Amane (102) + 2× Chenko (101) = 2.25x DamageUp",
+        "role": "cornerstone of F2P offensive strategies"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "Bear Hunt",
+        "heroes": [
+          "Amadeus",
+          "Vivian",
+          "Chenko",
+          "Amane",
+          "Yeonwoo"
+        ],
+        "source": "heroes.js"
+      }
+    ],
+    "theoretical_synergy": "S-tier offensive stacking joiner. Pairs with archer-heavy compositions.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hero Recruitment",
+      "Epic General Hero Shard"
+    ],
+    "reasoning": "F2P-accessible Epic.",
+    "confidence": "high",
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    }
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "garrison": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "bear_hunt": {
+      "tier": "S",
+      "reasoning": "Excellent offensive stacking joiner for bear hunt.",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "joiner": {
+      "tier": "S",
+      "reasoning": "S-tier joiner with Tri-Phalanx squad buff.",
+      "sources": [
+        "heroes.js"
+      ]
+    }
+  },
+  "lore_background": {
+    "title": "The Clumsy Shrine Maiden",
+    "backstory": "Amane is a shrine maiden devoted to crafting protective amulets. Clumsy yet kind, she is dedicated to mystical arts and inspired by the legend of a divine tree with life-restoring power. Her amulets demonstrate miraculous healing capabilities despite her awkwardness in everyday life.",
+    "personality_trait": "clumsy, kind, mystical devotee",
+    "source": "kingshotwiki.com/heroes/amane",
+    "fabricated": false
+  },
+  "deep_analysis": "Amane is an S-tier F2P joiner for bear hunt and offensive stacking compositions — a Gen 1 Epic Archer with a shrine-maiden identity. Her Sakura Blossom buffs all Heroes and Escorts' Attack (+3.5%) and Attack Speed (+4.5%) for 4 seconds, Fire Sigil deals up to Attack × 210% damage, and Divine Melody passively ramps her Attack Speed by +1% per 3 basic attacks until battle end. Her Expedition skills extend the support: Tri-Phalanx grants squads +25% Attack, and Exorcism uniquely speeds up Infirmary Healing by 50% — the only hero skill that affects post-battle injured troop recovery. No exclusive gear (Epic pattern). F2P-accessible through Hero Recruitment and Epic General Hero Shard. heroes.js places her as S-tier Bear Hunt and S-tier Joiner — a universal pick for offensive compositions. Lore: a clumsy shrine maiden dedicated to protective amulets, inspired by a divine tree of healing power.",
+  "seo_keywords": [
+    "amane kingshot",
+    "amane kingshot skills",
+    "amane kingshot joiner",
+    "amane kingshot f2p",
+    "amane kingshot epic",
+    "amane kingshot bear hunt",
+    "amane kingshot archer",
+    "amane kingshot tier list"
+  ],
+  "unverified_fields": [
+    "single_source_kingshotwiki",
+    "category_split_inferred",
+    "skill_priority, gear_build, named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "sources_successful": 1,
+    "plus_baseline": "heroes.js"
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "SS",
+    "rarity": "SR",
+    "tier_percentage": 98,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [
+      "102"
+    ],
+    "description": "Amane is mathematically essential for optimized rally damage. Her effect_op 102 (Attack) multiplies with Chenko's 101 (Lethality), creating 2.25x DamageUp with 2× Chenko + 2× Amane—12.5% better than pure same-hero stacking. The cornerstone of F2P offensive strategies.",
+    "top_skills_handbook_generic_names": "Attack Buff Field Hospital",
+    "handbook_stats_match_kingshotwiki": false,
+    "handbook_skill_names_match_kingshotwiki": false
+  },
+  "handbook_build_guide_note": "Handbook uses generic names 'Attack Buff' / 'Field Hospital' instead of kingshotwiki's canonical 'Tri-Phalanx' / 'Exorcism'. Functionally equivalent skills confirmed.",
+  "handbook_build_guide_url": "kingshothandbook.com/heroes/amane-build-guide",
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "102"
+    ],
+    "description": "Attack 102 — stacks with Chenko for 2.25x DamageUp",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

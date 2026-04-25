@@ -1,0 +1,19 @@
+All images in this directory are AI-generated via Midjourney v6 from original prompts.
+Unofficial. Not affiliated with Century Games.
+
+Per-file (B12 ring cutscene frames, ending-specific; each is one quadrant of a 4-image MJ grid):
+
+  b12_ring_endures.png      — Endures ending: ring remains, visibly transformed by the journey.   jobId 17ee6ff7-d2cd-4484-a456-80ec35035f19
+  b12_ring_endures_alt_1.png — Endures runner-up.                                                  jobId 17ee6ff7-d2cd-4484-a456-80ec35035f19
+  b12_ring_endures_alt_2.png — Endures runner-up.                                                  jobId 17ee6ff7-d2cd-4484-a456-80ec35035f19
+
+  b12_ring_falls.png        — Falls ending: ring lost or destroyed at the sealing moment.          jobId b4aa3709-430f-47aa-900c-ef57dbfee493
+  b12_ring_falls_alt_1.png   — Falls runner-up.                                                    jobId b4aa3709-430f-47aa-900c-ef57dbfee493
+  b12_ring_falls_alt_2.png   — Falls runner-up.                                                    jobId b4aa3709-430f-47aa-900c-ef57dbfee493
+
+  b12_ring_widens.png       — Widens ending: ring opens, expands, releases — something escapes.    jobId 18ced8e2-bdfd-470d-a7e7-210aea5d6bfb
+  b12_ring_widens_alt_1.png  — Widens runner-up.                                                   jobId 18ced8e2-bdfd-470d-a7e7-210aea5d6bfb
+  b12_ring_widens_alt_2.png  — Widens runner-up.                                                   jobId 18ced8e2-bdfd-470d-a7e7-210aea5d6bfb
+
+Original story and prop design. Not affiliated with Century Games or any Kingshot canonical hero.
+Generated 2026-04-24.

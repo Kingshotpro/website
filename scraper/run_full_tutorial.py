@@ -40,10 +40,12 @@ TUTORIAL_DIR = SCRAPER_DIR / "data" / "tutorials"
 # Naming: the sub-recording plays AFTER the indicated TC upgrade completes,
 # and covers the steps through the NEXT upgrade-ready moment.
 DEFAULT_SEQUENCE = [
-    ("tutorial_opening",    None),  # fresh spawn → first "TC1 ready to upgrade" moment
-    ("tutorial_after_tc2",  2),     # play after TC upgrade to L2 finishes
-    ("tutorial_after_tc3",  3),
-    ("tutorial_after_tc4",  4),
+    # Opening is longer than one TC upgrade — TC1→TC2 is only ~30s and gets
+    # bundled with the first-fight/initial-builds content. Opening runs
+    # through the TC3 upgrade completion as one chunk.
+    ("tutorial_opening",    None),  # fresh spawn → TC now at L3
+    ("tutorial_after_tc3",  3),     # play after TC reaches L3
+    ("tutorial_after_tc4",  4),     # play after TC reaches L4
     ("tutorial_after_tc5",  5),     # optional — include only if max_tc >= 6
 ]
 
@@ -93,6 +95,10 @@ def wait_for_tc_level(target_level, poll_seconds=45, timeout=3600):
     """
     Block until the TC reaches target_level.
     Ground truth = the level number displayed on the profile screen.
+
+    NOTE: this only works for post-tutorial characters. For mid-tutorial
+    characters the profile does not display TC level. Use
+    wait_for_tutorial_ready() instead.
     """
     print(f"\n⏳ Waiting for TC to reach L{target_level}...")
     sys.path.insert(0, str(SCRAPER_DIR))
@@ -105,6 +111,40 @@ def wait_for_tc_level(target_level, poll_seconds=45, timeout=3600):
         return False
     print(f"✓  TC is now L{level}")
     return True
+
+
+def wait_for_tutorial_ready(poll_seconds=15, timeout=1800, min_wait=30):
+    """
+    Between sub-tutorials, wait until the game is ready for the next set of
+    taps. The signal: the tutorial's gold glow indicator appears.
+
+    min_wait: minimum seconds to wait before the first poll (lets previous
+              animations/upgrades start).
+    Returns True if glow detected, False on timeout.
+    """
+    print(f"\n⏳ Waiting for tutorial to present next objective (min {min_wait}s)...")
+    sys.path.insert(0, str(SCRAPER_DIR))
+    from glow_follower import GlowFollower
+    gf = GlowFollower()
+
+    time.sleep(min_wait)
+
+    start = time.time()
+    while time.time() - start < timeout:
+        try:
+            xy = gf.find_glow()
+        except Exception as e:
+            print(f"   glow-check error: {e}")
+            xy = None
+        if xy is not None:
+            elapsed = int(time.time() - start)
+            print(f"✓  Tutorial glow detected at {xy} (after {min_wait + elapsed}s)")
+            return True
+        elapsed = int(time.time() - start)
+        print(f"   no glow yet ({min_wait + elapsed}s), waiting {poll_seconds}s...")
+        time.sleep(poll_seconds)
+    print(f"⚠  TIMED OUT — no tutorial glow in {min_wait + timeout}s")
+    return False
 
 
 def read_tc_level():
@@ -148,7 +188,9 @@ def main():
                         help='Print plan only, don\'t execute')
     parser.add_argument('--poll-seconds', type=int, default=30)
     parser.add_argument('--gate-timeout', type=int, default=3600,
-                        help='Max seconds to wait at each TC gate')
+                        help='Max seconds to wait at each gate')
+    parser.add_argument('--gate-min-wait', type=int, default=30,
+                        help='Minimum seconds to wait at each gate before first glow-check')
     parser.add_argument('--strict', action='store_true',
                         help='Abort on any sub-recording failure (default: continue)')
     parser.add_argument('--start-sub', type=str, default=None,
@@ -186,18 +228,17 @@ def main():
     # Execute
     failures = []
     for i, (name, preceding_gate) in enumerate(sequence):
-        # Gate: before running this sub, the previous upgrade must be done.
-        # preceding_gate is the level the TC must have REACHED before we proceed.
+        # Gate: before running this sub, wait for the tutorial to present
+        # the next objective (gold glow appears). For tutorial-state
+        # characters the profile doesn't show TC level, so we can't use
+        # wait_for_tc_level. Glow presence is the reliable signal.
         if preceding_gate is not None:
-            if not wait_for_tc_level(preceding_gate,
-                                      poll_seconds=args.poll_seconds,
-                                      timeout=args.gate_timeout):
-                print(f"\n⨯  Aborting — TC never reached L{preceding_gate}")
+            if not wait_for_tutorial_ready(
+                    poll_seconds=max(15, args.poll_seconds // 2),
+                    timeout=args.gate_timeout,
+                    min_wait=args.gate_min_wait):
+                print(f"\n⨯  Aborting — tutorial never resumed before {name}")
                 sys.exit(1)
-
-        # Record the level right before we start this sub
-        level_before = read_tc_level()
-        print(f"\n📊 TC level before {name}: {level_before}")
 
         # Play the sub-recording
         ok = play_recording(name, slowdown=args.slowdown)

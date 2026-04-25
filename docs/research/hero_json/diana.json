@@ -1,0 +1,299 @@
+{
+  "name": "Diana",
+  "slug": "diana",
+  "gen": 1,
+  "rarity": "epic",
+  "troop": "archer",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "sub_role": "gathering_specialist",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/diana.md",
+  "base_stats": {
+    "attack": 2157,
+    "defense": 2220,
+    "health": 13320,
+    "expedition_attack_pct": 110.08,
+    "expedition_defense_pct": 110.08,
+    "sources": [
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/diana-build-guide",
+      "kingshotdata.com/heroes/diana",
+      "kingshotguide.org/heroes/diana"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshotwiki_plus_kingshothandbook_build_guide_plus_kingshotdata",
+    "notable": "Lower Expedition multiplier (110.08% vs other Epics' 140.11%) — reflects gathering specialization."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Incendiary Arrows",
+        "description": "Fires an Incendiary Shot dealing damage to the target and splash damage to nearby enemies.",
+        "scaling_main": [
+          210,
+          230,
+          250,
+          270,
+          290
+        ],
+        "scaling_splash": [
+          70,
+          77,
+          84,
+          91,
+          98
+        ],
+        "scaling_unit": "percent_of_attack_main_and_splash",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/diana"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      },
+      {
+        "name": "Sharpshooter",
+        "description": "Increases Attack Speed.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_attack_speed",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/diana-build-guide",
+          "kingshotdata.com/heroes/diana"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Deadly Strike",
+        "description": "Diana increases her Crit Rate.",
+        "scaling": [
+          7,
+          10,
+          13,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_crit_rate",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/diana"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Iron Constitution",
+        "description": "The unique arts of the wilderness rangers reduce Governor Stamina Cost.",
+        "scaling": [
+          10,
+          12,
+          15,
+          18,
+          20
+        ],
+        "scaling_unit": "percent_stamina_cost_reduction",
+        "notable": "Unique gathering utility — reduces stamina consumption for marches and events.",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/diana-build-guide",
+          "kingshotdata.com/heroes/diana"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Quick Paced",
+        "description": "Increases March Speed and Rally March Speed against Beasts and Terrors.",
+        "scaling": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "scaling_unit": "percent_march_speed_vs_beasts_and_terrors",
+        "notable": "+100% march speed at max level against PvE targets.",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/diana-build-guide",
+          "kingshotdata.com/heroes/diana"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": []
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Epic heroes do not have exclusive gear.",
+  "skill_priority": {
+    "order": [
+      "Max Iron Constitution (stamina reduction) FIRST for farm",
+      "Then Quick Paced for PvE march speed",
+      "Conquest is not her role"
+    ],
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 32",
+      "gloves": "Archer Rare Lv 32",
+      "chest": "Archer Rare Lv 32",
+      "boots": "Archer Rare Lv 32"
+    },
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 40",
+      "gloves": "Archer Epic Lv 40",
+      "chest": "Archer Epic Lv 40",
+      "boots": "Archer Epic Lv 40"
+    },
+    "reasoning": "Standard archer archetype at epic tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides)."
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Farm Account Gathering Team",
+        "heroes": [
+          "Diana",
+          "Edwin",
+          "Forrest",
+          "Olive",
+          "Seth"
+        ],
+        "note": "Diana provides universal stamina reduction, pair with resource-specific R-grade gatherers"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Gathering specialist. Used on farm accounts for resource march speed and stamina reduction. Not a combat hero despite having Conquest skills.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Epic General Hero Shard",
+      "Desert Trial"
+    ],
+    "reasoning": "F2P-accessible. Valuable specifically for farm accounts, not primary combat.",
+    "confidence": "high",
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    }
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "garrison": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "bear_hunt": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "joiner": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    }
+  },
+  "lore_background": {
+    "title": "The Red-Haired Wilderness Ranger",
+    "backstory": "Diana is the youngest member of the wilderness rangers cavalry group — known for her dashing red hair, good looks, and steely-cold exterior. She was discovered as an infant during a ranger expedition and raised among them, developing exceptional warrior abilities while internalizing the ranger tenets: freedom, non-oppression, and loyalty.",
+    "personality_trait": "ranger-raised, principled, warrior-from-infancy",
+    "source": "kingshotwiki.com/heroes/diana",
+    "fabricated": false
+  },
+  "deep_analysis": "Diana is the gathering specialist of the Kingshot roster — a Gen 1 Epic Archer whose value is outside direct combat. While she DOES have Conquest skills (Incendiary Arrows for up to 290% target damage, Sharpshooter, Deadly Strike), her defining utility is her Expedition tree: Iron Constitution reduces Governor Stamina Cost by up to 20%, and Quick Paced increases March Speed by up to +100% against Beasts and Terrors — dramatically accelerating resource gathering and PvE content. Her Expedition scaling (110.08%) is lower than other Epics (140.11%), reflecting her specialization. heroes.js marks her as 'gathering only' with zero combat value — though this slightly understates her Conquest skills, the practical use case is farm accounts and stamina-efficient resource collection. No exclusive gear (Epic pattern). F2P via Epic General Hero Shard and Desert Trial. Lore: youngest of the wilderness rangers, discovered as an infant on a ranger expedition, raised to embody the rangers' creed of freedom, non-oppression, and loyalty.",
+  "seo_keywords": [
+    "diana kingshot",
+    "diana kingshot gathering",
+    "diana kingshot skills",
+    "diana kingshot f2p",
+    "diana kingshot archer",
+    "diana kingshot ranger",
+    "diana kingshot epic",
+    "diana kingshot farm"
+  ],
+  "unverified_fields": [
+    "single_source_kingshotwiki",
+    "heroes.js 'no battle skills' note conflicts with kingshotwiki's Conquest skill list — resolved: she has combat skills but is specialized for gathering",
+    "skill_priority, gear_build, named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "sources_successful": 1,
+    "plus_baseline": "heroes.js",
+    "baseline_correction": "heroes.js understates Diana's combat skills"
+  },
+  "effect_op_codes": {
+    "type": "gathering_specialist",
+    "codes": [],
+    "description": "Gathering specialist — no rally/battle effect_op code (not a combat joiner)",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "handbook_confirmed_no_code"
+  }
+}

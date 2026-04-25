@@ -1,0 +1,453 @@
+{
+  "name": "Alcar",
+  "slug": "alcar",
+  "gen": 4,
+  "rarity": "legendary",
+  "troop": "infantry",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/alcar.md",
+  "base_stats": {
+    "attack": 3150,
+    "defense": 4106,
+    "health": 61604,
+    "expedition_attack_pct": 370.29,
+    "expedition_defense_pct": 370.29,
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki",
+      "kingshotdata.com/heroes/alcar",
+      "kingshotguide.org/heroes/alcar"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata",
+    "notable": "Highest base Health of any documented hero (61604). Alcar is THE infantry tank archetype."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Glorious Mark",
+        "description": "Alcar enters an invulnerable state (unable to move or cast skills, immune to control effects) and reduces damage taken for nearby friendly squads for 2 seconds.",
+        "scaling": [
+          30,
+          40,
+          50,
+          60,
+          70
+        ],
+        "scaling_unit": "percent_damage_reduction_nearby_squads",
+        "duration_seconds": 2,
+        "special_effect": "self_invulnerability_during_cast",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/alcar",
+          "kingshotguide.org/heroes/alcar"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Boneshatter",
+        "description": "Alcar spears a line of enemies, dealing damage and increasing damage taken for enemies hit for 2 seconds.",
+        "scaling": [
+          70,
+          77,
+          84,
+          91,
+          98
+        ],
+        "scaling_unit": "percent_of_attack_line",
+        "additional_effects": [
+          "damage_taken_plus_20pct_for_2s"
+        ],
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/alcar"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Second Wind",
+        "description": "During Glorious Mark, Alcar restores Health every second for 5 seconds.",
+        "scaling": [
+          30,
+          33,
+          36,
+          39,
+          42
+        ],
+        "scaling_unit": "percent_of_attack_heal_per_second",
+        "duration_seconds": 5,
+        "trigger_condition": "during_glorious_mark",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/alcar"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Rescuing Hands",
+        "description": "Reduces Infantry/Archer damage taken every 5 turns for 2 turns.",
+        "scaling_unit": "percent_damage_reduction_infantry_and_archer",
+        "cooldown_turns": 5,
+        "duration_turns": 2,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/alcar"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_max": 70,
+        "scaling": [
+          14,
+          28,
+          42,
+          56,
+          70
+        ],
+        "formerly_stripped_interpolated": [
+          14,
+          28,
+          42,
+          56,
+          70
+        ]
+      },
+      {
+        "name": "Praetorian Will",
+        "description": "Increases Infantry damage significantly, and Cavalry/Archer damage modestly.",
+        "scaling_unit": "percent_damage_boost_infantry_primary_other_secondary",
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/alcar"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_infantry_max": 100,
+        "scaling_cavalry_archer_max": 10,
+        "scaling_infantry": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "scaling_cavalry_archer": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "formerly_stripped_interpolated": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ]
+      },
+      {
+        "name": "Carpe Diem",
+        "description": "Increases Infantry damage per attack and increases target damage taken for 1 turn.",
+        "scaling_unit": "percent_infantry_damage_and_target_vulnerability",
+        "duration_turns": 1,
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/alcar"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_infantry_damage_max": 60,
+        "scaling_target_damage_taken_max": 25,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "scaling_infantry_damage": [
+          12,
+          24,
+          36,
+          48,
+          60
+        ],
+        "scaling_target_damage_taken": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "formerly_stripped_interpolated": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ]
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Flagbearer",
+        "category": "conquest",
+        "description": "Glorious Mark also increases the Attack of friendly squads for 2.5 seconds. Unlocked only when Praetorian Guard is equipped.",
+        "scaling": [
+          30,
+          33,
+          36,
+          39,
+          42
+        ],
+        "scaling_unit": "percent_attack_friendly_squads",
+        "duration_seconds": 2.5,
+        "trigger_condition": "on_glorious_mark_cast",
+        "requires_exclusive_gear": "Praetorian Guard",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/alcar"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Vow of Honor",
+        "category": "expedition",
+        "description": "Increases the Health of defender troops. Unlocked only when Praetorian Guard is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_health_defender_troops",
+        "requires_exclusive_gear": "Praetorian Guard",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/alcar"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Praetorian Guard",
+    "max_power": 416250,
+    "conquest_bonuses": {
+      "attack": 638,
+      "defense": 832,
+      "health": 12487
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 92.5,
+      "health_pct": 92.5
+    },
+    "unlocks_skills": [
+      "Flagbearer",
+      "Vow of Honor"
+    ],
+    "notes": "Highest Health bonus on any exclusive gear documented (+12487). Combined with his 61604 base, Alcar's raw Health pool exceeds 74000 before expedition multipliers.",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Low priority hero — focus on defensive conquest skills first per defender role",
+      "Glorious Mark for invulnerability",
+      "Then Expedition buffs"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "allclash.com build guides via Perplexity",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "heaven-guardian.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "infantry",
+    "stat_focus_by_piece": {
+      "helmet": "infantry_lethality",
+      "gloves": "infantry_health",
+      "chest": "infantry_health",
+      "boots": "infantry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Infantry Rare Lv 40",
+      "gloves": "Infantry Epic Lv 32",
+      "chest": "Infantry Epic Lv 32",
+      "boots": "Infantry Rare Lv 40"
+    },
+    "reasoning": "Standard infantry archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Infantry Epic Lv 60",
+      "gloves": "Infantry Legendary Lv 40",
+      "chest": "Infantry Legendary Lv 40",
+      "boots": "Infantry Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "garrison_gen4",
+        "heroes": [
+          "Alcar",
+          "Margot",
+          "Jaeger"
+        ],
+        "mode": "garrison_defense",
+        "partners": [
+          "Margot",
+          "Jaeger"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Alcar's Praetorian Will buffs INFANTRY damage by up to +100% while only giving Cavalry/Archer +10%. He strongly incentivizes an all-infantry rally composition. Paired with Amadeus and Eric, the three infantry legendaries stack multiple damage amplifiers on top of Alcar's defensive anchoring.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Strongest Governor",
+      "Kingdom of Power",
+      "Daily Deals",
+      "Hero Rally",
+      "Mythic General Hero Shard",
+      "Swordland Shop"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js marks Alcar as F2P=false. 6 acquisition methods include multiple F2P pools but community treats him as premium investment. heroes.js note: 'typically requires significant investment.'",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "medium_interpretation_conflict"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "B",
+      "reasoning": "Defense-oriented.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "S",
+      "reasoning": "Premium garrison infantry defender. Highest HP of all documented heroes plus Glorious Mark invulnerability window plus Second Wind self-regen makes him the most durable garrison anchor possible.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "A",
+      "reasoning": "Strong bear hunt contributor via squad-wide damage reduction and Infantry buffs.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Flagbearer Who Gave Up Changing the World",
+    "backstory": "Alcar was a Flagbearer of the Praetorian Guard — an elite rank signifying absolute strength and unwavering loyalty. He endured a brutal campaign that cost many of his comrades their lives, leaving him scarred both physically and spiritually. Where once he carried the banner for glory, he has since abandoned the pursuit. His creed now: 'I've long given up on changing the world. Now, I only strive to stay true to myself.' Where Amadeus fights for principle, where Jabel fights for faith, Alcar fights because fighting is what he knows — and no longer expects victory to mean anything beyond survival.",
+    "personality_trait": "weary, disillusioned, loyal-to-self, war-hardened",
+    "thematic_quote": "I've long given up on changing the world. Now, I only strive to stay true to myself.",
+    "source": "kingshotwiki.com/heroes/alcar",
+    "fabricated": false
+  },
+  "deep_analysis": "Alcar is the ultimate infantry tank of Kingshot — a Gen 4 Legendary with the highest base Health of any documented hero (61604, with another +12487 from exclusive gear bringing his raw HP pool to 74091 before multipliers). His kit is built around a unique invulnerability-plus-heal-plus-team-buff combo. Glorious Mark enters an invulnerable state (immune to damage and control) while reducing damage taken for nearby squads by up to 70% for 2 seconds. Second Wind triggers during that window, healing him for up to 42% of his Attack every second for 5 seconds — meaning he doesn't just survive the invulnerability window, he comes out stronger. His exclusive gear Praetorian Guard unlocks Flagbearer, which adds +42% Attack to all friendly squads during Glorious Mark — turning his defensive cooldown into a simultaneous offensive power spike for his team. His Expedition tree (Rescuing Hands, Praetorian Will, Carpe Diem) heavily favors Infantry compositions: Praetorian Will alone grants up to +100% damage to Infantry while only giving Cavalry and Archer units +10%. This makes him the defining hero of any all-Infantry rally comp. His exclusive gear Praetorian Guard adds +12487 Health (new record), +92.50% Lethality, +92.50% Health, plus +638 Attack and +832 Defense. Tier: S-tier Garrison, A-tier Bear Hunt, B-tier Rally. heroes.js marks him premium despite 6 F2P access methods — community consensus is that shard accumulation is too slow for F2P. Lore: a Flagbearer of the Praetorian Guard whose brutal campaign broke his faith in causes bigger than himself. His current creed — 'I've long given up on changing the world. Now, I only strive to stay true to myself' — puts him in a distinct philosophical lane from the other Legendaries: neither outlaw like Amadeus, nor idealist like Jabel, nor defiant like Helga. He just fights because he knows how.",
+  "seo_keywords": [
+    "alcar kingshot",
+    "alcar kingshot build",
+    "alcar kingshot skills",
+    "alcar kingshot tank",
+    "alcar praetorian guard",
+    "alcar kingshot f2p",
+    "alcar kingshot gen 4",
+    "alcar kingshot infantry"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — null",
+    "gear_recommendations.minimum_build — null",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "shard_cost_to_star_up — null",
+    "3 Expedition skills (Rescuing Hands, Praetorian Will, Carpe Diem) — single source (kingshotwiki), scaling arrays interpolated from range text",
+    "f2p_investment — heroes.js false vs 6 F2P pools"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 2,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js",
+    "single_source_skills": 3,
+    "scaling_interpolations": 3
+  },
+  "effect_op_codes": {
+    "type": "effect_op_undocumented",
+    "codes": [],
+    "description": "Gen 4 controversial infantry tank — likely 112 or dual but not confirmed",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "handbook_confirmed_no_code"
+  }
+}

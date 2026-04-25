@@ -351,7 +351,7 @@ def _check_drift(ref_path, current_img, threshold=40):
     return (dist <= threshold, dist)
 
 
-def replay(name, jitter_px=10, start_at=0, slowdown=1.15, screenshot_every=25,
+def replay(name, jitter_px=3, start_at=0, slowdown=1.15, screenshot_every=25,
            drift_check=True, drift_threshold=50, drift_abort=True):
     """
     Replay a recorded tutorial with human-like jitter.
@@ -392,12 +392,16 @@ def replay(name, jitter_px=10, start_at=0, slowdown=1.15, screenshot_every=25,
         # Calculate delay since last action, with jitter
         delay = act["time"] - prev_time
         if delay > 0:
-            # Never faster than original (low=1.0). Mean = slowdown. Max 1.8x.
-            jittered_delay = delay * gauss_clamp(slowdown, 0.15, 1.0, 1.8)
-            # Enforce minimum 300ms floor
+            # Additive jitter: +50 to +300ms uniform on top of recorded gap.
+            # Recorded timings are authoritative (they encode game-driven
+            # waits like load screens and animations); jitter only adds
+            # human-like variance, never replaces the signal.
+            added = random.uniform(0.05, 0.30)
+            jittered_delay = delay + added
+            # Minimum 300ms floor for rapid sub-300ms tap sequences
             jittered_delay = max(jittered_delay, 0.3)
-            # Cap at 30s
-            jittered_delay = min(jittered_delay, 30.0)
+            # Ceiling at 10min to guard against recording-parse bugs
+            jittered_delay = min(jittered_delay, 600.0)
             time.sleep(jittered_delay)
         prev_time = act["time"]
 
@@ -483,7 +487,7 @@ def replay(name, jitter_px=10, start_at=0, slowdown=1.15, screenshot_every=25,
     print(f"\nReplay complete. {len(actions)} actions executed.")
 
 
-def replay_random(jitter_px=10, slowdown=1.15, drift_check=True,
+def replay_random(jitter_px=3, slowdown=1.15, drift_check=True,
                   drift_threshold=50, drift_abort=True):
     """Pick a random recording and replay it."""
     available = list_recordings()
@@ -551,8 +555,8 @@ if __name__ == "__main__":
     mode.add_argument("--from-raw", metavar="NAME",
                       help="Reprocess a raw event file into JSON")
 
-    parser.add_argument("--jitter-px", type=int, default=10,
-                        help="Coordinate jitter std in pixels (default: 10)")
+    parser.add_argument("--jitter-px", type=int, default=3,
+                        help="Coordinate jitter std in pixels (default: 3)")
     parser.add_argument("--start-at", type=int, default=0,
                         help="1-based action index to start replay from")
     parser.add_argument("--slowdown", type=float, default=1.15,

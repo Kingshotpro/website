@@ -1,0 +1,444 @@
+{
+  "name": "Triton",
+  "slug": "triton",
+  "gen": 6,
+  "rarity": "mythic",
+  "troop": "infantry",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/triton.md",
+  "research_note": "Single primary source kingshot-data. | 9x3x3 update: 2nd source added from lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html — kingshot-data + lootbar.gg Gen 5/6 guide convergence confirmed on mechanics and max values (tier-by-tier scaling remains kingshot-data single-source for some fields).",
+  "base_stats": {
+    "attack": 4546,
+    "defense": 5926,
+    "health": 99910,
+    "expedition_attack_pct": 540.43,
+    "expedition_defense_pct": 540.43,
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+      "kingshotdata.com/heroes/triton",
+      "kingshotguide.org/heroes/triton"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshot_data_plus_lootbar_on_mechanics_plus_kingshotdata",
+    "notable": "Absolute highest base Health documented (99910). With Tidal Scepter +18022, raw HP pool exceeds 117,900."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Tidewill",
+        "description": "Triton is surrounded by a barrier of waves that surges forward, gaining invulnerability for 2 seconds before dealing AOE damage.",
+        "scaling": [
+          100,
+          110,
+          120,
+          130,
+          140
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "additional_effect": "invulnerability_2s_before_damage",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/triton"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Regal Wrath",
+        "description": "Triton channels the rage of the ruler within, increasing Attack and Defense for 4 seconds.",
+        "scaling_attack": [
+          8,
+          12,
+          16,
+          20,
+          24
+        ],
+        "scaling_defense": [
+          16,
+          24,
+          32,
+          40,
+          48
+        ],
+        "scaling_unit": "percent_self_attack_and_self_defense",
+        "duration_seconds": 4,
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/triton"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Striking Hit",
+        "description": "Triton lashes the disobedient with shattering violence, dealing damage to a random enemy with every normal attack.",
+        "scaling": [
+          20,
+          22,
+          24,
+          26,
+          28
+        ],
+        "scaling_unit": "percent_of_attack_on_normal_attack",
+        "trigger_condition": "every_normal_attack",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/triton"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Command of Power",
+        "description": "Increases total Squads' Defense.",
+        "scaling_unit": "percent_squad_defense",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/triton",
+          "kingshotguide.org/heroes/triton"
+        ],
+        "confidence": "VERIFIED_3_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_max": 25,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "formerly_stripped_interpolated": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ]
+      },
+      {
+        "name": "Warfare of Power",
+        "description": "Increases total Squads' skill damage dealt.",
+        "scaling_unit": "percent_skill_damage_all_squads",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/triton",
+          "kingshotguide.org/heroes/triton"
+        ],
+        "confidence": "VERIFIED_3_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_max": 30,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "scaling": [
+          6,
+          12,
+          18,
+          24,
+          30
+        ],
+        "formerly_stripped_interpolated": [
+          6,
+          12,
+          18,
+          24,
+          30
+        ]
+      },
+      {
+        "name": "Oath of Power",
+        "description": "Increases Infantry health modestly and Cavalry/Archer health more significantly.",
+        "scaling_unit": "percent_health_by_troop_type",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/triton"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_infantry_health_max": 20,
+        "scaling_other_health_max": 30,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "scaling_infantry_health": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_cavalry_archer_health": [
+          6,
+          12,
+          18,
+          24,
+          30
+        ],
+        "formerly_stripped_interpolated": [
+          6,
+          12,
+          18,
+          24,
+          30
+        ]
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Magnetic Reformation",
+        "category": "conquest",
+        "description": "Damage increase. Unlocked only when Tidal Scepter is equipped.",
+        "scaling_unit": "percent_damage_increase",
+        "requires_exclusive_gear": "Tidal Scepter",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/triton"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_max": 30,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "formerly_stripped_interpolated": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ]
+      },
+      {
+        "name": "Whale Call",
+        "category": "expedition",
+        "description": "Increases the Defense of defender troops. Unlocked only when Tidal Scepter is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_defense_defender_troops",
+        "requires_exclusive_gear": "Tidal Scepter",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/triton",
+          "kingshotguide.org/heroes/triton"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Tidal Scepter",
+    "max_power": null,
+    "conquest_bonuses": {
+      "attack": 921,
+      "defense": 1201,
+      "health": 18022
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 133.5,
+      "health_pct": 133.5
+    },
+    "unlocks_skills": [
+      "Magnetic Reformation",
+      "Whale Call"
+    ],
+    "notes": "Highest exclusive-gear Health bonus documented (+18022).",
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html"
+    ],
+    "confidence": "9x3x3_VERIFIED_2_sources_kingshot_data_plus_lootbar"
+  },
+  "skill_priority": {
+    "order": [
+      "Max Command of Power first (+25% squad Defense)",
+      "Then Oath of Power (class-split health)",
+      "Then Warfare of Power (30% skill damage)"
+    ],
+    "sources": [
+      "skill design analysis + kingshotguide.org + kingshotdata.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "infantry",
+    "stat_focus_by_piece": {
+      "helmet": "infantry_lethality",
+      "gloves": "infantry_health",
+      "chest": "infantry_health",
+      "boots": "infantry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Infantry Rare Lv 40",
+      "gloves": "Infantry Epic Lv 32",
+      "chest": "Infantry Epic Lv 32",
+      "boots": "Infantry Rare Lv 40"
+    },
+    "reasoning": "Standard infantry archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Infantry Epic Lv 60",
+      "gloves": "Infantry Legendary Lv 40",
+      "chest": "Infantry Legendary Lv 40",
+      "boots": "Infantry Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Gen 6 Infantry Rally Lead",
+        "heroes": [
+          "Triton",
+          "Sophia",
+          "Yang"
+        ],
+        "source": "lootbar.gg Gen 6 ranking"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Triton is the ultimate infantry tank. His Tidewill invulnerability window + Regal Wrath self-buff + absurd HP pool make him nearly unkillable. Pairs with Hilde for sustain or with a rally-lead Vivian/Yang for offensive support.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Hall of Heroes"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js f2p=false despite Hall of Heroes access. Premium investment tier.",
+    "sources": [
+      "kingshot-data",
+      "heroes.js"
+    ],
+    "confidence": "medium_interpretation"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "A",
+      "reasoning": "Usable offensive role via Regal Wrath Attack boost.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "S",
+      "reasoning": "The strongest frontline unit in Gen 6. Dominates garrison defense.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "A",
+      "reasoning": "Strong bear hunt via high HP + damage output.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Ocean-King",
+    "backstory": null,
+    "no_narrative_backstory_available": true,
+    "derived_character_themes": "Oceanic ruler archetype with themes of waves, authority, and ancient power. Skill flavor text references \"Triton surrounds himself with a barrier of waves\", \"Triton channels the rage of the ruler within\", \"ancient whale-calls echo through the barricades\", \"shares the fruits of authority\", and \"Great power stems from a willingness to keep oaths\". His exclusive gear is the \"Tidal Scepter\". Together these suggest a Poseidon-like sea-king figure with ancient artifacts of power.",
+    "source_note": "No narrative backstory published.",
+    "source": "derived from skill flavor text (kingshotdata.com, kingshotguide.org)",
+    "fabricated": false,
+    "lore_status": "structurally_unavailable_themes_derived_from_skill_flavor"
+  },
+  "deep_analysis": "Triton is the absolute tank ceiling of Kingshot — a Gen 6 Legendary Infantry hero with the highest base Health of any documented hero (99910), the highest exclusive-gear Health bonus (+18022 from Tidal Scepter), and a combined raw HP pool exceeding 117,900 before Expedition multipliers. His Conquest tree: Tidewill grants him a 2-second invulnerability window before unleashing up to Attack × 140% AOE damage, Regal Wrath self-buffs +24% Attack and +48% Defense for 4 seconds, and Striking Hit deals up to Attack × 28% bonus damage on every normal attack. His Expedition tree buffs the whole army: Command of Power adds +25% squad Defense, Warfare of Power adds +30% skill damage for all squads, and Oath of Power adds +20% Infantry health and +30% Cavalry/Archer health. His exclusive gear Tidal Scepter adds +921 Attack, +1201 Defense, +18022 Health, +133.50% Lethality, +133.50% Health, and unlocks Magnetic Reformation (+30% damage) plus Whale Call (+15% defender troops' Defense). heroes.js calls him 'the strongest frontline unit in Gen 6' — S Garrison, A Rally, A Bear Hunt. Premium-gated through Hall of Heroes. Lore not found in consulted sources — kit themes (Tidewill, Tidal Scepter, Whale Call, Regal Wrath) suggest a tidal king or ocean-ruler archetype.",
+  "seo_keywords": [
+    "triton kingshot",
+    "triton kingshot build",
+    "triton kingshot skills",
+    "triton kingshot infantry",
+    "triton tidal scepter",
+    "triton kingshot tank",
+    "triton kingshot gen 6",
+    "triton kingshot tier list"
+  ],
+  "unverified_fields": [
+    "Single primary source",
+    "Lore not found",
+    "Expedition scaling arrays interpolated from range text",
+    "skill_priority.order, gear_recommendations.minimum_build, best_partners.named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 1,
+    "web_sources_successful": 1,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 1,
+    "plus_baseline_source": "heroes.js",
+    "confidence_level": "below_2_source_standard"
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Gen 6 infantry widget",
+    "role": "infantry_rally_gen6",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

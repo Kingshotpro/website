@@ -460,6 +460,7 @@
       policyNav.style.cssText = 'font-size:12px;margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;';
       var links = [
         { href: B + 'about.html',         label: 'About' },
+        { href: B + 'methodology.html',   label: 'Methodology' },
         { href: B + 'contact.html',       label: 'Contact' },
         { href: B + 'privacy.html',       label: 'Privacy Policy' },
         { href: B + 'cookie-policy.html', label: 'Cookie Policy' },

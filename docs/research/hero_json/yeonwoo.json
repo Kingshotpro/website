@@ -1,0 +1,337 @@
+{
+  "name": "Yeonwoo",
+  "slug": "yeonwoo",
+  "gen": 1,
+  "rarity": "epic",
+  "troop": "archer",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/yeonwoo.md",
+  "base_stats": {
+    "attack": 2157,
+    "defense": 2220,
+    "health": 13320,
+    "expedition_attack_pct": 140.11,
+    "expedition_defense_pct": 140.11,
+    "sources": [
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/yeonwoo-build-guide",
+      "kingshotdata.com/heroes/yeonwoo",
+      "kingshotguide.org/heroes/yeonwoo"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_plus_sources_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Petalbloom",
+        "description": "Arcs Petalbloom outward in three waves, dealing different damage per wave, with the third wave being AOE.",
+        "scaling_wave_1": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "scaling_wave_2": [
+          125,
+          137.5,
+          150,
+          162.5,
+          175
+        ],
+        "scaling_wave_3_aoe": [
+          150,
+          165,
+          180,
+          195,
+          210
+        ],
+        "scaling_unit": "percent_of_attack_per_wave",
+        "multi_hit": true,
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/yeonwoo"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      },
+      {
+        "name": "Falling Swallow",
+        "description": "Deals damage and reduces target Attack Speed.",
+        "scaling_damage": [
+          100,
+          110,
+          120,
+          130,
+          140
+        ],
+        "scaling_attack_speed_reduction": [
+          30,
+          35,
+          40,
+          45,
+          50
+        ],
+        "scaling_unit": "percent_damage_and_attack_speed_reduction",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/yeonwoo"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      },
+      {
+        "name": "Twin Fangs",
+        "description": "Increases Attack.",
+        "scaling": [
+          8,
+          12,
+          16,
+          20,
+          24
+        ],
+        "scaling_unit": "percent_self_attack",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/yeonwoo"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "On Guard",
+        "description": "Yeonwoo's sword skills increase all squads' total Lethality.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_squad_lethality",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/database",
+          "kingshotdata.com/heroes/yeonwoo"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Well-Traveled",
+        "description": "Increases Research Speed.",
+        "scaling": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "scaling_unit": "percent_research_speed",
+        "notable": "Unique utility skill — speeds up technology research.",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/database",
+          "kingshotdata.com/heroes/yeonwoo"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": []
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Epic heroes do not have exclusive gear.",
+  "skill_priority": {
+    "order": [
+      "Max On Guard (Expedition Lethality) FIRST",
+      "Well-Traveled for Research Speed utility",
+      "Conquest as filler"
+    ],
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 32",
+      "gloves": "Archer Rare Lv 32",
+      "chest": "Archer Rare Lv 32",
+      "boots": "Archer Rare Lv 32"
+    },
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 40",
+      "gloves": "Archer Epic Lv 40",
+      "chest": "Archer Epic Lv 40",
+      "boots": "Archer Epic Lv 40"
+    },
+    "reasoning": "Standard archer archetype at epic tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides)."
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "partner_pair": [
+          "Yeonwoo",
+          "Amane"
+        ],
+        "math": "2× Yeonwoo (101) + 2× Amane (102) = 2.25x DamageUp (Chenko alternative)",
+        "note": "Yeonwoo = Chenko twin — use ONE not both"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "Bear Hunt",
+        "heroes": [
+          "Amadeus",
+          "Vivian",
+          "Chenko",
+          "Amane",
+          "Yeonwoo"
+        ],
+        "source": "heroes.js"
+      }
+    ],
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hero Recruitment",
+      "Epic General Hero Shard"
+    ],
+    "reasoning": "F2P-accessible Epic.",
+    "confidence": "high",
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    }
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "garrison": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "bear_hunt": {
+      "tier": "S",
+      "reasoning": "Consistent offensive contribution that does not rely on chance mechanics.",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "joiner": {
+      "tier": "S",
+      "reasoning": "Reliable joiner — her on-hit deterministic output is preferred over proc-chance joiners.",
+      "sources": [
+        "heroes.js"
+      ]
+    }
+  },
+  "lore_background": {
+    "title": "The Disciplined Swordswoman",
+    "backstory": "Yeonwoo has trained with the sword since age five under her father's mentorship, practicing daily with unwavering discipline. She is guided by the principle 'Accomplishing something is hard, but ruining it is easy' — a creed that shapes every careful cut. Her patience and precision contrast with flashier heroes who rely on chance.",
+    "personality_trait": "disciplined, patient, principled",
+    "thematic_quote": "Accomplishing something is hard, but ruining it is easy.",
+    "source": "kingshotwiki.com/heroes/yeonwoo",
+    "fabricated": false
+  },
+  "deep_analysis": "Yeonwoo is the reliable offensive joiner for bear hunt and rally stacking — a Gen 1 Epic Archer whose signature value is delivering consistent damage without relying on RNG procs. Her Petalbloom is a unique three-wave attack dealing up to Attack × 175% on the second wave and Attack × 210% AOE on the third. Falling Swallow adds single-target damage with a debuff (up to -50% enemy Attack Speed), and Twin Fangs passively increases her Attack by +24%. Her Expedition skills: On Guard grants squad-wide +25% Lethality, and Well-Traveled uniquely speeds up Research by +15% — making her a dual-purpose hero for combat AND tech progression. No exclusive gear (Epic pattern). F2P through Hero Recruitment and Epic General Hero Shard. S-tier Bear Hunt and Joiner. Lore: a disciplined swordswoman trained since age 5 whose father's creed — 'Accomplishing something is hard, but ruining it is easy' — still guides her practice.",
+  "seo_keywords": [
+    "yeonwoo kingshot",
+    "yeonwoo kingshot skills",
+    "yeonwoo kingshot joiner",
+    "yeonwoo kingshot f2p",
+    "yeonwoo kingshot epic",
+    "yeonwoo kingshot bear hunt",
+    "yeonwoo kingshot archer",
+    "yeonwoo kingshot tier list"
+  ],
+  "unverified_fields": [
+    "single_source_kingshotwiki",
+    "category_split_inferred",
+    "skill_priority, gear_build, named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "sources_successful": 1,
+    "plus_baseline": "heroes.js"
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "SS",
+    "rarity": "SR",
+    "tier_percentage": 98,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [
+      "101"
+    ],
+    "description": "Yeonwoo is Chenko's mathematically identical twin with Research Speed utility instead of Damage Reduction. Her effect_op 101 (+25% Lethality) makes her interchangeable with Chenko—use ONE of them, then pair with Amane for optimal 2.25x DamageUp.",
+    "top_skills_handbook_generic_names": "On Guard Well",
+    "handbook_stats_match_kingshotwiki": false,
+    "handbook_skill_names_match_kingshotwiki": true
+  },
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "101"
+    ],
+    "description": "Lethality 101 — Chenko twin with Research Speed utility",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

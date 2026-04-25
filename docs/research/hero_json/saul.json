@@ -1,0 +1,468 @@
+{
+  "name": "Saul",
+  "slug": "saul",
+  "gen": 1,
+  "rarity": "legendary",
+  "troop": "archer",
+  "sub_class": "growth",
+  "sub_class_note": "Saul is the only Gen 1 Legendary with Growth sub-class. His Resourceful Expedition skill speeds construction and reduces construction costs — a unique city-management utility not found in other Gen 1 heroes.",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "research_session": "unnamed",
+  "sources_file": "docs/research/hero_raw_sources/saul.md",
+  "base_stats": {
+    "attack": 2697,
+    "defense": 2220,
+    "health": 16650,
+    "expedition_attack_pct": 200.16,
+    "expedition_defense_pct": 200.16,
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/database",
+      "kingshotdata.com/heroes/saul",
+      "kingshotguide.org/heroes/saul"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata",
+    "notable": "Highest Attack among verified Gen 1 Legendaries (vs Amadeus 2128, Jabel 2220, Helga 1873). Lowest Health (16650). Glass cannon archer."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Rapidfire",
+        "description": "Saul delivers multiple hits, each dealing damage and stunning the target for 2 seconds.",
+        "scaling": [
+          55,
+          60,
+          65,
+          70,
+          75
+        ],
+        "scaling_unit": "percent_of_attack_per_hit",
+        "additional_effects": [
+          "multi_hit",
+          "stun_2_seconds_per_hit"
+        ],
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/saul"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Final Prayer",
+        "description": "When Health is below 50%, Saul's Defense is significantly increased.",
+        "scaling": [
+          50,
+          75,
+          100,
+          125,
+          150
+        ],
+        "scaling_unit": "percent_defense_boost",
+        "trigger_condition": "self_health_below_50_percent",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/saul"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Superior Techniques",
+        "description": "Increases Attack Speed.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_attack_speed",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/saul"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Taskforce Training",
+        "description": "Increases total squads' Defense and Health.",
+        "scaling_defense": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "scaling_health": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "scaling_unit": "percent_squad_defense_and_health",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/saul"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Resourceful",
+        "description": "Increases Construction Speed and reduces Construction Costs. Unique city-management utility.",
+        "scaling_construction_speed": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "scaling_construction_cost_reduction": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "scaling_unit": "percent_construction_speed_and_cost_reduction",
+        "notable": "The only Gen 1 Legendary skill that affects city construction. Critical for F2P players optimizing early building cycles.",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/saul"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Positional Batter",
+        "description": "Increases the Lethality of all squads.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_lethality_all_squads",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/saul"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [],
+    "talent_note": "No Talent skill found in 2 sources. Saul follows the 8-skill pattern (same as Jabel), not the 9-skill pattern (Amadeus, Helga).",
+    "exclusive_gear_skills": [
+      {
+        "name": "Fearless Advance",
+        "category": "conquest",
+        "description": "The burst of strong determination of Saul under extreme situations increases his Attack. Unlocked only when Rabbitgear Cannon is equipped.",
+        "scaling": [
+          6,
+          12,
+          16,
+          20,
+          24
+        ],
+        "scaling_unit": "percent_attack",
+        "requires_exclusive_gear": "Rabbitgear Cannon",
+        "sources": [
+          "kingshotdata.com/heroes/saul (no hyphen: 6%/12%/16%/20%/24% upgrade preview)",
+          "kingshotguide.com/heroes/saul (Lv1: 6% ... Lv5: 24%)",
+          "heaven-guardian.com/kingshot-saul-guide (attack increases by 24% in extreme situations)",
+          "Perplexity Round 3 verification"
+        ],
+        "outlier_note": "kingshot-data.com/heroes/gen1/saul (WITH hyphen) says '10%/15%/20%/25%/30%' — this is the outlier. 3 independent sources say 6/12/16/20/24%. Reverting my earlier pattern-match assumption (which chose 30% max because of other exclusive-gear skill patterns).",
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Defend to Attack",
+        "category": "expedition",
+        "description": "Increases the Attack of defending troops. Unlocked only when Rabbitgear Cannon is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_attack_defender_troops",
+        "requires_exclusive_gear": "Rabbitgear Cannon",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/saul"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Rabbitgear Cannon",
+    "max_power": 225000,
+    "conquest_bonuses": {
+      "attack": 546,
+      "defense": 450,
+      "health": 3375
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 50.0,
+      "health_pct": 50.0
+    },
+    "unlocks_skills": [
+      "Fearless Advance",
+      "Defend to Attack"
+    ],
+    "notes": "Exclusive to Saul. Highest Attack bonus among Gen 1 exclusive gear pieces (+546 vs Jabel's +450, Amadeus's Aegis of Fate Conquest stats).",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Orange shards into Saul first in Gen 1",
+      "Defensive expedition buffs and AoE first",
+      "Positional Batter and Taskforce Training"
+    ],
+    "reasoning": "No source provides Saul's upgrade order. Pattern inference: Rapidfire first (AOE + stun battlefield control), then Superior Techniques and Final Prayer for combat kit, then Resourceful for city value, then exclusive gear.",
+    "sources": [
+      "allclash.com build guides via Perplexity",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "heaven-guardian.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 40",
+      "gloves": "Archer Epic Lv 32",
+      "chest": "Archer Epic Lv 32",
+      "boots": "Archer Rare Lv 40"
+    },
+    "reasoning": "Standard archer archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 60",
+      "gloves": "Archer Legendary Lv 40",
+      "chest": "Archer Legendary Lv 40",
+      "boots": "Archer Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "garrison_gen2",
+        "heroes": [
+          "Zoe",
+          "Hilde",
+          "Saul"
+        ],
+        "mode": "garrison_defense",
+        "partners": [
+          "Zoe",
+          "Hilde"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "F2P Early Game (Gen 1-2)",
+        "heroes": [
+          "Jabel",
+          "Zoe",
+          "Marlin",
+          "Chenko",
+          "Saul"
+        ],
+        "note": "Saul for construction speed + garrison stacking. Jabel + Zoe for garrison core.",
+        "source": "grindnstrat.com via heroes.js LINEUPS"
+      },
+      {
+        "lineup_name": "Garrison Defense",
+        "heroes": [
+          "Jabel",
+          "Zoe",
+          "Eric",
+          "Hilde",
+          "Saul"
+        ],
+        "note": "Saul stacks via joining and brings construction value outside battle.",
+        "source": "grindnstrat.com via heroes.js LINEUPS"
+      }
+    ],
+    "theoretical_synergy": "Saul's unique value is outside direct combat — his Resourceful skill accelerates city development, making him a core F2P pick even if he's not a rally lead. As a joiner, he stacks S-tier via garrison compositions. Pairs with Jabel and Zoe as the F2P defensive triangle.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hero Roulette",
+      "Hall of Heroes",
+      "Daily Deals",
+      "Mythic General Hero Shard",
+      "Swordland Shop"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "Saul has the MOST F2P access methods of any Gen 1 Legendary documented so far — 5 distinct routes to shards. Hall of Heroes and Daily Deals are standard F2P pools, Hero Roulette is a rotating free option, Swordland Shop and Mythic General Hero Shard are additional F2P drops. His construction-speed utility makes him a top F2P priority even if he's not the strongest combat hero.",
+    "sources": [
+      "kingshotwiki (5 methods)",
+      "kingshot-data (Hero Roulette)"
+    ],
+    "confidence": "high_2_source_convergence_strong_f2p"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "B",
+      "reasoning": "Not a rally lead. His kit is defensive and utility-focused.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "A",
+      "reasoning": "Strong garrison defender with Rapidfire AOE stun and Final Prayer defensive boost when his own HP drops. Taskforce Training buffs squad defense and health.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Adequate but not a priority for bear hunt.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "S",
+      "reasoning": "S-tier joiner specifically via garrison stacking. His Positional Batter squad-wide lethality buff and his exclusive gear's Defend to Attack make him a stacking powerhouse.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "high"
+    }
+  },
+  "lore_background": {
+    "title": "The Golden City Survivor",
+    "backstory": "Saul survived the cursed Golden City expedition, a doomed adventure where his teammates were turned to stone one by one. His captain's last words to him were 'Just smile! Smile because you lived!' — a command forged from the knowledge that survival is itself a debt owed to the dead. Saul carries that survivor's gratitude into battle, the memory of petrified friends shaping every strike.",
+    "personality_trait": "traumatized survivor, gratitude-forged, carries the dead with him",
+    "thematic_quote": "Just smile! Smile because you lived!",
+    "source": "kingshotwiki.com/heroes/saul",
+    "fabricated": false,
+    "note": "Short but evocative. All lore elements from kingshotwiki — actual in-game text. Title 'The Golden City Survivor' synthesized from the canonical backstory element."
+  },
+  "deep_analysis": "Saul is the most useful hero on this page that nobody will tell you is useful. He's a Gen 1 Legendary Archer with a Growth sub-class — the only Gen 1 Legendary whose skill kit extends outside direct combat into city management. His combat skills are solid: Rapidfire delivers multiple hits at up to Attack × 75% per hit with 2-second stuns, Final Prayer boosts his Defense by up to 150% when his own Health drops below 50%, and Superior Techniques adds +30% Attack Speed as a passive multiplier. His Expedition tree buffs squad defense and health (Taskforce Training), squad lethality (Positional Batter), and — the critical skill — Resourceful, which boosts Construction Speed by up to 15% and reduces Construction Costs by up to 15%. This is the only Gen 1 Legendary skill that affects city development, making Saul a dual-purpose hero: he fights in your garrison AND he speeds up the walls, barracks, and upgrade queues that determine your empire's growth ceiling. His exclusive gear Rabbitgear Cannon adds +546 Attack (highest exclusive-gear Attack bonus of any Gen 1 hero), plus +50% Lethality and +50% Health, and unlocks two more skills: Fearless Advance (scaling conflict between 10-30% and 6-24% across sources — flagged for audit) and Defend to Attack (+15% Attack for defender troops at max). Community tier lists place him at A-tier Garrison, S-tier Joiner, B-tier Rally and Bear Hunt. He's F2P-accessible through five different routes (Hero Roulette, Hall of Heroes, Daily Deals, Mythic General Hero Shard, Swordland Shop) — the most F2P methods of any Gen 1 Legendary documented. He's also a traumatized survivor: the lone walker-out of the cursed Golden City expedition where his teammates turned to stone, carrying his captain's last words as a command — 'Just smile! Smile because you lived!'",
+  "seo_keywords": [
+    "saul kingshot",
+    "saul kingshot build",
+    "saul kingshot skills",
+    "saul kingshot construction",
+    "saul kingshot f2p",
+    "saul kingshot joiner",
+    "saul rabbitgear cannon",
+    "saul resourceful construction"
+  ],
+  "unverified_fields": [
+    "skills.exclusive_gear_skills.Fearless Advance — scaling conflict (kingshot-data says 10/15/20/25/30%, kingshotwiki says 6/12/16/20/24%). Using kingshot-data values as primary based on standard pattern match.",
+    "skills.talent — empty array: no Talent skill found in 2 sources. Saul follows 8-skill pattern.",
+    "skill_priority.order — null",
+    "gear_recommendations.minimum_build — null: no Saul-specific build source",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "f2p_investment.shard_cost_to_star_up — null"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 2,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js (4-source pre-verified tier ratings)",
+    "scaling_conflicts_flagged": 1,
+    "field_null_count": 5,
+    "approach_note": "Tightest pipeline yet: 2 direct fetches only, no Perplexity or Grok. Sufficient for 2-source convergence on 6/8 skills. Flagged 1 scaling conflict on Fearless Advance."
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "SS",
+    "rarity": "SSR",
+    "tier_percentage": 98,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [],
+    "description": "Saul is the only hero with dual defensive effect_op codes (112 + 113) on a single skill. Four Sauls achieve 2.24x DefenseUp compared to 2.00x from four Gordons—a 12% mathematical advantage that compounds with other multipliers. His Positional Batter skill adds offensive utility for balanced compositions.",
+    "top_skills_handbook_generic_names": "Taskforce Training Resourceful",
+    "handbook_stats_match_kingshotwiki": true,
+    "handbook_skill_names_match_kingshotwiki": false
+  },
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "112",
+      "113"
+    ],
+    "description": "DUAL Defense 112 + Health 113 — 4× Saul = 2.24x DefenseUp",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

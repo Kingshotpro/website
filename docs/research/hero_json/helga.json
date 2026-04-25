@@ -1,0 +1,439 @@
+{
+  "name": "Helga",
+  "slug": "helga",
+  "gen": 1,
+  "rarity": "legendary",
+  "troop": "infantry",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "research_session": "unnamed",
+  "sources_file": "docs/research/hero_raw_sources/helga.md",
+  "base_stats": {
+    "attack": 1873,
+    "defense": 2220,
+    "health": 36630,
+    "expedition_attack_pct": 200.16,
+    "expedition_defense_pct": 200.16,
+    "sources": [
+      "kingshot-data.com/heroes/gen1/helga",
+      "kingshotwiki.com/heroes/helga",
+      "kingshotdata.com/heroes/helga",
+      "kingshotguide.org/heroes/helga"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Antler Assault",
+        "description": "Helga performs an antler charge, dealing area of effect damage, knocking the targets back, and stunning them for 1 second.",
+        "scaling": [
+          160,
+          176,
+          192,
+          208,
+          224
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "additional_effects": [
+          "knockback",
+          "stun_1_second"
+        ],
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Spear Charge",
+        "description": "Helga deals damage to the target.",
+        "scaling": [
+          150,
+          165,
+          180,
+          195,
+          210
+        ],
+        "scaling_unit": "percent_of_attack_single_target",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Fury",
+        "description": "When taking damage, Helga has a 10% chance of increasing Attack for 3 seconds. Stacks up to 5 times.",
+        "scaling": [
+          4,
+          6,
+          8,
+          10,
+          12
+        ],
+        "scaling_unit": "percent_attack_boost",
+        "trigger_condition": "on_taking_damage",
+        "proc_chance": 10,
+        "duration_seconds": 3,
+        "max_stacks": 5,
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Oath of Guardian",
+        "description": "Chance of reducing damage taken by 50% for all squads.",
+        "scaling": [
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "scaling_unit": "percent_proc_chance",
+        "effect_on_proc": "50_percent_damage_reduction_all_squads",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Echoes of Valhalla",
+        "description": "Helga blows a horn to motivate the squad, increasing the Attack of all squads.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_attack_all_squads",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Nature's Balance",
+        "description": "Helga invites everyone to embrace nature, increasing the Lethality of all squads.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_lethality_all_squads",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [
+      {
+        "name": "Power of the Deer",
+        "description": "Helga's unique talent bolsters the Attack and Defense of all deployed soldiers, even in her absence.",
+        "scaling": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "scaling_unit": "percent_attack_and_defense_all_deployed",
+        "passive_always_active": true,
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "exclusive_gear_skills": [
+      {
+        "name": "Valiant Fury",
+        "category": "conquest",
+        "description": "Fueled by fury, Helga increases damage dealt. Unlocked only when Bands of Tyre is equipped.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_damage_dealt",
+        "requires_exclusive_gear": "Bands of Tyre",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Zeal",
+        "category": "expedition",
+        "description": "Helga joins the rally, increasing the Lethality of rallied troops. Unlocked only when Bands of Tyre is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_lethality_rally_troops",
+        "requires_exclusive_gear": "Bands of Tyre",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity",
+          "kingshotdata.com/heroes/helga"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Bands of Tyre",
+    "max_level": 50,
+    "max_power": 247500,
+    "conquest_bonuses": {
+      "attack": 379,
+      "defense": 495,
+      "health": 7425
+    },
+    "expedition_bonuses": {
+      "infantry_lethality_pct": 55.5,
+      "infantry_health_pct": 55.5
+    },
+    "unlocks_skills": [
+      "Valiant Fury",
+      "Zeal"
+    ],
+    "notes": "Exclusive to Helga. Perplexity/allclash called it 'Helga's Lance' — likely source confusion or a different piece. 2 primary sources (kingshot-data, kingshotwiki) confirm 'Bands of Tyre' as canonical.",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Max Antler Assault first (AOE stun for battlefield control)",
+      "Spear Charge and Fury next (Conquest damage kit)",
+      "Expedition skills (Oath of Guardian, Echoes of Valhalla, Nature's Balance) for squad buffs",
+      "Power of the Deer passive (low-priority since it's always active)",
+      "Exclusive Gear skills (Valiant Fury, Zeal) after equipping Bands of Tyre"
+    ],
+    "reasoning": "Inferred from general pattern; no explicit upgrade-order source for Helga.",
+    "sources": [
+      "inference"
+    ],
+    "confidence": "low_inferred"
+  },
+  "gear_recommendations": {
+    "archetype": "infantry",
+    "stat_focus_by_piece": {
+      "helmet": "infantry_lethality",
+      "gloves": "infantry_health",
+      "chest": "infantry_health",
+      "boots": "infantry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Infantry Rare, Level 32",
+      "gloves": "Infantry Rare, Level 40",
+      "chest": "Infantry Rare, Level 40",
+      "boots": "Infantry Rare, Level 32"
+    },
+    "optimum_build": {
+      "helmet": "Infantry Epic, Level 60",
+      "gloves": "Infantry Epic, Level 40",
+      "chest": "Infantry Epic, Level 40",
+      "boots": "Infantry Epic, Level 60"
+    },
+    "reasoning": "Standard Infantry archetype. Her exclusive gear Bands of Tyre adds +55.50% Infantry Lethality and +55.50% Infantry Health, stacking with the regular gear priorities (Lethality on Helmet/Boots, Health on Gloves/Chest).",
+    "sources": [
+      "allclash.com/best-build-for-helga-in-kingshot (via Perplexity)"
+    ],
+    "confidence": "high_for_archetype_single_source_for_levels"
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Gen 2 Rally Alternative (no Amadeus)",
+        "heroes": [
+          "Helga",
+          "Hilde",
+          "Marlin"
+        ],
+        "source": "kingshotguides.com"
+      }
+    ],
+    "named_pairs_reasoning": "No source provides explicit 'Helga + X because Y' pair recommendations.",
+    "lineup_inferences": [
+      {
+        "lineup_name": "Rally Offense alt",
+        "heroes": [
+          "Helga",
+          "Vivian",
+          "Chenko",
+          "Amane",
+          "Yeonwoo"
+        ],
+        "note": "Helga works as an early rally alternative to Amadeus. Her squad-wide Attack and Lethality buffs (Echoes of Valhalla, Nature's Balance) plus her Fury self-Attack stacking suggest pairing with joiners that benefit from extended fights.",
+        "source": "inference from heroes.js tags + skill kit"
+      }
+    ],
+    "theoretical_synergy": "Helga is commonly framed as an 'Amadeus alternative' — same offensive-infantry role, different acquisition path (she's behind VIP packs, he's behind higher-VIP packs). Falls off in later generations as stronger rally leads become available. Not typically paired with another rally lead; she IS the lead when used.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "VIP Level 1-6 special gift packages",
+      "First purchase unlocks"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "Helga is VIP-gated. Multiple sources confirm she is unlocked exclusively through purchase packages and VIP-level gifts. kingshot-data explicitly states 'You can unlock Helga by purchasing VIP Level special gift packages.' Lower VIP tier than Amadeus (VIP 1-6 vs Amadeus VIP 7+), so she's accessible to more spenders — but not to F2P players.",
+    "sources": [
+      "kingshot-data.com/heroes/gen1/helga",
+      "Perplexity synthesis"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "A",
+      "reasoning": "Strong early rally alternative, positioned as an Amadeus alt for players who have VIP 1-6 access but not VIP 7+. Her Conquest AOE (Antler Assault with knockback + stun), plus squad-wide buffs from Expedition skills make her a legitimate rally lead for early and mid game. Falls off relative to Gen 5-6 rally leads.",
+      "sources": [
+        "heroes.js baseline (4 sources cross-verified)"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "B",
+      "reasoning": "Workable for defense but her kit emphasizes offensive pressure rather than sustained defense.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Adequate bear hunt contributor via her squad-wide damage buffs. Not a top pick.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically used as a joiner. Her value is as a rally leader.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Defiant Viking",
+    "backstory": "A Viking warrior from the northlands with a tragic backstory. Born into a Viking tribe where her parents were respected warriors, Helga learned to ride a moose as a young girl. But her defining trait was a refusal to accept the warlike ways of her ancestors. She challenged tribal tradition in a public confrontation with the warchief, was forced into a death duel, and defeated the warchief's champion. She was allowed to leave on mooseback. After her departure, the warchief began a great cleansing of the tribe, eventually becoming Viking King. That one act of resistance from Helga still burns in the Viking King's heart.",
+    "personality_trait": "principled, defiant, pacifist-warrior, exile forged by conviction",
+    "thematic_quote": null,
+    "source": "kingshotwiki.com/heroes/helga",
+    "fabricated": false,
+    "note": "All lore elements from kingshotwiki. Title 'The Defiant Viking' synthesized from the defining trait of refusing tribal tradition."
+  },
+  "deep_analysis": "Helga is the reluctant Viking warrior — a Legendary Infantry hero framed by community guides as the 'Amadeus alternative' for spenders at VIP 1-6 who don't yet have access to Amadeus's VIP 7+ gate. Her Conquest kit is built around AOE disruption: Antler Assault deals up to Attack × 224% area damage with knockback and a 1-second stun, Spear Charge adds Attack × 210% single-target follow-up, and Fury grants a 10% chance per damage taken to stack up to +60% Attack across 5 stacks — turning her into a rage counter-puncher the longer a fight drags on. Her Expedition tree provides squad support: Oath of Guardian has up to a 40% chance to halve incoming squad damage, Echoes of Valhalla grants all squads +25% Attack, and Nature's Balance adds another +25% Lethality. Her Talent Power of the Deer passively boosts all deployed soldiers by up to +10% Attack and Defense — an always-on foundation. Her exclusive gear Bands of Tyre adds +55.50% Infantry Lethality and +55.50% Infantry Health on top of +379 Attack, +495 Defense, +7425 Health base stats, and unlocks two more skills: Valiant Fury (+30% self damage dealt) and Zeal (+15% Rally Troops Lethality). Community tier lists place her at A-tier Rally, B-tier Garrison and Bear Hunt — she's a strong early-to-mid rally alternative, but falls off against Gen 5-6 rally leads. She's behind VIP 1-6 gift packages, which makes her accessible to most spenders but not to F2P players. Her lore is among the richest in Gen 1: a Viking princess who refused her tribe's warrior culture, dueled the warchief's champion, and rode into exile on mooseback — her defiance still burning in the Viking King's heart.",
+  "seo_keywords": [
+    "helga kingshot",
+    "helga kingshot build",
+    "helga kingshot skills",
+    "helga kingshot gear",
+    "helga kingshot rally",
+    "helga bands of tyre",
+    "helga kingshot vip",
+    "helga kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — inferred only, no explicit source for Helga specifically",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "f2p_investment.shard_cost_to_star_up — null",
+    "gear_recommendations.optimum_build level 60 for Helmet and Boots — single source (allclash via Perplexity)",
+    "'Helga's Lance' discrepancy — Perplexity/allclash used this name, 2 primary sources say 'Bands of Tyre'. Possibly a secondary piece OR source confusion. Using Bands of Tyre as canonical."
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 2,
+    "ai_apis_called": 1,
+    "ai_apis_usable": 1,
+    "total_evidence_sources": 3,
+    "plus_baseline_source": "heroes.js (4-source pre-verified tier ratings)",
+    "wording_conflicts_flagged": 1,
+    "field_null_count": 4
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Budget Amadeus Alternative widget",
+    "role": "infantry_alternative_gen1",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

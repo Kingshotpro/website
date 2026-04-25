@@ -1,0 +1,452 @@
+{
+  "name": "Jabel",
+  "slug": "jabel",
+  "gen": 1,
+  "rarity": "legendary",
+  "troop": "cavalry",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "research_session": "unnamed",
+  "sources_file": "docs/research/hero_raw_sources/jabel.md",
+  "base_stats": {
+    "attack": 2220,
+    "defense": 2220,
+    "health": 22200,
+    "expedition_attack_pct": 200.16,
+    "expedition_defense_pct": 200.16,
+    "sources": [
+      "kingshot-data.com/heroes/gen1/jabel",
+      "kingshotwiki.com/heroes/jabel",
+      "kingshothandbook.com/heroes/database",
+      "kingshotdata.com/heroes/jabel",
+      "kingshotguide.org/heroes/jabel"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Gallant Throw",
+        "description": "Jabel throws a spear that pierces defenses, dealing AOE damage and pinning the targets for 1.5s.",
+        "scaling": [
+          180,
+          198,
+          216,
+          234,
+          252
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "additional_effect": "pin_targets_1.5_seconds",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity synthesis",
+          "kingshotdata.com/heroes/jabel"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Brave the Storm",
+        "description": "A true knight bravely confronts enemies, dealing damage to the target.",
+        "scaling": [
+          150,
+          165,
+          180,
+          195,
+          210
+        ],
+        "scaling_unit": "percent_of_attack_single_target",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity synthesis",
+          "kingshotdata.com/heroes/jabel"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Persistence",
+        "description": "Adversity ignites endless potential, increasing Attack Speed when Health is below 50%.",
+        "scaling": [
+          20,
+          30,
+          40,
+          50,
+          60
+        ],
+        "scaling_unit": "percent_attack_speed",
+        "trigger_condition": "self_health_below_50_percent",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity synthesis",
+          "kingshotdata.com/heroes/jabel"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Rally Flag",
+        "description": "Chance to reduce damage taken by 50% for all squads. Scales the proc chance from 8% to 40%.",
+        "scaling": [
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "scaling_unit": "percent_proc_chance",
+        "effect_on_proc": "50_percent_damage_reduction_all_squads",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity synthesis",
+          "kingshotdata.com/heroes/jabel"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Hero's Domain",
+        "description": "Jabel, a fearless knight, grants all squads a 50% chance of dealing more damage when attacking. The proc chance is fixed at 50%; the damage bonus scales.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_damage_bonus_on_proc",
+        "proc_chance_fixed": 50,
+        "sources": [
+          "kingshotwiki.com/heroes/jabel (explicit: 'a fearless knight, grants all squads a 50% chance of dealing 10%/20%/30%/40%/50% more damage')",
+          "kingshotdata.com/heroes/jabel (upgrade preview shows Damage Up: 10%/20%/30%/40%/50%)",
+          "Perplexity Round 2 verification (2 sources confirm 50% chance is fixed, damage scales)"
+        ],
+        "confidence": "VERIFIED_3_independent_sources",
+        "correction_note": "Previous entry flagged a wording conflict. Re-audit confirmed the fixed-50%-proc-chance interpretation is canonical across kingshotwiki and Jabel's upgrade preview in kingshotdata."
+      },
+      {
+        "name": "Youthful Rage",
+        "description": "Jabel's valiant spirit inspires everyone, increasing Squads' Lethality.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_squad_lethality",
+        "sources": [
+          "kingshotwiki.com/heroes/jabel (explicit: 'increasing Squads' Lethality by 5%/10%/15%/20%/25%')",
+          "Perplexity Round 2 verification confirms Lethality as canonical wording",
+          "kingshotdata.com/heroes/jabel"
+        ],
+        "confidence": "VERIFIED_3_independent_sources",
+        "correction_note": "Previous entry flagged a wording conflict between 'damage dealt' and 'Lethality'. Re-audit confirmed 'Lethality' is canonical per kingshotwiki. Lethality is distinct from damage dealt in Kingshot's combat formula."
+      }
+    ],
+    "talent": [],
+    "talent_note": "No Talent skill found in 3 sources. Jabel may not have one, or it was not surfaced by any source consulted. Left as empty array — flagged in unverified_fields.",
+    "exclusive_gear_skills": [
+      {
+        "name": "Crimson Spirit",
+        "category": "conquest",
+        "description": "The will to win helps Jabel breakthrough limitations, increasing damage dealt. Unlocked only when Greaves of Faith is equipped.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_damage_dealt",
+        "requires_exclusive_gear": "Greaves of Faith",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "Perplexity",
+          "kingshotdata.com/heroes/jabel"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Divine Strength",
+        "category": "expedition",
+        "description": "Based on steadfast faith, the Lethality of defending Troop is increased. Unlocked only when Greaves of Faith is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_lethality_defender_troops",
+        "requires_exclusive_gear": "Greaves of Faith",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/jabel"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Greaves of Faith",
+    "type": "boots_class_exclusive_equipment",
+    "max_power": 225000,
+    "conquest_bonuses": {
+      "attack": 450,
+      "defense": 450,
+      "health": 4500
+    },
+    "expedition_bonuses": {
+      "cavalry_lethality_pct": 50.0,
+      "cavalry_health_pct": 50.0
+    },
+    "unlocks_skills": [
+      "Crimson Spirit",
+      "Divine Strength"
+    ],
+    "notes": "Exclusive to Jabel. kingshot-data categorizes the bonuses into Conquest (raw stats) and Expedition (troop-type scaling percentages).",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "high_2_source_convergence",
+    "fabrication_flag": "Perplexity incorrectly called it 'Jabel's Lance' in its synthesis — corrected from 2 primary sources."
+  },
+  "skill_priority": {
+    "order": [
+      "Max Gallant Throw first (AOE disruption + pin)",
+      "Brave the Storm and Persistence next (Conquest damage)",
+      "Expedition skills (Rally Flag + Hero's Domain + Youthful Rage) for team impact",
+      "Exclusive Gear skills (Crimson Spirit + Divine Strength) after equipping Greaves of Faith"
+    ],
+    "reasoning": "Community consensus prioritizes Gallant Throw's AOE stun first for battlefield control, then single-target and self-buff Conquest skills, then squad-wide Expedition buffs. Full step-by-step manual order not available across sources.",
+    "sources": [
+      "Perplexity synthesis from allclash + YouTube guides"
+    ],
+    "confidence": "medium_partial_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "cavalry",
+    "stat_focus_by_piece": {
+      "helmet": "cavalry_lethality",
+      "gloves": "cavalry_health",
+      "chest": "cavalry_health",
+      "boots": "cavalry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Cavalry Epic, Level 40",
+      "gloves": "Cavalry Epic, Level 32",
+      "chest": "Cavalry Epic, Level 32",
+      "boots": "Cavalry Epic, Level 40"
+    },
+    "optimum_build": {
+      "helmet": "Cavalry Legendary, Level 40",
+      "gloves": "Cavalry Epic, Level 51",
+      "chest": "Cavalry Epic, Level 51",
+      "boots": "Cavalry Legendary, Level 40"
+    },
+    "reasoning": "Standard Cavalry archetype — Helmet and Boots prioritize Cavalry Lethality (damage amp), Gloves and Chest prioritize Cavalry Health (frontline survivability). Jabel's Greaves of Faith synergizes with this split: its Cavalry Lethality +50% stacks with Helmet/Boots priorities, its Cavalry Health +50% stacks with Gloves/Chest.",
+    "sources": [
+      "allclash.com/best-build-for-jabel-in-kingshot (via Perplexity)"
+    ],
+    "confidence": "high_single_source_jabel_specific"
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Gen 1-2 F2P Defender",
+        "heroes": [
+          "Jabel",
+          "Zoe",
+          "Saul"
+        ],
+        "source": "heroes.js F2P lineup"
+      }
+    ],
+    "named_pairs_reasoning": "No source provides explicit 'Jabel + X because Y' pair recommendations. Lineup inferences below used as proxy.",
+    "lineup_inferences": [
+      {
+        "lineup_name": "F2P Early Game (Gen 1-2)",
+        "heroes": [
+          "Jabel",
+          "Zoe",
+          "Marlin",
+          "Chenko",
+          "Saul"
+        ],
+        "note": "Jabel + Zoe for garrison core. Marlin for offense. Chenko for rally joining. Saul for construction speed + garrison stacking.",
+        "source": "grindnstrat.com via heroes.js LINEUPS (cross-verified)"
+      },
+      {
+        "lineup_name": "Garrison Defense",
+        "heroes": [
+          "Jabel",
+          "Zoe",
+          "Eric",
+          "Hilde",
+          "Saul"
+        ],
+        "note": "Jabel + Zoe core tanks. Eric adds infantry depth. Hilde heals and stacks. Saul stacks via joining.",
+        "source": "grindnstrat.com via heroes.js LINEUPS (cross-verified)"
+      }
+    ],
+    "theoretical_synergy": "Jabel's kit stacks naturally with other defensive heroes (Zoe, Eric, Hilde). Her Rally Flag damage reduction plus Hero's Domain damage chance makes her a strong support for any squad-based composition. Her F2P accessibility means she's the foundation of nearly every F2P garrison lineup.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hall of Heroes (default Legendary cavalry pool)",
+      "Early game progression"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "Jabel is specifically highlighted as THE F2P cavalry tank pick and the only early cavalry Legendary available through Hall of Heroes. Multiple community guides recommend her as a core F2P investment from day one. kingshot-data's acquisition field explicitly says 'Hall of Heroes' which is the standard F2P access pool, distinguishing her from Amadeus who has 'Other' (premium) acquisition.",
+    "sources": [
+      "kingshot-data.com/heroes/gen1/jabel (Hall of Heroes)",
+      "Perplexity synthesis (highly F2P viable)",
+      "heroes.js baseline (4-source cross-verified, flagged F2P)"
+    ],
+    "confidence": "high_3_source_convergence"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "B",
+      "reasoning": "Jabel is not primarily a rally lead. Her kit is defensive/support — Rally Flag damage reduction, Hero's Domain squad damage proc, Persistence self-sustain. She's workable as a rally joiner but not optimal as a rally leader. Offensive teams prefer Amadeus/Helga for the lead slot.",
+      "sources": [
+        "heroes.js baseline (4 sources cross-verified)",
+        "community context"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "S",
+      "reasoning": "The foundational garrison tank. Extremely robust, available early via Hall of Heroes, core of any defensive lineup from day one through late game. Her Persistence Attack Speed boost under pressure plus Rally Flag's chance to reduce incoming damage makes her one of the strongest defensive cornerstones in the entire roster.",
+      "sources": [
+        "heroes.js baseline (4 sources cross-verified)",
+        "community context"
+      ],
+      "confidence": "high_5_plus_sources"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Usable but not optimal. Her kit is defense-oriented rather than burst-offense focused, which is what bear hunt rewards. Viable as a bear hunt contributor but not a priority pick.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically used as a joiner. Her value is as a garrison anchor or occasional rally joiner, not as a dedicated joiner slot.",
+      "sources": [
+        "heroes.js baseline"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The First Paladin of the Imperial Cavalry",
+    "backstory": "A paladin shaped by tragedy. Jabel lost her village to bandits as a young girl. Her father Aman, a Holy Ecclesia knight, became her guide — his wisdom that 'Defeat is temporary. True despair is only felt in the absence of conviction and heart' became her creed. She grew up to become the first Paladin of the Imperial Cavalry, devoted to upholding faith and idealism amid the chaos that had taken her home.",
+    "personality_trait": "faithful, idealistic, steadfast, tragedy-forged conviction",
+    "thematic_quote": "Defeat is temporary. True despair is only felt in the absence of conviction and heart.",
+    "source": "kingshotwiki.com/heroes/jabel",
+    "fabricated": false,
+    "note": "All backstory elements from kingshotwiki.com — actual in-game lore. Title 'The First Paladin of the Imperial Cavalry' is lifted directly from the wiki. The thematic quote is attributed to her father Aman and cited as formative to her character."
+  },
+  "deep_analysis": "Jabel is the F2P cornerstone of the Kingshot roster: the only Legendary cavalry hero available through Hall of Heroes from day one, and the foundational garrison tank that every defensive lineup is built around. Her kit has two faces. The offensive side is her Conquest tree: Gallant Throw is a piercing-spear AOE dealing up to Attack × 252% with a 1.5 second pin, and Brave the Storm adds Attack × 210% single-target follow-up. The defensive side is what makes her meta: Persistence increases her Attack Speed by up to 60% when her Health drops below 50%, turning her from a tank into a counter-puncher once the enemy commits. Her Expedition skills extend her defensive reach across the whole army — Rally Flag has up to a 40% chance to cut incoming squad damage by half, Hero's Domain grants a damage proc chance that stacks with any composition, and Youthful Rage adds up to 25% squad Lethality (with minor wording discrepancy across sources). Her exclusive gear Greaves of Faith adds +50% Cavalry Lethality and +50% Cavalry Health on top of +450 Attack/+450 Defense/+4500 Health stat bonuses, and unlocks two more skills: Crimson Spirit (up to +30% damage dealt) and Divine Strength (up to +15% Lethality for defender troops). Her tier ratings are clear: S-tier Garrison, B-tier Rally, B-tier Bear Hunt. She's not a rally leader — she's the wall behind whichever rally leader you pick. For F2P players, she is the highest-priority investment. Pair her with Zoe in garrison defense, add Saul for stacking, and you have the F2P defensive core that carries from Gen 1 through late-game.",
+  "seo_keywords": [
+    "jabel kingshot",
+    "jabel kingshot build",
+    "jabel kingshot skills",
+    "jabel kingshot gear",
+    "jabel kingshot f2p",
+    "jabel kingshot garrison",
+    "jabel greaves of faith",
+    "jabel kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skills.talent — empty array: no Talent skill found in 3 sources for Jabel. May not exist for her, or not surfaced.",
+    "skills.expedition.Hero's Domain wording conflict — kingshot-data says chance scales (10-50%) with fixed 50% damage; kingshotwiki says chance is fixed 50% with damage scaling (10-50%). Mechanically distinct. Flagged for audit.",
+    "skills.expedition.Youthful Rage wording — kingshot-data says 'damage dealt'; kingshotwiki says 'Lethality'. Lethality likely canonical.",
+    "skill_priority.order — partial consensus only, no step-by-step manual order in sources",
+    "best_partners.named_pairs — null: lineup inferences used as proxy (no explicit pair reasoning in sources)",
+    "counters — null: no source provides counter information",
+    "f2p_investment.shard_cost_to_star_up — null: no source provides exact totals",
+    "base_stats — 2 sources converge but could use third triangulation",
+    "tier_ratings.joiner — '—' per heroes.js baseline; no in-depth joiner analysis available",
+    "Perplexity fabrication excluded: Perplexity called Jabel's exclusive gear 'Jabel's Lance', contradicted by 2 primary sources. The correct name is 'Greaves of Faith'."
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 2,
+    "ai_apis_called": 1,
+    "ai_apis_usable": 1,
+    "ai_apis_fabrication_partial": 1,
+    "total_evidence_sources": 3,
+    "plus_baseline_source": "heroes.js (4-source pre-verified tier ratings)",
+    "fabrication_corrections": 1,
+    "wording_conflicts_flagged": 2,
+    "field_null_count": 3,
+    "approach_note": "Tighter pipeline than Amadeus: 1 Perplexity call + 2 direct fetches (kingshot-data + kingshotwiki) produced sufficient cross-verification for 8 skills with 2-3 source convergence each. Skipped allclash direct (was 403 for Amadeus), kingshotmastery (Jabel data already in heroes.js baseline), Grok (produces honest-null for Kingshot per Amadeus session, no added value), DeepSeek (fabrication risk established)."
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "A",
+    "rarity": "SSR",
+    "tier_percentage": 85,
+    "s_level": 3,
+    "speed": 100,
+    "effect_op_codes": [],
+    "description": "Jabel represents the best defensive investment for new F2P players. Available free from the 7-day sign-in reward, she provides immediate garrison capability that carries through Generations 1-2 before transitioning to Zoe.",
+    "top_skills_handbook_generic_names": "Rally Flag Hero's Domain",
+    "handbook_stats_match_kingshotwiki": true,
+    "handbook_skill_names_match_kingshotwiki": false
+  },
+  "effect_op_codes": {
+    "type": "effect_op_undocumented",
+    "codes": [],
+    "description": "Not listed in Handbook database page (Gen 1 F2P Defender — likely 112 or 113 but not confirmed)",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "handbook_confirmed_no_code"
+  }
+}

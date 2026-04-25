@@ -1,0 +1,19 @@
+All images in this directory are AI-generated via Midjourney v6 from original prompts.
+Unofficial. Not affiliated with Century Games.
+
+Per-file (each is one quadrant of a 4-image MJ grid; alternates remain at the same jobId on cdn.midjourney.com):
+
+  frame_13_marrow_student_mark.png      — Marrow's triple-loop forearm tattoo (Student Mark macro, STORY.md §5).     jobId 65b4213b-591e-4458-8aa4-db7de77f99a2
+  frame_13_marrow_student_mark_alt_1.png — Frame 13 runner-up.                                                        jobId 65b4213b-591e-4458-8aa4-db7de77f99a2
+  frame_13_marrow_student_mark_alt_2.png — Frame 13 runner-up.                                                        jobId 65b4213b-591e-4458-8aa4-db7de77f99a2
+
+  frame_14_thessa_knot_pendant.png      — Thessa's grove-circle bronze pendant on worn leather cord (STORY.md §5).   jobId a42a50ab-ab47-464c-9a8b-662c34d9628b
+  frame_14_thessa_knot_pendant_alt_1.png — Frame 14 runner-up.                                                        jobId a42a50ab-ab47-464c-9a8b-662c34d9628b
+  frame_14_thessa_knot_pendant_alt_2.png — Frame 14 runner-up.                                                        jobId a42a50ab-ab47-464c-9a8b-662c34d9628b
+
+  frame_15_thessa_knot_scar.png         — Thessa's forearm grove-knot scar, half-healed (STORY.md §7).               jobId ebc05011-231e-4384-8fbb-9d01a01f09d9
+  frame_15_thessa_knot_scar_alt_1.png   — Frame 15 runner-up.                                                        jobId ebc05011-231e-4384-8fbb-9d01a01f09d9
+  frame_15_thessa_knot_scar_alt_2.png   — Frame 15 runner-up.                                                        jobId ebc05011-231e-4384-8fbb-9d01a01f09d9
+
+Original characters. Not affiliated with Century Games or any Kingshot canonical hero.
+Generated 2026-04-24.

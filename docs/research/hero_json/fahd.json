@@ -1,0 +1,306 @@
+{
+  "name": "Fahd",
+  "slug": "fahd",
+  "gen": 1,
+  "rarity": "epic",
+  "troop": "cavalry",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/fahd.md",
+  "base_stats": {
+    "attack": 1776,
+    "defense": 2220,
+    "health": 17760,
+    "expedition_attack_pct": 140.11,
+    "expedition_defense_pct": 140.11,
+    "sources": [
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/database",
+      "kingshotdata.com/heroes/fahd",
+      "kingshotguide.org/heroes/fahd"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Sandstorm",
+        "description": "Reduces all enemy squads' Attack for 2 seconds.",
+        "scaling": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "scaling_unit": "percent_enemy_attack_reduction",
+        "duration_seconds": 2,
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/fahd",
+          "kingshotguide.org/heroes/fahd"
+        ],
+        "confidence": "VERIFIED_3_independent_sources_kingshotwiki_plus_kingshotdata"
+      },
+      {
+        "name": "Eagle Wings",
+        "description": "Activates after Sandstorm. Increases his and nearby friendly squads' Attack for 2 seconds.",
+        "scaling": [
+          15,
+          20,
+          25,
+          30,
+          35
+        ],
+        "scaling_unit": "percent_attack_self_and_nearby_allies",
+        "duration_seconds": 2,
+        "trigger_condition": "after_sandstorm_cast",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/fahd"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      },
+      {
+        "name": "Dune General",
+        "description": "Increases his Attack Speed.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_self_attack_speed",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/fahd"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Desert Eclipse",
+        "description": "Reduces all enemy squads' damage dealt.",
+        "scaling": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_enemy_damage_dealt_reduction",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/database",
+          "kingshotdata.com/heroes/fahd"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Pathfinder",
+        "description": "Increases Solo Hunting March Speed.",
+        "scaling": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "scaling_unit": "percent_solo_hunting_march_speed",
+        "notable": "Solo-hunting utility skill.",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/database",
+          "kingshotdata.com/heroes/fahd"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": []
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Epic heroes do not have exclusive gear.",
+  "skill_priority": {
+    "order": [
+      "Max Desert Eclipse (Expedition 201 OppDamageDown) FIRST",
+      "Then Pathfinder",
+      "Conquest as filler"
+    ],
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "cavalry",
+    "stat_focus_by_piece": {
+      "helmet": "cavalry_lethality",
+      "gloves": "cavalry_health",
+      "chest": "cavalry_health",
+      "boots": "cavalry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Cavalry Rare Lv 32",
+      "gloves": "Cavalry Rare Lv 32",
+      "chest": "Cavalry Rare Lv 32",
+      "boots": "Cavalry Rare Lv 32"
+    },
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Cavalry Epic Lv 40",
+      "gloves": "Cavalry Epic Lv 40",
+      "chest": "Cavalry Epic Lv 40",
+      "boots": "Cavalry Epic Lv 40"
+    },
+    "reasoning": "Standard cavalry archetype at epic tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides)."
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "partner_pair": [
+          "Fahd",
+          "Eric"
+        ],
+        "math": "201 + 202 = 1.44x OppDamageDown",
+        "use_case": "essential against whale attackers"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Very low priority. Only fills a joiner slot when no other option exists.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hero Recruitment",
+      "Epic General Hero Shard"
+    ],
+    "reasoning": "F2P-accessible but heroes.js flags as 'very low priority — only use if you have absolutely no other joiner options.'",
+    "confidence": "high",
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    }
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "garrison": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "bear_hunt": {
+      "tier": "D",
+      "reasoning": "Very low bear hunt value — quickly outclassed.",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "joiner": {
+      "tier": "B",
+      "reasoning": "Usable joiner only when alternatives are unavailable.",
+      "sources": [
+        "heroes.js"
+      ]
+    }
+  },
+  "lore_background": {
+    "title": "The Desert Warrior with the Eagle Companion",
+    "backstory": "Fahd is a desert warrior and skilled cavalry commander who fights alongside an eagle — coordinating tactical maneuvers through coded signals with his bird companion. He values honor over wealth and is known for telling captivating stories to children of the villages he passes through. His battlefield precision is matched by his devotion to a principled life outside combat.",
+    "personality_trait": "honorable, eagle-bonded, storyteller",
+    "source": "kingshotwiki.com/heroes/fahd",
+    "fabricated": false
+  },
+  "deep_analysis": "Fahd is the lowest-priority Epic hero on the Kingshot roster — a Gen 1 Epic Cavalry whose kit has a unique Sandstorm + Eagle Wings sequence (apply Sandstorm debuff first, then Eagle Wings activates for a +35% Attack buff to himself and nearby allies for 2 seconds). Dune General adds +30% self Attack Speed, Desert Eclipse reduces enemy damage dealt by 20%, and Pathfinder uniquely boosts Solo Hunting March Speed by up to +100%. No exclusive gear (Epic pattern). heroes.js flags him as 'very low priority — only use if you have absolutely no other joiner options.' His mechanical value is outweighed by almost every other Epic hero. His lore, however, is one of the most evocative in the Epic pool: a desert warrior whose true partner is an eagle he commands through coded signals, a man who values honor over wealth and tells captivating stories to children. He's the hero you don't invest in, but whose story you remember.",
+  "seo_keywords": [
+    "fahd kingshot",
+    "fahd kingshot skills",
+    "fahd kingshot f2p",
+    "fahd kingshot cavalry",
+    "fahd kingshot build",
+    "fahd kingshot epic",
+    "fahd kingshot tier list",
+    "fahd kingshot desert"
+  ],
+  "unverified_fields": [
+    "single_source_kingshotwiki",
+    "skill_priority, gear_build, named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "sources_successful": 1,
+    "plus_baseline": "heroes.js"
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "A",
+    "rarity": "SR",
+    "tier_percentage": 85,
+    "s_level": 3,
+    "speed": 100,
+    "effect_op_codes": [
+      "201"
+    ],
+    "description": "Fahd provides unique OppDamageDown (effect_op 201) that directly reduces enemy damage output. Unlike DefenseUp, this debuffs the ENEMY, making Fahd essential against whale attackers. Pair with Eric (202) for 1.44x OppDamageDown multiplier.",
+    "top_skills_handbook_generic_names": "Desert Eclipse Pathfinder",
+    "handbook_stats_match_kingshotwiki": true,
+    "handbook_skill_names_match_kingshotwiki": true
+  },
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "201"
+    ],
+    "description": "OppDamageDown 201 — unique debuffer, pairs with Eric for 1.44x",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

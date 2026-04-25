@@ -1,0 +1,441 @@
+{
+  "name": "Margot",
+  "slug": "margot",
+  "gen": 4,
+  "rarity": "legendary",
+  "troop": "cavalry",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/margot.md",
+  "base_stats": {
+    "attack": 4106,
+    "defense": 4106,
+    "health": 41070,
+    "expedition_attack_pct": 370.29,
+    "expedition_defense_pct": 370.29,
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki",
+      "kingshotdata.com/heroes/margot",
+      "kingshotguide.org/heroes/margot"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Ambush",
+        "description": "Margot ambushes an enemy with bombs, dealing AOE damage.",
+        "scaling": [
+          300,
+          330,
+          360,
+          390,
+          420
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/margot",
+          "kingshotguide.org/heroes/margot"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Parry",
+        "description": "Swords can be used offensively and defensively. Margot has a chance of parrying, avoiding all damage from enemy attacks.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_parry_chance",
+        "effect_on_proc": "negate_incoming_attack_damage",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/margot",
+          "kingshotguide.org/heroes/margot"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Stiletto",
+        "description": "Margot head-gouges the enemy (heroes first), dealing damage and immobilizing them for 1.5 seconds.",
+        "scaling": [
+          100,
+          110,
+          120,
+          130,
+          140
+        ],
+        "scaling_unit": "percent_of_attack_single_target",
+        "additional_effects": [
+          "immobilize_1.5_seconds"
+        ],
+        "target_priority": "heroes_first",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/margot",
+          "kingshotguide.org/heroes/margot"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Warbringer",
+        "description": "Increases total squads' Attack.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_squad_attack",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/margot-build-guide",
+          "kingshotdata.com/heroes/margot",
+          "kingshotguide.org/heroes/margot"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Subterfuge",
+        "description": "Grants all squads a chance of dodging Normal Attacks.",
+        "scaling": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_dodge_chance",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/margot-build-guide",
+          "kingshotdata.com/heroes/margot",
+          "kingshotguide.org/heroes/margot"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Sleight Hand",
+        "description": "Cavalry have a 25% chance of performing an extra attack.",
+        "scaling": [
+          120,
+          140,
+          160,
+          180,
+          200
+        ],
+        "scaling_unit": "percent_extra_attack_damage",
+        "proc_chance": 25,
+        "restriction": "cavalry_only",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/margot-build-guide",
+          "kingshotdata.com/heroes/margot",
+          "kingshotguide.org/heroes/margot"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Indefensible",
+        "category": "conquest",
+        "description": "Margot has a 40% chance of launching a second attack with each Normal Attack. Unlocked only when Revel Fang is equipped.",
+        "scaling": [
+          25,
+          30,
+          35,
+          40,
+          45
+        ],
+        "scaling_unit": "percent_of_attack_second_hit",
+        "proc_chance": 40,
+        "requires_exclusive_gear": "Revel Fang",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/margot",
+          "kingshotguide.org/heroes/margot"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Pugilist",
+        "category": "expedition",
+        "description": "Increases the Lethality of defender troops. Unlocked only when Revel Fang is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_lethality_defender_troops",
+        "requires_exclusive_gear": "Revel Fang",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/margot",
+          "kingshotguide.org/heroes/margot"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Revel Fang",
+    "max_power": 416250,
+    "conquest_bonuses": {
+      "attack": 832,
+      "defense": 832,
+      "health": 8325
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 92.5,
+      "health_pct": 92.5
+    },
+    "unlocks_skills": [
+      "Indefensible",
+      "Pugilist"
+    ],
+    "notes": "Gen 4 tier exclusive gear (same power as Rosa's Aeolian and Alcar's Praetorian Guard).",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Max Ambush first (Conquest AOE up to 420%)",
+      "Then Parry (dodge 25%)",
+      "Then Sleight Hand (cavalry extra-attack)",
+      "Expedition: Warbringer then Subterfuge"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "allclash.com build guides via Perplexity",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "heaven-guardian.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "cavalry",
+    "stat_focus_by_piece": {
+      "helmet": "cavalry_lethality",
+      "gloves": "cavalry_health",
+      "chest": "cavalry_health",
+      "boots": "cavalry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Cavalry Rare Lv 40",
+      "gloves": "Cavalry Epic Lv 32",
+      "chest": "Cavalry Epic Lv 32",
+      "boots": "Cavalry Rare Lv 40"
+    },
+    "reasoning": "Standard cavalry archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Cavalry Epic Lv 60",
+      "gloves": "Cavalry Legendary Lv 40",
+      "chest": "Cavalry Legendary Lv 40",
+      "boots": "Cavalry Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "garrison_gen4",
+        "heroes": [
+          "Alcar",
+          "Margot",
+          "Jaeger"
+        ],
+        "mode": "garrison_defense",
+        "partners": [
+          "Alcar",
+          "Jaeger"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "solo_gen4",
+        "heroes": [
+          "Amadeus",
+          "Margot",
+          "Rosa"
+        ],
+        "mode": "solo_attack",
+        "partners": [
+          "Amadeus",
+          "Rosa"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "expedition_gen4",
+        "heroes": [
+          "Margot",
+          "Jaeger",
+          "Rosa"
+        ],
+        "mode": "expedition_burst_sustain",
+        "partners": [
+          "Jaeger",
+          "Rosa"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Margot's Sleight Hand Cavalry-only buff pairs her naturally with other Cavalry heroes (Jabel, Petra, Thrud, Sophia). Her Parry mechanic gives her tanking options despite being Cavalry. Strong joiner option for bear hunt via her extra-attack mechanic.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Hall of Heroes",
+      "Mythic General Hero Shard",
+      "Swordland Shop"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js f2p=false despite 3 F2P pools. Standard 'premium investment' interpretation.",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "medium_interpretation_conflict"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "B",
+      "reasoning": "Defensive-focused.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "S",
+      "reasoning": "Strong garrison via Parry dodge + tank stats.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "S",
+      "reasoning": "Excels in garrison defense and bear hunt — Indefensible second-attack chance plus Sleight Hand Cavalry extra-attacks give her sustained damage output during long bear fights.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "joiner": {
+      "tier": "A",
+      "reasoning": "Strong joiner adding depth to defensive and PvE lineups.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    }
+  },
+  "lore_background": {
+    "title": "The Revel Fang",
+    "backstory": "Margot is an assassin with a troubled childhood — raised as a tool by her father, shaped into a weapon before she could choose her own path. She earned the moniker 'Revel Fang' through her assassination work, and the value of her skills is measured in gold. Most recently she was hired to kill a governor for 300 gold, her highest fee yet. Behind every poised ambush and every perfectly-timed parry is the girl who was never given a choice.",
+    "personality_trait": "tool-forged, professional, commercial, damaged",
+    "thematic_quote": null,
+    "source": "kingshotwiki.com/heroes/margot",
+    "fabricated": false
+  },
+  "deep_analysis": "Margot is the assassin of Kingshot's Gen 4 roster — a Legendary Cavalry hero whose kit is built around evasion, second-attack chances, and precision damage. Her Conquest tree starts with Ambush (up to Attack × 420% AOE damage, her highest base skill) and adds Parry (up to 25% chance to negate incoming damage entirely — a rare full-dodge mechanic) plus Stiletto (single-target hero-first damage with a 1.5-second immobilize). Her Expedition tree extends her style across the whole army: Warbringer adds +25% squad Attack, Subterfuge grants squads up to 20% dodge chance against Normal Attacks, and Sleight Hand gives Cavalry units up to 25% chance to perform an extra attack dealing up to +200% damage. Her exclusive gear Revel Fang adds +832 Attack, +832 Defense, +8325 Health, +92.50% Lethality, +92.50% Health, and unlocks Indefensible (40% chance for Margot to launch a second attack on each Normal Attack) and Pugilist (+15% defender troops' Lethality). Community tier lists place her at S-tier Garrison AND S-tier Bear Hunt, plus A-tier Joiner — she's one of the few heroes rated top-tier in three categories. heroes.js marks her premium despite 3 F2P acquisition methods. Her lore is stark: an assassin raised by her father to be a weapon before she could choose anything else, earning her 'Revel Fang' moniker through contract kills. Her most recent job was a governor hit for 300 gold — her highest fee yet. She's the kind of hero whose personality is shaped entirely by what she was made for, not what she wanted.",
+  "seo_keywords": [
+    "margot kingshot",
+    "margot kingshot skills",
+    "margot kingshot build",
+    "margot kingshot cavalry",
+    "margot revel fang",
+    "margot kingshot assassin",
+    "margot kingshot gen 4",
+    "margot kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — null",
+    "gear_recommendations.minimum_build — null",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "shard_cost_to_star_up — null",
+    "Warbringer, Subterfuge, Sleight Hand — single source (kingshotwiki only)"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 2,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js",
+    "single_source_skills": 3
+  },
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "102"
+    ],
+    "description": "Attack 102 — Gen 4 cavalry assassin",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

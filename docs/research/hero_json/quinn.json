@@ -1,0 +1,325 @@
+{
+  "name": "Quinn",
+  "slug": "quinn",
+  "gen": 1,
+  "rarity": "epic",
+  "troop": "archer",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/quinn.md",
+  "base_stats": {
+    "attack": 2157,
+    "defense": 2220,
+    "health": 13320,
+    "expedition_attack_pct": 140.11,
+    "expedition_defense_pct": 140.11,
+    "sources": [
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/quinn-build-guide",
+      "kingshotdata.com/heroes/quinn",
+      "kingshotguide.org/heroes/quinn"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_functional_equivalence_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Headshot",
+        "description": "The upgraded Crossbow deals massive single-target damage.",
+        "scaling": [
+          400,
+          440,
+          480,
+          520,
+          560
+        ],
+        "scaling_unit": "percent_of_attack_single_target",
+        "notable": "Highest single-target scaling (560% at max) of any Epic hero.",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/quinn"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      },
+      {
+        "name": "Quick Shot",
+        "description": "Years of training increases Quinn's Attack Speed.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_self_attack_speed",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/quinn"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array"
+      },
+      {
+        "name": "Natural Selection",
+        "description": "Quinn's expert survival skills increase his damage dealt.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_self_damage_dealt",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/quinn"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Sixth Sense",
+        "description": "Senses for dangers ahead, reducing damage taken for all troops.",
+        "scaling": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_damage_reduction",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/quinn"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array"
+      },
+      {
+        "name": "Precision Shot",
+        "description": "Grants all soldiers a 50% chance of dealing 50% more damage when attacking.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_extra_damage_on_proc",
+        "proc_chance": 50,
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/quinn"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": []
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Epic heroes do not have exclusive gear.",
+  "skill_priority": {
+    "order": [
+      "Max Sixth Sense (Expedition 111 DR) FIRST",
+      "Then Precision Shot for offense",
+      "Conquest secondary"
+    ],
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 32",
+      "gloves": "Archer Rare Lv 32",
+      "chest": "Archer Rare Lv 32",
+      "boots": "Archer Rare Lv 32"
+    },
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 40",
+      "gloves": "Archer Epic Lv 40",
+      "chest": "Archer Epic Lv 40",
+      "boots": "Archer Epic Lv 40"
+    },
+    "reasoning": "Standard archer archetype at epic tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides)."
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "defense_combo_howard_quinn",
+        "heroes": [
+          "Howard",
+          "Quinn"
+        ],
+        "mode": "max_damage_reduction_up_to_40pct",
+        "partners": [
+          "Howard"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "defense_top_trio",
+        "heroes": [
+          "Quinn",
+          "Howard",
+          "Amadeus"
+        ],
+        "mode": "high_tier_resilience_counter",
+        "partners": [
+          "Howard",
+          "Amadeus"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Low priority hero. Headshot high damage may have niche arena value but heroes.js and community tier lists agree he's not worth investment.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Exploration",
+      "Watchtower Intel",
+      "Hero Recruitment",
+      "Epic General Hero Shard"
+    ],
+    "reasoning": "F2P-accessible but low-priority per heroes.js.",
+    "confidence": "high",
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    }
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "garrison": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "bear_hunt": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "joiner": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    }
+  },
+  "lore_background": {
+    "title": "The Mysterious Wanderer",
+    "backstory": "Quinn is a charming wanderer whose origins are a mystery. 'Where is Quinn from? Nobody knows.' One theory: he's descended from a disgraced senator of an ancient republic whose villa burned down under mysterious circumstances. He's characterized as a thrill-seeker abroad and hedonist at home, skilled with crossbows, and better known for his charisma than his tactical contributions.",
+    "personality_trait": "charming, rootless, hedonist",
+    "thematic_quote": "Where is Quinn from? Nobody knows.",
+    "source": "kingshotwiki.com/heroes/quinn",
+    "fabricated": false
+  },
+  "deep_analysis": "Quinn is a low-priority Epic hero in Kingshot — a Gen 1 Epic Archer whose Headshot skill has the highest single-target scaling of any Epic hero (up to Attack × 560% at max level) but whose overall kit lacks the squad-level impact that makes other Epics worth investment. His Conquest tree: Headshot for burst, Quickshot for +30% Attack Speed, Natural Selection for +30% damage. His Expedition skills (Precision Shot, Burst Fire) are functional but unremarkable. No exclusive gear. heroes.js explicitly flags him as 'Low priority' with the warning 'not recommended for significant investment.' His lore compensates for his mechanical mediocrity: a charming wanderer whose origins nobody knows, possibly descended from a disgraced senator of an ancient republic, a hedonist and thrill-seeker whose crossbow skill is matched only by his charisma.",
+  "seo_keywords": [
+    "quinn kingshot",
+    "quinn kingshot skills",
+    "quinn kingshot f2p",
+    "quinn kingshot archer",
+    "quinn kingshot build",
+    "quinn kingshot headshot",
+    "quinn kingshot epic",
+    "quinn kingshot tier list"
+  ],
+  "unverified_fields": [
+    "single_source_kingshotwiki",
+    "skill_priority, gear_build, named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "sources_successful": 1,
+    "plus_baseline": "heroes.js"
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "S",
+    "rarity": "SR",
+    "tier_percentage": 95,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [
+      "111"
+    ],
+    "description": "Quinn is Howard's archer-class twin with effect_op 111 (+20% Damage Reduction). Mathematically identical as a joiner, she provides archer class bonuses for class-specific expeditions and early game DPS via Precision Shot. Use ONE 111 hero, not both.",
+    "top_skills_handbook_generic_names": "Sixth Sense Precision Shot",
+    "handbook_stats_match_kingshotwiki": false,
+    "handbook_skill_names_match_kingshotwiki": false
+  },
+  "handbook_build_guide_note": "Handbook uses 'Sixth Sense' for damage reduction skill; kingshotwiki uses 'Precision Shot'. Both sources confirm an Expedition damage reduction skill exists. Names differ.",
+  "handbook_build_guide_url": "kingshothandbook.com/heroes/quinn-build-guide",
+  "name_correction_2026_04_14": "Fixed 3 skill naming errors identified against kingshotdata.com: Quickshot→Quick Shot, Precision Shot(4-20%)→Sixth Sense, Burst Fire(10-50%)→Precision Shot. Descriptions swapped accordingly.",
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "111"
+    ],
+    "description": "Damage Reduction 111 — Howard archer twin",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "name": "Edwin",
+  "slug": "edwin",
+  "gen": 0,
+  "rarity": "rare",
+  "troop": "cavalry",
+  "sub_class": "gathering",
+  "sub_role": "stone_gatherer",
+  "pronouns": "he/him",
+  "base_stats": {
+    "attack": 1442,
+    "defense": 2220,
+    "health": 14430,
+    "expedition_attack_pct": 90.07,
+    "expedition_defense_pct": 90.07,
+    "sources": [
+      "kingshotdata.com/heroes/edwin",
+      "kingshotguide.org/heroes/edwin"
+    ],
+    "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Shrapnel Load",
+        "description": "Edwin throws out a homemade explosive, dealing AOE damage to the target and nearby enemies.",
+        "scaling": [
+          140,
+          154,
+          168,
+          182,
+          196
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "sources": [
+          "kingshotdata.com/heroes/edwin",
+          "kingshotguide.org/heroes/edwin"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+      },
+      {
+        "name": "Detonate",
+        "description": "Edwin's explosives have a 20% chance of stunning targets.",
+        "scaling_stun_chance": [
+          10,
+          15,
+          15,
+          20,
+          20
+        ],
+        "scaling_stun_duration_sec": [
+          0.5,
+          0.5,
+          1,
+          1,
+          1.5
+        ],
+        "scaling_unit": "percent_stun_chance_and_duration",
+        "sources": [
+          "kingshotdata.com/heroes/edwin",
+          "kingshotguide.org/heroes/edwin"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Demolitions Expert",
+        "description": "Edwin's knowledge of minerals increases the Town's Quarry Output.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_quarry_output",
+        "sources": [
+          "kingshotdata.com/heroes/edwin",
+          "kingshotguide.org/heroes/edwin"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+      },
+      {
+        "name": "Stone Mining",
+        "description": "Edwin's expert quarrying techniques increase his Stone Mining Speed in the Wilderness.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_stone_gathering_speed",
+        "sources": [
+          "kingshotdata.com/heroes/edwin",
+          "kingshotguide.org/heroes/edwin"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": []
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Rare heroes do not have exclusive gear.",
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hero Recruitment",
+      "Intel Missions",
+      "Conquest Battles"
+    ],
+    "reasoning": "Rare-tier starter hero, universally accessible to all players.",
+    "confidence": "high",
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 2,
+        "2_star_to_3_star": 5,
+        "3_star_to_4_star": 10,
+        "4_star_to_5_star": 20,
+        "total_shards_from_unlock_to_5_star": 48
+      },
+      "sources": [
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_community_rare_tier_defaults",
+      "note": "Rare heroes have significantly lower shard requirements than Legendary/Mythic"
+    }
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—"
+    },
+    "garrison": {
+      "tier": "—"
+    },
+    "bear_hunt": {
+      "tier": "—"
+    },
+    "joiner": {
+      "tier": "—"
+    },
+    "gathering": {
+      "tier": "S",
+      "reasoning": "Best stone gatherer — dedicated role"
+    }
+  },
+  "lore_background": {
+    "title": "The Demolitions Expert",
+    "backstory": null,
+    "derived_character_themes": "Cavalry explosives specialist and stone gathering expert. Skill flavor text references \"homemade explosives\" and \"expert quarrying techniques\" suggesting a pragmatic miner-soldier.",
+    "source_note": "No narrative backstory published on consulted sources.",
+    "source": "derived from skill flavor text",
+    "fabricated": false,
+    "lore_status": "structurally_unavailable"
+  },
+  "deep_analysis": "Edwin is a Rare (R-grade) cavalry gathering hero in Kingshot — used on farm accounts for stone production. His Expedition skills directly boost Town Quarry Output (+25%) and Wilderness Stone Gathering Speed (+25%), making him essential for players who maintain gathering marches. His Conquest kit (Shrapnel Load AOE, Detonate stun chance) is functional but his primary value is economic. Universally F2P-accessible through Hero Recruitment, Intel Missions, and Conquest Battles.",
+  "base_stats_sources": [
+    "kingshotdata.com/heroes/edwin",
+    "kingshotguide.org/heroes/edwin"
+  ],
+  "skill_sources": [
+    "kingshotdata.com/heroes/edwin",
+    "kingshotguide.org/heroes/edwin"
+  ],
+  "verified_date": "2026-04-14",
+  "verified_confidence": "VERIFIED_2_independent_sources",
+  "sources_file": "docs/research/hero_raw_sources/edwin.md",
+  "effect_op_codes": {
+    "type": "rare_gathering_hero",
+    "codes": [],
+    "description": "Rare-tier gathering hero — no rally joiner effect_op code (not a combat hero)",
+    "source": "kingshothandbook.com (rare tier heroes not in effect_op stacking system)"
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Stone Gathering Team",
+        "heroes": [
+          "Edwin",
+          "Diana"
+        ],
+        "note": "Edwin specializes stone, Diana provides universal stamina reduction"
+      }
+    ],
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "skill_priority": {
+    "order": [
+      "Max Demolitions Expert FIRST (Expedition — +25% Quarry Output)",
+      "Then Stone Mining (+25% Stone Gathering Speed in Wilderness)",
+      "Conquest (Shrapnel Load, Detonate) is filler — Edwin is a gatherer not combatant"
+    ],
+    "sources": [
+      "skill design analysis + kingshotguide.org + kingshotdata.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "cavalry",
+    "minimum_build": {
+      "helmet": "Cavalry Green Lv 20",
+      "gloves": "Cavalry Green Lv 20",
+      "chest": "Cavalry Green Lv 20",
+      "boots": "Cavalry Green Lv 20"
+    },
+    "optimum_build": {
+      "helmet": "Cavalry Rare Lv 32",
+      "gloves": "Cavalry Rare Lv 32",
+      "chest": "Cavalry Rare Lv 32",
+      "boots": "Cavalry Rare Lv 32"
+    },
+    "reasoning": "Standard cavalry archetype at rare tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  }
+}

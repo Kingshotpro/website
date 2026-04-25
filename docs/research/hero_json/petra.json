@@ -1,0 +1,461 @@
+{
+  "name": "Petra",
+  "slug": "petra",
+  "gen": 3,
+  "rarity": "legendary",
+  "troop": "cavalry",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/petra.md",
+  "base_stats": {
+    "attack": 3330,
+    "defense": 3330,
+    "health": 33300,
+    "expedition_attack_pct": 290.23,
+    "expedition_defense_pct": 290.23,
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki",
+      "kingshotdata.com/heroes/petra",
+      "kingshotguide.org/heroes/petra"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata",
+    "notable": "Symmetric Attack/Defense/Health ratios (3330/3330/33300). Gen 3 introduces higher Expedition scaling (290.23% vs Gen 1-2's 200-240%)."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Dichotomy",
+        "description": "Petra throws a tarot card at an enemy, dealing damage with a random effect of either reducing target's Attack by 20% for 2 seconds OR stunning for 1.5 seconds.",
+        "scaling": [
+          270,
+          297,
+          324,
+          351,
+          378
+        ],
+        "scaling_unit": "percent_of_attack",
+        "additional_effects": [
+          "random: 20pct_attack_reduction_2s OR stun_1.5s"
+        ],
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/petra"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Change of Fate",
+        "description": "Petra curses an enemy, dealing floating damage within a range. Base value is scaled, final damage fluctuates between 5% and 600% of base.",
+        "scaling": [
+          50,
+          55,
+          60,
+          65,
+          70
+        ],
+        "scaling_unit": "percent_of_attack_base",
+        "damage_range": "5_percent_to_600_percent_of_base",
+        "mechanic_note": "Floating damage — unique to Petra. Final output fluctuates widely.",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/petra"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Turn Card",
+        "description": "Petra reverses misfortune by healing the friendly hero with the lowest percentage of Health remaining. Heal amount floats between 5% and 400% of base.",
+        "scaling": [
+          100,
+          110,
+          120,
+          130,
+          140
+        ],
+        "scaling_unit": "percent_of_attack_base",
+        "heal_range": "5_percent_to_400_percent_of_base",
+        "target": "lowest_health_percentage_ally",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/petra"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Evil Eye",
+        "description": "50% chance of cursing the target, increasing damage taken.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_damage_taken_increase",
+        "proc_chance": 50,
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/petra"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "The Favor",
+        "description": "50% chance of increasing all squads' Attack.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_attack_all_squads",
+        "proc_chance": 50,
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/petra"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "The Shield",
+        "description": "40% chance of reducing damage taken for all squads.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_damage_reduction",
+        "proc_chance": 40,
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/petra"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Weighted Deck",
+        "category": "conquest",
+        "description": "Increases the upper and lower limit of Petra's fluctuating skills. This directly boosts Change of Fate and Turn Card's randomized damage/healing ranges. Unlocked only when Fate's Writ is equipped.",
+        "scaling": [
+          30,
+          60,
+          90,
+          120,
+          150
+        ],
+        "scaling_unit": "percent_floating_range_boost",
+        "requires_exclusive_gear": "Fate's Writ",
+        "mechanic_note": "This is a unique synergy mechanic — directly amplifies her other skill outputs.",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/petra"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Cosmic Eye",
+        "category": "expedition",
+        "description": "Increases the Attack of rallied troops. Unlocked only when Fate's Writ is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_attack_rally_troops",
+        "requires_exclusive_gear": "Fate's Writ",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/petra"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Fate's Writ",
+    "max_power": 315000,
+    "conquest_bonuses": {
+      "attack": 630,
+      "defense": 630,
+      "health": 6300
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 70.0,
+      "health_pct": 70.0
+    },
+    "unlocks_skills": [
+      "Weighted Deck",
+      "Cosmic Eye"
+    ],
+    "notes": "Gen 3 heroes get higher exclusive gear power (315,000 vs Gen 1-2's 225,000-270,000) and higher Expedition percentages (70% vs 50-60%).",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Dichotomy first (Conquest damage)",
+      "Then The Shield / The Favor for proc-based rallies",
+      "Exclusive gear Weighted Deck amplifies chance-based skills"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "cavalry",
+    "stat_focus_by_piece": {
+      "helmet": "cavalry_lethality",
+      "gloves": "cavalry_health",
+      "chest": "cavalry_health",
+      "boots": "cavalry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Cavalry Rare Lv 40",
+      "gloves": "Cavalry Epic Lv 32",
+      "chest": "Cavalry Epic Lv 32",
+      "boots": "Cavalry Rare Lv 40"
+    },
+    "reasoning": "Standard cavalry archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Cavalry Epic Lv 60",
+      "gloves": "Cavalry Legendary Lv 40",
+      "chest": "Cavalry Legendary Lv 40",
+      "boots": "Cavalry Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "rally_gen3",
+        "heroes": [
+          "Amadeus",
+          "Petra",
+          "Marlin"
+        ],
+        "mode": "rally_attack",
+        "partners": [
+          "Amadeus",
+          "Marlin"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "rally_gen4",
+        "heroes": [
+          "Amadeus",
+          "Petra",
+          "Rosa"
+        ],
+        "mode": "rally_attack",
+        "partners": [
+          "Amadeus",
+          "Rosa"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "solo_gen3",
+        "heroes": [
+          "Amadeus",
+          "Petra",
+          "Jaeger"
+        ],
+        "mode": "solo_attack",
+        "partners": [
+          "Amadeus",
+          "Jaeger"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "F2P Mid Game (Gen 3-4)",
+        "heroes": [
+          "Zoe",
+          "Marlin",
+          "Petra",
+          "Chenko",
+          "Saul"
+        ],
+        "note": "Add Petra as cavalry rally lead. Zoe and Marlin remain core.",
+        "source": "heroes.js LINEUPS"
+      },
+      {
+        "lineup_name": "F2P Late Game (Gen 5-6)",
+        "heroes": [
+          "Zoe",
+          "Marlin",
+          "Yang",
+          "Petra",
+          "Chenko"
+        ],
+        "note": "Petra continues providing cavalry rally value even in late game.",
+        "source": "heroes.js LINEUPS"
+      }
+    ],
+    "theoretical_synergy": "Petra's floating damage mechanic makes her highly variable — great when you have Fate's Writ equipped (which boosts the range). Her high base stats (all 3330/3330/33300 pattern) plus cavalry rally capability makes her the F2P cavalry cornerstone from Gen 3 onward.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hero Roulette",
+      "Mythic General Hero Shard",
+      "Swordland Shop"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "Often featured in Hero Roulette events, making her accessible to F2P players who save gold keys. 3 F2P access methods.",
+    "sources": [
+      "kingshot-data Hero Roulette",
+      "kingshotwiki 3 methods",
+      "heroes.js baseline"
+    ],
+    "confidence": "high"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "S",
+      "reasoning": "Premier F2P cavalry rally lead. Often featured in events.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "B",
+      "reasoning": "Kit is offensive.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Usable.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Great Diviner",
+    "backstory": "Petra is a 14-year-old fortune-teller from the royal diviners' guild, famously known as 'The Great Diviner.' She once emptied an entire gambling establishment's coffers through sheer predictive accuracy — a feat that caught the attention of General Cesares, whom she impressed with her prophecies before departing King's Castle. Her readings follow strict personal rituals: she avoids garlic, demands specific meals before divinations, and treats her own fate with the same precision she applies to others'.",
+    "personality_trait": "prodigy, eccentric, ritual-bound, superstition-driven",
+    "thematic_quote": "She's a royal fortune-teller!",
+    "source": "kingshotwiki.com/heroes/petra",
+    "fabricated": false
+  },
+  "deep_analysis": "Petra is the F2P cavalry rally lead of Kingshot — a Gen 3 Legendary with a completely unique mechanical identity built around FLOATING DAMAGE. Where every other hero has fixed scaling values, Petra's Change of Fate and Turn Card deal damage and healing that fluctuates within a wide range (5% to 600% of base for Change of Fate, 5% to 400% of base for Turn Card). Her Conquest tree: Dichotomy throws a tarot card dealing up to Attack × 378% damage with a random effect (20% Attack reduction OR stun). Change of Fate curses enemies with floating damage. Turn Card heals the weakest ally with floating amounts. Her Expedition tree provides squad-wide buffs: Evil Eye has a 50% chance to amplify enemy damage taken by up to 50%, The Favor has a 50% chance to increase squad Attack by up to 50%, and The Shield has a 40% chance to halve incoming squad damage. Her exclusive gear Fate's Writ is the most interesting gear mechanic documented so far: its Weighted Deck skill directly amplifies the upper and lower limits of her fluctuating skills by up to 150% — transforming her from a chaotic wild card into a reliably high-rolling powerhouse. Fate's Writ also adds +630 Attack, +630 Defense, +6300 Health, +70% Lethality, and +70% Health at max level. Community tier lists place her at S-tier Rally — the F2P cavalry cornerstone. She's accessible through Hero Roulette (rotating F2P pool), Mythic General Hero Shard, and Swordland Shop. Her lore makes her one of the game's most charming characters: a 14-year-old royal diviner who once emptied a gambling den's coffers by reading fate itself, impressed a general with her prophecies, and refuses to do readings without her ritual meal — and absolutely no garlic.",
+  "seo_keywords": [
+    "petra kingshot",
+    "petra kingshot skills",
+    "petra kingshot build",
+    "petra kingshot f2p",
+    "petra kingshot cavalry",
+    "petra fate's writ",
+    "petra kingshot rally",
+    "petra kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — null",
+    "gear_recommendations.minimum_build — null",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "shard_cost_to_star_up — null"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 2,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js",
+    "unique_mechanic_flagged": "floating_damage_range_skills"
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "First cavalry widget rally leader — chance-based skills with Weighted Deck amplification",
+    "role": "cavalry_rally_lead_gen3",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

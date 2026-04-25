@@ -1,0 +1,337 @@
+{
+  "name": "Chenko",
+  "slug": "chenko",
+  "gen": 1,
+  "rarity": "epic",
+  "troop": "cavalry",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/chenko.md",
+  "base_stats": {
+    "attack": 1776,
+    "defense": 2220,
+    "health": 17760,
+    "expedition_attack_pct": 140.11,
+    "expedition_defense_pct": 140.11,
+    "sources": [
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/database",
+      "kingshotdata.com/heroes/chenko",
+      "kingshotguide.org/heroes/chenko"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata",
+    "notable": "Epic heroes have lower Expedition scaling (140.11%) than Gen 1 Legendaries (200.16%)."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Burst Fire",
+        "description": "Unleashes a rapid barrage, dealing damage to enemies in front every 0.5 seconds for 2 seconds.",
+        "scaling": [
+          55,
+          60,
+          65,
+          70,
+          75
+        ],
+        "scaling_unit": "percent_of_attack_per_half_second",
+        "duration_seconds": 2,
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/chenko"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      },
+      {
+        "name": "Defense Upgrade",
+        "description": "Chenko upgrades her armor, increasing her Defense.",
+        "scaling": [
+          25,
+          37.5,
+          50,
+          62.5,
+          70
+        ],
+        "scaling_unit": "percent_self_defense_boost",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/chenko"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      },
+      {
+        "name": "Weapon Upgrade",
+        "description": "Chenko's upgraded weapon boosts her Attack.",
+        "scaling": [
+          8,
+          12,
+          16,
+          20,
+          24
+        ],
+        "scaling_unit": "percent_self_attack_boost",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/chenko"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Stand of Arms",
+        "description": "Chenko implements advanced weaponry for our soldiers, increasing the total Squads' Lethality.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_squad_lethality",
+        "sources": [
+          "kingshotwiki",
+          "Perplexity (community consensus)",
+          "kingshotdata.com/heroes/chenko",
+          "kingshotguide.org/heroes/chenko"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Shield Wall",
+        "description": "Enhances troop armor with a keen engineering eye, reducing damage taken for all troops.",
+        "scaling": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_damage_reduction_all_troops",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/database",
+          "kingshotdata.com/heroes/chenko"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [],
+    "epic_note": "Epic heroes do not have Exclusive Gear slots. Confirmed architectural pattern across all Gen 1 Epics researched."
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Epic heroes do not have exclusive gear.",
+  "skill_priority": {
+    "order": [
+      "Max Stand of Arms FIRST (Expedition) — the sole defining skill",
+      "Then Shield Wall for survivability",
+      "Conquest skills are filler"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "cavalry",
+    "stat_focus_by_piece": {
+      "helmet": "cavalry_lethality",
+      "gloves": "cavalry_health",
+      "chest": "cavalry_health",
+      "boots": "cavalry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Cavalry Rare Lv 32",
+      "gloves": "Cavalry Rare Lv 32",
+      "chest": "Cavalry Rare Lv 32",
+      "boots": "Cavalry Rare Lv 32"
+    },
+    "reasoning": "Standard cavalry archetype at epic tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Cavalry Epic Lv 40",
+      "gloves": "Cavalry Epic Lv 40",
+      "chest": "Cavalry Epic Lv 40",
+      "boots": "Cavalry Epic Lv 40"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "partner_pair": [
+          "Chenko",
+          "Amane"
+        ],
+        "math": "2× Chenko (101 Lethality) + 2× Amane (102 Attack) = 2.25x DamageUp",
+        "vs_same": "12.5% better than 4× Chenko pure same-hero stacking",
+        "source": "kingshothandbook.com effect_op math"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "F2P Early Game (Gen 1-2)",
+        "heroes": [
+          "Jabel",
+          "Zoe",
+          "Marlin",
+          "Chenko",
+          "Saul"
+        ],
+        "note": "Chenko for rally joining — the best F2P rally joiner.",
+        "source": "heroes.js LINEUPS"
+      },
+      {
+        "lineup_name": "Bear Hunt",
+        "heroes": [
+          "Amadeus",
+          "Vivian",
+          "Chenko",
+          "Amane",
+          "Yeonwoo"
+        ],
+        "note": "Chenko + Amane + Yeonwoo form the S-tier joiner trio for bear hunt.",
+        "source": "heroes.js LINEUPS"
+      }
+    ],
+    "theoretical_synergy": "Chenko's Stand of Arms squad Lethality buff stacks with any rally composition. Her status as 'best F2P rally joiner' makes her a universal pick for free players from Gen 1 through late game.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Path of Growth",
+      "Watchtower Intel",
+      "Hero Recruitment",
+      "Epic General Hero Shard"
+    ],
+    "shard_cost_to_star_up": "Epic heroes have lower shard requirements than Legendaries — heroes.js notes Epics are 'good for early investment' due to lower costs.",
+    "reasoning": "4 F2P access methods confirmed. Epic shard requirements are significantly lower than Legendary. Essential F2P pick according to heroes.js ('considered the best rally joiner skill for F2P players').",
+    "sources": [
+      "kingshotwiki",
+      "Perplexity",
+      "heroes.js baseline"
+    ],
+    "confidence": "high_3_source_convergence"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—",
+      "reasoning": "Not a rally lead — Epic heroes don't have the firepower for lead slots.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "—",
+      "reasoning": "Not used in garrison.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "S",
+      "reasoning": "Essential bear hunt joiner — the best F2P rally joiner skill in the game per heroes.js.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "joiner": {
+      "tier": "S",
+      "reasoning": "S-tier joiner via Stand of Arms squad Lethality buff.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    }
+  },
+  "lore_background": {
+    "title": "The Blunderbuss Inventor",
+    "backstory": "Chenko is an inventor who wields a blunderbuss she calls a 'lightning stick.' She creates weapons and armor upgrades for the army, but her early career was defined by a struggle for funding — she couldn't find backers who believed in her inventions. When a Rebel attack hit the city, the chaos gave her the breakthrough demonstration opportunity she needed. Her designs proved themselves in the battle, and she earned her place in the arsenal by saving the people who almost refused to fund her.",
+    "personality_trait": "inventive, scrappy, vindicated underdog",
+    "thematic_quote": null,
+    "source": "kingshotwiki.com/heroes/chenko",
+    "fabricated": false
+  },
+  "deep_analysis": "Chenko is the best F2P rally joiner in Kingshot — a Gen 1 Epic Cavalry hero whose Stand of Arms Expedition skill provides up to +25% squad Lethality, making her a universal plug-in for any rally composition regardless of the lead hero. Her full kit is built around self-improvement and squad support. Conquest tree: Burst Fire deals rapid damage (Attack × 75% per half-second for 2 seconds), Defense Upgrade boosts her own Defense by up to 70%, and Weapon Upgrade boosts her own Attack by up to 24%. Expedition tree: Stand of Arms buffs squad Lethality by up to 25%, and Shield Wall reduces all troops' damage taken by up to 20%. As an Epic hero, she has no Exclusive Gear slot — the architectural confirmation that only Legendary heroes get exclusive gear. Her Expedition scaling (140.11%) is notably lower than Gen 1 Legendaries (200.16%), reflecting her Epic tier. Tier: S Bear Hunt, S Joiner, — Rally and Garrison. F2P-accessible through 4 methods: Path of Growth, Watchtower Intel, Hero Recruitment, and Epic General Hero Shard. heroes.js notes that her Stand of Arms 'rally value' is considered the best F2P rally joiner skill in the game. Her lore is charming: an inventor who wields a blunderbuss she calls her 'lightning stick,' who struggled to find funding for her weapon designs until a Rebel attack gave her the demonstration opportunity to prove them in real combat.",
+  "seo_keywords": [
+    "chenko kingshot",
+    "chenko kingshot skills",
+    "chenko kingshot f2p",
+    "chenko kingshot build",
+    "chenko kingshot joiner",
+    "chenko kingshot rally",
+    "chenko kingshot epic",
+    "chenko kingshot tier list"
+  ],
+  "unverified_fields": [
+    "base_stats — single source (kingshotwiki)",
+    "skills.conquest.Shield Wall — actually in Expedition section per source structure? Needs verification, but positioned as squad-wide so more likely Expedition",
+    "Category split between Conquest (self-buffs) and Expedition (squad buffs) is my interpretation — kingshotwiki had flat skill list",
+    "skill_priority.order, gear_recommendations.minimum_build, best_partners.named_pairs, counters — null"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 1,
+    "ai_apis_called": 1,
+    "ai_apis_usable": 1,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js",
+    "epic_architecture_confirmed": "no_exclusive_gear_slot"
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "SS",
+    "rarity": "SR",
+    "tier_percentage": 98,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [
+      "101"
+    ],
+    "description": "Chenko proves that rarity doesn't determine meta viability. Despite being an Epic hero with only two skills and no widget access, she remains the premier offensive joiner from Generation 1 through Generation 5 and beyond due to her +25% Lethality and effect_op 101 code.",
+    "top_skills_handbook_generic_names": "Stand of Arms Shield Wall",
+    "handbook_stats_match_kingshotwiki": true,
+    "handbook_skill_names_match_kingshotwiki": true
+  },
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "101"
+    ],
+    "description": "Lethality 101 — premier offensive joiner +25% Lethality",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

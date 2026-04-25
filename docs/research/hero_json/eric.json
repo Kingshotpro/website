@@ -1,0 +1,446 @@
+{
+  "name": "Eric",
+  "slug": "eric",
+  "gen": 3,
+  "rarity": "legendary",
+  "troop": "infantry",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/eric.md",
+  "base_stats": {
+    "attack": 2554,
+    "defense": 3330,
+    "health": 49950,
+    "expedition_attack_pct": 290.23,
+    "expedition_defense_pct": 290.23,
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/database",
+      "kingshotdata.com/heroes/eric",
+      "kingshotguide.org/heroes/eric"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata",
+    "notable": "Highest Conquest Health of all documented heroes (49950). Eric is the physical tank archetype — high HP, defense-scaling kit."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Ground Shock",
+        "description": "Eric imperils the ground with an almighty smash of his blessed hammer, dealing damage to the target ahead while reducing targets' Attack Speed by 50% for 4 seconds.",
+        "scaling": [
+          120,
+          132,
+          144,
+          156,
+          168
+        ],
+        "scaling_unit": "percent_of_attack",
+        "additional_effects": [
+          "attack_speed_reduction_50pct_4s"
+        ],
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/eric"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Veterancy",
+        "description": "Attacks against Eric have a chance of increasing his Defense for 2 seconds. Max 5 stacks.",
+        "scaling_proc_chance": [
+          8,
+          10,
+          12,
+          14,
+          16
+        ],
+        "scaling_defense_boost": [
+          8,
+          11,
+          14,
+          17,
+          20
+        ],
+        "scaling_unit": "percent_proc_chance_and_defense_boost",
+        "duration_seconds": 2,
+        "max_stacks": 5,
+        "trigger_condition": "on_being_attacked",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/eric"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Hammer of Justice",
+        "description": "Eric casts his warhammer into the ground, dealing damage in a fan-shaped arc with a 30% chance of stunning the targets for 1 second.",
+        "scaling": [
+          80,
+          88,
+          96,
+          104,
+          112
+        ],
+        "scaling_unit": "percent_of_attack_fan_aoe",
+        "additional_effects": [
+          "30pct_chance_stun_1s"
+        ],
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/eric"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Holy Warrior",
+        "description": "Reduces total Enemy Squads' Attack.",
+        "scaling": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_enemy_attack_reduction",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/eric-build-guide",
+          "kingshotdata.com/heroes/eric"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Conviction",
+        "description": "Reduces squads' damage taken.",
+        "scaling": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_damage_taken_reduction",
+        "sources": [
+          "kingshotwiki",
+          "kingshothandbook.com/heroes/eric-build-guide",
+          "kingshotdata.com/heroes/eric"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Exhortation",
+        "description": "Increases total squads' Health.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_squad_health",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/eric"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Blessed Hammer",
+        "category": "conquest",
+        "description": "Increasing damage dealt. Unlocked only when Anvil of Truth is equipped.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_damage_dealt",
+        "requires_exclusive_gear": "Anvil of Truth",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/eric"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Vanguard",
+        "category": "expedition",
+        "description": "Eric increases the Defense of defender troops. Unlocked only when Anvil of Truth is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_defense_defender_troops",
+        "requires_exclusive_gear": "Anvil of Truth",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/eric"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Anvil of Truth",
+    "max_power": 315000,
+    "conquest_bonuses": {
+      "attack": 482,
+      "defense": 630,
+      "health": 9450
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 70.0,
+      "health_pct": 70.0
+    },
+    "unlocks_skills": [
+      "Blessed Hammer",
+      "Vanguard"
+    ],
+    "notes": "Highest Conquest Health bonus of any exclusive gear documented (+9450).",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Ground Shock AOE first",
+      "Then Exhortation squad buffs",
+      "Hammer of Justice for burst"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "infantry",
+    "stat_focus_by_piece": {
+      "helmet": "infantry_lethality",
+      "gloves": "infantry_health",
+      "chest": "infantry_health",
+      "boots": "infantry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Infantry Rare Lv 40",
+      "gloves": "Infantry Epic Lv 32",
+      "chest": "Infantry Epic Lv 32",
+      "boots": "Infantry Rare Lv 40"
+    },
+    "reasoning": "Standard infantry archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Infantry Epic Lv 60",
+      "gloves": "Infantry Legendary Lv 40",
+      "chest": "Infantry Legendary Lv 40",
+      "boots": "Infantry Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "garrison_gen3",
+        "heroes": [
+          "Eric",
+          "Hilde",
+          "Jaeger"
+        ],
+        "mode": "garrison_defense",
+        "partners": [
+          "Hilde",
+          "Jaeger"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "Garrison Defense",
+        "heroes": [
+          "Jabel",
+          "Zoe",
+          "Eric",
+          "Hilde",
+          "Saul"
+        ],
+        "note": "Eric adds infantry depth to the garrison core. Pairs lore-wise and mechanically with Hilde (her healing sustains his tanking).",
+        "source": "heroes.js LINEUPS"
+      }
+    ],
+    "theoretical_synergy": "Eric + Hilde is both a mechanical pair (she heals him while he tanks) AND a lore pair (his backstory is about seeing her being sold into slavery for unpaid tithes). His Veterancy stacking Defense + Hilde's Rejuvenating Plea heals creates an extremely durable defensive core.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Hall of Heroes",
+      "Mythic General Hero Shard",
+      "Swordland Shop"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js baseline marks Eric as F2P=false. However, kingshotwiki lists 3 F2P pools as acquisition methods. Same pattern as Hilde — technically available, not practically F2P-viable. Community guides treat him as a premium garrison option not suited for F2P investment.",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki",
+      "heroes.js baseline"
+    ],
+    "confidence": "medium_interpretation_conflict",
+    "discrepancy_note": "Flag for audit: heroes.js vs kingshotwiki disagreement on F2P viability."
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "B",
+      "reasoning": "Not a rally lead.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "S",
+      "reasoning": "Solid garrison infantry defender. High HP (49950 base) + stacking Defense (Veterancy) + damage reduction (Conviction). Core of any premium garrison depth lineup.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Adequate.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Dark Hammer",
+    "backstory": "Eric was a loyal Paladin of the Ecclesia, enforcing mandatory tithes across the countryside in the name of his faith. Then he met Hilde — a woman whose family couldn't pay the levies, and who was sold into slavery as punishment. That encounter broke his faith in the institution. He abandoned the Ecclesia and reforged himself into what he calls 'a dark hammer for breaking chains of oppression.' Where once he collected tithes, he now breaks the backs of tithe collectors.",
+    "personality_trait": "faith-broken, avenging, principled ex-enforcer",
+    "thematic_quote": "A dark hammer for breaking chains of oppression.",
+    "source": "kingshotwiki.com/heroes/eric",
+    "fabricated": false,
+    "cross_reference": "Direct lore connection to Hilde — her enslavement was his turning point. First non-Unjust-League inter-hero lore connection documented."
+  },
+  "deep_analysis": "Eric is the physical tank of Gen 3 — a Legendary Infantry hero with the highest base Health of any documented hero (49950). His Conquest tree is built around durability and suppression: Ground Shock deals up to Attack × 168% damage while reducing the target's Attack Speed by 50% for 4 seconds, Veterancy grants up to a 16% chance on being attacked to boost his Defense by up to 20% (stacking to 5), and Hammer of Justice hits a fan-shaped arc for up to Attack × 112% with a 30% chance to stun for 1 second. His Expedition tree extends his defensive philosophy to the whole army: Holy Warrior reduces enemy squad Attack by up to 20%, Conviction reduces squad damage taken by up to 20%, and Exhortation boosts squad Health by up to 25%. His exclusive gear Anvil of Truth adds +482 Attack, +630 Defense, +9450 Health (highest exclusive-gear Health bonus), +70% Lethality, +70% Health, and unlocks two more skills: Blessed Hammer (+30% damage dealt) and Vanguard (+15% defender troops' Defense). Community tier lists place him at S-tier Garrison, B-tier everywhere else. heroes.js marks him as premium/non-F2P despite kingshotwiki showing 3 F2P access methods — the standard 'available but not practically obtainable without spending' interpretation. His lore connects directly to Hilde: he was a Paladin of the Ecclesia enforcing mandatory tithes when he witnessed Hilde being sold into slavery because her family couldn't pay. The encounter broke his faith, and he became 'a dark hammer for breaking chains of oppression' — the first hero with an explicit inter-hero lore pairing outside the Unjust League (Amadeus + Zoe).",
+  "seo_keywords": [
+    "eric kingshot",
+    "eric kingshot skills",
+    "eric kingshot build",
+    "eric kingshot garrison",
+    "eric anvil of truth",
+    "eric kingshot f2p",
+    "eric kingshot gen 3",
+    "eric kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — null",
+    "gear_recommendations.minimum_build — null",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "shard_cost_to_star_up — null",
+    "Expedition skills (Holy Warrior, Conviction, Exhortation) — single source (kingshotwiki only). kingshot-data extraction missed the Expedition section.",
+    "f2p_investment — heroes.js false, kingshotwiki 3 pools. Interpretation conflict."
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 2,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js",
+    "data_conflicts_flagged": 1,
+    "expedition_skills_single_source": true
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "S",
+    "rarity": "SR",
+    "tier_percentage": 95,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [
+      "202"
+    ],
+    "description": "Eric combines OppDamageDown (effect_op 202) with exceptional stats (49,950 HP) for a unique defender-debuffer hybrid. Pair with Fahd (201) for 1.44x OppDamageDown multiplier. Unlike typical Epic joiners, Eric can actively participate in garrison battles.",
+    "top_skills_handbook_generic_names": "Holy Warrior Conviction",
+    "handbook_stats_match_kingshotwiki": true,
+    "handbook_skill_names_match_kingshotwiki": false
+  },
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "202"
+    ],
+    "description": "OppDamageDown 202 — unique defender-debuffer hybrid",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

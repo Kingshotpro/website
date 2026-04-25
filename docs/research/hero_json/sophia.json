@@ -1,0 +1,414 @@
+{
+  "name": "Sophia",
+  "slug": "sophia",
+  "gen": 6,
+  "rarity": "mythic",
+  "troop": "cavalry",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/sophia.md",
+  "research_note": "Single primary source kingshot-data. Gen 6 kingshotwiki 404 pattern. | 9x3x3 update: 2nd source added from lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html — kingshot-data + lootbar.gg Gen 5/6 guide convergence confirmed on mechanics and max values (tier-by-tier scaling remains kingshot-data single-source for some fields).",
+  "base_stats": {
+    "attack": 5926,
+    "defense": 5926,
+    "health": 59274,
+    "expedition_attack_pct": 540.43,
+    "expedition_defense_pct": 540.43,
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+      "kingshotdata.com/heroes/sophia",
+      "kingshotguide.org/heroes/sophia"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshot_data_plus_lootbar_on_mechanics_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Puppet Master",
+        "description": "Deals AOE damage and confuses the target for 1 second. Confused enemies attack all surrounding targets, friend and foe.",
+        "scaling": [
+          100,
+          110,
+          120,
+          130,
+          140
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "additional_effects": [
+          "confuse_1s_causing_ally_friendly_fire"
+        ],
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/sophia"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Scalding Mark",
+        "description": "Deals damage and applies Scalding Mark, increasing damage taken by the target for 4 seconds.",
+        "scaling_damage": [
+          50,
+          55,
+          60,
+          65,
+          70
+        ],
+        "scaling_mark_increase": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "scaling_unit": "percent_damage_and_percent_damage_taken_increase",
+        "duration_seconds": 4,
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/sophia"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Scalding Mark - Lash",
+        "description": "Boosts Sophia's Attack and allows a Lash attack against afflicted targets dealing increased damage.",
+        "scaling_self_attack_boost": [
+          8,
+          12,
+          16,
+          20,
+          24
+        ],
+        "scaling_lash_damage_increase": [
+          4,
+          6,
+          8,
+          10,
+          12
+        ],
+        "scaling_unit": "percent_self_attack_and_percent_lash_damage",
+        "trigger_condition": "target_has_scalding_mark",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/sophia"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Arcane Pact",
+        "description": "Chance per turn to reduce damage taken by 50%.",
+        "scaling": [
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "scaling_unit": "percent_proc_chance_per_turn",
+        "effect_on_proc": "50_percent_damage_reduction",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/sophia",
+          "kingshotguide.org/heroes/sophia"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Terror - Deathblow",
+        "description": "Inflicts Terror status, causing increased damage from Cavalry to the target.",
+        "scaling": [
+          40,
+          80,
+          120,
+          160,
+          200
+        ],
+        "scaling_unit": "percent_cavalry_damage_increase_on_target",
+        "status_effect_applied": "Terror",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/sophia",
+          "kingshotguide.org/heroes/sophia"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Terror - Annihilation",
+        "description": "All squads deal increased damage to Terrified targets.",
+        "scaling": [
+          15,
+          30,
+          45,
+          60,
+          75
+        ],
+        "scaling_unit": "percent_damage_increase_all_squads_vs_terror",
+        "synergy_with": "Terror - Deathblow",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/sophia",
+          "kingshotguide.org/heroes/sophia"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Eyes of Obedience",
+        "category": "conquest",
+        "description": "Chance of confusing the target for 1 second. Unlocked only when Scarlet Rose is equipped.",
+        "scaling": [
+          2,
+          3.5,
+          5,
+          6.5,
+          8
+        ],
+        "scaling_unit": "percent_proc_chance_confuse",
+        "requires_exclusive_gear": "Scarlet Rose",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/sophia"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Queen of Night",
+        "category": "expedition",
+        "description": "Increases the Lethality of defender troops. Unlocked only when Scarlet Rose is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_lethality_defender_troops",
+        "requires_exclusive_gear": "Scarlet Rose",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/sophia"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Scarlet Rose",
+    "max_power": null,
+    "conquest_bonuses": {
+      "attack": 1201,
+      "defense": 1201,
+      "health": 12015
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 133.5,
+      "health_pct": 133.5
+    },
+    "unlocks_skills": [
+      "Eyes of Obedience",
+      "Queen of Night"
+    ],
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html"
+    ],
+    "confidence": "9x3x3_VERIFIED_2_sources_kingshot_data_plus_lootbar"
+  },
+  "skill_priority": {
+    "order": [
+      "Primary Expedition amp (universal damage/formation boost) first",
+      "Cavalry support skills (pairs with Triton for 60/40 formations)",
+      "Secondary buffs"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "allclash.com build guides via Perplexity",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "heaven-guardian.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "cavalry",
+    "stat_focus_by_piece": {
+      "helmet": "cavalry_lethality",
+      "gloves": "cavalry_health",
+      "chest": "cavalry_health",
+      "boots": "cavalry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Cavalry Rare Lv 40",
+      "gloves": "Cavalry Epic Lv 32",
+      "chest": "Cavalry Epic Lv 32",
+      "boots": "Cavalry Rare Lv 40"
+    },
+    "reasoning": "Standard cavalry archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Cavalry Epic Lv 60",
+      "gloves": "Cavalry Legendary Lv 40",
+      "chest": "Cavalry Legendary Lv 40",
+      "boots": "Cavalry Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Gen 6 Formation 60/40",
+        "heroes": [
+          "Sophia",
+          "Triton"
+        ],
+        "source": "lootbar.gg Gen 6 ranking",
+        "note": "Sophia + Triton pair for 60/40 formation meta"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Sophia is a debuffer — her Scalding Mark + Terror skills set up enemies to take massive bonus damage from Cavalry rallies. Pairs naturally with Thrud (Cavalry multiplier) and Petra (cavalry rally lead) for an all-cavalry composition.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Hero Roulette",
+      "Swordland Shop"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js f2p=false. 2 access methods but premium investment tier.",
+    "sources": [
+      "kingshot-data",
+      "heroes.js"
+    ],
+    "confidence": "medium_interpretation"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "S",
+      "reasoning": "Cavalry debuffer rally lead with strong damage amplification.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "A",
+      "reasoning": "Strong garrison with Arcane Pact damage reduction.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Adequate.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Queen of Night",
+    "backstory": null,
+    "no_narrative_backstory_available": true,
+    "derived_character_themes": "Rose-magic enchantress with themes of loyalty, confusion, and fear. Skill flavor text references \"Loyalty to our Queen is your one and only purpose\", \"Sophia's subtle rose-magic saps enemy soldiers' resolve\", her signature \"Scalding Mark\", and her exclusive gear \"Scarlet Rose\". Her Expedition identity is \"Queen of Night\" — suggesting royalty, command, and occult/arcane abilities. The Terror keyword appears on multiple skills.",
+    "source_note": "No narrative backstory published.",
+    "source": "derived from skill flavor text (kingshotdata.com, kingshotguide.org)",
+    "fabricated": false,
+    "lore_status": "structurally_unavailable_themes_derived_from_skill_flavor"
+  },
+  "deep_analysis": "Sophia is the confusion queen of Gen 6 — a Legendary Cavalry hero built around mind control and the unique Terror status effect. Her Conquest tree: Puppet Master deals AOE damage and confuses targets for 1 second (confused enemies attack their own allies — rare friendly-fire mechanic), Scalding Mark deals damage and applies a 4-second damage-taken increase debuff, and Scalding Mark - Lash grants her +24% Attack plus a Lash follow-up dealing up to 12% bonus damage against marked targets. Her Expedition tree introduces Terror, a unique status effect: Terror - Deathblow inflicts Terror on enemies (up to +200% damage from Cavalry), and Terror - Annihilation grants all squads up to +75% damage against Terrified targets — making her a critical setup piece for Cavalry compositions. Her exclusive gear Scarlet Rose adds +1201 Attack, +1201 Defense, +12015 Health, +133.50% Lethality, +133.50% Health, and unlocks Eyes of Obedience (up to 8% chance to confuse targets) plus Queen of Night (+15% defender troops' Lethality). Tier: S Rally, A Garrison, B Bear. Premium-gated via Hero Roulette and Swordland Shop. Lore not surfaced in research pass — inferred from her witchy/confusion-themed kit as a mind-control queen archetype.",
+  "seo_keywords": [
+    "sophia kingshot",
+    "sophia kingshot skills",
+    "sophia kingshot build",
+    "sophia kingshot cavalry",
+    "sophia scarlet rose",
+    "sophia kingshot terror",
+    "sophia kingshot gen 6",
+    "sophia kingshot tier list"
+  ],
+  "unverified_fields": [
+    "Single primary source",
+    "Lore not found",
+    "skill_priority.order, gear_recommendations.minimum_build, best_partners.named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 1,
+    "web_sources_successful": 1,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 1,
+    "plus_baseline_source": "heroes.js",
+    "confidence_level": "below_2_source_standard"
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Gen 6 cavalry widget",
+    "role": "cavalry_rally_gen6",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

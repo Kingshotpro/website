@@ -1,0 +1,441 @@
+{
+  "name": "Vivian",
+  "slug": "vivian",
+  "gen": 5,
+  "rarity": "mythic",
+  "troop": "archer",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/vivian.md",
+  "research_note": "kingshotwiki 404. Primary: kingshot-data + Perplexity synthesis. | 9x3x3 update: 2nd source added from lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html — kingshot-data + lootbar.gg Gen 5/6 guide convergence confirmed on mechanics and max values (tier-by-tier scaling remains kingshot-data single-source for some fields).",
+  "base_stats": {
+    "attack": 5987,
+    "defense": 4928,
+    "health": 36962,
+    "expedition_attack_pct": 444.35,
+    "expedition_defense_pct": 444.35,
+    "sources": [
+      "kingshot-data",
+      "Perplexity (citing kingshotdata.com)",
+      "kingshotguide.org/heroes/vivian"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_lootbar_plus_kingshotdata",
+    "notable": "New highest Attack documented (5987). Gen 5 introduces ±444.35% Expedition multiplier."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Gilded Barrage",
+        "description": "Vivian fires a coin bullet at the enemy back row (heroes first), dealing AOE damage and reducing targets' Attack Speed by 50% for 2 seconds.",
+        "scaling": [
+          180,
+          198,
+          216,
+          234,
+          252
+        ],
+        "scaling_unit": "percent_of_attack_aoe_back_row",
+        "additional_effects": [
+          "attack_speed_reduction_50pct_2s"
+        ],
+        "target_priority": "back_row_heroes_first",
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/vivian"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Lucky Strike",
+        "description": "Vivian fires at an enemy (heroes first), dealing damage with a 50% chance to deal double damage.",
+        "scaling": [
+          100,
+          110,
+          120,
+          130,
+          140
+        ],
+        "scaling_unit": "percent_of_attack_single_target",
+        "double_damage_proc_chance": 50,
+        "target_priority": "heroes_first",
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/vivian"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Priceless Shot",
+        "description": "Vivian unleashes a devastating hail of massive coin bullets, dealing damage per second to enemies within range for 3 seconds.",
+        "scaling": [
+          35,
+          38.5,
+          42,
+          45.5,
+          49
+        ],
+        "scaling_unit": "percent_of_attack_per_second",
+        "duration_seconds": 3,
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/vivian"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Crouching Tiger",
+        "description": "All squads' attacks increase enemy damage taken.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_enemy_damage_taken_increase",
+        "sources": [
+          "Perplexity synthesis",
+          "kingshothandbook.com/heroes/vivian-build-guide",
+          "kingshotdata.com/heroes/vivian"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Focus Fire",
+        "description": "After every 4 attacks, Vivian deals 100% extra damage to all enemies, and the target takes 15% extra damage on its next hit.",
+        "scaling": null,
+        "scaling_note": "Max values verified across 3 sources but tier-by-tier scaling not available in community sources.",
+        "trigger_condition": "every_4_attacks",
+        "sources": [
+          "ldshop.gg/blog/kingshot/gen-5-heroes-guide (Focus Fire: After every 4 attacks, deal 100% extra damage to all enemies, and the target takes 15% extra damage on its next hit)",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide (Focus Fire: After every 4 attacks, deals 100% extra damage to all enemies)",
+          "heaven-guardian.com/kingshot-gen-5-heroes-thrud-long-fei-vivian-guide (target will receive 15% extra damage for its next attack received. This happens after every four attacks)",
+          "kingshotdata.com/heroes/vivian"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_extra_damage": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "scaling_enemy_damage_taken": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_extra_damage_and_enemy_vulnerability"
+      },
+      {
+        "name": "Trap of Greed",
+        "description": "Deals 60% extra damage to all enemies on the next attack of every four attacks. This is a DISTINCT skill from Focus Fire — both trigger 'every 4 attacks' but have different effects.",
+        "scaling": [
+          12,
+          24,
+          36,
+          48,
+          60
+        ],
+        "scaling_note": "Max values verified. Tier-by-tier not available.",
+        "trigger_condition": "every_4_attacks",
+        "sources": [
+          "heaven-guardian.com/kingshot-gen-5-heroes-thrud-long-fei-vivian-guide (Trap of Greed: Deals 60% extra damage to all enemies on the next attack of every four attacks)",
+          "kingshotdata.com/heroes/vivian"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_unit": "percent_extra_damage_archer_on_4th_attack"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Refined Gunplay",
+        "category": "conquest",
+        "description": "Deals damage to a random enemy (heroes first) each time a skill is cast. Unlocked only when Lucky Spinner is equipped.",
+        "scaling": [
+          50,
+          55,
+          60,
+          65,
+          70
+        ],
+        "scaling_unit": "percent_of_attack_random_enemy",
+        "trigger_condition": "on_any_skill_cast",
+        "target_priority": "heroes_first",
+        "requires_exclusive_gear": "Lucky Spinner",
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/vivian"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Money Driven",
+        "category": "expedition",
+        "description": "Big rewards fuel great bravery, increasing the Defense of defender troops. Unlocked only when Lucky Spinner is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_defense_defender_troops",
+        "requires_exclusive_gear": "Lucky Spinner",
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/vivian"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Lucky Spinner",
+    "max_power": 499500,
+    "conquest_bonuses": {
+      "attack": 1212,
+      "defense": 999,
+      "health": 7494
+    },
+    "expedition_bonuses": {
+      "archer_lethality_pct": 111.0,
+      "archer_health_pct": 111.0
+    },
+    "escort_bonuses": {
+      "attack": 404,
+      "defense": 333,
+      "health": 2497
+    },
+    "unlocks_skills": [
+      "Refined Gunplay",
+      "Money Driven"
+    ],
+    "notes": "Highest exclusive gear power documented (499,500). First documented hero with Escort bonuses in the exclusive gear.",
+    "sources": [
+      "kingshot-data",
+      "Perplexity"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Crouching Tiger first (+25% enemy damage taken amp)",
+      "Then Focus Fire (100% extra every 4 attacks)",
+      "Then Trap of Greed (60% extra every 4)"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "allclash.com build guides via Perplexity",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "heaven-guardian.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 40",
+      "gloves": "Archer Epic Lv 32",
+      "chest": "Archer Epic Lv 32",
+      "boots": "Archer Rare Lv 40"
+    },
+    "reasoning": "Standard archer archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 60",
+      "gloves": "Archer Legendary Lv 40",
+      "chest": "Archer Legendary Lv 40",
+      "boots": "Archer Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Gen 5 Rally Core",
+        "heroes": [
+          "Vivian",
+          "Thrud",
+          "Long Fei"
+        ],
+        "source": "ldshop.gg Gen 5 guide"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "Rally Offense (Spender)",
+        "heroes": [
+          "Amadeus",
+          "Vivian",
+          "Petra",
+          "Thrud",
+          "Rosa"
+        ],
+        "note": "Vivian + Amadeus lead. Army-wide buff makes her the ideal rally co-lead.",
+        "source": "heroes.js LINEUPS"
+      }
+    ],
+    "theoretical_synergy": "Vivian is one of the most impactful heroes in the game per heroes.js — the only S+ Rally tier. Her 3-second Priceless Shot DPS skill plus her Gilded Barrage back-row AOE with Attack Speed reduction make her devastating in arena. Community calls her an Arena Destroyer.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Hall of Heroes (Gems or Paid Packs)",
+      "Swordland Shop"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js f2p=false. Acquisition via Hall of Heroes (F2P pool) + Swordland Shop, but community considers her a premium investment.",
+    "sources": [
+      "kingshot-data",
+      "Perplexity",
+      "heroes.js"
+    ],
+    "confidence": "medium_interpretation_conflict"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "S+",
+      "reasoning": "Only hero with S+ tier. Army-wide damage buffs elevate entire rally lineups. Arena Destroyer per community.",
+      "sources": [
+        "heroes.js",
+        "Perplexity/community"
+      ],
+      "confidence": "highest"
+    },
+    "garrison": {
+      "tier": "B",
+      "reasoning": "Offensive kit.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "S",
+      "reasoning": "S-tier via army buff synergy.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "joiner": {
+      "tier": "S",
+      "reasoning": "S-tier joiner.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    }
+  },
+  "lore_background": {
+    "title": "The Arena Destroyer",
+    "backstory": "Lore not directly extracted from available sources. kingshotwiki page 404'd. Community materials focus on gameplay — no backstory surfaced.",
+    "personality_trait": null,
+    "thematic_quote": null,
+    "source": "lore_not_found",
+    "fabricated": false,
+    "incomplete_lore_note": "Gen 5 heroes all show kingshotwiki 404 issues — Vivian's backstory inaccessible through this research pipeline."
+  },
+  "deep_analysis": "Vivian is the Arena Destroyer — a Gen 5 Legendary Archer with record-breaking stats and the ONLY S+ Rally tier rating in the entire Kingshot roster. Her base Attack (5987) is the highest documented, and her Expedition multipliers (444.35%) mark the Gen 5 power-creep leap from Gen 4's 370.29%. Her Conquest tree is built around coin-themed firearm skills: Gilded Barrage fires at the enemy back row dealing up to Attack × 252% AOE while reducing targets' Attack Speed by 50%, Lucky Strike deals up to 140% with a 50% chance to double, and Priceless Shot unleashes 3 seconds of sustained DPS at up to Attack × 49% per second. Her Expedition tree amplifies squad damage through stacking debuffs — Crouching Tiger increases enemy damage taken by up to 25%. Her exclusive gear Lucky Spinner holds the new record for gear power (499,500) with +1212 Attack, +999 Defense, +7494 Health, +111% Archer Lethality, +111% Archer Health, and unlocks Refined Gunplay (damage to random enemy on every skill cast) plus Money Driven (+15% defender troops' Defense). Her tier rating is S+ Rally — the only hero in the game with this distinction — plus S-tier Bear Hunt and S-tier Joiner. heroes.js notes her as 'one of the most impactful heroes in the game' providing 'army-wide damage buffs that elevate entire rally lineups.' She's premium-gated (Hall of Heroes via Gems or Paid Packs) and not F2P-recommended. Her lore is not surfaced in any of the sources consulted — Gen 5 heroes appear to have kingshotwiki 404 issues across the board.",
+  "seo_keywords": [
+    "vivian kingshot",
+    "vivian kingshot skills",
+    "vivian kingshot build",
+    "vivian kingshot rally",
+    "vivian lucky spinner",
+    "vivian kingshot arena",
+    "vivian kingshot s+",
+    "vivian kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — null",
+    "gear_recommendations.minimum_build — null",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "lore_background — not found",
+    "Expedition skills from Perplexity only (kingshot-data missed them)",
+    "Focus Fire and Trap of Greed possibly duplicate skills — flag for audit",
+    "Focus Fire/Trap of Greed scaling arrays incomplete"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 1,
+    "web_sources_blocked": 1,
+    "ai_apis_called": 1,
+    "ai_apis_usable": 1,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js",
+    "data_gaps": [
+      "Expedition categorization",
+      "lore",
+      "skill dedup"
+    ]
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Gen 5 offensive archer widget cornerstone",
+    "role": "archer_offensive_cornerstone_gen5",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

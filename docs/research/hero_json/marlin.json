@@ -1,0 +1,458 @@
+{
+  "name": "Marlin",
+  "slug": "marlin",
+  "gen": 2,
+  "rarity": "legendary",
+  "troop": "archer",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/marlin.md",
+  "base_stats": {
+    "attack": 3235,
+    "defense": 2220,
+    "health": 19980,
+    "expedition_attack_pct": 240.19,
+    "expedition_defense_pct": 240.19,
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/database",
+      "kingshotdata.com/heroes/marlin",
+      "kingshotguide.org/heroes/marlin"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata",
+    "notable": "Highest Conquest Attack of any Gen 1-2 Legendary documented (3235 vs Saul 2697, Hilde 2664)."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Tidal Rush",
+        "description": "Marlin is a tidal force on the battlefield, unleashing a pulse dealing AOE damage and immobilizing enemies for 1.5 seconds.",
+        "scaling": [
+          200,
+          220,
+          240,
+          260,
+          280
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "additional_effects": [
+          "immobilize_1.5_seconds"
+        ],
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/marlin"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Fermented Blow",
+        "description": "Marlin's deadly airborne concoction deals AOE damage.",
+        "scaling": [
+          50,
+          55,
+          60,
+          65,
+          70
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/marlin"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Lucky Hit",
+        "description": "Good fortune inevitably follows bad. Marlin stuns targets for a brief duration after every N strikes.",
+        "scaling_stun_duration_seconds": [
+          0.2,
+          0.2,
+          0.4,
+          0.4,
+          0.5
+        ],
+        "scaling_strikes_needed": [
+          8,
+          7,
+          7,
+          6,
+          5
+        ],
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/marlin"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "complex_scaling_note": "This skill has two scaling axes: the number of strikes needed to trigger (decreases with level) and the stun duration (increases with level).",
+        "scaling_unit": "num_attacks_to_proc_stun_and_stun_duration_seconds",
+        "note": "needs_verification",
+        "scaling_num_attacks_to_trigger": [
+          8,
+          7,
+          7,
+          6,
+          5
+        ]
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Wild Card",
+        "description": "Marlin, being unpredictable, has a chance to increase damage dealt by 50% for all squads.",
+        "scaling": [
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "scaling_unit": "percent_proc_chance",
+        "effect_on_proc": "50_percent_damage_increase_all_squads",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/marlin"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Rumhead",
+        "description": "Grants all squads a 20% chance on attack of reducing enemy squads' Lethality for 2 turns.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_enemy_lethality_reduction",
+        "duration_turns": 2,
+        "proc_chance": 20,
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/marlin"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Dynamo",
+        "description": "Grants squads' attacks a 50% chance of increasing damage dealt.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_damage_increase",
+        "proc_chance": 50,
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/marlin"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [],
+    "talent_note": "No Talent skill found. 8-skill pattern.",
+    "exclusive_gear_skills": [
+      {
+        "name": "Servant of Wine",
+        "category": "conquest",
+        "description": "Marlin's special brew heals the weakest hero with each basic attack. Unlocked only when Mistweaver is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_of_attack_heal_per_basic_attack",
+        "target": "weakest_hero",
+        "requires_exclusive_gear": "Mistweaver",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/marlin"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Admiral of the Line",
+        "category": "expedition",
+        "description": "A true admiral leads from the front. Increases Rally Squads' Lethality. Unlocked only when Mistweaver is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_lethality_rally_squads",
+        "requires_exclusive_gear": "Mistweaver",
+        "sources": [
+          "kingshot-data",
+          "kingshotwiki",
+          "kingshotdata.com/heroes/marlin"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Mistweaver",
+    "max_power": 270000,
+    "conquest_bonuses": {
+      "attack": 655,
+      "defense": 540,
+      "health": 4050
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 60.0,
+      "health_pct": 60.0
+    },
+    "unlocks_skills": [
+      "Servant of Wine",
+      "Admiral of the Line"
+    ],
+    "notes": "Highest exclusive-gear Attack bonus documented so far (+655 vs Saul's Rabbitgear Cannon +546).",
+    "sources": [
+      "kingshot-data",
+      "kingshotwiki"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Wild Card → Rumhead → Dynamo sequence for full triple-threat stacking",
+      "Tidal Rush early for Conquest damage"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 40",
+      "gloves": "Archer Epic Lv 32",
+      "chest": "Archer Epic Lv 32",
+      "boots": "Archer Rare Lv 40"
+    },
+    "reasoning": "Standard archer archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 60",
+      "gloves": "Archer Legendary Lv 40",
+      "chest": "Archer Legendary Lv 40",
+      "boots": "Archer Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "rally_gen2",
+        "heroes": [
+          "Amadeus",
+          "Hilde",
+          "Marlin"
+        ],
+        "mode": "rally_attack",
+        "partners": [
+          "Amadeus",
+          "Hilde"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "rally_gen3",
+        "heroes": [
+          "Amadeus",
+          "Petra",
+          "Marlin"
+        ],
+        "mode": "rally_attack",
+        "partners": [
+          "Amadeus",
+          "Petra"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "F2P Early Game (Gen 1-2)",
+        "heroes": [
+          "Jabel",
+          "Zoe",
+          "Marlin",
+          "Chenko",
+          "Saul"
+        ],
+        "note": "Marlin for offense. Long-term F2P investment — aim for 465 shards to 4-star quickly.",
+        "source": "grindnstrat + heroes.js LINEUPS"
+      },
+      {
+        "lineup_name": "F2P Late Game (Gen 5-6)",
+        "heroes": [
+          "Zoe",
+          "Marlin",
+          "Yang",
+          "Petra",
+          "Chenko"
+        ],
+        "note": "Marlin remains core damage even in late game F2P compositions.",
+        "source": "heroes.js LINEUPS"
+      }
+    ],
+    "theoretical_synergy": "Marlin is the F2P archer carry — one of the few Legendary archers available without spending. His Rumhead debuff combines with any high-damage rally composition. His Servant of Wine heal makes him self-sustaining in long fights. Pairs especially well with front-line tanks (Jabel/Zoe) who let him stay safe.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hall of Heroes",
+      "Daily Deals",
+      "Mythic General Hero Shard"
+    ],
+    "shard_cost_to_star_up": "aim for 465 shards to reach 4-stars quickly (per heroes.js community note)",
+    "reasoning": "Marlin is a long-term F2P investment. Community guides recommend saving shards consistently to reach 4-stars. His kit scales into late game, making him worth the investment for F2P players who can wait.",
+    "sources": [
+      "kingshot-data Hall of Heroes",
+      "kingshotwiki (3 methods)",
+      "heroes.js baseline"
+    ],
+    "confidence": "high_3_source_convergence"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "S",
+      "reasoning": "Excellent ranged damage dealer. His high base Attack (3235) combined with AOE Conquest skills makes him a top rally option.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "B",
+      "reasoning": "Not built for defense.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Adequate.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically used as joiner.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Captain Who Returned from the Misty Tides",
+    "backstory": "Marlin was one of the Four Great Captains, commander of nearly ten ships. Thirty years ago, he led his fleet into uncharted waters known as the Misty Tides — and disappeared. His flagship, the Santiago, later mysteriously reappeared with severe damage. When asked what happened, Marlin attributes the disaster to natural phenomena — magnetic fields, sea fog, shifting currents — and dismisses every supernatural explanation. Whether from conviction or denial, he refuses to speak of what he saw.",
+    "personality_trait": "skeptical, rational, haunted survivor, hard-drinking captain",
+    "thematic_quote": null,
+    "source": "kingshotwiki.com/heroes/marlin",
+    "fabricated": false
+  },
+  "deep_analysis": "Marlin is the F2P archer carry of Kingshot — a Gen 2 Legendary with the highest base Conquest Attack (3235) of any documented hero so far. His kit is built around AOE damage and chance-based squad buffs. Conquest tree: Tidal Rush deals Attack × 280% AOE with a 1.5-second immobilize, Fermented Blow adds Attack × 70% AOE follow-up, and Lucky Hit grants periodic stuns after every 5 strikes at max level (stun duration up to 0.5 seconds). His Expedition tree is pure proc-chance RNG: Wild Card has up to a 40% chance to grant +50% damage to all squads, Rumhead has a 20% chance per attack to reduce enemy squads' Lethality by up to 50% for 2 turns, and Dynamo has a 50% chance to increase damage dealt by up to 50%. His exclusive gear Mistweaver adds +655 Attack (highest exclusive-gear Attack bonus documented), plus +60% Lethality and +60% Health, and unlocks two more skills: Servant of Wine (heals the weakest hero by up to 15% of his Attack per basic attack) and Admiral of the Line (+15% Rally Squads' Lethality). Community tier lists place him at S-tier Rally, B-tier Garrison and Bear Hunt. He's F2P-accessible through Hall of Heroes, Daily Deals, and Mythic General Hero Shard — community guides recommend saving 465 shards to reach 4-stars quickly. His lore: Captain of the Santiago, one of the Four Great Captains, vanished into the Misty Tides 30 years ago and came back with a ruined ship. He refuses to talk about what happened, attributing it all to natural phenomena. Whether out of conviction or denial, he keeps his ghosts at sea.",
+  "seo_keywords": [
+    "marlin kingshot",
+    "marlin kingshot skills",
+    "marlin kingshot build",
+    "marlin kingshot f2p",
+    "marlin kingshot archer",
+    "marlin mistweaver",
+    "marlin kingshot rally",
+    "marlin kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — null",
+    "gear_recommendations.minimum_build — null",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "shard_cost_to_star_up — approximate only (465 shards to 4-star from heroes.js, not from Marlin-specific source)"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 2,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js",
+    "field_null_count": 4
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "SS",
+    "rarity": "SSR",
+    "tier_percentage": 98,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [],
+    "description": "Marlin dominates archer rally leadership from Gen 2 through Gen 4 with triple damage amplification. Wild Card and Dynamo create ~1.45x average damage with up to 2.25x burst potential. His offensive widget and highest Attack stat (3,235) among Gen 2 heroes make him the premier archer rally leader.",
+    "top_skills_handbook_generic_names": "Wild Card Rumhead Current Meta Heroes Tank Formation",
+    "handbook_stats_match_kingshotwiki": true,
+    "handbook_skill_names_match_kingshotwiki": false
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Triple-threat archer widget rally leader — Wild Card/Rumhead/Dynamo for 2.25x burst",
+    "role": "archer_rally_lead_gen2",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

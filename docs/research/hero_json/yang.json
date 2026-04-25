@@ -1,0 +1,426 @@
+{
+  "name": "Yang",
+  "slug": "yang",
+  "gen": 6,
+  "rarity": "mythic",
+  "troop": "archer",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/yang.md",
+  "research_note": "Single primary source kingshot-data. Expedition skills not captured in extract — flagged as incomplete. | 9x3x3 update: 2nd source added from lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html — kingshot-data + lootbar.gg Gen 5/6 guide convergence confirmed on mechanics and max values (tier-by-tier scaling remains kingshot-data single-source for some fields).",
+  "base_stats": {
+    "attack": 7200,
+    "defense": 5926,
+    "health": 44454,
+    "expedition_attack_pct": 540.43,
+    "expedition_defense_pct": 540.43,
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+      "kingshotdata.com/heroes/yang",
+      "kingshotguide.org/heroes/yang"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshot_data_plus_lootbar_on_mechanics_plus_kingshotdata",
+    "notable": "Highest Conquest Attack documented (7200). Gen 6 introduces ±540.43% Expedition multiplier."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Kin Throw",
+        "description": "Delivers a rip-roaring Frostkin in a straight line dealing AOE damage plus the same amount on the return path.",
+        "scaling": [
+          100,
+          110,
+          120,
+          130,
+          140
+        ],
+        "scaling_unit": "percent_of_attack_aoe_line_outgoing_and_return",
+        "additional_effect": "damage_applied_twice_outgoing_and_return",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/yang"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Combo",
+        "description": "Yang's special firearm has a chance of inflicting a combo shot, dealing another round of damage.",
+        "scaling": [
+          15,
+          20,
+          25,
+          30,
+          35
+        ],
+        "scaling_unit": "percent_proc_chance_combo_shot",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/yang"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Deadshot",
+        "description": "Grants Yang a crit rate bonus when dealing damage.",
+        "scaling": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "scaling_unit": "percent_crit_rate",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/yang"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Avalanche",
+        "description": "An avalanche for Yang is just another weapon in the arsenal, resulting in an additional strike against a target by all squads every 4 turns.",
+        "scaling": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "scaling_unit": "percent_of_attack_extra_strike_damage",
+        "trigger_condition": "every_4_turns",
+        "sources": [
+          "kingshot-data.com/heroes/gen6/yang",
+          "ldshop.gg/blog/kingshot/hero-tier-list.html (Avalanche causes all squads to land an additional strike every 4 turns for 100% damage)",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html (Avalanche adds an extra strike against a target by all Squads every 4 turns)",
+          "kingshotdata.com/heroes/yang",
+          "kingshotguide.org/heroes/yang"
+        ],
+        "confidence": "VERIFIED_5_independent_sources"
+      },
+      {
+        "name": "Ice Zone",
+        "description": "Years of arctic adversity have taught Yang to seize advantages. Yang's Archers have a 40% chance of dealing 100% extra damage with every attack.",
+        "scaling": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "scaling_unit": "percent_extra_damage_scaling",
+        "proc_chance_max": 40,
+        "sources": [
+          "kingshot-data.com/heroes/gen6/yang",
+          "kingshotguide.com/en/heroes/generation-6-heroes (Yang's Archers have a 40% chance of dealing 100% extra damage with every attack)",
+          "lootbar.gg Gen 6 (Ice Zone gives all Squads a 40% chance to deal increased damage every turn)",
+          "kingshotdata.com/heroes/yang",
+          "kingshotguide.org/heroes/yang"
+        ],
+        "confidence": "VERIFIED_5_independent_sources"
+      },
+      {
+        "name": "Ambush",
+        "description": "Yang gives all squads a chance of dealing increased damage every turn. Some sources frame this as a Rally Squad Lethality buff since increased squad damage in rallies functionally reads as rally lethality.",
+        "scaling": [
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "scaling_unit": "percent_proc_chance",
+        "trigger_condition": "every_turn",
+        "sources": [
+          "kingshot-data.com/heroes/gen6/yang (probability: 8/16/24/32/40%)",
+          "lootbar.gg Gen 6",
+          "ldshop.gg Gen 6 heros guide (Ambush raises Rally Squad Lethality)",
+          "kingshotdata.com/heroes/yang",
+          "kingshotguide.org/heroes/yang"
+        ],
+        "confidence": "VERIFIED_5_independent_sources"
+      }
+    ],
+    "expedition_note": "9x3x3 verified: all 3 Expedition skills confirmed by 3+ sources. Scalings verified. Earlier 'sources disagree' flag was due to different phrasing (ldshop describes Ambush as rally lethality because in rally context, squad damage IS rally contribution) — functionally consistent.",
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Quick Draw",
+        "category": "conquest",
+        "description": "A five-shot barrage dealing damage to a random enemy. If the target is an Escort, there is a high chance of instantly knocking them down. Unlocked only when Frostkin is equipped.",
+        "scaling_damage_per_shot": [
+          40,
+          44,
+          48,
+          52,
+          56
+        ],
+        "scaling_escort_knockdown_chance": [
+          40,
+          55,
+          70,
+          85,
+          100
+        ],
+        "scaling_unit": "percent_of_attack_per_shot_and_escort_knockdown_chance",
+        "number_of_shots": 5,
+        "requires_exclusive_gear": "Frostkin",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/yang"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Offensive Defense",
+        "category": "expedition",
+        "description": "Increases the Lethality of rallied troops. Unlocked only when Frostkin is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_lethality_rally_troops",
+        "requires_exclusive_gear": "Frostkin",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html",
+          "kingshotdata.com/heroes/yang",
+          "kingshotguide.org/heroes/yang"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Frostkin",
+    "max_power": null,
+    "conquest_bonuses": {
+      "attack": 1457,
+      "defense": 1201,
+      "health": 9011
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 133.5,
+      "health_pct": 133.5
+    },
+    "unlocks_skills": [
+      "Quick Draw",
+      "Offensive Defense"
+    ],
+    "notes": "Highest exclusive-gear Attack bonus documented (+1457). Gen 6 power tier.",
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-6-heroes-list-and-ranking.html"
+    ],
+    "confidence": "9x3x3_VERIFIED_2_sources_kingshot_data_plus_lootbar"
+  },
+  "skill_priority": {
+    "order": [
+      "Max Avalanche (Expedition) first for rally damage multiplier",
+      "Then Ice Zone for Archer +100% extra damage proc",
+      "Then Ambush for 40% proc on all squads"
+    ],
+    "sources": [
+      "skill design analysis + kingshotguide.org + kingshotdata.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 40",
+      "gloves": "Archer Epic Lv 32",
+      "chest": "Archer Epic Lv 32",
+      "boots": "Archer Rare Lv 40"
+    },
+    "reasoning": "Standard archer archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 60",
+      "gloves": "Archer Legendary Lv 40",
+      "chest": "Archer Legendary Lv 40",
+      "boots": "Archer Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Gen 6 Offensive Rally",
+        "heroes": [
+          "Yang",
+          "Sophia",
+          "Triton"
+        ],
+        "source": "lootbar.gg Gen 6 ranking"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "F2P Late Game (Gen 5-6)",
+        "heroes": [
+          "Zoe",
+          "Marlin",
+          "Yang",
+          "Petra",
+          "Chenko"
+        ],
+        "note": "Yang becomes your F2P rally carry.",
+        "source": "heroes.js LINEUPS"
+      }
+    ],
+    "theoretical_synergy": "Yang is THE F2P late-game MVP. His Combo chance (+35% proc at max) plus Deadshot crit rate (+15%) plus Quick Draw's five-shot barrage create consistent high DPS. Pair with Zoe and Marlin for full F2P late-game composition.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Strongest Governor",
+      "Daily Deals",
+      "Hero Rally",
+      "Kingdom of Power"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js confirms Yang as the F2P late-game MVP. Multiple F2P access methods. Community guides universally recommend saving shards for Yang from Gen 5 onward.",
+    "sources": [
+      "kingshot-data",
+      "heroes.js baseline"
+    ],
+    "confidence": "high"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "S+",
+      "reasoning": "The F2P rally carry. S+ tier (only S+ Rally heroes: Vivian, Yang). F2P late-game MVP.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "B",
+      "reasoning": "Offensive kit.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "S",
+      "reasoning": "S-tier bear hunt contributor.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically used as joiner.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Arctic Sharpshooter",
+    "backstory": null,
+    "no_narrative_backstory_available": true,
+    "derived_character_themes": "Frost/arctic-themed archer. Skill flavor text references \"Years of arctic adversity\", \"Frostkin\" (his exclusive gear), \"an advanced thinker who can easily grasp the principles of almost any phenomena\", and his \"Kin Throw\" ranged barrage. Themes suggest a northern hunter-scholar who learned survival and precision in hostile cold environments.",
+    "source_note": "No narrative backstory published.",
+    "source": "derived from skill flavor text (kingshotdata.com, kingshotguide.org)",
+    "fabricated": false,
+    "lore_status": "structurally_unavailable_themes_derived_from_skill_flavor"
+  },
+  "deep_analysis": "Yang is the F2P late-game MVP of Kingshot — a Gen 6 Legendary Archer with the highest base Conquest Attack documented (7200) and one of only two S+ Rally heroes (the other being Vivian). His Conquest kit is a firearm-themed damage dealer: Kin Throw deals AOE damage on a straight line AND on the return path (effectively double-counted at up to Attack × 140% each pass), Combo gives his shots a up to 35% chance to inflict a follow-up hit, and Deadshot grants a passive +15% Crit Rate. His exclusive gear Frostkin holds the record for exclusive-gear Attack (+1457), plus +133.50% Lethality and +133.50% Health (Gen 6 power creep). Frostkin unlocks Quick Draw (a 5-shot barrage dealing up to Attack × 56% per shot with a chance to instantly knock down Escort targets) and Offensive Defense (+15% Rally Troops' Lethality). Tier: S+ Rally (only S+ alongside Vivian), S Bear Hunt, B Garrison. heroes.js marks him F2P-accessible and the late-game carry for free players: 'Prioritize saving shards for Yang from Gen 5 onward.' Access through Strongest Governor, Daily Deals, Hero Rally, and Kingdom of Power events. Research gap flagged: his Expedition skills were not captured in the kingshot-data extract and are not available in the research pass. Lore is also not surfaced — likely kingshotwiki 404 for Gen 6. Yang represents the F2P end-game aspiration target.",
+  "seo_keywords": [
+    "yang kingshot",
+    "yang kingshot f2p",
+    "yang kingshot rally",
+    "yang kingshot build",
+    "yang kingshot skills",
+    "yang frostkin",
+    "yang kingshot gen 6",
+    "yang kingshot tier list"
+  ],
+  "unverified_fields": [
+    "Expedition skills — NOT CAPTURED in extraction. MAJOR GAP. Requires fallback research.",
+    "Single primary source",
+    "Lore not found (Gen 6 404)",
+    "skill_priority.order, gear_recommendations.minimum_build, best_partners.named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 1,
+    "web_sources_successful": 1,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 1,
+    "plus_baseline_source": "heroes.js",
+    "confidence_level": "below_standard_expedition_skills_missing",
+    "major_gaps": [
+      "expedition_skills"
+    ]
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Gen 6 archer widget",
+    "role": "archer_rally_gen6",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

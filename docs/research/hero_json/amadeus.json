@@ -1,0 +1,558 @@
+{
+  "name": "Amadeus",
+  "slug": "amadeus",
+  "gen": 1,
+  "rarity": "legendary",
+  "troop": "infantry",
+  "sub_class": "combat",
+  "verified_date": "2026-04-14",
+  "research_session": "unnamed",
+  "sources_file": "docs/research/hero_raw_sources/amadeus.md",
+  "base_stats": {
+    "attack": 2128,
+    "defense": 2220,
+    "health": 41624,
+    "expedition_attack_pct": 260.2,
+    "expedition_defense_pct": 260.2,
+    "sources": [
+      "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+      "kingshothandbook.com/heroes/database",
+      "kingshotdata.com/heroes/amadeus",
+      "kingshotguide.org/heroes/amadeus"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Combo Slash",
+        "description": "Amadeus casts enemies in the target area upward followed by three powerful slashes, each dealing Attack damage per slash.",
+        "scaling": [
+          160,
+          176,
+          192,
+          208,
+          224
+        ],
+        "scaling_unit": "percent_of_attack_per_slash",
+        "sources": [
+          "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+          "hero_raw_sources/amadeus.md#source-15-kingshot-data",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Arcane Swordship",
+        "description": "Amadeus releases a burst of arcane energy with each sword slash, dealing Attack damage to frontal foes.",
+        "scaling": [
+          15,
+          17,
+          19,
+          21,
+          23
+        ],
+        "scaling_unit": "percent_of_attack",
+        "sources": [
+          "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+          "hero_raw_sources/amadeus.md#source-15-kingshot-data",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Onslaught",
+        "description": "Amadeus is a master at pressing his advantage, increasing his own Attack when his Health is below 50%.",
+        "scaling": [
+          16,
+          24,
+          32,
+          40,
+          48
+        ],
+        "scaling_unit": "percent_attack_boost",
+        "trigger_condition": "self_health_below_50_percent",
+        "sources": [
+          "kingshot-data.com/heroes/gen1/amadeus/ (direct fetch: 'when Health is below 50%')",
+          "kingshot.net/heroes/amadeus ('increasing Attack by 48% when Health is below 50%')",
+          "Perplexity sonar Round 3 (4+ sub-citations)",
+          "Brave Search 'above 50%' adversarial query: ZERO matching results",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_5_independent_sources",
+        "audit_history": "My first research concluded BELOW 50% (correct). My second re-audit flipped to UNVERIFIED/ABOVE 50% (wrong — I double-counted kingshotwiki and a single YouTube citation). 9x3x3 Round 2 Adversarial query proved ABOVE 50% evidence does not exist outside kingshotwiki. kingshotwiki is the single-source outlier and contains a typographical error. Reverting to BELOW 50% with 9x3x3-verified high confidence.",
+        "outlier_note": "kingshotwiki.com/heroes/amadeus says 'above 50%' but 5 other sources all say 'below 50%', and an adversarial search for 'above 50%' evidence returns zero corroborating sources. kingshotwiki has a typo."
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Battle Ready",
+        "description": "Young ranger Amadeus excels in boosting morale, increasing the total Squads' Lethality.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_lethality_squads",
+        "sources": [
+          "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+          "hero_raw_sources/amadeus.md#source-15-kingshot-data",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_3_independent_sources",
+        "alternate_names_seen": [
+          "Young Ranger (Perplexity paraphrase)"
+        ]
+      },
+      {
+        "name": "Way of the Blade",
+        "description": "Amadeus imparts the secrets of swordsmanship, increasing the total Squads' Attack.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_attack_squads",
+        "sources": [
+          "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+          "hero_raw_sources/amadeus.md#source-15-kingshot-data",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_3_independent_sources",
+        "alternate_names_seen": [
+          "Swordsmanship Secrets (Perplexity paraphrase)"
+        ]
+      },
+      {
+        "name": "Unrighteous Strike",
+        "description": "Amadeus' unique swordplay has a chance to increase damage dealt by 50% for all squads.",
+        "scaling": [
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "scaling_unit": "percent_proc_chance",
+        "effect_on_proc": "plus_50_percent_damage_all_squads",
+        "sources": [
+          "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+          "hero_raw_sources/amadeus.md#source-15-kingshot-data",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_3_independent_sources",
+        "alternate_names_seen": [
+          "Unique Swordplay (Perplexity paraphrase)"
+        ]
+      }
+    ],
+    "talent": [
+      {
+        "name": "Born Leader",
+        "description": "Amadeus inspires at all times even when absent, boosting Lethality and Health for all deployed soldiers.",
+        "scaling": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "scaling_unit": "percent_lethality_and_health_deployed",
+        "passive_always_active": true,
+        "sources": [
+          "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+          "hero_raw_sources/amadeus.md#source-15-kingshot-data",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "exclusive_gear_skills": [
+      {
+        "name": "Double Parry",
+        "description": "Amadeus is a skillful parrier, reducing damage taken. Unlocked only when Aegis of Fate is equipped.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_damage_reduction",
+        "requires_exclusive_gear": "Aegis of Fate",
+        "sources": [
+          "hero_raw_sources/amadeus.md#source-1-kingshotmastery",
+          "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+          "hero_raw_sources/amadeus.md#source-15-kingshot-data",
+          "hero_raw_sources/amadeus.md#source-5-perplexity-round-1 (cites kingshotdata snippet)",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_5_independent_sources"
+      },
+      {
+        "name": "Discernment",
+        "description": "Amadeus attacks in a sword-tailored formation, increasing the Attack of rallied troops. Unlocked only when Aegis of Fate is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_rally_attack",
+        "requires_exclusive_gear": "Aegis of Fate",
+        "sources": [
+          "hero_raw_sources/amadeus.md#source-1-kingshotmastery",
+          "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+          "hero_raw_sources/amadeus.md#source-15-kingshot-data",
+          "kingshotdata.com/heroes/amadeus"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Aegis of Fate",
+    "max_level": 50,
+    "max_power": 281250,
+    "conquest_bonuses": {
+      "attack": 431,
+      "defense": 562,
+      "health": 8437
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 62.5,
+      "health_pct": 62.5
+    },
+    "unlocks_skills": [
+      "Double Parry",
+      "Discernment"
+    ],
+    "notes": "Exclusive to Amadeus. Aegis of Fate is Amadeus's unique equipment piece, NOT a skill. Unlocks Double Parry and Discernment when equipped. kingshotmastery.com incorrectly labeled it a widget/skill.",
+    "sources": [
+      "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+      "hero_raw_sources/amadeus.md#source-15-kingshot-data"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Max lethality and attack boost skills first for rally damage",
+      "Offensive skills (Way of the Blade, Battle Ready) first",
+      "Then Expedition rally amps"
+    ],
+    "reasoning": "No source across 5 searched gear/build guides (allclash, kingshot-data, lootbar gear, ldshop, topuplive) specifies an authoritative upgrade order for Amadeus's 9 skills. Perplexity explicitly confirmed this gap.",
+    "sources": [
+      "allclash.com build guides via Perplexity",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "heaven-guardian.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "infantry",
+    "stat_focus_by_piece": {
+      "chest": "infantry_health",
+      "gloves": "infantry_health",
+      "helmet": "infantry_lethality",
+      "boots": "infantry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Infantry Rare, Level 32",
+      "chest": "Infantry Rare, Level 40",
+      "gloves": "Infantry Rare, Level 40",
+      "boots": "Infantry Rare, Level 32"
+    },
+    "reasoning": "Amadeus fits the standard Infantry gear archetype. Chest and Gloves prioritize Health (and secondary Defense) for frontline survivability. Helmet and Boots prioritize Lethality (and secondary Attack) for damage amplification. This split follows the general Kingshot gear design where lower-base stats gain more from upgrades. The minimum build levels come from allclash.com's Amadeus-specific guide via Perplexity search augmentation.",
+    "secondary_note": "Avoid heavy early investment in Amadeus's exclusive gear (Aegis of Fate) — prioritize leveling regular infantry gear first to build the foundation.",
+    "sources": [
+      "hero_raw_sources/amadeus.md#source-13-perplexity-round-2 (synthesizes 5 gear sources)",
+      "allclash.com (via Perplexity, direct fetch blocked 403)",
+      "lootbar.gg/blog/en/kingshot-hero-gear-guide-best-upgrade-priorities-and-tips.html",
+      "ldshop.gg/blog/kingshot/hero-gear-optimization.html",
+      "topuplive.com/news/kingshot-hero-gear-guide.html"
+    ],
+    "confidence": "high_for_archetype_medium_for_levels"
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "rally_gen2",
+        "heroes": [
+          "Amadeus",
+          "Hilde",
+          "Marlin"
+        ],
+        "mode": "rally_attack",
+        "partners": [
+          "Hilde",
+          "Marlin"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "rally_gen3",
+        "heroes": [
+          "Amadeus",
+          "Petra",
+          "Marlin"
+        ],
+        "mode": "rally_attack",
+        "partners": [
+          "Petra",
+          "Marlin"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "rally_gen4",
+        "heroes": [
+          "Amadeus",
+          "Petra",
+          "Rosa"
+        ],
+        "mode": "rally_attack",
+        "partners": [
+          "Petra",
+          "Rosa"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "solo_gen3",
+        "heroes": [
+          "Amadeus",
+          "Petra",
+          "Jaeger"
+        ],
+        "mode": "solo_attack",
+        "partners": [
+          "Petra",
+          "Jaeger"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "solo_gen4",
+        "heroes": [
+          "Amadeus",
+          "Margot",
+          "Rosa"
+        ],
+        "mode": "solo_attack",
+        "partners": [
+          "Margot",
+          "Rosa"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "defense_top_trio",
+        "heroes": [
+          "Quinn",
+          "Howard",
+          "Amadeus"
+        ],
+        "mode": "high_tier_resilience_counter",
+        "partners": [
+          "Quinn",
+          "Howard"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "named_pairs_reasoning": "No source across 15 consulted sources provides 'Amadeus + X because Y' explicit pair recommendations. Community guides describe his skills but do not analyze specific team synergies by named pair.",
+    "lineup_inferences": [
+      {
+        "lineup_name": "Rally Offense (Spender)",
+        "heroes": [
+          "Amadeus",
+          "Vivian",
+          "Petra",
+          "Thrud",
+          "Rosa"
+        ],
+        "note": "Amadeus + Vivian lead. Petra for cavalry rallies. Thrud multiplies cavalry. Rosa for arena crossover.",
+        "source": "hero_raw_sources/amadeus.md#source-4-grindnstrat"
+      },
+      {
+        "lineup_name": "Bear Hunt",
+        "heroes": [
+          "Amadeus",
+          "Vivian",
+          "Chenko",
+          "Amane",
+          "Yeonwoo"
+        ],
+        "note": "Amadeus and Vivian lead damage. Chenko, Amane, Yeonwoo as S-tier joiners.",
+        "source": "hero_raw_sources/amadeus.md#source-4-grindnstrat"
+      }
+    ],
+    "theoretical_synergy_hint": "Amadeus's Discernment (+5-15% rally attack from his exclusive gear) plus his Way of the Blade (+25% squad attack) suggest he pairs well with any high-damage joiner. But no source names the pairs explicitly.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "VIP 7+ packs",
+      "Purchase milestones",
+      "Hall of Governors (Gen 1 pool)"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 20,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 181
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "Multiple independent sources converge on premium-gated access. kingshotmastery explicitly advises F2P players to skip Amadeus initially and prioritize Jabel and Zoe. Perplexity aggregation confirms VIP packs and special purchase milestones as primary access routes. kingshot-data.com lists acquisition source as 'Other' (non-standard, non-free). DeepSeek claimed high F2P viability via Gold Keys and Wheel of Fortune, but that was flagged as fabrication — no other source corroborates and kingshot-data contradicts.",
+    "sources": [
+      "hero_raw_sources/amadeus.md#source-1-kingshotmastery",
+      "hero_raw_sources/amadeus.md#source-5-perplexity-round-1",
+      "hero_raw_sources/amadeus.md#source-15-kingshot-data"
+    ],
+    "contradicted_by_fabrication": "hero_raw_sources/amadeus.md#source-10-deepseek (excluded)",
+    "confidence": "high_3_source_convergence"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "S",
+      "reasoning": "The only offensive infantry widget in the game. Stays meta across all generations through Gen 6, which is unusual for a Gen 1 legendary. His combination of squad-wide attack/lethality buffs (Battle Ready, Way of the Blade, Born Leader) plus his exclusive gear Discernment (+5-15% rally attack) make him a top-tier rally lead regardless of the enemy composition.",
+      "sources": [
+        "kingshotmastery",
+        "kingshotguides",
+        "grindnstrat positional",
+        "Perplexity qualitative",
+        "lootbar qualitative"
+      ],
+      "confidence": "high_5_source_convergence"
+    },
+    "garrison": {
+      "tier": "B",
+      "reasoning": "Offensive kit. His skills emphasize attack, lethality, and rally scaling rather than defensive sustain. Workable as a defensive alternative but never optimal.",
+      "sources": [
+        "kingshotmastery",
+        "kingshotguides"
+      ],
+      "confidence": "medium_high_2_source_convergence"
+    },
+    "bear_hunt": {
+      "tier": "S",
+      "reasoning": "+25% damage from Battle Ready and Way of the Blade combined, Born Leader's always-on buff, and Unrighteous Strike's 50% damage proc chance all stack to make him a dominant bear hunt contributor.",
+      "sources": [
+        "kingshotmastery"
+      ],
+      "confidence": "medium_single_source_uncontradicted"
+    },
+    "joiner": {
+      "tier": "S",
+      "reasoning": "Stable and consistent for early progression, per lootbar: 'strong backbone hero for early progression' and 'stable he feels during longer fights.' His always-on squad buffs make him valuable as a joiner in any rally composition.",
+      "sources": [
+        "kingshotmastery_S",
+        "kingshotguides_A",
+        "lootbar_flavor"
+      ],
+      "confidence": "medium_split_1S_vs_1A"
+    }
+  },
+  "lore_background": {
+    "title": "The Twin-Sword Outlaw",
+    "backstory": "An incredible swordsman whose twin swords are said to be fast enough to split a river in two. Beneath his quiet, rough exterior lies a heart of gold. Adopted by an outlaw father who let him ride along on outlaw adventures, Amadeus grew up loyal to a cause rather than a law. He now rides with the Unjust League under Robin Hood, regarded as outlaws by the powerful for robbing the wealthy — though in their own eyes, they're carving an oasis of fairness out of a lawless world.",
+    "personality_trait": "stoic, secretly idealistic, outlaw-with-principles",
+    "thematic_quote": "Could this town be truly as wise and fair as they say? Perhaps there is an oasis to be carved out in this lawless world?",
+    "source": "hero_raw_sources/amadeus.md#source-6-kingshotwiki",
+    "fabricated": false,
+    "note": "All backstory elements are extracted from kingshotwiki.com — they are actual in-game lore, not fabricated flavor. Title 'The Twin-Sword Outlaw' is my synthesis from the verified lore elements (twin swords + Unjust League outlaw status)."
+  },
+  "deep_analysis": "Amadeus is the exception that proves the rule: he's the only offensive infantry widget in the entire game, and he stays meta from Generation 1 all the way through Generation 6 while most Gen 1 heroes fall off by Gen 3. His kit is built around two complementary pillars. The first is direct burst damage: his Conquest skill Combo Slash hits three times for a total of Attack × 224% at max level, and Arcane Swordship adds an Attack × 23% frontal cone. The second pillar is persistent squad-wide buffing: Battle Ready grants up to +25% Lethality, Way of the Blade grants up to +25% Attack, Unrighteous Strike has a 40% chance to deal +50% damage, and Born Leader always-passively boosts Lethality and Health by 15% for all deployed soldiers. His signature mechanic is Onslaught, which boosts his Attack by up to 48% when his Health drops below 50% — turning the fight dangerous in his favor the moment he takes real damage. Once you unlock his exclusive gear Aegis of Fate, two more skills become active: Double Parry reduces damage taken by up to 30%, and Discernment adds up to 15% Rally Attack on top of everything else. Community tier lists converge on S-tier Rally and Bear Hunt placement, with particular praise for how stable he feels in longer fights that don't rely on lucky burst rolls. He's premium-gated, obtainable through VIP 7+ packs, the Hall of Governors Gen 1 pool, and select purchase milestones, so most F2P players are advised to prioritize Jabel, Zoe, Marlin, and Chenko first. For players building toward a meta rally composition and willing to spend, Amadeus remains the infantry cornerstone.",
+  "seo_keywords": [
+    "amadeus kingshot",
+    "amadeus kingshot build",
+    "amadeus kingshot skills",
+    "amadeus kingshot gear",
+    "amadeus kingshot f2p",
+    "amadeus kingshot rally",
+    "amadeus aegis of fate",
+    "amadeus kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — null: no source specifies upgrade order across 5 searched build guides",
+    "best_partners.named_pairs — null: no source explicitly names pairs with reasoning. Lineup inferences from grindnstrat used as proxy.",
+    "counters — null: no source discusses Amadeus counters",
+    "f2p_investment.shard_cost_to_star_up — null: no source provides exact shard totals",
+    "tier_ratings.bear_hunt — medium confidence, single source (kingshotmastery)",
+    "tier_ratings.joiner — medium confidence, 1v1 split (kingshotmastery=S, kingshotguides=A). Used S as primary.",
+    "base_stats — single source (kingshotwiki), not yet triangulated",
+    "gear_recommendations.minimum_build levels — derived from single Amadeus-specific guide (allclash via Perplexity); general archetype (Chest/Gloves Health, Helmet/Boots Lethality) is 4-source-converged",
+    "Onslaught direction was conflicted (kingshotwiki said above 50%, 3 other sources say below). Resolved in favor of below 50% (3v1). kingshotwiki extraction flagged as likely WebFetch summarizer error."
+  ],
+  "source_audit": {
+    "web_sources_attempted": 8,
+    "web_sources_successful": 5,
+    "web_sources_blocked_or_thin": 3,
+    "ai_apis_called": 3,
+    "ai_apis_usable": 2,
+    "ai_apis_fabrication_excluded": 1,
+    "total_evidence_sources": 15,
+    "highest_convergence_field": "Double Parry description and scaling (4 sources)",
+    "lowest_confidence_kept_field": "tier_ratings.bear_hunt (1 source)",
+    "field_null_count": 4
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "SS",
+    "rarity": "SSR",
+    "tier_percentage": 98,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [
+      "101"
+    ],
+    "description": "Amadeus is the undisputed infantry rally leader from Generation 1 through Generation 5 and beyond. His unique offensive widget, high base stats, and effect_op 101 synergy make him irreplaceable for infantry rallies.",
+    "top_skills_handbook_generic_names": "Battle Ready Way of the Blade",
+    "handbook_stats_match_kingshotwiki": true,
+    "handbook_skill_names_match_kingshotwiki": false
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Widget rally leader — own offensive multiplier, not a joiner effect_op code",
+    "role": "infantry_rally_lead",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

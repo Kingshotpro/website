@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Oath and Bone — Multi-Variant Seamless Compositor</title>
+<style>
+  body { background: #0a0a0a; color: #ccc; font-family: monospace; margin: 0; padding: 16px; }
+  h1 { color: #b8960c; font-size: 14px; margin: 0 0 4px; }
+  p  { font-size: 11px; color: #888; margin: 0 0 12px; max-width: 900px; }
+  #controls { margin-bottom: 12px; display: flex; gap: 8px; align-items: center; }
+  select, button { background: #2a2a2a; color: #ccc; border: 1px solid #444; padding: 4px 10px; font-family: monospace; font-size: 12px; cursor: pointer; }
+  button:hover { background: #333; }
+  select:focus, button:focus { outline: none; border-color: #b8960c; }
+  #stage { display: grid; gap: 0; border: 1px solid #333; width: fit-content; }
+  .tile { width: 160px; height: 160px; background-size: cover; background-position: center; }
+  #legend { margin-top: 10px; font-size: 10px; color: #666; }
+  #legend span { color: #b8960c; }
+</style>
+</head>
+<body>
+<h1>Oath and Bone — Multi-Variant Seamless Compositor</h1>
+<p>Each hex picks a random variant + random 90° rotation + random horizontal mirror.
+With 6 variants × 4 rotations × 2 mirrors = 48 effective per-tile states. Strikingly
+beautiful per tile + seamless connection across tiles.</p>
+
+<div id="controls">
+  <label style="font-size:11px">Biome: </label>
+  <select id="biome-select" onchange="render(this.value)">
+    <option value="plain">plain</option>
+    <option value="rough">rough</option>
+    <option value="ridge">ridge</option>
+    <option value="river">river</option>
+    <option value="forest">forest</option>
+    <option value="ruin" selected>ruin</option>
+    <option value="sanctum">sanctum</option>
+  </select>
+  &nbsp;
+  <button onclick="render(document.getElementById('biome-select').value)">Reshuffle</button>
+  &nbsp;
+  <label style="font-size:11px">Grid: </label>
+  <select id="size-select" onchange="render(document.getElementById('biome-select').value)">
+    <option value="4">4×4</option>
+    <option value="6" selected>6×6</option>
+    <option value="8">8×8</option>
+  </select>
+</div>
+
+<div id="stage"></div>
+<div id="legend">Seamless tiling with per-hex random variant + rotation + mirror. <span>Reshuffle</span> re-randomizes.</div>
+
+<script>
+const BIOMES = {
+  plain:   [1, 2, 3, 4, 5, 6],
+  rough:   [1, 2, 3, 4, 5, 6],
+  ridge:   [1, 2, 3, 4, 5, 6],
+  river:   [1, 2, 3, 4, 5, 6],
+  forest:  [1, 2, 3, 4, 5, 6],
+  ruin:    [1, 2, 3, 4, 5, 6],
+  sanctum: [1, 2, 3, 4, 5, 6]
+};
+
+function render(biome) {
+  const variants = BIOMES[biome] || [];
+  const size = parseInt(document.getElementById('size-select').value, 10);
+  const stage = document.getElementById('stage');
+  stage.style.gridTemplateColumns = `repeat(${size}, 160px)`;
+  stage.innerHTML = '';
+  if (!variants.length) return;
+  for (let i = 0; i < size * size; i++) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    const v = variants[Math.floor(Math.random() * variants.length)];
+    const rot = [0, 90, 180, 270][Math.floor(Math.random() * 4)];
+    const mirror = Math.random() < 0.5 ? 1 : -1;
+    tile.style.backgroundImage = `url('./${biome}/variant-${v}.png')`;
+    tile.style.transform = `rotate(${rot}deg) scaleX(${mirror})`;
+    stage.appendChild(tile);
+  }
+}
+
+render('ruin');
+</script>
+</body>
+</html>

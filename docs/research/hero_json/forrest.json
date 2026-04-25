@@ -1,0 +1,231 @@
+{
+  "name": "Forrest",
+  "slug": "forrest",
+  "gen": 0,
+  "rarity": "rare",
+  "troop": "infantry",
+  "sub_class": "gathering",
+  "sub_role": "wood_gatherer",
+  "pronouns": "he/him",
+  "base_stats": {
+    "attack": 1106,
+    "defense": 2220,
+    "health": 21644,
+    "expedition_attack_pct": 90.07,
+    "expedition_defense_pct": 90.07,
+    "sources": [
+      "kingshotdata.com/heroes/forrest",
+      "kingshotguide.org/heroes/forrest"
+    ],
+    "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Axe Whirl",
+        "description": "Forrest's axe pirouette deals damage per 0.5s to nearby enemies for 3s.",
+        "scaling": [
+          80,
+          88,
+          96,
+          104,
+          110
+        ],
+        "scaling_unit": "percent_of_attack_per_half_second_for_3s",
+        "sources": [
+          "kingshotdata.com/heroes/forrest",
+          "kingshotguide.org/heroes/forrest"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+      },
+      {
+        "name": "Razor Sharp",
+        "description": "Forrest's sharpened axe deals more damage per second.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_extra_damage",
+        "sources": [
+          "kingshotdata.com/heroes/forrest",
+          "kingshotguide.org/heroes/forrest"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Woodland Inheritor",
+        "description": "Forrest's expert lumberjack skills increase the Town's Sawmill Output.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_sawmill_output",
+        "sources": [
+          "kingshotdata.com/heroes/forrest",
+          "kingshotguide.org/heroes/forrest"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+      },
+      {
+        "name": "Master Woodcutter",
+        "description": "Forrest utilizes his logging expertise to increase Wood Gathering Speed in the Wilderness.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_wood_gathering_speed",
+        "sources": [
+          "kingshotdata.com/heroes/forrest",
+          "kingshotguide.org/heroes/forrest"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotdata_plus_kingshotguide"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": []
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Rare heroes do not have exclusive gear.",
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Hero Recruitment",
+      "Intel Missions",
+      "Conquest Battles"
+    ],
+    "reasoning": "Rare-tier starter hero, universally accessible.",
+    "confidence": "high",
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 2,
+        "2_star_to_3_star": 5,
+        "3_star_to_4_star": 10,
+        "4_star_to_5_star": 20,
+        "total_shards_from_unlock_to_5_star": 48
+      },
+      "sources": [
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_community_rare_tier_defaults",
+      "note": "Rare heroes have significantly lower shard requirements than Legendary/Mythic"
+    }
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—"
+    },
+    "garrison": {
+      "tier": "—"
+    },
+    "bear_hunt": {
+      "tier": "—"
+    },
+    "joiner": {
+      "tier": "—"
+    },
+    "gathering": {
+      "tier": "S",
+      "reasoning": "Best wood gatherer"
+    }
+  },
+  "lore_background": {
+    "title": "The Master Woodcutter",
+    "backstory": null,
+    "derived_character_themes": "Infantry lumberjack specialist with axe-based combat. Skill flavor text references \"expert lumberjack skills\" and \"logging expertise\" suggesting a working-class woodsman-soldier.",
+    "source_note": "No narrative backstory published.",
+    "source": "derived from skill flavor text",
+    "fabricated": false,
+    "lore_status": "structurally_unavailable"
+  },
+  "deep_analysis": "Forrest is a Rare infantry gathering hero — the wood-focused counterpart to Edwin (stone) and Seth (iron). His Expedition boosts Town Sawmill Output and Wood Gathering Speed by up to +25% each. Essential for farm accounts. Conquest kit has DPS utility via Axe Whirl (AOE per-half-second) and Razor Sharp (self-DPS).",
+  "base_stats_sources": [
+    "kingshotdata.com/heroes/forrest",
+    "kingshotguide.org/heroes/forrest"
+  ],
+  "verified_date": "2026-04-14",
+  "verified_confidence": "VERIFIED_2_independent_sources",
+  "sources_file": "docs/research/hero_raw_sources/forrest.md",
+  "effect_op_codes": {
+    "type": "rare_gathering_hero",
+    "codes": [],
+    "description": "Rare-tier gathering hero — no rally joiner effect_op code (not a combat hero)",
+    "source": "kingshothandbook.com (rare tier heroes not in effect_op stacking system)"
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Wood Gathering Team",
+        "heroes": [
+          "Forrest",
+          "Diana"
+        ],
+        "note": "Forrest specializes wood, Diana provides stamina reduction"
+      }
+    ],
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "skill_priority": {
+    "order": [
+      "Max Woodland Inheritor FIRST (Expedition — +25% Sawmill Output)",
+      "Then Master Woodcutter (+25% Wood Gathering Speed)",
+      "Conquest is filler — Forrest is a gatherer"
+    ],
+    "sources": [
+      "skill design analysis + kingshotguide.org + kingshotdata.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "infantry",
+    "minimum_build": {
+      "helmet": "Infantry Green Lv 20",
+      "gloves": "Infantry Green Lv 20",
+      "chest": "Infantry Green Lv 20",
+      "boots": "Infantry Green Lv 20"
+    },
+    "optimum_build": {
+      "helmet": "Infantry Rare Lv 32",
+      "gloves": "Infantry Rare Lv 32",
+      "chest": "Infantry Rare Lv 32",
+      "boots": "Infantry Rare Lv 32"
+    },
+    "reasoning": "Standard infantry archetype at rare tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  }
+}

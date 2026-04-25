@@ -4,18 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Kingdom Orbit — KingshotPro Arcade</title>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <script src="../js/cookie-consent.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100vw; height: 100vh; overflow: hidden; background: #0d0d0f; display: flex; align-items: center; justify-content: center; }
+    html { background: #0d0d0f; }
+    body { background: #0d0d0f; }
+    .orbit-stage { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     canvas { display: block; max-width: 100%; max-height: 100%; touch-action: none; }
+    .orbit-info { max-width: 600px; margin: 0 auto; padding: 40px 24px 60px; }
     h1 { color: #f0c040; }
     p { color: #e8e6e3; }
   </style>
 </head>
 <body>
-<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="orbit-stage">
 <canvas id="c" width="390" height="844"></canvas>
+</div>
 <script src="colony_light.js"></script>
 <script>
 const c = document.getElementById("c"), x = c.getContext("2d"), W = 390, H = 844, CX = W/2, CY = H*0.42;
@@ -75,8 +80,24 @@ function loop(now){
 }
 requestAnimationFrame(loop);
 </script>
-<div style="text-align:center;margin:20px;font-size:12px;color:#9b9da4;"><a href="../index.html" style="color:#f0c040;">← Back to KingshotPro</a></div>
-<script src="../js/cookie-consent.js"></script>
+<div class="orbit-info">
+  <h2 style="color:#f0c040;font-size:18px;margin-bottom:12px;">About Kingdom Orbit</h2>
+  <p style="font-size:14px;color:#9b9da4;line-height:1.75;margin-bottom:14px;">Kingdom Orbit is a meditative sandbox built around Kingshot's core metaphor: everything in the kingdom orbits something else. Tap to summon a light. Each new light locks onto a prior one and begins its own orbit. The system grows in complexity with every tap.</p>
+  <p style="font-size:14px;color:#9b9da4;line-height:1.75;margin-bottom:14px;">There is no score and no timer. Nothing to win. Kingdom Orbit is designed for the moments between battles — a space to think while the kingdom breathes. The chime you hear when each light arrives uses the same harmonic intervals found in Kingshot's menu screens.</p>
+
+  <h3 style="color:#e8e6e3;font-size:15px;margin:20px 0 8px;">How It Works</h3>
+  <ul style="font-size:14px;color:#9b9da4;line-height:1.9;padding-left:20px;">
+    <li>Tap or click anywhere to summon a light. The first light settles at the center — the kingdom's anchor point.</li>
+    <li>Every light after the first selects a prior light as its parent and begins orbiting it at a unique radius and speed.</li>
+    <li>Some lights orbit clockwise, some counter-clockwise. Speed and orbit size vary with each summons.</li>
+    <li>The system never resets unless you refresh the page. Add as many lights as you want.</li>
+  </ul>
+
+  <h3 style="color:#e8e6e3;font-size:15px;margin:20px 0 8px;">The Kingshot Connection</h3>
+  <p style="font-size:14px;color:#9b9da4;line-height:1.75;margin-bottom:14px;">In Kingshot, every player orbits something. New players orbit stronger alliance members. Alliances orbit the dominant kingdom powers. Resources, research, and march queues all rotate around the Town Center as the fixed point. Kingdom Orbit makes that visible — a quiet reminder that position and relationship matter more than raw strength.</p>
+
+  <p style="font-size:13px;color:#9b9da4;margin-top:24px;"><a href="../index.html" style="color:#f0c040;">← Back to KingshotPro</a></p>
+</div>
 <script src="../js/layout.js"></script>
 <script src="../js/advisor-names.js"></script>
 <script src="../js/advisor.js"></script>

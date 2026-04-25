@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Oath and Bone — Seamless Texture Test</title>
+<style>
+  body { background: #1a1a1a; color: #ccc; font-family: monospace; margin: 0; padding: 20px; }
+  h1 { color: #b8960c; font-size: 14px; margin: 0 0 4px; }
+  p  { font-size: 11px; color: #888; margin: 0 0 16px; }
+  .label { color: #b8960c; margin: 16px 0 4px; font-size: 12px; }
+  .swatch { display: block; border: 1px solid #333; }
+
+  .single   { width: 256px; height: 256px; background: url('plain_seamless.png') center/cover; }
+  .tile-4   { width: 512px; height: 512px; background: url('plain_seamless.png') top left; background-size: 256px 256px; }
+  .tile-8   { width: 768px; height: 768px; background: url('plain_seamless.png') top left; background-size: 128px 128px; }
+  .tile-mid { width: 800px; height: 800px;
+              background: url('plain_seamless.png') top left; background-size: 200px 200px;
+              image-rendering: auto; }
+</style>
+</head>
+<body>
+<h1>Oath and Bone — Seamless Texture Test</h1>
+<p>Single source: <code>plain_seamless.png</code> (1024×1024, MJ --tile). Seams should be invisible in repeating tiles.</p>
+
+<div class="label">1× (source reference)</div>
+<div class="swatch single"></div>
+
+<div class="label">4× grid (2×2) — 256px per tile, seam every 256px</div>
+<div class="swatch tile-4"></div>
+
+<div class="label">Density test (6×6) — 128px per tile, seam every 128px</div>
+<div class="swatch tile-8"></div>
+
+<div class="label">Mid zoom (4×4) — 200px per tile</div>
+<div class="swatch tile-mid"></div>
+</body>
+</html>

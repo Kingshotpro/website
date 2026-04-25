@@ -1,0 +1,343 @@
+{
+  "name": "Howard",
+  "slug": "howard",
+  "gen": 1,
+  "rarity": "epic",
+  "troop": "infantry",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/howard.md",
+  "base_stats": {
+    "attack": 1361,
+    "defense": 2220,
+    "health": 26640,
+    "expedition_attack_pct": 140.11,
+    "expedition_defense_pct": 140.11,
+    "sources": [
+      "kingshotwiki",
+      "kingshothandbook.com/heroes/howard-build-guide",
+      "kingshotdata.com/heroes/howard",
+      "kingshotguide.org/heroes/howard"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_functional_equivalence_plus_kingshotdata",
+    "notable": "Lowest Attack (1361) of researched Epics — defensive tank archetype."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Shielded Strike",
+        "description": "Howard gives an enemy a solid whack with his heavy shield, knocking the target back while dealing AOE damage.",
+        "scaling": [
+          200,
+          220,
+          240,
+          260,
+          280
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "additional_effects": [
+          "knockback"
+        ],
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/howard"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      },
+      {
+        "name": "Joint Defense",
+        "description": "Howard leads the effort to fortify defenses, increasing Defense for all heroes.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_defense_all_heroes",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/howard"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      },
+      {
+        "name": "Shield Block",
+        "description": "Howard trades in his shield for an upgraded model, reducing damage taken.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_self_damage_reduction",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/howard"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Defenders' Edge",
+        "description": "Howard guards our troops with his shield, reducing damage taken for all troops.",
+        "scaling": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_damage_reduction_all_troops",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/howard"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      },
+      {
+        "name": "Weaken",
+        "description": "Howard's intimidating presence reduces the total enemy squads' Attack.",
+        "scaling": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "scaling_unit": "percent_enemy_attack_reduction",
+        "sources": [
+          "kingshotwiki",
+          "kingshotdata.com/heroes/howard"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata",
+        "name_divergence_note": "Handbook build guide uses different skill name for functionally equivalent skill. Kingshotwiki canonical name used here. See handbook_build_guide_note on hero."
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": []
+  },
+  "exclusive_gear": null,
+  "exclusive_gear_note": "Epic heroes do not have exclusive gear.",
+  "skill_priority": {
+    "order": [
+      "Max Defenders' Edge (Expedition 111 Damage Reduction) FIRST",
+      "Then Weaken (enemy attack debuff)",
+      "Conquest as filler"
+    ],
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "infantry",
+    "stat_focus_by_piece": {
+      "helmet": "infantry_lethality",
+      "gloves": "infantry_health",
+      "chest": "infantry_health",
+      "boots": "infantry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Infantry Rare Lv 32",
+      "gloves": "Infantry Rare Lv 32",
+      "chest": "Infantry Rare Lv 32",
+      "boots": "Infantry Rare Lv 32"
+    },
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Infantry Epic Lv 40",
+      "gloves": "Infantry Epic Lv 40",
+      "chest": "Infantry Epic Lv 40",
+      "boots": "Infantry Epic Lv 40"
+    },
+    "reasoning": "Standard infantry archetype at epic tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides)."
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "defense_combo_gordon_howard",
+        "heroes": [
+          "Gordon",
+          "Howard"
+        ],
+        "mode": "early_mid_defense",
+        "partners": [
+          "Gordon"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "defense_combo_howard_quinn",
+        "heroes": [
+          "Howard",
+          "Quinn"
+        ],
+        "mode": "max_damage_reduction_up_to_40pct",
+        "partners": [
+          "Quinn"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "defense_top_trio",
+        "heroes": [
+          "Quinn",
+          "Howard",
+          "Amadeus"
+        ],
+        "mode": "high_tier_resilience_counter",
+        "partners": [
+          "Quinn",
+          "Amadeus"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Early garrison tank. Lore-linked to Gordon (Gordon rescued him from prison with a spatula).",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": true,
+    "access_methods": [
+      "Exploration",
+      "Watchtower Intel",
+      "Hero Recruitment",
+      "Epic General Hero Shard"
+    ],
+    "reasoning": "4 F2P access methods.",
+    "confidence": "high",
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 1,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 171
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    }
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "garrison": {
+      "tier": "B",
+      "reasoning": "Garrison only. Quickly outclassed by Gen 2+ heroes.",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "bear_hunt": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    },
+    "joiner": {
+      "tier": "—",
+      "sources": [
+        "heroes.js"
+      ]
+    }
+  },
+  "lore_background": {
+    "title": "The Guardian with the Plank-Shield",
+    "backstory": "Howard served as a guardsman of the Sixth Imperial Cavalry, defending the Imperial Palace during a rebellion. Afterward he faced political persecution and was imprisoned. His friend Gordon — then working as a prison chef — broke him out using a spatula. Howard fled to a small village, where he became chief sentry. When a rebel attack came, he defended the village using improvised plank defenses, earning the nickname 'the guardian with the plank-shield.'",
+    "personality_trait": "loyal, persecuted, improvised defender",
+    "source": "kingshotwiki.com/heroes/howard",
+    "fabricated": false,
+    "cross_reference": "Howard + Gordon — Gordon broke Howard out of prison with a spatula. Inter-hero lore pair."
+  },
+  "deep_analysis": "Howard is the early garrison tank of Kingshot — a Gen 1 Epic Infantry hero whose kit is built around shield-based defense. Shielded Strike deals up to Attack × 280% AOE with knockback, Joint Defense buffs all heroes' Defense by +15%, and Shield Block reduces his own damage taken by +30%. His Expedition skills extend the defense to the whole army: Defenders' Edge reduces all troops' damage taken by +20%, and Weaken reduces enemy squads' Attack by +20%. No exclusive gear (Epic pattern). F2P-accessible through 4 methods. heroes.js tier: B Garrison only — quickly outclassed by Gen 2+ heroes, but a reliable early pick. His lore is one of two inter-hero pairs in the roster: he was a Sixth Imperial Cavalry guardsman imprisoned after a rebellion for political reasons, and his friend Gordon — working as a prison chef — broke him out using a spatula. He became a village chief sentry and earned the nickname 'the guardian with the plank-shield' after defending against a rebel attack with improvised plank defenses.",
+  "seo_keywords": [
+    "howard kingshot",
+    "howard kingshot skills",
+    "howard kingshot f2p",
+    "howard kingshot garrison",
+    "howard kingshot build",
+    "howard kingshot infantry",
+    "howard kingshot epic",
+    "howard kingshot tier list"
+  ],
+  "unverified_fields": [
+    "single_source_kingshotwiki",
+    "skill_priority, gear_build, named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "sources_successful": 1,
+    "plus_baseline": "heroes.js",
+    "inter_hero_lore_pair": "howard_gordon"
+  },
+  "handbook_meta": {
+    "source": "kingshothandbook.com/heroes/database",
+    "tier": "S",
+    "rarity": "SR",
+    "tier_percentage": 95,
+    "s_level": 4,
+    "speed": 100,
+    "effect_op_codes": [
+      "111"
+    ],
+    "description": "Howard provides the foundational damage reduction layer (effect_op 111) for triple effect_op compositions. His 20% damage reduction multiplies with Gordon's Health (113) and Saul's Defense (112), enabling 2.18x+ DefenseUp—21% better than pure same-category stacking.",
+    "top_skills_handbook_generic_names": "Defenders' Edge Cavalry Commander",
+    "handbook_stats_match_kingshotwiki": false,
+    "handbook_skill_names_match_kingshotwiki": false
+  },
+  "handbook_build_guide_note": "Handbook lists 'Cavalry Commander' (Cavalry march speed) skill not found in kingshotwiki. Possible different skill list or different naming. Skills cross-reference only.",
+  "handbook_build_guide_url": "kingshothandbook.com/heroes/howard-build-guide",
+  "effect_op_codes": {
+    "type": "effect_op_joiner",
+    "codes": [
+      "111"
+    ],
+    "description": "Damage Reduction 111 — foundational defensive layer +20%",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

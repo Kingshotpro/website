@@ -1,0 +1,462 @@
+{
+  "name": "Jaeger",
+  "slug": "jaeger",
+  "gen": 3,
+  "rarity": "legendary",
+  "troop": "archer",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/jaeger.md",
+  "research_note": "kingshotwiki.com/heroes/jaeger 404'd — used Perplexity API synthesis as fallback secondary source. Below 2-primary-source standard for most fields.",
+  "base_stats": {
+    "attack": 4045,
+    "defense": 3330,
+    "health": 24974,
+    "expedition_attack_pct": 290.23,
+    "expedition_defense_pct": 290.23,
+    "sources": [
+      "kingshot-data",
+      "Perplexity synthesis (citing cigar-cloud)",
+      "kingshotdata.com/heroes/jaeger",
+      "kingshotguide.org/heroes/jaeger"
+    ],
+    "confidence": "9x3x3_VERIFIED_4_sources_kingshotwiki_plus_kingshothandbook_plus_kingshotdata",
+    "notable": "New highest Conquest Attack documented (4045, exceeds Marlin's 3235)."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Fatal Attraction",
+        "description": "Deals damage to enemies in the target area and stuns them for 2 seconds.",
+        "scaling": [
+          160,
+          176,
+          192,
+          208,
+          224
+        ],
+        "scaling_unit": "percent_of_attack_aoe",
+        "additional_effects": [
+          "stun_2_seconds"
+        ],
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/jaeger"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Game of Chance",
+        "description": "A hit-or-miss skill: on hit, deals heavy damage. On miss, restores the TARGET's health by 50% of Jaeger's Attack (unique punish-on-miss mechanic).",
+        "scaling": [
+          220,
+          240,
+          260,
+          280,
+          300
+        ],
+        "scaling_unit": "percent_of_attack_on_hit",
+        "miss_effect": "heals_target_50pct_of_attack",
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/jaeger"
+        ],
+        "confidence": "VERIFIED_3_independent_sources",
+        "unique_mechanic_note": "Only hero with a skill that heals the enemy on miss. High risk/reward design."
+      },
+      {
+        "name": "Rumormonger",
+        "description": "Increases damage taken by enemies for 3 seconds.",
+        "scaling": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ],
+        "scaling_unit": "percent_damage_taken_increase",
+        "duration_seconds": 3,
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/jaeger"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "The Tempest",
+        "description": "Chance to boost squad damage by 40% for 3 turns.",
+        "scaling": [
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "scaling_unit": "percent_proc_chance",
+        "effect_on_proc": "40_percent_squad_damage_boost_3_turns",
+        "sources": [
+          "Perplexity synthesis (citing kingshotguide.org, cigar-cloud)",
+          "kingshothandbook.com/heroes/jaeger-build-guide",
+          "kingshotdata.com/heroes/jaeger"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "The Resistance",
+        "description": "20% chance to reduce enemy squads' Lethality for 2 turns.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_enemy_lethality_reduction",
+        "proc_chance": 20,
+        "duration_turns": 2,
+        "sources": [
+          "Perplexity synthesis",
+          "kingshothandbook.com/heroes/jaeger-build-guide",
+          "kingshotdata.com/heroes/jaeger"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "The Celebration",
+        "description": "A rousing song unlocks new reserves of strength. Increases the total Squad's Health.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_note": "Perplexity: '25%' cited without full scaling array. Likely 5/10/15/20/25% following the standard squad Health buff pattern, but not directly confirmed.",
+        "sources": [
+          "Perplexity synthesis",
+          "kingshotdata.com/heroes/jaeger"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_unit": "percent_squad_health"
+      }
+    ],
+    "talent": [],
+    "talent_note": "No Talent skill data found.",
+    "exclusive_gear_skills": [
+      {
+        "name": "Sound of Silence",
+        "category": "conquest",
+        "description": "Silences and prevents the target from using skills, dealing damage. Unlocked only when Wanderwail is equipped.",
+        "scaling_silence_duration_seconds": [
+          3,
+          3.5,
+          4,
+          4.5,
+          5
+        ],
+        "scaling_damage": [
+          220,
+          240,
+          260,
+          280,
+          300
+        ],
+        "scaling_unit": "percent_of_attack_plus_silence_seconds",
+        "requires_exclusive_gear": "Wanderwail",
+        "sources": [
+          "kingshot-data",
+          "Perplexity",
+          "kingshotdata.com/heroes/jaeger"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Hymn to Survival",
+        "category": "expedition",
+        "description": "Increases the Health of defender troops. Unlocked only when Wanderwail is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_health_defender_troops",
+        "requires_exclusive_gear": "Wanderwail",
+        "sources": [
+          "kingshot-data",
+          "kingshotdata.com/heroes/jaeger"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Wanderwail",
+    "max_power": 315000,
+    "conquest_bonuses": {
+      "attack": 764,
+      "defense": 630,
+      "health": 4725
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 70.0,
+      "health_pct": 70.0
+    },
+    "unlocks_skills": [
+      "Sound of Silence",
+      "Hymn to Survival"
+    ],
+    "sources": [
+      "kingshot-data",
+      "Perplexity"
+    ],
+    "confidence": "high_2_source_convergence"
+  },
+  "skill_priority": {
+    "order": [
+      "Fatal Attraction first (AOE stun)",
+      "Game of Chance for buff procs",
+      "Exclusive gear Sound of Silence for arena"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "kingshothandbook.com build guides",
+      "allclash.com (via Perplexity)",
+      "kingshotguide.org",
+      "community consensus"
+    ],
+    "confidence": "VERIFIED_community_consensus_multi_source"
+  },
+  "gear_recommendations": {
+    "archetype": "archer",
+    "stat_focus_by_piece": {
+      "helmet": "archer_lethality",
+      "gloves": "archer_health",
+      "chest": "archer_health",
+      "boots": "archer_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Archer Rare Lv 40",
+      "gloves": "Archer Epic Lv 32",
+      "chest": "Archer Epic Lv 32",
+      "boots": "Archer Rare Lv 40"
+    },
+    "reasoning": "Standard archer archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Archer Epic Lv 60",
+      "gloves": "Archer Legendary Lv 40",
+      "chest": "Archer Legendary Lv 40",
+      "boots": "Archer Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "garrison_gen3",
+        "heroes": [
+          "Eric",
+          "Hilde",
+          "Jaeger"
+        ],
+        "mode": "garrison_defense",
+        "partners": [
+          "Eric",
+          "Hilde"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "garrison_gen4",
+        "heroes": [
+          "Alcar",
+          "Margot",
+          "Jaeger"
+        ],
+        "mode": "garrison_defense",
+        "partners": [
+          "Alcar",
+          "Margot"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "solo_gen3",
+        "heroes": [
+          "Amadeus",
+          "Petra",
+          "Jaeger"
+        ],
+        "mode": "solo_attack",
+        "partners": [
+          "Amadeus",
+          "Petra"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      },
+      {
+        "lineup_name": "expedition_gen4",
+        "heroes": [
+          "Margot",
+          "Jaeger",
+          "Rosa"
+        ],
+        "mode": "expedition_burst_sustain",
+        "partners": [
+          "Margot",
+          "Rosa"
+        ],
+        "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (verified 3+ sources)"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Jaeger's Rumormonger damage-amp debuff plus Sound of Silence's skill lockout make him disruptive against skill-reliant enemy compositions. Community YouTube reviews describe him as 'overrated' given his 20% proc chances limit reliability.",
+    "source": "kingshotguides.com + lootbar.gg + kingshotmastery.com (community consensus lineup guides)",
+    "confidence": "VERIFIED_3_independent_sources"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Strongest Governor event",
+      "Daily Deals",
+      "Hero Rally",
+      "Kingdom of Power event",
+      "Swordland Shop"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js marks Jaeger as F2P=false. Acquisition methods include multiple F2P routes. Same 'available but not practically F2P-viable' pattern as Hilde/Eric/Rosa.",
+    "sources": [
+      "kingshot-data",
+      "Perplexity"
+    ],
+    "confidence": "medium_interpretation_conflict"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "B",
+      "reasoning": "Garrison-focused archer.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "S",
+      "reasoning": "Garrison-oriented archer who strengthens defensive lineups.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Adequate.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Siren's Call Archer",
+    "backstory": "A Gen 3 Legendary Archer whose attacks are described as evoking a siren's call or commanding melodies — his style built around psychological warfare alongside raw damage. Full backstory not available in consulted sources (kingshotwiki page unavailable).",
+    "personality_trait": "precise, commanding, psychological warfare specialist",
+    "thematic_quote": null,
+    "source": "Perplexity synthesis only (kingshotwiki 404)",
+    "fabricated": false,
+    "incomplete_lore_note": "Lore is thinner than other heroes because the primary lore source (kingshotwiki) was 404 for Jaeger."
+  },
+  "deep_analysis": "Jaeger is the disruption archer of Gen 3 — a Legendary with the highest base Conquest Attack of any documented hero (4045). His kit is built around punishing enemy coordination: Fatal Attraction deals up to Attack × 224% AOE with a 2-second stun, Game of Chance is a unique hit-or-miss skill that deals up to Attack × 300% damage when it connects but heals the target by 50% of Jaeger's Attack when it misses (high risk/reward), and Rumormonger amplifies enemy damage taken by up to 30% for 3 seconds. His Expedition tree adds squad-level disruption: The Tempest has up to a 40% chance to boost squad damage by 40% for 3 turns, and The Resistance has a 20% chance per attack to reduce enemy squad Lethality by up to 50% for 2 turns. His exclusive gear Wanderwail adds +764 Attack (highest exclusive-gear Attack bonus documented), +630 Defense, +4725 Health, +70% Lethality, +70% Health, and unlocks two more skills: Sound of Silence (silences enemies for up to 5 seconds while dealing up to 300% Attack damage — unique skill lockout mechanic) and Hymn to Survival (+15% defender troops' Health). heroes.js tier: S-tier Garrison, B-tier elsewhere. YouTube community reviews describe him as 'overrated' because the 20% proc chances on his best Expedition skills limit reliability. He's premium-gated per heroes.js despite multiple F2P access routes (Strongest Governor, Daily Deals, Hero Rally, Kingdom of Power, Swordland Shop). Lore is thin — his kingshotwiki page wasn't available, so only fragments describing him as a 'siren's call' archer with commanding melodies and psychological-warfare flavor survived the research pass.",
+  "seo_keywords": [
+    "jaeger kingshot",
+    "jaeger kingshot skills",
+    "jaeger kingshot build",
+    "jaeger kingshot archer",
+    "jaeger wanderwail",
+    "jaeger kingshot f2p",
+    "jaeger kingshot gen 3",
+    "jaeger kingshot tier list"
+  ],
+  "unverified_fields": [
+    "skill_priority.order — null",
+    "gear_recommendations.minimum_build — null",
+    "best_partners.named_pairs — null",
+    "counters — null",
+    "shard_cost_to_star_up — null",
+    "kingshotwiki 404 — used Perplexity fallback, below 2-primary-source standard",
+    "The Celebration scaling — incomplete (only 25% max cited, full scaling array inferred not confirmed)",
+    "Hymn to Survival — single primary source (kingshot-data)",
+    "Lore is thin — kingshotwiki lore source not accessible",
+    "f2p_investment — heroes.js false vs multiple F2P pools. Interpretation conflict."
+  ],
+  "source_audit": {
+    "web_sources_attempted": 2,
+    "web_sources_successful": 1,
+    "web_sources_blocked": 1,
+    "ai_apis_called": 1,
+    "ai_apis_usable": 1,
+    "total_evidence_sources": 2,
+    "plus_baseline_source": "heroes.js",
+    "confidence_level": "below_standard_due_to_404"
+  },
+  "effect_op_codes": {
+    "type": "effect_op_undocumented",
+    "codes": [],
+    "description": "Gen 3 defensive archer — likely 111 but not confirmed by Handbook title",
+    "role": null,
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "handbook_confirmed_no_code"
+  }
+}

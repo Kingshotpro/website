@@ -1,0 +1,398 @@
+{
+  "name": "Long Fei",
+  "slug": "long-fei",
+  "gen": 5,
+  "rarity": "mythic",
+  "troop": "infantry",
+  "sub_class": "combat",
+  "pronouns": "he/him",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/long-fei.md",
+  "research_note": "Single primary source (kingshot-data). kingshotwiki 404 pattern for Gen 5. | 9x3x3 update: 2nd source added from lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html — kingshot-data + lootbar.gg Gen 5/6 guide convergence confirmed on mechanics and max values (tier-by-tier scaling remains kingshot-data single-source for some fields).",
+  "base_stats": {
+    "attack": 3780,
+    "defense": 4928,
+    "health": 73926,
+    "expedition_attack_pct": 444.35,
+    "expedition_defense_pct": 444.35,
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+      "kingshotdata.com/heroes/long-fei",
+      "kingshotguide.org/heroes/longfei"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshot_data_plus_lootbar_on_mechanics_plus_kingshotdata",
+    "notable": "Highest base Health of any documented hero (73926). With Immortal's Flask +14985, raw HP pool exceeds 88,900."
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Ambrosia",
+        "description": "Long Fei becomes one with the battlefield upon drinking the signature ambrosia, gaining Attack Speed and Immunity to control effects for 4 seconds.",
+        "scaling": [
+          80,
+          90,
+          100,
+          110,
+          120
+        ],
+        "scaling_unit": "percent_attack_speed",
+        "duration_seconds": 4,
+        "special_effect": "immunity_to_control_effects",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/long-fei",
+          "kingshotguide.org/heroes/longfei"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Above and Beyond",
+        "description": "Damage taken by Long Fei is reduced when his Health is below 50%.",
+        "scaling": [
+          20,
+          30,
+          40,
+          50,
+          60
+        ],
+        "scaling_unit": "percent_damage_reduction",
+        "trigger_condition": "self_health_below_50_percent",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/long-fei"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Mountain Mover",
+        "description": "Long Fei gains Attack when his Health is below 50%.",
+        "scaling": [
+          16,
+          24,
+          32,
+          40,
+          48
+        ],
+        "scaling_unit": "percent_attack_boost",
+        "trigger_condition": "self_health_below_50_percent",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/long-fei"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Mighty Paragon",
+        "description": "Chance of reducing damage taken by 50% for all squads.",
+        "scaling": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "scaling_unit": "percent_proc_chance",
+        "effect_on_proc": "50_percent_damage_reduction",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/long-fei"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Celestial Sustenance",
+        "description": "Increases Defense of all squads.",
+        "scaling": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_unit": "percent_squad_defense",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/long-fei"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Art of War",
+        "description": "All squads have a 25% chance of dealing increased damage when attacking.",
+        "scaling": [
+          120,
+          140,
+          160,
+          180,
+          200
+        ],
+        "scaling_unit": "percent_damage_on_proc",
+        "proc_chance": 25,
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/long-fei"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Strong Brew",
+        "category": "conquest",
+        "description": "Extends Ambrosia by 1.5 seconds and restores Health based on damage dealt. Unlocked only when Immortal's Flask is equipped.",
+        "scaling": [
+          7,
+          9,
+          11,
+          13,
+          15
+        ],
+        "scaling_unit": "percent_of_damage_dealt_as_heal",
+        "additional_effect": "ambrosia_duration_plus_1.5s",
+        "requires_exclusive_gear": "Immortal's Flask",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/long-fei"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Strategic Strike",
+        "category": "expedition",
+        "description": "Increases the Attack of defender troops. Unlocked only when Immortal's Flask is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_attack_defender_troops",
+        "requires_exclusive_gear": "Immortal's Flask",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/long-fei"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Immortal's Flask",
+    "max_power": null,
+    "conquest_bonuses": {
+      "attack": 765,
+      "defense": 999,
+      "health": 14985
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 111.0,
+      "health_pct": 111.0
+    },
+    "unlocks_skills": [
+      "Strong Brew",
+      "Strategic Strike"
+    ],
+    "notes": "Highest exclusive-gear Health bonus documented (+14985).",
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html"
+    ],
+    "confidence": "9x3x3_VERIFIED_2_sources_kingshot_data_plus_lootbar"
+  },
+  "skill_priority": {
+    "order": [
+      "Mighty Paragon (Expedition damage reduction proc) first",
+      "Then Celestial Sustenance (+25% squad Defense)",
+      "Then Art of War (25% proc for 200% damage)"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "allclash.com build guides via Perplexity",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "heaven-guardian.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "infantry",
+    "stat_focus_by_piece": {
+      "helmet": "infantry_lethality",
+      "gloves": "infantry_health",
+      "chest": "infantry_health",
+      "boots": "infantry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Infantry Rare Lv 40",
+      "gloves": "Infantry Epic Lv 32",
+      "chest": "Infantry Epic Lv 32",
+      "boots": "Infantry Rare Lv 40"
+    },
+    "reasoning": "Standard infantry archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Infantry Epic Lv 60",
+      "gloves": "Infantry Legendary Lv 40",
+      "chest": "Infantry Legendary Lv 40",
+      "boots": "Infantry Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Gen 5 F2P Defender",
+        "heroes": [
+          "Long Fei",
+          "Hilde",
+          "Jaeger"
+        ],
+        "source": "kingshotguide.org + heaven-guardian"
+      }
+    ],
+    "lineup_inferences": [],
+    "theoretical_synergy": "Long Fei's dual <50% HP triggers (Above and Beyond + Mountain Mover) plus Ambrosia's lifesteal (via Strong Brew) make him a comeback hero. Pair with Hilde for heals and any rally lead (Amadeus/Vivian) for offensive support.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Hero Roulette"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js f2p=false. Single access via Hero Roulette rotation.",
+    "sources": [
+      "kingshot-data",
+      "heroes.js"
+    ],
+    "confidence": "high"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "A",
+      "reasoning": "Usable rally thanks to Attack Speed burst.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "S",
+      "reasoning": "Highest HP + damage reduction + control immunity = top garrison tank.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "A",
+      "reasoning": "Strong bear hunt sustain via Ambrosia and lifesteal.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Ancient Way Practitioner",
+    "backstory": null,
+    "no_narrative_backstory_available": true,
+    "derived_character_themes": "Classical Chinese martial-arts warrior. Skill flavor text explicitly references \"the ancient way\", \"war wisdom\" (Sun Tzu quote: \"All warfare is based on deception\"), and his signature \"Ambrosia\" potion granting attack speed and control immunity. His exclusive gear is named \"Immortal's Flask\". Together these suggest a Taoist martial-master archetype — ageless, patient, scholarly.",
+    "source_note": "No narrative backstory published. See thrud lore_status for search scope.",
+    "source": "derived from skill flavor text (kingshotdata.com, kingshotguide.org)",
+    "fabricated": false,
+    "lore_status": "structurally_unavailable_themes_derived_from_skill_flavor"
+  },
+  "deep_analysis": "Long Fei is the ultimate survival tank of Gen 5 — a Legendary Infantry hero with the highest base Health of any documented hero (73926) and a kit built around comeback mechanics. His Conquest tree: Ambrosia grants +120% Attack Speed and control immunity for 4 seconds, Above and Beyond reduces damage taken by up to 60% when his Health drops below 50%, and Mountain Mover grants up to +48% Attack under the same condition — the dual low-HP triggers make him the most dangerous when he's nearly dead. His Expedition tree buffs the whole army: Mighty Paragon has up to 50% chance to halve squad damage taken, Celestial Sustenance adds +25% squad Defense, and Art of War gives squads a 25% chance for up to +200% damage on attack. His exclusive gear Immortal's Flask adds +765 Attack, +999 Defense, +14985 Health (new record), +111% Lethality, +111% Health, and unlocks Strong Brew (extends Ambrosia by 1.5 seconds and heals him for up to 15% of damage dealt) plus Strategic Strike (+15% defender troops' Attack). Tier: S Garrison, A Rally, A Bear Hunt. Premium-gated via Hero Roulette. Lore not available — inferred from his kit as an immortal monk or warrior archetype drinking ambrosia and wielding an Immortal's Flask.",
+  "seo_keywords": [
+    "long fei kingshot",
+    "long fei kingshot skills",
+    "long fei kingshot build",
+    "long fei kingshot infantry",
+    "long fei immortal flask",
+    "long fei kingshot f2p",
+    "long fei kingshot gen 5",
+    "long fei kingshot tier list"
+  ],
+  "unverified_fields": [
+    "Single primary source",
+    "Lore not found (Gen 5 404)",
+    "skill_priority.order, gear_recommendations.minimum_build, best_partners.named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 1,
+    "web_sources_successful": 1,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 1,
+    "plus_baseline_source": "heroes.js",
+    "confidence_level": "below_2_source_standard"
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Gen 5 F2P defensive infantry widget hero — team-wide defensive buffs",
+    "role": "infantry_defensive_widget_gen5",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

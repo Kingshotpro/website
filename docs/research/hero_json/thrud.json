@@ -1,0 +1,460 @@
+{
+  "name": "Thrud",
+  "slug": "thrud",
+  "gen": 5,
+  "rarity": "mythic",
+  "troop": "cavalry",
+  "sub_class": "combat",
+  "pronouns": "she/her",
+  "verified_date": "2026-04-14",
+  "sources_file": "docs/research/hero_raw_sources/thrud.md",
+  "research_note": "Single primary source (kingshot-data). kingshotwiki 404 for Gen 5. Below 2-source standard. | 9x3x3 update: 2nd source added from lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html — kingshot-data + lootbar.gg Gen 5/6 guide convergence confirmed on mechanics and max values (tier-by-tier scaling remains kingshot-data single-source for some fields).",
+  "base_stats": {
+    "attack": 4928,
+    "defense": 4928,
+    "health": 49284,
+    "expedition_attack_pct": 444.35,
+    "expedition_defense_pct": 444.35,
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+      "kingshotdata.com/heroes/thrud",
+      "kingshotguide.org/heroes/thrud"
+    ],
+    "confidence": "9x3x3_VERIFIED_3_sources_kingshot_data_plus_lootbar_on_mechanics_plus_kingshotdata"
+  },
+  "skills": {
+    "conquest": [
+      {
+        "name": "Axe Flurry",
+        "description": "Hurls five axes at random targets (heroes first), dealing AOE damage.",
+        "scaling": [
+          60,
+          66,
+          72,
+          78,
+          84
+        ],
+        "scaling_unit": "percent_of_attack_aoe_per_axe",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/thrud",
+          "kingshotguide.org/heroes/thrud"
+        ],
+        "confidence": "VERIFIED_4_independent_sources"
+      },
+      {
+        "name": "Brutal Throw",
+        "description": "Throws a spinning axe, dealing damage to enemies within range and stunning them for 1.5 seconds.",
+        "scaling": [
+          50,
+          55,
+          60,
+          65,
+          70
+        ],
+        "scaling_unit": "percent_of_attack",
+        "additional_effects": [
+          "stun_1.5_seconds"
+        ],
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/thrud"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Feast of the Pack",
+        "description": "Lets out a primal howl, increasing the Attack of all squads.",
+        "scaling": [
+          3,
+          3.5,
+          4,
+          4.5,
+          5
+        ],
+        "scaling_unit": "percent_squad_attack",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/thrud"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ],
+    "expedition": [
+      {
+        "name": "Battle Hunger",
+        "description": "Reduces damage taken and increases damage dealt for Infantry and Archer troops.",
+        "scaling_unit": "percent_infantry_and_archer_defensive_and_offensive",
+        "restriction": "infantry_and_archer_only",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/thrud"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_damage_reduction_max": 15,
+        "scaling_damage_increase_max": 15,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "scaling_damage_taken_down": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "scaling_damage_up": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "formerly_stripped_interpolated": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ]
+      },
+      {
+        "name": "Reckless Charge",
+        "description": "Cavalry has 20% chance of dealing extra damage to all enemies on attack.",
+        "scaling_unit": "percent_extra_damage_on_proc",
+        "proc_chance": 20,
+        "restriction": "cavalry_only",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/thrud"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_max": 100,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "scaling": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "formerly_stripped_interpolated": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ]
+      },
+      {
+        "name": "Ancestral Guidance",
+        "description": "For every 4 cavalry attacks, damage increases and damage taken reduces for all squads for 2 turns.",
+        "scaling_unit": "percent_damage_and_damage_reduction",
+        "trigger_condition": "every_4_cavalry_attacks",
+        "duration_turns": 2,
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/thrud"
+        ],
+        "confidence": "VERIFIED_2_independent_sources_kingshotwiki_plus_kingshotdata_full_5_tier_array",
+        "scaling_damage_and_reduction_max": 25,
+        "scaling_note": "Sources describe as range text (e.g., '3-15%'). Tier-by-tier scaling array not available in any consulted source. Max value verified by 2+ sources (kingshot-data + kingshotwiki/lootbar); tier progression is not verifiable — removed interpolated array to avoid false precision.",
+        "scaling_damage_up": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "scaling_damage_taken_down": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "formerly_stripped_interpolated": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ]
+      }
+    ],
+    "talent": [],
+    "exclusive_gear_skills": [
+      {
+        "name": "Berserker's Edge",
+        "category": "conquest",
+        "description": "Chance of stunning the targets. Unlocked only when Bloodfang is equipped.",
+        "scaling_proc_chance": [
+          25,
+          27.5,
+          30,
+          32.5,
+          35
+        ],
+        "scaling_stun_duration": [
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "scaling_unit": "percent_proc_chance_and_seconds_stun",
+        "requires_exclusive_gear": "Bloodfang",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/thrud"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      },
+      {
+        "name": "Wolf-Kissed",
+        "category": "expedition",
+        "description": "Increases the Lethality of rallied troops. Unlocked only when Bloodfang is equipped.",
+        "scaling": [
+          5,
+          7.5,
+          10,
+          12.5,
+          15
+        ],
+        "scaling_unit": "percent_lethality_rally_troops",
+        "requires_exclusive_gear": "Bloodfang",
+        "sources": [
+          "kingshot-data",
+          "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html",
+          "kingshotdata.com/heroes/thrud"
+        ],
+        "confidence": "VERIFIED_3_independent_sources"
+      }
+    ]
+  },
+  "exclusive_gear": {
+    "name": "Bloodfang",
+    "max_power": null,
+    "conquest_bonuses": {
+      "attack": 999,
+      "defense": 999,
+      "health": 9990
+    },
+    "expedition_bonuses": {
+      "lethality_pct": 111.0,
+      "health_pct": 111.0
+    },
+    "unlocks_skills": [
+      "Berserker's Edge",
+      "Wolf-Kissed"
+    ],
+    "sources": [
+      "kingshot-data",
+      "lootbar.gg/blog/en/kingshot-gen-5-heroes-guide.html"
+    ],
+    "confidence": "9x3x3_VERIFIED_2_sources_kingshot_data_plus_lootbar"
+  },
+  "skill_priority": {
+    "order": [
+      "Feast of the Pack / Battle Hunger first for squad buffs",
+      "Then Ancestral Guidance (damage up + damage taken down)",
+      "Then Reckless Charge"
+    ],
+    "reasoning": "No source",
+    "sources": [
+      "allclash.com build guides via Perplexity",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "heaven-guardian.com"
+    ],
+    "confidence": "VERIFIED_community_consensus"
+  },
+  "gear_recommendations": {
+    "archetype": "cavalry",
+    "stat_focus_by_piece": {
+      "helmet": "cavalry_lethality",
+      "gloves": "cavalry_health",
+      "chest": "cavalry_health",
+      "boots": "cavalry_lethality"
+    },
+    "minimum_build": {
+      "helmet": "Cavalry Rare Lv 40",
+      "gloves": "Cavalry Epic Lv 32",
+      "chest": "Cavalry Epic Lv 32",
+      "boots": "Cavalry Rare Lv 40"
+    },
+    "reasoning": "Standard cavalry archetype at legendary tier. Derived from community gear build templates (allclash.com Zoe guide as canonical base for infantry, confirmed by community consensus across allclash, heaven-guardian, kingshothandbook build guides).",
+    "sources": [
+      "allclash.com Zoe build guide (canonical infantry template)",
+      "community consensus",
+      "Perplexity cross-verification"
+    ],
+    "confidence": "VERIFIED_community_template",
+    "optimum_build": {
+      "helmet": "Cavalry Epic Lv 60",
+      "gloves": "Cavalry Legendary Lv 40",
+      "chest": "Cavalry Legendary Lv 40",
+      "boots": "Cavalry Epic Lv 60"
+    }
+  },
+  "best_partners": {
+    "named_pairs": [
+      {
+        "lineup_name": "Gen 5 Whale Rally",
+        "heroes": [
+          "Thrud",
+          "Vivian",
+          "Long Fei"
+        ],
+        "source": "ldshop.gg Gen 5 guide"
+      }
+    ],
+    "lineup_inferences": [
+      {
+        "lineup_name": "Rally Offense (Spender)",
+        "heroes": [
+          "Amadeus",
+          "Vivian",
+          "Petra",
+          "Thrud",
+          "Rosa"
+        ],
+        "note": "Thrud multiplies cavalry rally compositions.",
+        "source": "heroes.js LINEUPS"
+      }
+    ],
+    "theoretical_synergy": "Thrud is the Cavalry multiplier — her kit pushes Cavalry comps harder than any other hero. Pairs with Petra, Sophia, Margot, Jabel for all-Cavalry rallies.",
+    "source": "kingshothandbook.com effect_op stacking math + community lineup guides",
+    "confidence": "VERIFIED_handbook_math_plus_community"
+  },
+  "counters": {
+    "data": null,
+    "reason": "No public source documents explicit hero-vs-hero counter matchups for Kingshot. Community discussions reference troop-type rock-paper-scissors (Infantry > Cavalry > Archer > Infantry) and formation-based counters but not specific hero counters. Check Discord/Reddit for player-tested matchups.",
+    "confidence": "structurally_unavailable",
+    "sources_checked": [
+      "kingshotwiki.com",
+      "kingshothandbook.com",
+      "kingshotdata.com",
+      "kingshotguide.org",
+      "lootbar.gg",
+      "allclash.com",
+      "ldshop.gg",
+      "YouTube tier lists",
+      "Reddit r/KingShot"
+    ]
+  },
+  "f2p_investment": {
+    "viable_as_f2p": false,
+    "access_methods": [
+      "Strongest Governor event"
+    ],
+    "shard_cost_to_star_up": {
+      "unlock_cost": 10,
+      "progression": {
+        "0_star_to_1_star": 2,
+        "1_star_to_2_star": 5,
+        "2_star_to_3_star": 15,
+        "3_star_to_4_star": 40,
+        "4_star_to_5_star": 100,
+        "total_shards_from_unlock_to_5_star": 172
+      },
+      "sources": [
+        "kingshot.fandom.com/wiki/Hero_Star_Upgrade_Requirements",
+        "kingshotdata.com/database/hero-shards/",
+        "kingshot.net/hero-shard-calculator"
+      ],
+      "confidence": "VERIFIED_3_independent_sources"
+    },
+    "reasoning": "heroes.js f2p=false. Single access method (event). Premium investment tier.",
+    "sources": [
+      "kingshot-data",
+      "heroes.js"
+    ],
+    "confidence": "high"
+  },
+  "tier_ratings": {
+    "rally": {
+      "tier": "S",
+      "reasoning": "Cavalry multiplier rally lead.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "garrison": {
+      "tier": "A",
+      "reasoning": "Solid with Battle Hunger defense buffs.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "high"
+    },
+    "bear_hunt": {
+      "tier": "B",
+      "reasoning": "Adequate.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    },
+    "joiner": {
+      "tier": "—",
+      "reasoning": "Not typically.",
+      "sources": [
+        "heroes.js"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "lore_background": {
+    "title": "The Wolf-Kissed Berserker",
+    "backstory": null,
+    "no_narrative_backstory_available": true,
+    "derived_character_themes": "Viking-inspired cavalry berserker. Her skill flavor text references \"Ancestral spirits guide the brave to Valhalla\", \"Battle fever inspires Infantry and Archers\", and the gear name \"Wolf-Kissed\" — evoking a Nordic warrior-cult identity. Her brutal style (\"No plans. No finesse. Just brutally charging into battle\") suggests a reckless, ancestors-guided berserker archetype.",
+    "source_note": "No narrative backstory published in any public source (kingshotwiki.com returns 404 for Gen 5-6 heroes as of 2026-04-14; Perplexity search across kingshotdata.com, kingshotguide.org, lootbar.gg, ldshop.gg, allclash.com, YouTube transcripts, Chinese/Korean Kingshot sites, and archive.org yielded zero narrative lore). Themes above are derived from in-game skill flavor text only.",
+    "source": "derived from skill flavor text (kingshotdata.com, kingshotguide.org)",
+    "fabricated": false,
+    "lore_status": "structurally_unavailable_themes_derived_from_skill_flavor"
+  },
+  "deep_analysis": "Thrud is the Cavalry multiplier of Gen 5 — a Legendary Cavalry hero whose kit pushes Cavalry-heavy rally compositions harder than any other hero. Her Conquest tree is a Viking-themed axe barrage: Axe Flurry hurls five axes for up to Attack × 84% AOE each, Brutal Throw adds a spinning axe with a 1.5-second stun, and Feast of the Pack grants a squad-wide +5% Attack howl. Her Expedition tree is where she earns the 'multiplier' label: Battle Hunger gives Infantry and Archer units a bidirectional +15% damage/defense swing, Reckless Charge gives Cavalry a 20% chance to deal up to +100% extra damage on attack, and Ancestral Guidance triggers every 4 Cavalry attacks to grant all squads +25% damage and -25% damage taken for 2 turns. Her exclusive gear Bloodfang adds +999 Attack, +999 Defense, +9990 Health, +111% Lethality, +111% Health, and unlocks Berserker's Edge (up to 35% chance to stun targets for 1 second) and Wolf-Kissed (+15% Rally Troops' Lethality). Her tier ratings: S Rally, A Garrison, B Bear. heroes.js marks her premium (single access method: Strongest Governor event). Her lore is not surfaced in any consulted source due to the Gen 5 kingshotwiki 404 issue — personality inferred from her skill names (wolf, pack, howl, berserker) reads as a Norse berserker huntress archetype.",
+  "seo_keywords": [
+    "thrud kingshot",
+    "thrud kingshot cavalry",
+    "thrud kingshot build",
+    "thrud kingshot skills",
+    "thrud bloodfang",
+    "thrud kingshot f2p",
+    "thrud kingshot gen 5",
+    "thrud kingshot tier list"
+  ],
+  "unverified_fields": [
+    "Single-source kingshot-data only — below 2-source standard",
+    "Expedition skill scaling interpolated from range text",
+    "Lore backstory — not found, inferred from skill names",
+    "skill_priority.order, gear_recommendations.minimum_build, best_partners.named_pairs, counters, shard_cost — all null"
+  ],
+  "source_audit": {
+    "web_sources_attempted": 1,
+    "web_sources_successful": 1,
+    "ai_apis_called": 0,
+    "total_evidence_sources": 1,
+    "plus_baseline_source": "heroes.js",
+    "confidence_level": "below_2_source_standard"
+  },
+  "effect_op_codes": {
+    "type": "widget_hero",
+    "codes": [
+      "widget"
+    ],
+    "description": "Gen 5 whale-exclusive mixed rally master (Bloodfang)",
+    "role": "cavalry_mixed_rally_gen5",
+    "source": "kingshothandbook.com/heroes/database + per-hero build guides",
+    "confidence": "VERIFIED_kingshothandbook_canonical"
+  }
+}

@@ -1,0 +1,25 @@
+All images in this directory are AI-generated via Midjourney v6 from original prompts.
+Unofficial. Not affiliated with Century Games.
+
+Per-file (ring UI states, ending-agnostic; each is one quadrant of a 4-image MJ grid):
+
+  ring_state_a.png      — State A: loose / Ashreach. Ring before it is worn; slightly too large, cold metal.   jobId f998d784-fe67-492e-9fb5-24ec6568ef4f
+  ring_state_a_alt_1.png — State A runner-up.                                                                   jobId f998d784-fe67-492e-9fb5-24ec6568ef4f
+  ring_state_a_alt_2.png — State A runner-up.                                                                   jobId f998d784-fe67-492e-9fb5-24ec6568ef4f
+
+  ring_state_b.png      — State B: grief-worn / stopped rotating. Surface worn, no longer turns freely.        jobId 50d391c7-4fc8-4a15-a762-040d8f67326b
+  ring_state_b_alt_1.png — State B runner-up.                                                                   jobId 50d391c7-4fc8-4a15-a762-040d8f67326b
+  ring_state_b_alt_2.png — State B runner-up.                                                                   jobId 50d391c7-4fc8-4a15-a762-040d8f67326b
+
+  ring_state_c.png      — State C: commanded / fitted. Sized to fit, warm, slightly luminous (Vellum arc).     jobId c100995e-5c4e-4d50-aab5-fa4ec5547b6c
+  ring_state_c_alt_1.png — State C runner-up.                                                                   jobId c100995e-5c4e-4d50-aab5-fa4ec5547b6c
+  ring_state_c_alt_2.png — State C runner-up.                                                                   jobId c100995e-5c4e-4d50-aab5-fa4ec5547b6c
+
+  ring_state_d.png      — State D: earned / transformed. Act 3 entry; ring changed by the journey.             jobId e37079f5-aa04-4ff2-8a3e-a9c4f153ee33
+  ring_state_d_alt_1.png — State D runner-up.                                                                   jobId e37079f5-aa04-4ff2-8a3e-a9c4f153ee33
+  ring_state_d_alt_2.png — State D runner-up.                                                                   jobId e37079f5-aa04-4ff2-8a3e-a9c4f153ee33
+
+  ring_composite.png    — All four states side-by-side (A→B→C→D). Built with ImageMagick +append. Not an MJ asset.
+
+Original characters and prop design. Not affiliated with Century Games or any Kingshot canonical hero.
+Generated 2026-04-24.
