@@ -3334,13 +3334,13 @@ Campfire.register('crowdRunner', {
     const lightRadius = (r.powerup.type === 'Beacon' ? 300 : 220) + r.group.length * 5;
     const groupCx = r.playerX;
     const groupCy = 700;
-    ctx.fillStyle = 'rgba(0,0,0,0.45)';
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
     ctx.fillRect(0, 0, W, H);
     ctx.save();
     ctx.globalCompositeOperation = 'destination-out';
     const fogG = ctx.createRadialGradient(groupCx, groupCy, 20, groupCx, groupCy, lightRadius);
     fogG.addColorStop(0, 'rgba(0,0,0,1)');
-    fogG.addColorStop(0.8, 'rgba(0,0,0,0.6)');
+    fogG.addColorStop(0.9, 'rgba(0,0,0,0.3)');
     fogG.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = fogG;
     ctx.beginPath();
@@ -3370,8 +3370,8 @@ Campfire.register('crowdRunner', {
 
     // --- GROUP LIGHT GLOW (on top of fog) ---
     const lg = ctx.createRadialGradient(groupCx, groupCy, 10, groupCx, groupCy, lightRadius);
-    lg.addColorStop(0, 'rgba(255,200,100,0.3)');
-    lg.addColorStop(0.6, 'rgba(255,160,60,0.12)');
+    lg.addColorStop(0, 'rgba(255,200,100,0.12)');
+    lg.addColorStop(0.6, 'rgba(255,160,60,0.04)');
     lg.addColorStop(1, 'rgba(255,120,40,0)');
     ctx.fillStyle = lg;
     ctx.beginPath();
@@ -3440,7 +3440,7 @@ Campfire.register('crowdRunner', {
 
     // --- DRAW SOULS (on top of fog — always visible, 32x40px) ---
     for (const soul of r.group) {
-      ctx.shadowBlur = 16;
+      ctx.shadowBlur = 6;
       ctx.shadowColor = '#ffaa44';
       const soulKey = soul.name ? 'soul_named' : 'soul_normal';
       if (_spr.ready(soulKey)) {
