@@ -3138,17 +3138,63 @@ Campfire.register('crowdRunner', {
       }
     }
 
-    // --- DRAW ENEMIES ---
+    // --- DARKNESS OVERLAY (fog of war) — drawn before characters so they sit on top ---
+    const lightRadius = (r.powerup.type === 'Beacon' ? 300 : 220) + r.group.length * 5;
+    const groupCx = r.playerX;
+    const groupCy = 700;
+    ctx.fillStyle = 'rgba(0,0,0,0.45)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    const fogG = ctx.createRadialGradient(groupCx, groupCy, 20, groupCx, groupCy, lightRadius);
+    fogG.addColorStop(0, 'rgba(0,0,0,1)');
+    fogG.addColorStop(0.8, 'rgba(0,0,0,0.6)');
+    fogG.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = fogG;
+    ctx.beginPath();
+    ctx.arc(groupCx, groupCy, lightRadius, 0, Math.PI * 2);
+    ctx.fill();
+    for (const g of r.gates) {
+      if (!g.active) continue;
+      const gg2 = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, 90);
+      gg2.addColorStop(0, 'rgba(0,0,0,0.8)');
+      gg2.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = gg2;
+      ctx.beginPath();
+      ctx.arc(g.x, g.y, 90, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    for (const c of r.cocoons) {
+      if (!c.active) continue;
+      const cg = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, 70);
+      cg.addColorStop(0, 'rgba(0,0,0,0.7)');
+      cg.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = cg;
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, 70, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // --- GROUP LIGHT GLOW (on top of fog) ---
+    const lg = ctx.createRadialGradient(groupCx, groupCy, 10, groupCx, groupCy, lightRadius);
+    lg.addColorStop(0, 'rgba(255,200,100,0.3)');
+    lg.addColorStop(0.6, 'rgba(255,160,60,0.12)');
+    lg.addColorStop(1, 'rgba(255,120,40,0)');
+    ctx.fillStyle = lg;
+    ctx.beginPath();
+    ctx.arc(groupCx, groupCy, lightRadius, 0, Math.PI * 2);
+    ctx.fill();
+
+    // --- DRAW ENEMIES (on top of fog — always visible) ---
     for (const e of r.enemies) {
       ctx.save();
       ctx.globalAlpha = e.alpha || 1;
       const s = e.size;
       if (_spr.ready(e.type)) {
-        ctx.globalCompositeOperation = 'screen';
         if (e.hitFlash > 0) ctx.filter = 'brightness(4) saturate(0)';
         ctx.drawImage(_spr.S[e.type], e.x - s, e.y - s, s * 2, s * 2);
         ctx.filter = 'none';
-        ctx.globalCompositeOperation = 'source-over';
         if (e.type === 'darkknight') {
           ctx.fillStyle = '#300';
           ctx.fillRect(e.x - 50, e.y - s - 15, 100, 8);
@@ -3185,7 +3231,7 @@ Campfire.register('crowdRunner', {
       ctx.restore();
     }
 
-    // --- DRAW PROJECTILES ---
+    // --- DRAW PROJECTILES (on top of fog) ---
     for (const p of r.projectiles) {
       const gg = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, 10);
       gg.addColorStop(0, 'rgba(255,255,200,0.9)');
@@ -3194,97 +3240,42 @@ Campfire.register('crowdRunner', {
       ctx.beginPath();
       ctx.arc(p.x, p.y, 10, 0, Math.PI * 2);
       ctx.fill();
-      // Core
       ctx.fillStyle = '#ffe880';
       ctx.beginPath();
       ctx.ellipse(p.x, p.y, 3, 5, Math.atan2(p.vy, p.vx), 0, Math.PI * 2);
       ctx.fill();
     }
 
-    // --- DRAW GROUP ---
-    const lightRadius = (r.powerup.type === 'Beacon' ? 300 : 220) + r.group.length * 5;
-    // Group light glow
-    const groupCx = r.playerX;
-    const groupCy = 700;
-    const lg = ctx.createRadialGradient(groupCx, groupCy, 10, groupCx, groupCy, lightRadius);
-    lg.addColorStop(0, 'rgba(255,200,100,0.25)');
-    lg.addColorStop(0.6, 'rgba(255,160,60,0.08)');
-    lg.addColorStop(1, 'rgba(255,120,40,0)');
-    ctx.fillStyle = lg;
-    ctx.beginPath();
-    ctx.arc(groupCx, groupCy, lightRadius, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Individual souls
+    // --- DRAW SOULS (on top of fog — always visible, 32x40px) ---
     for (const soul of r.group) {
-      ctx.shadowBlur = 12;
+      ctx.shadowBlur = 16;
       ctx.shadowColor = '#ffaa44';
       const soulKey = soul.name ? 'soul_named' : 'soul_normal';
       if (_spr.ready(soulKey)) {
-        ctx.globalCompositeOperation = 'screen';
         if (soul.flash > 0) ctx.filter = 'brightness(3) saturate(0)';
-        ctx.drawImage(_spr.S[soulKey], soul.x - 8, soul.y - 12, 16, 20);
+        ctx.drawImage(_spr.S[soulKey], soul.x - 16, soul.y - 20, 32, 40);
         ctx.filter = 'none';
-        ctx.globalCompositeOperation = 'source-over';
       } else {
         ctx.fillStyle = soul.flash > 0 ? '#ffffff' : '#ffcc66';
         ctx.beginPath();
-        ctx.arc(soul.x, soul.y, 6, 0, Math.PI * 2);
+        ctx.arc(soul.x, soul.y, 8, 0, Math.PI * 2);
         ctx.fill();
         ctx.fillStyle = '#442200';
         ctx.beginPath();
-        ctx.arc(soul.x - 2, soul.y - 1, 1, 0, Math.PI * 2);
+        ctx.arc(soul.x - 2, soul.y - 1, 1.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.beginPath();
-        ctx.arc(soul.x + 2, soul.y - 1, 1, 0, Math.PI * 2);
+        ctx.arc(soul.x + 2, soul.y - 1, 1.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.fillStyle = '#ff6600';
         ctx.beginPath();
-        ctx.moveTo(soul.x - 2, soul.y - 6);
-        ctx.lineTo(soul.x, soul.y - 12 - Math.random() * 2);
-        ctx.lineTo(soul.x + 2, soul.y - 6);
+        ctx.moveTo(soul.x - 3, soul.y - 8);
+        ctx.lineTo(soul.x, soul.y - 16 - Math.random() * 3);
+        ctx.lineTo(soul.x + 3, soul.y - 8);
         ctx.fill();
       }
       ctx.shadowBlur = 0;
     }
-
-    // --- DARKNESS OVERLAY (fog of war) ---
-    ctx.fillStyle = 'rgba(0,0,0,0.45)';
-    ctx.fillRect(0, 0, W, H);
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-out';
-    // Main group light
-    const fogG = ctx.createRadialGradient(groupCx, groupCy, 20, groupCx, groupCy, lightRadius);
-    fogG.addColorStop(0, 'rgba(0,0,0,1)');
-    fogG.addColorStop(0.8, 'rgba(0,0,0,0.6)');
-    fogG.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = fogG;
-    ctx.beginPath();
-    ctx.arc(groupCx, groupCy, lightRadius, 0, Math.PI * 2);
-    ctx.fill();
-    // Gate glows visible through fog
-    for (const g of r.gates) {
-      if (!g.active) continue;
-      const gg2 = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, 90);
-      gg2.addColorStop(0, 'rgba(0,0,0,0.8)');
-      gg2.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = gg2;
-      ctx.beginPath();
-      ctx.arc(g.x, g.y, 90, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    // Cocoon glows
-    for (const c of r.cocoons) {
-      if (!c.active) continue;
-      const cg = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, 70);
-      cg.addColorStop(0, 'rgba(0,0,0,0.7)');
-      cg.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = cg;
-      ctx.beginPath();
-      ctx.arc(c.x, c.y, 70, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.restore();
 
     // --- PARTICLES (use engine) ---
     Campfire.modules.particles.draw(ctx);
