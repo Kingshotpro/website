@@ -90,7 +90,20 @@ export default {
         return handleWorldchatUnlock(request, env);
       } else if (url.pathname === '/player/lookup') {
         return handlePlayerLookup(request, env);
+      } else if (url.pathname === '/oath-and-bone/save') {
+        return handleOabSave(request, env);
+      } else if (url.pathname === '/oath-and-bone/spend') {
+        return handleOabSpend(request, env);
+      } else if (url.pathname === '/oath-and-bone/battle-result') {
+        return handleOabBattleResult(request, env);
       }
+    }
+
+    // Oath and Bone — /load is a GET so it caches cleanly + replays
+    // safely on transient network errors. No body required; FID derives
+    // from the cookie session via getUser().
+    if (request.method === 'GET' && url.pathname === '/oath-and-bone/load') {
+      return handleOabLoad(request, env);
     }
 
     // Admin GETs + public GETs
@@ -1550,6 +1563,440 @@ async function handleWorldchatUnlock(request, env) {
   await env.KV.put(`user:${user.email}`, JSON.stringify(user));
 
   return corsWrapCred(request, JSON.stringify({ ok: true, balance: user.credits }), 200);
+}
+
+// ──────────────────────────────────────────────────────────────────
+// Oath and Bone — server-state persistence (Worker 23)
+// ──────────────────────────────────────────────────────────────────
+// KV schema reference: docs/DECISIONS.md "2026-04-24 — Worker 23".
+//   oab_state_<fid>                         canonical save JSON; no TTL
+//   oab_history_<fid>_<YYYY-MM>             append-only battle log; ~13mo TTL
+//   oab_crown_balance_<fid>                 scalar Crown cache for fast spend
+//   oab_credits_granted_<fid>_<YYYY-MM-DD>  daily-grant ledger; 48h TTL
+
+const OAB_HISTORY_RETENTION_MONTHS = 12;
+// Current month + 12 → ~395 days. KV TTL is approximate; rounding up
+// to the next 31-day boundary gives the player the full 12 months back.
+const OAB_HISTORY_TTL_SEC = (OAB_HISTORY_RETENTION_MONTHS + 1) * 31 * 86400;
+
+const OAB_DAILY_CREDIT_CAP = 5;
+
+// event_key → { tier → credits } granted on first qualifying event/day.
+// Per ECONOMY.md §2: Sergeant first-of-day = 1 credit AND Marshal
+// first-of-day = 2 credits are SEPARATE events — a player who wins
+// both in one day earns 3 (subject to OAB_DAILY_CREDIT_CAP). Scout
+// is not in the table → no grant.
+const OAB_CREDIT_GRANT_TABLE = {
+  first_sergeant_victory: { sergeant: 1 },
+  first_marshal_victory:  { marshal: 2 },
+  chapter_complete:       { any: 3 },
+  hero_recruited_major:   { any: 2 },
+};
+
+const OAB_SPEND_CONTEXTS = new Set(['shop', 'boost', 'training']);
+
+// Sanity bounds on client-reported per-battle earnings. Caps a runaway
+// or spoofed result. Max plausible Marshal Crown: 80 × stacking ≈ 158
+// (ECONOMY.md §2). 1000 leaves 6× safety margin without being so loose
+// it's useless. XP cap similarly above the practical maximum.
+const OAB_MAX_CROWNS_PER_BATTLE_RESULT = 1000;
+const OAB_MAX_XP_PER_BATTLE_RESULT     = 1500;
+
+// Default state shape returned by /load when a player has never saved.
+function oabDefaultState() {
+  return {
+    hero_state:      {},
+    crown_balance:   0,
+    equipped:        {},
+    learned_spells:  [],
+    fallen_heroes:   [],
+    current_chapter: 1,
+    current_battle:  'b1',
+    last_save_iso:   null,
+    version:         0,
+  };
+}
+
+// Resolve the cookie-authenticated user and their linked FID. All Oath
+// and Bone endpoints route through this — anonymous players persist via
+// Worker 22's localStorage path, not the server. Returns either an
+// error Response (already-formatted) or { user, fid }.
+async function oabResolveAuth(request, env) {
+  const user = await getUser(request, env);
+  if (!user) {
+    return { error: corsWrapCred(request, '{"error":"not_logged_in"}', 401) };
+  }
+  const fid = user.fid && String(user.fid).trim();
+  if (!fid) {
+    return { error: corsWrapCred(request, '{"error":"fid_not_linked"}', 400) };
+  }
+  return { user, fid };
+}
+
+// POST /oath-and-bone/save — persist the canonical save document.
+// Body: { state: { hero_state, crown_balance, equipped, learned_spells,
+//                  fallen_heroes, current_chapter, current_battle, ... } }
+// Returns 200 { ok, last_save_iso, version }.
+//
+// Server enforces: shape validation, fallen_heroes union (permadeath is
+// forever — server-side fallen list can never shrink), version bump.
+async function handleOabSave(request, env) {
+  const auth = await oabResolveAuth(request, env);
+  if (auth.error) return auth.error;
+  const { fid } = auth;
+
+  let body;
+  try { body = await request.json(); }
+  catch { return corsWrapCred(request, '{"error":"bad_request"}', 400); }
+
+  const state = body && body.state;
+  if (!state || typeof state !== 'object' || Array.isArray(state)) {
+    return corsWrapCred(request, '{"error":"missing_state"}', 400);
+  }
+
+  // Shape validation — every persisted save must carry these fields.
+  const required = [
+    'hero_state', 'crown_balance', 'equipped', 'learned_spells',
+    'fallen_heroes', 'current_chapter', 'current_battle',
+  ];
+  for (const k of required) {
+    if (state[k] === undefined) {
+      return corsWrapCred(request, JSON.stringify({
+        error: 'invalid_state', missing: k,
+      }), 400);
+    }
+  }
+  if (typeof state.crown_balance !== 'number' ||
+      !Number.isFinite(state.crown_balance) ||
+      state.crown_balance < 0) {
+    return corsWrapCred(request, '{"error":"invalid_crown_balance"}', 400);
+  }
+  if (typeof state.hero_state !== 'object' || Array.isArray(state.hero_state)) {
+    return corsWrapCred(request, '{"error":"invalid_hero_state"}', 400);
+  }
+  if (typeof state.equipped !== 'object' || Array.isArray(state.equipped)) {
+    return corsWrapCred(request, '{"error":"invalid_equipped"}', 400);
+  }
+  if (!Array.isArray(state.learned_spells) || !Array.isArray(state.fallen_heroes)) {
+    return corsWrapCred(request, '{"error":"invalid_arrays"}', 400);
+  }
+  if (typeof state.current_chapter !== 'number' || state.current_chapter < 1) {
+    return corsWrapCred(request, '{"error":"invalid_chapter"}', 400);
+  }
+  if (typeof state.current_battle !== 'string' || !state.current_battle) {
+    return corsWrapCred(request, '{"error":"invalid_battle"}', 400);
+  }
+
+  // Permadeath enforcement: server-side fallen_heroes is the FLOOR.
+  // Client's list must be a superset; any name on the server stays on
+  // the server. Heroes can fall further, never resurrect.
+  const existing = await env.KV.get(`oab_state_${fid}`, { type: 'json' });
+  if (existing && Array.isArray(existing.fallen_heroes)) {
+    const merged = Array.from(new Set([
+      ...existing.fallen_heroes.map(String),
+      ...state.fallen_heroes.map(String),
+    ]));
+    state.fallen_heroes = merged;
+  } else {
+    state.fallen_heroes = state.fallen_heroes.map(String);
+  }
+
+  state.last_save_iso = new Date().toISOString();
+  state.version = ((existing && Number(existing.version)) || 0) + 1;
+
+  await env.KV.put(`oab_state_${fid}`, JSON.stringify(state));
+  await env.KV.put(`oab_crown_balance_${fid}`, String(state.crown_balance));
+
+  return corsWrapCred(request, JSON.stringify({
+    ok: true,
+    last_save_iso: state.last_save_iso,
+    version: state.version,
+  }), 200);
+}
+
+// GET /oath-and-bone/load — return the player's canonical save state.
+// No body. Returns 200 { ok, state, first_load }. If no save exists yet,
+// returns the default state (full HP heroes, 0 Crowns, etc.).
+async function handleOabLoad(request, env) {
+  const auth = await oabResolveAuth(request, env);
+  if (auth.error) return auth.error;
+  const { fid } = auth;
+
+  const state = await env.KV.get(`oab_state_${fid}`, { type: 'json' });
+  if (!state) {
+    return corsWrapCred(request, JSON.stringify({
+      ok: true,
+      state: oabDefaultState(),
+      first_load: true,
+    }), 200);
+  }
+  return corsWrapCred(request, JSON.stringify({
+    ok: true,
+    state,
+    first_load: false,
+  }), 200);
+}
+
+// POST /oath-and-bone/spend — debit Crown balance for shop/boost/training.
+// Body: { amount: N (integer > 0), item_id: string, context: 'shop'|'boost'|'training' }
+// Returns 200 { ok, new_balance, spend_id } or 402 insufficient_crowns.
+//
+// Server is the authority on balance. Client-supplied amount is the
+// requested debit; client-supplied item_id is recorded for audit but
+// not validated against a price table (Crown shop prices stay in
+// pricing-config.js / ECONOMY.md per the project no-hardcoded-prices
+// rule). KV doesn't expose true CAS; this uses a read-modify-write loop
+// with a version compare to narrow the race window.
+async function handleOabSpend(request, env) {
+  const auth = await oabResolveAuth(request, env);
+  if (auth.error) return auth.error;
+  const { user, fid } = auth;
+
+  let amount, item_id, context;
+  try {
+    const body = await request.json();
+    amount  = Number(body.amount);
+    item_id = String(body.item_id || '').trim();
+    context = String(body.context || '').trim();
+  } catch { return corsWrapCred(request, '{"error":"bad_request"}', 400); }
+
+  if (!Number.isInteger(amount) || amount <= 0) {
+    return corsWrapCred(request, '{"error":"invalid_amount"}', 400);
+  }
+  if (!item_id || item_id.length > 64) {
+    return corsWrapCred(request, '{"error":"invalid_item_id"}', 400);
+  }
+  if (!OAB_SPEND_CONTEXTS.has(context)) {
+    return corsWrapCred(request, '{"error":"invalid_context"}', 400);
+  }
+
+  // Read-modify-write with a version check. Three attempts cover
+  // near-collisions; sustained contention falls through to 503.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const state = await env.KV.get(`oab_state_${fid}`, { type: 'json' });
+    if (!state) {
+      return corsWrapCred(request, '{"error":"no_save_state"}', 404);
+    }
+    const balance = Number(state.crown_balance) || 0;
+    if (balance < amount) {
+      return corsWrapCred(request, JSON.stringify({
+        error: 'insufficient_crowns', amount, balance,
+      }), 402);
+    }
+
+    const expectedVersion = Number(state.version) || 0;
+    state.crown_balance   = balance - amount;
+    state.last_save_iso   = new Date().toISOString();
+    state.version         = expectedVersion + 1;
+
+    // Re-read just before write to detect a concurrent mutation.
+    // This is not true CAS — KV doesn't expose one — but it narrows
+    // the race window enough for single-player game state. If we
+    // detect a version skew, retry from the top.
+    const verify = await env.KV.get(`oab_state_${fid}`, { type: 'json' });
+    if (Number((verify && verify.version) || 0) !== expectedVersion) {
+      continue;
+    }
+
+    await env.KV.put(`oab_state_${fid}`, JSON.stringify(state));
+    await env.KV.put(`oab_crown_balance_${fid}`, String(state.crown_balance));
+
+    const spend_id = 'oabsp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+
+    if (!Array.isArray(user.credit_history)) user.credit_history = [];
+    user.credit_history.push({
+      at: Date.now(),
+      kind: 'oab_spend',
+      item_id,
+      context,
+      crowns: -amount,
+      spend_id,
+    });
+    await env.KV.put(`user:${user.email}`, JSON.stringify(user));
+
+    return corsWrapCred(request, JSON.stringify({
+      ok: true,
+      new_balance: state.crown_balance,
+      spend_id,
+    }), 200);
+  }
+
+  return corsWrapCred(request, JSON.stringify({
+    error: 'contention', detail: 'failed after 3 attempts',
+  }), 503);
+}
+
+// POST /oath-and-bone/battle-result — record a battle outcome, update
+// state, and (if Sergeant+ first-of-day victory) grant a daily credit.
+//
+// Body: { scenario_id, result: 'victory'|'defeat'|'flee', heroes_lost: [],
+//         xp_earned, crowns_earned, difficulty_tier: 'scout'|'sergeant'|'marshal' }
+// Returns 200 { ok, new_crown_balance, fallen_heroes, crown_credit_grant }.
+//
+// Server enforces: result enum, tier enum, sanity bounds on earnings,
+// fallen_heroes can only grow (permadeath), Sergeant/Marshal-only
+// credit eligibility, daily cap.
+async function handleOabBattleResult(request, env) {
+  const auth = await oabResolveAuth(request, env);
+  if (auth.error) return auth.error;
+  const { user, fid } = auth;
+
+  let scenario_id, result, heroes_lost, xp_earned, crowns_earned, difficulty_tier;
+  try {
+    const body = await request.json();
+    scenario_id     = String(body.scenario_id || '').trim();
+    result          = String(body.result || '').trim();
+    heroes_lost     = Array.isArray(body.heroes_lost) ? body.heroes_lost.map(String) : [];
+    xp_earned       = Number(body.xp_earned) || 0;
+    crowns_earned   = Number(body.crowns_earned) || 0;
+    difficulty_tier = String(body.difficulty_tier || '').trim();
+  } catch { return corsWrapCred(request, '{"error":"bad_request"}', 400); }
+
+  if (!scenario_id || scenario_id.length > 64) {
+    return corsWrapCred(request, '{"error":"missing_scenario_id"}', 400);
+  }
+  if (!['victory', 'defeat', 'flee'].includes(result)) {
+    return corsWrapCred(request, '{"error":"invalid_result"}', 400);
+  }
+  if (!Number.isFinite(xp_earned) || xp_earned < 0 || xp_earned > OAB_MAX_XP_PER_BATTLE_RESULT) {
+    return corsWrapCred(request, '{"error":"invalid_xp"}', 400);
+  }
+  if (!Number.isFinite(crowns_earned) || crowns_earned < 0 ||
+      crowns_earned > OAB_MAX_CROWNS_PER_BATTLE_RESULT) {
+    return corsWrapCred(request, '{"error":"invalid_crowns"}', 400);
+  }
+  if (!['scout', 'sergeant', 'marshal'].includes(difficulty_tier)) {
+    return corsWrapCred(request, '{"error":"invalid_difficulty_tier"}', 400);
+  }
+  if (heroes_lost.length > 32) {
+    return corsWrapCred(request, '{"error":"too_many_heroes_lost"}', 400);
+  }
+
+  const nowIso   = new Date().toISOString();
+  const monthKey = nowIso.slice(0, 7);  // YYYY-MM
+  const dateKey  = nowIso.slice(0, 10); // YYYY-MM-DD
+
+  // 1. Append to history (per-month bucket, ~13-month TTL)
+  const historyKey = `oab_history_${fid}_${monthKey}`;
+  const history = await env.KV.get(historyKey, { type: 'json' }) || [];
+  history.push({
+    scenario_id,
+    result,
+    heroes_lost,
+    xp_earned,
+    crowns_earned,
+    difficulty_tier,
+    date_iso: nowIso,
+    ts: Date.now(),
+  });
+  await env.KV.put(historyKey, JSON.stringify(history), {
+    expirationTtl: OAB_HISTORY_TTL_SEC,
+  });
+
+  // 2. Update canonical state: union heroes_lost, credit Crowns
+  let state = await env.KV.get(`oab_state_${fid}`, { type: 'json' });
+  if (!state) state = oabDefaultState();
+  const fallenSet = new Set((state.fallen_heroes || []).map(String));
+  for (const h of heroes_lost) fallenSet.add(h);
+  state.fallen_heroes = Array.from(fallenSet);
+  state.crown_balance = (Number(state.crown_balance) || 0) + crowns_earned;
+  state.last_save_iso = nowIso;
+  state.version       = (Number(state.version) || 0) + 1;
+  await env.KV.put(`oab_state_${fid}`, JSON.stringify(state));
+  await env.KV.put(`oab_crown_balance_${fid}`, String(state.crown_balance));
+
+  // 3. Daily credit grant — Sergeant and Marshal first-of-day are
+  // SEPARATE events (ECONOMY.md §2). A player who wins one of each in
+  // a day earns both grants, subject to OAB_DAILY_CREDIT_CAP.
+  let creditGrant = null;
+  if (result === 'victory') {
+    const eventKey = difficulty_tier === 'marshal'  ? 'first_marshal_victory'
+                   : difficulty_tier === 'sergeant' ? 'first_sergeant_victory'
+                   : null;
+    if (eventKey) {
+      creditGrant = await grantDailyCreditFromOathAndBone(
+        env, user, eventKey, difficulty_tier, dateKey,
+      );
+    }
+  }
+
+  return corsWrapCred(request, JSON.stringify({
+    ok: true,
+    new_crown_balance: state.crown_balance,
+    fallen_heroes: state.fallen_heroes,
+    crown_credit_grant: creditGrant,
+  }), 200);
+}
+
+// Daily credit grant helper. Awards credits the first time a qualifying
+// event happens today, capped at OAB_DAILY_CREDIT_CAP per day across all
+// oath-and-bone events. Persists ledger at oab_credits_granted_<fid>_<date>
+// with a 48h TTL (covers timezone wraparound + late retries).
+//
+// Returns: { granted, capped, daily_used, daily_cap, new_credit_balance,
+//            already_granted_for_event? } — or null if event/tier not in
+// the grant table.
+//
+// NOTE: this should ultimately live behind a shared POST /credits/grant-daily
+// route (CROSS_INTERSECTION.md §4.4) once Muster ships its grant calls.
+// Until then, it's an inline helper. See DECISIONS.md "2026-04-24 — Worker 23".
+async function grantDailyCreditFromOathAndBone(env, user, eventKey, tier, dateKey) {
+  const fid = user.fid;
+  if (!fid) return null;
+
+  const eventTable = OAB_CREDIT_GRANT_TABLE[eventKey];
+  if (!eventTable) return null;
+  const grantAmount = eventTable[tier] || eventTable.any || 0;
+  if (grantAmount <= 0) return null;
+
+  const ledgerKey = `oab_credits_granted_${fid}_${dateKey}`;
+  const ledger = (await env.KV.get(ledgerKey, { type: 'json' })) ||
+                 { used: 0, events: {} };
+
+  if (ledger.events[eventKey]) {
+    return {
+      granted: 0,
+      capped: false,
+      already_granted_for_event: true,
+      daily_used: ledger.used,
+      daily_cap: OAB_DAILY_CREDIT_CAP,
+    };
+  }
+
+  const remaining = Math.max(0, OAB_DAILY_CREDIT_CAP - ledger.used);
+  const actualGrant = Math.min(grantAmount, remaining);
+  if (actualGrant <= 0) {
+    return {
+      granted: 0,
+      capped: true,
+      daily_used: ledger.used,
+      daily_cap: OAB_DAILY_CREDIT_CAP,
+    };
+  }
+
+  ledger.used += actualGrant;
+  ledger.events[eventKey] = { tier, granted: actualGrant, at: Date.now() };
+  await env.KV.put(ledgerKey, JSON.stringify(ledger), { expirationTtl: 48 * 3600 });
+
+  user.credits = (Number(user.credits) || 0) + actualGrant;
+  if (!Array.isArray(user.credit_history)) user.credit_history = [];
+  user.credit_history.push({
+    at: Date.now(),
+    kind: 'oab_daily_grant',
+    event: eventKey,
+    tier,
+    credits: actualGrant,
+    capped: actualGrant < grantAmount,
+  });
+  await env.KV.put(`user:${user.email}`, JSON.stringify(user));
+
+  return {
+    granted: actualGrant,
+    capped: actualGrant < grantAmount,
+    daily_used: ledger.used,
+    daily_cap: OAB_DAILY_CREDIT_CAP,
+    new_credit_balance: user.credits,
+  };
 }
 
 // GET /advisor/history — return the full chat history for Pro+ users.
