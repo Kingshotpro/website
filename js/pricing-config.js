@@ -105,6 +105,29 @@
       char_verify_pro:     { dollars: 2.99 },
     },
 
+    // ── Oath and Bone Crown Economy ───────────────────────────────────────
+    // Verbatim from ECONOMY.md §5 (passes) and §7 (packs). Any change here
+    // must mirror docs/PRICING.md "Oath and Bone Crown Economy" section.
+    // stripe_url values are TBD-MANUAL — see STRIPE_SETUP_GUIDE.md.
+    oathandbone: {
+      crown_packs: {
+        pocket: { usd: 0.99,  crowns: 200,   bonus: 0,    stripe_url: 'TBD-MANUAL' },
+        coffer: { usd: 4.99,  crowns: 1200,  bonus: 200,  stripe_url: 'TBD-MANUAL' },
+        hoard:  { usd: 19.99, crowns: 5500,  bonus: 1500, stripe_url: 'TBD-MANUAL' },
+        kings:  { usd: 49.99, crowns: 15000, bonus: 5000, stripe_url: 'TBD-MANUAL' },
+      },
+      passes: {
+        chapter:  { usd: 4.99, duration: '1 chapter',  stripe_url: 'TBD-MANUAL' },
+        campaign: { usd: 9.99, duration: '1 month',    stripe_url: 'TBD-MANUAL' },
+      },
+      // Category order mirrors ECONOMY.md §3 headings verbatim.
+      shop_categories: [
+        'equipment', 'consumables', 'spells', 'reagents',
+        'boosts', 'training', 'cosmetics'
+      ],
+      credit_to_crown_rate: 50,  // 1 credit = 50 Crowns, one-way (ECONOMY.md §4)
+    },
+
     // Short reference the paywall CTA can link to. Always respects KSP_BASE.
     get pricing_page_url() {
       return (window.KSP_BASE || '') + 'pricing.html';
@@ -122,7 +145,7 @@
   // Sanity check — any Claude editing this file should still have these
   // keys present. If a future refactor breaks the shape, code that reads
   // from here will console-warn before silently breaking the UI.
-  ['free', 'subscriptions', 'credit_packs', 'credit_actions'].forEach(function (k) {
+  ['free', 'subscriptions', 'credit_packs', 'credit_actions', 'oathandbone'].forEach(function (k) {
     if (!window.KSP_PRICING[k]) {
       console.warn('[KSP_PRICING] missing required key:', k);
     }

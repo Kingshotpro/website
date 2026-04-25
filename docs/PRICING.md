@@ -129,6 +129,58 @@ so there's no conflict in practice. Same for 999.
 
 ---
 
+---
+
+## Oath and Bone Crown Economy
+
+> Added 2026-04-25 (Worker 24). Numbers are verbatim from
+> `games/designs/oath-and-bone/ECONOMY.md`. Mirror lives in
+> `js/pricing-config.js` at `window.KSP_PRICING.oathandbone`.
+> `stripe_url` fields are `TBD-MANUAL` until the Architect creates
+> the products — see `games/designs/oath-and-bone/STRIPE_SETUP_GUIDE.md`.
+
+### Crown packs (one-time purchase)
+
+| Tier | Price | Crowns | Bonus | Effective $/Crown |
+|---|---|---|---|---|
+| Pocket Pack | $0.99 | 200 | — | $0.0050 |
+| Coffer Pack | $4.99 | 1,200 | +200 = 1,400 | $0.0036 |
+| Hoard Pack | $19.99 | 5,500 | +1,500 = 7,000 | $0.0029 |
+| King's Cache | $49.99 | 15,000 | +5,000 = 20,000 | $0.0025 |
+
+First-purchase bonus: first pack of any tier grants +50% bonus Crowns (one-time per account). Server-enforced.
+
+### Campaign Pass (Stripe subscription)
+
+| Pass | Price | Duration | Perks |
+|---|---|---|---|
+| Chapter Pass | $4.99 | One chapter | +50% Crown earn, 50 Crown daily stipend, one exclusive portrait frame, cutscene gallery access |
+| Campaign Pass | $9.99/month | One month | Above + 100 Crown daily stipend + one job-advancement token/month + Chapter N+1 beta access |
+
+Pass active state: `cache.isCampaignPassActive()`. Pass suppresses all interstitial ads.
+
+### Crown shop categories (in-game, Crown-denominated)
+
+Order mirrors ECONOMY.md §3: `equipment`, `consumables`, `spells`,
+`reagents`, `boosts`, `training`, `cosmetics`. No real-money prices
+inside the shop — all Crown costs are defined in the shop item tables
+in ECONOMY.md, not in this file.
+
+### Credit → Crown conversion
+
+Rate: 1 credit = 50 Crowns, one-way. Endpoint: `POST /oath-and-bone/convert-credits`.
+
+### Hard constraints (per ECONOMY.md §10)
+
+- No content, hero, job, spell, or ending locked to spend.
+- No gacha — all shop items are direct-priced.
+- No energy gates — unlimited practice mode after daily cap.
+- No pay-to-win — paying accelerates; everything reachable by free play.
+- Permadeath is real — no revive-for-Crowns.
+- "Unofficial. Not affiliated with Century Games." disclaimer on all shop + payment UI.
+
+---
+
 ## Changing this doc
 
 1. Edit the numbers here first.

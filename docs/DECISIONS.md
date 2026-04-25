@@ -13,6 +13,62 @@
 
 ---
 
+## 2026-04-25 — Worker 24: Oath and Bone monetization layer
+
+**Verdict:** Prices locked. Crown shop UI, pack purchase flow, Campaign Pass, and ad surfaces shipped.
+
+**Decisions made:**
+
+- **4 Crown pack tiers:** Pocket $0.99/200 Crowns, Coffer $4.99/1,400, Hoard $19.99/7,000 (best value), King's Cache $49.99/20,000. Prices verbatim from ECONOMY.md §7.
+- **2 pass tiers:** Chapter Pass $4.99/chapter, Campaign Pass $9.99/month. Verbatim from ECONOMY.md §5.
+- **Shop categories (7):** equipment, consumables, spells, reagents, boosts, training, cosmetics. Verbatim from ECONOMY.md §3.
+- **Ad surfaces:** interstitial between scene transitions (3/day cap), rewarded video pre-battle for +20% XP (2/day cap), rewarded video for +30 Crowns in shop (1/day cap). All suppressed if Campaign Pass active.
+- **Free-Means-Free retained:** no locked content, no gacha, no energy gates, no pay-to-win. Full story completable free. All shop items unconditionally reachable through play.
+- **Credit conversion:** 1 credit = 50 Crowns (one-way). Button visible in shop when player has credits.
+- **Stripe products:** all `stripe_url` fields are `TBD-MANUAL` in `pricing-config.js`. Architect creates products manually per `games/designs/oath-and-bone/STRIPE_SETUP_GUIDE.md` and pastes real URLs into `pricing-config.js`.
+- **Webhook gap:** existing Worker webhook at `worker.js:1039` handles credits and Pro tier; new Oath and Bone product IDs (Crown packs + passes) require extension. Documented in MONETIZATION_LOG.md as Worker 28+ scope.
+- **Inventory:** `ksp_oab_state.inventory` array added to cache state. Non-functional during combat (equip/use in battle is V2 scope).
+- **Campaign Pass cache fields:** `campaign_pass_active` (boolean) + `pass_expires_iso` (ISO datetime) added to cache state. Server is canonical; cache mirrors.
+- **XP boost state:** `active_xp_boost: { factor, battles_remaining }` added to cache state. Cleared by engine on each battle result write.
+
+**Commits:** 4 (prices → shop UI → purchase flows + ads → Stripe guide + handoff log)
+
+---
+
+## 2026-04-25 — W1: Realm War server foundation
+
+**Verdict:** All 7 endpoints implemented and deployed. Worker live.
+
+**Done checklist:**
+- [x] All 7 endpoints registered in dispatcher
+- [x] All 7 handlers implemented per spec
+- [x] Helper functions: `realmWarDefaultState`, `realmWarTickOffline`, `realmWarRecomputeTitle`, `realmWarMaxStaminaForTitle`, `realmWarLevyReward`
+- [x] `node --check` clean
+- [x] `wrangler deploy --dry-run` clean
+- [x] Live deploy + curl smoke tests all pass
+- [x] No edits outside `worker/worker.js`
+- [x] Did NOT touch CLAUDE.md, PRICING.md, pricing-config.js, or any other game's files
+
+**What shipped:**
+- `worker/worker.js`: 7 new route registrations (6 POST, 1 GET) and ~280 lines of new functions appended after line 2248.
+- KV key: `realm_war_state_{fid}` (single state document per player)
+- No other files touched.
+
+**Deployed Worker version ID:** `4d54e900-d4ef-4f1c-b059-f2a5757f3afa`
+
+**Smoke test output:**
+- `GET /realm-war/load` anonymous → `{"authenticated":false,"state":null}` ✓
+- `POST /realm-war/decree` anonymous → `{"error":"not_authenticated"}` ✓
+- `POST /realm-war/levy-claim` anonymous → `{"error":"not_authenticated"}` ✓
+All clean JSON, no 500s.
+
+**Open questions for Opus on W2:**
+- `realmWarLevyReward` at days 31+ recurses into `realmWarLevyReward(cycleDay)` and then scales ×2. If a cycle day itself lands on day 14 or 30 (special tiers), that reward will be ×2. Is this intended? Opus should confirm or adjust in W2 spec.
+- `handleRealmWarLoad` applies `realmWarTickOffline` to update stamina/health on load but does NOT persist the ticked state (frontend must do it on next save). Confirm this is correct before W2 frontend calls load.
+- `realmWarLevyReward` omits `xp: 0` for days with no XP reward (key simply absent). Frontend should treat missing `xp` as 0.
+
+---
+
 ## 2026-04-25 — Worker 22: localStorage cache layer + mid-battle resume
 
 **Verdict:** Client-side persistence layer built. `window.OathAndBoneCache`
