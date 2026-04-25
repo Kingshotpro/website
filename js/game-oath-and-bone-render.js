@@ -57,6 +57,7 @@
   var _hoveredHex         = null;  // {q,r} under cursor, or null (Concern 3)
   var _tutorialModalOpen  = false; // true while a tutorial modal is blocking interaction
   var _pendingAdvance     = false; // true when advanceTurn should fire after tutorial dismiss
+  var _pendingBattleEnd   = null;  // 'victory'|'defeat' queued while tutorial modal is open
 
   // ── ISO PROJECTION ───────────────────────────────────────────────────
   // Same 2:1 iso formula as the preview. Hex topology comes from engine
@@ -1287,7 +1288,12 @@
       } catch (e) {}
       if (overlay.parentNode) overlay.remove();
       _tutorialModalOpen = false;
-      if (_pendingAdvance) {
+      if (_pendingBattleEnd) {
+        // Battle ended while this tutorial was open — show the result overlay now.
+        var pendingResult = _pendingBattleEnd;
+        _pendingBattleEnd = null;
+        showBattleEnd(pendingResult);
+      } else if (_pendingAdvance) {
         _doAdvanceTurn();
       } else {
         // T3 fires during round start — no pending advance; just resume
@@ -1514,6 +1520,12 @@
 
   // ── BATTLE END ───────────────────────────────────────────────────────
   function showBattleEnd(result) {
+    // If a tutorial modal is blocking interaction, defer until the player
+    // dismisses it — prevents the two overlays from stacking on top of each other.
+    if (_tutorialModalOpen) {
+      _pendingBattleEnd = result;
+      return;
+    }
     _moveMode = false; _attackMode = false; _selectedUnitId = null;
     render();
     if (!_stage) return;
