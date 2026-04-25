@@ -110,6 +110,10 @@ footer {
 <!-- AI archetypes (reads spell defs at runtime) -->
 <script src="/js/game-oath-and-bone-ai.js"></script>
 
+<!-- Network + cache layer (Workers 22+23) — must load before engine -->
+<script src="/js/oath-and-bone-server.js"></script>
+<script src="/js/oath-and-bone-cache.js"></script>
+
 <!-- Engine (core state machine; reads all data + AI) -->
 <script src="/js/game-oath-and-bone-engine.js"></script>
 
