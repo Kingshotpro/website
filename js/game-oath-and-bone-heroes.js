@@ -15,7 +15,16 @@ var HERO_DEFINITIONS = {
     max_verdance: 0,
     starting_spells: [],
     troop_tag: 'infantry',
-    permadeath_game_over: true
+    permadeath_game_over: true,
+    signatures: [
+      { id: 'vanguards_oath', name: "Vanguard's Oath", kind: 'passive',
+        effect: 'adjacent_allies_def_bonus', value: 4,
+        desc: 'Adjacent allies +4 Def while Vael stands.' },
+      { id: 'braced_charge', name: 'Braced Charge', kind: 'active',
+        cooldown: 2, range: 3, target_type: 'enemy',
+        effect: 'charge_attack', damage: 18,
+        desc: 'Charge up to 3 hexes and strike for 18 damage.' }
+    ]
   },
   'halv': {
     heroId: 'halv',
@@ -31,7 +40,16 @@ var HERO_DEFINITIONS = {
     max_verdance: 0,
     starting_spells: [],
     troop_tag: 'infantry',
-    permadeath_game_over: false
+    permadeath_game_over: false,
+    signatures: [
+      { id: 'hold_the_line', name: 'Hold the Line', kind: 'passive',
+        effect: 'zone_of_control',
+        desc: 'Adjacent enemies cannot move past Halv\u2019s threatened tiles.' },
+      { id: 'cleaving_stroke', name: 'Cleaving Stroke', kind: 'active',
+        cooldown: 3, range: 1, target_type: 'enemy',
+        effect: 'cleave', cleave_falloff: 0.75,
+        desc: 'Strike target + unit directly behind it.' }
+    ]
   },
   'brin': {
     heroId: 'brin',
@@ -47,7 +65,17 @@ var HERO_DEFINITIONS = {
     max_verdance: 0,
     starting_spells: [],
     troop_tag: 'archer',
-    permadeath_game_over: false
+    permadeath_game_over: false,
+    signatures: [
+      { id: 'loose_and_fade', name: 'Loose and Fade', kind: 'active',
+        cooldown: 2, range: 3, target_type: 'enemy',
+        effect: 'attack_then_reposition', reposition: 2,
+        desc: 'Attack, then reposition up to 2 hexes.' },
+      { id: 'called_shot', name: 'Called Shot', kind: 'active',
+        cooldown: 3, range: 0, target_type: 'self',
+        effect: 'next_attack_crit', damage_mult: 1.6,
+        desc: 'Skip this turn. Next attack +60% damage, guaranteed hit.' }
+    ]
   },
   'caelen': {
     heroId: 'caelen',
@@ -63,7 +91,13 @@ var HERO_DEFINITIONS = {
     max_verdance: 0,
     starting_spells: ['firebolt', 'frost_shard', 'spark', 'shield'],
     troop_tag: 'wizard',
-    permadeath_game_over: false
+    permadeath_game_over: false,
+    signatures: [
+      { id: 'frost_shard', name: 'Frost Shard', kind: 'spell',
+        desc: 'Wizardry signature — see CAST panel.' },
+      { id: 'shield', name: 'Shield', kind: 'spell',
+        desc: 'Wizardry signature — see CAST panel.' }
+    ]
   },
   'marrow': {
     heroId: 'marrow',
@@ -79,7 +113,13 @@ var HERO_DEFINITIONS = {
     max_verdance: 0,
     starting_spells: ['raise_skeleton', 'curse_of_weakness', 'life_drain', 'bone_shield'],
     troop_tag: 'necromancer',
-    permadeath_game_over: false
+    permadeath_game_over: false,
+    signatures: [
+      { id: 'raise_skeleton', name: 'Raise Skeleton', kind: 'spell',
+        desc: 'Necromancy signature \u2014 see CAST panel.' },
+      { id: 'curse_of_weakness', name: 'Curse of Weakness', kind: 'spell',
+        desc: 'Necromancy signature \u2014 see CAST panel.' }
+    ]
   },
   'thessa': {
     heroId: 'thessa',
@@ -95,7 +135,13 @@ var HERO_DEFINITIONS = {
     max_verdance: 35,
     starting_spells: ['heal', 'regrowth', 'summon_wolf', 'gale'],
     troop_tag: 'druid',
-    permadeath_game_over: false
+    permadeath_game_over: false,
+    signatures: [
+      { id: 'heal', name: 'Heal', kind: 'spell',
+        desc: 'Druidry signature \u2014 see CAST panel.' },
+      { id: 'summon_wolf', name: 'Summon Wolf', kind: 'spell',
+        desc: 'Druidry signature \u2014 see CAST panel.' }
+    ]
   }
 };
 

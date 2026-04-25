@@ -149,6 +149,15 @@ function _resetUnitsForRound() {
     if (window.OathAndBoneSpells && window.OathAndBoneSpells.applyRegen) {
       window.OathAndBoneSpells.applyRegen(unit);
     }
+    // Tick ability cooldowns + ability-system statuses
+    if (window.OathAndBoneAbilities) {
+      if (window.OathAndBoneAbilities.tickCooldowns) window.OathAndBoneAbilities.tickCooldowns(unit);
+      if (window.OathAndBoneAbilities.tickStatuses) window.OathAndBoneAbilities.tickStatuses(unit);
+    }
+  }
+  // Apply passives once per round after per-unit resets
+  if (window.OathAndBoneAbilities && window.OathAndBoneAbilities.applyPassives) {
+    window.OathAndBoneAbilities.applyPassives();
   }
 }
 
@@ -255,9 +264,14 @@ window.OathAndBoneEngine = {
             attack_range: unitDef.attack_range,
             attack_dmg: unitDef.attack_dmg,
             initiative: unitDef.initiative,
+            defense: unitDef.defense || 0,
             acted: false,
             permadeath_loss: unitDef.permadeath_loss || false, // permadeath_loss: once true, never cleared
-            magic: unitDef.magic ? JSON.parse(JSON.stringify(unitDef.magic)) : null
+            permadeath_game_over: unitDef.permadeath_game_over || false,
+            magic: unitDef.magic ? JSON.parse(JSON.stringify(unitDef.magic)) : null,
+            status_effects: [],
+            abilityCooldowns: {},
+            passive_defense_bonus: 0
           };
           _battle.units[unit.id] = unit;
           tile.unit = unit.id;
@@ -278,6 +292,12 @@ window.OathAndBoneEngine = {
     _buildTurnQueue();
 
     _battle.phase = 'active';
+
+    // Apply passives on round 1 (per-round application otherwise runs from
+    // _resetUnitsForRound, which only fires when the round advances).
+    if (window.OathAndBoneAbilities && window.OathAndBoneAbilities.applyPassives) {
+      window.OathAndBoneAbilities.applyPassives();
+    }
 
     if (window.OathAndBoneEngine.onReady) {
       window.OathAndBoneEngine.onReady(container, options);
@@ -335,6 +355,18 @@ window.OathAndBoneEngine = {
             reachableHexes.push({ q: currentHex.q, r: currentHex.r });
           }
         }
+      }
+
+      // Halv's Hold the Line: if currentHex is threatened by a living enemy
+      // Halv, the unit must stop here. It was allowed to step into the tile,
+      // but may not continue past it. (Only applies to units on the team
+      // opposing Halv — allies of Halv ignore his own ZoC.)
+      var currentThreatened = false;
+      if (window.OathAndBoneAbilities && window.OathAndBoneAbilities.isThreatenedByHalv) {
+        currentThreatened = window.OathAndBoneAbilities.isThreatenedByHalv(currentHex.q, currentHex.r, unit.team);
+      }
+      if (currentThreatened && (currentHex.q !== unit.q || currentHex.r !== unit.r)) {
+        continue; // Don't expand neighbors from this hex — movement stops
       }
 
       var neighbors = hexNeighbors(currentHex);
@@ -506,10 +538,19 @@ window.OathAndBoneEngine = {
 
     var baseDamage = attacker.attack_dmg;
     var elevationModifier = getAttackDamageModifier(attackerTile, targetTile);
-    var finalDamage = Math.floor(baseDamage * elevationModifier);
+    // Called Shot: consume status to multiply outgoing damage
+    var calledShotMult = 1.0;
+    if (window.OathAndBoneAbilities && window.OathAndBoneAbilities.consumeCalledShot) {
+      calledShotMult = window.OathAndBoneAbilities.consumeCalledShot(attacker);
+    }
+    var rawDamage = Math.floor(baseDamage * elevationModifier * calledShotMult);
+    // Passive defense (Vanguard's Oath aura) + unit base defense
+    var defenseValue = (target.defense || 0) + (target.passive_defense_bonus || 0);
+    var finalDamage = Math.max(1, rawDamage - defenseValue);
 
     target.hp -= finalDamage;
     if (target.hp < 0) target.hp = 0;
+    target.took_damage_this_turn = true;
 
     attacker.acted = true;
 
@@ -524,6 +565,32 @@ window.OathAndBoneEngine = {
 
     _checkBattleEnd();
 
+    return true;
+  },
+
+  // Delegates to OathAndBoneAbilities.resolveAbility, then marks the caster
+  // as acted and runs the battle-end check. Returns true on success.
+  resolveAbility: function(casterId, abilityId, targetQ, targetR) {
+    var caster = _getUnit(casterId);
+    if (!caster || !_isUnitAlive(caster)) return false;
+    if (_battle.phase !== 'active') return false;
+    if (caster.acted) return false;
+    if (!window.OathAndBoneAbilities || !window.OathAndBoneAbilities.resolveAbility) return false;
+
+    var result = window.OathAndBoneAbilities.resolveAbility(casterId, abilityId, targetQ, targetR);
+    if (!result || !result.success) return false;
+
+    caster.acted = true;
+
+    // Mark any player unit that reached 0 HP as permadeath_loss
+    for (var id in _battle.units) {
+      var u = _battle.units[id];
+      if (u.hp === 0 && u.team === 'player' && !u.permadeath_loss) {
+        u.permadeath_loss = true;
+      }
+    }
+
+    _checkBattleEnd();
     return true;
   },
 

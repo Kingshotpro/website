@@ -65,6 +65,28 @@ var SCENARIO_B1 = {
         spells_equipped: ['firebolt', 'frost_shard', 'spark', 'shield'],
         active_summons: []
       }
+    },
+    { id: 'player_marrow', heroId: 'marrow', team: 'player', q: 7, r: 12,
+      hp_max: 80, move: 3, attack_range: 1, attack_dmg: 7, initiative: 11,
+      defense: 5, acted: false, permadeath_loss: false, permadeath_game_over: false,
+      troop_tag: 'necromancer',
+      magic: {
+        school: 'necromancy',
+        souls: 15, souls_max: 30,
+        spells_equipped: ['raise_skeleton', 'curse_of_weakness', 'life_drain', 'bone_shield'],
+        active_summons: []
+      }
+    },
+    { id: 'player_thessa', heroId: 'thessa', team: 'player', q: 8, r: 12,
+      hp_max: 95, move: 3, attack_range: 1, attack_dmg: 8, initiative: 13,
+      defense: 6, acted: false, permadeath_loss: false, permadeath_game_over: false,
+      troop_tag: 'druid',
+      magic: {
+        school: 'druidry',
+        verdance: 10, verdance_max: 35,
+        spells_equipped: ['heal', 'regrowth', 'summon_wolf', 'gale'],
+        active_summons: []
+      }
     }
   ],
 
@@ -147,8 +169,8 @@ var SCENARIO_B1 = {
   ],
 
   party: {
-    size: 4,
-    locked: ['vael', 'halv', 'brin', 'caelen'],
+    size: 6,
+    locked: ['vael', 'halv', 'brin', 'caelen', 'marrow', 'thessa'],
     flexible: []
   }
 };
