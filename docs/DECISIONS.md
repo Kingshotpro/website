@@ -13,6 +13,48 @@
 
 ---
 
+## 2026-04-25 — Worker 22: localStorage cache layer + mid-battle resume
+
+**Verdict:** Client-side persistence layer built. `window.OathAndBoneCache`
+wraps `window.OathAndBoneServer` with localStorage read-through, 500ms
+debounced writes, optimistic Crown spend (revert on rejection), local history,
+offline tolerance, and mid-battle snapshot/resume.
+
+**What shipped (3 + 1 commits):**
+
+- `js/oath-and-bone-cache.js` (new): cache module. Keys: `ksp_oab_state`,
+  `ksp_oab_history_<YYYY-MM>`, `ksp_oab_pending_writes`, `ksp_oab_last_sync_iso`,
+  `ksp_oab_battle_resume`. State shape mirrors `oab_state_<fid>` exactly.
+  pagehide flush via `sendBeacon`. Focus re-sync if cache > 60s stale.
+- `games/oath-and-bone.html`: `oath-and-bone-server.js` + `oath-and-bone-cache.js`
+  script tags added before engine.
+- `js/game-oath-and-bone.js`: `init()` routes through `OathAndBoneCache.syncFromServer()`.
+  Resume-prompt check before world map / engine start. DEV mode spend button (`?dev`).
+- `js/game-oath-and-bone-engine.js`: `_pushStateToCache()`, `_snapshotBattle()`,
+  `getBattleSnapshot()`, `resumeBattle(container, snapshot)` added. Snapshot called
+  after attackUnit / resolveAbility / castSpell / advanceTurn.
+- `js/game-oath-and-bone-render.js`: `_saveToServer()` routes through cache (with
+  direct-server fallback). `showBattleEnd()` clears resume snapshot. `_showResumePrompt()`
+  + `OathAndBoneRender.showResumePrompt()` added.
+- `games/designs/oath-and-bone/CACHE_LOG.md` (new): full handoff doc.
+
+**Snapshot version:** `SNAPSHOT_VERSION = 1` in `oath-and-bone-cache.js`.
+Bump + migrate `resumeBattle()` when `_battle` shape changes.
+
+**Single-source-of-truth notes:**
+- Crown balance: server is canonical (cache debits optimistically, reverts on rejection).
+- fallen_heroes: server unions (permadeath floor — client cannot shrink list).
+- unlocked_scenarios: server unions on victory.
+- Snapshot scenarioId: stored as string; scenario object reloaded from
+  `window.OathAndBoneScenarios` on resume.
+
+**Not deployed.** Both Worker 23 and Worker 22 code is committed but neither
+is live until the Architect runs `wrangler deploy` from `worker/`.
+
+**Worker 24 hook:** See `CACHE_LOG.md §6` for Crown shop integration pattern.
+
+---
+
 ## 2026-04-25 — Worker 21: Act 1 scaffold (B2, B3, world map)
 
 **Verdict:** Three scenarios, server-authoritative unlock chain, minimal world map.
