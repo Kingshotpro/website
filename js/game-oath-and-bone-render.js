@@ -48,6 +48,9 @@
   var _castMode        = false;
   var _castSpellId     = null;
   var _castHexes       = [];    // [{q,r}] valid target hexes for selected spell
+  var _abilityMode     = false;
+  var _abilityId       = null;
+  var _abilityHexes    = [];    // [{q,r}] valid target hexes for selected ability
   var _tileImgCache    = {};    // terrain → HTMLImageElement (Concern 1)
   var _mapScale        = 1;     // CSS scale applied to stage (Concern 2)
   var _resizeTimer     = null;  // throttle handle for window resize
@@ -194,6 +197,7 @@
       '.oab-btn:hover:not(:disabled){opacity:1}',
       '.oab-btn[data-action=move]:hover:not(:disabled){border-color:#c09828;color:#f0c040;background:rgba(240,192,64,.15)}',
       '.oab-btn[data-action=attack]:hover:not(:disabled){border-color:#e05c5c;color:#e05c5c;background:rgba(224,92,92,.1)}',
+      '.oab-btn[data-action=ability]:hover:not(:disabled){border-color:#ffe850;color:#ffe850;background:rgba(255,232,80,.12)}',
       '.oab-btn[data-action=hold]:hover:not(:disabled){border-color:#7a7d8e;color:#e8e8ec;background:rgba(120,120,150,.1)}',
       '.oab-btn:disabled{opacity:.35;cursor:default}',
       // Floating damage numbers
@@ -269,7 +273,7 @@
     var panel = document.createElement('div');
     panel.className = 'oab-action-panel';
     panel.id = 'oab-action-panel';
-    ['move', 'attack', 'cast', 'hold'].forEach(function (action) {
+    ['move', 'attack', 'cast', 'ability', 'hold'].forEach(function (action) {
       var btn = document.createElement('button');
       btn.className = 'oab-btn';
       btn.dataset.action = action;
@@ -285,6 +289,13 @@
     spellPanel.id = 'oab-spell-panel';
     spellPanel.style.display = 'none';
     container.appendChild(spellPanel);
+
+    // Ability panel (hidden until ABILITY mode is active)
+    var abilityPanel = document.createElement('div');
+    abilityPanel.className = 'oab-spell-panel oab-ability-panel';
+    abilityPanel.id = 'oab-ability-panel';
+    abilityPanel.style.display = 'none';
+    container.appendChild(abilityPanel);
 
     // Canvas click handler
     canvas.addEventListener('click', function (e) {
@@ -323,6 +334,7 @@
     panel.querySelector('[data-action=move]').addEventListener('click', handleMoveBtn);
     panel.querySelector('[data-action=attack]').addEventListener('click', handleAttackBtn);
     panel.querySelector('[data-action=cast]').addEventListener('click', handleCastBtn);
+    panel.querySelector('[data-action=ability]').addEventListener('click', handleAbilityBtn);
     panel.querySelector('[data-action=hold]').addEventListener('click', handleHoldBtn);
 
     // Zoom-to-fit: must run after layout so offsetHeight values are valid
@@ -539,6 +551,17 @@
       _ctx.lineWidth = 1.6; _ctx.stroke();
     }
 
+    // ── Ability-range highlight (yellow tint, distinct from gold-move) ──
+    if (_abilityMode && _hexInList(_abilityHexes, q, r)) {
+      _ctx.fillStyle = 'rgba(255,232,80,.34)';
+      _ctx.beginPath();
+      _ctx.moveTo(vTop.x, vTop.y); _ctx.lineTo(vRight.x, vRight.y);
+      _ctx.lineTo(vBottom.x, vBottom.y); _ctx.lineTo(vLeft.x, vLeft.y);
+      _ctx.closePath(); _ctx.fill();
+      _ctx.strokeStyle = 'rgba(255,232,80,.95)';
+      _ctx.lineWidth = 1.8; _ctx.stroke();
+    }
+
     // ── Selected unit's tile — strong gold outline ──
     if (_selectedUnitId) {
       var selUnit = window.OathAndBoneEngine.getBattle().units[_selectedUnitId];
@@ -694,6 +717,13 @@
     sprite.addEventListener('click', (function (u) {
       return function (e) {
         e.stopPropagation();
+        // Ability self-target (e.g. Called Shot) — clicking your own sprite
+        // while in ability mode with a self-hex in range fires the ability.
+        if (_abilityMode && _abilityId && _selectedUnitId === u.id &&
+            _hexInList(_abilityHexes, u.q, u.r)) {
+          _executeAbility(u.q, u.r);
+          return;
+        }
         if (u.team === 'player') {
           selectUnit(u.id);
         } else {
@@ -743,9 +773,12 @@
     var unit = window.OathAndBoneEngine.getUnit(unitId);
     if (!unit || unit.team !== 'player' || unit.hp <= 0) return;
     _selectedUnitId = unitId;
-    _moveMode   = false; _moveHexes   = [];
-    _attackMode = false; _attackHexes = [];
-    _castMode   = false; _castSpellId = null; _castHexes = [];
+    _moveMode    = false; _moveHexes    = [];
+    _attackMode  = false; _attackHexes  = [];
+    _castMode    = false; _castSpellId  = null; _castHexes = [];
+    _abilityMode = false; _abilityId    = null; _abilityHexes = [];
+    _hideSpellPanel();
+    _hideAbilityPanel();
     render();
   }
 
@@ -778,6 +811,12 @@
       return;
     }
 
+    // Ability mode: clicking a valid ability hex fires the ability
+    if (_abilityMode && _abilityId && _hexInList(_abilityHexes, q, r)) {
+      _executeAbility(q, r);
+      return;
+    }
+
     // Click on a tile containing a player unit → select it
     var t = window.OathAndBoneEngine.getTile(q, r);
     if (t && t.unit) {
@@ -790,6 +829,11 @@
     if (_castMode && _castSpellId && _selectedUnitId) {
       if (!_hexInList(_castHexes, enemyUnit.q, enemyUnit.r)) return;
       _executeCast(enemyUnit.q, enemyUnit.r);
+      return;
+    }
+    if (_abilityMode && _abilityId && _selectedUnitId) {
+      if (!_hexInList(_abilityHexes, enemyUnit.q, enemyUnit.r)) return;
+      _executeAbility(enemyUnit.q, enemyUnit.r);
       return;
     }
     if (!_attackMode || !_selectedUnitId) return;
@@ -823,19 +867,51 @@
     if (!_selectedUnitId) return;
     var unit = window.OathAndBoneEngine.getUnit(_selectedUnitId);
     if (!unit || unit.acted || unit.hp <= 0 || !unit.magic) return;
-    _castMode   = !_castMode;
-    _moveMode   = false; _moveHexes   = [];
-    _attackMode = false; _attackHexes = [];
+    _castMode    = !_castMode;
+    _moveMode    = false; _moveHexes    = [];
+    _attackMode  = false; _attackHexes  = [];
+    _abilityMode = false; _abilityId    = null; _abilityHexes = [];
+    _hideAbilityPanel();
     if (_castMode) {
-      // Pre-select Firebolt as the only active spell for this proof-of-pipeline
-      _castSpellId = 'firebolt';
-      _castHexes   = window.OathAndBoneSpells
+      var equipped = (unit.magic && unit.magic.spells_equipped) ? unit.magic.spells_equipped : [];
+      _castSpellId = equipped[0] || null;
+      _castHexes   = (_castSpellId && window.OathAndBoneSpells)
         ? window.OathAndBoneSpells.getSpellTargetHexes(_selectedUnitId, _castSpellId)
         : [];
       _buildSpellPanel(unit);
     } else {
       _castSpellId = null; _castHexes = [];
       _hideSpellPanel();
+    }
+    render();
+  }
+
+  function handleAbilityBtn() {
+    if (!_selectedUnitId) return;
+    var unit = window.OathAndBoneEngine.getUnit(_selectedUnitId);
+    if (!unit || unit.acted || unit.hp <= 0) return;
+    var sigs = (window.OathAndBoneAbilities && window.OathAndBoneAbilities.getHeroSignatures)
+      ? window.OathAndBoneAbilities.getHeroSignatures(unit) : [];
+    if (!sigs || sigs.length === 0) return;
+
+    _abilityMode = !_abilityMode;
+    _moveMode    = false; _moveHexes    = [];
+    _attackMode  = false; _attackHexes  = [];
+    _castMode    = false; _castSpellId  = null; _castHexes = [];
+    _hideSpellPanel();
+    if (_abilityMode) {
+      // Pre-select first ACTIVE signature (not passive, not spell-kind)
+      var firstActive = null;
+      for (var i = 0; i < sigs.length; i++) {
+        if (sigs[i].kind === 'active') { firstActive = sigs[i]; break; }
+      }
+      _abilityId = firstActive ? firstActive.id : null;
+      _abilityHexes = (_abilityId && window.OathAndBoneAbilities)
+        ? window.OathAndBoneAbilities.getAbilityTargetHexes(_selectedUnitId, _abilityId) : [];
+      _buildAbilityPanel(unit, sigs);
+    } else {
+      _abilityId = null; _abilityHexes = [];
+      _hideAbilityPanel();
     }
     render();
   }
@@ -854,20 +930,76 @@
     var equipped = unit.magic && unit.magic.spells_equipped ? unit.magic.spells_equipped : [];
     equipped.forEach(function (spellId) {
       var def = window.OathAndBoneSpells ? window.OathAndBoneSpells.getSpellDef(spellId) : null;
-      var cost = def && def.cost && def.cost.mp !== undefined ? def.cost.mp + ' MP' : '?';
-      var active = spellId === 'firebolt'; // Only Firebolt wired for Concern 3
+      var costStr = '?';
+      if (def && def.cost) {
+        if (def.cost.mp !== undefined)       costStr = def.cost.mp + ' MP';
+        else if (def.cost.souls !== undefined)   costStr = def.cost.souls + ' SL';
+        else if (def.cost.verdance !== undefined) costStr = def.cost.verdance + ' VD';
+      }
+      // Afford check — disable if the caster can't afford this spell right now
+      var canAfford = true;
+      if (def && def.cost && unit.magic) {
+        if (def.cost.mp !== undefined       && unit.magic.mana     < def.cost.mp)       canAfford = false;
+        if (def.cost.souls !== undefined    && unit.magic.souls    < def.cost.souls)    canAfford = false;
+        if (def.cost.verdance !== undefined && unit.magic.verdance < def.cost.verdance) canAfford = false;
+      }
+      var isSelected = spellId === _castSpellId;
       var btn = document.createElement('button');
-      btn.className = 'oab-spell-btn' + (active ? ' active' : '');
-      btn.textContent = spellId.replace(/_/g, ' ').toUpperCase() + ' (' + cost + ')';
-      btn.disabled = !active;
-      if (active) {
+      btn.className = 'oab-spell-btn' + (isSelected ? ' active' : '');
+      btn.textContent = spellId.replace(/_/g, ' ').toUpperCase() + ' (' + costStr + ')';
+      btn.disabled = !canAfford;
+      if (canAfford) {
         btn.addEventListener('click', function () {
           _castSpellId = spellId;
           _castHexes = window.OathAndBoneSpells
             ? window.OathAndBoneSpells.getSpellTargetHexes(_selectedUnitId, spellId)
             : [];
+          _buildSpellPanel(window.OathAndBoneEngine.getUnit(_selectedUnitId));
           render();
         });
+      }
+      panel.appendChild(btn);
+    });
+  }
+
+  function _buildAbilityPanel(unit, sigs) {
+    var panel = document.getElementById('oab-ability-panel');
+    if (!panel) return;
+    panel.innerHTML = '';
+    panel.style.display = 'flex';
+
+    var label = document.createElement('span');
+    label.className = 'oab-spell-label';
+    label.textContent = 'Abilities:';
+    panel.appendChild(label);
+
+    sigs.forEach(function (sig) {
+      var btn = document.createElement('button');
+      btn.className = 'oab-spell-btn';
+      if (sig.kind === 'passive') {
+        btn.textContent = sig.name.toUpperCase() + ' (AUTO)';
+        btn.disabled = true;
+        btn.title = sig.desc || '';
+      } else if (sig.kind === 'spell') {
+        btn.textContent = sig.name.toUpperCase() + ' (SPELL)';
+        btn.disabled = true;
+        btn.title = (sig.desc || '') + ' — cast from the CAST panel.';
+      } else {
+        var cd = (window.OathAndBoneAbilities && window.OathAndBoneAbilities.getAbilityCooldown)
+          ? window.OathAndBoneAbilities.getAbilityCooldown(unit, sig.id) : 0;
+        var label_txt = sig.name.toUpperCase() + (cd > 0 ? ' (CD ' + cd + ')' : ' (R' + (sig.range || 0) + ')');
+        btn.textContent = label_txt;
+        btn.disabled = cd > 0;
+        btn.title = sig.desc || '';
+        if (sig.id === _abilityId && cd === 0) btn.classList.add('active');
+        if (cd === 0) {
+          btn.addEventListener('click', function () {
+            _abilityId = sig.id;
+            _abilityHexes = window.OathAndBoneAbilities.getAbilityTargetHexes(_selectedUnitId, sig.id);
+            _buildAbilityPanel(window.OathAndBoneEngine.getUnit(_selectedUnitId), sigs);
+            render();
+          });
+        }
       }
       panel.appendChild(btn);
     });
@@ -878,12 +1010,26 @@
     if (panel) { panel.style.display = 'none'; panel.innerHTML = ''; }
   }
 
+  function _hideAbilityPanel() {
+    var panel = document.getElementById('oab-ability-panel');
+    if (panel) { panel.style.display = 'none'; panel.innerHTML = ''; }
+  }
+
   function _executeCast(q, r) {
     if (!_selectedUnitId || !_castSpellId) return;
     var ok = window.OathAndBoneEngine.castSpell(_selectedUnitId, _castSpellId, q, r);
     if (ok) {
       _castMode = false; _castSpellId = null; _castHexes = [];
       _hideSpellPanel();
+    }
+  }
+
+  function _executeAbility(q, r) {
+    if (!_selectedUnitId || !_abilityId) return;
+    var ok = window.OathAndBoneEngine.resolveAbility(_selectedUnitId, _abilityId, q, r);
+    if (ok) {
+      _abilityMode = false; _abilityId = null; _abilityHexes = [];
+      _hideAbilityPanel();
     }
   }
 
@@ -907,7 +1053,9 @@
     _moveMode = false; _moveHexes = [];
     _attackMode = false; _attackHexes = [];
     _castMode = false; _castSpellId = null; _castHexes = [];
+    _abilityMode = false; _abilityId = null; _abilityHexes = [];
     _hideSpellPanel();
+    _hideAbilityPanel();
     _selectedUnitId = null;
     window.OathAndBoneEngine.advanceTurn();
     render();
@@ -948,10 +1096,23 @@
     var sel     = _selectedUnitId ? window.OathAndBoneEngine.getUnit(_selectedUnitId) : null;
     var canAct  = sel && sel.hp > 0 && !sel.acted && sel.team === 'player';
     var canCast = canAct && sel.magic && sel.magic.spells_equipped && sel.magic.spells_equipped.length > 0;
-    panel.querySelector('[data-action=move]').disabled   = !canAct;
-    panel.querySelector('[data-action=attack]').disabled = !canAct;
-    panel.querySelector('[data-action=cast]').disabled   = !canCast;
-    panel.querySelector('[data-action=hold]').disabled   = !sel;
+    // Ability enabled for martial heroes (non-casters) with a signatures array.
+    // Casters' signatures are spell-kind and cast from the CAST panel, so we
+    // disable ABILITY for them to avoid duplicating the entry point.
+    var sigs = (canAct && window.OathAndBoneAbilities && window.OathAndBoneAbilities.getHeroSignatures)
+      ? window.OathAndBoneAbilities.getHeroSignatures(sel) : [];
+    var hasActiveAbility = false;
+    for (var i = 0; i < sigs.length; i++) {
+      if (sigs[i].kind === 'active' || sigs[i].kind === 'passive') {
+        hasActiveAbility = true; break;
+      }
+    }
+    var canAbility = canAct && hasActiveAbility && !sel.magic;
+    panel.querySelector('[data-action=move]').disabled    = !canAct;
+    panel.querySelector('[data-action=attack]').disabled  = !canAct;
+    panel.querySelector('[data-action=cast]').disabled    = !canCast;
+    panel.querySelector('[data-action=ability]').disabled = !canAbility;
+    panel.querySelector('[data-action=hold]').disabled    = !sel;
   }
 
   // ── DAMAGE FLOAT ─────────────────────────────────────────────────────
@@ -1116,7 +1277,7 @@
       }
     }
     render();
-    updateTurnBar('Cast: ' + spellDef.school + ' — ' + (spellDef.effect.damage || '?') + ' DMG');
+    updateTurnBar('Cast: ' + spellDef.school + ' \u2014 ' + (spellDef.effect.damage || spellDef.effect.heal || '?'));
     // Auto-advance after showing cast result
     setTimeout(function () {
       _selectedUnitId = null;
@@ -1125,6 +1286,29 @@
       _scheduleEnemyTick();
     }, 1200);
   };
+
+  // Ability-resolved hook — damage floats + auto-advance turn.
+  // VFX is stubbed here (concern 2 scope) and replaced in concern 3.
+  if (window.OathAndBoneAbilities) {
+    window.OathAndBoneAbilities.onAbilityResolved = function (caster, abilityDef, targetQ, targetR, effects) {
+      showFireVFX(targetQ, targetR);
+      for (var i = 0; i < effects.length; i++) {
+        var e = effects[i];
+        if (e.type === 'damage') {
+          var tgt = window.OathAndBoneEngine.getUnit(e.target);
+          if (tgt) showDamage(tgt, e.amount);
+        }
+      }
+      render();
+      updateTurnBar('Ability: ' + (abilityDef.id || '').replace(/_/g, ' ').toUpperCase());
+      setTimeout(function () {
+        _selectedUnitId = null;
+        window.OathAndBoneEngine.advanceTurn();
+        render();
+        _scheduleEnemyTick();
+      }, 1200);
+    };
+  }
 
   // ── SCENARIO LOAD ────────────────────────────────────────────────────
   // Called synchronously here so that by the time the orchestrator's
