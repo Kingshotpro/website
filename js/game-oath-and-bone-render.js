@@ -1615,8 +1615,71 @@
     overlay.appendChild(box);
     _stage.appendChild(overlay);
 
+    // Battle is over — clear any in-progress resume snapshot so the player
+    // isn't offered a stale resume on the next visit.
+    if (window.OathAndBoneCache) {
+      window.OathAndBoneCache.clearBattleSnapshot();
+    }
+
     // Non-blocking save — must NOT block UI on network call
     _saveToServer(result, scenario, tier, rewards, fallen, saveStatusEl, balanceEl, creditEl);
+  }
+
+  // ── RESUME PROMPT ────────────────────────────────────────────────────────
+  // Shows the FFT blue chrome "Resume battle?" panel. Called by the
+  // orchestrator when ksp_oab_battle_resume contains a valid snapshot.
+  function _showResumePrompt(container, wrappedSnapshot, onResume, onDiscard) {
+    if (!container) return;
+    injectStyles();
+    container.innerHTML = '';
+    container.style.cssText = 'display:block;padding:0;min-height:auto';
+
+    var snap = wrappedSnapshot.battle;
+    var age  = Date.now() - new Date(wrappedSnapshot.ts).getTime();
+    var mins = Math.round(age / 60000);
+    var ageLabel = mins < 2 ? 'moments ago' : mins + ' min ago';
+
+    var wrap = document.createElement('div');
+    wrap.className = 'oab-worldmap'; // reuse FFT blue chrome styles
+
+    var title = document.createElement('div');
+    title.className = 'oab-tut-label';
+    title.style.cssText = 'margin-bottom:14px;font-size:11px';
+    title.textContent = 'BATTLE IN PROGRESS';
+    wrap.appendChild(title);
+
+    var copy = document.createElement('div');
+    copy.className = 'oab-tut-copy';
+    copy.style.cssText = 'font-size:14px;color:#c0d4f0;margin-bottom:20px;line-height:1.6';
+    copy.innerHTML = 'You left a battle unfinished<br>' +
+      '<span style="color:#7a7d8e;font-size:12px">' + ageLabel + ' \u2014 round ' +
+      (snap.round || '?') + ' of ' + (snap.scenarioId || 'B1').toUpperCase() + '</span>';
+    wrap.appendChild(copy);
+
+    var btnRow = document.createElement('div');
+    btnRow.style.cssText = 'display:flex;gap:12px;justify-content:center';
+
+    var resumeBtn = document.createElement('button');
+    resumeBtn.className = 'oab-btn';
+    resumeBtn.textContent = 'Resume';
+    resumeBtn.addEventListener('click', function () {
+      container.innerHTML = '';
+      if (typeof onResume === 'function') onResume();
+    });
+
+    var discardBtn = document.createElement('button');
+    discardBtn.className = 'oab-btn';
+    discardBtn.style.opacity = '0.6';
+    discardBtn.textContent = 'Start fresh';
+    discardBtn.addEventListener('click', function () {
+      container.innerHTML = '';
+      if (typeof onDiscard === 'function') onDiscard();
+    });
+
+    btnRow.appendChild(resumeBtn);
+    btnRow.appendChild(discardBtn);
+    wrap.appendChild(btnRow);
+    container.appendChild(wrap);
   }
 
   // ── ENEMY AUTO-TURN ──────────────────────────────────────────────────
@@ -1888,8 +1951,9 @@
       if (scenario) window.OathAndBoneEngine.loadScenario(scenario);
       window.OathAndBoneEngine.start(container, {});
     },
-    showWorldMap:  function (container, state) { _showWorldMap(container, state); },
-    startScenario: function (container, id)    { _startScenario(container, id); }
+    showWorldMap:    function (container, state)                          { _showWorldMap(container, state); },
+    startScenario:   function (container, id)                            { _startScenario(container, id); },
+    showResumePrompt: function (container, wrapped, onResume, onDiscard) { _showResumePrompt(container, wrapped, onResume, onDiscard); }
   };
 
 }());

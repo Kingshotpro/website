@@ -198,28 +198,57 @@
     var maxPollTime   = 5000;
     var pollInterval  = 100;
 
+    // Check for a mid-battle resume snapshot BEFORE rendering the world map
+    // or starting a fresh battle. Snapshot is validated in loadBattleSnapshot
+    // (version check + 24h TTL). If valid, show the "Resume battle?" prompt.
+    var resumeSnapshot = (window.OathAndBoneCache)
+      ? window.OathAndBoneCache.loadBattleSnapshot()
+      : null;
+
+    function launchNormalFlow() {
+      var scenarioId = state.current_battle || 'b1';
+      var scenarios  = window.OathAndBoneScenarios;
+      var scenario   = (scenarios && (scenarios[scenarioId] || scenarios['b1'])) || null;
+      if (scenario && window.OathAndBoneEngine.loadScenario) {
+        window.OathAndBoneEngine.loadScenario(scenario);
+      }
+      var practiceModeActive = alreadyPlayed();
+      if (practiceModeActive) {
+        console.log('Oath and Bone: Daily gate active. Starting in practice mode.');
+      }
+      if (!firstLoad && window.OathAndBoneRender && window.OathAndBoneRender.showWorldMap) {
+        window.OathAndBoneRender.showWorldMap(container, state);
+      } else {
+        window.OathAndBoneEngine.start(container, { practiceMode: practiceModeActive });
+      }
+    }
+
     function pollForEngine() {
       if (window.OathAndBoneEngine) {
         console.log('Oath and Bone: Engine detected. Attempting to start...');
         try {
-          // Load the player's current scenario (overrides render.js line-1876 pre-load).
-          var scenarioId = state.current_battle || 'b1';
-          var scenarios  = window.OathAndBoneScenarios;
-          var scenario   = (scenarios && (scenarios[scenarioId] || scenarios['b1'])) || null;
-          if (scenario && window.OathAndBoneEngine.loadScenario) {
-            window.OathAndBoneEngine.loadScenario(scenario);
-          }
-
-          var practiceModeActive = alreadyPlayed();
-          if (practiceModeActive) {
-            console.log('Oath and Bone: Daily gate active. Starting in practice mode.');
-          }
-
-          // Returning players see the world map; first-timers drop straight into B1.
-          if (!firstLoad && window.OathAndBoneRender && window.OathAndBoneRender.showWorldMap) {
-            window.OathAndBoneRender.showWorldMap(container, state);
+          if (resumeSnapshot && window.OathAndBoneRender && window.OathAndBoneRender.showResumePrompt) {
+            // Show "Resume battle?" in the FFT blue panel.
+            window.OathAndBoneRender.showResumePrompt(
+              container,
+              resumeSnapshot,
+              function onResume() {
+                // Player chose to resume — restore the battle.
+                console.log('Oath and Bone: Resuming battle from snapshot (round ' +
+                  resumeSnapshot.battle.round + ', scenario ' +
+                  resumeSnapshot.battle.scenarioId + ').');
+                window.OathAndBoneEngine.resumeBattle(container, resumeSnapshot.battle);
+              },
+              function onDiscard() {
+                // Player chose to start fresh — clear snapshot, normal flow.
+                console.log('Oath and Bone: Discarded resume snapshot. Starting fresh.');
+                window.OathAndBoneCache.clearBattleSnapshot();
+                launchNormalFlow();
+              }
+            );
           } else {
-            window.OathAndBoneEngine.start(container, { practiceMode: practiceModeActive });
+            // No valid snapshot — normal world-map / first-time flow.
+            launchNormalFlow();
           }
         } catch (e) {
           console.error('Oath and Bone: Error starting engine:', e);

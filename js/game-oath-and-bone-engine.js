@@ -231,6 +231,16 @@ function _checkBattleEnd() {
 }
 
 
+// Saves a full battle snapshot to localStorage via OathAndBoneCache.
+// Called on every turn-tick (advanceTurn) and after each action that changes
+// unit state (attack, ability, spell) so a tab-close mid-battle can be resumed.
+// Delegates to OathAndBoneEngine.getBattleSnapshot() for the deep-copy logic.
+function _snapshotBattle() {
+  if (!window.OathAndBoneCache || !window.OathAndBoneCache.saveBattleSnapshot) return;
+  if (_battle.phase !== 'active') return; // don't snapshot during placement or after end
+  window.OathAndBoneCache.saveBattleSnapshot(window.OathAndBoneEngine.getBattleSnapshot());
+}
+
 // Syncs live hero HP into window.OathAndBone.currentState and pushes to cache.
 // Called after attacks, spells, and abilities so the debounced server save
 // carries current (not pre-battle) HP values.
@@ -617,6 +627,7 @@ window.OathAndBoneEngine = {
     // Persist live hero HP to cache so a mid-battle close doesn't leave
     // the world state with stale HP values.
     _pushStateToCache();
+    _snapshotBattle();
 
     return true;
   },
@@ -645,6 +656,7 @@ window.OathAndBoneEngine = {
 
     _checkBattleEnd();
     _pushStateToCache();
+    _snapshotBattle();
     return true;
   },
 
@@ -672,6 +684,7 @@ window.OathAndBoneEngine = {
 
     _checkBattleEnd();
     _pushStateToCache();
+    _snapshotBattle();
     return true;
   },
 
@@ -726,6 +739,85 @@ window.OathAndBoneEngine = {
 
     if (_battle.turnIndex >= _battle.turnQueue.length) {
       _checkBattleEnd();
+    }
+
+    // Snapshot after every turn advance (the "turn-tick" for mid-battle resume).
+    _snapshotBattle();
+  },
+
+  // ── Mid-battle resume API (Concern 3) ──────────────────────────────────
+
+  // Returns a serialisable snapshot of the current in-flight battle state.
+  // Snapshot version: 1 (bump if _battle shape changes; cache discards on mismatch).
+  // Called by _snapshotBattle() — exposed on the engine object so callers outside
+  // the engine module can request a snapshot if needed.
+  getBattleSnapshot: function() {
+    var tilesCopy = {};
+    for (var tk in _battle.tiles) {
+      var t = _battle.tiles[tk];
+      tilesCopy[tk] = {
+        q: t.q, r: t.r,
+        terrain: t.terrain, elevation: t.elevation,
+        tile_mods: t.tile_mods ? t.tile_mods.slice() : [],
+        unit: t.unit
+      };
+    }
+    var unitsCopy = {};
+    for (var uk in _battle.units) {
+      var u = _battle.units[uk];
+      unitsCopy[uk] = {
+        id: u.id, heroId: u.heroId, team: u.team,
+        q: u.q, r: u.r,
+        hp: u.hp, hp_max: u.hp_max,
+        move: u.move, attack_range: u.attack_range,
+        attack_dmg: u.attack_dmg, initiative: u.initiative,
+        defense: u.defense || 0,
+        acted: u.acted,
+        permadeath_loss: u.permadeath_loss || false,
+        permadeath_game_over: u.permadeath_game_over || false,
+        magic: u.magic ? JSON.parse(JSON.stringify(u.magic)) : null,
+        status_effects: u.status_effects ? JSON.parse(JSON.stringify(u.status_effects)) : [],
+        abilityCooldowns: u.abilityCooldowns ? JSON.parse(JSON.stringify(u.abilityCooldowns)) : {},
+        passive_defense_bonus: u.passive_defense_bonus || 0,
+        took_damage_this_turn: u.took_damage_this_turn || false
+      };
+    }
+    return {
+      tiles:           tilesCopy,
+      units:           unitsCopy,
+      turnQueue:       _battle.turnQueue.slice(),
+      turnIndex:       _battle.turnIndex,
+      round:           _battle.round,
+      phase:           _battle.phase,
+      scenarioId:      _battle.scenario ? (_battle.scenario.id || 'b1') : 'b1',
+      tutorials_fired: JSON.parse(JSON.stringify(_battle.tutorials_fired || {})),
+      playerHoldUsed:  _battle.playerHoldUsed || false
+    };
+  },
+
+  // Restores _battle from a snapshot and fires onReady so the renderer
+  // redraws the correct state. Called by the orchestrator when the player
+  // accepts the "Resume battle?" prompt.
+  resumeBattle: function(container, snapshot) {
+    if (!snapshot) return;
+
+    // Reload the scenario object from the static lookup (avoids storing
+    // large scenario JSON in localStorage — only the id is in the snapshot).
+    var scenarioId = snapshot.scenarioId || 'b1';
+    var scenario   = (window.OathAndBoneScenarios && window.OathAndBoneScenarios[scenarioId]) || null;
+
+    _battle.tiles          = snapshot.tiles          || {};
+    _battle.units          = snapshot.units          || {};
+    _battle.turnQueue      = snapshot.turnQueue      || [];
+    _battle.turnIndex      = typeof snapshot.turnIndex === 'number' ? snapshot.turnIndex : 0;
+    _battle.round          = typeof snapshot.round   === 'number'   ? snapshot.round    : 1;
+    _battle.phase          = snapshot.phase          || 'active';
+    _battle.scenario       = scenario;
+    _battle.tutorials_fired = snapshot.tutorials_fired || {};
+    _battle.playerHoldUsed  = snapshot.playerHoldUsed  || false;
+
+    if (window.OathAndBoneEngine.onReady) {
+      window.OathAndBoneEngine.onReady(container, { resumed: true });
     }
   },
 
