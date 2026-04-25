@@ -1646,11 +1646,14 @@
     continueBtn.className = 'oab-btn';
     continueBtn.textContent = 'Continue';
     continueBtn.addEventListener('click', function () {
-      // Prefer cache so the world map reflects the optimistic unlock from Bug B fix.
-      var st = (window.OathAndBoneCache && window.OathAndBoneCache.getState()) ||
-               (window.OathAndBone && window.OathAndBone.currentState) ||
-               { unlocked_scenarios: ['b1'], current_battle: 'b1' };
-      _showWorldMap(_container, st);
+      // battle results → world map transition: fire interstitial first.
+      _tryInterstitial().then(function () {
+        // Prefer cache so the world map reflects the optimistic unlock from Bug B fix.
+        var st = (window.OathAndBoneCache && window.OathAndBoneCache.getState()) ||
+                 (window.OathAndBone && window.OathAndBone.currentState) ||
+                 { unlocked_scenarios: ['b1'], current_battle: 'b1' };
+        _showWorldMap(_container, st);
+      });
     });
 
     var replayBtn = document.createElement('button');
@@ -2131,6 +2134,558 @@
     _showShopTab(_activeShopTab, balance, bodyEl);
   }
 
+  // ── CROWN PACKS PANEL ────────────────────────────────────────────────
+  function _showCrownPacks(container) {
+    if (!container) return;
+    injectStyles();
+    container.innerHTML = '';
+    container.style.cssText = 'display:block;padding:0;min-height:auto';
+
+    var pricing = window.KSP_PRICING && window.KSP_PRICING.oathandbone
+                  ? window.KSP_PRICING.oathandbone : null;
+    var packs   = pricing ? pricing.crown_packs : {};
+
+    var wrap = document.createElement('div');
+    wrap.className = 'oab-worldmap';
+
+    var backBtn = document.createElement('button');
+    backBtn.className = 'oab-shop-back';
+    backBtn.style.cssText = 'margin-bottom:18px;align-self:flex-start';
+    backBtn.textContent = '\u2190 Back to Shop';
+    backBtn.addEventListener('click', function () { _showShop(container); });
+    wrap.appendChild(backBtn);
+
+    var titleEl = document.createElement('div');
+    titleEl.className = 'oab-worldmap-title';
+    titleEl.textContent = 'Get More Crowns';
+    wrap.appendChild(titleEl);
+
+    var subEl = document.createElement('div');
+    subEl.className = 'oab-worldmap-sub';
+    subEl.textContent = 'One-time purchase. No subscription required.';
+    wrap.appendChild(subEl);
+
+    var packDefs = [
+      { key: 'pocket', label: 'Pocket Pack',   badge: '' },
+      { key: 'coffer', label: 'Coffer Pack',   badge: '' },
+      { key: 'hoard',  label: 'Hoard Pack',    badge: 'BEST VALUE' },
+      { key: 'kings',  label: "King's Cache",  badge: '' },
+    ];
+
+    var grid = document.createElement('div');
+    grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;width:100%;max-width:720px';
+
+    packDefs.forEach(function (def) {
+      var pack = packs[def.key] || {};
+      var usd  = pack.usd || 0;
+      var base = pack.crowns || 0;
+      var bonus= pack.bonus  || 0;
+      var total= base + bonus;
+      var stripeUrl = pack.stripe_url || 'TBD-MANUAL';
+
+      var card = document.createElement('div');
+      card.className = 'oab-worldmap-card';
+      card.style.cssText = 'position:relative;min-width:140px;cursor:pointer';
+      if (def.badge) {
+        card.style.borderColor = '#f0c040';
+        var badge = document.createElement('div');
+        badge.style.cssText = 'position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#f0c040;color:#0e1a34;font-size:9px;font-weight:700;letter-spacing:.1em;padding:2px 8px;border-radius:10px;white-space:nowrap';
+        badge.textContent = def.badge;
+        card.appendChild(badge);
+      }
+
+      var nameEl = document.createElement('div');
+      nameEl.className = 'oab-worldmap-card-name';
+      nameEl.textContent = def.label;
+      card.appendChild(nameEl);
+
+      var crownEl = document.createElement('div');
+      crownEl.style.cssText = 'font-size:22px;font-weight:700;color:#f0c040;margin:6px 0';
+      crownEl.textContent = total.toLocaleString();
+      card.appendChild(crownEl);
+
+      if (bonus > 0) {
+        var bonusEl = document.createElement('div');
+        bonusEl.style.cssText = 'font-size:10px;color:#7a9a50;margin-bottom:4px';
+        bonusEl.textContent = base.toLocaleString() + ' + ' + bonus.toLocaleString() + ' bonus';
+        card.appendChild(bonusEl);
+      }
+
+      var ratioEl = document.createElement('div');
+      ratioEl.style.cssText = 'font-size:9px;color:#5a7a9e;margin-bottom:10px';
+      var perCrown = usd > 0 && total > 0 ? (usd / total).toFixed(4) : '—';
+      ratioEl.textContent = '$' + usd.toFixed(2) + ' \u00B7 $' + perCrown + '/Crown';
+      card.appendChild(ratioEl);
+
+      var buyBtn = document.createElement('button');
+      buyBtn.className = 'oab-shop-buy';
+      buyBtn.textContent = stripeUrl === 'TBD-MANUAL' ? 'Coming Soon' : 'Buy $' + usd.toFixed(2);
+
+      buyBtn.addEventListener('click', function () {
+        if (stripeUrl === 'TBD-MANUAL') {
+          _toast('Stripe product not yet configured. The Architect needs to run STRIPE_SETUP_GUIDE.md and update pricing-config.js.', true);
+          return;
+        }
+        window.open(stripeUrl, '_blank');
+        // Crowns credited server-side via Stripe webhook after purchase.
+        _toast('Redirecting to Stripe checkout\u2026 Crowns will appear after payment completes.', false);
+      });
+      card.appendChild(buyBtn);
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
+
+    // First-purchase bonus note
+    var bonusNote = document.createElement('div');
+    bonusNote.style.cssText = 'margin-top:18px;font-size:10px;color:#5a7a9e;text-align:center';
+    bonusNote.textContent = 'First purchase of any pack grants +50% bonus Crowns (one-time per account).';
+    wrap.appendChild(bonusNote);
+
+    var disclaimer = document.createElement('div');
+    disclaimer.className = 'oab-shop-footer';
+    disclaimer.textContent = 'Unofficial. Not affiliated with Century Games.';
+    wrap.appendChild(disclaimer);
+
+    container.appendChild(wrap);
+  }
+
+  // ── CAMPAIGN PASS PANEL ───────────────────────────────────────────────
+  function _showCampaignPass(container) {
+    if (!container) return;
+    injectStyles();
+    container.innerHTML = '';
+    container.style.cssText = 'display:block;padding:0;min-height:auto';
+
+    var pricing  = window.KSP_PRICING && window.KSP_PRICING.oathandbone
+                   ? window.KSP_PRICING.oathandbone : null;
+    var passes   = pricing ? pricing.passes : {};
+    var cache    = window.OathAndBoneCache;
+    var passActive = cache && cache.isCampaignPassActive ? cache.isCampaignPassActive() : false;
+
+    var wrap = document.createElement('div');
+    wrap.className = 'oab-worldmap';
+
+    var backBtn = document.createElement('button');
+    backBtn.className = 'oab-shop-back';
+    backBtn.style.cssText = 'margin-bottom:18px;align-self:flex-start';
+    backBtn.textContent = '\u2190 Back';
+    backBtn.addEventListener('click', function () {
+      var st = (cache && cache.getState()) ||
+               (window.OathAndBone && window.OathAndBone.currentState) || {};
+      _showWorldMap(container, st);
+    });
+    wrap.appendChild(backBtn);
+
+    var titleEl = document.createElement('div');
+    titleEl.className = 'oab-worldmap-title';
+    titleEl.textContent = 'Campaign Pass';
+    wrap.appendChild(titleEl);
+
+    if (passActive) {
+      var activeBanner = document.createElement('div');
+      activeBanner.style.cssText = 'background:rgba(90,138,224,.12);border:1px solid #5a8ae0;color:#5a8ae0;padding:12px 20px;border-radius:4px;margin-bottom:20px;font-size:12px;text-align:center;font-weight:700;letter-spacing:.06em';
+      activeBanner.textContent = '\u2605 You have an active Campaign Pass. Ads suppressed. Crown earn boosted.';
+      wrap.appendChild(activeBanner);
+    }
+
+    var passDefs = [
+      {
+        key: 'chapter', label: 'Chapter Pass', usd: 4.99,
+        perks: ['+50% Crown earn during the chapter', '50 Crown daily stipend while active',
+                'One exclusive portrait frame', 'Cutscene gallery access for that chapter'],
+      },
+      {
+        key: 'campaign', label: 'Campaign Pass', usd: 9.99,
+        badge: 'MORE VALUE',
+        perks: ['+50% Crown earn (any chapters)', '100 Crown daily stipend',
+                'One job-advancement token per month', 'Chapter N+1 beta access',
+                'No interstitial ads while active'],
+      },
+    ];
+
+    var grid = document.createElement('div');
+    grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;width:100%;max-width:560px';
+
+    passDefs.forEach(function (def) {
+      var passData  = passes[def.key] || {};
+      var stripeUrl = passData.stripe_url || 'TBD-MANUAL';
+      var usd       = passData.usd || def.usd;
+      var duration  = passData.duration || '';
+
+      var card = document.createElement('div');
+      card.className = 'oab-worldmap-card';
+      card.style.cssText = 'position:relative;text-align:left;padding:18px 20px';
+      if (def.badge) { card.style.borderColor = '#5a8ae0'; }
+
+      if (def.badge) {
+        var badgeEl = document.createElement('div');
+        badgeEl.style.cssText = 'position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#5a8ae0;color:#0e1a34;font-size:9px;font-weight:700;letter-spacing:.1em;padding:2px 10px;border-radius:10px;white-space:nowrap';
+        badgeEl.textContent = def.badge;
+        card.appendChild(badgeEl);
+      }
+
+      var nameEl = document.createElement('div');
+      nameEl.className = 'oab-worldmap-card-name';
+      nameEl.textContent = def.label;
+      card.appendChild(nameEl);
+
+      var priceEl = document.createElement('div');
+      priceEl.style.cssText = 'font-size:22px;font-weight:700;color:#f0c040;margin:6px 0 2px';
+      priceEl.textContent = '$' + usd.toFixed(2);
+      card.appendChild(priceEl);
+
+      var durEl = document.createElement('div');
+      durEl.style.cssText = 'font-size:10px;color:#5a7a9e;margin-bottom:12px';
+      durEl.textContent = duration;
+      card.appendChild(durEl);
+
+      var perksList = document.createElement('ul');
+      perksList.style.cssText = 'list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:5px';
+      def.perks.forEach(function (perk) {
+        var li = document.createElement('li');
+        li.style.cssText = 'font-size:10px;color:#c0d4f0;display:flex;align-items:flex-start;gap:6px';
+        li.innerHTML = '<span style="color:#5a8ae0;flex-shrink:0">\u2713</span>' + perk;
+        perksList.appendChild(li);
+      });
+      card.appendChild(perksList);
+
+      var buyBtn = document.createElement('button');
+      buyBtn.className = 'oab-shop-buy';
+      if (passActive) {
+        buyBtn.textContent = 'Already Active';
+        buyBtn.disabled = true;
+      } else if (stripeUrl === 'TBD-MANUAL') {
+        buyBtn.textContent = 'Coming Soon';
+        buyBtn.addEventListener('click', function () {
+          _toast('Stripe product not yet configured. See STRIPE_SETUP_GUIDE.md.', true);
+        });
+      } else {
+        buyBtn.textContent = 'Subscribe $' + usd.toFixed(2) + '/mo';
+        buyBtn.addEventListener('click', function () {
+          window.open(stripeUrl, '_blank');
+          _toast('Redirecting to Stripe\u2026 Pass activates after payment.', false);
+        });
+      }
+      card.appendChild(buyBtn);
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
+
+    var disclaimer = document.createElement('div');
+    disclaimer.className = 'oab-shop-footer';
+    disclaimer.textContent = 'Unofficial. Not affiliated with Century Games. '
+      + 'Pass status synced from server on next page load after payment.';
+    wrap.appendChild(disclaimer);
+
+    container.appendChild(wrap);
+  }
+
+  // ── AD TRACKING HELPERS ───────────────────────────────────────────────
+  var _AD_NS = 'ksp_oab_ads_';
+
+  function _adKey(type) {
+    return _AD_NS + type + '_' + new Date().toISOString().slice(0, 10);
+  }
+
+  function _adCount(type) {
+    try { return parseInt(localStorage.getItem(_adKey(type)) || '0', 10); } catch (e) { return 0; }
+  }
+
+  function _adIncrement(type) {
+    try { localStorage.setItem(_adKey(type), String(_adCount(type) + 1)); } catch (e) {}
+  }
+
+  // ── INTERSTITIAL AD ────────────────────────────────────────────────────
+  // Returns a Promise that resolves when the ad overlay is dismissed.
+  // Silently resolves (no overlay) when: cap reached, pass active, or AdSense
+  // not loaded. The caller always proceeds regardless of ad outcome.
+  var _INTERSTITIAL_DAILY_CAP = 3;
+
+  function _tryInterstitial() {
+    // Skip if Campaign Pass active (paying users get no ads)
+    if (window.OathAndBoneCache && window.OathAndBoneCache.isCampaignPassActive &&
+        window.OathAndBoneCache.isCampaignPassActive()) {
+      return Promise.resolve();
+    }
+    // Skip if daily cap reached
+    if (_adCount('interstitial') >= _INTERSTITIAL_DAILY_CAP) {
+      return Promise.resolve();
+    }
+
+    return new Promise(function (resolve) {
+      _adIncrement('interstitial');
+
+      var overlay = document.createElement('div');
+      overlay.style.cssText = [
+        'position:fixed', 'inset:0',
+        'background:rgba(8,8,12,.92)',
+        'display:flex', 'flex-direction:column',
+        'align-items:center', 'justify-content:center',
+        'z-index:20000',
+        'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+      ].join(';');
+
+      var label = document.createElement('div');
+      label.style.cssText = 'font-size:10px;color:#5a7a9e;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px';
+      label.textContent = 'Advertisement';
+      overlay.appendChild(label);
+
+      // AdSense display unit — 300×250 responsive
+      var adSlot = document.createElement('ins');
+      adSlot.className = 'adsbygoogle';
+      adSlot.style.cssText = 'display:block;width:300px;height:250px';
+      adSlot.setAttribute('data-ad-client', 'ca-pub-8335376690790226');
+      adSlot.setAttribute('data-ad-slot', 'OAB-INTERSTITIAL-TBD');  // Architect sets real slot ID
+      adSlot.setAttribute('data-ad-format', 'auto');
+      adSlot.setAttribute('data-full-width-responsive', 'false');
+      overlay.appendChild(adSlot);
+
+      // Try to push to adsbygoogle; log gap if not available
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        // AdSense not loaded on this page — stub: log gap, resolve immediately
+        console.info('[OAB-Ads] Interstitial slot not yet configured (OAB-INTERSTITIAL-TBD). Gap: add AdSense script + real slot ID to oath-and-bone.html.');
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        resolve();
+        return;
+      }
+
+      var skipLabel = document.createElement('div');
+      skipLabel.style.cssText = 'font-size:10px;color:#5a7a9e;margin-top:10px';
+      skipLabel.textContent = 'Ad closes automatically in 3s';
+      overlay.appendChild(skipLabel);
+
+      var skipBtn = document.createElement('button');
+      skipBtn.style.cssText = 'margin-top:14px;background:none;border:1px solid #3a5a9a;color:#c0d4f0;padding:6px 18px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;display:none';
+      skipBtn.textContent = 'Skip';
+      overlay.appendChild(skipBtn);
+      document.body.appendChild(overlay);
+
+      var remaining = 3;
+      var countdownInterval = setInterval(function () {
+        remaining -= 1;
+        if (remaining <= 0) {
+          clearInterval(countdownInterval);
+          skipBtn.style.display = 'block';
+          skipLabel.textContent = 'Ad finished.';
+        } else {
+          skipLabel.textContent = 'Ad closes automatically in ' + remaining + 's';
+        }
+      }, 1000);
+
+      function dismiss() {
+        clearInterval(countdownInterval);
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        resolve();
+      }
+
+      skipBtn.addEventListener('click', dismiss);
+      // Auto-dismiss after 4s (gives 1s buffer after countdown)
+      setTimeout(dismiss, 4000);
+    });
+  }
+
+  // ── REWARDED VIDEO AD ──────────────────────────────────────────────────
+  var _REWARDED_XP_DAILY_CAP    = 2;
+  var _REWARDED_CROWN_DAILY_CAP = 1;
+  var _REWARDED_CROWN_GRANT     = 30;
+  var _REWARDED_XP_FACTOR       = 0.20;
+
+  // Returns Promise<boolean> — true if the ad played and boost should apply.
+  function _tryRewardedXpAd() {
+    if (window.OathAndBoneCache && window.OathAndBoneCache.isCampaignPassActive &&
+        window.OathAndBoneCache.isCampaignPassActive()) {
+      return Promise.resolve(false);
+    }
+    if (_adCount('rewarded_xp') >= _REWARDED_XP_DAILY_CAP) {
+      return Promise.resolve(false);
+    }
+    return _showRewardedVideoStub('Watch a short video to earn +20% XP this battle', function () {
+      _adIncrement('rewarded_xp');
+    });
+  }
+
+  // Shared stub for rewarded video units.
+  // In production this should call window.googletag rewarded slot.
+  // Gap: requires AdSense rewarded video approval + slot ID — see MONETIZATION_LOG.md.
+  function _showRewardedVideoStub(promptText, onComplete) {
+    return new Promise(function (resolve) {
+      var overlay = document.createElement('div');
+      overlay.style.cssText = [
+        'position:fixed', 'inset:0',
+        'background:rgba(8,8,12,.95)',
+        'display:flex', 'flex-direction:column',
+        'align-items:center', 'justify-content:center',
+        'z-index:20001',
+        'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+      ].join(';');
+
+      var titleEl = document.createElement('div');
+      titleEl.style.cssText = 'font-size:13px;font-weight:700;color:#f0c040;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px';
+      titleEl.textContent = promptText;
+      overlay.appendChild(titleEl);
+
+      // Check if AdSense rewarded video is wired — stub if not
+      var adsAvailable = typeof window.adsbygoogle !== 'undefined';
+      var adContainer = document.createElement('div');
+      if (!adsAvailable) {
+        adContainer.style.cssText = 'width:300px;height:168px;background:#0e1a34;border:1px solid #2a3a5e;display:flex;align-items:center;justify-content:center;margin:12px 0';
+        adContainer.innerHTML = '<div style="font-size:10px;color:#5a7a9e;text-align:center;padding:12px">[Rewarded Video]<br>Slot not yet configured.<br>See MONETIZATION_LOG.md.</div>';
+        console.info('[OAB-Ads] Rewarded video not yet configured. Gap logged in MONETIZATION_LOG.md.');
+      } else {
+        var adIns = document.createElement('ins');
+        adIns.className = 'adsbygoogle';
+        adIns.style.cssText = 'display:block;width:300px;height:168px';
+        adIns.setAttribute('data-ad-client', 'ca-pub-8335376690790226');
+        adIns.setAttribute('data-ad-slot', 'OAB-REWARDED-VIDEO-TBD');
+        adIns.setAttribute('data-ad-format', 'fluid');
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+        adContainer.appendChild(adIns);
+      }
+      overlay.appendChild(adContainer);
+
+      var countdown = document.createElement('div');
+      countdown.style.cssText = 'font-size:11px;color:#5a7a9e;margin:10px 0';
+      countdown.textContent = 'Simulating 3s ad view\u2026';
+      overlay.appendChild(countdown);
+      document.body.appendChild(overlay);
+
+      var elapsed = 3;
+      var timer = setInterval(function () {
+        elapsed -= 1;
+        if (elapsed <= 0) {
+          clearInterval(timer);
+          countdown.textContent = 'Ad complete!';
+          var claimBtn = document.createElement('button');
+          claimBtn.style.cssText = 'margin-top:14px;background:linear-gradient(to bottom,#503008,#301c04);border:2px solid #f0c040;color:#f0c040;padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px';
+          claimBtn.textContent = 'Claim Reward';
+          claimBtn.addEventListener('click', function () {
+            if (onComplete) onComplete();
+            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+            resolve(true);
+          });
+          overlay.appendChild(claimBtn);
+        } else {
+          countdown.textContent = 'Simulating ' + elapsed + 's ad view\u2026';
+        }
+      }, 1000);
+    });
+  }
+
+  // ── PRE-BATTLE DEPLOY PANEL ──────────────────────────────────────────
+  // Intercepts world-map card click. Shows rewarded ad offer then lets
+  // player click BEGIN BATTLE to actually start the engine.
+  function _showPreBattle(container, scenarioId) {
+    if (!container) return;
+    injectStyles();
+    container.innerHTML = '';
+    container.style.cssText = 'display:block;padding:0;min-height:auto';
+
+    var scenarios    = window.OathAndBoneScenarios || {};
+    var sc           = scenarios[scenarioId];
+    var cache        = window.OathAndBoneCache;
+    var passActive   = cache && cache.isCampaignPassActive ? cache.isCampaignPassActive() : false;
+    var xpBoostCap   = _adCount('rewarded_xp') >= _REWARDED_XP_DAILY_CAP;
+    var boostPending = false;  // set true when player watches the ad
+
+    var wrap = document.createElement('div');
+    wrap.className = 'oab-worldmap';
+
+    var backBtn = document.createElement('button');
+    backBtn.className = 'oab-shop-back';
+    backBtn.style.cssText = 'margin-bottom:18px;align-self:flex-start';
+    backBtn.textContent = '\u2190 Back';
+    backBtn.addEventListener('click', function () {
+      var st = (cache && cache.getState()) ||
+               (window.OathAndBone && window.OathAndBone.currentState) || {};
+      _showWorldMap(container, st);
+    });
+    wrap.appendChild(backBtn);
+
+    var scenarioTitle = document.createElement('div');
+    scenarioTitle.className = 'oab-worldmap-title';
+    scenarioTitle.textContent = (sc ? sc.name : scenarioId.toUpperCase()) + ' \u2014 DEPLOY';
+    wrap.appendChild(scenarioTitle);
+
+    var biome = _SCENARIO_BIOMES[scenarioId] || scenarioId.toUpperCase();
+    var subEl = document.createElement('div');
+    subEl.className = 'oab-worldmap-sub';
+    subEl.textContent = biome + (sc && sc.description ? ' \u00B7 ' + sc.description : '');
+    wrap.appendChild(subEl);
+
+    // Rewarded XP ad button (hidden if pass active or cap reached)
+    var xpBoostStatus = document.createElement('div');
+    xpBoostStatus.style.cssText = 'font-size:11px;color:#7a9a50;margin:8px 0 4px;font-weight:700;display:none';
+    xpBoostStatus.textContent = '\u2714 +20% XP boost active for this battle';
+    wrap.appendChild(xpBoostStatus);
+
+    if (!passActive && !xpBoostCap) {
+      var watchBtn = document.createElement('button');
+      watchBtn.className = 'oab-btn';
+      watchBtn.style.cssText = watchBtn.style.cssText + 'margin-bottom:12px;background:linear-gradient(to bottom,#183860,#0c2040);border-color:#5a8ae0';
+      watchBtn.textContent = 'Watch Ad for +20% XP';
+      watchBtn.addEventListener('click', function () {
+        watchBtn.disabled = true;
+        watchBtn.textContent = 'Loading ad\u2026';
+        _tryRewardedXpAd().then(function (rewarded) {
+          if (rewarded) {
+            boostPending = true;
+            if (cache && cache.applyXpBoost) cache.applyXpBoost(_REWARDED_XP_FACTOR, 1);
+            watchBtn.style.display = 'none';
+            xpBoostStatus.style.display = 'block';
+          } else {
+            watchBtn.disabled = false;
+            watchBtn.textContent = 'Watch Ad for +20% XP';
+          }
+        });
+      });
+      wrap.appendChild(watchBtn);
+    } else if (passActive) {
+      var passNote = document.createElement('div');
+      passNote.style.cssText = 'font-size:10px;color:#5a8ae0;margin-bottom:12px;letter-spacing:.04em';
+      passNote.textContent = '\u2605 Campaign Pass active \u2014 no ads';
+      wrap.appendChild(passNote);
+    }
+
+    var beginBtn = document.createElement('button');
+    beginBtn.className = 'oab-btn';
+    beginBtn.textContent = 'BEGIN BATTLE';
+    beginBtn.style.cssText = beginBtn.style.cssText + 'font-size:14px;padding:14px 32px';
+    beginBtn.addEventListener('click', function () {
+      _doStartScenario(container, scenarioId);
+    });
+    wrap.appendChild(beginBtn);
+
+    var disclaimer = document.createElement('div');
+    disclaimer.className = 'oab-shop-footer';
+    disclaimer.style.cssText = disclaimer.style.cssText || '';
+    disclaimer.style.marginTop = '28px';
+    disclaimer.textContent = 'Unofficial. Not affiliated with Century Games.';
+    wrap.appendChild(disclaimer);
+
+    container.appendChild(wrap);
+  }
+
+  // _doStartScenario: the actual engine start, separated so pre-battle can call it.
+  function _doStartScenario(container, scenarioId) {
+    var scenarios = window.OathAndBoneScenarios || {};
+    var scenario  = scenarios[scenarioId] || scenarios['b1'];
+    if (!scenario || !window.OathAndBoneEngine) return;
+    if (window.OathAndBoneEngine.loadScenario) {
+      window.OathAndBoneEngine.loadScenario(scenario);
+    }
+    if (window.OathAndBone && window.OathAndBone.currentState) {
+      window.OathAndBone.currentState.current_battle = scenarioId;
+    }
+    var practiceMode = false;
+    try {
+      practiceMode = localStorage.getItem('ksp_oathandbone_played') ===
+                     new Date().toISOString().slice(0, 10);
+    } catch (e) {}
+    window.OathAndBoneEngine.start(container, { practiceMode: practiceMode });
+  }
+
   function _convertCredits(creditBal, rate, balDisplayEl, creditRowEl) {
     var crownsToGrant = creditBal * rate;
     // Credits → Crowns conversion uses the worker endpoint
@@ -2269,21 +2824,10 @@
   }
 
   function _startScenario(container, scenarioId) {
-    var scenarios = window.OathAndBoneScenarios || {};
-    var scenario  = scenarios[scenarioId] || scenarios['b1'];
-    if (!scenario || !window.OathAndBoneEngine) return;
-    if (window.OathAndBoneEngine.loadScenario) {
-      window.OathAndBoneEngine.loadScenario(scenario);
-    }
-    if (window.OathAndBone && window.OathAndBone.currentState) {
-      window.OathAndBone.currentState.current_battle = scenarioId;
-    }
-    var practiceMode = false;
-    try {
-      practiceMode = localStorage.getItem('ksp_oathandbone_played') ===
-                     new Date().toISOString().slice(0, 10);
-    } catch (e) {}
-    window.OathAndBoneEngine.start(container, { practiceMode: practiceMode });
+    // world map → battle transition: fire interstitial first, then pre-battle panel.
+    _tryInterstitial().then(function () {
+      _showPreBattle(container, scenarioId);
+    });
   }
 
   // ── FALLEN BARBS (HEROES.md voice register — party reaction when a hero falls) ─
