@@ -48,17 +48,26 @@
 
   // Server-authoritative default for first-time players. Must mirror
   // SERVER_PERSIST_LOG §2.2 default state (plus Worker 21's unlocked_scenarios).
+  // Worker 24 additions: inventory, campaign_pass_active, pass_expires_iso,
+  //   active_xp_boost. Server must be updated to persist these if/when a
+  //   Worker extends the server-side save endpoint (currently Worker 23's
+  //   /oath-and-bone/save). Until then, these fields live client-side only.
   var DEFAULT_STATE = {
-    hero_state:         {},
-    crown_balance:      0,
-    equipped:           {},
-    learned_spells:     [],
-    fallen_heroes:      [],
-    current_chapter:    1,
-    current_battle:     'b1',
-    unlocked_scenarios: ['b1'],
-    last_save_iso:      null,
-    version:            0
+    hero_state:            {},
+    crown_balance:         0,
+    equipped:              {},
+    learned_spells:        [],
+    fallen_heroes:         [],
+    current_chapter:       1,
+    current_battle:        'b1',
+    unlocked_scenarios:    ['b1'],
+    // Worker 24 fields
+    inventory:             [],   // [{item_id, quantity, acquired_ts}]
+    campaign_pass_active:  false,
+    pass_expires_iso:      null,
+    active_xp_boost:       null, // {factor:0.2, battles_remaining:1} or null
+    last_save_iso:         null,
+    version:               0
   };
 
   // ── Module state ────────────────────────────────────────────────────────
@@ -491,6 +500,77 @@
     });
   });
 
+  // ── PUBLIC: getInventory ─────────────────────────────────────────────────
+  // Returns the player's owned item array. Each entry: {item_id, quantity, acquired_ts}.
+  function getInventory() {
+    var st = getState();
+    return (st && Array.isArray(st.inventory)) ? st.inventory : [];
+  }
+
+  // ── PUBLIC: addInventoryItem ─────────────────────────────────────────────
+  // Adds or increments an item in the player's inventory and persists to cache.
+  function addInventoryItem(itemId) {
+    var st = getState();
+    if (!st) return;
+    if (!Array.isArray(st.inventory)) st.inventory = [];
+    var existing = null;
+    for (var i = 0; i < st.inventory.length; i++) {
+      if (st.inventory[i].item_id === itemId) { existing = st.inventory[i]; break; }
+    }
+    if (existing) {
+      existing.quantity = (existing.quantity || 1) + 1;
+    } else {
+      st.inventory.push({ item_id: itemId, quantity: 1, acquired_ts: new Date().toISOString() });
+    }
+    setState(st);
+  }
+
+  // ── PUBLIC: isCampaignPassActive ─────────────────────────────────────────
+  // True if the player has an active Campaign Pass (chapter or campaign tier).
+  // Server is canonical; this is a fast client-side read from cached state.
+  function isCampaignPassActive() {
+    var st = getState();
+    if (!st || !st.campaign_pass_active) return false;
+    if (!st.pass_expires_iso) return false;
+    return st.pass_expires_iso > new Date().toISOString();
+  }
+
+  // ── PUBLIC: applyXpBoost ─────────────────────────────────────────────────
+  // Sets a single-use XP multiplier on the next N battles.
+  // Called by the rewarded-ad handler. Engine reads via getXpBoost().
+  function applyXpBoost(factor, battles) {
+    var st = getState();
+    if (!st) return;
+    st.active_xp_boost = {
+      factor: typeof factor === 'number' ? factor : 0.2,
+      battles_remaining: typeof battles === 'number' ? battles : 1
+    };
+    setState(st);
+  }
+
+  // ── PUBLIC: getXpBoost ───────────────────────────────────────────────────
+  // Returns {factor, battles_remaining} if boost is active, or null.
+  // Engine calls this at battle-end reward calculation then decrements.
+  function getXpBoost() {
+    var st = getState();
+    if (!st || !st.active_xp_boost) return null;
+    if (st.active_xp_boost.battles_remaining <= 0) return null;
+    return st.active_xp_boost;
+  }
+
+  // ── PUBLIC: consumeXpBoost ───────────────────────────────────────────────
+  // Decrements battles_remaining; clears the boost when exhausted.
+  // Called by the engine after applying the boost multiplier.
+  function consumeXpBoost() {
+    var st = getState();
+    if (!st || !st.active_xp_boost) return;
+    st.active_xp_boost.battles_remaining -= 1;
+    if (st.active_xp_boost.battles_remaining <= 0) {
+      st.active_xp_boost = null;
+    }
+    setState(st);
+  }
+
   // ── Init: restore pending writes from localStorage ───────────────────────
   try {
     var saved = JSON.parse(lsGet(KEY_PENDING) || '[]');
@@ -516,7 +596,14 @@
     getPendingWrites:     getPendingWrites,
     saveBattleSnapshot:   saveBattleSnapshot,
     loadBattleSnapshot:   loadBattleSnapshot,
-    clearBattleSnapshot:  clearBattleSnapshot
+    clearBattleSnapshot:  clearBattleSnapshot,
+    // Worker 24 additions
+    getInventory:         getInventory,
+    addInventoryItem:     addInventoryItem,
+    isCampaignPassActive: isCampaignPassActive,
+    applyXpBoost:         applyXpBoost,
+    getXpBoost:           getXpBoost,
+    consumeXpBoost:       consumeXpBoost,
   };
 
 }());

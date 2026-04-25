@@ -228,7 +228,35 @@ The `context` parameter for shop purchases must be `'shop'` (server validates
 
 ---
 
-## 7. V2 items
+## 7. Worker 24 additions to the cache API
+
+### New DEFAULT_STATE fields
+
+| Field | Type | Default | Purpose |
+|---|---|---|---|
+| `inventory` | array | `[]` | Owned shop items. Each entry: `{item_id, quantity, acquired_ts}`. Client-side only until a Worker extends the save endpoint. |
+| `campaign_pass_active` | boolean | `false` | Campaign Pass or Chapter Pass active flag. Server is canonical. |
+| `pass_expires_iso` | ISO string or null | `null` | Pass expiry datetime. `isCampaignPassActive()` compares this to `new Date().toISOString()`. |
+| `active_xp_boost` | object or null | `null` | `{factor: 0.2, battles_remaining: 1}` when a rewarded-ad XP boost is queued. Engine calls `consumeXpBoost()` after applying the multiplier. |
+
+### New public methods
+
+| Method | Signature | Notes |
+|---|---|---|
+| `getInventory()` | `() → [{item_id, quantity, acquired_ts}]` | Synchronous flat-list read. |
+| `addInventoryItem(itemId)` | `(string) → void` | Increments quantity if already owned; appends new entry otherwise. Calls `setState()` so the save debounce fires. |
+| `isCampaignPassActive()` | `() → boolean` | Client-side fast path. Checks `campaign_pass_active && pass_expires_iso > now`. |
+| `applyXpBoost(factor, battles)` | `(number, number) → void` | Sets `active_xp_boost`. Called by rewarded-ad completion handler. |
+| `getXpBoost()` | `() → {factor, battles_remaining} | null` | Engine reads this at battle-end XP grant. Returns null when no boost queued. |
+| `consumeXpBoost()` | `() → void` | Decrements `battles_remaining`; clears field at 0. Engine calls this after applying. |
+
+### No-P2W note
+
+`addInventoryItem` and `getInventory` are used by the Crown shop. No item in the shop table grants a combat stat not also obtainable through play (see ECONOMY.md §10 verification). Inventory tracks ownership only; equip/use-in-battle is V2 scope. The cache makes no distinction between "earned" and "purchased" items — server may add that distinction later if leaderboard anti-cheat requires it.
+
+---
+
+## 8. V2 items
 
 | Item | Notes |
 |---|---|

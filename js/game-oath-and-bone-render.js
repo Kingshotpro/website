@@ -300,7 +300,45 @@
       '.oab-worldmap-card-state{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}',
       '.oab-worldmap-card.completed .oab-worldmap-card-state{color:#7a9a50}',
       '.oab-worldmap-card.available .oab-worldmap-card-state{color:#f0c040}',
-      '.oab-worldmap-card.locked .oab-worldmap-card-state{color:#3a3d4e}'
+      '.oab-worldmap-card.locked .oab-worldmap-card-state{color:#3a3d4e}',
+      // Crown shop
+      '.oab-shop{background:linear-gradient(to bottom,#18284a 0%,#0e1a34 100%);min-height:420px;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}',
+      '.oab-shop-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#0e1a34;border-bottom:2px solid #3a5a9a}',
+      '.oab-shop-back{background:none;border:1px solid #3a5a9a;color:#c0d4f0;padding:7px 14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px}',
+      '.oab-shop-back:hover{border-color:#f0c040;color:#f0c040}',
+      '.oab-shop-title{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f0c040}',
+      '.oab-shop-balance{font-size:12px;font-weight:700;color:#c0d4f0;letter-spacing:.04em}',
+      '.oab-shop-balance span{color:#f0c040}',
+      '.oab-shop-tabs{display:flex;gap:0;border-bottom:1px solid #2a3a5e;background:#0e1a34;overflow-x:auto;flex-shrink:0}',
+      '.oab-shop-tab{background:none;border:none;border-bottom:2px solid transparent;color:#5a7a9e;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;white-space:nowrap;flex-shrink:0}',
+      '.oab-shop-tab.active{border-bottom-color:#f0c040;color:#f0c040}',
+      '.oab-shop-tab:hover:not(.active){color:#c0d4f0}',
+      '.oab-shop-body{flex:1;overflow-y:auto;padding:18px 16px}',
+      '.oab-shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}',
+      '.oab-shop-card{background:#0e1a34;border:1px solid #2a3a5e;border-radius:4px;padding:14px;display:flex;flex-direction:column;gap:8px}',
+      '.oab-shop-card-name{font-size:12px;font-weight:700;color:#c0d4f0;letter-spacing:.06em}',
+      '.oab-shop-card-desc{font-size:10px;color:#5a7a9e;line-height:1.45}',
+      '.oab-shop-card-price{font-size:13px;font-weight:700;color:#f0c040;letter-spacing:.04em}',
+      '.oab-shop-card-price.type-crown::before{content:"\u2694 "}',
+      '.oab-shop-buy{margin-top:auto;background:linear-gradient(to bottom,#2858a0,#1a3a70);border:2px solid #4a74b8;border-bottom-color:#08122a;border-right-color:#08122a;color:#fff;padding:7px 14px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;width:100%}',
+      '.oab-shop-buy:hover:not(:disabled){border-color:#f0c040;color:#f0c040}',
+      '.oab-shop-buy:disabled{opacity:.4;cursor:default}',
+      '.oab-shop-owned{margin-top:auto;font-size:10px;font-weight:700;color:#7a9a50;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:7px 0}',
+      '.oab-shop-footer{padding:10px 20px;border-top:1px solid #1a2a4a;font-size:10px;color:#4a5a7e;text-align:center;letter-spacing:.04em;flex-shrink:0}',
+      '.oab-shop-crown-cta{margin:14px 0 6px;text-align:center}',
+      '.oab-shop-crown-btn{background:linear-gradient(to bottom,#503008,#301c04);border:2px solid #f0c040;border-bottom-color:#a07020;color:#f0c040;padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px}',
+      '.oab-shop-crown-btn:hover{background:linear-gradient(to bottom,#604010,#401c04)}',
+      '.oab-shop-credit-convert{margin:6px 0 14px;text-align:center;font-size:11px;color:#8a9ab8}',
+      '.oab-shop-credit-convert button{background:none;border:1px solid #3a5a9a;color:#c0d4f0;padding:5px 12px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;margin-left:8px}',
+      '.oab-shop-credit-convert button:hover{border-color:#f0c040;color:#f0c040}',
+      '.oab-shop-pass-btn{background:linear-gradient(to bottom,#183860,#0c2040);border:2px solid #5a8ae0;border-bottom-color:#1a3060;color:#c0d4f0;padding:9px 20px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px}',
+      '.oab-shop-pass-btn:hover{border-color:#f0c040;color:#f0c040}',
+      '.oab-shop-pass-badge{display:inline-block;background:rgba(90,138,224,.15);border:1px solid #5a8ae0;color:#5a8ae0;font-size:9px;font-weight:700;letter-spacing:.1em;padding:2px 8px;border-radius:10px;text-transform:uppercase;margin-left:8px}',
+      '.oab-shop-inv-list{display:flex;flex-direction:column;gap:8px}',
+      '.oab-shop-inv-item{display:flex;align-items:center;justify-content:space-between;background:#0e1a34;border:1px solid #2a3a5e;border-radius:4px;padding:10px 14px}',
+      '.oab-shop-inv-item-name{font-size:11px;font-weight:700;color:#c0d4f0;letter-spacing:.06em}',
+      '.oab-shop-inv-item-qty{font-size:11px;color:#7a9a50;font-weight:700}',
+      '.oab-shop-empty{text-align:center;color:#5a7a9e;font-size:12px;padding:40px 0;font-style:italic}'
     ].join('\n');
     document.head.appendChild(s);
   }
@@ -1728,6 +1766,404 @@
     }, 400);
   }
 
+  // ── RENDER-LAYER TOAST ───────────────────────────────────────────────
+  // Separate from cache's private _toast — used by shop/ad UI in this module.
+  function _toast(msg, isError) {
+    try {
+      var el = document.createElement('div');
+      el.style.cssText = [
+        'position:fixed', 'bottom:20px', 'left:50%',
+        'transform:translateX(-50%)',
+        'background:' + (isError ? '#8b1010' : '#183060'),
+        'color:#fff',
+        'padding:10px 22px', 'border-radius:4px',
+        'z-index:10001',
+        'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+        'font-size:13px', 'pointer-events:none',
+        'max-width:340px', 'text-align:center',
+        'border:1px solid ' + (isError ? '#cc2020' : '#3a6090')
+      ].join(';');
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 4000);
+    } catch (e) {}
+  }
+
+  // ── CROWN SHOP ───────────────────────────────────────────────────────
+  // Item tables verbatim from ECONOMY.md §3. Crown prices only — no real-money
+  // prices inside the shop. All items are obtainable through play (§10).
+
+  var _SHOP_ITEMS = {
+    equipment: [
+      { id: 'eq_weapon_t1',    name: 'T1 Weapon',      desc: 'Tier 1 weapon for one hero.',     price: 80   },
+      { id: 'eq_armor_t1',     name: 'T1 Armor',       desc: 'Tier 1 armor for one hero.',      price: 100  },
+      { id: 'eq_access_t1',    name: 'T1 Accessory',   desc: 'Tier 1 accessory for one hero.',  price: 60   },
+      { id: 'eq_focus_t1',     name: 'T1 Focus',       desc: 'Tier 1caster focus.',             price: 80   },
+      { id: 'eq_weapon_t2',    name: 'T2 Weapon',      desc: 'Tier 2 weapon for one hero.',     price: 200  },
+      { id: 'eq_armor_t2',     name: 'T2 Armor',       desc: 'Tier 2 armor for one hero.',      price: 240  },
+      { id: 'eq_access_t2',    name: 'T2 Accessory',   desc: 'Tier 2 accessory for one hero.',  price: 150  },
+      { id: 'eq_focus_t2',     name: 'T2 Focus',       desc: 'Tier 2 caster focus.',            price: 200  },
+      { id: 'eq_weapon_t3',    name: 'T3 Weapon',      desc: 'Tier 3 weapon for one hero.',     price: 500  },
+      { id: 'eq_armor_t3',     name: 'T3 Armor',       desc: 'Tier 3 armor for one hero.',      price: 600  },
+      { id: 'eq_access_t3',    name: 'T3 Accessory',   desc: 'Tier 3 accessory for one hero.',  price: 400  },
+      { id: 'eq_focus_t3',     name: 'T3 Focus',       desc: 'Tier 3 caster focus.',            price: 500  },
+    ],
+    consumables: [
+      { id: 'con_minor_potion', name: 'Minor Potion',   desc: 'Restore 25 HP.',                 price: 20  },
+      { id: 'con_potion',       name: 'Potion',         desc: 'Restore 60 HP.',                 price: 50  },
+      { id: 'con_elixir',       name: 'Elixir',         desc: 'Full HP + Mana/Souls/Verdance.',  price: 200 },
+      { id: 'con_minor_mana',   name: 'Minor Mana Tonic', desc: '+15 Mana.',                    price: 30  },
+      { id: 'con_mana_tonic',   name: 'Mana Tonic',     desc: '+40 Mana.',                      price: 80  },
+      { id: 'con_firebomb',     name: 'Firebomb',       desc: '15 AoE damage, no spell cost.',  price: 40  },
+      { id: 'con_frostbomb',    name: 'Frostbomb',      desc: '15 AoE damage, no spell cost.',  price: 40  },
+      { id: 'con_ration',       name: 'Ration',         desc: '+10 HP at camp between battles.', price: 15 },
+      { id: 'con_smoke_flask',  name: 'Smoke Flask',    desc: 'Enemy -25% hit chance for 1 turn.', price: 35 },
+    ],
+    spells: [
+      { id: 'spell_base',   name: 'Base Spell Tome',   desc: 'Base spell (Lv 1–4). Skips travel requirement.', price: 200  },
+      { id: 'spell_inter',  name: 'Intermediate Tome', desc: 'Intermediate spell (Lv 5–8).',                   price: 500  },
+      { id: 'spell_adv',    name: 'Advanced Tome',     desc: 'Advanced spell (Lv 10–14).',                     price: 1200 },
+      { id: 'spell_ult',    name: 'Ultimate Tome',     desc: 'Ultimate spell (Lv 15+).',                       price: 3000 },
+    ],
+    reagents: [
+      { id: 'rea_bone_dust',     name: 'Bone Dust',      desc: 'Common necromantic reagent.',    price: 25  },
+      { id: 'rea_grave_salt',    name: 'Grave Salt',     desc: 'Uncommon crypt reagent.',         price: 60  },
+      { id: 'rea_withered_heart',name: 'Withered Heart', desc: 'Rare major-undead drop.',         price: 250 },
+      { id: 'rea_minor_seed',    name: 'Minor Seed',     desc: 'Common grove/forest reagent.',   price: 25  },
+      { id: 'rea_major_seed',    name: 'Major Seed',     desc: 'Uncommon druid-tier reagent.',   price: 80  },
+      { id: 'rea_meteoric_iron', name: 'Meteoric Iron',  desc: 'Uncommon tower-battle drop.',    price: 150 },
+      { id: 'rea_phoenix_ash',   name: 'Phoenix Ash',    desc: 'Rare boss-tier fire drop.',      price: 400 },
+      { id: 'rea_prism_crystal', name: 'Prism Crystal',  desc: 'Uncommon, tower-floor-gated.',   price: 250 },
+    ],
+    boosts: [
+      { id: 'boost_xp',        name: 'XP Booster',       desc: '+50% XP next battle.',                         price: 100 },
+      { id: 'boost_resolve',   name: 'Resolve Charge',    desc: '+1 Resolve at battle start.',                  price: 60  },
+      { id: 'boost_mana',      name: 'Mana Primer',       desc: 'Wizard starts with +20 MP.',                   price: 80  },
+      { id: 'boost_soul',      name: 'Soul Primer',       desc: 'Necromancer starts with 10 Souls.',            price: 80  },
+      { id: 'boost_verdance',  name: 'Verdance Primer',   desc: 'Druid starts with 15 Verdance.',               price: 80  },
+      { id: 'boost_morale',    name: 'Morale Banner',     desc: 'Party +10% Atk/Def first 3 turns.',            price: 120 },
+      { id: 'boost_scout',     name: 'Skirmish Scout',    desc: 'Reveal enemy composition before deploy.',      price: 150 },
+    ],
+    training: [
+      { id: 'train_stat',      name: 'Stat Training +1',  desc: '+1 HP/Atk/Def/Move on one hero (max +3/tier).', price: 150  },
+      { id: 'train_skill',     name: 'Skill Accelerator', desc: 'Unlock a spell/ability one level early.',        price: 400  },
+      { id: 'train_job',       name: 'Job Token',         desc: 'Advanced job at Lv 12 instead of 15.',          price: 2000 },
+      { id: 'train_hybrid',    name: 'Hybrid Class Token',desc: 'Unlock hybrid class with 8+8 instead of 10+10.', price: 5000 },
+      { id: 'train_rea_minor', name: 'Reagent Bundle (Minor)', desc: '3 each of T1 reagents.',                  price: 300  },
+      { id: 'train_rea_major', name: 'Reagent Bundle (Major)', desc: '2 each of T2 reagents.',                  price: 1200 },
+    ],
+    cosmetics: [
+      { id: 'cos_portrait',  name: 'Portrait Frame',        desc: 'Hero portrait frame (6 styles in rotation).', price: 200 },
+      { id: 'cos_tile',      name: 'Tile Theme Skin',       desc: 'Biome tile theme (7 variants).',              price: 500 },
+      { id: 'cos_vfx',       name: 'Spell VFX Reskin',      desc: 'Per-spell palette reskin.',                   price: 300 },
+      { id: 'cos_banner',    name: 'Party Banner',          desc: 'Displays in cutscenes + camp.',               price: 400 },
+      { id: 'cos_gallery',   name: 'Cutscene Gallery',      desc: 'Replay gallery unlock for one chapter.',      price: 600 },
+    ],
+  };
+
+  var _SHOP_TAB_LABELS = {
+    equipment:   'Equipment',
+    consumables: 'Consumables',
+    spells:      'Spells',
+    reagents:    'Reagents',
+    boosts:      'Boosts',
+    training:    'Training',
+    cosmetics:   'Cosmetics',
+  };
+
+  var _activeShopTab = 'equipment';
+
+  function _getOwnedQty(itemId) {
+    var inv = window.OathAndBoneCache ? window.OathAndBoneCache.getInventory() : [];
+    for (var i = 0; i < inv.length; i++) {
+      if (inv[i].item_id === itemId) return inv[i].quantity || 0;
+    }
+    return 0;
+  }
+
+  function _shopItemCard(item, balance, container) {
+    var card = document.createElement('div');
+    card.className = 'oab-shop-card';
+
+    var nameEl = document.createElement('div');
+    nameEl.className = 'oab-shop-card-name';
+    nameEl.textContent = item.name;
+    card.appendChild(nameEl);
+
+    var descEl = document.createElement('div');
+    descEl.className = 'oab-shop-card-desc';
+    descEl.textContent = item.desc;
+    card.appendChild(descEl);
+
+    var priceEl = document.createElement('div');
+    priceEl.className = 'oab-shop-card-price type-crown';
+    priceEl.textContent = item.price.toLocaleString() + ' Crowns';
+    card.appendChild(priceEl);
+
+    var ownedQty = _getOwnedQty(item.id);
+    if (ownedQty > 0) {
+      var ownedEl = document.createElement('div');
+      ownedEl.className = 'oab-shop-owned';
+      ownedEl.textContent = 'Owned: ' + ownedQty;
+      card.appendChild(ownedEl);
+    }
+
+    var buyBtn = document.createElement('button');
+    buyBtn.className = 'oab-shop-buy';
+    buyBtn.textContent = balance >= item.price ? 'BUY' : 'Need more Crowns';
+    buyBtn.disabled = balance < item.price;
+
+    buyBtn.addEventListener('click', function () {
+      if (!window.OathAndBoneCache) return;
+      buyBtn.disabled = true;
+      buyBtn.textContent = '...';
+      window.OathAndBoneCache.spend(item.price, item.id, 'shop')
+        .then(function (res) {
+          if (res && res.ok) {
+            window.OathAndBoneCache.addInventoryItem(item.id);
+            var newBal = window.OathAndBoneCache.getCrownBalance();
+            // Update header balance
+            var balEl = container.querySelector('.oab-shop-balance span');
+            if (balEl) balEl.textContent = newBal.toLocaleString();
+            // Update owned count on this card
+            var owned = _getOwnedQty(item.id);
+            var existingOwned = card.querySelector('.oab-shop-owned');
+            if (existingOwned) {
+              existingOwned.textContent = 'Owned: ' + owned;
+            } else {
+              var newOwned = document.createElement('div');
+              newOwned.className = 'oab-shop-owned';
+              newOwned.textContent = 'Owned: ' + owned;
+              card.insertBefore(newOwned, buyBtn);
+            }
+            buyBtn.textContent = 'BUY';
+            buyBtn.disabled = newBal < item.price;
+          } else if (res && res.__status === 402) {
+            buyBtn.textContent = 'Need more Crowns';
+            buyBtn.disabled = true;
+          } else {
+            buyBtn.textContent = 'BUY';
+            buyBtn.disabled = false;
+          }
+        })
+        .catch(function () {
+          buyBtn.textContent = 'BUY';
+          buyBtn.disabled = false;
+        });
+    });
+
+    card.appendChild(buyBtn);
+    return card;
+  }
+
+  function _showShopTab(tabId, balance, bodyEl) {
+    bodyEl.innerHTML = '';
+    if (tabId === 'my_items') {
+      var inv = window.OathAndBoneCache ? window.OathAndBoneCache.getInventory() : [];
+      if (!inv.length) {
+        var empty = document.createElement('div');
+        empty.className = 'oab-shop-empty';
+        empty.textContent = 'No items purchased yet.';
+        bodyEl.appendChild(empty);
+        return;
+      }
+      var listEl = document.createElement('div');
+      listEl.className = 'oab-shop-inv-list';
+      inv.forEach(function (entry) {
+        var row = document.createElement('div');
+        row.className = 'oab-shop-inv-item';
+        var nameEl = document.createElement('div');
+        nameEl.className = 'oab-shop-inv-item-name';
+        // Resolve display name from item tables
+        var label = entry.item_id;
+        var allItems = [].concat.apply([], Object.keys(_SHOP_ITEMS).map(function (k) { return _SHOP_ITEMS[k]; }));
+        for (var i = 0; i < allItems.length; i++) {
+          if (allItems[i].id === entry.item_id) { label = allItems[i].name; break; }
+        }
+        nameEl.textContent = label;
+        var qtyEl = document.createElement('div');
+        qtyEl.className = 'oab-shop-inv-item-qty';
+        qtyEl.textContent = '\u00D7' + (entry.quantity || 1);
+        row.appendChild(nameEl);
+        row.appendChild(qtyEl);
+        listEl.appendChild(row);
+      });
+      bodyEl.appendChild(listEl);
+      return;
+    }
+    var items = _SHOP_ITEMS[tabId];
+    if (!items || !items.length) return;
+    var grid = document.createElement('div');
+    grid.className = 'oab-shop-grid';
+    items.forEach(function (item) {
+      grid.appendChild(_shopItemCard(item, balance, bodyEl.parentElement));
+    });
+    bodyEl.appendChild(grid);
+  }
+
+  function _showShop(container) {
+    if (!container) return;
+    injectStyles();
+    container.innerHTML = '';
+    container.style.cssText = 'display:block;padding:0;min-height:auto';
+
+    var cache = window.OathAndBoneCache;
+    var balance = cache ? cache.getCrownBalance() : 0;
+
+    var wrap = document.createElement('div');
+    wrap.className = 'oab-shop';
+
+    // ── Header ─────────────────────────────────────────────────────────
+    var header = document.createElement('div');
+    header.className = 'oab-shop-header';
+
+    var backBtn = document.createElement('button');
+    backBtn.className = 'oab-shop-back';
+    backBtn.textContent = '\u2190 Back';
+    backBtn.addEventListener('click', function () {
+      var st = (cache && cache.getState()) ||
+               (window.OathAndBone && window.OathAndBone.currentState) || {};
+      _showWorldMap(container, st);
+    });
+
+    var titleEl = document.createElement('div');
+    titleEl.className = 'oab-shop-title';
+    titleEl.textContent = 'Crown Shop';
+
+    var balEl = document.createElement('div');
+    balEl.className = 'oab-shop-balance';
+    balEl.innerHTML = '\u2694 <span>' + balance.toLocaleString() + '</span> Crowns';
+
+    header.appendChild(backBtn);
+    header.appendChild(titleEl);
+    header.appendChild(balEl);
+    wrap.appendChild(header);
+
+    // ── Crown CTA + Credit Convert ──────────────────────────────────────
+    var ctaRow = document.createElement('div');
+    ctaRow.className = 'oab-shop-crown-cta';
+
+    var crownBtn = document.createElement('button');
+    crownBtn.className = 'oab-shop-crown-btn';
+    crownBtn.textContent = '+ Get More Crowns';
+    crownBtn.addEventListener('click', function () {
+      _showCrownPacks(container);
+    });
+    ctaRow.appendChild(crownBtn);
+
+    // Campaign Pass button
+    var passBtn = document.createElement('button');
+    passBtn.className = 'oab-shop-pass-btn';
+    passBtn.style.marginLeft = '12px';
+    var passActive = cache && cache.isCampaignPassActive();
+    if (passActive) {
+      passBtn.textContent = 'Pass Active';
+      passBtn.disabled = true;
+      passBtn.style.opacity = '0.6';
+    } else {
+      passBtn.textContent = 'Campaign Pass';
+    }
+    passBtn.addEventListener('click', function () {
+      if (!passActive) _showCampaignPass(container);
+    });
+    ctaRow.appendChild(passBtn);
+
+    wrap.appendChild(ctaRow);
+
+    // Credit → Crown conversion row (show only when player has credits)
+    var creditState = window.KSP_CREDITS && window.KSP_CREDITS.getState
+                      ? window.KSP_CREDITS.getState() : null;
+    var creditBal = creditState ? (creditState.credits || 0) : 0;
+    if (creditBal > 0) {
+      var creditRow = document.createElement('div');
+      creditRow.className = 'oab-shop-credit-convert';
+      var rate = (window.KSP_PRICING && window.KSP_PRICING.oathandbone)
+                  ? window.KSP_PRICING.oathandbone.credit_to_crown_rate : 50;
+      creditRow.innerHTML = 'You have <strong style="color:#c0d4f0">' + creditBal + ' credits</strong>'
+        + ' (\u26A1 1 credit = ' + rate + ' Crowns)';
+      var convertBtn = document.createElement('button');
+      convertBtn.textContent = 'Convert All';
+      convertBtn.addEventListener('click', function () {
+        _convertCredits(creditBal, rate, balEl, creditRow);
+      });
+      creditRow.appendChild(convertBtn);
+      wrap.appendChild(creditRow);
+    }
+
+    // ── Tabs ───────────────────────────────────────────────────────────
+    var tabBar = document.createElement('div');
+    tabBar.className = 'oab-shop-tabs';
+
+    var allTabs = Object.keys(_SHOP_TAB_LABELS).concat(['my_items']);
+    var tabLabels = Object.assign({}, _SHOP_TAB_LABELS, { my_items: 'My Items' });
+
+    allTabs.forEach(function (tabId) {
+      var tab = document.createElement('button');
+      tab.className = 'oab-shop-tab' + (tabId === _activeShopTab ? ' active' : '');
+      tab.textContent = tabLabels[tabId];
+      tab.dataset.tabId = tabId;
+      tab.addEventListener('click', function () {
+        _activeShopTab = tabId;
+        tabBar.querySelectorAll('.oab-shop-tab').forEach(function (t) {
+          t.classList.toggle('active', t.dataset.tabId === tabId);
+        });
+        _showShopTab(tabId, window.OathAndBoneCache ? window.OathAndBoneCache.getCrownBalance() : 0, bodyEl);
+      });
+      tabBar.appendChild(tab);
+    });
+    wrap.appendChild(tabBar);
+
+    // ── Body ───────────────────────────────────────────────────────────
+    var bodyEl = document.createElement('div');
+    bodyEl.className = 'oab-shop-body';
+    wrap.appendChild(bodyEl);
+
+    // ── Footer ─────────────────────────────────────────────────────────
+    var footer = document.createElement('div');
+    footer.className = 'oab-shop-footer';
+    footer.textContent = 'Unofficial. Not affiliated with Century Games. '
+      + 'All items obtainable through play. Paying speeds up progression only.';
+    wrap.appendChild(footer);
+
+    container.appendChild(wrap);
+
+    // Initial tab render
+    _showShopTab(_activeShopTab, balance, bodyEl);
+  }
+
+  function _convertCredits(creditBal, rate, balDisplayEl, creditRowEl) {
+    var crownsToGrant = creditBal * rate;
+    // Credits → Crowns conversion uses the worker endpoint
+    var API = 'https://kingshotpro-api.kingshotpro.workers.dev';
+    fetch(API + '/oath-and-bone/convert-credits', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ credits: creditBal })
+    }).then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data && data.ok) {
+          var cache = window.OathAndBoneCache;
+          if (cache) {
+            var st = cache.getState();
+            if (st) {
+              st.crown_balance = (st.crown_balance || 0) + crownsToGrant;
+              cache.setState(st);
+            }
+            if (balDisplayEl) {
+              balDisplayEl.innerHTML = '\u2694 <span>' + cache.getCrownBalance().toLocaleString() + '</span> Crowns';
+            }
+          }
+          if (creditRowEl) creditRowEl.style.display = 'none';
+        } else {
+          _toast('Conversion failed: ' + ((data && data.error) || 'server error'));
+        }
+      })
+      .catch(function () {
+        _toast('Network error — credit conversion could not be processed.');
+      });
+  }
+
   // ── WORLD MAP ────────────────────────────────────────────────────────
 
   var _SCENARIO_ORDER  = ['b1', 'b2', 'b3'];
@@ -1803,6 +2239,32 @@
     });
 
     wrap.appendChild(cardRow);
+
+    // ── World-map action buttons ────────────────────────────────────────
+    var mapBtns = document.createElement('div');
+    mapBtns.style.cssText = 'display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;justify-content:center';
+
+    var shopBtn = document.createElement('button');
+    shopBtn.className = 'oab-btn';
+    shopBtn.textContent = '\u2694 SHOP';
+    shopBtn.addEventListener('click', function () { _showShop(container); });
+    mapBtns.appendChild(shopBtn);
+
+    var passActive = window.OathAndBoneCache && window.OathAndBoneCache.isCampaignPassActive
+                     ? window.OathAndBoneCache.isCampaignPassActive() : false;
+    var passBtn = document.createElement('button');
+    passBtn.className = 'oab-btn';
+    if (passActive) {
+      passBtn.textContent = '\u2605 PASS ACTIVE';
+      passBtn.style.borderColor = '#f0c040';
+    } else {
+      passBtn.textContent = 'Campaign Pass';
+    }
+    passBtn.addEventListener('click', function () { _showCampaignPass(container); });
+    mapBtns.appendChild(passBtn);
+
+    wrap.appendChild(mapBtns);
+
     container.appendChild(wrap);
   }
 
@@ -2050,9 +2512,12 @@
       if (scenario) window.OathAndBoneEngine.loadScenario(scenario);
       window.OathAndBoneEngine.start(container, {});
     },
-    showWorldMap:    function (container, state)                          { _showWorldMap(container, state); },
-    startScenario:   function (container, id)                            { _startScenario(container, id); },
-    showResumePrompt: function (container, wrapped, onResume, onDiscard) { _showResumePrompt(container, wrapped, onResume, onDiscard); }
+    showWorldMap:     function (container, state)                          { _showWorldMap(container, state); },
+    startScenario:    function (container, id)                            { _startScenario(container, id); },
+    showResumePrompt: function (container, wrapped, onResume, onDiscard)  { _showResumePrompt(container, wrapped, onResume, onDiscard); },
+    showShop:         function (container)                                 { _showShop(container); },
+    showCrownPacks:   function (container)                                 { _showCrownPacks(container); },
+    showCampaignPass: function (container)                                 { _showCampaignPass(container); },
   };
 
 }());
