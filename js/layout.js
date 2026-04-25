@@ -28,6 +28,11 @@
     // File still exists at /support.html. Uncomment the line below to re-enable in nav.
     // { icon: '\u2764\uFE0F', label: 'Support Advisor',   href: B + 'support.html',                   key: 'support' },
     { icon: '\u{1F4DD}', label: 'Player Survey',       href: B + 'survey.html',                    key: 'survey',     badges: ['New'] },
+    { cat: 'GAMES' },
+    { icon: '\u{1F3AE}', label: 'Games',              href: B + 'games/',                                    key: 'games-hub',               badges: ['New'] },
+    { icon: '\u{1F4DC}', label: 'Oath and Bone',      href: B + 'games/oath-and-bone-chronicle.html',        key: 'oath-and-bone-chronicle', badges: ['New'] },
+    { icon: '\u2694\uFE0F', label: 'War Table',       href: B + 'games/war-table.html',                      key: 'war-table' },
+    { icon: '\u{1F512}', label: 'Vault Trial',         href: B + 'games/vault-trial.html',                    key: 'vault-trial' },
     { cat: 'WAR COUNSEL' },
     { icon: '\u{1F3F0}', label: 'Kingdom Rankings', href: B + 'kingdoms/',                       key: 'kingdoms',    badges: ['Hot'] },
     { icon: '\u{1F3C6}', label: 'Top Players',      href: B + 'players/',                        key: 'players',     badges: ['New'] },
@@ -79,8 +84,6 @@
     { icon: '\u{1F4AA}', label: 'Power Calculator',     href: B + 'calculators/power.html',         key: 'power',       badges: ['New'] },
     { icon: '\u2705',   label: 'Daily Checklist',       href: B + 'calculators/daily.html',         key: 'daily',       badges: ['New'] },
     { icon: '\u{1F4C5}', label: 'Event Timer',          href: B + 'calculators/events.html',        key: 'events',      badges: ['New'] },
-    // GAMES and ARCADE removed from nav — discuss with Architect before re-adding
-    // Pages still exist at /games/*.html, just not linked in sidebar
     { cat: 'ALLIANCE' },
     { icon: '\u{1F6E1}\uFE0F', label: 'Alliance Pages',  href: B + 'alliance/index.html',            key: 'alliance',    badges: ['New'] },
     { icon: '\u{1F4CB}', label: 'Alliance Directory',   href: B + 'alliance/directory.html',         key: 'directory' },
@@ -109,6 +112,7 @@
     if (item.key === 'players')     return /\/players(\/|$)/.test(loc);
     if (item.key === 'worldchat')   return /\/worldchat(\/|$)/.test(loc);
     if (item.key === 'report-card') return /\/report-card(\/|$)/.test(loc);
+    if (item.key === 'games-hub')   return /\/games\/(index\.html)?$/.test(loc);
     return loc.indexOf(item.key + '.html') !== -1;
   }
 

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games &mdash; KingshotPro</title>
+  <meta name="description" content="Original games from The Hive Makes. Play arcade games built for Kingshot players, or read the chronicle of Oath and Bone \u2014 a tactical RPG with original story, characters, and world-building in development.">
+  <link rel="canonical" href="https://kingshotpro.com/games/">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/advisor-orb.css">
+  <script src="../js/cookie-consent.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .games-hero {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      margin-bottom: 36px;
+    }
+    .games-hero h1 { color: var(--gold); margin: 0 0 10px; font-size: 1.9em; }
+    .games-hero p { color: var(--text-muted); line-height: 1.7; margin: 0; }
+    .section-title {
+      font-size: 1.15em;
+      color: var(--gold);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin: 36px 0 20px;
+    }
+    .featured-card {
+      background: var(--surface-2);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 28px 28px;
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+    .featured-card h2 { color: var(--gold); font-size: 1.4em; margin: 0 0 8px; }
+    .featured-card .tag {
+      display: inline-block;
+      background: rgba(240, 192, 64, 0.12);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .featured-card p { color: var(--text-muted); line-height: 1.7; margin: 0 0 16px; font-size: 14px; }
+    .featured-portrait {
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+    .arcade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .arcade-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 18px;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .arcade-card:hover { border-color: var(--gold); }
+    .arcade-card .ac-icon { font-size: 28px; margin-bottom: 10px; }
+    .arcade-card .ac-name { color: var(--text); font-weight: 700; font-size: 1em; margin-bottom: 6px; }
+    .arcade-card .ac-desc { color: var(--text-muted); font-size: 13px; line-height: 1.5; margin: 0; }
+    .ac-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--bg);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; opacity: 0.5; }
+    .prose { line-height: 1.8; color: var(--text-muted); margin-bottom: 18px; font-size: 14px; }
+    @media (max-width: 640px) {
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-portrait { width: 100%; height: 200px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kingshotpro.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Games" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Games \u2014 KingshotPro",
+    "description": "Original games from The Hive Makes, including arcade games for Kingshot players and Oath and Bone, a tactical RPG in development.",
+    "url": "https://kingshotpro.com/games/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Hive Makes",
+      "url": "https://kingshotpro.com"
+    }
+  }
+  </script>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page">
+  <div class="container" style="max-width:900px; padding: 32px 20px;">
+
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>&rsaquo;</span>
+      Games
+    </nav>
+
+    <div class="games-hero">
+      <h1>Games</h1>
+      <p>Original games built by The Hive Makes. Some are live and playable right now. One is something larger &mdash; a tactical RPG with a written story, hand-rendered characters, and three possible endings. All of them are original: not reskins, not licensed content, not Kingshot gameplay. Something made from scratch, for players who want more than a calculator.</p>
+    </div>
+
+    <h2 class="section-title">Featured: In Development</h2>
+
+    <div class="featured-card">
+      <div>
+        <span class="tag">COMING SOON &mdash; TACTICAL RPG</span>
+        <h2>Oath and Bone</h2>
+        <p>
+          Vael Thorne inherits her brother's seat eight weeks after his funeral. The ring he left her doesn't fit. The ledger he left has seven pages torn out. The borderland they held is watching to see if she knows what she's doing.
+        </p>
+        <p>
+          <em>Oath and Bone</em> is a hand-crafted tactical RPG with a choice-driven narrative: twelve battles, four branch nodes, three endings, and six heroes who can die. The story is written. The art is rendered. The game is being built.
+        </p>
+        <p>
+          Every decision carries forward. Every character you lose is gone. The magic system has three schools &mdash; Wizardry, Druidry, Necromancy &mdash; each with its own writing system, each with its own relationship to what the dead leave behind.
+        </p>
+        <a href="oath-and-bone-chronicle.html" class="btn btn-outline" style="margin-top: 4px; display: inline-block;">Read the Chronicle &rarr;</a>
+      </div>
+      <img src="designs/oath-and-bone/art/portraits/vael_neutral_v1.png"
+           class="featured-portrait"
+           alt="Vael Thorne, protagonist of Oath and Bone, young lord of Ashreach Keep wearing half-armor fitted for her dead brother"
+           width="180" height="180">
+    </div>
+
+    <h2 class="section-title">Playable Now &mdash; Arcade</h2>
+    <p class="prose">These games are live. Each one is built around a single mechanic, designed to be picked up in a few minutes. They're original creations, not Kingshot game modes &mdash; they use the Kingshot world as flavor but play as standalone experiences. No login required.</p>
+
+    <div class="arcade-grid">
+      <a href="war-table.html" class="arcade-card" aria-label="The War Table game">
+        <div class="ac-icon">&#x2694;&#xFE0F;</div>
+        <span class="ac-badge">DAILY</span>
+        <div class="ac-name">The War Table</div>
+        <p class="ac-desc">Two armies clash. Study their composition &mdash; troop types, tiers, buffs. Predict the winner. One chance per day. Your record is tracked. Good for testing your instincts as a Kingshot commander.</p>
+      </a>
+      <a href="vault-trial.html" class="arcade-card" aria-label="Vault Trial game">
+        <div class="ac-icon">&#x1F512;</div>
+        <div class="ac-name">Vault Trial</div>
+        <p class="ac-desc">A timed resource management challenge set in the kingdom's vault. Allocate, prioritize, and beat the clock. A different kind of thinking than combat &mdash; the kind that keeps an alliance funded.</p>
+      </a>
+      <a href="bloom.html" class="arcade-card" aria-label="Kingdom Bloom game">
+        <div class="ac-icon">&#x1F331;</div>
+        <div class="ac-name">Kingdom Bloom</div>
+        <p class="ac-desc">Tap to plant light. Watch it spread. A quiet, ambient experience built as a counterpoint to the war-and-numbers theme of the rest of the site. A toy for the dark.</p>
+      </a>
+      <a href="pulse.html" class="arcade-card" aria-label="Pulse rhythm game">
+        <div class="ac-icon">&#x1F493;</div>
+        <div class="ac-name">Pulse</div>
+        <p class="ac-desc">A heartbeat in the kingdom. Time the pulse. Keep the rhythm alive. A single-mechanic timing game that gets harder as the beat speeds up. Simple to understand, difficult to sustain.</p>
+      </a>
+      <a href="flicker.html" class="arcade-card" aria-label="Kingdom Drift stealth game">
+        <div class="ac-icon">&#x1F317;</div>
+        <div class="ac-name">Kingdom Drift</div>
+        <p class="ac-desc">Sneak through the dark. Avoid the watchers. Reach the beacon. A stealth-movement game built around patience and reading patrol patterns &mdash; a skill that translates directly to KvK planning.</p>
+      </a>
+      <a href="orbit.html" class="arcade-card" aria-label="Orbit arcade game">
+        <div class="ac-icon">&#x1FA90;</div>
+        <div class="ac-name">Orbit</div>
+        <p class="ac-desc">A physics toy at the edge of the kingdom's sky. Keep the object in orbit. Adjust angle and force. A hands-on demonstration of the kind of balance thinking that underlies troop composition decisions.</p>
+      </a>
+    </div>
+
+    <h2 class="section-title">Why Original Games</h2>
+    <p class="prose">
+      KingshotPro started as a set of calculators and strategy guides. The games section exists because strategy thinking is more than numbers &mdash; it is pattern recognition, resource allocation under uncertainty, and the ability to hold multiple scenarios in mind simultaneously. Games teach this better than any guide.
+    </p>
+    <p class="prose">
+      Every game on this page is original. The characters, stories, and mechanics were created by The Hive Makes. They use Kingshot as a world and as a framing device, but nothing here is derived from Century Games' code, art, or proprietary content. They are fan-adjacent but creator-independent: built because the tools existed and the ideas were there.
+    </p>
+    <p class="prose">
+      <em>Oath and Bone</em> in particular represents something different in scale. It has a written story. It has characters with portraits, voice-barb dialogue designed to survive permadeath, and three endings earned by the choices the player makes across twelve battles. It is not a Kingshot game. It is a game for Kingshot players who want something with weight outside the main app.
+    </p>
+
+    <h2 class="section-title">What's Next</h2>
+    <p class="prose">
+      <em>Oath and Bone</em> is the primary build focus in the games section. The story bible is complete. The art is rendered. The mechanics are designed. The game engine is being built. There is no release date, and there will not be one until the game is ready to deliver the story it was written for.
+    </p>
+    <p class="prose">
+      The arcade section will continue to grow with small, playable games that test strategic thinking in different ways. The goal is always the same: original content, real mechanics, no filler. Every game on this page was built because someone thought it was worth building &mdash; not because it filled a quota.
+    </p>
+    <p class="prose">
+      The <a href="oath-and-bone-chronicle.html" style="color: var(--gold);">Oath and Bone chronicle</a> is live now if you want to read the story before the game ships. It covers the full three-act structure, the six heroes, the three magic schools, and the three possible endings. It is a genuine piece of literary content independent of the game itself.
+    </p>
+    <p class="prose">
+      All games on this site are free to play. No login required for the arcade games. <em>Oath and Bone</em> is in development and has no price yet.
+    </p>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KingshotPro</div>
+      <p class="footer-note">Unofficial. Not affiliated with Century Games.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/layout.js"></script>
+<script src="../js/advisor-names.js"></script>
+<script src="../js/advisor.js"></script>
+<script src="../js/advisor-orb.js"></script>
+<script src="../js/advisor-hooks.js"></script>
+<script src="../js/advisor-chat.js"></script>
+<script src="../js/advisor-cta.js"></script>
+<script src="../js/advisor-lore.js"></script>
+<script src="../js/advisor-referral.js"></script>
+<script src="../js/advisor-alliance.js"></script>
+<script src="../js/advisor-accounts.js"></script>
+</body>
+</html>

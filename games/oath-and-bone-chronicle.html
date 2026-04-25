@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oath and Bone &mdash; The Chronicle | KingshotPro Games</title>
+  <meta name="description" content="Read the story of Vael Thorne and the borderland seat she inherited from a dead brother. Oath and Bone is an original tactical RPG in development from The Hive Makes.">
+  <link rel="canonical" href="https://kingshotpro.com/games/oath-and-bone-chronicle.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/advisor-orb.css">
+  <script src="../js/cookie-consent.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335376690790226" crossorigin="anonymous"></script>
+  <style>
+    .chronicle-hero {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px 32px;
+      margin-bottom: 36px;
+      text-align: center;
+    }
+    .chronicle-hero h1 {
+      font-size: 2.2em;
+      color: var(--gold);
+      margin: 0 0 8px;
+      letter-spacing: 0.04em;
+    }
+    .chronicle-hero .tagline {
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 1.05em;
+      margin: 0;
+    }
+    .chronicle-section { margin-bottom: 40px; }
+    .chronicle-section h2 {
+      color: var(--gold);
+      font-size: 1.3em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+    .portrait-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+      margin: 24px 0;
+    }
+    .portrait-card { text-align: center; width: 130px; }
+    .portrait-card img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      display: block;
+      margin: 0 auto 8px;
+    }
+    .portrait-card .p-name { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .portrait-card .p-role { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 12px 20px;
+      margin: 24px 0;
+      background: var(--surface-2);
+      border-radius: 0 8px 8px 0;
+    }
+    .pull-quote p { margin: 0; color: var(--text-muted); font-style: italic; line-height: 1.7; }
+    .pull-quote .attrib {
+      font-size: 12px;
+      color: var(--text-muted);
+      opacity: 0.7;
+      margin-top: 8px;
+      font-style: normal;
+    }
+    .cutscene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .cutscene-item img { width: 100%; border-radius: 8px; display: block; }
+    .cutscene-item .c-label { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 6px; }
+    .endings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .ending-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 16px;
+    }
+    .ending-card h3 { color: var(--gold); font-size: 1em; margin: 0 0 10px; }
+    .ending-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .magic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .magic-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 16px;
+    }
+    .magic-card h3 { color: var(--gold); font-size: 0.95em; margin: 0 0 10px; }
+    .magic-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .art-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      opacity: 0.65;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; opacity: 0.5; }
+    @media (max-width: 640px) {
+      .cutscene-grid, .endings-grid, .magic-grid { grid-template-columns: 1fr; }
+      .portrait-grid { justify-content: center; }
+      .chronicle-hero { padding: 28px 20px; }
+      .chronicle-hero h1 { font-size: 1.7em; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kingshotpro.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://kingshotpro.com/games/" },
+      { "@type": "ListItem", "position": 3, "name": "Oath and Bone \u2014 Chronicle" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Oath and Bone \u2014 The Chronicle of Vael Thorne and the Borderland Seat",
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "author": {
+      "@type": "Organization",
+      "name": "The Hive Makes",
+      "url": "https://kingshotpro.com/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Hive Makes",
+      "url": "https://kingshotpro.com"
+    },
+    "image": [
+      "https://kingshotpro.com/games/designs/oath-and-bone/art/cutscenes/b12_ring_endures.png",
+      "https://kingshotpro.com/games/designs/oath-and-bone/art/cutscenes/b12_ring_falls.png",
+      "https://kingshotpro.com/games/designs/oath-and-bone/art/cutscenes/b12_ring_widens.png",
+      "https://kingshotpro.com/games/designs/oath-and-bone/art/portraits/vael_neutral_v1.png"
+    ],
+    "description": "The story chronicle for Oath and Bone \u2014 an original tactical RPG in development. Follow Vael Thorne as she inherits a borderland seat, discovers a hidden world of magic, and faces the truth about how her brother died.",
+    "about": {
+      "@type": "VideoGame",
+      "name": "Oath and Bone",
+      "description": "A hand-crafted tactical RPG with a choice-driven narrative. Twelve battles, four branch nodes, three endings.",
+      "genre": "Tactical RPG",
+      "gamePlatform": "Web Browser"
+    }
+  }
+  </script>
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page">
+  <div class="container" style="max-width:860px; padding: 32px 20px;">
+
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>&rsaquo;</span>
+      <a href="index.html">Games</a>
+      <span>&rsaquo;</span>
+      Oath and Bone &mdash; Chronicle
+    </nav>
+
+    <div class="chronicle-hero">
+      <h1>Oath and Bone</h1>
+      <p class="tagline">A chronicle of Vael Thorne and the borderland seat she inherited from a dead brother</p>
+      <p style="margin: 16px 0 0; font-size: 13px; color: var(--text-muted);">An original tactical RPG in development &middot; The Hive Makes &middot; 2026</p>
+    </div>
+
+    <div class="chronicle-section">
+      <p style="font-size: 1.05em; line-height: 1.8;">
+        A signet ring on a gloved hand. Silver, finish dulled from wear. It slides &mdash; down one joint, back up, down again. The hand is not moving. The ring is.
+      </p>
+      <p style="line-height: 1.8;">
+        It is loose because it belonged to her brother. He is dead. She is twenty-six, standing at a narrow window in mail-and-leather half-armor that was fitted for him first, holding an open ledger on the cold stone sill, watching a column of riders crest the valley road below Ashreach Keep.
+      </p>
+      <p style="line-height: 1.8;">
+        Her name is <strong>Vael Thorne</strong>. She has not yet learned to walk lightly in rooms that used to be his. Her boots land too loud on the stone. Her posture is borrowed. She is deciding what to do with a ledger that has seven pages torn from it and a fine red-brown residue at every stub.
+      </p>
+      <p style="line-height: 1.8;">
+        This is where <em>Oath and Bone</em> begins: in the gap between a death and what it means, before the inheritor knows enough to grieve correctly.
+      </p>
+    </div>
+
+    <div class="chronicle-section">
+      <h2>The Borderland Seat</h2>
+      <p style="line-height: 1.8;">
+        Ashreach Keep sits on a hill in a borderland of gray stone and gray pines. Three Thornes have held it. The first by grant. The second by stubbornness. Torren held it twelve years by the kind of steady trust that accrues to lords who do not demand more than they give &mdash; and now he doesn't hold anything. The banners at half-mast have not been raised in eight weeks. Someone forgot, or chose not to.
+      </p>
+      <p style="line-height: 1.8;">
+        What Vael inherits: a disputed ridge to the north, an opportunistic neighbor named Lord Orik who has been counting swords at the funeral from a safe distance, a loyal sergeant who knows things he is deciding when to tell her, and a ledger with seven pages missing. The stubs at the spine carry a residue that is not ink. Small marks, scraped with something fine &mdash; not a quill. She will not understand what they are until Battle 8. By then she will have learned to hold the ring tighter.
+      </p>
+      <p style="line-height: 1.8;">
+        The borderland is not peaceful. Within the first two days of Vael's command, a rival vassal's cavalry tests the eastern crossing, dead deer are found arranged in a ring in the Eastmarch woods, and a sealed crypt below a century-old fort is discovered to have been opened &mdash; from the inside. The mundane is turning strange. The magic is off-screen in Act 1; its consequences are on-screen.
+      </p>
+      <div class="pull-quote">
+        <p>"Same crossing. Different wagon."</p>
+        <p style="margin-top: 8px;">"How many of ours?"</p>
+        <p>"Two carters. A boy. And a cavalry scout who shouldn't have been this far out."</p>
+        <p class="attrib">&mdash; Halv and Vael, Battle 1 pre-battle dialogue, the East Crossing</p>
+      </div>
+    </div>
+
+    <div class="chronicle-section">
+      <h2>The People Who Stayed</h2>
+      <p style="line-height: 1.8;">These are the six heroes of <em>Oath and Bone</em>. Each can die in battle. The game honors that in the prose &mdash; every line of dialogue is written to read cleanly whether the speaker is present or absent.</p>
+
+      <div class="portrait-grid" role="list">
+        <div class="portrait-card" role="listitem">
+          <img src="designs/oath-and-bone/art/portraits/vael_neutral_v1.png"
+               alt="Vael Thorne, young lord of Ashreach Keep, wearing half-armor fitted for her dead brother, expression composed but not yet settled"
+               width="110" height="110">
+          <div class="p-name">Vael Thorne</div>
+          <div class="p-role">Lord of Ashreach Keep</div>
+        </div>
+        <div class="portrait-card" role="listitem">
+          <img src="designs/oath-and-bone/art/portraits/halv_neutral_v1.png"
+               alt="Sergeant Halv, grey-templed veteran soldier who served Lord Torren for twelve years, expression careful and knowing"
+               width="110" height="110">
+          <div class="p-name">Sergeant Halv</div>
+          <div class="p-role">Vael's first sergeant</div>
+        </div>
+        <div class="portrait-card" role="listitem">
+          <img src="designs/oath-and-bone/art/portraits/brin_neutral_v1.png"
+               alt="Brin Fletcher, borderland ranger and tracker who grew up in the Eastmarch woods, expression guarded and observant"
+               width="110" height="110">
+          <div class="p-name">Brin Fletcher</div>
+          <div class="p-role">Ranger &middot; tracker</div>
+        </div>
+        <div class="portrait-card" role="listitem">
+          <img src="designs/oath-and-bone/art/portraits/caelen_neutral_v1.png"
+               alt="Caelen the Quiet, a wizard who kept his tower dark for twenty years, expression of patient and slightly weary intelligence"
+               width="110" height="110">
+          <div class="p-name">Caelen the Quiet</div>
+          <div class="p-role">Wizard &middot; formulary</div>
+        </div>
+        <div class="portrait-card" role="listitem">
+          <img src="designs/oath-and-bone/art/portraits/marrow_neutral_v1.png"
+               alt="Marrow, a necromancer imprisoned in Ice-Lakes Keep and awaiting execution, expression of someone who made an unforgivable decision and lives with it on purpose"
+               width="110" height="110">
+          <div class="p-name">Marrow</div>
+          <div class="p-role">Necromancer &middot; prisoner</div>
+        </div>
+        <div class="portrait-card" role="listitem">
+          <img src="designs/oath-and-bone/art/portraits/thessa_neutral_v1.png"
+               alt="Thessa of the Hollow, a druid who steps from seams in standing stones, expression watchful with hands that are always slightly dirty"
+               width="110" height="110">
+          <div class="p-name">Thessa of the Hollow</div>
+          <div class="p-role">Druid &middot; grove-keeper</div>
+        </div>
+      </div>
+
+      <p style="line-height: 1.8;">
+        <strong>Halv</strong> served Torren for twelve years. He is forty-four, grey at the temples, and he knows things Vael doesn't. Some of them he means to tell her. He is deciding the order carefully, because order matters when the knowledge is this kind.
+      </p>
+      <p style="line-height: 1.8;">
+        <strong>Brin</strong> grew up in the Eastmarch woods. She reads signs that others walk past &mdash; wrong grass, arranged bodies, a boot print from the wrong direction. She is not easy to like. She is very hard not to trust. She was first to see that the deer in the clearing weren't killed by wolves, because wolves don't arrange.
+      </p>
+      <p style="line-height: 1.8;">
+        <strong>Caelen</strong> has kept the lamps dark in his tower for twenty years. When they come on again &mdash; the night Vellum-marked mercenaries arrive to burn it &mdash; he is in the doorway, apparently unsurprised. He waited for someone with Torren's seal. He hoped it wouldn't be a child. She is twenty-six. He says he knows.
+      </p>
+      <p style="line-height: 1.8;">
+        <strong>Marrow</strong> is thirty-one, in a cell in Ice-Lakes Keep, scheduled to hang at sunrise. A necromancer who decided something unforgivable and lives with it on purpose. He does not ask to be saved. His first question, before anything else, is whether she is dead.
+      </p>
+      <p style="line-height: 1.8;">
+        <strong>Thessa</strong> steps from seams in standing stones. She heals the wounded, addresses the undead by name, and disappears. She is physically ill inside prisons. She does not explain herself, because she does not need to.
+      </p>
+    </div>
+
+    <div class="chronicle-section">
+      <h2>The Three Schools of Magic</h2>
+      <p style="line-height: 1.8;">
+        The world beneath Ashreach has three traditions of power, each with its own writing system, each with its own relationship to the living and the not-yet-dead. They are not interchangeable. Their practitioners can read each other's work only barely, and only the parts they were meant to read.
+      </p>
+      <div class="magic-grid">
+        <div class="magic-card">
+          <h3>Wizardry</h3>
+          <p>Formulated, reproducible, Mana-based. Sanctum tiles recharge the caster; interruption aborts a spell mid-channel. The oldest formal tradition and the most imitated, because its notation can be copied without the knowledge behind it. Caelen understands this is both its strength and the door it left open to everything that followed.</p>
+        </div>
+        <div class="magic-card">
+          <h3>Druidry</h3>
+          <p>Grove-script carved into living wood. Root-hold, wolf-summon, the ability to step through hollow places in the landscape. Thessa's hands are always slightly dirty. She says the soil is paying attention. She is not speaking figuratively. The forest at the Eastmarch Hollow paid attention to the deer before anyone else did.</p>
+        </div>
+        <div class="magic-card">
+          <h3>Necromancy</h3>
+          <p>Vellum-script. Old-One writing. Originally a system of mutual binding between the living and the not-yet-dead &mdash; promises with clear terms, both parties consenting. Esra Vellum removed the mutual. The bindings remain. This is the magic that killed Torren Thorne. It is written in his ledger. Vael has been carrying it for eight weeks.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chronicle-section">
+      <h2>The Antagonist</h2>
+      <p style="line-height: 1.8;">
+        <strong>Esra Vellum</strong> does not appear in person until late. She is not a villain in the theatrical sense. She is a mistake that kept walking &mdash; someone who learned something true about the world and did not stop when the true thing became a wrong thing. She goes by the material she writes on.
+      </p>
+      <div class="pull-quote">
+        <p>"She writes bindings. On skin. The living kind."</p>
+        <p style="margin-top: 10px; font-style: normal; color: var(--text-muted);">"And my brother."</p>
+        <p>"I believe your brother was one of her pages."</p>
+        <p class="attrib">&mdash; Caelen the Quiet, Battle 5 post-battle dialogue, the Wizard's Tower at dawn</p>
+      </div>
+      <p style="line-height: 1.8;">
+        Her students carry a triple-loop tattoo on the inner forearm: three interlocking rings. By the time the player sees the first one on a dead mercenary in Act 2, the same shape has already appeared somewhere in Act 1. They will not have recognized it yet. Returning players rewatch the opening with the key in hand and see what they missed.
+      </p>
+      <p style="line-height: 1.8;">
+        She does not give monologues. She gives silence, residue, and one or two lines that cost to speak. The ledger stubs are already her voice. Vael has been reading it, without knowing it, since the morning after the funeral.
+      </p>
+      <p style="line-height: 1.8;">
+        The ring that doesn't fit is the first word of that voice. By Act 3, it will fit perfectly. This is the horror moment: it means the tether is taking.
+      </p>
+    </div>
+
+    <div class="chronicle-section">
+      <h2>The Ring</h2>
+      <p style="line-height: 1.8;">
+        The ring is shot like a murder weapon throughout. Torren's signet &mdash; tower-and-crown, silver, finish dulled from twelve years of daily wear. It slides on Vael's finger in the opening scene. It is a man's ring. It belongs to a dead man whose pages are missing.
+      </p>
+      <p style="line-height: 1.8;">
+        The artists were instructed: the ring gets progressively less loose across Acts 1 and 2. By Act 3, it fits perfectly. This is not character growth. It is the tether closing. The ring appears in the final cutscene of each ending, in a different state. The state of the ring is the state of Vael.
+      </p>
+      <div class="cutscene-grid">
+        <div class="cutscene-item">
+          <img src="designs/oath-and-bone/art/cutscenes/b12_ring_endures.png"
+               alt="The Endures ending: the ring remains on Vael's hand, visibly transformed by the journey but still held, silver changed by what passed through it"
+               width="280" height="280">
+          <div class="c-label">The Endures ending: the ring remains</div>
+        </div>
+        <div class="cutscene-item">
+          <img src="designs/oath-and-bone/art/cutscenes/b12_ring_falls.png"
+               alt="The Falls ending: the ring is lost or destroyed at the moment of sealing, a full price paid at the last battle"
+               width="280" height="280">
+          <div class="c-label">The Falls ending: the ring is lost</div>
+        </div>
+        <div class="cutscene-item">
+          <img src="designs/oath-and-bone/art/cutscenes/b12_ring_widens.png"
+               alt="The Widens ending: the ring opens and expands, something released from it, the wound becoming something else entirely"
+               width="280" height="280">
+          <div class="c-label">The Widens ending: the ring opens</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chronicle-section">
+      <h2>Three Possible Histories</h2>
+      <p style="line-height: 1.8;">
+        <em>Oath and Bone</em> has twelve battles, four branch nodes that change which characters survive and which alliances hold, and three endings. They are not labeled good, bad, and secret. They are three different answers to the same question: what do you do with a wound that belongs to the world, not just to you?
+      </p>
+      <div class="endings-grid">
+        <div class="ending-card">
+          <h3>The Endures</h3>
+          <p>Vael closes the wound and keeps holding the ring. It does not fit perfectly. She has kept some distance between herself and the tether. The borderland is safer. She is smaller than she might have been. Some costs are worth paying. Some are not the same thing as failure.</p>
+        </div>
+        <div class="ending-card">
+          <h3>The Falls</h3>
+          <p>She loses. Not all losses are failures. This ending does not punish the player; it asks them to sit with what was genuinely not possible from where they started. Some wounds are that old. By Battle 11, the game has earned the right to say so.</p>
+        </div>
+        <div class="ending-card">
+          <h3>The Widens</h3>
+          <p>Something is released. The ring opens, expands. Whether what escapes is Vael or Torren or Esra Vellum or the Old-One writing or all of them at once is the question the game has earned the right to ask. The answer depends on who survived to reach it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chronicle-section">
+      <h2>About the Game</h2>
+      <p style="line-height: 1.8;">
+        <em>Oath and Bone</em> is a hand-crafted tactical RPG developed by The Hive Makes. The story is written. The characters are designed. The art is rendered. The game's core mechanics are built around a tactical system with terrain that matters, permadeath that the prose honors, and branching choices that carry through all twelve battles.
+      </p>
+      <p style="line-height: 1.8;">
+        It is a game for players who care about what happens after the battle. A world where the magical and the mundane are not different genres of experience but the same experience seen from different angles, depending on what you know and when you learned it.
+      </p>
+      <p style="line-height: 1.8;">
+        There is no release date. This chronicle is the first public document of the world. The game will follow.
+      </p>
+      <p style="margin-top: 16px;">
+        <a href="index.html" style="color: var(--gold); text-decoration: none;">&larr; Back to Games</a>
+      </p>
+    </div>
+
+    <p class="art-note">
+      Character portraits and ending cutscenes are AI-generated images created via Midjourney v6 from original prompts. All characters, story, world-building, and game design are original works by The Hive Makes. <em>Oath and Bone</em> is not affiliated with Century Games or the Kingshot mobile game. Images generated 2026-04-24.
+    </p>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KingshotPro</div>
+      <p class="footer-note">Unofficial. Not affiliated with Century Games.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/layout.js"></script>
+<script src="../js/advisor-names.js"></script>
+<script src="../js/advisor.js"></script>
+<script src="../js/advisor-orb.js"></script>
+<script src="../js/advisor-hooks.js"></script>
+<script src="../js/advisor-chat.js"></script>
+<script src="../js/advisor-cta.js"></script>
+<script src="../js/advisor-lore.js"></script>
+<script src="../js/advisor-referral.js"></script>
+<script src="../js/advisor-alliance.js"></script>
+<script src="../js/advisor-accounts.js"></script>
+</body>
+</html>
