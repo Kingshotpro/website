@@ -213,9 +213,45 @@
       '.oab-spell-label{font-size:9px;color:#5a7a9e;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}',
       // Mana bar
       '.oab-bar-fill.mp{background:#5c8ce0}',
-      // Fire VFX flash
+      // ── VFX: Fire (Firebolt / Fireball / Incinerate) ──
       '.oab-fire-vfx{position:absolute;pointer-events:none;width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,rgba(255,160,20,.9) 0%,rgba(255,60,0,.6) 50%,transparent 70%);z-index:1100;animation:oab-fire .5s ease-out forwards}',
       '@keyframes oab-fire{0%{opacity:1;transform:scale(.6)}60%{opacity:.9;transform:scale(1.3)}100%{opacity:0;transform:scale(1.8)}}',
+      // ── VFX: Braced Charge (gold streak) ──
+      '.oab-vfx-charge{position:absolute;pointer-events:none;height:6px;background:linear-gradient(to right,rgba(240,192,64,0) 0%,rgba(255,232,120,.95) 50%,rgba(240,192,64,0) 100%);box-shadow:0 0 12px rgba(240,192,64,.8);transform-origin:left center;z-index:1100;animation:oab-charge .25s linear forwards}',
+      '@keyframes oab-charge{0%{opacity:0;transform:scaleX(0)}30%{opacity:1}100%{opacity:0;transform:scaleX(1)}}',
+      // ── VFX: Cleaving Stroke (red arc) ──
+      '.oab-vfx-cleave{position:absolute;pointer-events:none;width:80px;height:80px;border:3px solid rgba(224,92,92,.95);border-radius:50%;border-top-color:transparent;border-right-color:transparent;box-shadow:0 0 16px rgba(224,92,92,.7);z-index:1100;animation:oab-cleave .2s ease-out forwards}',
+      '@keyframes oab-cleave{0%{opacity:0;transform:rotate(-90deg) scale(.4)}40%{opacity:1}100%{opacity:0;transform:rotate(60deg) scale(1.3)}}',
+      // ── VFX: Loose and Fade (motion-blur silhouette fade) ──
+      '.oab-vfx-fade{position:absolute;pointer-events:none;width:48px;height:72px;background:linear-gradient(to right,rgba(160,208,128,.6),rgba(160,208,128,0));filter:blur(3px);border-radius:4px;z-index:1099;animation:oab-fade .3s ease-out forwards}',
+      '@keyframes oab-fade{0%{opacity:.85;transform:translateX(0) skewX(-8deg)}100%{opacity:0;transform:translateX(-28px) skewX(-18deg)}}',
+      // ── VFX: Called Shot (yellow target reticle pulsing) ──
+      '.oab-vfx-reticle{position:absolute;pointer-events:none;width:56px;height:56px;border:2px solid rgba(240,192,64,.95);border-radius:50%;box-shadow:0 0 12px rgba(240,192,64,.8),inset 0 0 8px rgba(240,192,64,.5);z-index:1100;animation:oab-reticle .8s ease-in-out 2}',
+      '.oab-vfx-reticle::before,.oab-vfx-reticle::after{content:"";position:absolute;background:rgba(240,192,64,.9)}',
+      '.oab-vfx-reticle::before{left:50%;top:-10px;width:2px;height:20px;transform:translateX(-50%)}',
+      '.oab-vfx-reticle::after{top:50%;left:-10px;width:20px;height:2px;transform:translateY(-50%)}',
+      '@keyframes oab-reticle{0%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1.05)}100%{opacity:.4;transform:scale(1)}}',
+      // ── VFX: Frost Shard (ice crystal) ──
+      '.oab-vfx-frost{position:absolute;pointer-events:none;width:40px;height:40px;background:radial-gradient(circle,rgba(180,230,255,.95) 0%,rgba(92,140,224,.6) 50%,transparent 75%);border-radius:50%;box-shadow:0 0 16px rgba(180,230,255,.9);z-index:1100;animation:oab-frost .3s ease-out forwards}',
+      '@keyframes oab-frost{0%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(45deg)}100%{opacity:0;transform:scale(1.4) rotate(90deg)}}',
+      // ── VFX: Raise Skeleton (violet ring + ghost rise) ──
+      '.oab-vfx-raise{position:absolute;pointer-events:none;width:60px;height:60px;border:3px solid rgba(180,100,220,.9);border-radius:50%;box-shadow:0 0 20px rgba(180,100,220,.8),inset 0 0 10px rgba(220,180,255,.5);z-index:1100;animation:oab-raise .4s ease-out forwards}',
+      '@keyframes oab-raise{0%{opacity:0;transform:scale(.3) translateY(10px)}60%{opacity:1;transform:scale(1.0) translateY(-4px)}100%{opacity:0;transform:scale(1.3) translateY(-14px)}}',
+      // ── VFX: Heal (green spiral) ──
+      '.oab-vfx-heal{position:absolute;pointer-events:none;width:44px;height:44px;background:radial-gradient(circle,rgba(140,220,140,.9) 0%,rgba(90,180,90,.6) 50%,transparent 75%);border-radius:50%;box-shadow:0 0 18px rgba(140,220,140,.8);z-index:1100;animation:oab-heal .35s ease-out forwards}',
+      '@keyframes oab-heal{0%{opacity:0;transform:scale(.4) rotate(0) translateY(10px)}50%{opacity:1;transform:scale(1.0) rotate(180deg) translateY(-4px)}100%{opacity:0;transform:scale(1.2) rotate(360deg) translateY(-14px)}}',
+      // ── VFX: Summon Wolf (pawprint flash) ──
+      '.oab-vfx-paw{position:absolute;pointer-events:none;width:32px;height:32px;z-index:1100;animation:oab-paw .4s ease-out forwards}',
+      '.oab-vfx-paw::before,.oab-vfx-paw::after{content:"";position:absolute;background:rgba(180,140,100,.9);border-radius:50%;box-shadow:0 0 8px rgba(180,140,100,.7)}',
+      '.oab-vfx-paw::before{width:18px;height:18px;left:7px;top:12px}',
+      '.oab-vfx-paw::after{width:6px;height:6px;left:3px;top:4px;box-shadow:12px 0 0 rgba(180,140,100,.9),24px 4px 0 rgba(180,140,100,.9),0 0 8px rgba(180,140,100,.7)}',
+      '@keyframes oab-paw{0%{opacity:0;transform:scale(.6)}50%{opacity:1;transform:scale(1.1)}100%{opacity:0;transform:scale(1.3)}}',
+      // ── VFX: Passive overlay (faint shield icon) ──
+      '.oab-vfx-passive{position:absolute;pointer-events:none;width:14px;height:16px;z-index:900;opacity:.55}',
+      '.oab-vfx-passive.oath{background:linear-gradient(to bottom,rgba(240,192,64,.75),rgba(192,152,40,.55));clip-path:polygon(50% 0,100% 20%,100% 60%,50% 100%,0 60%,0 20%);box-shadow:0 0 6px rgba(240,192,64,.5)}',
+      '.oab-vfx-passive.line{background:linear-gradient(to bottom,rgba(220,180,120,.75),rgba(180,120,60,.55));clip-path:polygon(50% 0,100% 20%,100% 60%,50% 100%,0 60%,0 20%);box-shadow:0 0 6px rgba(220,180,120,.5)}',
+      // Heal floating-numbers (reuse damage float with green color)
+      '.oab-heal-num{position:absolute;pointer-events:none;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;font-size:16px;font-weight:900;color:#8cdc8c;text-shadow:0 2px 4px rgba(0,0,0,.9);z-index:1000;animation:oab-float .9s ease-out forwards}',
       // Battle end overlay
       '.oab-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2000;background:rgba(0,0,0,.72)}',
       '.oab-overlay-box{background:#16181f;border:2px solid #f0c040;border-radius:6px;padding:40px 60px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}',
@@ -414,6 +450,7 @@
     if (!_ctx) return;
     drawMap();
     syncSprites();
+    _renderPassiveOverlays();
     updateTurnBar();
     updateActionBtns();
     updateHeroBar();
@@ -1034,19 +1071,133 @@
   }
 
   function showFireVFX(q, r) {
+    _vfxAt(q, r, 'oab-fire-vfx', 550, 40);
+  }
+
+  // Helper: drop a CSS-animated element at the hex center, auto-remove after ms
+  function _vfxAt(q, r, className, ms, size) {
     if (!_stage) return;
-    var p = unitDomPos({ q: q, r: r,
-      hp: 1, hp_max: 1,
-      team: 'enemy' });
-    // Use isoPos directly for tile center
     var pos = isoPos(q, r);
-    var cx = pos.x + TILE_W / 2 - 20;
-    var cy = pos.y + TILE_H / 2 - 20;
+    size = size || 40;
+    var cx = pos.x + TILE_W / 2 - size / 2;
+    var cy = pos.y + TILE_H / 2 - size / 2;
     var el = document.createElement('div');
-    el.className = 'oab-fire-vfx';
-    el.style.cssText = 'left:' + cx + 'px;top:' + cy + 'px';
+    el.className = className;
+    el.style.cssText = 'left:' + cx + 'px;top:' + cy + 'px;width:' + size + 'px;height:' + size + 'px';
     _stage.appendChild(el);
-    setTimeout(function () { if (el.parentNode) el.remove(); }, 550);
+    setTimeout(function () { if (el.parentNode) el.remove(); }, ms);
+    return el;
+  }
+
+  // Gold streak from (fromQ,fromR) to (toQ,toR) — Braced Charge
+  function showChargeVFX(fromQ, fromR, toQ, toR) {
+    if (!_stage) return;
+    var a = isoPos(fromQ, fromR);
+    var b = isoPos(toQ, toR);
+    var ax = a.x + TILE_W / 2, ay = a.y + TILE_H / 2;
+    var bx = b.x + TILE_W / 2, by = b.y + TILE_H / 2;
+    var dx = bx - ax, dy = by - ay;
+    var length = Math.sqrt(dx * dx + dy * dy);
+    var angle = Math.atan2(dy, dx) * 180 / Math.PI;
+    var el = document.createElement('div');
+    el.className = 'oab-vfx-charge';
+    el.style.cssText = 'left:' + ax + 'px;top:' + (ay - 3) + 'px;width:' + length + 'px;transform:rotate(' + angle + 'deg)';
+    _stage.appendChild(el);
+    setTimeout(function () { if (el.parentNode) el.remove(); }, 300);
+  }
+
+  // Dispatcher: choose VFX class + duration per spell/ability id
+  var _VFX_MAP = {
+    'firebolt':          { cls: 'oab-fire-vfx',   ms: 550, size: 40 },
+    'fireball':          { cls: 'oab-fire-vfx',   ms: 550, size: 60 },
+    'incinerate':        { cls: 'oab-fire-vfx',   ms: 650, size: 50 },
+    'spark':             { cls: 'oab-fire-vfx',   ms: 400, size: 36 },
+    'frost_shard':       { cls: 'oab-vfx-frost',  ms: 350, size: 44 },
+    'blizzard':          { cls: 'oab-vfx-frost',  ms: 450, size: 60 },
+    'permafrost':        { cls: 'oab-vfx-frost',  ms: 450, size: 50 },
+    'shield':            { cls: 'oab-vfx-frost',  ms: 400, size: 56 },
+    'raise_skeleton':    { cls: 'oab-vfx-raise',  ms: 450, size: 60 },
+    'raise_archer_wraith':{ cls: 'oab-vfx-raise', ms: 450, size: 60 },
+    'raise_lich_servant':{ cls: 'oab-vfx-raise',  ms: 500, size: 60 },
+    'curse_of_weakness': { cls: 'oab-vfx-raise',  ms: 400, size: 44 },
+    'curse_of_binding':  { cls: 'oab-vfx-raise',  ms: 400, size: 44 },
+    'curse_of_death':    { cls: 'oab-vfx-raise',  ms: 500, size: 48 },
+    'life_drain':        { cls: 'oab-vfx-raise',  ms: 400, size: 44 },
+    'bone_shield':       { cls: 'oab-vfx-raise',  ms: 350, size: 48 },
+    'heal':              { cls: 'oab-vfx-heal',   ms: 400, size: 44 },
+    'group_heal':        { cls: 'oab-vfx-heal',   ms: 400, size: 60 },
+    'regrowth':          { cls: 'oab-vfx-heal',   ms: 400, size: 40 },
+    'summon_wolf':       { cls: 'oab-vfx-paw',    ms: 450, size: 36 },
+    'summon_bear':       { cls: 'oab-vfx-paw',    ms: 450, size: 48 },
+    // Abilities
+    'braced_charge':     { cls: 'oab-vfx-charge-impact', ms: 500, size: 44 },
+    'cleaving_stroke':   { cls: 'oab-vfx-cleave', ms: 250, size: 80 },
+    'loose_and_fade':    { cls: 'oab-vfx-fade',   ms: 350, size: 48 },
+    'called_shot':       { cls: 'oab-vfx-reticle',ms: 900, size: 56 }
+  };
+
+  function showSpellOrAbilityVFX(id, casterQ, casterR, targetQ, targetR) {
+    // Braced Charge needs a line-streak from caster → target, drawn first
+    if (id === 'braced_charge') {
+      showChargeVFX(casterQ, casterR, targetQ, targetR);
+      _vfxAt(targetQ, targetR, 'oab-fire-vfx', 400, 40);
+      return;
+    }
+    var m = _VFX_MAP[id];
+    if (!m) {
+      showFireVFX(targetQ, targetR);
+      return;
+    }
+    _vfxAt(targetQ, targetR, m.cls, m.ms, m.size);
+  }
+
+  // Float a heal number (green) above the target
+  function showHeal(target, amount) {
+    if (!_stage) return;
+    var p = unitDomPos(target);
+    var el = document.createElement('div');
+    el.className = 'oab-heal-num';
+    el.textContent = '+' + amount;
+    el.style.cssText = 'left:' + (p.sx + SPRITE_W / 2 - 14) + 'px;top:' + p.sy + 'px';
+    _stage.appendChild(el);
+    setTimeout(function () { if (el.parentNode) el.remove(); }, 950);
+  }
+
+  // Render passive-overlay shield icons on every relevant hex:
+  //   Vanguard's Oath (gold) on tiles adjacent to a living player Vael
+  //   Hold the Line (warm brown) on tiles adjacent to a living player Halv
+  // Called from render() — cheap enough to redraw each frame.
+  function _renderPassiveOverlays() {
+    if (!_stage) return;
+    // Clear previous overlay icons
+    var old = _stage.querySelectorAll('.oab-vfx-passive');
+    old.forEach(function (e) { e.remove(); });
+
+    var battle = window.OathAndBoneEngine.getBattle();
+    if (!battle || !battle.units) return;
+
+    for (var id in battle.units) {
+      var u = battle.units[id];
+      if (u.hp <= 0) continue;
+      if (u.heroId === 'vael') _drawPassiveIconsAround(u, 'oath');
+      if (u.heroId === 'halv') _drawPassiveIconsAround(u, 'line');
+    }
+  }
+
+  function _drawPassiveIconsAround(heroUnit, kind) {
+    var DIR = [{q:1,r:0},{q:1,r:-1},{q:0,r:-1},{q:-1,r:0},{q:-1,r:1},{q:0,r:1}];
+    for (var i = 0; i < DIR.length; i++) {
+      var nq = heroUnit.q + DIR[i].q;
+      var nr = heroUnit.r + DIR[i].r;
+      var pos = isoPos(nq, nr);
+      var tile = window.OathAndBoneEngine.getTile(nq, nr);
+      if (!tile) continue;
+      var el = document.createElement('div');
+      el.className = 'oab-vfx-passive ' + kind;
+      el.style.left = (pos.x + TILE_W / 2 - 7) + 'px';
+      el.style.top  = (pos.y + TILE_H / 2 - 20) + 'px';
+      _stage.appendChild(el);
+    }
   }
 
   function handleHoldBtn() {
@@ -1264,21 +1415,25 @@
     showBattleEnd(result);
   };
 
-  // Spell cast hook — fire VFX + damage float + auto-advance turn
-  window.OathAndBoneSpells.onSpellCast = function (caster, spellDef, targetQ, targetR, effectDetails) {
-    showFireVFX(targetQ, targetR);
-    // Extract damage from effectDetails (first damage entry)
+  // Spell cast hook — per-spell VFX + damage/heal float + auto-advance
+  window.OathAndBoneSpells.onSpellCast = function (caster, spellDef, targetQ, targetR, effectDetails, spellId) {
+    showSpellOrAbilityVFX(spellId, caster.q, caster.r, targetQ, targetR);
+
+    // Float first damage / heal number
     for (var i = 0; i < effectDetails.length; i++) {
       var ed = effectDetails[i];
       if (ed.type === 'damage' || ed.type === 'chain_damage') {
-        var target = window.OathAndBoneEngine.getUnit(ed.target);
-        if (target) showDamage(target, ed.amount);
+        var tgt = window.OathAndBoneEngine.getUnit(ed.target);
+        if (tgt) showDamage(tgt, ed.amount);
+        break;
+      } else if (ed.type === 'heal') {
+        var tgtH = window.OathAndBoneEngine.getUnit(ed.target);
+        if (tgtH) showHeal(tgtH, ed.amount);
         break;
       }
     }
     render();
-    updateTurnBar('Cast: ' + spellDef.school + ' \u2014 ' + (spellDef.effect.damage || spellDef.effect.heal || '?'));
-    // Auto-advance after showing cast result
+    updateTurnBar('Cast: ' + spellDef.school + ' \u2014 ' + (spellDef.effect.damage || spellDef.effect.heal || 'effect'));
     setTimeout(function () {
       _selectedUnitId = null;
       window.OathAndBoneEngine.advanceTurn();
@@ -1287,11 +1442,10 @@
     }, 1200);
   };
 
-  // Ability-resolved hook — damage floats + auto-advance turn.
-  // VFX is stubbed here (concern 2 scope) and replaced in concern 3.
+  // Ability-resolved hook — per-ability VFX + damage floats + auto-advance
   if (window.OathAndBoneAbilities) {
     window.OathAndBoneAbilities.onAbilityResolved = function (caster, abilityDef, targetQ, targetR, effects) {
-      showFireVFX(targetQ, targetR);
+      showSpellOrAbilityVFX(abilityDef.id, caster.q, caster.r, targetQ, targetR);
       for (var i = 0; i < effects.length; i++) {
         var e = effects[i];
         if (e.type === 'damage') {

@@ -746,8 +746,9 @@ window.OathAndBoneSpells = (function() {
 
 
       // Fire the onSpellCast hook - Channel 1 (visual). Renderer should add audio (Channel 2), and damage/resource numbers are Channel 3.
+      // Include spellId so the renderer can key VFX / audio on it without reverse lookup.
       if (window.OathAndBoneSpells.onSpellCast) {
-        window.OathAndBoneSpells.onSpellCast(caster, spellDef, targetQ, targetR, effectDetails);
+        window.OathAndBoneSpells.onSpellCast(caster, spellDef, targetQ, targetR, effectDetails, spellId);
       }
 
       return { success: true };
