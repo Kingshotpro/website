@@ -13,6 +13,20 @@
 
 ---
 
+## 2026-04-26 — Worker 30 / Audit Concern 2: B2/B3 reward code aligned to BATTLES.md spec
+
+**Verdict:** Code now matches BATTLES.md design contract. No tuning rationale existed for the lower values (confirmed: no prior DECISIONS entry). Option A taken — code updated to spec.
+
+**Changes:**
+- `SCENARIO_B2.rewards`: XP `{ scout:40, sergeant:55, marshal:80 }` → `{ scout:60, sergeant:80, marshal:120 }`. Crowns `45` → `60`.
+- `SCENARIO_B3.rewards`: XP `{ scout:50, sergeant:65, marshal:95 }` → `{ scout:80, sergeant:110, marshal:165 }`. Crowns `55` → `70`.
+- These values also feed `OAB_BATTLE_REWARDS` in worker.js (Fix 2 / same session).
+- B1 was already correct (`sergeant:60 XP, 50 Crowns`) — untouched.
+
+**Impact:** Free-player walkthrough in ECONOMY.md §9 still validates (Sergeant B1+B2+B3 total now 50+60+70 = 180 Crowns for 3 battles, up from 150; well above the 6-day floor). Server-side OAB_BATTLE_REWARDS table uses these corrected values.
+
+---
+
 ## 2026-04-26 — Worker 29: Full system audit — CONDITIONAL GO
 
 **Verdict:** CONDITIONAL GO. One ship condition (disclaimer missing from ad overlays — 2-line fix). No hard blockers. Three Worker 30+ hardening items. Full evidence in `games/designs/oath-and-bone/SYSTEM_AUDIT_REPORT.md`.

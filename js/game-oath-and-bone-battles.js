@@ -276,8 +276,8 @@ var SCENARIO_B2 = {
   },
 
   rewards: {
-    xp: { scout: 40, sergeant: 55, marshal: 80 },
-    crowns: 45,
+    xp: { scout: 60, sergeant: 80, marshal: 120 },
+    crowns: 60,
     credits: { count: 0, condition: null },
     reagents: []
   },
@@ -423,8 +423,8 @@ var SCENARIO_B3 = {
   },
 
   rewards: {
-    xp: { scout: 50, sergeant: 65, marshal: 95 },
-    crowns: 55,
+    xp: { scout: 80, sergeant: 110, marshal: 165 },
+    crowns: 70,
     credits: { count: 0, condition: null },
     reagents: []
   },
