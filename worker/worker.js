@@ -96,6 +96,19 @@ export default {
         return handleOabSpend(request, env);
       } else if (url.pathname === '/oath-and-bone/battle-result') {
         return handleOabBattleResult(request, env);
+      // Realm War game
+      } else if (url.pathname === '/realm-war/save') {
+        return handleRealmWarSave(request, env);
+      } else if (url.pathname === '/realm-war/decree') {
+        return handleRealmWarDecree(request, env);
+      } else if (url.pathname === '/realm-war/build') {
+        return handleRealmWarBuild(request, env);
+      } else if (url.pathname === '/realm-war/raid') {
+        return handleRealmWarRaid(request, env);
+      } else if (url.pathname === '/realm-war/levy-claim') {
+        return handleRealmWarLevyClaim(request, env);
+      } else if (url.pathname === '/realm-war/spend') {
+        return handleRealmWarSpend(request, env);
       }
     }
 
@@ -104,6 +117,9 @@ export default {
     // from the cookie session via getUser().
     if (request.method === 'GET' && url.pathname === '/oath-and-bone/load') {
       return handleOabLoad(request, env);
+    }
+    if (request.method === 'GET' && url.pathname === '/realm-war/load') {
+      return handleRealmWarLoad(request, env);
     }
 
     // Admin GETs + public GETs
@@ -1043,6 +1059,60 @@ async function handlePortrait(request, env) {
   return corsWrap(JSON.stringify({ image_url: url, generated: new Date().toISOString() }));
 }
 
+// ── Oath and Bone webhook helpers ──────────
+// These run inside handleStripeWebhook, defined below. Module-level
+// declaration order is fine: const references are resolved at call time.
+
+// Fetch checkout session line items via the Stripe REST API.
+// Required because webhook payloads omit line_items by default.
+// Returns an array of line item objects (each has .price.id) or null.
+async function fetchStripeLineItems(env, sessionId) {
+  if (!env.STRIPE_SECRET_KEY) return null;
+  try {
+    const res = await fetch(
+      `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}/line_items?expand%5B%5D=data.price&limit=5`,
+      { headers: { Authorization: 'Bearer ' + env.STRIPE_SECRET_KEY } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return Array.isArray(data && data.data) ? data.data : null;
+  } catch {
+    return null;
+  }
+}
+
+// Credit a Crown pack purchase to oab_state_{fid}. Additive only —
+// concurrent Crown grants inflate rather than corrupt (safe for payments).
+async function oabApplyCrownGrant(env, fid, amount) {
+  const state = (await env.KV.get(`oab_state_${fid}`, { type: 'json' })) || oabDefaultState();
+  state.crown_balance = (Number(state.crown_balance) || 0) + amount;
+  state.last_save_iso = new Date().toISOString();
+  state.version       = (Number(state.version) || 0) + 1;
+  await env.KV.put(`oab_state_${fid}`, JSON.stringify(state));
+  await env.KV.put(`oab_crown_balance_${fid}`, String(state.crown_balance));
+  return state.crown_balance;
+}
+
+// Set or clear a Campaign/Chapter Pass on oab_state_{fid}.
+// passActive=true writes campaign_pass_active + pass_expires_iso (now+30d).
+// passActive=false clears those fields.
+async function oabSetPassActive(env, fid, passActive, passTier) {
+  const state = (await env.KV.get(`oab_state_${fid}`, { type: 'json' })) || oabDefaultState();
+  if (passActive) {
+    state.campaign_pass_active = true;
+    state.pass_tier            = passTier;
+    state.pass_expires_iso     = new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString();
+  } else {
+    state.campaign_pass_active = false;
+    state.pass_tier            = null;
+    state.pass_expires_iso     = null;
+  }
+  state.last_save_iso = new Date().toISOString();
+  state.version       = (Number(state.version) || 0) + 1;
+  await env.KV.put(`oab_state_${fid}`, JSON.stringify(state));
+  return state.campaign_pass_active;
+}
+
 // ── Stripe Webhook ─────────────────────────
 
 async function verifyStripeSignature(request, body, secret) {
@@ -1141,48 +1211,107 @@ async function handleStripeWebhook(request, env) {
 
     let responsePayload = { ok: true };
 
-    if (session.mode === 'subscription') {
-      const SUB_TIER_BY_AMOUNT = { 499: 'pro', 999: 'pro_plus' };
-      const tier = SUB_TIER_BY_AMOUNT[session.amount_total] || 'pro';
-      user.tier = tier;
-      user.credit_history.push({
-        at: Date.now(), kind: 'subscription_start', tier,
-        amount_cents: session.amount_total,
-        stripe_session_id: session.id || '',
-      });
-      responsePayload.tier = tier;
+    // Resolve FID for OAB grants. client_reference_id is the preferred path
+    // (buy button can embed it); metadata.fid and user.fid are fallbacks.
+    // Per project CLAUDE.md: FID must derive from server-side session data,
+    // never from a client-controllable request header.
+    const fidForOab = String(
+      session.client_reference_id || session.metadata?.fid || user.fid || ''
+    ).trim();
 
-    } else if (session.mode === 'payment') {
-      const amount = session.amount_total;
-      const creditsToAdd = CREDIT_PACK_BY_AMOUNT[amount];
-      if (creditsToAdd) {
-        user.credits = (user.credits || 0) + creditsToAdd;
-        user.credit_history.push({
-          at: Date.now(), kind: 'credit_pack_purchase',
-          amount_cents: amount, credits: creditsToAdd,
-          stripe_session_id: session.id || '',
-        });
-        responsePayload.credits_added  = creditsToAdd;
-        responsePayload.credits_total  = user.credits;
+    // Fetch line items to resolve price ID for routing. amount_total alone
+    // collides: 499 cents = Coffer Pack = Credits Standard = Pro sub =
+    // Chapter Pass. Price ID is always unique. DECISIONS.md 2026-04-26.
+    // Requires STRIPE_SECRET_KEY set via: wrangler secret put STRIPE_SECRET_KEY
+    let lineItems = (session.line_items && session.line_items.data) || null;
+    if (!lineItems && session.id) {
+      if (env.STRIPE_SECRET_KEY) {
+        lineItems = await fetchStripeLineItems(env, session.id);
       } else {
-        // Unknown amount — don't grant credits, but record for investigation.
+        console.warn('[webhook] STRIPE_SECRET_KEY not set — OAB price-ID routing disabled; ambiguous $4.99/$9.99 amounts may be misrouted');
+      }
+    }
+
+    // Check line items against OAB_PRICE_GRANTS. If any item is an OAB
+    // product, handle it and skip the amount-based Pro/credits routing to
+    // prevent misgranting Pro tier to pass buyers or credits to Crown pack
+    // buyers. ADDITIVE: only the user.credit_history audit row and oab_state
+    // are written here; the main user KV write happens below regardless.
+    let oabHandled = false;
+    if (fidForOab && lineItems) {
+      for (const li of lineItems) {
+        const priceId = li && li.price && li.price.id;
+        const grant = priceId ? OAB_PRICE_GRANTS[priceId] : undefined;
+        if (!grant) continue;
+
+        if (grant.type === 'crowns') {
+          const newBal = await oabApplyCrownGrant(env, fidForOab, grant.amount);
+          user.credit_history.push({
+            at: Date.now(), kind: 'oab_crown_pack_purchase',
+            price_id: priceId, crowns: grant.amount,
+            stripe_session_id: session.id || '',
+          });
+          responsePayload.oab_crowns_granted = grant.amount;
+          responsePayload.oab_crown_balance  = newBal;
+        } else if (grant.type === 'pass') {
+          await oabSetPassActive(env, fidForOab, true, grant.tier);
+          user.credit_history.push({
+            at: Date.now(), kind: 'oab_pass_activation',
+            price_id: priceId, tier: grant.tier,
+            stripe_session_id: session.id || '',
+          });
+          responsePayload.oab_pass_activated = grant.tier;
+        }
+        oabHandled = true;
+      }
+    }
+
+    // If not an OAB product, apply the pre-existing amount-based routing
+    // for Pro/Pro+ subscriptions and credit packs.
+    if (!oabHandled) {
+      if (session.mode === 'subscription') {
+        const SUB_TIER_BY_AMOUNT = { 499: 'pro', 999: 'pro_plus' };
+        const tier = SUB_TIER_BY_AMOUNT[session.amount_total] || 'pro';
+        user.tier = tier;
         user.credit_history.push({
-          at: Date.now(), kind: 'payment_unmapped',
-          amount_cents: amount,
+          at: Date.now(), kind: 'subscription_start', tier,
+          amount_cents: session.amount_total,
           stripe_session_id: session.id || '',
         });
-        responsePayload.note = 'amount not mapped to any credit pack';
-        responsePayload.amount_cents = amount;
-      }
+        responsePayload.tier = tier;
 
-    } else {
-      // Unknown mode — should not happen but we log it.
-      user.credit_history.push({
-        at: Date.now(), kind: 'checkout_unknown_mode',
-        mode: session.mode || 'null',
-        stripe_session_id: session.id || '',
-      });
-      responsePayload.note = 'unknown session.mode';
+      } else if (session.mode === 'payment') {
+        const amount = session.amount_total;
+        const creditsToAdd = CREDIT_PACK_BY_AMOUNT[amount];
+        if (creditsToAdd) {
+          user.credits = (user.credits || 0) + creditsToAdd;
+          user.credit_history.push({
+            at: Date.now(), kind: 'credit_pack_purchase',
+            amount_cents: amount, credits: creditsToAdd,
+            stripe_session_id: session.id || '',
+          });
+          responsePayload.credits_added  = creditsToAdd;
+          responsePayload.credits_total  = user.credits;
+        } else {
+          // Unknown amount — don't grant credits, but record for investigation.
+          user.credit_history.push({
+            at: Date.now(), kind: 'payment_unmapped',
+            amount_cents: amount,
+            stripe_session_id: session.id || '',
+          });
+          responsePayload.note = 'amount not mapped to any credit pack';
+          responsePayload.amount_cents = amount;
+        }
+
+      } else {
+        // Unknown mode — should not happen but we log it.
+        user.credit_history.push({
+          at: Date.now(), kind: 'checkout_unknown_mode',
+          mode: session.mode || 'null',
+          stripe_session_id: session.id || '',
+        });
+        responsePayload.note = 'unknown session.mode';
+      }
     }
 
     await env.KV.put(`user:${email}`, JSON.stringify(user));
@@ -1206,12 +1335,35 @@ async function handleStripeWebhook(request, env) {
       }));
     }
 
-    // Only downgrade on genuinely terminal states. 'past_due' can recover
-    // after a retry; 'incomplete' means payment never cleared but might still.
+    // Only act on genuinely terminal states. 'past_due' can recover after a
+    // retry; 'incomplete' means payment never cleared but might still.
     const terminalStatuses = new Set(['canceled', 'unpaid', 'incomplete_expired']);
     if (terminalStatuses.has(sub.status)) {
       let user = await env.KV.get(`user:${email}`, { type: 'json' });
       if (user) {
+        // Check if the cancelled subscription is an OAB pass (Chapter or Campaign).
+        // Stripe includes sub.items.data in subscription event payloads.
+        const subItems = (sub.items && sub.items.data) || [];
+        const isOabPass = subItems.some(item => {
+          const priceId = item && item.price && item.price.id;
+          return priceId && OAB_PRICE_GRANTS[priceId] &&
+                 OAB_PRICE_GRANTS[priceId].type === 'pass';
+        });
+
+        if (isOabPass) {
+          // OAB pass lapsed — deactivate in oab_state; don't touch user.tier.
+          const fid = user.fid && String(user.fid).trim();
+          if (fid) await oabSetPassActive(env, fid, false, null);
+          if (!Array.isArray(user.credit_history)) user.credit_history = [];
+          user.credit_history.push({
+            at: Date.now(), kind: 'oab_pass_deactivation',
+            stripe_sub_status: sub.status,
+          });
+          await env.KV.put(`user:${email}`, JSON.stringify(user));
+          return corsWrap(JSON.stringify({ ok: true, oab_pass_deactivated: true, status: sub.status }));
+        }
+
+        // Non-OAB subscription (Pro / Pro+) — downgrade tier.
         user.tier = 'free';
         if (!Array.isArray(user.credit_history)) user.credit_history = [];
         user.credit_history.push({
@@ -1223,6 +1375,49 @@ async function handleStripeWebhook(request, env) {
       return corsWrap(JSON.stringify({ ok: true, downgraded: true, status: sub.status }));
     }
     return corsWrap(JSON.stringify({ ok: true, status: sub.status, action: 'none' }));
+  }
+
+  // Deactivate OAB pass immediately on first payment failure (before Stripe
+  // reaches a terminal subscription status). Non-OAB invoices are ignored here;
+  // Pro/Pro+ already handles downgrade via subscription.deleted above.
+  if (type === 'invoice.payment_failed') {
+    const invoice = event.data.object;
+    const customerId = invoice.customer;
+    if (!customerId) {
+      return corsWrap('{"ok":true,"note":"no customer id on invoice.payment_failed"}');
+    }
+    const email = await env.KV.get(`stripe_cust:${customerId}`);
+    if (!email) {
+      return corsWrap(JSON.stringify({ ok: true, note: 'no customer mapping', customer_id: customerId }));
+    }
+
+    // Identify OAB pass invoice from line item price IDs.
+    const invLines = (invoice.lines && invoice.lines.data) || [];
+    const isOabPass = invLines.some(line => {
+      const priceId = line && line.price && line.price.id;
+      return priceId && OAB_PRICE_GRANTS[priceId] &&
+             OAB_PRICE_GRANTS[priceId].type === 'pass';
+    });
+
+    if (!isOabPass) {
+      return corsWrap('{"ok":true,"note":"invoice.payment_failed — non-OAB invoice, no action"}');
+    }
+
+    let user = await env.KV.get(`user:${email}`, { type: 'json' });
+    if (!user) {
+      return corsWrap('{"ok":true,"note":"user not found for failed OAB invoice"}');
+    }
+
+    const fid = user.fid && String(user.fid).trim();
+    if (fid) await oabSetPassActive(env, fid, false, null);
+
+    if (!Array.isArray(user.credit_history)) user.credit_history = [];
+    user.credit_history.push({
+      at: Date.now(), kind: 'oab_pass_payment_failed',
+      invoice_id: invoice.id || '',
+    });
+    await env.KV.put(`user:${email}`, JSON.stringify(user));
+    return corsWrap(JSON.stringify({ ok: true, oab_pass_deactivated: true }));
   }
 
   return corsWrap('{"ok":true,"note":"unhandled event type","type":"' + (type || '') + '"}');
@@ -1594,6 +1789,20 @@ const OAB_CREDIT_GRANT_TABLE = {
 };
 
 const OAB_SPEND_CONTEXTS = new Set(['shop', 'boost', 'training']);
+
+// OAB price-ID → grant action. Canonical: docs/DECISIONS.md 2026-04-26.
+// Route on price ID — amount_total collides at 499 cents (Coffer Pack =
+// Credits Standard = Pro sub = Chapter Pass) and 999 cents (Campaign Pass
+// = Pro+ sub). Pre-existing Pro/credit price IDs are NOT in this map;
+// they continue through the amount-based logic in handleStripeWebhook.
+const OAB_PRICE_GRANTS = {
+  'price_1TQQ4KCTwcITa9f2mzxPOoy7': { type: 'crowns', amount: 200 },    // Pocket Pack ($0.99)
+  'price_1TQQ4SCTwcITa9f27L1hWYBM': { type: 'crowns', amount: 1400 },   // Coffer Pack ($4.99, 1200+200 bonus)
+  'price_1TQQ4ZCTwcITa9f2deUUxAgg': { type: 'crowns', amount: 7000 },   // Hoard Pack ($19.99, 5500+1500 bonus)
+  'price_1TQQ4gCTwcITa9f2XkhyCxpt': { type: 'crowns', amount: 20000 },  // King's Cache ($49.99, 15000+5000 bonus)
+  'price_1TQQ4pCTwcITa9f2A7a8fzZo': { type: 'pass', tier: 'chapter' },  // Chapter Pass ($4.99/mo)
+  'price_1TQQ4wCTwcITa9f2OAlnzzJo': { type: 'pass', tier: 'campaign' }, // Campaign Pass ($9.99/mo)
+};
 
 // Sanity bounds on client-reported per-battle earnings. Caps a runaway
 // or spoofed result. Max plausible Marshal Crown: 80 × stacking ≈ 158
@@ -2229,4 +2438,463 @@ function applyWearyFraming(systemPrompt, wearyState) {
     downgraded: '\n\nADVISOR STATE: Your role is at rest until the new moon. Acknowledge briefly in character that you are offering simpler counsel for the remainder of this cycle. Still answer the question but be more concise than usual.',
   };
   return systemPrompt + (notes[wearyState] || '');
+}
+
+// ── Realm War — helpers ───────────────────────────────────────────────────────
+
+function realmWarDefaultState() {
+  const now = new Date().toISOString();
+  return {
+    version: 1,
+    last_save_iso: now,
+    lord_name: 'Lord',
+    title: 'squire',
+    title_xp: 0,
+    stats: {
+      health:      100,
+      health_max:  100,
+      stamina:     50,
+      stamina_max: 50,
+      gold:        0,
+      wood:        0,
+      iron:        0,
+      xp_total:    0,
+    },
+    buildings: {
+      mill:    { level: 1, last_collected_iso: now, upgrade_finishes_iso: null },
+      smithy:  { level: 1, last_collected_iso: now, upgrade_finishes_iso: null },
+      stables: { level: 1, last_collected_iso: now, upgrade_finishes_iso: null },
+    },
+    daily_levy: {
+      streak_days:      0,
+      last_claimed_iso: null,
+    },
+    decree_cooldowns: {
+      levy_tax:       null,
+      patrol_border:  null,
+      train_soldiers: null,
+    },
+  };
+}
+
+function realmWarMaxStaminaForTitle(title) {
+  const MAP = { squire: 50, knight: 75, baron: 100, earl: 150, duke: 200 };
+  return MAP[title] || 50;
+}
+
+function realmWarRecomputeTitle(state) {
+  const xp = state.title_xp || 0;
+  if (xp >= 8000) return 'duke';
+  if (xp >= 3000) return 'earl';
+  if (xp >= 1000) return 'baron';
+  if (xp >= 250)  return 'knight';
+  return 'squire';
+}
+
+function realmWarTickOffline(state) {
+  const now = Date.now();
+  if (state.last_save_iso) {
+    const elapsed = now - new Date(state.last_save_iso).getTime();
+    if (elapsed > 0) {
+      const minutes = elapsed / 60000;
+      const staminaMax = realmWarMaxStaminaForTitle(state.title || 'squire');
+      state.stats.stamina_max = staminaMax;
+      state.stats.stamina = Math.min(staminaMax, (state.stats.stamina || 0) + Math.floor(minutes));
+      const healthMax = state.stats.health_max || 100;
+      state.stats.health = Math.min(healthMax, (state.stats.health || 0) + Math.floor(minutes / 5));
+    }
+  }
+  state.last_save_iso = new Date(now).toISOString();
+  return state;
+}
+
+// Returns the scaled reward for the given streak day.
+function realmWarLevyReward(streakDay) {
+  const FIXED = {
+    1:  { gold: 100,  stamina: 10 },
+    2:  { gold: 150,  stamina: 12 },
+    3:  { gold: 200,  stamina: 15, xp: 5 },
+    4:  { gold: 300,  stamina: 20 },
+    5:  { gold: 400,  stamina: 20, xp: 10, wood: 1 },
+    6:  { gold: 500,  stamina: 25, iron: 1 },
+    7:  { gold: 1000, stamina: 30, xp: 50, rare_loot: 'Royal Coin' },
+    14: { gold: 2000, stamina: 40, xp: 100, rare_loot: 'Crown Cache' },
+    30: { gold: 5000, stamina: 50, xp: 250, unique_title: 'Loyal Vassal', crowns: 5 },
+  };
+  function scale(r, m) {
+    const s = { gold: Math.floor((r.gold || 0) * m), stamina: Math.floor((r.stamina || 0) * m) };
+    if (r.xp)           s.xp = Math.floor(r.xp * m);
+    if (r.wood)         s.wood = Math.floor(r.wood * m);
+    if (r.iron)         s.iron = Math.floor(r.iron * m);
+    if (r.rare_loot)    s.rare_loot = r.rare_loot;
+    if (r.unique_title) s.unique_title = r.unique_title;
+    if (r.crowns)       s.crowns = Math.floor(r.crowns * m);
+    return s;
+  }
+  if (FIXED[streakDay]) return { ...FIXED[streakDay] };
+  if (streakDay >= 8  && streakDay <= 13) return scale(FIXED[((streakDay - 8)  % 6) + 1], 1.5);
+  if (streakDay >= 15 && streakDay <= 29) return scale(FIXED[((streakDay - 15) % 6) + 1], 2.0);
+  // 31+: cycle through days 1–29 at 2× (no infinite recursion — cycleDay is 1–29)
+  if (streakDay >= 31) return scale(realmWarLevyReward(((streakDay - 31) % 29) + 1), 2.0);
+  return { gold: 100, stamina: 10 };
+}
+
+// ── Realm War — handlers ──────────────────────────────────────────────────────
+
+// GET /realm-war/load
+async function handleRealmWarLoad(request, env) {
+  const user = await getUser(request, env);
+  if (!user || !user.fid) {
+    return corsWrapCred(request, JSON.stringify({ authenticated: false, state: null }), 200);
+  }
+  const state = await env.KV.get(`realm_war_state_${user.fid}`, { type: 'json' });
+  if (!state) {
+    return corsWrapCred(request, JSON.stringify({
+      authenticated: true,
+      fid: user.fid,
+      state: realmWarDefaultState(),
+    }), 200);
+  }
+  const ticked = realmWarTickOffline(state);
+  return corsWrapCred(request, JSON.stringify({ authenticated: true, fid: user.fid, state: ticked }), 200);
+}
+
+// POST /realm-war/save
+async function handleRealmWarSave(request, env) {
+  const user = await getUser(request, env);
+  if (!user || !user.fid) return corsWrapCred(request, '{"error":"not_authenticated"}', 401);
+  const fid = user.fid;
+
+  let body;
+  try { body = await request.json(); }
+  catch { return corsWrapCred(request, '{"error":"bad_request"}', 400); }
+
+  const incoming = body && body.state;
+  if (!incoming || typeof incoming !== 'object' || Array.isArray(incoming)) {
+    return corsWrapCred(request, '{"error":"missing_state"}', 400);
+  }
+
+  const existing = await env.KV.get(`realm_war_state_${fid}`, { type: 'json' });
+  const state = { ...incoming };
+
+  // streak_days: server is canonical — client cannot raise it
+  if (existing && existing.daily_levy && state.daily_levy) {
+    if ((state.daily_levy.streak_days || 0) > (existing.daily_levy.streak_days || 0)) {
+      state.daily_levy.streak_days = existing.daily_levy.streak_days;
+    }
+  }
+
+  // title: always recomputed server-side from title_xp
+  state.title = realmWarRecomputeTitle(state);
+
+  // Clamp resources to non-negative integers; clamp stamina to max
+  if (state.stats) {
+    state.stats.gold    = Math.max(0, Math.floor(Number(state.stats.gold)    || 0));
+    state.stats.wood    = Math.max(0, Math.floor(Number(state.stats.wood)    || 0));
+    state.stats.iron    = Math.max(0, Math.floor(Number(state.stats.iron)    || 0));
+    const staminaMax    = realmWarMaxStaminaForTitle(state.title);
+    state.stats.stamina = Math.max(0, Math.min(staminaMax, Math.floor(Number(state.stats.stamina) || 0)));
+    state.stats.stamina_max = staminaMax;
+  }
+
+  state.last_save_iso = new Date().toISOString();
+  await env.KV.put(`realm_war_state_${fid}`, JSON.stringify(state));
+  return corsWrapCred(request, JSON.stringify({ ok: true, state }), 200);
+}
+
+// POST /realm-war/decree
+async function handleRealmWarDecree(request, env) {
+  const user = await getUser(request, env);
+  if (!user || !user.fid) return corsWrapCred(request, '{"error":"not_authenticated"}', 401);
+  const fid = user.fid;
+
+  let decree_id;
+  try { ({ decree_id } = await request.json()); decree_id = String(decree_id || '').trim(); }
+  catch { return corsWrapCred(request, '{"error":"bad_request"}', 400); }
+
+  const DECREES = {
+    levy_tax:       { stamina: 5,  cooldown: 60,  base: { gold: 50, xp: 5 },         bonus10: { gold: 50 },  rare5: { gold: 200, rare_loot: 'Royal Coin' } },
+    patrol_border:  { stamina: 8,  cooldown: 120, base: { gold: 30, xp: 10, wood: 5 }, bonus10: { wood: 5 },  rare5: { gold: 50, rare_loot: 'Bandit Trophy' } },
+    train_soldiers: { stamina: 12, cooldown: 240, base: { iron: 5, xp: 15 },          bonus10: { iron: 5 },  rare5: { iron: 10, rare_loot: 'Veteran Insignia' } },
+  };
+
+  if (!DECREES[decree_id]) return corsWrapCred(request, '{"error":"invalid_decree_id"}', 400);
+
+  const state = await env.KV.get(`realm_war_state_${fid}`, { type: 'json' });
+  if (!state) return corsWrapCred(request, '{"error":"no_state"}', 404);
+
+  const decree = DECREES[decree_id];
+
+  if ((state.stats.stamina || 0) < decree.stamina) {
+    return corsWrapCred(request, JSON.stringify({ error: 'insufficient_stamina', required: decree.stamina, current: state.stats.stamina }), 400);
+  }
+  const cooldownIso = state.decree_cooldowns && state.decree_cooldowns[decree_id];
+  if (cooldownIso && new Date(cooldownIso) > new Date()) {
+    return corsWrapCred(request, JSON.stringify({ error: 'on_cooldown', cooldown_ends_iso: cooldownIso }), 400);
+  }
+
+  // Roll using crypto.getRandomValues(): single roll 0–99. <5 = rare, 5–14 = bonus.
+  const rollBuf = new Uint8Array(1);
+  crypto.getRandomValues(rollBuf);
+  const roll = rollBuf[0] % 100;
+
+  const reward = { ...decree.base };
+  if (roll < 5) {
+    for (const [k, v] of Object.entries(decree.rare5)) {
+      if (k === 'rare_loot') reward.rare_loot = v;
+      else reward[k] = (reward[k] || 0) + v;
+    }
+  } else if (roll < 15) {
+    for (const [k, v] of Object.entries(decree.bonus10)) {
+      reward[k] = (reward[k] || 0) + v;
+    }
+  }
+
+  state.stats.stamina  = (state.stats.stamina  || 0) - decree.stamina;
+  state.stats.gold     = (state.stats.gold     || 0) + (reward.gold  || 0);
+  state.stats.wood     = (state.stats.wood     || 0) + (reward.wood  || 0);
+  state.stats.iron     = (state.stats.iron     || 0) + (reward.iron  || 0);
+  state.title_xp       = (state.title_xp       || 0) + (reward.xp   || 0);
+  state.stats.xp_total = (state.stats.xp_total || 0) + (reward.xp   || 0);
+
+  const newTitle = realmWarRecomputeTitle(state);
+  if (newTitle !== state.title) {
+    state.title = newTitle;
+    state.stats.stamina_max = realmWarMaxStaminaForTitle(newTitle);
+  }
+
+  if (!state.decree_cooldowns) state.decree_cooldowns = {};
+  state.decree_cooldowns[decree_id] = new Date(Date.now() + decree.cooldown * 1000).toISOString();
+  state.last_save_iso = new Date().toISOString();
+
+  await env.KV.put(`realm_war_state_${fid}`, JSON.stringify(state));
+  return corsWrapCred(request, JSON.stringify({ ok: true, reward, state }), 200);
+}
+
+// POST /realm-war/build
+async function handleRealmWarBuild(request, env) {
+  const user = await getUser(request, env);
+  if (!user || !user.fid) return corsWrapCred(request, '{"error":"not_authenticated"}', 401);
+  const fid = user.fid;
+
+  let building_id, action;
+  try {
+    const body = await request.json();
+    building_id = String(body.building_id || '').trim();
+    action      = String(body.action      || '').trim();
+  } catch { return corsWrapCred(request, '{"error":"bad_request"}', 400); }
+
+  const BUILDINGS = {
+    mill:    { base_yield: 60, resource: 'gold', cost_mult: 200, time_mult: 600  },
+    smithy:  { base_yield: 8,  resource: 'wood', cost_mult: 250, time_mult: 900  },
+    stables: { base_yield: 4,  resource: 'iron', cost_mult: 400, time_mult: 1800 },
+  };
+
+  if (!BUILDINGS[building_id]) return corsWrapCred(request, '{"error":"invalid_building_id"}', 400);
+  if (!['start_upgrade', 'collect'].includes(action)) return corsWrapCred(request, '{"error":"invalid_action"}', 400);
+
+  const state = await env.KV.get(`realm_war_state_${fid}`, { type: 'json' });
+  if (!state) return corsWrapCred(request, '{"error":"no_state"}', 404);
+
+  const bdef   = BUILDINGS[building_id];
+  const bstate = state.buildings[building_id];
+  const now    = new Date();
+
+  if (action === 'start_upgrade') {
+    if (bstate.upgrade_finishes_iso) return corsWrapCred(request, '{"error":"upgrade_in_progress"}', 400);
+    const level    = bstate.level || 1;
+    const goldCost = Math.floor(bdef.cost_mult * Math.pow(level, 1.5));
+    if ((state.stats.gold || 0) < goldCost) {
+      return corsWrapCred(request, JSON.stringify({ error: 'insufficient_gold', required: goldCost, current: state.stats.gold }), 400);
+    }
+    const finishesAt = new Date(now.getTime() + bdef.time_mult * level * 1000).toISOString();
+    state.stats.gold -= goldCost;
+    bstate.upgrade_finishes_iso = finishesAt;
+    state.last_save_iso = now.toISOString();
+    await env.KV.put(`realm_war_state_${fid}`, JSON.stringify(state));
+    return corsWrapCred(request, JSON.stringify({ ok: true, finishes_at: finishesAt, state }), 200);
+
+  } else { // collect
+    const lastCollected = bstate.last_collected_iso ? new Date(bstate.last_collected_iso) : now;
+    const hoursElapsed  = Math.min(24, (now - lastCollected) / 3600000);
+    const level         = bstate.level || 1;
+    const collected     = Math.floor(hoursElapsed * bdef.base_yield * level);
+
+    // Finish upgrade if timer has elapsed
+    let newLevel = level;
+    if (bstate.upgrade_finishes_iso && new Date(bstate.upgrade_finishes_iso) <= now) {
+      newLevel = level + 1;
+      bstate.level = newLevel;
+      bstate.upgrade_finishes_iso = null;
+    }
+
+    bstate.last_collected_iso = now.toISOString();
+    state.stats[bdef.resource] = (state.stats[bdef.resource] || 0) + collected;
+    state.last_save_iso = now.toISOString();
+    await env.KV.put(`realm_war_state_${fid}`, JSON.stringify(state));
+    return corsWrapCred(request, JSON.stringify({ ok: true, collected, level: newLevel, state }), 200);
+  }
+}
+
+// POST /realm-war/raid
+async function handleRealmWarRaid(request, env) {
+  const user = await getUser(request, env);
+  if (!user || !user.fid) return corsWrapCred(request, '{"error":"not_authenticated"}', 401);
+  const fid = user.fid;
+
+  let raid_tier;
+  try { ({ raid_tier } = await request.json()); raid_tier = Number(raid_tier) || 1; }
+  catch { return corsWrapCred(request, '{"error":"bad_request"}', 400); }
+  if (raid_tier !== 1) return corsWrapCred(request, '{"error":"invalid_raid_tier"}', 400);
+
+  const state = await env.KV.get(`realm_war_state_${fid}`, { type: 'json' });
+  if (!state) return corsWrapCred(request, '{"error":"no_state"}', 404);
+
+  if ((state.stats.stamina || 0) < 20) {
+    return corsWrapCred(request, JSON.stringify({ error: 'insufficient_stamina', required: 20, current: state.stats.stamina }), 400);
+  }
+  if ((state.stats.health || 0) <= 30) {
+    return corsWrapCred(request, JSON.stringify({ error: 'health_too_low', current: state.stats.health }), 400);
+  }
+
+  const rollBuf = new Uint8Array(4);
+  crypto.getRandomValues(rollBuf);
+
+  const TITLE_RANK = { squire: 1, knight: 2, baron: 3, earl: 4, duke: 5 };
+  const titleRank  = TITLE_RANK[state.title || 'squire'] || 1;
+  const playerPower = titleRank * 10 + Math.sqrt(state.title_xp || 0) + (rollBuf[0] % 21);
+  const banditPower = 80 + ((rollBuf[1] % 41) - 20);
+  const won         = playerPower > banditPower;
+
+  state.stats.stamina = (state.stats.stamina || 0) - 20;
+
+  const reward = {};
+  let damage_taken;
+
+  if (won) {
+    damage_taken  = (rollBuf[2] % 16) + 10; // 10–25
+    reward.gold   = 200;
+    reward.xp     = 50;
+    if (rollBuf[3] % 4 === 0) reward.rare_loot = 'Bandit Cache'; // 25%
+    state.stats.gold     = (state.stats.gold     || 0) + 200;
+    state.title_xp       = (state.title_xp       || 0) + 50;
+    state.stats.xp_total = (state.stats.xp_total || 0) + 50;
+    const newTitle = realmWarRecomputeTitle(state);
+    if (newTitle !== state.title) {
+      state.title = newTitle;
+      state.stats.stamina_max = realmWarMaxStaminaForTitle(newTitle);
+    }
+  } else {
+    damage_taken  = (rollBuf[2] % 21) + 30; // 30–50
+    const goldLost = Math.min(state.stats.gold || 0, (rollBuf[3] % 31) + 10); // 10–40
+    reward.gold_lost = goldLost;
+    state.stats.gold = (state.stats.gold || 0) - goldLost;
+  }
+
+  state.stats.health  = Math.max(0, (state.stats.health || 0) - damage_taken);
+  state.last_save_iso = new Date().toISOString();
+  await env.KV.put(`realm_war_state_${fid}`, JSON.stringify(state));
+  return corsWrapCred(request, JSON.stringify({ ok: true, won, reward, damage_taken, state }), 200);
+}
+
+// POST /realm-war/levy-claim
+async function handleRealmWarLevyClaim(request, env) {
+  const user = await getUser(request, env);
+  if (!user || !user.fid) return corsWrapCred(request, '{"error":"not_authenticated"}', 401);
+  const fid = user.fid;
+
+  const state = await env.KV.get(`realm_war_state_${fid}`, { type: 'json' });
+  if (!state) return corsWrapCred(request, '{"error":"no_state"}', 404);
+
+  const now  = new Date();
+  const levy = state.daily_levy || { streak_days: 0, last_claimed_iso: null };
+
+  let new_streak;
+  if (!levy.last_claimed_iso) {
+    new_streak = 1;
+  } else {
+    const last         = new Date(levy.last_claimed_iso);
+    const hoursElapsed = (now - last) / 3600000;
+    if (hoursElapsed < 24) {
+      const next_claim_iso = new Date(last.getTime() + 24 * 3600000).toISOString();
+      return corsWrapCred(request, JSON.stringify({ ok: false, error: 'already_claimed', next_claim_iso }), 200);
+    }
+    new_streak = hoursElapsed > 48 ? 1 : (levy.streak_days || 0) + 1;
+  }
+
+  const reward = realmWarLevyReward(new_streak);
+
+  state.stats.gold    = (state.stats.gold    || 0) + (reward.gold    || 0);
+  state.stats.wood    = (state.stats.wood    || 0) + (reward.wood    || 0);
+  state.stats.iron    = (state.stats.iron    || 0) + (reward.iron    || 0);
+  state.title_xp      = (state.title_xp      || 0) + (reward.xp     || 0);
+  state.stats.xp_total = (state.stats.xp_total || 0) + (reward.xp   || 0);
+
+  const staminaMax = realmWarMaxStaminaForTitle(state.title || 'squire');
+  state.stats.stamina = Math.min(staminaMax, (state.stats.stamina || 0) + (reward.stamina || 0));
+  state.stats.stamina_max = staminaMax;
+
+  if (reward.crowns) {
+    user.credits = (Number(user.credits) || 0) + reward.crowns;
+    await env.KV.put(`user:${user.email}`, JSON.stringify(user));
+  }
+  if (reward.unique_title) state.lord_title_special = reward.unique_title;
+
+  const newTitle = realmWarRecomputeTitle(state);
+  if (newTitle !== state.title) {
+    state.title = newTitle;
+    state.stats.stamina_max = realmWarMaxStaminaForTitle(newTitle);
+  }
+
+  state.daily_levy  = { streak_days: new_streak, last_claimed_iso: now.toISOString() };
+  state.last_save_iso = now.toISOString();
+  await env.KV.put(`realm_war_state_${fid}`, JSON.stringify(state));
+  return corsWrapCred(request, JSON.stringify({ ok: true, streak_days: new_streak, reward, state }), 200);
+}
+
+// POST /realm-war/spend
+async function handleRealmWarSpend(request, env) {
+  const user = await getUser(request, env);
+  if (!user || !user.fid) return corsWrapCred(request, '{"error":"not_authenticated"}', 401);
+  const fid = user.fid;
+
+  let benefit_id, building_id;
+  try {
+    const body = await request.json();
+    benefit_id  = String(body.benefit_id  || '').trim();
+    building_id = body.building_id ? String(body.building_id).trim() : null;
+  } catch { return corsWrapCred(request, '{"error":"bad_request"}', 400); }
+
+  const BENEFIT_COST = { stamina_refill: 1, instant_upgrade: 5 };
+  if (!BENEFIT_COST[benefit_id]) return corsWrapCred(request, '{"error":"invalid_benefit_id"}', 400);
+
+  const cost    = BENEFIT_COST[benefit_id];
+  const balance = Number(user.credits) || 0;
+  if (balance < cost) {
+    return corsWrapCred(request, JSON.stringify({ error: 'insufficient_crowns', balance, required: cost }), 402);
+  }
+
+  const state = await env.KV.get(`realm_war_state_${fid}`, { type: 'json' });
+  if (!state) return corsWrapCred(request, '{"error":"no_state"}', 404);
+
+  if (benefit_id === 'stamina_refill') {
+    state.stats.stamina = realmWarMaxStaminaForTitle(state.title || 'squire');
+  } else {
+    const VALID_BUILDINGS = ['mill', 'smithy', 'stables'];
+    if (!building_id || !VALID_BUILDINGS.includes(building_id)) {
+      return corsWrapCred(request, '{"error":"invalid_building_id"}', 400);
+    }
+    const bstate = state.buildings && state.buildings[building_id];
+    if (!bstate || !bstate.upgrade_finishes_iso) {
+      return corsWrapCred(request, '{"error":"no_active_upgrade"}', 400);
+    }
+    bstate.level = (bstate.level || 1) + 1;
+    bstate.upgrade_finishes_iso = null;
+  }
+
+  user.credits        = balance - cost;
+  state.last_save_iso = new Date().toISOString();
+  await env.KV.put(`realm_war_state_${fid}`, JSON.stringify(state));
+  await env.KV.put(`user:${user.email}`, JSON.stringify(user));
+  return corsWrapCred(request, JSON.stringify({ ok: true, balance: user.credits, state }), 200);
 }
