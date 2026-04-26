@@ -1808,11 +1808,39 @@ const OAB_PRICE_GRANTS = {
 };
 
 // Sanity bounds on client-reported per-battle earnings. Caps a runaway
-// or spoofed result. Max plausible Marshal Crown: 80 × stacking ≈ 158
-// (ECONOMY.md §2). 1000 leaves 6× safety margin without being so loose
-// it's useless. XP cap similarly above the practical maximum.
+// or spoofed result. These are the outer fallback; OAB_BATTLE_REWARDS
+// provides tighter per-scenario validation for known scenarios.
 const OAB_MAX_CROWNS_PER_BATTLE_RESULT = 1000;
 const OAB_MAX_XP_PER_BATTLE_RESULT     = 1500;
+
+// Server-side reward table for F1 validation (Worker 30).
+// Sergeant-tier values are canonical (BATTLES.md §16 + Fix 3).
+// Scout = Sergeant × 0.75; Marshal = Sergeant × 1.50 (ECONOMY.md §2 + BATTLES.md §14).
+// Crowns are integer (Math.round of the multiplied Sergeant base).
+// XP values are per-tier from BATTLES.md §2–4 verbatim.
+const OAB_BATTLE_REWARDS = {
+  b1: {
+    scout:    { crowns: 38,  xp: 45  },
+    sergeant: { crowns: 50,  xp: 60  },
+    marshal:  { crowns: 75,  xp: 90  },
+  },
+  b2: {
+    scout:    { crowns: 45,  xp: 60  },
+    sergeant: { crowns: 60,  xp: 80  },
+    marshal:  { crowns: 90,  xp: 120 },
+  },
+  b3: {
+    scout:    { crowns: 53,  xp: 80  },
+    sergeant: { crowns: 70,  xp: 110 },
+    marshal:  { crowns: 105, xp: 165 },
+  },
+};
+
+// Maximum stacking multiplier for legitimate Crown earn on a victory:
+// Campaign Pass (×1.50) × no-death bonus (×1.20) × triangle discipline (×1.10)
+// = 1.98×. The 1.20 safety buffer catches minor clock-skew or future bonus
+// additions without letting the 20× devtools cheat through.
+const OAB_REWARD_TOLERANCE_FACTOR = 1.50 * 1.20 * 1.10 * 1.20; // ≈ 2.376
 
 // Default state shape returned by /load when a player has never saved.
 function oabDefaultState() {
@@ -2095,6 +2123,34 @@ async function handleOabBattleResult(request, env) {
   }
   if (heroes_lost.length > 32) {
     return corsWrapCred(request, '{"error":"too_many_heroes_lost"}', 400);
+  }
+
+  // F1 server-side reward validation (Worker 30).
+  // For known scenarios, clamp crowns_earned and xp_earned to the maximum
+  // legitimate value for this scenario + tier + result. Clamping (not reject)
+  // preserves the session for benign clock-skew while blocking devtools cheat.
+  // Unknown scenarios fall back to the OAB_MAX_* ceiling already checked above.
+  if (scenario_id in OAB_BATTLE_REWARDS) {
+    const tierReward = OAB_BATTLE_REWARDS[scenario_id][difficulty_tier];
+    if (tierReward) {
+      let maxCrowns, maxXp;
+      if (result === 'victory') {
+        maxCrowns = Math.ceil(tierReward.crowns * OAB_REWARD_TOLERANCE_FACTOR);
+        maxXp     = Math.ceil(tierReward.xp    * OAB_REWARD_TOLERANCE_FACTOR);
+      } else {
+        // defeat / flee: defeat grant is 10 Crowns + 15 XP (ECONOMY.md §2)
+        maxCrowns = 20;
+        maxXp     = 25;
+      }
+      if (crowns_earned > maxCrowns) {
+        console.warn(`[OAB-Cheat] fid=${fid} scenario=${scenario_id} tier=${difficulty_tier} result=${result} submitted_crowns=${crowns_earned} max=${maxCrowns} — clamping`);
+        crowns_earned = maxCrowns;
+      }
+      if (xp_earned > maxXp) {
+        console.warn(`[OAB-Cheat] fid=${fid} scenario=${scenario_id} tier=${difficulty_tier} result=${result} submitted_xp=${xp_earned} max=${maxXp} — clamping`);
+        xp_earned = maxXp;
+      }
+    }
   }
 
   const nowIso   = new Date().toISOString();
