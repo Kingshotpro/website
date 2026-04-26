@@ -13,6 +13,23 @@
 
 ---
 
+## 2026-04-26 — Worker 28: OAB webhook routing + live cheat-protection tests + MVP launch audit
+
+**Verdict:** OAB Stripe webhook gap closed. All 6 server cheat-protection tests pass live.
+MVP launch gate CLEAR. One Architect manual step required before live revenue (`STRIPE_SECRET_KEY`).
+
+**Decisions made:**
+
+- **Webhook routing by price ID:** `handleStripeWebhook` extended with `OAB_PRICE_GRANTS` constant (6 price IDs → grant actions), `fetchStripeLineItems` helper (Stripe API fallback), `oabApplyCrownGrant`, and `oabSetPassActive`. Routes `checkout.session.completed` on `price.id` — not `amount_total`, which collides at 499/999 cents. `oabHandled` flag prevents double-routing.
+- **New event handlers:** `invoice.payment_failed` deactivates OAB pass on first payment failure. `customer.subscription.deleted` extended to detect and clear OAB pass without touching KingShotPro tier.
+- **`STRIPE_SECRET_KEY` required:** `fetchStripeLineItems` uses this secret to call Stripe line-items API when the webhook payload's `line_items` is not expanded. Without it, OAB routing is blocked. Architect sets via `wrangler secret put STRIPE_SECRET_KEY`.
+- **Commit:** `75bc1b3` (703 insertions, 35 deletions). Deployed via `wrangler deploy` 2026-04-26.
+- **All 6 Concern 6 tests run live:** spend-over-balance (402), malformed body (400), permadeath union (hero survives client attempt to remove), race condition (balance floor=0, not negative), invalid context (400), negative balance on save (400). See `games/designs/oath-and-bone/MVP_LAUNCH_AUDIT.md`.
+- **Soul Review permadeath PASS:** `onUnitFallen` (Worker 27 commit `05eb384`) confirmed via MutationObserver — linger `filter:grayscale(1)` + Vael barb toast `"We can't lose her."` fire correctly.
+- **Free-Means-Free re-confirmed:** live shop UI shows Crown prices only, no paywalls, footer states "All items obtainable through play."
+
+---
+
 ## 2026-04-26 — Architect: Oath and Bone Stripe products created (live mode)
 
 **Verdict:** All 6 products + prices + payment links created via Stripe MCP on
