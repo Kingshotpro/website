@@ -136,26 +136,26 @@ so there's no conflict in practice. Same for 999.
 > Added 2026-04-25 (Worker 24). Numbers are verbatim from
 > `games/designs/oath-and-bone/ECONOMY.md`. Mirror lives in
 > `js/pricing-config.js` at `window.KSP_PRICING.oathandbone`.
-> `stripe_url` fields are `TBD-MANUAL` until the Architect creates
-> the products — see `games/designs/oath-and-bone/STRIPE_SETUP_GUIDE.md`.
+> Stripe products + payment links created live 2026-04-26 (account
+> `acct_1TKjtXCTwcITa9f2`). Webhook routing on price ID — see DECISIONS.
 
 ### Crown packs (one-time purchase)
 
-| Tier | Price | Crowns | Bonus | Effective $/Crown |
-|---|---|---|---|---|
-| Pocket Pack | $0.99 | 200 | — | $0.0050 |
-| Coffer Pack | $4.99 | 1,200 | +200 = 1,400 | $0.0036 |
-| Hoard Pack | $19.99 | 5,500 | +1,500 = 7,000 | $0.0029 |
-| King's Cache | $49.99 | 15,000 | +5,000 = 20,000 | $0.0025 |
+| Tier | Price | Crowns | Bonus | Effective $/Crown | Product ID | Price ID | Payment Link |
+|---|---|---|---|---|---|---|---|
+| Pocket Pack | $0.99 | 200 | — | $0.0050 | `prod_UPEWa8eLPmaD0m` | `price_1TQQ4KCTwcITa9f2mzxPOoy7` | https://buy.stripe.com/fZu14m8tw92WcaPdcA6Vq0b |
+| Coffer Pack | $4.99 | 1,200 | +200 = 1,400 | $0.0036 | `prod_UPEWYxFVmePYcj` | `price_1TQQ4SCTwcITa9f27L1hWYBM` | https://buy.stripe.com/eVqdR8fVY6UOdeTb4s6Vq0c |
+| Hoard Pack | $19.99 | 5,500 | +1,500 = 7,000 | $0.0029 | `prod_UPEW2z1Er0K327` | `price_1TQQ4ZCTwcITa9f2deUUxAgg` | https://buy.stripe.com/aFafZgaBEcf84In2xW6Vq0d |
+| King's Cache | $49.99 | 15,000 | +5,000 = 20,000 | $0.0025 | `prod_UPEWxNFDcWWjvj` | `price_1TQQ4gCTwcITa9f2XkhyCxpt` | https://buy.stripe.com/5kQ5kC9xAcf85Mr3C06Vq0e |
 
 First-purchase bonus: first pack of any tier grants +50% bonus Crowns (one-time per account). Server-enforced.
 
 ### Campaign Pass (Stripe subscription)
 
-| Pass | Price | Duration | Perks |
-|---|---|---|---|
-| Chapter Pass | $4.99 | One chapter | +50% Crown earn, 50 Crown daily stipend, one exclusive portrait frame, cutscene gallery access |
-| Campaign Pass | $9.99/month | One month | Above + 100 Crown daily stipend + one job-advancement token/month + Chapter N+1 beta access |
+| Pass | Price | Duration | Perks | Product ID | Price ID | Payment Link |
+|---|---|---|---|---|---|---|
+| Chapter Pass | $4.99/mo | One chapter | +50% Crown earn, 50 Crown daily stipend, one exclusive portrait frame, cutscene gallery access | `prod_UPEXhM6bbwPQM7` | `price_1TQQ4pCTwcITa9f2A7a8fzZo` | https://buy.stripe.com/dRm9ASfVYgvo1wbegE6Vq0f |
+| Campaign Pass | $9.99/mo | One month | Above + 100 Crown daily stipend + one job-advancement token/month + Chapter N+1 beta access | `prod_UPEX7HlWQtmBwv` | `price_1TQQ4wCTwcITa9f2OAlnzzJo` | https://buy.stripe.com/5kQ5kCaBE2Ey4In5K86Vq0g |
 
 Pass active state: `cache.isCampaignPassActive()`. Pass suppresses all interstitial ads.
 

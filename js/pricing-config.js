@@ -108,17 +108,24 @@
     // ── Oath and Bone Crown Economy ───────────────────────────────────────
     // Verbatim from ECONOMY.md §5 (passes) and §7 (packs). Any change here
     // must mirror docs/PRICING.md "Oath and Bone Crown Economy" section.
-    // stripe_url values are TBD-MANUAL — see STRIPE_SETUP_GUIDE.md.
+    // Stripe products + payment links live (created 2026-04-26 by Architect via
+    // Stripe MCP). Price IDs noted for webhook routing — see DECISIONS entry.
     oathandbone: {
       crown_packs: {
-        pocket: { usd: 0.99,  crowns: 200,   bonus: 0,    stripe_url: 'TBD-MANUAL' },
-        coffer: { usd: 4.99,  crowns: 1200,  bonus: 200,  stripe_url: 'TBD-MANUAL' },
-        hoard:  { usd: 19.99, crowns: 5500,  bonus: 1500, stripe_url: 'TBD-MANUAL' },
-        kings:  { usd: 49.99, crowns: 15000, bonus: 5000, stripe_url: 'TBD-MANUAL' },
+        // price_1TQQ4KCTwcITa9f2mzxPOoy7  (prod_UPEWa8eLPmaD0m)
+        pocket: { usd: 0.99,  crowns: 200,   bonus: 0,    stripe_url: 'https://buy.stripe.com/fZu14m8tw92WcaPdcA6Vq0b' },
+        // price_1TQQ4SCTwcITa9f27L1hWYBM  (prod_UPEWYxFVmePYcj)
+        coffer: { usd: 4.99,  crowns: 1200,  bonus: 200,  stripe_url: 'https://buy.stripe.com/eVqdR8fVY6UOdeTb4s6Vq0c' },
+        // price_1TQQ4ZCTwcITa9f2deUUxAgg  (prod_UPEW2z1Er0K327)
+        hoard:  { usd: 19.99, crowns: 5500,  bonus: 1500, stripe_url: 'https://buy.stripe.com/aFafZgaBEcf84In2xW6Vq0d' },
+        // price_1TQQ4gCTwcITa9f2XkhyCxpt  (prod_UPEWxNFDcWWjvj)
+        kings:  { usd: 49.99, crowns: 15000, bonus: 5000, stripe_url: 'https://buy.stripe.com/5kQ5kC9xAcf85Mr3C06Vq0e' },
       },
       passes: {
-        chapter:  { usd: 4.99, duration: '1 chapter',  stripe_url: 'TBD-MANUAL' },
-        campaign: { usd: 9.99, duration: '1 month',    stripe_url: 'TBD-MANUAL' },
+        // price_1TQQ4pCTwcITa9f2A7a8fzZo  (prod_UPEXhM6bbwPQM7)  — recurring monthly
+        chapter:  { usd: 4.99, duration: '1 chapter',  stripe_url: 'https://buy.stripe.com/dRm9ASfVYgvo1wbegE6Vq0f' },
+        // price_1TQQ4wCTwcITa9f2OAlnzzJo  (prod_UPEX7HlWQtmBwv)  — recurring monthly
+        campaign: { usd: 9.99, duration: '1 month',    stripe_url: 'https://buy.stripe.com/5kQ5kCaBE2Ey4In5K86Vq0g' },
       },
       // Category order mirrors ECONOMY.md §3 headings verbatim.
       shop_categories: [

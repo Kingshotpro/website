@@ -13,6 +13,35 @@
 
 ---
 
+## 2026-04-26 — Architect: Oath and Bone Stripe products created (live mode)
+
+**Verdict:** All 6 products + prices + payment links created via Stripe MCP on
+account `acct_1TKjtXCTwcITa9f2` (kingshotpro). `stripe_url` placeholders in
+`js/pricing-config.js` replaced with real `buy.stripe.com` URLs. Mirror in
+`docs/PRICING.md` updated with product/price IDs.
+
+**Product / price / payment-link map (canonical for webhook routing):**
+
+| Tier | Product ID | Price ID | Amount (cents) |
+|---|---|---|---|
+| Pocket Pack ($0.99 one-time) | `prod_UPEWa8eLPmaD0m` | `price_1TQQ4KCTwcITa9f2mzxPOoy7` | 99 |
+| Coffer Pack ($4.99 one-time) | `prod_UPEWYxFVmePYcj` | `price_1TQQ4SCTwcITa9f27L1hWYBM` | 499 |
+| Hoard Pack ($19.99 one-time) | `prod_UPEW2z1Er0K327` | `price_1TQQ4ZCTwcITa9f2deUUxAgg` | 1999 |
+| King's Cache ($49.99 one-time) | `prod_UPEWxNFDcWWjvj` | `price_1TQQ4gCTwcITa9f2XkhyCxpt` | 4999 |
+| Chapter Pass ($4.99/mo subscription) | `prod_UPEXhM6bbwPQM7` | `price_1TQQ4pCTwcITa9f2A7a8fzZo` | 499 |
+| Campaign Pass ($9.99/mo subscription) | `prod_UPEX7HlWQtmBwv` | `price_1TQQ4wCTwcITa9f2OAlnzzJo` | 999 |
+
+**Webhook routing note (critical for Worker 28):** the Stripe MCP create_product
+tool does NOT expose `metadata` field, so `metadata.product_type` was NOT set
+per Worker 24's STRIPE_SETUP_GUIDE.md recommendation. There is amount-collision
+between Coffer ($4.99 one-time) and Chapter Pass ($4.99/mo) — both 499 cents.
+The webhook handler at `worker.js:1039` MUST route on **price ID** (always
+unique), not on session.amount_total. Use `session.line_items[0].price.id` or
+look up the line items via Stripe API. Worker 28 implements this routing.
+
+**Free-Means-Free retained:** all gameplay reachable without purchase. Items
+are accelerators or cosmetic. Permadeath is real (no revive-for-Crowns).
+
 ## 2026-04-25 — Worker 24: Oath and Bone monetization layer
 
 **Verdict:** Prices locked. Crown shop UI, pack purchase flow, Campaign Pass, and ad surfaces shipped.
