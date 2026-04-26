@@ -13,6 +13,21 @@
 
 ---
 
+## 2026-04-26 — Worker 29: Full system audit — CONDITIONAL GO
+
+**Verdict:** CONDITIONAL GO. One ship condition (disclaimer missing from ad overlays — 2-line fix). No hard blockers. Three Worker 30+ hardening items. Full evidence in `games/designs/oath-and-bone/SYSTEM_AUDIT_REPORT.md`.
+
+**Decisions made / issues surfaced:**
+
+- **Ship condition:** "Unofficial. Not affiliated with Century Games." is absent from the interstitial ad overlay (`_tryInterstitial`, render.js:2404) and rewarded video overlay (`_showRewardedVideoStub`, render.js:2512). ECONOMY.md §10 requires it on all ad surfaces. 2-line fix. Must land before ship.
+- **Crown earn client-trust (revenue risk):** `handleOabBattleResult` (worker.js:2075) trusts client-submitted `crowns_earned` up to 1,000 cap. Legitimate max is ~158 Crowns (Marshal × multipliers). A cheater can claim 20× the real reward per battle. Not a safety/legal blocker (Crowns have no cash-out path), but breaks the pay-to-accelerate model. Worker 30+ adds server-side reward table validation.
+- **`oabApplyCrownGrant` race (low frequency, real financial loss):** Worker 28's implementation (worker.js:1087) does plain read-modify-write — no CAS retry. Concurrent Crown pack webhooks can lose one grant. Fix: 3-attempt version-check loop per `handleOabSpend` pattern. Worker 30+ scope.
+- **MVP_LAUNCH_AUDIT.md runbook stale:** §Deployment Checklist step 1 says `wrangler secret put STRIPE_SECRET_KEY`. Correct env var is `STRIPE_KEY` (aligned in commit 2f9cca3). Worker 28 DECISIONS entry above still says `STRIPE_SECRET_KEY` — that entry is now superseded; the correct var is `STRIPE_KEY`.
+- **B2/B3 reward discrepancy:** battles.js has B2 `crowns:45` vs BATTLES.md spec `60`; B3 `crowns:55` vs `70`. Free player walkthrough still validates (§9 math holds). Either align code to spec or add a DECISIONS entry with tuning rationale.
+- **Worker 28 Concern 8 (challenger frame gap):** Workers 24/27/28 each operated within their assigned scope and none traced the full Crown earn pipe from render.js `_computeRewards()` through `handleOabBattleResult`. This gap pattern is documented in SYSTEM_AUDIT_REPORT.md §Concern 8.
+
+---
+
 ## 2026-04-26 — Worker 28: OAB webhook routing + live cheat-protection tests + MVP launch audit
 
 **Verdict:** OAB Stripe webhook gap closed. All 6 server cheat-protection tests pass live.
