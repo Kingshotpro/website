@@ -1066,12 +1066,15 @@ async function handlePortrait(request, env) {
 // Fetch checkout session line items via the Stripe REST API.
 // Required because webhook payloads omit line_items by default.
 // Returns an array of line item objects (each has .price.id) or null.
+// Uses env.STRIPE_KEY — the existing site-wide Stripe secret already used
+// by the pre-OAB webhook handler. Worker 28 originally referenced
+// env.STRIPE_SECRET_KEY (didn't exist as a binding); aligned 2026-04-26.
 async function fetchStripeLineItems(env, sessionId) {
-  if (!env.STRIPE_SECRET_KEY) return null;
+  if (!env.STRIPE_KEY) return null;
   try {
     const res = await fetch(
       `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}/line_items?expand%5B%5D=data.price&limit=5`,
-      { headers: { Authorization: 'Bearer ' + env.STRIPE_SECRET_KEY } }
+      { headers: { Authorization: 'Bearer ' + env.STRIPE_KEY } }
     );
     if (!res.ok) return null;
     const data = await res.json();
@@ -1222,13 +1225,13 @@ async function handleStripeWebhook(request, env) {
     // Fetch line items to resolve price ID for routing. amount_total alone
     // collides: 499 cents = Coffer Pack = Credits Standard = Pro sub =
     // Chapter Pass. Price ID is always unique. DECISIONS.md 2026-04-26.
-    // Requires STRIPE_SECRET_KEY set via: wrangler secret put STRIPE_SECRET_KEY
+    // Uses env.STRIPE_KEY (already configured site-wide secret).
     let lineItems = (session.line_items && session.line_items.data) || null;
     if (!lineItems && session.id) {
-      if (env.STRIPE_SECRET_KEY) {
+      if (env.STRIPE_KEY) {
         lineItems = await fetchStripeLineItems(env, session.id);
       } else {
-        console.warn('[webhook] STRIPE_SECRET_KEY not set — OAB price-ID routing disabled; ambiguous $4.99/$9.99 amounts may be misrouted');
+        console.warn('[webhook] STRIPE_KEY not set — OAB price-ID routing disabled; ambiguous $4.99/$9.99 amounts may be misrouted');
       }
     }
 
