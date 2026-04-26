@@ -2460,6 +2460,12 @@
       skipBtn.style.cssText = 'margin-top:14px;background:none;border:1px solid #3a5a9a;color:#c0d4f0;padding:6px 18px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;display:none';
       skipBtn.textContent = 'Skip';
       overlay.appendChild(skipBtn);
+
+      var disclaimer = document.createElement('div');
+      disclaimer.textContent = 'Unofficial. Not affiliated with Century Games.';
+      disclaimer.style.cssText = 'position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:9px;color:#5a7a9e;letter-spacing:0.04em;pointer-events:none;';
+      overlay.appendChild(disclaimer);
+
       document.body.appendChild(overlay);
 
       var remaining = 3;
@@ -2549,6 +2555,12 @@
       countdown.style.cssText = 'font-size:11px;color:#5a7a9e;margin:10px 0';
       countdown.textContent = 'Simulating 3s ad view\u2026';
       overlay.appendChild(countdown);
+
+      var disclaimer = document.createElement('div');
+      disclaimer.textContent = 'Unofficial. Not affiliated with Century Games.';
+      disclaimer.style.cssText = 'position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:9px;color:#5a7a9e;letter-spacing:0.04em;pointer-events:none;';
+      overlay.appendChild(disclaimer);
+
       document.body.appendChild(overlay);
 
       var elapsed = 3;
