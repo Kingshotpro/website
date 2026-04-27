@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Campfire</title>
+  <title>The Fracture</title>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1a0a00">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Campfire">
+  <meta name="apple-mobile-web-app-title" content="The Fracture">
   <link rel="apple-touch-icon" href="icon-192.svg">
   <meta name="description" content="An idle RPG about rescuing people from darkness and growing a community of light.">
   <style>
@@ -3723,10 +3723,10 @@ Campfire.register('hub', {
     ctx.textAlign = 'center';
     ctx.fillStyle = '#ffd580';
     ctx.font = 'bold 42px system-ui';
-    ctx.fillText('LIGHTFRONT', W/2, 72);
+    ctx.fillText('THE FRACTURE', W/2, 72);
     ctx.fillStyle = 'rgba(255,180,80,0.55)';
     ctx.font = '14px system-ui';
-    ctx.fillText('Survive the Dark. Carry the Light.', W/2, 96);
+    ctx.fillText('Choose your side. Lead them through.', W/2, 96);
 
     // Stats bar
     const state = Campfire.state;
@@ -3842,7 +3842,7 @@ Campfire.register('hub', {
     // Version
     ctx.fillStyle = 'rgba(255,255,255,0.15)';
     ctx.font = '10px system-ui';
-    ctx.fillText('v0.8.1 · Lightfront', W/2, H - 16);
+    ctx.fillText('The Fracture · v0.1', W/2, H - 16);
   },
 
   _drawHeroes(ctx, W, H, addZone) {
@@ -4064,10 +4064,10 @@ Campfire.register('hub', {
     ctx.fillText('ABOUT', W/2, 54);
 
     const lines = [
-      ['LIGHTFRONT', 'bold 28px system-ui', '#ffd580', 140],
+      ['THE FRACTURE', 'bold 28px system-ui', '#ffd580', 140],
       ['A dark fantasy crowd runner.', '15px system-ui', 'rgba(255,255,255,0.7)', 174],
-      ['Rescue souls from the void.', '15px system-ui', 'rgba(255,255,255,0.7)', 196],
-      ['Carry the light back.', '15px system-ui', 'rgba(255,255,255,0.7)', 218],
+      ['Choose Light or Dark. Lead your faction.', '15px system-ui', 'rgba(255,255,255,0.7)', 196],
+      ['Survive the void. Carry them through.', '15px system-ui', 'rgba(255,255,255,0.7)', 218],
       ['', '', '', 240],
       ['HOW TO PLAY', 'bold 13px system-ui', 'rgba(255,200,80,0.8)', 270],
       ['Tap ◀  ▶ to steer your group.', '13px system-ui', 'rgba(255,255,255,0.6)', 292],
@@ -4079,7 +4079,7 @@ Campfire.register('hub', {
       ['CREDITS', 'bold 13px system-ui', 'rgba(255,200,80,0.8)', 408],
       ['Design & Code — The Hive', '13px system-ui', 'rgba(255,255,255,0.5)', 428],
       ['Art — Midjourney v6.1', '13px system-ui', 'rgba(255,255,255,0.5)', 446],
-      ['v0.8.1 · kingshotpro.com/games/lightfront', '11px system-ui', 'rgba(255,255,255,0.25)', 480],
+      ['v0.1 · kingshotpro.com/games/lightfront', '11px system-ui', 'rgba(255,255,255,0.25)', 480],
     ];
     lines.forEach(([text, font, color, y]) => {
       if (!text) return;
